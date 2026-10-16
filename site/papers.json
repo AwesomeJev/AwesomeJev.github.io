@@ -397,6 +397,16 @@
     },
     {
       "category": "Papers",
+      "title": "Just Ask Jev: Reinforcement Learning for Calibrated Decisions as a Zero-Shot Detector of AI Alignment Failures",
+      "by": "Guo et al. · 2026-09-24 · v1",
+      "date": "2026-09-24",
+      "first_submitted": "2026-09-24",
+      "url": "https://arxiv.org/abs/2609.29429v1",
+      "en": "Benchmarks Jev alignment-failure detection while separating question wording from input context; benchmark-scorer labels dominate, and context gains often depend on fields encoding the label.",
+      "zh": "评测 Jev 对 AI 对齐失效的检测，分别改变提问与输入上下文；参考标签主要来自基准评分器，上下文收益常依赖编码标签的字段。"
+    },
+    {
+      "category": "Papers",
       "title": "From Text Decisions to Pixels",
       "by": "Zhou et al. · 2026-09-24 · v1",
       "date": "2026-09-24",

@@ -3,35 +3,35 @@
   "baseline_commit": "3519c15d7e00686a8dbf9b1e184c68726327ab1e",
   "baseline_source_index_sha256": "8bfdd20564f2cda54bb8264c3c802f315e3e9a11b153bd85dde4325f53c841d5",
   "target_new_sources": 301,
-  "accepted_new_sources": 752,
+  "accepted_new_sources": 753,
   "remaining_to_target": 0,
   "target_count_reached": true,
   "current_index_counts": {
     "editorial_reviewed": 4,
-    "content_screened": 2363,
+    "content_screened": 2364,
     "abstract_checked": 1833,
     "metadata_only": 47,
-    "raw_records": 4261,
-    "unique_records": 4247,
+    "raw_records": 4262,
+    "unique_records": 4248,
     "duplicate_records": 14,
-    "checked_sources": 4200
+    "checked_sources": 4201
   },
   "by_category": {
     "Datasets": 101,
     "Guides and evaluations": 38,
     "Models": 53,
     "Papers": 27,
-    "Projects": 192,
+    "Projects": 193,
     "Research foundations": 341
   },
   "by_relation": {
     "adjacent": 25,
     "background": 341,
-    "direct": 386
+    "direct": 387
   },
   "by_verification_level": {
     "abstract_checked": 368,
-    "content_screened": 384
+    "content_screened": 385
   },
   "verification_note": "Evidence depth is labeled per source. Content screening and abstract checks do not establish full-paper review, peer review, endorsement, or experimental reproduction.",
   "additions": [
@@ -3705,6 +3705,18 @@
       "verification_level": "content_screened",
       "content_sha256": "18a9f5a7fb939dc63c23153ace40d5f4486f7d490180b31be3b0d9364fc4e822",
       "retrieved_at": "2026-10-16T10:37:58+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "JevAdvBench — attack generation and offline analysis",
+      "url": "https://github.com/jevadvbench/jevadvbench",
+      "category": "Projects",
+      "topic": "evaluation-harness",
+      "description": "Attack-generation and offline analysis code for JevAdvBench separates recorded-response replay from fresh hosted inference; labels are mostly model-derived, and new API runs need not repeat saved answers.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "9dd2b331797756acd01229ca3aaed939a91518912410f49e6bdb7cb288548469",
+      "retrieved_at": "2026-10-16T12:54:12.571910+00:00",
       "ledger": "ecosystem-sources.jsonl"
     },
     {

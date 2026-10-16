@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "baseline_commit": "31b0bb148460f7cd44f8616b56bd8acdd743b7ec",
+  "scope": "Selected fixed-version attack metric, eligibility, repeated-call and results passages only; no full-paper review, attack execution or reproduced statistics.",
+  "independent_review": {
+    "schema_version": 1,
+    "reviewed_at": "2026-10-16T13:01:57+00:00",
+    "proposal_sha256": "2022eaa63aac4b1fe28f8f0ad05263747c35eb80382980b4ff015ad2e5f9f5a0",
+    "draft_sha256": {
+      "en": "03ce5b3ef57b050026324d848389fb5a4b180c99989ad4f1e5054658c36ec9a7",
+      "zh-CN": "2c91a9e13c2221eb1b1f6ba82858d3cce6769fa04bdf7303c5af6d72ccc13119"
+    },
+    "decision": "no_blocking_findings",
+    "required_corrections": [],
+    "review_scope": "Independent read-only inspection of the three retained fixed-version HTML sources at the proposed metric, eligibility, repeated-call and result passages. No fresh HTTP requests, test runs, model calls, attack execution or whole-paper review.",
+    "evidence_checks": {
+      "cached_source_hashes_matched": 3,
+      "main_anchor_targets_present": 17,
+      "delivery_caveat_anchor_present": true,
+      "total_targeted_anchors": 18
+    },
+    "source_evidence": [
+      {
+        "url": "https://arxiv.org/html/2609.31142v1",
+        "content_sha256": "67aea5bdda8762785b37b5a722e50d963ef37d2ff556096a1df866d6f60d89d5",
+        "retrieved_at": "2026-10-16T12:52:26.163049+00:00",
+        "anchors": [
+          "https://arxiv.org/html/2609.31142v1#S1.p4.1",
+          "https://arxiv.org/html/2609.31142v1#S3.SS1.p2.1",
+          "https://arxiv.org/html/2609.31142v1#S3.SS3.p1.1",
+          "https://arxiv.org/html/2609.31142v1#S3.SS3.p2.1",
+          "https://arxiv.org/html/2609.31142v1#S4.SS2.p3.1"
+        ],
+        "hash_and_anchor_checks_passed": true
+      },
+      {
+        "url": "https://arxiv.org/html/2609.28613v1",
+        "content_sha256": "0f59b672189081c86adb0fb1cb7a8a2e6e597b9822adbb11622652aa7a719097",
+        "retrieved_at": "2026-10-16T11:51:01.499330+00:00",
+        "anchors": [
+          "https://arxiv.org/html/2609.28613v1#S3.SS2.p3.3",
+          "https://arxiv.org/html/2609.28613v1#S3.SS3.p1.1",
+          "https://arxiv.org/html/2609.28613v1#S4.SS4.p2.2",
+          "https://arxiv.org/html/2609.28613v1#A1.SS4.p2.1",
+          "https://arxiv.org/html/2609.28613v1#A8.p1.1",
+          "https://arxiv.org/html/2609.28613v1#S4.SS2.p1.1"
+        ],
+        "hash_and_anchor_checks_passed": true
+      },
+      {
+        "url": "https://arxiv.org/html/2610.17820v1",
+        "content_sha256": "21cbb13e4317538e7040c2144694be7e59687614ce3192fd12307b7ced9f9d3c",
+        "retrieved_at": "2026-10-16T12:52:25.464548+00:00",
+        "anchors": [
+          "https://arxiv.org/html/2610.17820v1#S4.SS5.p1.1",
+          "https://arxiv.org/html/2610.17820v1#S4.SS5.p2.1",
+          "https://arxiv.org/html/2610.17820v1#S4.SS5.p3.1",
+          "https://arxiv.org/html/2610.17820v1#S5.SS2.p1.1",
+          "https://arxiv.org/html/2610.17820v1#A2.p2.1",
+          "https://arxiv.org/html/2610.17820v1#S6.SS2.p5.1"
+        ],
+        "hash_and_anchor_checks_passed": true
+      }
+    ],
+    "supplemental_anchor": "https://arxiv.org/html/2609.31142v1#S3.SS3.p3.1",
+    "boundaries": {
+      "jevadvbench": "Decisions are compared to clean answers, not independent truth labels. Score uses the most-likely level, not every expected-value change. The retest control and stability-selected, largely model-derived labeling population remain explicit.",
+      "decision_hijacking": "Clean qualification and target eligibility condition the selected cases. Call-level target frequency, any-action flips and five-call majority success have separate denominators. Adaptive-search validation uses fresh calls and does not demonstrate completed harmful execution.",
+      "same_attack": "ASR is conditional on each judge’s clean-flagged malicious cases, so eligible populations can differ. GBR is a separate Jev-only quantity requiring both action relaxation and severity-Score confidence at least 0.7; it need not reach pass and is not stated to be an ASR superset.",
+      "repeated_calls": "Moderation and phishing receive two additional unchanged calls. Raw severity variation is not routed-action variation; author-reported examples are not independently reproduced here.",
+      "causal_and_delivery_limits": "The proposed protocol does not infer causal harm merely from a raw attack rate exceeding retest variation. Equal billed token counts alone do not establish non-delivery; the source explicitly describes billing-based inference and equal-token delivered paraphrases."
+    },
+    "en_zh_scope_matches": true,
+    "new_resource_count": 0,
+    "evidence_grade_upgraded": false,
+    "privacy": "Only source URLs, source/proposal hashes and original short scope paraphrases; no raw source bodies, contacts or local cache paths.",
+    "shared_repository_modified": false
+  },
+  "parent_passage_review": {
+    "source": "Previously retained fixed-version HTML; no new network fetch.",
+    "targeted_anchors": [
+      "https://arxiv.org/html/2609.31142v1#S1.p4.1",
+      "https://arxiv.org/html/2609.31142v1#S3.SS3.p1.1",
+      "https://arxiv.org/html/2609.28613v1#S3.SS2.p3.3",
+      "https://arxiv.org/html/2609.28613v1#A1.SS4.p2.1",
+      "https://arxiv.org/html/2610.17820v1#S4.SS5.p2.1",
+      "https://arxiv.org/html/2610.17820v1#S4.SS5.p3.1"
+    ]
+  },
+  "writing_review": {
+    "skill": "paper-writing-review",
+    "argument": "Definitions and denominators precede matched repeat controls and author-reported examples. The proposed protocol is separated from reported experiments.",
+    "readability": "The final survey uses three columns. The guide explains pass/review and severity in Chinese, states at least three validation selections, and cites the direct Score-mode definition. Judge-specific denominators may differ; they are not asserted always to differ.",
+    "source_grades_changed": false
+  },
+  "new_resources": 0,
+  "privacy": "Public fixed source links, original short review notes and hashes only; no raw source bodies or cache paths."
+}

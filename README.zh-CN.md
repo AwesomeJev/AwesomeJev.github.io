@@ -47,7 +47,7 @@ TypeSafe 的 Jev 接收状态与类型化问题，为应用代码返回决策和
 
 ## 论文
 
-下列 52 项直接研究均为 **arXiv 预印本**。日期对应已核查并链接的版本，不一定是首次提交日期。结果由作者报告，本项目没有复现实验。标题中的速度或成本主张保留作者原文。[参考文献](references.bib) · [证据比较](docs/survey.zh-CN.md)
+下列 53 项直接研究均为 **arXiv 预印本**。日期对应已核查并链接的版本，不一定是首次提交日期。结果由作者报告，本项目没有复现实验。标题中的速度或成本主张保留作者原文。[参考文献](references.bib) · [证据比较](docs/survey.zh-CN.md)
 
 ### 评测与基准
 
@@ -90,8 +90,9 @@ TypeSafe 的 Jev 接收状态与类型化问题，为应用代码返回决策和
 - **[One Word Opens the Gate: The Option-Channel Attack on Typed Decision Models as Agent Guardrails](https://arxiv.org/abs/2610.12292v1)** — Azizi, Baghaei Potraghloo & Pedram. *2026-10-08, arXiv v1*. 测试七个开放权重模型的选项通道攻击；决策翻转后仍可能高置信。报告中的实验未测试托管 Jev。 [代码与缓存分析材料](https://github.com/arminazizi98/option-channel-attack)。
 - **[JevOut: Natural Context Can Flip Decision Models](https://arxiv.org/abs/2609.30243v2)** — Xu et al. *2026-10-08, arXiv v2；首次提交 2026-09-24*. 在四种决策系统中围绕不变的题目和选项优化上下文补充；结果针对原本答对的决策，人工有效性检查仅覆盖成功攻击的抽样子集。 [代码](https://github.com/xzx34/JevOut)。
 - **[Same-Number Citation Swaps: Stress-Testing Jev as a Financial Evidence Judge](https://arxiv.org/abs/2610.08675v1)** — Xu et al. *2026-10-06, arXiv v1*. 以同数值引用替换检验金融证据验证；在构造测试中，识别财务项目错配与接受等价证据之间存在权衡。 不构成总体金融判断准确率估计。
-- **[Evaluating System One Models for Agent Security Decisions: Reliability, Calibration, and Selective Automation](https://arxiv.org/abs/2609.33401v3)** — Liu. *2026-10-03, arXiv v3*. 考察非对称风险下的高置信安全错误与选择性自动化。
-- **[JevAdvBench: A Benchmark and Black-Box Attacks for Reinforcement Learning for Calibrated Decisions Models](https://arxiv.org/abs/2609.31142v1)** — Hu et al. *2026-09-25, arXiv v1*. 将对抗输入变化与干净输入、重复调用的自然波动对照。
+- **[Evaluating System One Models for Agent Security Decisions: Reliability, Calibration, and Selective Automation](https://arxiv.org/abs/2609.33401v3)** — Liu. *2026-10-03, arXiv v3*. 考察非对称风险下的高置信安全错误与选择性自动化。 [代码与已保存结果分析](https://github.com/yxsec/system-one-security-eval)。
+- **[JevAdvBench: A Benchmark and Black-Box Attacks for Reinforcement Learning for Calibrated Decisions Models](https://arxiv.org/abs/2609.31142v1)** — Hu et al. *2026-09-25, arXiv v1*. 将对抗输入变化与干净输入、重复调用的自然波动对照。 [代码](https://github.com/JevAdvBench/JevAdvBench) · [基准数据](https://huggingface.co/datasets/Hangtao/JevAdvBench)。
+- **[Just Ask Jev: Reinforcement Learning for Calibrated Decisions as a Zero-Shot Detector of AI Alignment Failures](https://arxiv.org/abs/2609.29429v1)** — Guo et al. *2026-09-24, arXiv v1*. 评测 Jev 对 AI 对齐失效的检测，分别改变提问与输入上下文；参考标签主要来自基准评分器，上下文收益常依赖编码标签的字段。 [代码与数据](https://github.com/sumleo/RLCDAlignBench)。
 - **[Decision Hijacking: Prompt Injection Attacks on Jev's Typed Probabilistic Decisions](https://arxiv.org/abs/2609.28613v1)** — Wu & Lim. *2026-09-23, arXiv v1*. 在重构的 InjecAgent 案例中审查 Jev 提示注入，区分概率偏移与攻击目标选择；优化结果通过新调用验证，结论限于该基准设置。
 
 ### 架构、记忆与多模态
@@ -137,6 +138,7 @@ TypeSafe 的 Jev 接收状态与类型化问题，为应用代码返回决策和
 
 ## 基准与评测工具
 
+- **[JevAdvBench 代码](https://github.com/JevAdvBench/JevAdvBench)** — 攻击生成、已记录响应分析和新 API 评测，以相同输入重跑为对照。声明代码采用 MIT、数据采用 CC BY-NC 4.0；多数标签来自模型，本项目未运行分析。
 - **[Reading Right, Acting Wrong — 诊断看板](https://yubol-bobo.github.io/System_one_model_evaluation/)** — 作者报告将事实探查与动作决策配对；当前覆盖22个系统，与固定论文的18个不同，本次未验证代码或数据发布。
 - **[Artificial Analysis Decision Index](https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index)** — 第三方能力、校准、成本与延迟评测。[方法说明](https://artificialanalysis.ai/methodology/decision-index)列出任务过滤规则与私有知识子集；完整测试集不能公开复现。
 - **[Entagl 工作流评测](https://www.entagl.com/blog/typesafe-jev-benchmark-ai-decision-models)** — 2026年9月23日发布的作者标注决策与客户工作流重放；私有案例和任务特定阈值限制公开复现及泛化。
@@ -202,7 +204,7 @@ TypeSafe 的四个数据集提供工作流案例、模型生成的参考标签�
 | 可组合流水线 | Khattab et al., *DSPy*. 2023. | [论文](https://arxiv.org/abs/2310.03714) |
 | 高效执行 | Zheng et al., *SGLang*. NeurIPS, 2024. | [论文](https://papers.nips.cc/paper_files/paper/2024/file/724be4472168f31ba1c9ac630f15dec8-Paper-Conference.pdf) · [代码](https://github.com/sgl-project/sglang) |
 
-60 篇精选论文均收录于 [references.bib](references.bib)。核查范围与局限见[本次论文精选记录](docs/reviews/papers-2026-10-16.md)。
+61 篇精选论文均收录于 [references.bib](references.bib)。核查范围与局限见[本次论文精选记录](docs/reviews/papers-2026-10-16.md)。
 
 ## 快速开始
 

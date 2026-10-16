@@ -1,6 +1,6 @@
 # Resource expansion — 16 October 2026
 
-**752 newly added, evidence-checked sources / target: at least 301.**
+**753 newly added, evidence-checked sources / target: at least 301.**
 
 [Main collection](../README.md) · [Website source search](https://awesomejev.github.io/#corpus) · [Machine-readable progress](../data/expansion-progress-2026-10-16.json) · [Frozen baseline](../data/expansion-baseline-2026-10-16.json) · [Prior-citation supplement](../data/expansion-baseline-supplement-2026-10-16.json)
 
@@ -8,7 +8,7 @@ The baseline is [commit 3519c15](https://github.com/reacher-z/Awesome-Jev/tree/3
 
 Only sources in the [reviewed intake](../data/expansion-intake-2026-10-16.json) count toward this expansion. This is a discovery directory with explicit screening levels. **Direct** sources concern Jev or typed decision systems; **adjacent** resources implement closely related methods; **background** papers provide research context. Listing is not an endorsement or independent reproduction. The short descriptions explain relevance, not a universal recommendation.
 
-**中文：本轮已新增 752 项有核查证据的资源，目标至少 301 项。** 已有台账、精选与引用链接、重复正文或论文题名均不重复计数，仅元数据条目不计入目标。下表区分直接相关、邻近方法与背景研究；自动内容筛查或摘要检查不等于全文评审，也不代表实验复现。
+**中文：本轮已新增 753 项有核查证据的资源，目标至少 301 项。** 已有台账、精选与引用链接、重复正文或论文题名均不重复计数，仅元数据条目不计入目标。下表区分直接相关、邻近方法与背景研究；自动内容筛查或摘要检查不等于全文评审，也不代表实验复现。
 
 | Resource type | Newly added |
 | --- | ---: |
@@ -16,7 +16,7 @@ Only sources in the [reviewed intake](../data/expansion-intake-2026-10-16.json) 
 | Guides and evaluations | 38 |
 | Models | 53 |
 | Papers | 27 |
-| Projects | 192 |
+| Projects | 193 |
 | Research foundations | 341 |
 
 ## Datasets
@@ -349,6 +349,7 @@ Only sources in the [reviewed intake](../data/expansion-intake-2026-10-16.json) 
 | [Jev-Sinhala Capability, Primitive Consistency & Benchmark Census Probe](https://github.com/azri-muhsin/jev-sinhala-review) | direct · `content_screened` | Sinhala and Singlish evaluation using established benchmark labels, with script changes, question-language controls, option permutations and cross-primitive consistency tests. |
 | [JEV-Star](https://github.com/sc2musa/jev_star) | direct · `content_screened` | StarCraft II controllers and selected comparison artifacts; full original logs are excluded, version changes confound planning-effect claims, and live runs need game/model services. |
 | [jev-xray](https://github.com/aishwary-dongre/jev-xray) | direct · `content_screened` | Input-ablation tool measuring changes in typed decision probabilities; useful for testing distracting context without treating attribution as a causal explanation. |
+| [JevAdvBench — attack generation and offline analysis](https://github.com/jevadvbench/jevadvbench) | direct · `content_screened` | Attack-generation and offline analysis code for JevAdvBench separates recorded-response replay from fresh hosted inference; labels are mostly model-derived, and new API runs need not repeat saved answers. |
 | [jhochenbaum/rlm-jev](https://github.com/jhochenbaum/rlm-jev) | direct · `content_screened` | Recursive-language-model integration exposing Jev classification and location judgments as bounded sub-calls. |
 | [jimador/bayes-of-our-lives](https://github.com/jimador/bayes-of-our-lives) | direct · `content_screened` | Embabel example comparing interchangeable Jev, OpenAI and deterministic local decision services. |
 | [jonny5isalive5/jev-choice-probability-consistency](https://github.com/jonny5isalive5/jev-choice-probability-consistency) | direct · `content_screened` | Frozen exploratory Choice-probability experiments preserving complete results, failures and reproducible diagnostics. |

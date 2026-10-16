@@ -225,6 +225,14 @@
       "evidence_url": "https://arxiv.org/html/2609.34024v4",
       "reviewed_at": "2026-10-16T12:07:43+00:00",
       "note": "Display-only preliminary-status and clinical-scope clarification from the fixed-version manuscript notice. Original abstract evidence and grade remain unchanged; targeted notice inspection is not full-paper review."
+    },
+    {
+      "url": "https://arxiv.org/abs/2609.29429",
+      "title": "Just Ask Jev: Reinforcement Learning for Calibrated Decisions as a Zero-Shot Detector of AI Alignment Failures",
+      "relevance": "Benchmarks Jev alignment-failure detection while separating question wording from input context; benchmark-scorer labels dominate, and context gains often depend on fields encoding the label.",
+      "evidence_url": "https://arxiv.org/abs/2609.29429v1",
+      "reviewed_at": "2026-10-16T13:02:42.005734+00:00",
+      "note": "Display-only title and scope annotation from the original v1 abstract. Preserve the existing raw page/Hugging Face evidence, retrieval time and content-screened tier; no full-paper review or experiment reproduction."
     }
   ]
 }

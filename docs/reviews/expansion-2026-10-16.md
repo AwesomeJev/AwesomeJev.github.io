@@ -122,3 +122,13 @@ Independent checks reviewed original model-card/report text, author links and pu
 Thirteen links to already-known companion resources were added to eight paper entries; these add zero resources. A further author paper-site link is navigation only, not a verified analysis supplement. The bilingual [reproduction-scope review](reproducibility-2026-10-16.md) explains what different material releases can support without claiming that any route was executed.
 
 **中文：** 本轮新增Jeva检查点包和作者诊断报告两项，累计752项新增来源。模型分片与网页资产不拆分计数；检查点许可未声明，看板的22系统、分析子集18系统与固定论文18系统保持区分。八篇论文补齐13个既有配套资源链接，另加一个仅用于导航的作者论文站，均不增加来源计数。双语复现说明区分可重算范围与实际执行状态；本轮未运行来源代码、加载模型或复现实验。
+
+## Security implementation and measurement definitions
+
+One new author implementation brings the reviewed expansion to **753**. JevAdvBench’s fixed-commit README and three selected directory listings support a documented offline-analysis route and API evaluation runners. The independent review checked cached hashes and filenames; the parent refetched the README with a matching hash. No archive restoration, script execution, prediction-record inspection or statistical reproduction was performed. Code and data have separately declared licenses, and model-derived labels are not independent human ground truth. [Evidence record](../../data/expansion-security-companion-review-2026-10-16.json).
+
+The existing JevAdvBench dataset and system-one-security-eval repository gained paper navigation links with zero new identities. Just Ask Jev and its author code also remain known identities despite the paper’s curated promotion. A bounded check of two remaining judging papers found no verified author release entry; upstream benchmarks were not relabeled as companion releases, and absence in those snapshots is not proof of global unavailability.
+
+The bilingual survey and guide now distinguish decision flips, target-selection frequency, case-level majority success and conditional routing metrics. Three fixed-version sources and 18 targeted anchors support this comparison; their results remain author-reported, and the proposed evaluation protocol is not a performed experiment. [Metric review](../../data/attack-metric-review-2026-10-16.json).
+
+**中文：** 本轮只新增JevAdvBench完整代码项目，累计753项；既有数据集、系统安全评测项目、Just Ask Jev论文与作者代码均不重复计数。固定README和部分目录已核查，未运行脚本、还原归档或重算结果。双语综述与指南区分翻转率、目标频率、案例多数成功及条件路由指标，引用三篇固定稿的定向段落，不将作者结果写成本项目复现。

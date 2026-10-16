@@ -47,7 +47,7 @@ On **2026-10-16**, `jev-latest` points to `jev-1.13.0` and `jev-preview` to `jev
 
 ## Papers
 
-All 52 direct studies below are **arXiv preprints**. Dates identify the linked, reviewed version, not necessarily the first submission. Results are author-reported; this project has not reproduced their experiments. Titles that contain speed or cost claims retain the authors' wording. [Bibliography](references.bib) · [Evidence comparison](docs/survey.md)
+All 53 direct studies below are **arXiv preprints**. Dates identify the linked, reviewed version, not necessarily the first submission. Results are author-reported; this project has not reproduced their experiments. Titles that contain speed or cost claims retain the authors' wording. [Bibliography](references.bib) · [Evidence comparison](docs/survey.md)
 
 ### Evaluation and benchmarking
 
@@ -90,8 +90,9 @@ All 52 direct studies below are **arXiv preprints**. Dates identify the linked, 
 - **[One Word Opens the Gate: The Option-Channel Attack on Typed Decision Models as Agent Guardrails](https://arxiv.org/abs/2610.12292v1)** — Azizi, Baghaei Potraghloo & Pedram. *2026-10-08, arXiv v1*. Tests option-channel attacks on seven open-weight models; reversed decisions can remain confident. The reported experiments do not test hosted Jev. [Code and cached analyses](https://github.com/arminazizi98/option-channel-attack).
 - **[JevOut: Natural Context Can Flip Decision Models](https://arxiv.org/abs/2609.30243v2)** — Xu et al. *2026-10-08, arXiv v2; first submitted 2026-09-24*. Optimizes context additions around unchanged questions and options in four decision systems; results concern initially correct decisions, and human validity checks cover a sampled subset of successful attacks. [Code](https://github.com/xzx34/JevOut).
 - **[Same-Number Citation Swaps: Stress-Testing Jev as a Financial Evidence Judge](https://arxiv.org/abs/2610.08675v1)** — Xu et al. *2026-10-06, arXiv v1*. Same-number citation swaps probe financial-evidence verification; rejecting wrong roles trades off with accepting equivalent support in a constructed test. This does not estimate population-wide financial accuracy.
-- **[Evaluating System One Models for Agent Security Decisions: Reliability, Calibration, and Selective Automation](https://arxiv.org/abs/2609.33401v3)** — Liu. *2026-10-03, arXiv v3*. Confident security errors and selective automation under asymmetric risks.
-- **[JevAdvBench: A Benchmark and Black-Box Attacks for Reinforcement Learning for Calibrated Decisions Models](https://arxiv.org/abs/2609.31142v1)** — Hu et al. *2026-09-25, arXiv v1*. Adversarial edits compared with clean inputs and repeated-call variation.
+- **[Evaluating System One Models for Agent Security Decisions: Reliability, Calibration, and Selective Automation](https://arxiv.org/abs/2609.33401v3)** — Liu. *2026-10-03, arXiv v3*. Confident security errors and selective automation under asymmetric risks. [Code and saved-result analyses](https://github.com/yxsec/system-one-security-eval).
+- **[JevAdvBench: A Benchmark and Black-Box Attacks for Reinforcement Learning for Calibrated Decisions Models](https://arxiv.org/abs/2609.31142v1)** — Hu et al. *2026-09-25, arXiv v1*. Adversarial edits compared with clean inputs and repeated-call variation. [Code](https://github.com/JevAdvBench/JevAdvBench) · [Benchmark data](https://huggingface.co/datasets/Hangtao/JevAdvBench).
+- **[Just Ask Jev: Reinforcement Learning for Calibrated Decisions as a Zero-Shot Detector of AI Alignment Failures](https://arxiv.org/abs/2609.29429v1)** — Guo et al. *2026-09-24, arXiv v1*. Benchmarks Jev alignment-failure detection while separating question wording from input context; benchmark-scorer labels dominate, and context gains often depend on fields encoding the label. [Code and data](https://github.com/sumleo/RLCDAlignBench).
 - **[Decision Hijacking: Prompt Injection Attacks on Jev's Typed Probabilistic Decisions](https://arxiv.org/abs/2609.28613v1)** — Wu & Lim. *2026-09-23, arXiv v1*. Audits Jev injection on reconstructed InjecAgent cases, separating probability shifts from attacker-target selections; optimization results are checked on fresh calls, within this benchmark setting.
 
 ### Architectures, memory, and multimodality
@@ -137,6 +138,7 @@ These are independent implementations, not released TypeSafe weights. Licenses b
 
 ## Benchmarks and evaluation tools
 
+- **[JevAdvBench code](https://github.com/JevAdvBench/JevAdvBench)** — attack generation, recorded-response analysis and fresh API evaluation, with identical-input reruns as a control. Code is declared MIT; data CC BY-NC 4.0. Most labels are model-derived; no analyses were executed here.
 - **[Reading Right, Acting Wrong — diagnostic dashboard](https://yubol-bobo.github.io/System_one_model_evaluation/)** — author report pairing factual probes with action decisions. Its current 22-system coverage differs from the fixed paper’s 18; no code or data release was verified.
 - **[Artificial Analysis Decision Index](https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index)** — third-party capability, calibration, cost and latency evaluation. [Methodology](https://artificialanalysis.ai/methodology/decision-index) specifies task filtering and a private knowledge subset; the complete suite is not publicly reproducible.
 - **[Entagl workflow evaluation](https://www.entagl.com/blog/typesafe-jev-benchmark-ai-decision-models)** — author-run labeled decisions and customer-workflow replays, published 23 September 2026. Private cases and workload-specific thresholds constrain reproduction and generalization.
@@ -202,7 +204,7 @@ Background literature and comparison methods. These works do **not** establish J
 | Composable pipelines | Khattab et al., *DSPy*. 2023. | [Paper](https://arxiv.org/abs/2310.03714) |
 | Efficient execution | Zheng et al., *SGLang*. NeurIPS, 2024. | [Paper](https://papers.nips.cc/paper_files/paper/2024/file/724be4472168f31ba1c9ac630f15dec8-Paper-Conference.pdf) · [Code](https://github.com/sgl-project/sglang) |
 
-All 60 selected papers are included in [references.bib](references.bib). See the [latest paper-selection review](docs/reviews/papers-2026-10-16.md) for verification scope and limitations.
+All 61 selected papers are included in [references.bib](references.bib). See the [latest paper-selection review](docs/reviews/papers-2026-10-16.md) for verification scope and limitations.
 
 ## Quick start
 

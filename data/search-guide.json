@@ -214,6 +214,51 @@
         ]
       },
       {
+        "id": "attack-success-rates",
+        "title": "What does an attack success rate measure?",
+        "paragraphs": [
+          {
+            "text": "Define the outcome and denominator before calling an attack successful. Probability shifts, action changes, attacker-target selections and downstream harm are different outcomes. Same Attack measures pass-after-attack only among malicious cases each judge flagged when clean. Its separate Jev gate-bypass measure requires a less restrictive action with returned confidence for the severity Score ≥0.7; review can qualify, while low-confidence pass need not.",
+            "sources": [
+              {
+                "label": "Same Attack metric definitions, v1",
+                "url": "https://arxiv.org/html/2610.17820v1#S4.SS5"
+              }
+            ]
+          },
+          {
+            "text": "Compare attacks with matched unchanged requests using the same decision rule. JevAdvBench distinguishes a changed most-likely Score level from a changed expected score. For adaptive search, separate optimization calls from validation: Decision Hijacking freezes candidates, then uses five fresh calls and requires at least three target selections for case-level success. This finite-repeat rule does not guarantee later success.",
+            "sources": [
+              {
+                "label": "JevAdvBench typed metrics, v1",
+                "url": "https://arxiv.org/html/2609.31142v1#S1.p4.1"
+              },
+              {
+                "label": "Decision Hijacking validation, v1",
+                "url": "https://arxiv.org/html/2609.28613v1#S4.SS4"
+              }
+            ]
+          },
+          {
+            "text": "Decision Hijacking reports 51 target selections in 2,550 calls for one condition, but 11 majority-success cases out of 510: the denominators answer different questions. Same Attack reports 75% raw severity changes on repeated Jev moderation calls but only 1% routed-action changes. These are author-reported examples, not reproduced results or a ranking. Check answer preservation and delivery separately; equal token counts alone do not prove that an edit was removed.",
+            "sources": [
+              {
+                "label": "Call-level and case-level counts, v1",
+                "url": "https://arxiv.org/html/2609.28613v1#A1.SS4.p2.1"
+              },
+              {
+                "label": "Raw versus routed instability, v1",
+                "url": "https://arxiv.org/html/2610.17820v1#A2"
+              },
+              {
+                "label": "Delivery inference limits, v1",
+                "url": "https://arxiv.org/html/2609.31142v1#S3.SS3.p3.1"
+              }
+            ]
+          }
+        ]
+      },
+      {
         "id": "models-and-licenses",
         "title": "Are the SDK and independent models released Jev weights?",
         "paragraphs": [
@@ -524,6 +569,51 @@
               {
                 "label": "选项通道防护预印本 v1",
                 "url": "https://arxiv.org/abs/2610.12292v1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "attack-success-rates",
+        "title": "攻击成功率究竟衡量什么？",
+        "paragraphs": [
+          {
+            "text": "在称攻击成功前，先定义所测结果与分母。概率偏移、动作改变、攻击目标被选中和后续危害是不同结果。Same Attack 只在各裁判未攻击时已标记的恶意案例中计算攻击后变为放行（pass）的比例。它另行计算的 Jev 门控绕过要求动作放宽且严重程度 Score 的置信度 ≥0.7；改为复核（review）也可能满足条件，低于阈值的放行则不满足置信度条件。",
+            "sources": [
+              {
+                "label": "Same Attack 指标定义 v1",
+                "url": "https://arxiv.org/html/2610.17820v1#S4.SS5"
+              }
+            ]
+          },
+          {
+            "text": "用同一决策规则，将攻击与匹配的原样请求比较。JevAdvBench 区分 Score 最可能等级变化和期望分数变化。自适应搜索应将优化调用与验证分开：Decision Hijacking 冻结候选后另发五次新调用，至少三次选中目标才算案例级成功。这种有限重复规则不保证以后的调用也成功。",
+            "sources": [
+              {
+                "label": "JevAdvBench 类型化指标 v1",
+                "url": "https://arxiv.org/html/2609.31142v1#S1.p4.1"
+              },
+              {
+                "label": "Decision Hijacking 验证协议 v1",
+                "url": "https://arxiv.org/html/2609.28613v1#S4.SS4"
+              }
+            ]
+          },
+          {
+            "text": "Decision Hijacking 的一个条件在 2,550 次调用中选中目标 51 次，但多数成功案例为 510 个中的 11 个，两个分母回答不同问题。Same Attack 报告 Jev 重复内容审核调用的原始严重程度评分有 75% 变化，路由动作却仅 1%。这些是作者报告的例子，不是本项目复现结果或排名。应另查编辑是否保持答案、是否送达；token 数相同本身不证明编辑被移除。",
+            "sources": [
+              {
+                "label": "调用级与案例级计数 v1",
+                "url": "https://arxiv.org/html/2609.28613v1#A1.SS4.p2.1"
+              },
+              {
+                "label": "数值与路由波动 v1",
+                "url": "https://arxiv.org/html/2610.17820v1#A2"
+              },
+              {
+                "label": "送达推断限制 v1",
+                "url": "https://arxiv.org/html/2609.31142v1#S3.SS3.p3.1"
               }
             ]
           }

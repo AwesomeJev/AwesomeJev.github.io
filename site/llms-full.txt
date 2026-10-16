@@ -58,6 +58,14 @@ Separate schema validity, whether cited evidence supports a proposed argument, a
 
 Define who can alter request text, tool outputs, option names and policy definitions. Test each channel your threat model lets an attacker control, including confidence on incorrect decisions. The cited guardrail experiments concern open-weight typed-decision models, not a demonstrated compromise of hosted Jev. This is a proposed evaluation protocol, not a reproduced result. [Option-channel guardrail preprint, v1](https://arxiv.org/abs/2610.12292v1)
 
+## What does an attack success rate measure?
+
+Define the outcome and denominator before calling an attack successful. Probability shifts, action changes, attacker-target selections and downstream harm are different outcomes. Same Attack measures pass-after-attack only among malicious cases each judge flagged when clean. Its separate Jev gate-bypass measure requires a less restrictive action with returned confidence for the severity Score ≥0.7; review can qualify, while low-confidence pass need not. [Same Attack metric definitions, v1](https://arxiv.org/html/2610.17820v1#S4.SS5)
+
+Compare attacks with matched unchanged requests using the same decision rule. JevAdvBench distinguishes a changed most-likely Score level from a changed expected score. For adaptive search, separate optimization calls from validation: Decision Hijacking freezes candidates, then uses five fresh calls and requires at least three target selections for case-level success. This finite-repeat rule does not guarantee later success. [JevAdvBench typed metrics, v1](https://arxiv.org/html/2609.31142v1#S1.p4.1) · [Decision Hijacking validation, v1](https://arxiv.org/html/2609.28613v1#S4.SS4)
+
+Decision Hijacking reports 51 target selections in 2,550 calls for one condition, but 11 majority-success cases out of 510: the denominators answer different questions. Same Attack reports 75% raw severity changes on repeated Jev moderation calls but only 1% routed-action changes. These are author-reported examples, not reproduced results or a ranking. Check answer preservation and delivery separately; equal token counts alone do not prove that an edit was removed. [Call-level and case-level counts, v1](https://arxiv.org/html/2609.28613v1#A1.SS4.p2.1) · [Raw versus routed instability, v1](https://arxiv.org/html/2610.17820v1#A2) · [Delivery inference limits, v1](https://arxiv.org/html/2609.31142v1#S3.SS3.p3.1)
+
 ## Are the SDK and independent models released Jev weights?
 
 The official SDK is a client for TypeSafe’s hosted API, not a Jev checkpoint. Independent projects such as Laya publish their own model artifacts. Similar question types or API compatibility do not establish identical architecture, behavior, or accuracy. [Official Python SDK](https://github.com/typesafe-ai/typesafe-sdk-python) · [Laya model card](https://huggingface.co/convaiinnovations/laya)
@@ -426,6 +434,14 @@ Estimates whether asking for missing information would improve a typed decision.
 
 Primary source: https://arxiv.org/abs/2609.30706v1
 
+## Just Ask Jev: Reinforcement Learning for Calibrated Decisions as a Zero-Shot Detector of AI Alignment Failures
+
+Papers · Guo et al. · 2026-09-24 · v1
+
+Benchmarks Jev alignment-failure detection while separating question wording from input context; benchmark-scorer labels dominate, and context gains often depend on fields encoding the label.
+
+Primary source: https://arxiv.org/abs/2609.29429v1
+
 ## From Text Decisions to Pixels
 
 Papers · Zhou et al. · 2026-09-24 · v1
@@ -665,6 +681,14 @@ Datasets · Bespoke Labs · Evaluation archive
 An archive of Decision Index evaluation runs for Bespoke Nimble 9B v3.
 
 Primary source: https://huggingface.co/datasets/bespokelabs/bespoke-nimble-9b-v3-decision-index
+
+## JevAdvBench analysis and evaluation code
+
+Evaluations · MIT code · CC BY-NC 4.0 data
+
+Recorded-response analysis and new API evaluations use identical-input reruns as a control. Most labels are model-derived; this project has not executed the analyses.
+
+Primary source: https://github.com/JevAdvBench/JevAdvBench
 
 ## Reading Right, Acting Wrong — diagnostic dashboard
 

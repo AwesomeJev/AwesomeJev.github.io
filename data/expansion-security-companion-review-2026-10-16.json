@@ -1,0 +1,390 @@
+{
+  "schema_version": 1,
+  "baseline_commit": "31b0bb148460f7cd44f8616b56bd8acdd743b7ec",
+  "accepted_new_sources": 1,
+  "accepted_input_sha256": "beecf5bc2ee1e9d3ab964f75ba15e7492cbd25deed51f6e2e7a210ecc03d5044",
+  "independent_review": {
+    "schema_version": 1,
+    "reviewed_at": "2026-10-16T12:57:28.199406+00:00",
+    "verdict": "accepted_with_narrower_source_supported_wording",
+    "accepted_count": 1,
+    "accepted_urls": [
+      "https://github.com/jevadvbench/jevadvbench"
+    ],
+    "input_sha256": "2526548951acf7593229f25b1cc46bf51e52cda6b9a02a1463e9b3153de9ce53",
+    "accepted_sha256": "beecf5bc2ee1e9d3ab964f75ba15e7492cbd25deed51f6e2e7a210ecc03d5044",
+    "preserved": [
+      "Canonical URL, README/body hash, retrieval time, fixed revision, verification tier and no-execution flags unchanged.",
+      "Whole implementation repository counted once; already-known Hugging Face data, project page and archive parts not counted."
+    ],
+    "checks": {
+      "readme_hash_matches": true,
+      "selected_directory_hashes_match": true,
+      "named_paths_present": true,
+      "readable_characters": 9676,
+      "canonical_url_absent_from_current_and_baseline": true,
+      "readme_body_hash_absent_from_current_and_baseline": true,
+      "known_link_fixes_confirmed": 2
+    },
+    "correction": {
+      "field": "limitations[2] and limitations_zh[2]",
+      "reason": "Use the README's explicit nondeterminism/protocol-vs-answer distinction instead of an unsupported claim about long-term service identity.",
+      "old_en": "The current repository documents the evaluated jev-1.13.0 protocol. A fresh hosted run can change answers; fixed model naming does not guarantee service identity over time.",
+      "new_en": "The repository documents the evaluated jev-1.13.0 protocol and explicitly distinguishes rerunning that protocol from reproducing the exact answers of a nondeterministic hosted model.",
+      "old_zh": "当前仓库记录所评估的 jev-1.13.0 流程；新的托管运行可能改变答案，固定模型名称不保证服务长期不变。",
+      "new_zh": "仓库记录所评估的 jev-1.13.0 流程，并明确区分重跑该流程与重现非确定性托管模型的完全相同答案。"
+    },
+    "scope_findings": [
+      "Model-derived labels are distinguished from independent human ground truth; answer-preservation of attack variants is documented as a design goal, not a verified property.",
+      "Offline analysis is a documented route starting from recorded responses. No scripts, archive reconstruction, per-example predictions or statistics were run or inspected.",
+      "The existing system-one-security-eval link correctly states that raw benchmark text/API bodies are excluded and threshold completion followed initial test inspection; no new prospective validation is implied.",
+      "Both proposed navigation URLs are already in the ledger and count zero new resources."
+    ],
+    "review_scope": {
+      "new_http_requests": 0,
+      "source_code_executed": false,
+      "experiments_reproduced": false,
+      "shared_repository_modified": false,
+      "original_candidate_modified": false
+    }
+  },
+  "parent_primary_check": {
+    "url": "https://raw.githubusercontent.com/JevAdvBench/JevAdvBench/3218e05f98f2b72c69b6f8a1a4a42092955b7bc7/README.md",
+    "http_status": 200,
+    "content_sha256": "9dd2b331797756acd01229ca3aaed939a91518912410f49e6bdb7cb288548469",
+    "hash_match": true,
+    "checked_at": "2026-10-16T12:56:48.407130+00:00",
+    "scope": "Fixed-commit README text read; no commands executed, archive restoration, model calls or prediction-record inspection."
+  },
+  "known_link_fixes": [
+    {
+      "kind": "known_navigation_link_fix",
+      "paper_url": "https://arxiv.org/abs/2609.33401v3",
+      "resource_url": "https://github.com/yxsec/system-one-security-eval",
+      "suggested_label": "Code and saved-result analyses",
+      "known_in": [
+        "data/ecosystem-sources.jsonl"
+      ],
+      "new_resource_count": 0,
+      "primary_evidence": {
+        "url": "https://raw.githubusercontent.com/yxsec/system-one-security-eval/78910f045e935e73829b4629baefc8efc7ae9879/README.md",
+        "retrieved_url": "https://raw.githubusercontent.com/yxsec/system-one-security-eval/78910f045e935e73829b4629baefc8efc7ae9879/README.md",
+        "http_status": 200,
+        "content_sha256": "8006bbcf86f24a673ef8dce91cf0e34ef52fe4aa6374f594084b7a0efb722b5b",
+        "retrieved_at": "2026-10-16T12:53:54.762547+00:00",
+        "content_bytes": 7637,
+        "content_type": "text/plain; charset=utf-8"
+      },
+      "scope": "Distributed final observations and analysis code are distinct from fresh runs requiring source inputs and model access. The README excludes raw benchmark text and raw API responses, and labels threshold completion/reanalysis as following initial test inspection rather than new prospective validation."
+    },
+    {
+      "kind": "known_navigation_link_fix",
+      "paper_url": "https://arxiv.org/abs/2609.31142v1",
+      "resource_url": "https://huggingface.co/datasets/Hangtao/JevAdvBench",
+      "suggested_label": "Benchmark data",
+      "known_in": [
+        "data/ecosystem-sources.jsonl"
+      ],
+      "new_resource_count": 0,
+      "primary_evidence": {
+        "url": "https://huggingface.co/datasets/Hangtao/JevAdvBench/raw/main/README.md",
+        "retrieved_url": "https://huggingface.co/datasets/Hangtao/JevAdvBench/raw/main/README.md",
+        "http_status": 200,
+        "content_sha256": "ce31c30a048c29a7272d2b9e668f3569850120a471f737704f6131a9bdcd4643",
+        "retrieved_at": "2026-10-16T12:53:54.617368+00:00",
+        "content_bytes": 6025,
+        "content_type": "text/plain; charset=utf-8"
+      },
+      "scope": "Existing mirror of clean questions, attack variants and responses from the same project; do not count configs, source files or mirrored data as additional independent datasets."
+    }
+  ],
+  "not_counted": [
+    {
+      "paper_url": "https://arxiv.org/html/2610.17820v1",
+      "reason": "Mentions released harness constants in appendix A10 but no actionable author artifact URL was found in the inspected fixed HTML.",
+      "anchor": "https://arxiv.org/html/2610.17820v1#A10.SS0.SSS0.Px6.p1.1"
+    },
+    {
+      "paper_url": "https://arxiv.org/html/2609.26758v3",
+      "reason": "Observed project/model links are referenced baselines; no author companion entry was established."
+    },
+    {
+      "paper_url": "https://arxiv.org/html/2610.08675v1",
+      "reason": "The fixed-v1 availability passage says inspection materials are retained privately and public access is pending.",
+      "anchor": "https://arxiv.org/html/2610.08675v1#S6.p4.1"
+    },
+    {
+      "paper_url": "https://arxiv.org/html/2609.28613v1",
+      "reason": "No actionable author repository/data entry was found in the inspected fixed HTML."
+    }
+  ],
+  "remaining_judging_review": {
+    "schema_version": 1,
+    "reviewed_at": "2026-10-16T12:57:21+00:00",
+    "baseline_commit": "31b0bb148460f7cd44f8616b56bd8acdd743b7ec",
+    "candidate_count": 0,
+    "known_resource_link_fix_count": 0,
+    "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "scope": "Two remaining judging/selective-automation papers: retained fixed-version HTML availability sections and outbound author-artifact pointers only. No new HTTP requests, full-paper review, model calls, source-code execution or prediction/archive downloads.",
+    "findings": [
+      {
+        "paper_url": "https://arxiv.org/abs/2610.15710v1",
+        "evidence_url": "https://arxiv.org/html/2610.15710v1#A1",
+        "source_body_sha256": "1762e4851139ece4dba728f0b05e3278e9dc2cd56d07a70e8c7866049687d0b3",
+        "availability": "The fixed-v1 reproducibility statement promises scripts, a manifest, a claims checker, item-level system/annotator records and code upon publication; it supplies no public author release URL.",
+        "decision": "no_verified_author_artifact_to_add",
+        "en_navigation_note": "The fixed-v1 statement promises code and saved-output materials upon publication; no public author release link was verified.",
+        "zh_navigation_note": "固定 v1 声明将在发表时提供代码与已保存输出材料；此次未核验到公开的作者发布链接。",
+        "excluded_baseline": "AnyJev is a cited third-party baseline, not this paper’s author release."
+      },
+      {
+        "paper_url": "https://arxiv.org/abs/2609.34862v1",
+        "evidence_url": "https://arxiv.org/html/2609.34862v1#Sx1",
+        "source_body_sha256": "e895ea92b9f1c24f93ec2e71344a04fd6bcb3e7150060e904c3f603636fb6040",
+        "availability": "The fixed-v1 Data Availability statement points to public upstream benchmark papers and explanatory appendices, without identifying a released author implementation or original prediction package.",
+        "decision": "no_verified_author_artifact_to_add",
+        "en_navigation_note": "The paper documents upstream benchmarks and its evaluation rubric; no separate author code or prediction release was verified.",
+        "zh_navigation_note": "论文说明了上游基准与评测准则；此次未核验到独立的作者代码或预测结果发布。",
+        "excluded_baseline": "R-Judge, ATBench, TraceSafe and MCPHunt references were not relabeled as author companion releases."
+      }
+    ],
+    "counting": "Zero new identities, zero variants, zero upstream-background padding. No candidate required URL/hash intake because no author artifact was identified.",
+    "absence_limit": "A missing verified link in these fixed snapshots does not establish that no release exists anywhere or that future publication cannot add one.",
+    "privacy": "Original short availability paraphrases, source URLs and body hashes only; no source body, contacts or local cache paths.",
+    "shared_repository_modified": false
+  },
+  "privacy": "Only public source URLs, original short paraphrases and evidence hashes/timestamps; no archive contents, credentials or local cache paths.",
+  "scope": "One distinct implementation resource; existing dataset, project website, source files and archive parts do not count again. No source commands or experiments were executed.",
+  "known_paper_curation": {
+    "proposal": {
+      "schema_version": 1,
+      "prepared_at": "2026-10-16T13:02:42.005734+00:00",
+      "recommendation": "worth_curated_selection_after_independent_review",
+      "expansion_new_resource_count": 0,
+      "reason": "Adds a direct alignment-detector study that separates question design from context availability and benchmark-label validity; complements attack-robustness studies without implying deployed safety effectiveness.",
+      "suggested_readme_section": "Robustness and security",
+      "canonical_url": "https://arxiv.org/abs/2609.29429",
+      "fixed_url": "https://arxiv.org/abs/2609.29429v1",
+      "title": "Just Ask Jev: Reinforcement Learning for Calibrated Decisions as a Zero-Shot Detector of AI Alignment Failures",
+      "authors": [
+        "Guo, Ruoqi",
+        "Liu, Yi",
+        "Deng, Gelei",
+        "Li, Yuekang",
+        "Zhao, Lida",
+        "Wu, Yutao",
+        "Chen, Simin",
+        "Zhang, Ying",
+        "Zhang, Leo Yu"
+      ],
+      "author_display_names": [
+        "Ruoqi Guo",
+        "Yi Liu",
+        "Gelei Deng",
+        "Yuekang Li",
+        "Lida Zhao",
+        "Yutao Wu",
+        "Simin Chen",
+        "Ying Zhang",
+        "Leo Yu Zhang"
+      ],
+      "first_submitted": "2026-09-24",
+      "reviewed_version": "v1",
+      "reviewed_version_date": "2026-09-24",
+      "version_history": [
+        {
+          "version": "v1",
+          "submitted_at": "2026-09-24T11:49:30Z"
+        }
+      ],
+      "version_note": "Current canonical and fixed abstract pages list only v1; no newer version was found. The existing ledger has no pinned-version field and is not rewritten.",
+      "metadata_note": "Nine named authors match citation metadata, the visible abstract author list and manuscript author block. The generated prose saying seven other authors is inconsistent and is not used as an author count.",
+      "review_scope": "Original fixed-version abstract, submission history and author metadata/author block only; no full-paper methodological audit or reproduction.",
+      "summary_en": "Benchmarks Jev alignment-failure detection while separating question wording from input context; benchmark-scorer labels dominate, and context gains often depend on fields encoding the label.",
+      "summary_zh": "评测 Jev 对 AI 对齐失效的检测，分别改变提问与输入上下文；参考标签主要来自基准评分器，上下文收益常依赖编码标签的字段。",
+      "limitations_en": [
+        "Reference labels mainly come from benchmark scorers, with human labels on only two benchmarks; agreement does not establish universal alignment detection.",
+        "Input-field effects can reflect information encoding benchmark labels. Reported cost and ranking claims remain author findings, not independently reproduced results."
+      ],
+      "limitations_zh": [
+        "参考标签主要来自基准评分器，只有两个基准使用人工标签；一致性不能证明普遍的对齐失效检测能力。",
+        "输入字段的效果可能体现其编码基准标签的信息；所报成本和排名仍为作者结论，未被本项目独立复现。"
+      ],
+      "catalog_resource": {
+        "category": "Papers",
+        "title": "Just Ask Jev: Reinforcement Learning for Calibrated Decisions as a Zero-Shot Detector of AI Alignment Failures",
+        "by": "Guo et al. · 2026-09-24 · v1",
+        "date": "2026-09-24",
+        "first_submitted": "2026-09-24",
+        "url": "https://arxiv.org/abs/2609.29429v1",
+        "en": "Benchmarks Jev alignment-failure detection while separating question wording from input context; benchmark-scorer labels dominate, and context gains often depend on fields encoding the label.",
+        "zh": "评测 Jev 对 AI 对齐失效的检测，分别改变提问与输入上下文；参考标签主要来自基准评分器，上下文收益常依赖编码标签的字段。"
+      },
+      "display_annotation": {
+        "url": "https://arxiv.org/abs/2609.29429",
+        "title": "Just Ask Jev: Reinforcement Learning for Calibrated Decisions as a Zero-Shot Detector of AI Alignment Failures",
+        "relevance": "Benchmarks Jev alignment-failure detection while separating question wording from input context; benchmark-scorer labels dominate, and context gains often depend on fields encoding the label.",
+        "evidence_url": "https://arxiv.org/abs/2609.29429v1",
+        "reviewed_at": "2026-10-16T13:02:42.005734+00:00",
+        "note": "Display-only title and scope annotation from the original v1 abstract. Preserve the existing raw page/Hugging Face evidence, retrieval time and content-screened tier; no full-paper review or experiment reproduction."
+      },
+      "translation_pair": {
+        "source": "Benchmarks Jev alignment-failure detection while separating question wording from input context; benchmark-scorer labels dominate, and context gains often depend on fields encoding the label.",
+        "zh": "评测 Jev 对 AI 对齐失效的检测，分别改变提问与输入上下文；参考标签主要来自基准评分器，上下文收益常依赖编码标签的字段。"
+      },
+      "known_companion_link": {
+        "url": "https://github.com/sumleo/RLCDAlignBench",
+        "label_en": "Author code and data",
+        "label_zh": "作者代码与数据",
+        "evidence_url": "https://arxiv.org/abs/2609.29429v1",
+        "status": "Already in the ecosystem ledger; declared by the fixed primary abstract and HF paper metadata. Repository contents were not refetched in this curation check.",
+        "new_resource_count": 0
+      },
+      "primary_evidence": {
+        "url": "https://arxiv.org/abs/2609.29429v1",
+        "retrieved_at": "2026-10-16T13:00:35.029344+00:00",
+        "page_sha256": "b79f7cd674b93378bd7dc939bc788c0bf3d4d68032cfb6183b557c2404066e18",
+        "abstract_sha256": "1d034dceaf01cf8d9878fcbc91b2218f42f3d8474910bc432e1b2853978f564e",
+        "abstract_word_count": 238,
+        "extraction": "citation_abstract metadata from the primary page; exactly matches the existing original HF abstract after whitespace normalization.",
+        "manuscript_author_block_page_sha256": "e9052873c197b49c2861269a57f275f866c97a2e56ddc35b728e3683ab0b62fe",
+        "manuscript_author_block_url": "https://arxiv.org/html/2609.29429v1"
+      },
+      "existing_ledger_preservation": {
+        "url": "https://arxiv.org/abs/2609.29429",
+        "ledger": "data/ecosystem-sources.jsonl",
+        "line_sha256": "56360ade9aa682bb025e11545f286b33080f2f9b08ac5236870cebd97bab73a5",
+        "verification_level": "content_screened",
+        "retrieved_at": "2026-10-16T06:53:48+00:00",
+        "content_sha256": "52daeb12e3f626bb615726fc3efa1dfc43ea4af2bb6c8c93217e50c0cfade5e5",
+        "abstract_provider": "huggingface_papers_api",
+        "abstract_sha256": "1d034dceaf01cf8d9878fcbc91b2218f42f3d8474910bc432e1b2853978f564e",
+        "proposed_raw_row_change": false,
+        "proposed_grade_change": false,
+        "abstract_unchanged": true
+      },
+      "parser_note": "The rendered blockquote uses a descriptive anchor label in place of the companion URL, producing a different rendered-text hash and word count. This is an extraction representation difference, not a new paper version.",
+      "bibtex": "@misc{guo2026justaskjev,\n  title = {{Just Ask Jev: Reinforcement Learning for Calibrated Decisions as a Zero-Shot Detector of AI Alignment Failures}},\n  author = {Guo, Ruoqi and Liu, Yi and Deng, Gelei and Li, Yuekang and Zhao, Lida and Wu, Yutao and Chen, Simin and Zhang, Ying and Zhang, Leo Yu},\n  year = {2026},\n  date = {2026-09-24},\n  eprint = {2609.29429},\n  archivePrefix = {arXiv},\n  primaryClass = {cs.AI},\n  url = {https://arxiv.org/abs/2609.29429v1},\n  note = {Version 1, 2026-09-24; preprint}\n}\n",
+      "shared_repository_modified": false,
+      "source_code_executed": false,
+      "model_or_data_downloaded": false
+    },
+    "independent_review": {
+      "schema_version": 1,
+      "reviewed_at": "2026-10-16T13:04:12+00:00",
+      "proposal_sha256": "4ea61a6e5a17ac4bc2371e6eff2f2016f1e0fb756e44bf1db2ee37a502561cbf",
+      "bibtex_sha256": "bb8f16cebc8abbf09984a56148f073e07af08f58544380ba36e711a03c63f1cb",
+      "decision": "eligible_for_curated_promotion",
+      "required_corrections": [],
+      "expansion_new_resource_count": 0,
+      "paper_url": "https://arxiv.org/abs/2609.29429",
+      "fixed_url": "https://arxiv.org/abs/2609.29429v1",
+      "checked": {
+        "title_matches_primary": true,
+        "version": "v1",
+        "first_submitted": "2026-09-24",
+        "reviewed_version_date": "2026-09-24",
+        "author_count": 9,
+        "citation_metadata_and_visible_manuscript_names_agree": true,
+        "bibtex_nine_names_and_order_match": true,
+        "summary_en_zh_preserve_label_and_context_limits": true,
+        "known_companion_already_in_ledger": true,
+        "display_annotation_changes_only_title_and_scope": true,
+        "no_raw_row_or_grade_change_proposed": true
+      },
+      "author_note": "The actual named author list contains nine people. The generic arXiv prose count is not used. The final name is Leo Yu Zhang, represented as Zhang, Leo Yu in BibTeX; no surname or accent correction is needed.",
+      "scope_note": "The abstract separates question formulation from available input context, with benchmark-scorer labels predominant and human labels on only two benchmarks. Its context effects often depend on label-encoding fields. Neither the title nor this listing establishes universal alignment detection, deployment safety or independently reproduced costs.",
+      "existing_evidence_policy": "Retain the original content-screened row, provider, hash and retrieval timestamp. The new fixed-v1 citation and display annotation do not replace raw evidence or count as a new source.",
+      "primary_evidence_used": [
+        {
+          "url": "https://arxiv.org/abs/2609.29429v1",
+          "recorded_page_sha256": "b79f7cd674b93378bd7dc939bc788c0bf3d4d68032cfb6183b557c2404066e18",
+          "inspection": "Cached citation metadata, original abstract and submission history."
+        },
+        {
+          "url": "https://arxiv.org/html/2609.29429v1",
+          "recorded_page_sha256": "e9052873c197b49c2861269a57f275f866c97a2e56ddc35b728e3683ab0b62fe",
+          "inspection": "Targeted visible author block only."
+        }
+      ],
+      "verification_limit": "The recorded raw source hashes were not redundantly recomputed. This review read the cached primary text and metadata; no fresh network, full-paper review, experiment or repository-content refetch was performed.",
+      "privacy": "No source abstract text, author contacts or local cache paths are included in this review.",
+      "shared_repository_modified": false
+    },
+    "parent_primary_check": {
+      "url": "https://arxiv.org/abs/2609.29429v1",
+      "http_status": 200,
+      "page_sha256": "b79f7cd674b93378bd7dc939bc788c0bf3d4d68032cfb6183b557c2404066e18",
+      "abstract_sha256": "1d034dceaf01cf8d9878fcbc91b2218f42f3d8474910bc432e1b2853978f564e",
+      "hashes_match": true,
+      "author_count": 9,
+      "checked_at": "2026-10-16T13:03:54.595670+00:00",
+      "scope": "Fixed original abstract and citation metadata only; no whole-paper review, code execution or source-ledger rewrite."
+    },
+    "new_resources": 0,
+    "raw_ledger_rewritten": false
+  },
+  "final_independent_review": {
+    "ecosystem": {
+      "old_bytes_preserved": true,
+      "new_rows": 1
+    },
+    "research": {
+      "old_bytes_preserved": true,
+      "new_rows": 0
+    },
+    "new_record_exact_accepted_fields": true,
+    "counts": {
+      "editorial_reviewed": 4,
+      "content_screened": 2364,
+      "abstract_checked": 1833,
+      "metadata_only": 47,
+      "raw_records": 4262,
+      "unique_records": 4248,
+      "duplicate_records": 14,
+      "checked_sources": 4201
+    },
+    "expansion": 753,
+    "unique_discovery_descriptions": 418,
+    "all_discoveries_have_chinese": true,
+    "bib_count": 61,
+    "static_rows": {
+      "index.html": 99,
+      "zh/index.html": 99,
+      "papers/index.html": 53,
+      "zh/papers/index.html": 53,
+      "discoveries/index.html": 753,
+      "zh/discoveries/index.html": 753
+    },
+    "justask_projection": {
+      "display_title_matches": true,
+      "display_scope_matches": true,
+      "original_content_hash_preserved": true,
+      "grade_preserved": true,
+      "not_added_to_expansion": true,
+      "discovery_translation_required": false,
+      "curated_chinese_present": true
+    },
+    "privacy_matches": {
+      "local_or_temporary_path": false,
+      "contact_email": false,
+      "credential": false,
+      "bulk_source_field": false
+    },
+    "schema_version": 1,
+    "reviewed_at": "2026-10-16T13:09:15+00:00",
+    "baseline_commit": "31b0bb148460f7cd44f8616b56bd8acdd743b7ec",
+    "decision": "no_blocking_findings",
+    "scope": "Read-only final diff, preserved-source, count, bilingual content and privacy inspection. No network requests, test runs, downloaded code execution or shared-repository edits.",
+    "final_document_headers_and_tails_consistent": true,
+    "source_schema_profile_matches_previously_reviewed_accepted_record": true,
+    "source_boundaries": [
+      "JevAdvBench contributes one whole code project; its known dataset, archived pieces, individual outputs and project pages add no further identity.",
+      "The new code record retains its original content hash, retrieval time, content-screened tier and no-execution scope. Declared code and data licenses remain separate.",
+      "Just Ask Jev is an already-known identity promoted into curated selection and bibliography, with display-only title/scope changes and nine authors retained; it adds zero expansion resources.",
+      "The metric comparison preserves typed decision flips versus numerical shifts, clean-conditioned denominators, separate confidence-constrained gate bypass and fresh five-call majority validation. It does not claim caused downstream harm or reproduced attacks.",
+      "The two remaining judging-paper availability checks do not turn upstream benchmarks or promised future releases into new author artifacts."
+    ],
+    "required_corrections": []
+  }
+}

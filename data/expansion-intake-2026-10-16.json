@@ -924,6 +924,17 @@
       ],
       "evidence_scope": "One author checkpoint package and one substantive author diagnostic report. Model card, inventories and report scope inspected with independent review; parent refetched both primary documents with matching hashes. No checkpoint loading, script execution or experimental reproduction.",
       "accepted_at": "2026-10-16T12:49:33.139271+00:00"
+    },
+    {
+      "name": "jevadvbench_author_implementation",
+      "input_sha256": "beecf5bc2ee1e9d3ab964f75ba15e7492cbd25deed51f6e2e7a210ecc03d5044",
+      "screened_records_proposed": 1,
+      "accepted_count": 1,
+      "accepted_urls": [
+        "https://github.com/jevadvbench/jevadvbench"
+      ],
+      "evidence_scope": "One whole author code repository beyond the already-known dataset. Fixed-commit README and three selected directories reviewed; independent cached hash checks and parent README refetch matched. No archive restoration, source execution or experimental reproduction.",
+      "accepted_at": "2026-10-16T12:58:27.812481+00:00"
     }
   ]
 }
