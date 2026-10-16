@@ -12,6 +12,7 @@ from collections import Counter, OrderedDict
 import concurrent.futures as cf
 from dataclasses import dataclass
 from datetime import datetime, timezone
+from html.parser import HTMLParser
 import hashlib
 import http.client
 import ipaddress
@@ -51,6 +52,7 @@ SAFE_FETCH_ERRORS = frozenset({
     "dns_non_public_address", "dns_resolution_failed", "response_size_limit",
     "network_failure", "redirect_without_location", "unsupported_binary_document",
     "redirect_limit", "excluded_discovery_url",
+    "invalid_arxiv_abstract_page", "arxiv_version_mismatch",
 })
 CURATED_PAPERS_ORIGIN = "https://awesomejev.github.io/papers.json"
 
@@ -102,7 +104,9 @@ def curated_paper_seeds(path):
             # Only the entry number is diagnostic; never echo malformed input.
             raise ValueError("invalid_curated_paper_entry_" + str(position))
         url = canonical_source(paper["url"])
+        fetch_url = paper["url"].replace("/pdf/", "/abs/").removesuffix(".pdf")
         seeds.setdefault(url, {"url": url, "title": paper["title"].strip(),
+            "fetch_url": fetch_url,
             "topic": "research-paper", "relation": "direct", "discovery_depth": 0,
             "relevance": "Direct paper listed in the maintained catalog; source-page screening does not imply full-paper review or reproduced findings.",
             "discovered_from": [CURATED_PAPERS_ORIGIN]})
@@ -329,33 +333,96 @@ def has_abstract_provenance(record):
     return any(key in record for key in ("abstract_provider", "abstract_sha256", "canonical_page_separately_fetched"))
 
 
+def arxiv_version_url(url):
+    if not isinstance(url, str):
+        return None
+    match = re.fullmatch(r"https://arxiv\.org/(?:abs|pdf)/(\d{4}\.\d{4,5}v[1-9]\d*)(?:\.pdf)?", url)
+    return "https://arxiv.org/abs/" + match[1] if match else None
+
+
+def pinned_primary_abstract(row):
+    version = arxiv_version_url(row.get("reviewed_version_url"))
+    return (row.get("abstract_provider") == "arxiv_primary_abstract_page"
+            and row.get("verification_level") == "abstract_checked"
+            and bool(version) and identity(row) == index.canonical(version))
+
+
+def observed_version(row):
+    return next((version for field in ("observed_version_url", "reviewed_version_url", "retrieved_url", "retrieval_url")
+                 if (version := arxiv_version_url(row.get(field)))), None)
+
+
+def same_primary_observation(prior, incoming):
+    version = observed_version(incoming)
+    if version and version != arxiv_version_url(prior.get("reviewed_version_url")):
+        return False
+    return bool((incoming.get("abstract_sha256") and incoming["abstract_sha256"] == prior.get("abstract_sha256"))
+                or (incoming.get("content_sha256") and incoming["content_sha256"] == prior.get("abstract_page_sha256")))
+
+
+def primary_review_candidate(prior, incoming):
+    version = observed_version(incoming)
+    return {"url": identity(prior), "review_kind": "pinned_arxiv_abstract",
+        "old_content_sha256": content_hash(prior), "observed_content_sha256": content_hash(incoming),
+        "old_reviewed_version_url": prior.get("reviewed_version_url"), "observed_version_url": version,
+        "old_first_submitted": prior.get("first_submitted", prior.get("published_at")),
+        "observed_first_submitted": incoming.get("published_at"),
+        "observed_abstract_sha256": incoming.get("abstract_sha256"),
+        "observed_abstract_page_sha256": incoming.get("abstract_page_sha256", incoming.get("content_sha256")),
+        "observed_verification_level": incoming["verification_level"],
+        "retrieved_url": incoming.get("retrieved_url", incoming.get("retrieval_url")),
+        "note": "Pinned primary abstract preserved without a grade change; observed version: "
+                + (version or "not identified by the provider") + ". Maintainer review is required before replacing the pinned evidence."}
+
+
 def merge_records(old: Ledger, incoming, max_new=None, policy=None):
     """Keep old bytes on unchanged hashes/failure; never grant editorial status."""
     rows, lines = list(old.rows), list(old.lines)
     positions = {identity(row): i for i, row in enumerate(rows)}
     hashes = {content_hash(row) for row in rows if content_hash(row)}
     changes = {"added": [], "changed": [], "editorial_review_required": [], "duplicates": 0, "preserved_after_failure": 0, "rejected": 0, "curation_excluded": []}
-    candidates = {}
+    candidates, pinned_observations = {}, {}
     for row in incoming:
         if not record_safe(row):
             changes["rejected"] += 1
             continue
+        if row.get("verification_level") == "editorial_reviewed":
+            row = {**row, "verification_level": "content_screened",
+                   "checked_via": "Automated public-source refresh; editorial review not performed."}
+            if "editorial_reviewed" in row:
+                row["editorial_reviewed"] = False
         key = identity(row)
         if policy and policy.exclusion(key):
             if key not in changes["curation_excluded"]:
                 changes["curation_excluded"].append(key)
             continue
+        if key in positions and pinned_primary_abstract(rows[positions[key]]):
+            pinned_observations.setdefault(key, []).append(row)
         if key not in candidates or LEVEL.get(row.get("verification_level"), 0) > LEVEL.get(candidates[key].get("verification_level"), 0):
             candidates[key] = row
     for key, candidate in sorted(candidates.items()):
         new = dict(candidate)
         new.pop("_rank", None)
-        if new.get("verification_level") == "editorial_reviewed":
-            new["verification_level"] = "content_screened"
-            new["checked_via"] = "Automated public-source refresh; editorial review not performed."
         if key in positions:
             i = positions[key]
             prior = rows[i]
+            if pinned_primary_abstract(prior):
+                changed = []
+                for observation in pinned_observations[key]:
+                    if (not content_hash(observation) or observation.get("verification_level") == "metadata_only"
+                            or observation.get("status") in {"unavailable", "audit_error", "insufficient_content"}):
+                        changes["preserved_after_failure"] += 1
+                    elif not same_primary_observation(prior, observation):
+                        changed.append(observation)
+                if changed:
+                    # A successful pinned-page no-op must not hide a newer
+                    # abstract found by another provider in the same scan.
+                    def priority(observation):
+                        version = observed_version(observation)
+                        return (int(version.rsplit("v", 1)[1]) if version else 0,
+                                observation.get("abstract_provider") == "arxiv_primary_abstract_page")
+                    changes["editorial_review_required"].append(primary_review_candidate(prior, max(changed, key=priority)))
+                continue
             if content_hash(new) and content_hash(new) == content_hash(prior):
                 if has_abstract_provenance(prior) and prior.get("canonical_page_separately_fetched") is not True and canonical_page_observed(new):
                     # A substantive provenance repair, not a timestamp refresh:
@@ -405,10 +472,65 @@ def merge_records(old: Ledger, incoming, max_new=None, policy=None):
     return Ledger(rows, lines), changes
 
 
+def route_observations(originals, ecosystem_rows, research_rows):
+    """Send observations to an existing owner; retain historical duplicate rows."""
+    owners, strengths = {}, {}
+    for number, ledger in enumerate(originals):
+        for row in ledger.rows:
+            key = identity(row)
+            strength = (pinned_primary_abstract(row), LEVEL.get(row.get("verification_level"), 0))
+            if key not in owners or strength > strengths[key]:
+                owners[key], strengths[key] = number, strength
+    routed = [[], []]
+    for default_owner, batch in enumerate((ecosystem_rows, research_rows)):
+        for row in batch:
+            try:
+                key = identity(row)
+            except (FetchError, TypeError, ValueError):
+                routed[default_owner].append(row)  # merge_records records the rejection.
+                continue
+            owner = owners.setdefault(key, default_owner)
+            routed[owner].append(row)
+    return routed
+
+
+class ArxivAbstractPage(HTMLParser):
+    """Parse source text only; never execute paper HTML or its instructions."""
+    def __init__(self):
+        super().__init__()
+        self.in_abstract = self.in_version = False
+        self.parts, self.version, self.published_at = [], None, None
+
+    def handle_starttag(self, tag, attrs):
+        attrs = dict(attrs)
+        if tag == "blockquote" and "abstract" in attrs.get("class", "").split():
+            self.in_abstract = True
+        if tag == "td" and "arxividv" in attrs.get("class", "").split():
+            self.in_version = True
+        if self.in_version and tag == "a":
+            self.version = arxiv_version_url(attrs.get("href")) or self.version
+        if tag == "meta" and attrs.get("name") == "citation_date":
+            value = attrs.get("content", "").replace("/", "-")
+            if re.fullmatch(r"\d{4}-\d{2}-\d{2}", value):
+                self.published_at = value
+
+    def handle_endtag(self, tag):
+        if tag == "blockquote":
+            self.in_abstract = False
+        if tag == "td":
+            self.in_version = False
+
+    def handle_data(self, data):
+        if self.in_abstract:
+            self.parts.append(data)
+
+
 class Scan:
-    def __init__(self, fetcher, workers=8, curated_seeds=None, policy=None):
+    def __init__(self, fetcher, workers=8, curated_seeds=None, policy=None, pinned_sources=None, known_keys=None):
         self.fetcher, self.workers = fetcher, workers
         self.curated_seeds, self.policy = curated_seeds or {}, policy
+        self.pinned_sources = pinned_sources or {}
+        self.known_keys = set(known_keys or ())
         self.curation_excluded = set()
         self.errors, self.excluded = [], 0
         self.lock = threading.Lock()
@@ -486,12 +608,58 @@ class Scan:
             add(url, "vision-decision-artifact", "direct", base + "data/vision.json", "Artifact linked by the current vision evaluation metadata.")
         return records, seeds
 
+    def audit_source(self, seed):
+        """Keep logical identity separate from the exact page requested."""
+        key = identity(seed)
+        target = seed.get("fetch_url", seed["url"])
+        request_seed = {k: v for k, v in seed.items() if k != "fetch_url"}
+        request_seed["url"] = target
+        row, children = ecosystem.audit(request_seed)
+        row["url"] = key
+        if key not in self.pinned_sources:
+            return [row], children
+
+        observations = []
+        # Check the pinned evidence and observe the current public version.
+        # The latter is only a review candidate, never an automatic repinning.
+        for requested in dict.fromkeys((target, key)):
+            if requested == target and row.get("verification_level") == "metadata_only":
+                self.error(requested, row.get("status", "content_unavailable"))
+                continue
+            try:
+                raw, final, _ = self.fetcher.fetch(requested)
+                parser = ArxivAbstractPage()
+                parser.feed(raw.decode("utf-8"))
+                abstract = re.sub(r"^\s*Abstract:\s*", "", " ".join(" ".join(parser.parts).split()))
+                if (len(abstract.split()) < 30 or not parser.version
+                        or index.canonical(parser.version) != key or index.canonical(final) != key):
+                    raise FetchError("invalid_arxiv_abstract_page")
+                if arxiv_version_url(requested) and parser.version != arxiv_version_url(requested):
+                    raise FetchError("arxiv_version_mismatch")
+                observations.append({"url": key, "title": seed["title"], "topic": "research-paper",
+                    "relation": "direct", "verification_level": "abstract_checked", "status": "screened",
+                    "retrieved_at": now(), "retrieval_url": final, "retrieval_status": "success", "http_status": 200,
+                    "abstract_provider": "arxiv_primary_abstract_page", "abstract_sha256": research.sha(abstract),
+                    "abstract_page_sha256": hashlib.sha256(raw).hexdigest(), "abstract_word_count": len(abstract.split()),
+                    "observed_version_url": parser.version, "published_at": parser.published_at,
+                    "canonical_page_separately_fetched": True, "full_text_reviewed": False, "editorial_reviewed": False,
+                    "relevance": "Observed primary abstract for a pinned paper; changes require maintainer review.",
+                    "screening_method": "Primary arXiv abstract and version metadata only; no full-paper review or reproduction."})
+            except (FetchError, ValueError, UnicodeError) as error:
+                self.error(requested, "pinned_paper_observation_failed:" + safe_exception_code(error))
+        return observations, children if observations else []
+
     def scan_ecosystem(self, old, max_new=None, smoke=False):
         records, seeds = self.discover_index()
         for key, seed in self.curated_seeds.items():
             origins = set(seeds.get(key, {}).get("discovered_from", [])) | set(seed["discovered_from"])
             seeds[key] = {**seed, "discovered_from": sorted(origins)}
-        old_keys = {identity(r) for r in old.rows}
+        for key, prior in self.pinned_sources.items():
+            seed = seeds.get(key, {"url": key, "title": prior["title"], "topic": "research-paper",
+                "relation": "direct", "discovery_depth": 0, "relevance": prior["relevance"]})
+            target = arxiv_version_url(seed.get("fetch_url")) or prior["reviewed_version_url"]
+            seeds[key] = {**seed, "fetch_url": target}
+        old_keys = {identity(r) for r in old.rows} | set(self.pinned_sources) | self.known_keys
         for row in old.rows:
             key = identity(row)
             if key == ecosystem.SPACE_URL or key.startswith(ecosystem.SPACE_URL + "/blob/"):
@@ -519,17 +687,18 @@ class Scan:
                     batch = batch[:8]
                 print(json.dumps({"phase": "ecosystem", "depth": depth, "documents": len(batch)}), flush=True)
                 with cf.ThreadPoolExecutor(max_workers=self.workers) as pool:
-                    futures = {pool.submit(ecosystem.audit, seed): seed for seed in batch}
+                    futures = {pool.submit(self.audit_source, seed): seed for seed in batch}
                     for i, future in enumerate(cf.as_completed(futures), 1):
                         seed = futures[future]
                         try:
-                            row, children = future.result()
-                            if row.get("verification_level") == "metadata_only":
-                                self.error(seed["url"], row.get("status", "content_unavailable"))
-                            if ecosystem.eligible(row):
-                                records.append(row)
-                            else:
-                                self.excluded += 1
+                            observations, children = future.result()
+                            for row in observations:
+                                if row.get("verification_level") == "metadata_only":
+                                    self.error(seed["url"], row.get("status", "content_unavailable"))
+                                if ecosystem.eligible(row):
+                                    records.append(row)
+                                else:
+                                    self.excluded += 1
                             for child in children:
                                 try:
                                     key = canonical_source(child["url"])
@@ -621,19 +790,43 @@ def direct_paper(title, abstract):
 
 def pending_reviews(previous, observed, current_rows):
     """Carry unresolved human review across provider failures; compare capped semantics."""
-    current = {identity(r): content_hash(r) for r in current_rows}
+    current = {identity(r): r for r in current_rows}
+    def resolved(item):
+        row = current.get(item.get("url"))
+        if row is None:
+            return True
+        if item.get("review_kind") == "pinned_arxiv_abstract":
+            version = item.get("observed_version_url")
+            if version and arxiv_version_url(row.get("reviewed_version_url")) != version:
+                return False
+            abstract = item.get("observed_abstract_sha256")
+            return (row.get("abstract_sha256") == abstract if abstract else
+                    row.get("abstract_page_sha256") == item.get("observed_abstract_page_sha256"))
+        return content_hash(row) == item.get("observed_content_sha256")
+    def signature(item):
+        return (item.get("url"), item.get("old_content_sha256"), item.get("observed_content_sha256"),
+                item.get("review_kind"), item.get("old_reviewed_version_url"), item.get("observed_version_url"))
+    def pinned_version_number(item):
+        version = arxiv_version_url(item.get("observed_version_url"))
+        if item.get("review_kind") != "pinned_arxiv_abstract" or not version:
+            return 0
+        return int(version.rsplit("v", 1)[1])
     pending = {}
     for item in previous.get("editorial_refresh_candidates", []):
-        if isinstance(item, dict) and item.get("url") in current and current[item["url"]] != item.get("observed_content_sha256"):
+        if isinstance(item, dict) and item.get("url") in current and not resolved(item):
             pending[item["url"]] = item
     for item in observed:
         prior = pending.get(item["url"])
-        if prior and prior.get("observed_content_sha256") == item.get("observed_content_sha256") and prior.get("old_content_sha256") == item.get("old_content_sha256"):
+        if prior and signature(prior) == signature(item):
+            continue
+        if prior and pinned_version_number(prior) > pinned_version_number(item):
+            # A stale or versionless provider response after a failed latest-page
+            # probe cannot erase an already observed, unresolved newer revision.
             continue
         pending[item["url"]] = item
     result = [pending[k] for k in sorted(pending)][:100]
     def semantic(items):
-        return sorted((r["url"], r.get("old_content_sha256"), r.get("observed_content_sha256")) for r in items)[:100]
+        return sorted(signature(r) for r in items)[:100]
     changed = semantic(result) != semantic(previous.get("editorial_refresh_candidates", []))
     return result, changed, len(pending)
 
@@ -649,7 +842,7 @@ def write_if_changed(path, text):
 
 
 def publish_summary(report):
-    text = "\n".join(["## Public source scan", "", "Status: **" + report["status"] + "**.", f"Added: {report['added_count']}; updated: {report['changed_count']}; editorial changes awaiting review: {report['editorial_review_required_count']}.", f"Provider/document issues: {report['error_count']}. Earlier evidence was retained on failures.", f"Diagnostic examples stored: {report['error_examples_count']} of {report['error_count']}; error_code_counts covers all issues.", "", "Automated source screening is not scientific review or reproduction. No source instructions or downloaded code were executed.", ""])
+    text = "\n".join(["## Public source scan", "", "Status: **" + report["status"] + "**.", f"Added: {report['added_count']}; updated: {report['changed_count']}; source changes awaiting review: {report['editorial_review_required_count']}.", f"Provider/document issues: {report['error_count']}. Earlier evidence was retained on failures.", f"Diagnostic examples stored: {report['error_examples_count']} of {report['error_count']}; error_code_counts covers all issues.", "", "Automated source screening is not scientific review or reproduction. No source instructions or downloaded code were executed.", ""])
     if os.environ.get("GITHUB_STEP_SUMMARY"):
         with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as f:
             f.write(text)
@@ -677,13 +870,16 @@ def main(argv=None):
     except ValueError as error:
         parser.error(str(error))
     fetcher = PublicFetcher()
-    scan = Scan(fetcher, args.workers, curated_seeds=curated_seeds, policy=policy)
+    pinned_sources = {identity(row): row for ledger in originals for row in ledger.rows if pinned_primary_abstract(row)}
+    scan = Scan(fetcher, args.workers, curated_seeds=curated_seeds, policy=policy, pinned_sources=pinned_sources,
+                known_keys={identity(row) for ledger in originals for row in ledger.rows})
     limit = min(args.max_new, 5) if args.smoke and args.max_new is not None else 5 if args.smoke else args.max_new
     ecosystem_rows = scan.scan_ecosystem(originals[0], limit, args.smoke)
     research_rows, direct = scan.scan_research(args.smoke)
-    merged_ecosystem, ec = merge_records(originals[0], ecosystem_rows + direct, limit, policy=policy)
+    ecosystem_input, research_input = route_observations(originals, ecosystem_rows + direct, research_rows)
+    merged_ecosystem, ec = merge_records(originals[0], ecosystem_input, limit, policy=policy)
     remaining = None if limit is None else max(0, limit - len(ec["added"]))
-    merged_research, rc = merge_records(originals[1], research_rows, remaining, policy=policy)
+    merged_research, rc = merge_records(originals[1], research_input, remaining, policy=policy)
     changes = {k: ec[k] + rc[k] for k in ("added", "changed", "editorial_review_required")}
     report_path = ROOT / "data/scan-latest.json"
     previous = json.loads(report_path.read_text()) if report_path.exists() else {}
@@ -700,7 +896,7 @@ def main(argv=None):
         counts = json.loads((ROOT / "data/source-counts.json").read_text())["counts"]
     else:
         counts = json.loads((ROOT / "data/source-counts.json").read_text())["counts"]
-    report = {"schema_version": 1, "started_at": started_at, "completed_at": now(), "status": status, "changed": changed, "dry_run": args.smoke, "added_count": len(changes["added"]), "changed_count": len(changes["changed"]), "editorial_review_required_count": pending_count, "added_urls": changes["added"][:100], "changed_urls": changes["changed"][:100], "editorial_refresh_candidates": pending, "editorial_examples_truncated": pending_count > 100, **error_report(scan.errors), "counts": counts, "index_revision": scan.index_revision, "network_requests": fetcher.requests, "excluded_discoveries": scan.excluded, "preserved_after_failure": ec["preserved_after_failure"] + rc["preserved_after_failure"], "duplicate_candidates_skipped": ec["duplicates"] + rc["duplicates"], "privacy_rejected_records": ec["rejected"] + rc["rejected"], "verification_note": "Public document or original-abstract machine screening only; prior reviewed evidence is preserved and changed editorial sources require human review. Metadata-only records do not count as checked sources."}
+    report = {"schema_version": 1, "started_at": started_at, "completed_at": now(), "status": status, "changed": changed, "dry_run": args.smoke, "added_count": len(changes["added"]), "changed_count": len(changes["changed"]), "editorial_review_required_count": pending_count, "added_urls": changes["added"][:100], "changed_urls": changes["changed"][:100], "editorial_refresh_candidates": pending, "editorial_examples_truncated": pending_count > 100, **error_report(scan.errors), "counts": counts, "index_revision": scan.index_revision, "network_requests": fetcher.requests, "excluded_discoveries": scan.excluded, "preserved_after_failure": ec["preserved_after_failure"] + rc["preserved_after_failure"], "duplicate_candidates_skipped": ec["duplicates"] + rc["duplicates"], "privacy_rejected_records": ec["rejected"] + rc["rejected"], "verification_note": "Public document or original-abstract machine screening only. Pinned primary abstracts and editorial records are preserved; their source changes require maintainer review. Metadata-only records do not count as checked sources."}
     report["curation_excluded_count"] = len(set(ec["curation_excluded"] + rc["curation_excluded"]) | scan.curation_excluded)
     # Report every attempt, including failures. The publisher must gate on
     # report.changed, not this report's timestamp or a raw git-diff count.

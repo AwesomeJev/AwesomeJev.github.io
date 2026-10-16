@@ -35,7 +35,40 @@ def paper(number=0, **extra):
             "url": f"https://arxiv.org/abs/2609.{10000 + number}v1", **extra}
 
 
+ABSTRACT = "Typed decisions require separate accuracy and probability checks for reliable model choices. " * 4
+
+
+def arxiv_page(version=2, abstract=ABSTRACT):
+    return (f'<html><meta name="citation_date" content="2026/09/01" />'
+            f'<td class="tablecell arxividv"><span><a href="https://arxiv.org/abs/2609.10000v{version}">version</a></span></td>'
+            f'<blockquote class="abstract mathjax"><span>Abstract:</span> {abstract}</blockquote></html>').encode()
+
+
+def primary_abstract(version=2, abstract=ABSTRACT):
+    result = row("https://arxiv.org/abs/2609.10000", level="abstract_checked", status="screened",
+        abstract_provider="arxiv_primary_abstract_page", abstract_sha256=refresh.research.sha(" ".join(abstract.split())),
+        abstract_page_sha256=hashlib.sha256(arxiv_page(version, abstract)).hexdigest(),
+        reviewed_version=f"v{version}", reviewed_version_url=f"https://arxiv.org/abs/2609.10000v{version}",
+        published_at="2026-09-01", first_submitted="2026-09-01", reviewed_version_date="2026-10-03",
+        canonical_page_separately_fetched=True, full_text_reviewed=False, editorial_reviewed=False)
+    result.pop("content_sha256")
+    return result
+
+
 class CuratedDiscoveryTests(unittest.TestCase):
+    def test_catalog_version_is_fetched_but_identity_stays_canonical(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            seeds = refresh.curated_paper_seeds(catalog(Path(tmp), [paper(url="https://arxiv.org/pdf/2609.10000v2.pdf")]))
+        url = "https://arxiv.org/abs/2609.10000"
+        fetcher = Mock()
+        fetcher.fetch.side_effect = lambda target: (arxiv_page(), target, "text/html")
+        scan = refresh.Scan(fetcher, curated_seeds=seeds)
+        with patch.object(scan, "discover_index", return_value=([], {})), contextlib.redirect_stdout(io.StringIO()):
+            records = scan.scan_ecosystem(ledger())
+        fetcher.fetch.assert_called_once_with(url + "v2")
+        self.assertEqual(records[0]["url"], url)
+        self.assertEqual(records[0]["retrieved_url"], url + "v2")
+
     def test_every_catalog_paper_is_seeded_independent_of_external_search(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
@@ -133,6 +166,83 @@ class DiagnosticTests(unittest.TestCase):
 
 
 class IncrementalEvidenceTests(unittest.TestCase):
+    def test_cross_ledger_primary_page_cannot_be_added_or_promoted_again(self):
+        prior = primary_abstract()
+        originals = (ledger(), ledger(prior))
+        page = row(prior["url"], status="screened", retrieved_url=prior["reviewed_version_url"],
+                   content_sha256=prior["abstract_page_sha256"])
+        eco, scholarly = refresh.route_observations(originals, [page], [])
+        self.assertEqual(eco, [])
+        result, changes = refresh.merge_records(originals[1], scholarly)
+        self.assertEqual(result.lines, originals[1].lines)
+        self.assertEqual(result.rows[0]["verification_level"], "abstract_checked")
+        self.assertFalse(changes["added"] or changes["changed"] or changes["editorial_review_required"])
+
+    def test_direct_scholarly_discovery_returns_to_existing_research_ledger(self):
+        prior = primary_abstract()
+        old = ledger(prior)
+        same = dict(prior, abstract_provider="huggingface_papers_api", canonical_page_separately_fetched=False,
+                    retrieved_at="2026-10-20T00:00:00Z")
+        eco, scholarly = refresh.route_observations((ledger(), old), [same], [])
+        result, changes = refresh.merge_records(old, scholarly)
+        self.assertEqual(eco, [])
+        self.assertEqual(result.lines, old.lines)
+        self.assertFalse(changes["added"] or changes["changed"])
+
+    def test_changed_primary_abstract_queues_review_without_mixing_version_fields(self):
+        prior = primary_abstract()
+        old = ledger(prior)
+        observed = dict(prior, abstract_sha256=refresh.research.sha("changed abstract"),
+                        observed_version_url=prior["url"] + "v3", published_at="2026-10-20")
+        result, changes = refresh.merge_records(old, [observed])
+        self.assertEqual(result.lines, old.lines)
+        self.assertEqual(result.rows[0]["first_submitted"], "2026-09-01")
+        self.assertEqual(result.rows[0]["reviewed_version"], "v2")
+        event = changes["editorial_review_required"][0]
+        self.assertEqual(event["old_reviewed_version_url"], prior["url"] + "v2")
+        self.assertEqual(event["observed_version_url"], prior["url"] + "v3")
+        self.assertFalse(changes["added"] or changes["changed"])
+
+    def test_pinned_page_noop_does_not_hide_changed_provider_abstract(self):
+        prior = primary_abstract()
+        old = ledger(prior)
+        same_page = row(prior["url"], status="screened", content_sha256=prior["abstract_page_sha256"])
+        changed = {**prior, "abstract_provider": "huggingface_papers_api",
+                   "abstract_sha256": refresh.research.sha("different provider abstract")}
+        changed.pop("reviewed_version_url")
+        result, changes = refresh.merge_records(old, [same_page, changed])
+        self.assertEqual(result.lines, old.lines)
+        event = changes["editorial_review_required"][0]
+        self.assertIsNone(event["observed_version_url"])
+        self.assertEqual(event["observed_content_sha256"], changed["abstract_sha256"])
+
+    def test_pinned_review_candidate_never_grants_automatic_editorial_status(self):
+        prior = primary_abstract()
+        claimed_review = row(prior["url"], body="changed source", level="editorial_reviewed",
+                             editorial_reviewed=True, retrieved_url=prior["url"] + "v3")
+        result, changes = refresh.merge_records(ledger(prior), [claimed_review])
+        self.assertEqual(result.rows, [prior])
+        self.assertEqual(changes["editorial_review_required"][0]["observed_verification_level"], "content_screened")
+        self.assertEqual(claimed_review["verification_level"], "editorial_reviewed")  # Input not mutated.
+
+    def test_historical_cross_ledger_duplicates_are_retained_without_new_rows(self):
+        url = "https://arxiv.org/abs/2609.12345"
+        originals = (ledger(row(url, body="body")), ledger(row(url, body="abstract", level="abstract_checked")))
+        eco, scholarly = refresh.route_observations(originals, [], [row(url, body="body")])
+        updated_eco, ec = refresh.merge_records(originals[0], eco)
+        updated_research, rc = refresh.merge_records(originals[1], scholarly)
+        self.assertEqual(updated_eco.lines, originals[0].lines)
+        self.assertEqual(updated_research.lines, originals[1].lines)
+        self.assertEqual(ec["added"] + rc["added"], [])
+
+    def test_new_cross_ledger_identity_is_assigned_once(self):
+        value = row("https://arxiv.org/abs/2609.12345")
+        eco, scholarly = refresh.route_observations((ledger(), ledger()), [value], [dict(value)])
+        a, ec = refresh.merge_records(ledger(), eco)
+        b, rc = refresh.merge_records(ledger(), scholarly)
+        self.assertEqual(len(a.rows) + len(b.rows), 1)
+        self.assertEqual(len(ec["added"]) + len(rc["added"]), 1)
+
     def test_canonical_body_fetch_updates_only_page_provenance_not_review_scope(self):
         url = "https://arxiv.org/abs/2609.12345"
         prior = row(url, level="abstract_checked", abstract_provider="huggingface_papers_api",
@@ -279,6 +389,114 @@ class IncrementalEvidenceTests(unittest.TestCase):
         self.assertEqual(len(pending), 100)
         _, changed, _ = refresh.pending_reviews({"editorial_refresh_candidates": pending}, changes["editorial_review_required"], old)
         self.assertFalse(changed)
+
+
+class PinnedArxivObservationTests(unittest.TestCase):
+    def scan(self, fetcher, prior):
+        url = prior["url"]
+        seed = {"url": url, "title": prior["title"], "topic": "research-paper", "relation": "direct",
+                "relevance": "Fixture paper.", "discovery_depth": 0, "fetch_url": prior["reviewed_version_url"],
+                "discovered_from": [refresh.CURATED_PAPERS_ORIGIN]}
+        scan = refresh.Scan(fetcher, curated_seeds={url: seed}, pinned_sources={url: prior})
+        with patch.object(scan, "discover_index", return_value=([], {})), contextlib.redirect_stdout(io.StringIO()):
+            observations = scan.scan_ecosystem(ledger(), max_new=0)
+        return scan, observations
+
+    def test_latest_version_with_same_abstract_is_observed_without_repinning(self):
+        prior = primary_abstract()
+        fetcher = Mock()
+        fetcher.fetch.side_effect = lambda target: (arxiv_page(2 if target.endswith("v2") else 3), target, "text/html")
+        scan, observations = self.scan(fetcher, prior)
+        self.assertFalse(scan.errors)
+        self.assertEqual({o["observed_version_url"] for o in observations}, {prior["url"] + "v2", prior["url"] + "v3"})
+        self.assertTrue(all(o["verification_level"] == "abstract_checked" for o in observations))
+        old = ledger(prior)
+        result, changes = refresh.merge_records(old, observations)
+        self.assertEqual(result.lines, old.lines)
+        event = changes["editorial_review_required"][0]
+        self.assertEqual(event["observed_version_url"], prior["url"] + "v3")
+        self.assertEqual(event["old_content_sha256"], event["observed_content_sha256"])
+        pending, changed, _ = refresh.pending_reviews({}, [event], result.rows)
+        self.assertTrue(changed)
+        previous = {"editorial_refresh_candidates": pending}
+        # A provider failure cannot clear a same-abstract, different-version queue.
+        retained, changed, _ = refresh.pending_reviews(previous, [], result.rows)
+        self.assertEqual(retained, pending)
+        self.assertFalse(changed)
+        repeat = dict(event, retrieved_url="https://arxiv.org/abs/2609.10000v3")
+        repeated, changed, _ = refresh.pending_reviews(previous, [repeat], result.rows)
+        self.assertEqual(repeated, pending)
+        self.assertFalse(changed)
+        accepted = dict(prior, reviewed_version="v3", reviewed_version_url=prior["url"] + "v3")
+        cleared, changed, _ = refresh.pending_reviews(previous, [], [accepted])
+        self.assertEqual(cleared, [])
+        self.assertTrue(changed)
+
+    def test_same_abstract_same_version_keeps_exact_record_despite_page_clock_changes(self):
+        prior = primary_abstract()
+        fetcher = Mock()
+        fetcher.fetch.side_effect = lambda target: (arxiv_page() + b'<!-- changed navigation -->', target, "text/html")
+        _, observations = self.scan(fetcher, prior)
+        old = ledger(prior)
+        result, changes = refresh.merge_records(old, observations)
+        self.assertEqual(result.lines, old.lines)
+        self.assertFalse(changes["added"] or changes["changed"] or changes["editorial_review_required"])
+
+    def test_failed_latest_probe_and_stale_provider_cannot_replace_known_pending_version(self):
+        prior = primary_abstract()
+        newer = primary_abstract(version=3, abstract=ABSTRACT + "New revision.")
+        existing = refresh.primary_review_candidate(prior, newer)
+        previous = {"editorial_refresh_candidates": [existing]}
+        fetcher = Mock()
+        def response(target):
+            if target.endswith("v2"):
+                return arxiv_page(), target, "text/html"
+            raise refresh.FetchError("network_failure")
+        fetcher.fetch.side_effect = response
+        scan, observations = self.scan(fetcher, prior)
+        self.assertTrue(scan.errors)
+        for version in (None, prior["url"] + "v1", prior["url"] + "v2"):
+            with self.subTest(provider_version=version):
+                provider = {**prior, "abstract_provider": "huggingface_papers_api",
+                            "abstract_sha256": refresh.research.sha("Stale provider abstract")}
+                provider.pop("reviewed_version_url")
+                if version:
+                    provider["observed_version_url"] = version
+                result, changes = refresh.merge_records(ledger(prior), observations + [provider])
+                pending, changed, count = refresh.pending_reviews(previous, changes["editorial_review_required"], result.rows)
+                self.assertEqual(pending, [existing])
+                self.assertIs(pending[0], existing)
+                self.assertFalse(changed)
+                self.assertEqual(count, 1)
+
+    def test_same_or_newer_pending_version_can_record_changed_abstract(self):
+        prior = primary_abstract()
+        existing = refresh.primary_review_candidate(prior, primary_abstract(version=3))
+        previous = {"editorial_refresh_candidates": [existing]}
+        for version in (3, 4):
+            with self.subTest(version=version):
+                incoming = refresh.primary_review_candidate(prior, primary_abstract(version=version, abstract=ABSTRACT + "Changed."))
+                pending, changed, count = refresh.pending_reviews(previous, [incoming], [prior])
+                self.assertEqual(pending, [incoming])
+                self.assertTrue(changed)
+                self.assertEqual(count, 1)
+
+    def test_page_version_mismatch_and_failed_latest_probe_preserve_existing_evidence(self):
+        prior = primary_abstract()
+        fetcher = Mock()
+        def response(target):
+            if target.endswith("v2"):
+                return arxiv_page(3), target, "text/html"
+            raise refresh.FetchError("network_failure")
+        fetcher.fetch.side_effect = response
+        scan, observations = self.scan(fetcher, prior)
+        self.assertEqual(observations, [])
+        self.assertEqual(len(scan.errors), 2)
+        self.assertIn("arxiv_version_mismatch", scan.errors[0]["code"])
+        old = ledger(prior)
+        result, changes = refresh.merge_records(old, observations)
+        self.assertEqual(result.lines, old.lines)
+        self.assertFalse(changes["added"] or changes["changed"])
 
 
 class PublicFetchTests(unittest.TestCase):

@@ -115,7 +115,8 @@ def meaningful_fingerprint(files: dict[str, bytes]) -> str:
     pending = report.get("editorial_refresh_candidates", [])
     if not isinstance(pending, list) or any(not isinstance(item, dict) for item in pending):
         raise ScanError("Invalid editorial-refresh candidate list.")
-    evidence_keys = {"url", "old_content_sha256", "observed_content_sha256", "observed_verification_level", "retrieved_url", "note"}
+    evidence_keys = {"url", "old_content_sha256", "observed_content_sha256", "observed_verification_level", "retrieved_url", "note",
+                     "review_kind", "old_reviewed_version_url", "observed_version_url", "observed_abstract_sha256"}
     stable_pending = [json.dumps({k: v for k, v in item.items() if k in evidence_keys}, sort_keys=True, ensure_ascii=False, separators=(",", ":")) for item in pending]
     normalized.append(("editorial_refresh_candidates", sorted(stable_pending)))
     return digest(json.dumps(normalized, ensure_ascii=False, separators=(",", ":")).encode())
@@ -293,6 +294,42 @@ Maintainers should inspect the diff and the scan report before deciding whether 
 """[:6000]
 
 
+def arxiv_version(value) -> tuple[str, int] | None:
+    match = re.fullmatch(r"https://arxiv\.org/(?:abs|pdf)/(\d{4}\.\d{4,5})v([1-9]\d*)(?:\.pdf)?", value) if isinstance(value, str) else None
+    return (match[1], int(match[2])) if match else None
+
+
+def review_candidate_replaced(previous: dict, fresh: dict) -> bool:
+    """A new queue item must not obscure a known version held only in the PR."""
+    if previous.get("review_kind") != "pinned_arxiv_abstract":
+        return True
+    old_version = arxiv_version(previous.get("observed_version_url"))
+    if not old_version:
+        return True
+    new_version = arxiv_version(fresh.get("observed_version_url"))
+    return bool(fresh.get("review_kind") == "pinned_arxiv_abstract" and new_version
+                and new_version[0] == old_version[0] and new_version[1] >= old_version[1])
+
+
+def review_candidate_accepted(item: dict, current: dict) -> bool:
+    """A matching abstract alone cannot accept a different pinned paper version."""
+    if item.get("review_kind") == "pinned_arxiv_abstract":
+
+        observed_version = item.get("observed_version_url")
+        if observed_version and (not arxiv_version(observed_version)
+                                 or arxiv_version(current.get("reviewed_version_url")) != arxiv_version(observed_version)):
+            return False
+        abstract = item.get("observed_abstract_sha256")
+        if abstract:
+            return bool(isinstance(abstract, str) and SHA256.fullmatch(abstract)
+                        and current.get("abstract_sha256") == abstract)
+        page = item.get("observed_abstract_page_sha256")
+        return bool(isinstance(page, str) and SHA256.fullmatch(page)
+                    and current.get("abstract_page_sha256") == page)
+    observed_hash = item.get("observed_content_sha256")
+    return bool(observed_hash and current.get("content_sha256", current.get("abstract_sha256")) == observed_hash)
+
+
 def ensure_pending_continuity(previous: dict[str, bytes], fresh: dict[str, bytes], policy=None) -> None:
     """Do not erase evidence held only in an unmerged bot PR on a bad scan."""
     ranks = {"metadata_only": 0, "abstract_checked": 1, "content_screened": 2, "editorial_reviewed": 3}
@@ -327,15 +364,17 @@ def ensure_pending_continuity(previous: dict[str, bytes], fresh: dict[str, bytes
             downgraded += 1
     prior_queue = json.loads(previous.get(REPORT, b"{}")).get("editorial_refresh_candidates", [])
     fresh_queue = json.loads(fresh.get(REPORT, b"{}")).get("editorial_refresh_candidates", [])
-    queued_urls = {source_index.canonical(item["url"]) for item in fresh_queue}
+    queued_by_url = {}
+    for item in fresh_queue:
+        queued_by_url.setdefault(source_index.canonical(item["url"]), []).append(item)
     unexplained = 0
     for item in prior_queue:
         key = source_index.canonical(item["url"])
-        if key in queued_urls or policy and policy.exclusion(key):
+        if (policy and policy.exclusion(key)
+                or any(review_candidate_replaced(item, queued) for queued in queued_by_url.get(key, []))):
             continue
         current = after.get(key, {})
-        accepted_hash = current.get("content_sha256", current.get("abstract_sha256"))
-        if not item.get("observed_content_sha256") or accepted_hash != item["observed_content_sha256"]:
+        if not review_candidate_accepted(item, current):
             unexplained += 1
     if missing or downgraded or unexplained:
         raise ScanError(f"Pending PR evidence would be lost ({missing} missing, {downgraded} downgraded, {unexplained} unresolved editorial changes). Existing PR retained; review or merge it before retrying.")

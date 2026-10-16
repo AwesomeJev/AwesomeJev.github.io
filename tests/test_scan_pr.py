@@ -23,6 +23,28 @@ def files(retrieved_at="2026-10-15T00:00:00Z", content="public evidence"):
     return data
 
 
+def pinned_paper_files(version="v2", abstract="b" * 64, pending_version=None):
+    data = files()
+    url = "https://arxiv.org/abs/2609.10000"
+    row = {"url": url, "title": "Pinned primary abstract", "verification_level": "abstract_checked",
+           "abstract_sha256": abstract, "abstract_page_sha256": "c" * 64,
+           "reviewed_version_url": url + version}
+    data[scan.LEDGERS[0]] = b""
+    data[scan.LEDGERS[1]] = (json.dumps(row) + "\n").encode()
+    report = json.loads(data[scan.REPORT])
+    report["editorial_refresh_candidates"] = []
+    if pending_version:
+        report["editorial_refresh_candidates"] = [{
+            "url": url, "review_kind": "pinned_arxiv_abstract", "old_content_sha256": abstract,
+            "observed_content_sha256": abstract, "observed_abstract_sha256": abstract,
+            "old_reviewed_version_url": url + version, "observed_version_url": url + pending_version,
+            "observed_verification_level": "abstract_checked", "retrieved_url": url,
+            "note": "Pinned evidence awaits review.",
+        }]
+    data[scan.REPORT] = json.dumps(report).encode()
+    return data
+
+
 def artifact(directory, payload, identity=IDENTITY):
     manifest = {"format": 1, **identity, "changed": True, "files": {}}
     for name, data in payload.items():
@@ -67,6 +89,17 @@ class FakeGitHub:
 
 
 class ArtifactBoundaryTests(unittest.TestCase):
+    def test_pinned_version_changes_are_substantive_even_when_abstract_and_note_match(self):
+        previous = pinned_paper_files(pending_version="v3")
+        updated = pinned_paper_files(pending_version="v4")
+        self.assertNotEqual(scan.meaningful_fingerprint(previous), scan.meaningful_fingerprint(updated))
+        report = json.loads(updated[scan.REPORT])
+        report["completed_at"] = "2026-10-20T00:00:00Z"
+        report["editorial_refresh_candidates"][0]["retrieved_at"] = "2026-10-20T00:00:00Z"
+        updated[scan.REPORT] = json.dumps(report).encode()
+        self.assertEqual(scan.meaningful_fingerprint(pinned_paper_files(pending_version="v4")),
+                         scan.meaningful_fingerprint(updated))
+
     def test_timestamp_only_changes_do_not_create_substantive_updates(self):
         self.assertEqual(scan.meaningful_fingerprint(files()), scan.meaningful_fingerprint(files("2026-10-16T00:00:00Z")))
         self.assertNotEqual(scan.meaningful_fingerprint(files()), scan.meaningful_fingerprint(files(content="changed public evidence")))
@@ -120,6 +153,64 @@ class ArtifactBoundaryTests(unittest.TestCase):
 
 
 class PublicationTests(unittest.TestCase):
+    def test_same_abstract_new_version_in_open_pr_cannot_be_lost_after_failed_probe(self):
+        previous = pinned_paper_files(version="v2", pending_version="v3")
+        fresh = pinned_paper_files(version="v2")
+        report = json.loads(fresh[scan.REPORT])
+        report.update(status="partial", error_count=1,
+                      errors=[{"url": "https://arxiv.org/abs/2609.10000", "code": "network_failure"}])
+        fresh[scan.REPORT] = json.dumps(report).encode()
+        with self.assertRaises(scan.ScanError):
+            scan.ensure_pending_continuity(previous, fresh)
+        # Retaining the unresolved item is valid even if the current scan failed.
+        scan.ensure_pending_continuity(previous, pinned_paper_files(version="v2", pending_version="v3"))
+
+    def test_accepting_a_pinned_candidate_requires_both_version_and_evidence(self):
+        previous = pinned_paper_files(version="v2", pending_version="v3")
+        for version, abstract in (("v2", "b" * 64), ("v3", "d" * 64)):
+            with self.subTest(version=version, abstract=abstract), self.assertRaises(scan.ScanError):
+                scan.ensure_pending_continuity(previous, pinned_paper_files(version=version, abstract=abstract))
+        scan.ensure_pending_continuity(previous, pinned_paper_files(version="v3", abstract="b" * 64))
+        accepted = pinned_paper_files(version="v3", abstract="b" * 64)
+        row = json.loads(accepted[scan.LEDGERS[1]])
+        row["reviewed_version_url"] = "https://arxiv.org/pdf/2609.10000v3.pdf"
+        accepted[scan.LEDGERS[1]] = (json.dumps(row) + "\n").encode()
+        scan.ensure_pending_continuity(previous, accepted)
+
+    def test_same_url_stale_or_unversioned_queue_cannot_replace_known_pending_version(self):
+        previous = pinned_paper_files(version="v2", pending_version="v3")
+        for version in (None, "https://arxiv.org/abs/2609.10000v2", "https://arxiv.org/abs/2609.10001v4"):
+            fresh = pinned_paper_files(version="v2", pending_version="v2")
+            report = json.loads(fresh[scan.REPORT])
+            report["editorial_refresh_candidates"][0]["observed_version_url"] = version
+            report.update(status="partial", error_count=1)
+            fresh[scan.REPORT] = json.dumps(report).encode()
+            with self.subTest(version=version), self.assertRaises(scan.ScanError):
+                scan.ensure_pending_continuity(previous, fresh)
+            # A stale queue may remain only once the known v3 evidence was accepted.
+            accepted = pinned_paper_files(version="v3")
+            accepted[scan.REPORT] = fresh[scan.REPORT]
+            scan.ensure_pending_continuity(previous, accepted)
+
+    def test_same_or_newer_known_pending_version_can_update_its_evidence(self):
+        previous = pinned_paper_files(version="v2", pending_version="v3")
+        for version in ("v3", "v4", "v10"):
+            fresh = pinned_paper_files(version="v2", pending_version=version)
+            report = json.loads(fresh[scan.REPORT])
+            candidate = report["editorial_refresh_candidates"][0]
+            candidate["observed_abstract_sha256"] = candidate["observed_content_sha256"] = "d" * 64
+            fresh[scan.REPORT] = json.dumps(report).encode()
+            with self.subTest(version=version):
+                scan.ensure_pending_continuity(previous, fresh)
+
+    def test_ordinary_editorial_same_url_queue_replacement_remains_allowed(self):
+        previous, fresh = files(), files()
+        for payload, observed in ((previous, "b" * 64), (fresh, "c" * 64)):
+            report = json.loads(payload[scan.REPORT])
+            report["editorial_refresh_candidates"] = [{"url": "https://example.org/source", "observed_content_sha256": observed}]
+            payload[scan.REPORT] = json.dumps(report).encode()
+        scan.ensure_pending_continuity(previous, fresh)
+
     def test_main_advance_or_human_branch_edits_prevent_writes(self):
         for api in (FakeGitHub(main_sha="f" * 40), FakeGitHub(previous=True, owner="fixture-maintainer")):
             with self.subTest(api=api), self.assertRaises(scan.ScanError):

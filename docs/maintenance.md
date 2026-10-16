@@ -31,6 +31,12 @@ The scan proposes resource-data updates through a pull request. It does **not** 
 
 Catalog entries supply discovery URLs, not evidence grades or source hashes. The scanner validates the entire local catalog before making network requests, accepts only primary arXiv paper URLs, deduplicates versions, and respects curated exclusions before fetching. A malformed catalog stops with a bounded diagnostic. A successful primary landing-page check is still not a full-paper review; unavailable content retains only the evidence actually obtained.
 
+Canonical paper identities are shared across both ledgers, while a curated version URL remains the actual fetch target. A paper already held in the research ledger is not counted again when the ecosystem or scholarly discovery path encounters it. Historical duplicate rows are retained; new observations go to an existing owner rather than creating another copy.
+
+Fixed-version primary-abstract records retain their original evidence, dates and `abstract_checked` grade. The scanner also observes the current public arXiv version; a changed abstract or newly observed version becomes a review candidate instead of silently replacing the pinned record. A new version with an unchanged abstract still remains distinguishable. Repeated identical observations preserve the pending record, and later fetch failures do not erase it. These items use the existing `editorial_refresh_candidates` report field for compatibility; that field does not grant an editorial-review grade.
+
+The PR publisher checks this version continuity too: a pending v3 cannot be replaced by an unknown-version or v2 candidate from a later scan. Accepting a pending revision requires both its version and evidence hash to match the retained record. The six-file publication allowlist and separate read-only collection/write-publication jobs are unchanged. Validation for this fix included 107 offline tests and a bounded replay of six previously retrieved primary pages through parsing, routing and merging; the replay preserved the research ledger byte-for-byte with no false additions. It made no network requests and was not a full live source scan.
+
 The scan report records `error_code_counts` across **all** issues before limiting `errors` to 100 examples. `error_count`, `error_examples_count`, and `error_examples_truncated` distinguish the total from the displayed sample. Fetch diagnostics retain only fixed, allowlisted codes such as `http_429` or `network_failure`; arbitrary exception messages and response bodies are not published. These fields describe observed failures, not an inferred provider outage or cause.
 
 Use **Actions → Scan public sources → Run workflow**, selecting `main`, to trigger the same process manually. A successful scan is not proof that a PR was merged or the website was deployed; inspect the run summary and the proposed diff separately.
@@ -146,6 +152,8 @@ Preserve the individual licenses of third-party resources. A repository license 
 定时扫描覆盖当前 Decision Index、其动态与链接材料、`site/papers.json` 精选论文目录中的 arXiv 原始来源、已有来源、一层依赖链接和已配置的学术查询；不设新增候选数量上限，但不代表扫描整个互联网。手动运行可选择全部候选或 100／300 项上限。`smoke` 只进行小规模公开网络试运行，不写入台账或报告、不打包更新、不发布 PR，也不证明完整扫描已经通过。
 
 精选目录只提供发现入口，不直接提供证据等级或正文哈希。扫描前先完整检查本地目录格式与 arXiv URL，按论文身份去重，并在抓取前应用排除规则；格式有误即停止，不把任意地址送入网络请求。实际页面筛查仍不等于阅读全文或编辑审阅。报告的 `error_code_counts` 统计全部问题，`errors` 最多保存 100 个示例，并用总数、示例数及截断标记明确区分；仅记录白名单中的固定错误码，不发布任意异常消息或响应正文。
+
+两份台账共享规范论文身份，但实际抓取保留精选链接中的固定版本。已在研究台账中的论文不会因生态或学术发现路径再次出现而重复报新增；已有历史重复行不静默删除。固定版本的原始摘要保留原证据、日期和摘要检查等级，同时观察当前公开版本；新版本或摘要变化进入待审记录，不直接混入旧版本字段。即使摘要未变，新版本也可进入待审；重复观察不重写待审时间，抓取失败不清除未解决记录。为兼容现有流程，这些条目沿用 `editorial_refresh_candidates` 字段，但不代表授予编辑审阅等级。
 
 扫描 job 只读且不接收发布 token。独立发布 job 先检查允许更新的文件，再仅在最后发布步骤注入 token。远程网页、README 和模型卡中的内容一律作为不可信数据处理，不执行其代码或指令，不使用其推荐安装命令；仅请求公开来源，拒绝携带凭据的 URL 与私有网络地址。
 
