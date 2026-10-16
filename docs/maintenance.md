@@ -166,3 +166,20 @@ Preserve the individual licenses of third-party resources. A repository license 
 自动正文筛查、摘要检查、编辑复核和亲自复现是不同层级。PR 自动评论不等于学术审查，也不批准合并。CI 在两个仓库运行，Pages 部署 job 仅允许组织部署仓库执行、只发布 `site/`；完成后检查两边 Actions 与线上双语页面。
 
 只使用公开来源，不提交密钥、私人对话、个人路径或原始缓存。保留第三方字体、图标、模型与数据的许可边界，不将商业受限资源描述为可任意使用的开源资源。
+
+
+## Reviewed resource expansion
+
+The [expansion directory](expansion-2026-10-16.md) and its [frozen baseline](../data/expansion-baseline-2026-10-16.json) distinguish new resources from previously known URLs and evidence. Only accepted URLs listed in the [reviewed intake](../data/expansion-intake-2026-10-16.json) may count toward the expansion target; ordinary scan discoveries do not automatically enter this audited count.
+
+For a reviewed expansion release, update the ledgers and accepted intake, then run:
+
+```sh
+python3 scripts/build_source_index.py
+python3 scripts/build_expansion_report.py
+node scripts/build_site.mjs
+python3 scripts/validate.py
+python3 -m unittest discover -s tests
+```
+
+The generated discoveries pages are snapshots of the reviewed intake, separate from the live searchable corpus. The recurring scanner retains its existing data-only PR boundary and does not silently rewrite the expansion report or directory. Continue to inspect proposed resources, verification scope, duplicates, and any licensed or experimental limitations before publication.

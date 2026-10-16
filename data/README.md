@@ -21,3 +21,6 @@ python3 scripts/build_source_index.py
 The ledgers retain minimal evidence and public bibliographic facts, not full articles or model weights. Third-party excerpts and linked resources retain their original rights and licenses; the project's MIT license applies to original project code and writing.
 
 The [2026-10-16 curated-paper reconciliation](curated-paper-refresh-2026-10-16.json) records a separate seven-page targeted fetch, distinct from the scheduled scan report. Its evidence lives in the ecosystem ledger; see the [review](../docs/reviews/scan-2026-10-16.md#scheduled-scan-review-pr-3-and-curated-paper-reconciliation).
+
+
+The expansion baseline, intake and progress files document the user-requested addition of more than 300 genuinely new resources. The baseline fixes the pre-expansion commit and known identities/evidence. The intake records accepted public URLs; the progress report counts only new, nonduplicate, evidence-checked intake entries. Their presence does not imply full-paper review or model execution. See [the reviewed directory](../docs/expansion-2026-10-16.md).

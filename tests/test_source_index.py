@@ -34,6 +34,11 @@ def build_fixture(sources):
 
 
 class SourceIdentityTests(unittest.TestCase):
+    def test_hub_experiment_code_is_a_project_not_model_weights(self):
+        code = {"url":"https://huggingface.co/example/experiment-code", "source_type":"hf_repository", "topic":"implementation-repository", "relation":"direct"}
+        self.assertEqual(index.category(code), "Projects")
+        self.assertEqual(index.category({**code, "source_type":"hf_model", "topic":"decision-model-card"}), "Models")
+
     def test_resource_identity_queries_do_not_collapse_distinct_sources(self):
         # Dropping all query parameters silently merged distinct research papers
         # and reports. Exercise final source counts, not just URL formatting.

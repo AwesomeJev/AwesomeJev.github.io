@@ -139,6 +139,35 @@
       "note": "The project name is stated in the README overview image and repository context. Automated heading extraction selected code/configuration text; this annotation corrects only the display title and does not validate the reported benchmark results.",
       "evidence_url": "https://github.com/victoryxl/graphdecisionbench",
       "reviewed_at": "2026-10-16T07:06:17Z"
+    },
+    {
+      "url": "https://huggingface.co/datasets/carlosxiang/JEVal",
+      "title": "JEVal",
+      "note": "Title extractor selected a body sentence; frontmatter pretty_name and HTML heading identify JEVal.",
+      "evidence_url": "https://huggingface.co/datasets/carlosxiang/JEVal/raw/main/README.md",
+      "reviewed_at": "2026-10-16T10:14:43+00:00"
+    },
+    {
+      "url": "https://huggingface.co/ibm-granite/granite-20b-functioncalling",
+      "title": "Granite-20B-FunctionCalling",
+      "note": "Title extractor selected a code comment; the primary card heading supplies the model name.",
+      "evidence_url": "https://huggingface.co/ibm-granite/granite-20b-functioncalling/raw/main/README.md",
+      "reviewed_at": "2026-10-16T10:14:43+00:00"
+    },
+    {
+      "url": "https://huggingface.co/spaces/FINAL-Bench/Tetris-JEV-LAYA-ZTC",
+      "title": "ZTC Gate Tetris",
+      "note": "The card explicitly describes simulation driven by measured constants; existing headline overstates the artifact and the current relevance is insufficiently explicit.",
+      "evidence_url": "https://huggingface.co/spaces/FINAL-Bench/Tetris-JEV-LAYA-ZTC/raw/main/README.md",
+      "reviewed_at": "2026-10-16T10:14:43+00:00",
+      "relevance": "Tetris gating simulation driven by publisher-measured judge statistics; not a record of the models actually judging Tetris moves."
+    },
+    {
+      "url": "https://huggingface.co/datasets/m-lagnajit/calibrated-typed-decisions",
+      "relevance": "Typed questions retaining upstream human labels and teacher/rater-derived soft targets, including a documented correction that swaps teacher probabilities on mismatched answers.",
+      "note": "Card v2.1 changes teacher soft-target rankings; publisher terminology \"calibrated\" is not independent proof that the corrected probabilities remain calibrated.",
+      "evidence_url": "https://huggingface.co/datasets/m-lagnajit/calibrated-typed-decisions/raw/main/README.md",
+      "reviewed_at": "2026-10-16T10:14:43+00:00"
     }
   ]
 }

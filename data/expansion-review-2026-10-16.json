@@ -1,0 +1,564 @@
+{
+  "schema_version": 1,
+  "baseline_commit": "3519c15d7e00686a8dbf9b1e184c68726327ab1e",
+  "scope": "Assisted source-eligibility, metadata, duplicate and evidence-depth review. This is not exhaustive full-document review, scientific peer review or experimental reproduction.",
+  "batch_reviews": [
+    {
+      "batch": "github",
+      "reviewed_at": "2026-10-16T10:14:38+00:00",
+      "original_count": 136,
+      "accepted_count": 130,
+      "excluded_count": 6,
+      "input_sha256": "210d15d89b9d01deac66f0675d30c7a1bc303eeafe30cb31fdd38220f2f37cad",
+      "output_sha256": "42863d74d670f8b83c7a9edb7a397ddff583ed15a93fcbec77891bc8a0d50549",
+      "description_policy": "Every accepted relevance replaced with a short original purpose paraphrase. All evidence_excerpt fields removed. No quoted README prose, code, source URLs, prices or performance claims in relevance. Existing evidence hashes, timestamps, URLs, HTTP status and grades preserved.",
+      "targeted_primary_checks": {
+        "count": 17,
+        "matching_original_hash": 16,
+        "changed_source_excluded": [
+          "https://github.com/psygreg/agent-orchestrator"
+        ]
+      },
+      "exclusions": [
+        {
+          "url": "https://github.com/andreasgoethals/jevpfn",
+          "reason": "Research scaffolding has real preparatory checks, but the README states live Jev checks and full predictive experiments remain pending. Excluded from this implemented-resource expansion.",
+          "primary_evidence_url": "https://raw.githubusercontent.com/andreasgoethals/jevpfn/main/README.md"
+        },
+        {
+          "url": "https://github.com/duolahypercho/codex-router",
+          "reason": "The Jev reference identifies a conversational model route rather than the typed System One API; insufficient evidence of a relevant decision integration.",
+          "primary_evidence_url": "https://raw.githubusercontent.com/duolahypercho/codex-router/main/README.md"
+        },
+        {
+          "url": "https://github.com/jyohukuchan/rocm_exl3_forme",
+          "reason": "Derived EXL3/ROCm fork with documented upstream and parent lineage. Excluded conservatively from the numerical expansion to avoid counting an inference-port lineage as another independent decision project; this does not deny its hardware-specific work.",
+          "primary_evidence_url": "https://raw.githubusercontent.com/jyohukuchan/rocm_exl3_forme/main/README.md"
+        },
+        {
+          "url": "https://github.com/louiscalata/agiw-suite",
+          "reason": "Current Jev feature is a fixed hosted connectivity check; proposed cross-machine task analysis is not established as a working decision integration.",
+          "primary_evidence_url": "https://raw.githubusercontent.com/louiscalata/agiw-suite/main/README.md"
+        },
+        {
+          "url": "https://github.com/psygreg/agent-orchestrator",
+          "reason": "Primary README lists external Jev-provider integration among remaining work. The README also changed since the original fetch; excluded without rewriting the original hash/time.",
+          "primary_evidence_url": "https://raw.githubusercontent.com/psygreg/agent-orchestrator/main/README.md"
+        },
+        {
+          "url": "https://github.com/yodawu28/jev-as-a-judge-engine",
+          "reason": "Early event-driven evaluation prototype describes decision contracts and future artifact application, without establishing a working Jev integration.",
+          "primary_evidence_url": "https://raw.githubusercontent.com/yodawu28/jev-as-a-judge-engine/main/README.md"
+        }
+      ],
+      "retained_ambiguous_cases": [
+        {
+          "url": "https://github.com/cyber-security-dev-dep-mitake-com-tw/jef",
+          "reason": "Current README documents an independent typed-decision engine, fitted calibration methods and compositional scene gates; original criticism excerpt replaced with purpose summary."
+        },
+        {
+          "url": "https://github.com/mgd34msu/goodvibes-jev",
+          "reason": "Retained only for the implemented shared judgment package/transport; description explicitly keeps broader platform goals in progress."
+        },
+        {
+          "url": "https://github.com/mindbreaker81/system-one-bench-public",
+          "reason": "Public sanitized publication of the maintainer development repository, with benchmark artifacts. No second public duplicate was established; not a third-party mirror-only copy."
+        },
+        {
+          "url": "https://github.com/neostryder/augur",
+          "reason": "Beyond usage monitoring, current README documents typed rubric grading and a Jev gateway; description reflects those concrete functions."
+        }
+      ],
+      "scope": "Assisted description and relevance review, with targeted public README checks for ambiguous cases. No code execution, model calls, experimental reproduction or editorial_reviewed upgrade."
+    },
+    {
+      "batch": "hugging_face",
+      "reviewed_at": "2026-10-16T10:14:43+00:00",
+      "input_count": 148,
+      "recommended_accepted_count": 146,
+      "input_sha256": "506a9a6b51e0c48b8996101a4474fd3240eecd87c777ed2f3a5dcb024eee58f7",
+      "excluded": [
+        {
+          "url": "https://huggingface.co/datasets/JonesLin/next-jev-choice-cot-200k",
+          "reason": "Sampled task pack from an existing next-JEV choice training corpus; README describes planned teacher collection, without establishing new teacher-response supervision. Exclude conservatively as a subset/preparation artifact from the expansion count.",
+          "evidence_url": "https://huggingface.co/datasets/JonesLin/next-jev-choice-cot-200k/raw/main/README.md"
+        },
+        {
+          "url": "https://huggingface.co/datasets/zchee/system-one-datasets",
+          "reason": "Card explicitly describes unchanged moderation/quality exports from Praveenrajus/jev-bench and a sampled subset of samatv256/jev-decisions-v1. Wire-format normalization and sampling do not constitute a newly collected corpus.",
+          "evidence_url": "https://huggingface.co/datasets/zchee/system-one-datasets/raw/main/README.md"
+        }
+      ],
+      "metadata_fixes": [
+        {
+          "url": "https://huggingface.co/InfinimindCreations/laya-rlcd-training",
+          "fields": {
+            "source_type": "hf_repository",
+            "artifact_type": "experiment-code"
+          },
+          "reason": "Hosted in the Hub model namespace, but the linked resource is a training-loop implementation; its trained checkpoint is separately linked. Retain implementation-repository topic and do not count this as a released weight checkpoint.",
+          "evidence_url": "https://huggingface.co/InfinimindCreations/laya-rlcd-training/raw/main/README.md"
+        },
+        {
+          "url": "https://huggingface.co/pngwn/nanodiff-350m-typed-decisions",
+          "fields": {
+            "source_type": "hf_repository",
+            "artifact_type": "experiment-code"
+          },
+          "reason": "The README identifies experiment code and separately links control/trained checkpoints; retain implementation-repository topic without implying Jev internals were reproduced.",
+          "evidence_url": "https://huggingface.co/pngwn/nanodiff-350m-typed-decisions/raw/main/README.md"
+        }
+      ],
+      "checks": {
+        "all_titles_and_relevance_reviewed": 148,
+        "primary_readmes_refetched": 15,
+        "matching_card_hashes": 15,
+        "baseline_url_intersection": 0,
+        "baseline_hash_intersection": 0,
+        "within_batch_url_duplicates": 0,
+        "within_batch_hash_duplicates": 0,
+        "all_rows_public_url_privacy_checks": true,
+        "original_batch_unchanged": true
+      },
+      "scope_notes": [
+        "Reviewed all titles, relevance descriptions and verification metadata; independently refetched 15 selected public READMEs and inspected relevant passages.",
+        "Language translations are labeled derivative resources retaining upstream labels; they do not create independent human gold labels.",
+        "Archived benchmark runs are distinct result artifacts, not newly independent benchmark test sets.",
+        "Prototype, experimental, retired and negative-result cards remain useful when those limits are preserved.",
+        "Technique Router is an adjacent request-to-action classifier for image processing; it is not represented as Jev-equivalent.",
+        "W1-JEV and flight-simulator performance remain publisher-reported; no numerical accuracy, cost or operational-suitability claims are endorsed.",
+        "For the two code repositories, hf_model accurately describes the Hub namespace only; recommended semantic artifact classification is hf_repository plus artifact_type."
+      ],
+      "limitations": "Card/body screening only. No model-weight or dataset-row downloads, benchmark execution, independent reproduction or upgrade to editorial_reviewed. Non-sampled rows received metadata/relevance review, not independent body refetch. Acceptance is conditional on the listed metadata clarifications.",
+      "curation_annotations": [
+        {
+          "url": "https://huggingface.co/datasets/carlosxiang/JEVal",
+          "title": "JEVal",
+          "note": "Title extractor selected a body sentence; frontmatter pretty_name and HTML heading identify JEVal.",
+          "evidence_url": "https://huggingface.co/datasets/carlosxiang/JEVal/raw/main/README.md",
+          "reviewed_at": "2026-10-16T10:14:43+00:00"
+        },
+        {
+          "url": "https://huggingface.co/ibm-granite/granite-20b-functioncalling",
+          "title": "Granite-20B-FunctionCalling",
+          "note": "Title extractor selected a code comment; the primary card heading supplies the model name.",
+          "evidence_url": "https://huggingface.co/ibm-granite/granite-20b-functioncalling/raw/main/README.md",
+          "reviewed_at": "2026-10-16T10:14:43+00:00"
+        },
+        {
+          "url": "https://huggingface.co/spaces/FINAL-Bench/Tetris-JEV-LAYA-ZTC",
+          "title": "ZTC Gate Tetris",
+          "note": "The card explicitly describes simulation driven by measured constants; existing headline overstates the artifact and the current relevance is insufficiently explicit.",
+          "evidence_url": "https://huggingface.co/spaces/FINAL-Bench/Tetris-JEV-LAYA-ZTC/raw/main/README.md",
+          "reviewed_at": "2026-10-16T10:14:43+00:00",
+          "relevance": "Tetris gating simulation driven by publisher-measured judge statistics; not a record of the models actually judging Tetris moves."
+        }
+      ],
+      "optional_scope_clarifications": [
+        {
+          "url": "https://huggingface.co/datasets/m-lagnajit/calibrated-typed-decisions",
+          "fields": {
+            "relevance": "Typed questions retaining upstream human labels and teacher/rater-derived soft targets, including a documented correction that swaps teacher probabilities on mismatched answers."
+          },
+          "reason": "Card v2.1 changes teacher soft-target rankings; publisher terminology \"calibrated\" is not independent proof that the corrected probabilities remain calibrated.",
+          "evidence_url": "https://huggingface.co/datasets/m-lagnajit/calibrated-typed-decisions/raw/main/README.md"
+        }
+      ]
+    },
+    {
+      "batch": "research_papers",
+      "reviewed_at": "2026-10-16T10:17:55+00:00",
+      "input_count": 367,
+      "accepted_count": 345,
+      "excluded_count": 22,
+      "input_sha256": "b59e5ee2d749dac8766c1ae1474a07aea3e23013e31d64220983e4ef5c402b79",
+      "exclusions": [
+        {
+          "index": 4,
+          "url": "https://aaltodoc.aalto.fi/handle/123456789/146839",
+          "title": "Data Sensitivity-Based LLM Routing Privacy-Preserving Architecture for Enterprise Al",
+          "reason_code": "thesis_not_paper",
+          "reason": "Institutional landing page identifies a master's thesis; omit from this focused paper batch without disputing its research value.",
+          "abstract_sha256": "8d199d7d49c6fac9e9a135edc55e4d59a7b83e6d6dca657ed2b5139b9d7a4d7f",
+          "evidence_url": "https://aaltodoc.aalto.fi/items/84ab3676-3cd8-42b5-ab0e-2380da82406a"
+        },
+        {
+          "index": 9,
+          "url": "https://arxiv.org/abs/2401.10541",
+          "title": "I-SplitEE: Image Classification in Split Computing DNNs with Early Exits",
+          "reason_code": "scope_edge_offloading",
+          "reason": "Contribution centers on edge/cloud split-computing and image-device offloading, beyond the focused model-routing and calibrated-decision comparison.",
+          "abstract_sha256": "992628449dc72c9e44a7e43bae06851e5d85981216d30c20cccd131a6889ad2c",
+          "evidence_url": "https://api.openalex.org/works?filter=title.search%3Aearly+exit+classification&per-page=200&select=id%2Cdoi%2Ctitle%2Cauthorships%2Cpublication_year%2Cabstract_inverted_index%2Cprimary_location%2Clocations"
+        },
+        {
+          "index": 42,
+          "url": "https://arxiv.org/abs/2605.18015",
+          "title": "LogRouter: Adaptive Two-Level LLM Routing for Log Question Answering in Big Data Systems",
+          "reason_code": "scope_applied_system",
+          "reason": "Application-specific log-question-answering pipeline; generalizable decision/calibration method is not the central contribution.",
+          "abstract_sha256": "568bed796a6ae6dc18a22e71996bc08cb98cd690bed2d77dfc38f187865a7932",
+          "evidence_url": "https://api.openalex.org/works?filter=title.search%3ALLM+routing&per-page=200&select=id%2Cdoi%2Ctitle%2Cauthorships%2Cpublication_year%2Cabstract_inverted_index%2Cprimary_location%2Clocations"
+        },
+        {
+          "index": 60,
+          "url": "https://doi.org/10.1109/icmla58977.2023.00073",
+          "title": "Channel-Adaptive Early Exiting Using Reinforcement Learning for Multivariate Time Series Classification",
+          "reason_code": "scope_temporal_acquisition",
+          "reason": "Early acquisition of multivariate time-series input channels rather than typed decisions or routing between language models/classifiers.",
+          "abstract_sha256": "51ea7cedd5b097968d030a28bdf714773c6d041000fca0348c28b6a1423ab7e5",
+          "evidence_url": "https://api.openalex.org/works?filter=title.search%3Aearly+exit+classification&per-page=200&select=id%2Cdoi%2Ctitle%2Cauthorships%2Cpublication_year%2Cabstract_inverted_index%2Cprimary_location%2Clocations"
+        },
+        {
+          "index": 62,
+          "url": "https://doi.org/10.1109/islped58423.2023.10244276",
+          "title": "Energy-Harvesting-Aware Adaptive Inference of Deep Neural Networks in Embedded Systems",
+          "reason_code": "scope_embedded_energy",
+          "reason": "Adaptive inference driven by energy harvesting on microcontrollers; peripheral to the decision-confidence and routing questions in this collection.",
+          "abstract_sha256": "621501479fdc0309bdeea0a03359d9910bf93513818518ca4271e64b72f4d292",
+          "evidence_url": "https://api.openalex.org/works?filter=title.search%3Aadaptive+inference+neural&per-page=200&select=id%2Cdoi%2Ctitle%2Cauthorships%2Cpublication_year%2Cabstract_inverted_index%2Cprimary_location%2Clocations"
+        },
+        {
+          "index": 63,
+          "url": "https://doi.org/10.1109/pimrc56721.2023.10293996",
+          "title": "Accelerating Deep Neural Network Tasks Through Edge-Device Adaptive Inference",
+          "reason_code": "scope_edge_offloading",
+          "reason": "Joint mobile/edge partition and communication optimization, rather than calibrated decisions or model-cascade methodology.",
+          "abstract_sha256": "5b49c1e84241396ce0b046f60c4adc696e7ea6bc1789130d6a98db736bc4754d",
+          "evidence_url": "https://api.openalex.org/works?filter=title.search%3Aadaptive+inference+neural&per-page=200&select=id%2Cdoi%2Ctitle%2Cauthorships%2Cpublication_year%2Cabstract_inverted_index%2Cprimary_location%2Clocations"
+        },
+        {
+          "index": 69,
+          "url": "https://doi.org/10.48448/7yvm-9834",
+          "title": "Generalising LLM Routing using Past Performance Retrieval: A Few-Shot Router is Sufficient",
+          "reason_code": "conference_video",
+          "reason": "DataCite identifies this DOI as Conference talk / Audiovisual, published by Underline Science; do not count the recording as a separate paper.",
+          "abstract_sha256": "02a639a6a3df2ba3d7c5fb674b2b8278a8b16d013aabcd87654eaf25b3f7fe2c",
+          "evidence_url": "https://api.datacite.org/dois/10.48448/7yvm-9834",
+          "registered_type": {
+            "ris": "MPCT",
+            "bibtex": "misc",
+            "citeproc": "article",
+            "schemaOrg": "MediaObject",
+            "resourceType": "Conference talk",
+            "resourceTypeGeneral": "Audiovisual"
+          },
+          "registered_landing_url": "https://underline.io/lecture/147457-generalising-llm-routing-using-past-performance-retrieval-a-few-shot-router-is-sufficient"
+        },
+        {
+          "index": 70,
+          "url": "https://doi.org/10.48448/tq99-tz62",
+          "title": "InferenceDynamics: Adaptive LLM Routing through Structured Capability and Knowledge Profiling",
+          "reason_code": "conference_video",
+          "reason": "DataCite identifies this DOI as Conference talk / Audiovisual, published by Underline Science; do not count the recording as a separate paper.",
+          "abstract_sha256": "095df387c75a9219fa28a828a7fa4fd917f564f4d2872965d8426a3e53a1f1a3",
+          "evidence_url": "https://api.datacite.org/dois/10.48448/tq99-tz62",
+          "registered_type": {
+            "ris": "MPCT",
+            "bibtex": "misc",
+            "citeproc": "article",
+            "schemaOrg": "MediaObject",
+            "resourceType": "Conference talk",
+            "resourceTypeGeneral": "Audiovisual"
+          },
+          "registered_landing_url": "https://underline.io/lecture/149138-inferencedynamics-adaptive-llm-routing-through-structured-capability-and-knowledge-profiling"
+        },
+        {
+          "index": 74,
+          "url": "https://doi.org/10.70675/632f124cz1af8z44a8za183z69eade4271fc",
+          "title": "Adaptive Inference for Cost-Efficient Deep Neural Networks",
+          "reason_code": "thesis_not_paper",
+          "reason": "The exact cached source abstract explicitly calls the work a thesis; omit from the focused paper batch. DataCite lookup returned404, which is not evidence that the underlying work is invalid.",
+          "abstract_sha256": "cf4b4acac144ae8d17229effd5542c0fe22a4e9e3d7282ac141db7b647c993b9",
+          "evidence_url": "https://api.openalex.org/works?filter=title.search%3Aadaptive+inference+neural&per-page=200&select=id%2Cdoi%2Ctitle%2Cauthorships%2Cpublication_year%2Cabstract_inverted_index%2Cprimary_location%2Clocations"
+        },
+        {
+          "index": 75,
+          "url": "https://hdl.handle.net/1721.1/163044",
+          "title": "Improving Accuracy Predictions of Companion Classifiers for LLM Routing",
+          "reason_code": "thesis_not_paper",
+          "reason": "MIT landing page supplies citation_dissertation_institution and a thesis PDF; omit from the focused paper batch.",
+          "abstract_sha256": "72f6861da356417909422ee95688b8dbb530be19b24aae2a78be10243ba04d0b",
+          "evidence_url": "https://dspace.mit.edu/entities/publication/fbfae01a-e0ff-487b-9135-4626b13e70d2"
+        },
+        {
+          "index": 155,
+          "url": "https://doi.org/10.1109/icetc66579.2025.11387699",
+          "title": "Evaluating the Reliability of LLMs in Rubric-Guided and Unguided Essay Scoring: A Multi-Rater, Multi-Model, and Multi-Domain Study",
+          "reason_code": "scope_applied_education",
+          "reason": "Educational essay-grading comparison with rubric prompting; omitted conservatively as a domain study rather than a central general judge-reliability method.",
+          "abstract_sha256": "21a371c4df4bb3d3aaa3ff979ab8310507245ccbc7f579e40e30ecab32e42054",
+          "evidence_url": "https://api.openalex.org/works?filter=title.search%3ALLM+evaluation+reliability&per-page=200&select=id%2Cdoi%2Ctitle%2Cauthorships%2Cpublication_year%2Cabstract_inverted_index%2Cprimary_location%2Clocations"
+        },
+        {
+          "index": 164,
+          "url": "https://doi.org/10.4995/carma2025.2025.20561",
+          "title": "Use of Large Language Models in Rubric-based evaluation: A Framework and Systematic Mapping Review",
+          "reason_code": "secondary_mapping_review",
+          "reason": "Framework plus systematic mapping review dominated by educational assessment; omit from this primary-method expansion.",
+          "abstract_sha256": "57dce981d6da99db4d8fe7640da3cd75db1604d7f0716c77da27881eab4230a0",
+          "evidence_url": "https://api.openalex.org/works?filter=title.search%3Arubric+evaluation+language&per-page=200&select=id%2Cdoi%2Ctitle%2Cauthorships%2Cpublication_year%2Cabstract_inverted_index%2Cprimary_location%2Clocations"
+        },
+        {
+          "index": 196,
+          "url": "https://arxiv.org/abs/2305.14593",
+          "title": "Discriminative Calibration: Check Bayesian Computation from Simulations and Flexible Classifier",
+          "reason_code": "different_calibration_meaning",
+          "reason": "Calibration here checks Bayesian computation through simulation-based diagnostics, not confidence calibration of predictive decisions.",
+          "abstract_sha256": "ed34565d083ebfca106961d9708f507f7403a14feec8d05f0b15c953ec7cf664",
+          "evidence_url": "https://api.openalex.org/works?filter=title.search%3Acalibration+classifier&per-page=200&select=id%2Cdoi%2Ctitle%2Cauthorships%2Cpublication_year%2Cabstract_inverted_index%2Cprimary_location%2Clocations"
+        },
+        {
+          "index": 257,
+          "url": "https://doi.org/10.1109/jiot.2025.3634793",
+          "title": "Robust Federated Learning With Heterogeneous Clients via Classifier Calibration and Alignment",
+          "reason_code": "different_calibration_meaning",
+          "reason": "Classifier calibration denotes feature-distribution adjustment in adversarial federated learning; the supplied abstract does not establish probability-reliability calibration as its central contribution.",
+          "abstract_sha256": "677b7700cc8abbe00f095c18bcc82bda6a771693588f0a4513381b08fac23e40",
+          "evidence_url": "https://api.openalex.org/works?filter=title.search%3Acalibration+classifier&per-page=200&select=id%2Cdoi%2Ctitle%2Cauthorships%2Cpublication_year%2Cabstract_inverted_index%2Cprimary_location%2Clocations"
+        },
+        {
+          "index": 273,
+          "url": "https://doi.org/10.25911/nxfc-sg97",
+          "title": "Uncertainty Calibration for Deep Neural Network",
+          "reason_code": "thesis_not_paper",
+          "reason": "Official DataCite type is Thesis (PhD); omit from this focused paper batch.",
+          "abstract_sha256": "3177c9f3b20f58075018760d2633b257e66e87f2396d9a003e85560df513930e",
+          "evidence_url": "https://api.datacite.org/dois/10.25911/nxfc-sg97",
+          "registered_type": {
+            "ris": "GEN",
+            "bibtex": "misc",
+            "citeproc": "article",
+            "schemaOrg": "CreativeWork",
+            "resourceType": "Thesis (PhD)",
+            "resourceTypeGeneral": "Other"
+          },
+          "registered_landing_url": "https://openresearch-repository.anu.edu.au/handle/1885/733794625"
+        },
+        {
+          "index": 278,
+          "url": "https://doi.org/10.82308/29649",
+          "title": "Improving and evaluating the calibration of uncertainty quantification metrics in language models for generation tasks",
+          "reason_code": "thesis_not_paper",
+          "reason": "Official DataCite type is Dissertation; omit from this focused paper batch.",
+          "abstract_sha256": "ba0e853ed71616081aa4f604188044e72840e36e99e26240bffe02dbed023e8c",
+          "evidence_url": "https://api.datacite.org/dois/10.82308/29649",
+          "registered_type": {
+            "ris": "THES",
+            "bibtex": "phdthesis",
+            "citeproc": "thesis",
+            "schemaOrg": "Thesis",
+            "resourceType": "https://vocabularies.coar-repositories.org/resource_types/c_46ec/",
+            "resourceTypeGeneral": "Dissertation"
+          },
+          "registered_landing_url": "https://mcgill.scholaris.ca/handle/20.500.14905/138978"
+        },
+        {
+          "index": 291,
+          "url": "https://doi.org/10.48448/mnzw-ys37",
+          "title": "When High Accuracy Hides Poor Calibration: Rethinking Confidence Evaluation in Transformer-Based Text Classification with Balanced Brier Score",
+          "reason_code": "conference_video",
+          "reason": "DataCite identifies this DOI as Conference talk / Audiovisual, published by Underline Science; do not count the recording as a separate paper.",
+          "abstract_sha256": "4dbb3cc137554006d30dc15e90a2a87eaf7e306e89bf70e94f9728acfd2f82a0",
+          "evidence_url": "https://api.datacite.org/dois/10.48448/mnzw-ys37",
+          "registered_type": {
+            "ris": "MPCT",
+            "bibtex": "misc",
+            "citeproc": "article",
+            "schemaOrg": "MediaObject",
+            "resourceType": "Conference talk",
+            "resourceTypeGeneral": "Audiovisual"
+          },
+          "registered_landing_url": "https://underline.io/lecture/150935-when-high-accuracy-hides-poor-calibration-rethinking-confidence-evaluation-in-transformer-based-text-classification-with-balanced-brier-score"
+        },
+        {
+          "index": 347,
+          "url": "https://doi.org/10.48448/d6n7-qp25",
+          "title": "A Causal Target for Learning to Defer Under Hidden Confounding",
+          "reason_code": "conference_video",
+          "reason": "DataCite identifies a Conference talk / Audiovisual and references a separate AAAI paper DOI; exclude the talk URL.",
+          "abstract_sha256": "992cbdc7d93f40f810834f6e0b05aa100f954c110db161bbad245035a3c3c6b8",
+          "evidence_url": "https://api.datacite.org/dois/10.48448/d6n7-qp25",
+          "registered_type": {
+            "ris": "MPCT",
+            "bibtex": "misc",
+            "citeproc": "article",
+            "schemaOrg": "MediaObject",
+            "resourceType": "Conference talk",
+            "resourceTypeGeneral": "Audiovisual"
+          },
+          "registered_landing_url": "https://underline.io/lecture/140578-a-causal-target-for-learning-to-defer-under-hidden-confounding"
+        },
+        {
+          "index": 348,
+          "url": "https://doi.org/10.48448/kcr8-bg56",
+          "title": "Hallucinate Less by Thinking More: Aspect-Based Causal Abstention for Large Language Models",
+          "reason_code": "conference_video",
+          "reason": "DataCite identifies a Conference talk / Audiovisual and references a separate AAAI paper DOI; exclude the talk URL.",
+          "abstract_sha256": "3ba1431a8307c2e13483b3256dc73624cdddaede8f874511a5d6dd720295c96a",
+          "evidence_url": "https://api.datacite.org/dois/10.48448/kcr8-bg56",
+          "registered_type": {
+            "ris": "MPCT",
+            "bibtex": "misc",
+            "citeproc": "article",
+            "schemaOrg": "MediaObject",
+            "resourceType": "Conference talk",
+            "resourceTypeGeneral": "Audiovisual"
+          },
+          "registered_landing_url": "https://underline.io/lecture/140965-hallucinate-less-by-thinking-more-aspect-based-causal-abstention-for-large-language-models"
+        },
+        {
+          "index": 352,
+          "url": "https://etd.adm.unipi.it/theses/available/etd-05142026-175903",
+          "title": "BRIDGET: A Hybrid Decision-Making System Bridging the Gap between Learning Together and Learning to Defer",
+          "reason_code": "thesis_not_paper",
+          "reason": "The source abstract explicitly describes a thesis; omit from this focused paper batch.",
+          "abstract_sha256": "1700eceafb33b0bd6dc0023f8277af57bf2306b80c616447d64d796412b1e34f",
+          "evidence_url": "https://api.openalex.org/works?filter=title.search%3Alearning+to+defer&per-page=200&select=id%2Cdoi%2Ctitle%2Cauthorships%2Cpublication_year%2Cabstract_inverted_index%2Cprimary_location%2Clocations"
+        },
+        {
+          "index": 354,
+          "url": "https://arxiv.org/abs/2407.03286",
+          "title": "Large Language Models for JSON Schema Discovery",
+          "reason_code": "schema_discovery_not_decoding",
+          "reason": "Uses LLMs to enrich inferred JSON schemas with descriptions and names; does not study constrained generation or typed-decision output reliability.",
+          "abstract_sha256": "ce481300aea2d643df2610a3b4fa5f2cde6aa995b21cf533a8d4b44543ba2460",
+          "evidence_url": "https://api.openalex.org/works?filter=title.search%3AJSON+schema+language+model&per-page=200&select=id%2Cdoi%2Ctitle%2Cauthorships%2Cpublication_year%2Cabstract_inverted_index%2Cprimary_location%2Clocations"
+        },
+        {
+          "index": 364,
+          "url": "https://doi.org/10.17605/osf.io/s9gu6",
+          "title": "Constitutive Authorization at the Decoding Boundary: Grammar-Constrained Decoding as a Positive, Generation-Time Security Control for LLM Agents",
+          "reason_code": "project_record_not_paper",
+          "reason": "Official DataCite resourceType is Project and the abstract describes an OSF archive linking preprint/code/preregistration; exclude the archive DOI as a paper.",
+          "abstract_sha256": "ed30827e3cf2a4f75696dafab4569b1897d5f80b86f513c484ad59a4549f42f0",
+          "evidence_url": "https://api.datacite.org/dois/10.17605/osf.io/s9gu6",
+          "registered_type": {
+            "ris": "RPRT",
+            "bibtex": "article",
+            "citeproc": "article-journal",
+            "schemaOrg": "ScholarlyArticle",
+            "resourceType": "Project",
+            "resourceTypeGeneral": "Text"
+          },
+          "registered_landing_url": "https://osf.io/s9gu6/"
+        }
+      ],
+      "counts_by_relation": {
+        "direct": 4,
+        "background": 341
+      },
+      "counts_by_topic": {
+        "direct-decision-research": 4,
+        "efficient_routing_cascades": 63,
+        "judge_reliability": 88,
+        "probability_calibration": 111,
+        "proper_scoring_rules": 9,
+        "selective_prediction": 59,
+        "structured_constrained_decoding": 11
+      },
+      "review_scope": {
+        "title_topic_relevance_records_inspected": 367,
+        "abstracts_matched_to_cached_provider_hash": 367,
+        "selected_exact_cached_abstracts_inspected": 45,
+        "selected_abstract_indices": [
+          4,
+          9,
+          12,
+          15,
+          42,
+          60,
+          62,
+          63,
+          69,
+          70,
+          74,
+          75,
+          77,
+          99,
+          114,
+          150,
+          155,
+          157,
+          164,
+          167,
+          168,
+          179,
+          196,
+          203,
+          225,
+          230,
+          240,
+          247,
+          253,
+          257,
+          265,
+          273,
+          276,
+          278,
+          279,
+          286,
+          287,
+          289,
+          291,
+          347,
+          348,
+          352,
+          353,
+          354,
+          364
+        ],
+        "official_registration_lookups": 9,
+        "institutional_landing_pages_checked": 2,
+        "full_papers_read": 0,
+        "experiments_reproduced": 0
+      },
+      "deduplication": {
+        "frozen_baseline_commit": "3519c15d7e00686a8dbf9b1e184c68726327ab1e",
+        "exact_baseline_url_matches": 0,
+        "exact_baseline_evidence_hash_matches": 0,
+        "internal_unique_urls": 367,
+        "internal_unique_abstract_hashes": 367,
+        "near_title_pair_retained": {
+          "urls": [
+            "https://arxiv.org/abs/1401.2955",
+            "https://arxiv.org/abs/1401.3390"
+          ],
+          "reason": "Same authors and similar titles, but matched abstracts describe Bayesian model selection/averaging versus histogram-binning guarantees and density estimators; distinct methods, not automatically merged."
+        },
+        "conference_record_aliases": [
+          {
+            "excluded_url": "https://doi.org/10.48448/d6n7-qp25",
+            "related_identifiers": [
+              {
+                "relationType": "References",
+                "relatedIdentifier": "https://doi.org/10.1609/aaai.v40i28.39493",
+                "resourceTypeGeneral": "Text",
+                "relatedIdentifierType": "DOI"
+              }
+            ]
+          },
+          {
+            "excluded_url": "https://doi.org/10.48448/kcr8-bg56",
+            "related_identifiers": [
+              {
+                "relationType": "References",
+                "relatedIdentifier": "https://doi.org/10.1609/aaai.v40i38.40532",
+                "resourceTypeGeneral": "Text",
+                "relatedIdentifierType": "DOI"
+              }
+            ]
+          }
+        ]
+      },
+      "limits": [
+        "This is a conservative scope and identity review, not peer review or full-paper assessment.",
+        "Original provider abstracts were inspected from existing public-response caches; only selected DOI registrations and institutional pages were freshly fetched.",
+        "DOI-to-arXiv aliases were checked where indicated by metadata or title similarity; without all original OpenAlex locations, exhaustive alias resolution is not established.",
+        "Institutional theses and conference videos may be useful resources elsewhere; their exclusion here is a paper-batch scope decision.",
+        "Background labels remain background and are not evidence of Jev internals. Accepted records retain abstract_checked; no evidence tier is upgraded.",
+        "Per-topic relevance descriptions are coarse scope labels, not individual full-paper summaries."
+      ]
+    }
+  ]
+}

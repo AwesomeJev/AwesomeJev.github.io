@@ -26,6 +26,20 @@ def sitemap(path):
 
 
 class IndexNowTests(unittest.TestCase):
+    def test_sitemap_can_grow_but_duplicate_or_empty_pages_are_rejected(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "sitemap.xml"
+            expanded = PAGES + [indexnow.SITE + "/discoveries/", indexnow.SITE + "/zh/discoveries/"]
+            def write(pages):
+                path.write_text('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' + ''.join('<url><loc>' + url + '</loc></url>' for url in pages) + '</urlset>')
+            write(expanded)
+            self.assertEqual(indexnow.changed_urls(path), expanded)
+            self.assertEqual(indexnow.changed_urls(path, [expanded[-1]]), [expanded[-1]])
+            for invalid in [[], expanded + [expanded[0]]]:
+                write(invalid)
+                with self.assertRaises(indexnow.SubmissionError):
+                    indexnow.changed_urls(path)
+
     def test_default_dry_run_reads_no_key_and_sends_no_network(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)

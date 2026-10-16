@@ -24,7 +24,7 @@ The first command generates the public files. `--check` makes no changes and fai
 
 `site/app.js` enhances the browser interface; the resource catalog now belongs in `site/catalog.mjs`. Do not maintain a second copy of the entries in the application script.
 
-Do not hand-edit the six generated HTML pages: `/`, `/zh/`, `/guide/`, `/zh/guide/`, `/papers/`, and `/zh/papers/`. The build also owns `site/sitemap.xml`, `site/references.bib`, `site/papers.json`, `site/llms.txt`, and `site/llms-full.txt`. Change their source files or generator, rebuild, and include both source and output changes in the same review. Update the generator's `contentDate` or the guide's `updated` date only when the corresponding substantive content changes; a no-op scan does not justify a new date.
+Do not hand-edit the eight generated HTML pages: `/`, `/zh/`, `/guide/`, `/zh/guide/`, `/papers/`, `/zh/papers/`, `/discoveries/`, and `/zh/discoveries/`. The build also owns `site/sitemap.xml`, `site/references.bib`, `site/papers.json`, `site/llms.txt`, `site/llms-full.txt`, and the published `site/data/expansion-progress.json` copy. Change their source files or generator, rebuild, and include both source and output changes in the same review. Update the generator's `contentDate` or the guide's `updated` date only when the corresponding substantive content changes; a no-op scan does not justify a new date.
 
 ## Public content and crawlability
 
@@ -89,7 +89,7 @@ python3 scripts/submit_indexnow.py --url https://awesomejev.github.io/guide/
 python3 scripts/submit_indexnow.py --submit --url https://awesomejev.github.io/guide/
 ```
 
-These are maintenance examples, not a request to resubmit an unchanged page. Omitting `--url` selects all six sitemap pages, which was appropriate for their initial publication. Record the actual response each time; do not use repeated notices to bypass pending validation or rate limits.
+These are maintenance examples, not a request to resubmit an unchanged page. Omitting `--url` selects all current sitemap pages; use an explicit changed-page selection for subsequent releases. Record the actual response each time; do not use repeated notices to bypass pending validation or rate limits.
 
 ## OpenAI search crawlers
 
@@ -110,7 +110,7 @@ An unrestricted public `User-agent: *` rule already permits compliant search cra
 
 优先把精选资源、指南正文和引用直接写入静态 HTML，让 JavaScript 只增强搜索与筛选。英文和中文使用独立可访问的 URL、相符的 canonical 和互相指向的 `hreflang`；sitemap 只列本站规范页面，更新时间应对应内容实质变化。
 
-维护时修改 `site/catalog.mjs` 中的共享资源与翻译、`templates/index.html` 首页模板、`data/search-guide.json` 双语指南或根目录 `references.bib`，再执行 `node scripts/build_site.mjs`，并用 `node scripts/build_site.mjs --check` 检查一致性。不要直接编辑六个生成页面、sitemap、站点引用副本、论文 JSON 或 `llms` 文件；`site/app.js` 只负责浏览器交互，不再保存另一份资源目录。
+维护时修改 `site/catalog.mjs` 中的共享资源与翻译、`templates/index.html` 首页模板、`data/search-guide.json` 双语指南或根目录 `references.bib`，再执行 `node scripts/build_site.mjs`，并用 `node scripts/build_site.mjs --check` 检查一致性。不要直接编辑八个生成页面、sitemap、站点引用副本、论文 JSON 或 `llms` 文件；`site/app.js` 只负责浏览器交互，不再保存另一份资源目录。
 
 这些措施改善可抓取性，不保证收录、排名或 AI 引用。Google 明确表示 `llms.txt` 不提升其排名；问答式正文也不意味着 FAQ 富结果。Search Console 的生成式 AI 控制默认包含，但子属性可能继承上级设置。截至 2026-10-16，Google 站点所有权已通过 HTML 文件验证，控制界面也已确认继承后的有效设置为 **Current control: Include**。保留公开验证文件，不在仓库记录账号姓名或邮箱。
 

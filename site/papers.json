@@ -42,6 +42,15 @@
     },
     {
       "category": "Papers",
+      "title": "VideoJev: System One Model for Video Understanding and Interaction",
+      "by": "Zhu et al. · 2026-10-13 · v1",
+      "date": "2026-10-13",
+      "url": "https://arxiv.org/abs/2610.18615v1",
+      "en": "Structured video decisions with temporal spans and candidate scores; cached and joint inference reuse visual computation.",
+      "zh": "以时间区间和候选分数表达视频决策，通过缓存与联合推理复用视觉计算。"
+    },
+    {
+      "category": "Papers",
       "title": "Reading Right, Acting Wrong: Diagnosing Decision Failures of System One Models in Agent Loops",
       "by": "Li, Krishnan & Padman · 2026-10-13 · v1",
       "date": "2026-10-13",
@@ -168,6 +177,15 @@
     },
     {
       "category": "Papers",
+      "title": "Bongard: Training Machine Intuition",
+      "by": "Ding, Jin & Ji · 2026-09-30 · v1",
+      "date": "2026-09-30",
+      "url": "https://arxiv.org/abs/2609.39111v1",
+      "en": "Shared evidence encoding and candidate-probability heads, trained with representation and action-outcome feedback.",
+      "zh": "共享证据编码与候选概率读出，结合表征学习和行动结果反馈训练。"
+    },
+    {
+      "category": "Papers",
       "title": "Evaluating and Benchmarking the System One Model Jev",
       "by": "Deußer et al. · 2026-09-29 · v1",
       "date": "2026-09-29",
@@ -183,6 +201,15 @@
       "url": "https://arxiv.org/abs/2609.36965v1",
       "en": "A Chinese typed-decision model and proposed benchmark; domain-specific training calls for independent validation.",
       "zh": "面向中文的类型化决策模型与新基准；领域专用训练的效果仍需独立验证。"
+    },
+    {
+      "category": "Papers",
+      "title": "Mnemon: Raw Records, Fast Judgments, Slow Thoughts",
+      "by": "Wang · 2026-09-28 · v1",
+      "date": "2026-09-28",
+      "url": "https://arxiv.org/abs/2609.36059v1",
+      "en": "Keeps raw memory records, separating Jev relevance judgments from LLM search planning and answer generation.",
+      "zh": "保留原始记忆记录，将 Jev 相关性判断与 LLM 检索规划、回答生成分开。"
     },
     {
       "category": "Papers",
@@ -237,6 +264,15 @@
       "url": "https://arxiv.org/abs/2609.29283v1",
       "en": "A Jev-style visual-choice study separating adaptation gains, candidate-readout validity, and calibration limits.",
       "zh": "Jev 风格视觉选择模型研究，区分适配收益、候选读出有效性与校准局限。"
+    },
+    {
+      "category": "Papers",
+      "title": "REFLEX with Jev for Efficient Selective Control in LLM Agents",
+      "by": "Wu & Lim · 2026-09-22 · v1",
+      "date": "2026-09-22",
+      "url": "https://arxiv.org/abs/2609.26532v1",
+      "en": "Confidence-gated Jev control with LLM fallback; gains depend on action alternatives and baseline routing.",
+      "zh": "以置信度控制 Jev 与 LLM 回退；收益取决于候选动作与基线路由。"
     },
     {
       "category": "Papers",

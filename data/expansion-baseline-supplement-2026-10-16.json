@@ -1,0 +1,611 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-10-16T10:22:20+00:00",
+  "baseline_commit": "3519c15d7e00686a8dbf9b1e184c68726327ab1e",
+  "original_baseline_path": "data/expansion-baseline-2026-10-16.json",
+  "original_baseline_sha256": "9ecc9d032e47d9345dd07e6bf5d97d13b311ef47b934f710f6344e3ff08ede68",
+  "purpose": "Exclusion-only completion of already published material at the frozen baseline commit. This supplement adds no newly discovered resources and does not modify the original baseline.",
+  "additional_known_urls": [
+    "https://arxiv.org/abs/2505.08685",
+    "https://arxiv.org/abs/2512.09059",
+    "https://awesomejev.github.io/sitemap.xml",
+    "https://ayautomate.com/blog/jev-vs-llm-benchmark",
+    "https://bing.com/indexnow/IndexNowView/IndexNowGetStartedView",
+    "https://blogs.bing.com/webmaster/2025/7/Keeping-Content-Discoverable-with-Sitemaps-in-AI-Powered-Search",
+    "https://developers.google.com/search/docs/appearance/ai-features",
+    "https://developers.google.com/search/docs/appearance/structured-data/sd-policies",
+    "https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics",
+    "https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap",
+    "https://developers.google.com/search/docs/fundamentals/ai-optimization-guide",
+    "https://developers.google.com/search/docs/specialty/international/localized-versions",
+    "https://developers.google.com/search/updates",
+    "https://developers.openai.com/api/docs/bots",
+    "https://docs.github.com/en/actions/concepts/security/github_token",
+    "https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows",
+    "https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages",
+    "https://github.com/futureppo/typesafe_register",
+    "https://github.com/pavelravvich/jev-bench",
+    "https://github.com/reacher-z/awesome-jev",
+    "https://github.com/reacher-z/awesome-jev/actions/runs/38848656459",
+    "https://github.com/reacher-z/awesome-jev/actions/runs/38877935151",
+    "https://github.com/reacher-z/awesome-jev/actions/workflows/ci.yml",
+    "https://github.com/reacher-z/awesome-jev/blob/3e77af2/data/scan-latest.json",
+    "https://github.com/reacher-z/awesome-jev/pull/1",
+    "https://github.com/reacher-z/awesome-jev/pull/2",
+    "https://github.com/reacher-z/awesome-jev/pull/3",
+    "https://github.com/reacher-z/awesome-jev/tree/28fa1f26d6b831e171af301d0fe42dfa4fa6ea1a",
+    "https://github.com/reacher-z/awesome-jev/tree/ce9eea481670d3358e8388e4cbd8e1928d714890",
+    "https://github.com/reacher-z/awesome-jev/tree/f56965195a0d1a9fa52aecd2c396fbc8ffe00c77",
+    "https://huggingface.co/datasets/yflantmy/DecisionRobust",
+    "https://huggingface.co/facebook/meta-encoder",
+    "https://img.shields.io/badge/license-MIT-6B7280?labelColor=374151&style=flat-square",
+    "https://img.shields.io/badge/website-awesomejev.github.io-087E8B?labelColor=374151&style=flat-square",
+    "https://img.shields.io/endpoint?style=flat-square&url=https%3A%2F%2Fawesomejev.github.io%2Fdata%2Fsource-badge.json",
+    "https://img.shields.io/github/actions/workflow/status/reacher-z/Awesome-Jev/ci.yml?branch=main&color=087E8B&label=checks&labelColor=374151&style=flat-square",
+    "https://indexnow.org/documentation",
+    "https://oai.dtic.mil/oai/oai?identifier=ADA110209&metadataPrefix=html&verb=getRecord",
+    "https://support.google.com/webmasters/answer/16908024",
+    "https://support.google.com/webmasters/answer/9008080"
+  ],
+  "additional_known_paper_titles": [
+    "dspy",
+    "fusingllmcapabilitieswithroutingdata",
+    "lmqlpromptingisprogramming",
+    "queryroutingforretrievalaugmentedlanguagemodels",
+    "relopeklregularizedloraprobesformultimodalllmrouting",
+    "routeprofileelucidatingthedesignspaceofllmprofilesforrouting",
+    "selectivenet",
+    "sglang",
+    "sglangefficientexecutionofstructuredlanguagemodelprograms",
+    "xgrammar"
+  ],
+  "url_evidence": [
+    {
+      "url": "https://arxiv.org/abs/2505.08685",
+      "origins": [
+        {
+          "path": "docs/reviews/scan-2026-10-16.md",
+          "kind": "markdown_link"
+        }
+      ]
+    },
+    {
+      "url": "https://arxiv.org/abs/2512.09059",
+      "origins": [
+        {
+          "path": "docs/reviews/scan-2026-10-16.md",
+          "kind": "markdown_link"
+        }
+      ]
+    },
+    {
+      "url": "https://awesomejev.github.io/sitemap.xml",
+      "origins": [
+        {
+          "path": "docs/search-discovery.md",
+          "kind": "literal_public_url"
+        }
+      ]
+    },
+    {
+      "url": "https://ayautomate.com/blog/jev-vs-llm-benchmark",
+      "origins": [
+        {
+          "path": "README.md",
+          "kind": "markdown_link"
+        },
+        {
+          "path": "README.zh-CN.md",
+          "kind": "markdown_link"
+        }
+      ]
+    },
+    {
+      "url": "https://bing.com/indexnow/IndexNowView/IndexNowGetStartedView",
+      "origins": [
+        {
+          "path": "docs/search-discovery.md",
+          "kind": "markdown_link"
+        }
+      ]
+    },
+    {
+      "url": "https://blogs.bing.com/webmaster/2025/7/Keeping-Content-Discoverable-with-Sitemaps-in-AI-Powered-Search",
+      "origins": [
+        {
+          "path": "docs/search-discovery.md",
+          "kind": "markdown_link"
+        }
+      ]
+    },
+    {
+      "url": "https://developers.google.com/search/docs/appearance/ai-features",
+      "origins": [
+        {
+          "path": "docs/search-discovery.md",
+          "kind": "markdown_link"
+        }
+      ]
+    },
+    {
+      "url": "https://developers.google.com/search/docs/appearance/structured-data/sd-policies",
+      "origins": [
+        {
+          "path": "docs/search-discovery.md",
+          "kind": "markdown_link"
+        }
+      ]
+    },
+    {
+      "url": "https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics",
+      "origins": [
+        {
+          "path": "docs/search-discovery.md",
+          "kind": "markdown_link"
+        }
+      ]
+    },
+    {
+      "url": "https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap",
+      "origins": [
+        {
+          "path": "docs/search-discovery.md",
+          "kind": "markdown_link"
+        }
+      ]
+    },
+    {
+      "url": "https://developers.google.com/search/docs/fundamentals/ai-optimization-guide",
+      "origins": [
+        {
+          "path": "docs/search-discovery.md",
+          "kind": "markdown_link"
+        }
+      ]
+    },
+    {
+      "url": "https://developers.google.com/search/docs/specialty/international/localized-versions",
+      "origins": [
+        {
+          "path": "docs/search-discovery.md",
+          "kind": "markdown_link"
+        }
+      ]
+    },
+    {
+      "url": "https://developers.google.com/search/updates",
+      "origins": [
+        {
+          "path": "docs/search-discovery.md",
+          "kind": "markdown_link"
+        }
+      ]
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/bots",
+      "origins": [
+        {
+          "path": "docs/search-discovery.md",
+          "kind": "markdown_link"
+        }
+      ]
+    },
+    {
+      "url": "https://docs.github.com/en/actions/concepts/security/github_token",
+      "origins": [
+        {
+          "path": "docs/maintenance.md",
+          "kind": "markdown_link"
+        }
+      ]
+    },
+    {
+      "url": "https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows",
+      "origins": [
+        {
+          "path": "docs/maintenance.md",
+          "kind": "markdown_link"
+        }
+      ]
+    },
+    {
+      "url": "https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages",
+      "origins": [
+        {
+          "path": "docs/search-discovery.md",
+          "kind": "markdown_link"
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/futureppo/typesafe_register",
+      "origins": [
+        {
+          "path": "docs/reviews/scan-2026-10-16.md",
+          "kind": "markdown_link"
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/pavelravvich/jev-bench",
+      "origins": [
+        {
+          "path": "README.md",
+          "kind": "markdown_link"
+        },
+        {
+          "path": "README.zh-CN.md",
+          "kind": "markdown_link"
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/reacher-z/awesome-jev",
+      "origins": [
+        {
+          "path": "README.md",
+          "kind": "markdown_link"
+        },
+        {
+          "path": "README.zh-CN.md",
+          "kind": "markdown_link"
+        },
+        {
+          "path": "docs/maintenance.md",
+          "kind": "markdown_link"
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/reacher-z/awesome-jev/actions/runs/38848656459",
+      "origins": [
+        {
+          "path": "docs/maintenance.md",
+          "kind": "markdown_link"
+        },
+        {
+          "path": "docs/reviews/scan-2026-10-16.md",
+          "kind": "markdown_link"
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/reacher-z/awesome-jev/actions/runs/38877935151",
+      "origins": [
+        {
+          "path": "docs/maintenance.md",
+          "kind": "markdown_link"
+        },
+        {
+          "path": "docs/reviews/scan-2026-10-16.md",
+          "kind": "markdown_link"
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/reacher-z/awesome-jev/actions/workflows/ci.yml",
+      "origins": [
+        {
+          "path": "README.md",
+          "kind": "markdown_link"
+        },
+        {
+          "path": "README.zh-CN.md",
+          "kind": "markdown_link"
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/reacher-z/awesome-jev/blob/3e77af2/data/scan-latest.json",
+      "origins": [
+        {
+          "path": "docs/reviews/scan-2026-10-16.md",
+          "kind": "markdown_link"
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/reacher-z/awesome-jev/pull/1",
+      "origins": [
+        {
+          "path": "docs/reviews/scan-2026-10-16.md",
+          "kind": "markdown_link"
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/reacher-z/awesome-jev/pull/2",
+      "origins": [
+        {
+          "path": "docs/reviews/scan-2026-10-16.md",
+          "kind": "markdown_link"
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/reacher-z/awesome-jev/pull/3",
+      "origins": [
+        {
+          "path": "docs/maintenance.md",
+          "kind": "markdown_link"
+        },
+        {
+          "path": "docs/reviews/scan-2026-10-16.md",
+          "kind": "markdown_link"
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/reacher-z/awesome-jev/tree/28fa1f26d6b831e171af301d0fe42dfa4fa6ea1a",
+      "origins": [
+        {
+          "path": "docs/reviews/scan-2026-10-16.md",
+          "kind": "markdown_link"
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/reacher-z/awesome-jev/tree/ce9eea481670d3358e8388e4cbd8e1928d714890",
+      "origins": [
+        {
+          "path": "docs/reviews/scan-2026-10-16.md",
+          "kind": "markdown_link"
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/reacher-z/awesome-jev/tree/f56965195a0d1a9fa52aecd2c396fbc8ffe00c77",
+      "origins": [
+        {
+          "path": "docs/reviews/scan-2026-10-16.md",
+          "kind": "markdown_link"
+        }
+      ]
+    },
+    {
+      "url": "https://huggingface.co/datasets/yflantmy/DecisionRobust",
+      "origins": [
+        {
+          "path": "docs/reviews/papers-2026-10-16.md",
+          "kind": "markdown_link"
+        }
+      ]
+    },
+    {
+      "url": "https://huggingface.co/facebook/meta-encoder",
+      "origins": [
+        {
+          "path": "docs/reviews/papers-2026-10-16.md",
+          "kind": "markdown_link"
+        }
+      ]
+    },
+    {
+      "url": "https://img.shields.io/badge/license-MIT-6B7280?labelColor=374151&style=flat-square",
+      "origins": [
+        {
+          "path": "README.md",
+          "kind": "markdown_image"
+        },
+        {
+          "path": "README.zh-CN.md",
+          "kind": "markdown_image"
+        }
+      ]
+    },
+    {
+      "url": "https://img.shields.io/badge/website-awesomejev.github.io-087E8B?labelColor=374151&style=flat-square",
+      "origins": [
+        {
+          "path": "README.md",
+          "kind": "markdown_image"
+        },
+        {
+          "path": "README.zh-CN.md",
+          "kind": "markdown_image"
+        }
+      ]
+    },
+    {
+      "url": "https://img.shields.io/endpoint?style=flat-square&url=https%3A%2F%2Fawesomejev.github.io%2Fdata%2Fsource-badge.json",
+      "origins": [
+        {
+          "path": "README.md",
+          "kind": "markdown_image"
+        },
+        {
+          "path": "README.zh-CN.md",
+          "kind": "markdown_image"
+        }
+      ]
+    },
+    {
+      "url": "https://img.shields.io/github/actions/workflow/status/reacher-z/Awesome-Jev/ci.yml?branch=main&color=087E8B&label=checks&labelColor=374151&style=flat-square",
+      "origins": [
+        {
+          "path": "README.md",
+          "kind": "markdown_image"
+        },
+        {
+          "path": "README.zh-CN.md",
+          "kind": "markdown_image"
+        }
+      ]
+    },
+    {
+      "url": "https://indexnow.org/documentation",
+      "origins": [
+        {
+          "path": "docs/search-discovery.md",
+          "kind": "markdown_link"
+        }
+      ]
+    },
+    {
+      "url": "https://oai.dtic.mil/oai/oai?identifier=ADA110209&metadataPrefix=html&verb=getRecord",
+      "origins": [
+        {
+          "path": "data/research-sources.jsonl",
+          "kind": "ledger_identity"
+        }
+      ]
+    },
+    {
+      "url": "https://support.google.com/webmasters/answer/16908024",
+      "origins": [
+        {
+          "path": "docs/search-discovery.md",
+          "kind": "markdown_link"
+        }
+      ]
+    },
+    {
+      "url": "https://support.google.com/webmasters/answer/9008080",
+      "origins": [
+        {
+          "path": "docs/search-discovery.md",
+          "kind": "markdown_link"
+        }
+      ]
+    }
+  ],
+  "paper_title_evidence": [
+    {
+      "normalized_title": "dspy",
+      "origins": [
+        {
+          "path": "site/catalog.mjs",
+          "kind": "curated_paper_or_foundation",
+          "title": "DSPy",
+          "url": "https://arxiv.org/abs/2310.03714"
+        }
+      ]
+    },
+    {
+      "normalized_title": "fusingllmcapabilitieswithroutingdata",
+      "origins": [
+        {
+          "path": "data/research-sources.jsonl",
+          "line": 1439,
+          "kind": "raw_scholarly_title",
+          "title": "Fusing LLM Capabilities with Routing Data",
+          "url": "https://arxiv.org/abs/2507.10540"
+        }
+      ]
+    },
+    {
+      "normalized_title": "lmqlpromptingisprogramming",
+      "origins": [
+        {
+          "path": "site/catalog.mjs",
+          "kind": "curated_paper_or_foundation",
+          "title": "LMQL — Prompting Is Programming",
+          "url": "https://www.sri.inf.ethz.ch/publications/beurerkellner2023prompting"
+        }
+      ]
+    },
+    {
+      "normalized_title": "queryroutingforretrievalaugmentedlanguagemodels",
+      "origins": [
+        {
+          "path": "data/research-sources.jsonl",
+          "line": 88,
+          "kind": "raw_scholarly_title",
+          "title": "Query Routing for Retrieval-Augmented Language Models",
+          "url": "https://arxiv.org/abs/2505.23052"
+        }
+      ]
+    },
+    {
+      "normalized_title": "relopeklregularizedloraprobesformultimodalllmrouting",
+      "origins": [
+        {
+          "path": "data/research-sources.jsonl",
+          "line": 1453,
+          "kind": "raw_scholarly_title",
+          "title": "ReLope: KL-Regularized LoRA Probes for Multimodal LLM Routing",
+          "url": "https://arxiv.org/abs/2603.24787"
+        }
+      ]
+    },
+    {
+      "normalized_title": "routeprofileelucidatingthedesignspaceofllmprofilesforrouting",
+      "origins": [
+        {
+          "path": "data/research-sources.jsonl",
+          "line": 1455,
+          "kind": "raw_scholarly_title",
+          "title": "RouteProfile: Elucidating the Design Space of LLM Profiles for Routing",
+          "url": "https://arxiv.org/abs/2605.00180"
+        }
+      ]
+    },
+    {
+      "normalized_title": "selectivenet",
+      "origins": [
+        {
+          "path": "site/catalog.mjs",
+          "kind": "curated_paper_or_foundation",
+          "title": "SelectiveNet",
+          "url": "https://proceedings.mlr.press/v97/geifman19a.html"
+        }
+      ]
+    },
+    {
+      "normalized_title": "sglang",
+      "origins": [
+        {
+          "path": "site/catalog.mjs",
+          "kind": "curated_paper_or_foundation",
+          "title": "SGLang",
+          "url": "https://arxiv.org/abs/2312.07104"
+        }
+      ]
+    },
+    {
+      "normalized_title": "sglangefficientexecutionofstructuredlanguagemodelprograms",
+      "origins": [
+        {
+          "path": "references.bib",
+          "kind": "bibliography_title",
+          "title": "SGLang: Efficient Execution of Structured Language Model Programs"
+        }
+      ]
+    },
+    {
+      "normalized_title": "xgrammar",
+      "origins": [
+        {
+          "path": "site/catalog.mjs",
+          "kind": "curated_paper_or_foundation",
+          "title": "XGrammar",
+          "url": "https://arxiv.org/abs/2411.15100"
+        }
+      ]
+    }
+  ],
+  "derivation": {
+    "snapshot_access": "Every content input read via git show at baseline_commit; no current working-tree README, catalog, bibliography or source-ledger content used.",
+    "markdown_parser": "markdown-it-py CommonMark tokens resolve inline/reference links; HTML attributes parsed with HTMLParser; literal public URLs have unmatched closing punctuation removed without stripping balanced URL parentheses.",
+    "url_identity": "Uses scripts.build_expansion_report.source_key; URLs are exclusion identities, not new-resource approvals. Public URL syntax checked; no private/authentication data read.",
+    "paper_titles": "Normalized raw scholarly ledger titles, curated paper/foundation titles and balanced-brace BibTeX title fields.",
+    "tracked_baseline_documents": [
+      "README.md",
+      "README.zh-CN.md",
+      "data/README.md",
+      "docs/maintenance.md",
+      "docs/quickstart.md",
+      "docs/quickstart.zh-CN.md",
+      "docs/reviews/papers-2026-10-16.md",
+      "docs/reviews/scan-2026-10-16.md",
+      "docs/search-discovery.md",
+      "docs/source-audit.md",
+      "docs/survey.md",
+      "docs/survey.zh-CN.md",
+      "references.bib",
+      "site/catalog.mjs",
+      "data/ecosystem-sources.jsonl",
+      "data/research-sources.jsonl"
+    ]
+  }
+}

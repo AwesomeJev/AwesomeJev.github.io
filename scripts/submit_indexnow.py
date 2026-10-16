@@ -53,8 +53,8 @@ def changed_urls(sitemap, selected=None):
         raise SubmissionError("Cannot read the generated site sitemap.") from None
     ns = "{http://www.sitemaps.org/schemas/sitemap/0.9}"
     pages = [site_url((node.text or "").strip()) for node in root.findall(ns + "url/" + ns + "loc")]
-    if len(pages) != 6 or len(set(pages)) != 6:
-        raise SubmissionError("Expected exactly six unique canonical pages in the generated sitemap.")
+    if not 1 <= len(pages) <= 1000 or len(set(pages)) != len(pages):
+        raise SubmissionError("Expected 1–1000 unique canonical pages in the generated sitemap.")
     urls = list(dict.fromkeys(site_url(url) for url in selected)) if selected else pages
     if not urls or any(url not in pages for url in urls):
         raise SubmissionError("Selected changed pages must belong to the generated sitemap.")
@@ -136,7 +136,7 @@ def status_message(status):
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--submit", action="store_true", help="Verify live pages/key and send one actual IndexNow notification")
-    parser.add_argument("--url", action="append", help="Changed sitemap URL to include (repeatable); default is all six newly published pages")
+    parser.add_argument("--url", action="append", help="Changed sitemap URL to include (repeatable); default is all generated sitemap pages")
     args = parser.parse_args(argv)
     try:
         urls = changed_urls(ROOT / "site/sitemap.xml", args.url)

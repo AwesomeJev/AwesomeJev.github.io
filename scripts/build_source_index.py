@@ -44,6 +44,8 @@ def canonical(url: str) -> str:
 def category(row: dict) -> str:
     if row.get("relation") == "background":
         return "Research foundations"
+    if row.get("source_type") == "hf_repository" and row.get("topic") == "implementation-repository":
+        return "Projects"
     url = row.get("url", row.get("canonical_url", ""))
     if "arxiv.org" in url or "huggingface.co/papers/" in url:
         return "Papers"

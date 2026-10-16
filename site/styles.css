@@ -2157,3 +2157,13 @@ html[lang="zh"] h1, html[lang="zh"] h2, html[lang="zh"] h3 {
 .corpus-curation summary { cursor: pointer; }
 .corpus-curation p { font-size: 13px; line-height: 1.6; }
 .corpus-curation a { text-decoration: underline; text-underline-offset: 3px; }
+
+/* Compact category navigation for the static discovery directory. */
+.discovery-category-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+  gap: 8px 24px;
+  padding-left: 20px;
+  margin: 0;
+}
+.discovery-category-list li + li { margin-top: 0; }

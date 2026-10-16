@@ -1,6 +1,7 @@
 """Offline crawlability, bilingual identity, and visible structured-data checks."""
 
 from datetime import date
+from collections import Counter
 from html.parser import HTMLParser
 import json
 from pathlib import Path
@@ -14,8 +15,8 @@ import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = "https://awesomejev.github.io"
-ROUTES = ("/", "/zh/", "/guide/", "/zh/guide/", "/papers/", "/zh/papers/")
-PAIRS = (("/", "/zh/"), ("/guide/", "/zh/guide/"), ("/papers/", "/zh/papers/"))
+ROUTES = ("/", "/zh/", "/guide/", "/zh/guide/", "/papers/", "/zh/papers/", "/discoveries/", "/zh/discoveries/")
+PAIRS = (("/", "/zh/"), ("/guide/", "/zh/guide/"), ("/papers/", "/zh/papers/"), ("/discoveries/", "/zh/discoveries/"))
 
 
 def words(value):
@@ -87,7 +88,9 @@ class CrawlPage(HTMLParser):
         elif tag == "h1":
             self._h1 = []
         elif tag == "article" and "resource-row" in classes:
-            self._card = {"url": "", "name": [], "hidden": "hidden" in attrs or attrs.get("aria-hidden") == "true"}
+            self._card = {"url": "", "name": [], "text": [], "hidden": "hidden" in attrs or attrs.get("aria-hidden") == "true",
+                          "category": attrs.get("data-category", ""), "relation": attrs.get("data-relation", ""),
+                          "verification_level": attrs.get("data-verification-level", "")}
         elif tag == "h3" and self._card is not None:
             self._card_title = True
         elif tag == "a" and self._card is not None and self._card_title:
@@ -109,6 +112,7 @@ class CrawlPage(HTMLParser):
             self._card_title = False
         elif tag == "article" and self._card is not None:
             self._card["name"] = words("".join(self._card["name"]))
+            self._card["text"] = words(" ".join(self._card["text"]))
             self.cards.append(self._card)
             self._card = None
 
@@ -124,6 +128,8 @@ class CrawlPage(HTMLParser):
             self._h1.append(value)
         if self._card is not None and self._card_title:
             self._card["name"].append(value)
+        if self._card is not None:
+            self._card["text"].append(value)
 
 
 class SiteDiscoveryTests(unittest.TestCase):
@@ -163,7 +169,7 @@ class SiteDiscoveryTests(unittest.TestCase):
         self.assertEqual(len(set(observed)), len(ROUTES))
 
     def test_chinese_routes_contain_translated_body_text_before_scripts_run(self):
-        for route in ("/zh/", "/zh/guide/", "/zh/papers/"):
+        for route in ("/zh/", "/zh/guide/", "/zh/papers/", "/zh/discoveries/"):
             with self.subTest(route=route):
                 self.assertGreater(len(re.findall(r"[\u4e00-\u9fff]", "".join(self.pages[route].body_text))), 30)
 
@@ -176,10 +182,11 @@ class SiteDiscoveryTests(unittest.TestCase):
                 self.assertEqual(len(ids), len(set(ids)), "Generated HTML must not duplicate interaction IDs")
 
     def test_item_lists_match_visible_link_titles_order_and_counts(self):
-        for route in ("/", "/zh/", "/papers/", "/zh/papers/"):
+        for route in ("/", "/zh/", "/papers/", "/zh/papers/", "/discoveries/", "/zh/discoveries/"):
             with self.subTest(route=route):
                 page = self.pages[route]
-                self.assertGreaterEqual(len(page.cards), 20)
+                if "discoveries" not in route:
+                    self.assertGreaterEqual(len(page.cards), 20)
                 item_lists = [item for block in page.structured for item in objects(block) if has_type(item, "ItemList")]
                 self.assertEqual(len(item_lists), 1)
                 listing = item_lists[0]
@@ -191,6 +198,41 @@ class SiteDiscoveryTests(unittest.TestCase):
                     self.assertEqual(item["position"], number)
                     self.assertEqual(item["url"], card["url"])
                     self.assertEqual(words(item["name"]), card["name"])
+
+    def test_new_source_directory_preserves_every_accepted_resource_and_evidence_label(self):
+        report = json.loads((ROOT / "data/expansion-progress-2026-10-16.json").read_text())
+        sources = {row["url"]: row for row in report["additions"]}
+        self.assertEqual(len(sources), report["accepted_new_sources"])
+        labels = {
+            "en": {"direct": "Directly related", "adjacent": "Related field", "background": "Research background",
+                   "editorial_reviewed": "Editorially reviewed", "content_screened": "Content screened", "abstract_checked": "Abstract checked"},
+            "zh": {"direct": "直接相关", "adjacent": "邻近领域", "background": "研究背景",
+                   "editorial_reviewed": "编辑复核", "content_screened": "正文筛查", "abstract_checked": "摘要检查"},
+        }
+        for route, language in (("/discoveries/", "en"), ("/zh/discoveries/", "zh")):
+            with self.subTest(route=route):
+                page = self.pages[route]
+                self.assertEqual(len(page.cards), len(sources))
+                self.assertEqual({card["url"] for card in page.cards}, set(sources))
+                self.assertEqual(Counter(card["category"] for card in page.cards), report["by_category"])
+                self.assertIn("/data/expansion-progress.json", page.links)
+                for card in page.cards:
+                    source = sources[card["url"]]
+                    self.assertFalse(card["hidden"])
+                    self.assertEqual(card["name"], words(source["title"]))
+                    self.assertIn(words(source["description"]), card["text"])
+                    self.assertEqual(card["relation"], source["relation"])
+                    self.assertEqual(card["verification_level"], source["verification_level"])
+                    self.assertIn(labels[language][source["relation"]], card["text"])
+                    self.assertIn(labels[language][source["verification_level"]], card["text"])
+        self.assertEqual([card["url"] for card in self.pages["/discoveries/"].cards], [card["url"] for card in self.pages["/zh/discoveries/"].cards])
+
+    def test_homepages_link_localized_discoveries_and_download_matches_source_report(self):
+        self.assertIn("/discoveries/", self.pages["/"].links)
+        self.assertIn("/zh/discoveries/", self.pages["/zh/"].links)
+        original = json.loads((ROOT / "data/expansion-progress-2026-10-16.json").read_text())
+        published = json.loads((ROOT / "site/data/expansion-progress.json").read_text())
+        self.assertEqual(published, original)
 
     def test_guide_article_headline_matches_visible_page_heading(self):
         for route in ("/guide/", "/zh/guide/"):
@@ -215,7 +257,7 @@ class SiteDiscoveryTests(unittest.TestCase):
                     self.assertFalse(any(set(re.split(r"[,\s]+", value.lower())) & {"noindex", "none"} for value in page.robots))
         self.assertIn(BASE + "/sitemap.xml", rules.site_maps() or [])
 
-    def test_sitemap_lists_all_six_canonical_pages(self):
+    def test_sitemap_lists_all_canonical_pages(self):
         tree = ET.fromstring((ROOT / "site/sitemap.xml").read_bytes())
         ns = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
         locations = [node.text for node in tree.findall("sm:url/sm:loc", ns)]

@@ -84,6 +84,14 @@ A decision-model architecture exploring null handling, option permutations, scal
 
 Primary source: https://arxiv.org/abs/2610.18773v1
 
+## VideoJev: System One Model for Video Understanding and Interaction
+
+Papers · Zhu et al. · 2026-10-13 · v1
+
+Structured video decisions with temporal spans and candidate scores; cached and joint inference reuse visual computation.
+
+Primary source: https://arxiv.org/abs/2610.18615v1
+
 ## Reading Right, Acting Wrong: Diagnosing Decision Failures of System One Models in Agent Loops
 
 Papers · Li, Krishnan & Padman · 2026-10-13 · v1
@@ -196,6 +204,14 @@ Composes finite action fields and explores alternatives using interaction feedba
 
 Primary source: https://arxiv.org/abs/2610.00437v1
 
+## Bongard: Training Machine Intuition
+
+Papers · Ding, Jin & Ji · 2026-09-30 · v1
+
+Shared evidence encoding and candidate-probability heads, trained with representation and action-outcome feedback.
+
+Primary source: https://arxiv.org/abs/2609.39111v1
+
 ## Evaluating and Benchmarking the System One Model Jev
 
 Papers · Deußer et al. · 2026-09-29 · v1
@@ -211,6 +227,14 @@ Papers · Wang et al. · 2026-09-29 · v1
 A Chinese typed-decision model and proposed benchmark; domain-specific training calls for independent validation.
 
 Primary source: https://arxiv.org/abs/2609.36965v1
+
+## Mnemon: Raw Records, Fast Judgments, Slow Thoughts
+
+Papers · Wang · 2026-09-28 · v1
+
+Keeps raw memory records, separating Jev relevance judgments from LLM search planning and answer generation.
+
+Primary source: https://arxiv.org/abs/2609.36059v1
 
 ## Sys1Cal-v1: A Dataset for Probability Calibration
 
@@ -259,6 +283,14 @@ Papers · Zhou et al. · 2026-09-24 · v1
 A Jev-style visual-choice study separating adaptation gains, candidate-readout validity, and calibration limits.
 
 Primary source: https://arxiv.org/abs/2609.29283v1
+
+## REFLEX with Jev for Efficient Selective Control in LLM Agents
+
+Papers · Wu & Lim · 2026-09-22 · v1
+
+Confidence-gated Jev control with LLM fallback; gains depend on action alternatives and baseline routing.
+
+Primary source: https://arxiv.org/abs/2609.26532v1
 
 ## Jev-Mem: System-One-Controlled Agentic Memory
 

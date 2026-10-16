@@ -1,0 +1,50 @@
+"""Ensure expansion counts cannot be satisfied by aliases or weak evidence."""
+import unittest
+from scripts.build_expansion_report import assess, supplemented_baseline
+import hashlib
+import json
+
+
+def row(url, title="A new relevant research paper", digest="b" * 64, level="abstract_checked"):
+    return {"url":url,"title":title,"category":"Papers","topic":"judge_reliability","description":"Relevant evaluation evidence.","relation":"background","verification_level":level,"content_sha256":digest,"retrieved_at":"2026-10-16T10:00:00Z","ledger":"research-sources.jsonl"}
+
+
+class ExpansionCountingTests(unittest.TestCase):
+    def baseline(self):
+        return {"baseline_commit":"a"*40,"baseline_source_index_sha256":"c"*64,"target_new_sources":301,"known_urls":["https://arxiv.org/abs/2609.12345"],"known_evidence_hashes":["a"*64],"known_paper_titles":["apreviouslyknownresearchpaper"]}
+
+    def test_old_url_aliases_metadata_and_duplicate_evidence_do_not_count(self):
+        rows=[row("https://arxiv.org/pdf/2609.12345v3.pdf"),row("https://example.org/metadata",level="metadata_only"),row("https://example.org/mirror",digest="a"*64),row("https://arxiv.org/abs/2610.12345",title="[2610.12345] A previously known research paper")]
+        result=assess(self.baseline(),{"sources":rows,"counts":{}},[r["url"] for r in rows])
+        self.assertEqual(result["accepted_new_sources"],0)
+        self.assertFalse(result["target_count_reached"])
+
+    def test_distinct_verified_resources_count_once_and_do_not_lower_target(self):
+        rows=[row("https://arxiv.org/abs/2610.12345"),row("https://example.org/duplicate",digest="b"*64),row("https://example.org/second",title="Another genuinely different research resource",digest="d"*64)]
+        result=assess(self.baseline(),{"sources":rows,"counts":{}},[r["url"] for r in rows])
+        self.assertEqual(result["accepted_new_sources"],2)
+        self.assertEqual(result["target_new_sources"],301)
+        self.assertEqual(result["remaining_to_target"],299)
+
+    def test_an_unreviewed_scan_addition_cannot_satisfy_the_goal(self):
+        result=assess(self.baseline(),{"sources":[row("https://arxiv.org/abs/2610.12345")],"counts":{}},[])
+        self.assertEqual(result["accepted_new_sources"],0)
+        self.assertEqual(result["excluded_from_target"][0]["reason"],"not_in_reviewed_intake")
+
+    def test_repository_readme_and_arxiv_doi_aliases_do_not_count(self):
+        baseline=self.baseline()
+        baseline["known_urls"] += ["https://github.com/Owner/Project", "https://huggingface.co/org/model"]
+        rows=[row("https://raw.githubusercontent.com/Owner/Project/main/README.md"), row("https://huggingface.co/org/model/raw/main/README.md",digest="d"*64), row("https://doi.org/10.48550/arXiv.2609.12345",digest="e"*64)]
+        result=assess(baseline,{"sources":rows,"counts":{}},[r["url"] for r in rows])
+        self.assertEqual(result["accepted_new_sources"],0)
+
+    def test_supplement_can_only_extend_a_matching_frozen_baseline(self):
+        raw=json.dumps(self.baseline()).encode()
+        extra={"baseline_commit":self.baseline()["baseline_commit"],"original_baseline_sha256":hashlib.sha256(raw).hexdigest(),"additional_known_urls":["https://example.org/old-citation"],"additional_known_paper_titles":[]}
+        result=supplemented_baseline(raw,extra)
+        self.assertIn("https://example.org/old-citation",result["known_urls"])
+        with self.assertRaises(ValueError):
+            supplemented_baseline(raw+b" ",extra)
+
+
+if __name__=="__main__":unittest.main()
