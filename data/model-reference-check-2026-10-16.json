@@ -1,0 +1,51 @@
+{
+  "checked_at": "2026-10-16T12:11:14.653283+00:00",
+  "scope": "Bounded read-only check of the official model reference, current official quick start and Choice reference; no model/API invocation, SDK installation, account login or third-party version inference.",
+  "sources": [
+    {
+      "url": "https://docs.typesafe.ai/models",
+      "retrieved_url": "https://docs.typesafe.ai/models",
+      "retrieved_at": "2026-10-16T12:11:14.371839+00:00",
+      "content_sha256": "02b7682a7176d2d6649a2fa4588df45cbbaa3c3460f721828d632a7577e606df",
+      "content_bytes": 7971,
+      "http_status": 200
+    },
+    {
+      "url": "https://docs.typesafe.ai/introduction/quickstart",
+      "retrieved_url": "https://docs.typesafe.ai/introduction/quickstart",
+      "retrieved_at": "2026-10-16T12:11:14.653080+00:00",
+      "content_sha256": "ea75cde163d62593569c9284a7931800b5cf4f6d2c094c5c0a81b93db274effc",
+      "content_bytes": 15088,
+      "http_status": 200
+    },
+    {
+      "url": "https://docs.typesafe.ai/primitives/choice",
+      "retrieved_url": "https://docs.typesafe.ai/primitives/choice",
+      "retrieved_at": "2026-10-16T12:11:14.622072+00:00",
+      "content_sha256": "ae9c49b815ee30b28ed851e22b63041130fba50ae41368d41a5d80b571f383bb",
+      "content_bytes": 26907,
+      "http_status": 200
+    }
+  ],
+  "aliases": {
+    "jev-latest": "jev-1.13.0",
+    "jev-preview": "jev-1.14.0"
+  },
+  "newest_documented_release": {
+    "model": "jev-1.14.0",
+    "release_date": "2026-10-14"
+  },
+  "result": "unchanged_alias_mapping",
+  "compatibility_observations": [
+    "The models reference continues to document POST /v1/systemone and explicit version IDs in the model field.",
+    "The official quick start retains TypeSafeClient, system_one and Choice(instructions, criteria), and its Python example reads response.choices.",
+    "Choice still returns the selected choice, option probabilities and confidence. Existing pinned text-routing examples require no change based on these pages."
+  ],
+  "limits": [
+    "No explicit breaking change affecting the example was found on these three pages; this is not an exhaustive release-note or SDK compatibility audit.",
+    "No installed SDK or hosted inference was tested.",
+    "Aliases may change after this retrieval; the model reference recommends logging the resolved model ID and pinning versions for comparisons."
+  ],
+  "new_resource_count": 0,
+  "publication_note": "Model alias and quickstart references were checked again without running inference. Only the visible model-note verification date changes; no new source is counted."
+}

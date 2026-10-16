@@ -24,3 +24,5 @@ The [2026-10-16 curated-paper reconciliation](curated-paper-refresh-2026-10-16.j
 
 
 The expansion baseline, intake and progress files document the user-requested addition of more than 300 genuinely new resources. The baseline fixes the pre-expansion commit and known identities/evidence. The intake records accepted public URLs; the progress report counts only new, nonduplicate, evidence-checked intake entries. Their presence does not imply full-paper review or model execution. See [the reviewed directory](../docs/expansion-2026-10-16.md).
+
+Primary arXiv abstract imports use `abstract_provider: arxiv_primary_abstract_page`, a same-paper fixed `reviewed_version_url`, its matching `reviewed_version`, a primary-page SHA-256, and `canonical_page_separately_fetched: true`. Keep initial submission in `published_at` / `first_submitted` and the inspected revision date in `reviewed_version_date`. The validator rejects aliases that would bypass the scanner's version protection, conflicting URL identities and missing primary-page evidence. Index-supplied abstracts retain their own provider provenance; they are not required to claim a separately fetched primary page.

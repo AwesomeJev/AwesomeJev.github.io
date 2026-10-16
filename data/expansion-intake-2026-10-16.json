@@ -843,6 +843,50 @@
       ],
       "evidence_scope": "Three author-linked code repositories and one separately published annotated evaluation dataset. All primary README/card hashes independently refetched; file inventories inspected. Four dataset configurations count once; no execution or dataset-row download.",
       "accepted_at": "2026-10-16T11:29:02+00:00"
+    },
+    {
+      "name": "reference_security_annotation",
+      "input_sha256": "76dbb71c545ec78b3b5b7e26d23769655059bda81dade9929f624f2f0baa41d7",
+      "screened_records_proposed": 4,
+      "accepted_count": 4,
+      "accepted_urls": [
+        "https://arxiv.org/abs/2609.28613",
+        "https://arxiv.org/abs/2609.30243",
+        "https://arxiv.org/abs/2609.34862",
+        "https://arxiv.org/abs/2609.24574"
+      ],
+      "evidence_scope": "Fixed-version original arXiv abstracts, dates and author metadata checked independently; schema normalized for version protection without changing source evidence or grade. No full-paper review or reproduction.",
+      "accepted_at": "2026-10-16T12:04:02+00:00"
+    },
+    {
+      "name": "reference_domain_decisions",
+      "input_sha256": "f994faf6c81f7031eb238346b0b48b0e21075f900eff747c585ad5a48edb6e3f",
+      "screened_records_proposed": 4,
+      "accepted_count": 4,
+      "accepted_urls": [
+        "https://arxiv.org/abs/2609.24965",
+        "https://arxiv.org/abs/2609.27678",
+        "https://arxiv.org/abs/2609.34024",
+        "https://arxiv.org/abs/2609.27535"
+      ],
+      "evidence_scope": "Fixed-version original arXiv abstracts, dates and author metadata checked independently; schema normalized for version protection without changing source evidence or grade. No full-paper review or reproduction.",
+      "accepted_at": "2026-10-16T12:04:02+00:00"
+    },
+    {
+      "name": "reference_author_artifacts",
+      "input_sha256": "5b70de9b0a578a9c6f366b143fda553c8491eab733488d709e0214159e56ea10",
+      "screened_records_proposed": 6,
+      "accepted_count": 6,
+      "accepted_urls": [
+        "https://github.com/hazemibrahim97/decision-models-css",
+        "https://github.com/salt-nlp/llms_for_css",
+        "https://github.com/bydeng01/scientific-decision-eval",
+        "https://github.com/hengyuli-ozaki-lab/kite_population_simulator",
+        "https://github.com/zf-utokyo/jev-benchmark",
+        "https://zenodo.org/records/23008156"
+      ],
+      "evidence_scope": "Five repository resources and one author supplementary deposit. Fixed README or deposit descriptions independently refetched with matching hashes; inventories and selected release-scope documents inspected. ZIP contents and dataset rows were not inspected; no code was executed or experiment reproduced.",
+      "accepted_at": "2026-10-16T12:06:57+00:00"
     }
   ]
 }

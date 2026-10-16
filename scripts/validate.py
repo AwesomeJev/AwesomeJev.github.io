@@ -195,8 +195,24 @@ def check_ledger(path: Path, policy=None) -> list[dict]:
                 fail(location, "abstract screening requires a substantive abstract and SHA-256")
             if row.get("retrieval_status") != "success" or row.get("http_status") != 200:
                 fail(location, "abstract screening requires successful retrieval")
-            if not row.get("screening_method") or not row.get("abstract_provider") or "editorial_reviewed" not in row:
+            if not row.get("screening_method") or not isinstance(row.get("abstract_provider"), str) or not row["abstract_provider"] or "editorial_reviewed" not in row:
                 fail(location, "missing abstract provenance or review scope")
+            if str(row.get("abstract_provider", "")).startswith("arxiv_primary"):
+                if row["abstract_provider"] != "arxiv_primary_abstract_page":
+                    fail(location, "primary arXiv abstracts must use the version-protected provider schema")
+                version_url = row.get("reviewed_version_url")
+                version = re.fullmatch(r"https://arxiv\.org/abs/(\d{4}\.\d{4,5})(v[1-9]\d*)", version_url) if isinstance(version_url, str) else None
+                if (not version or not public_url(url)
+                        or source_index.canonical(url) != "https://arxiv.org/abs/" + version[1]
+                        or row.get("reviewed_version") != version[2]):
+                    fail(location, "primary arXiv abstract requires a matching paper identity and reviewed version URL")
+                if version and "url" in row and (not public_url(row["url"])
+                        or source_index.canonical(row["url"]) != "https://arxiv.org/abs/" + version[1]):
+                    fail(location, "primary arXiv URL and canonical identity must match the reviewed paper")
+                page_hash = row.get("abstract_page_sha256")
+                if (not isinstance(page_hash, str) or not HASH.fullmatch(page_hash)
+                        or row.get("canonical_page_separately_fetched") is not True):
+                    fail(location, "primary arXiv abstract requires fetched primary-page evidence")
         if row.get("verification_level") in {"content_screened", "editorial_reviewed"}:
             if not HASH.fullmatch(str(row.get("content_sha256", ""))) or row.get("status") != "screened":
                 fail(location, "content screening requires retrieved content hash and screened status")

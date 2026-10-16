@@ -134,6 +134,29 @@
         ]
       },
       {
+        "id": "confidence-transfer",
+        "title": "Can I reuse a confidence gate across languages or domains?",
+        "paragraphs": [
+          {
+            "text": "Before reusing a confidence gate in a new language or domain, build a target-specific test set with explicit label definitions and annotation provenance; translated or model-generated labels are not independent human validation. Compare the unchanged gate with a threshold tuned only on separate target-domain validation data. Report accepted-case error and coverage per group, including high-confidence errors under independently checked, answer-preserving context additions.",
+            "sources": []
+          },
+          {
+            "text": "The social-science audit reports task-dependent confidence failures using benchmark labels; JevOut’s human checks cover only sampled successful perturbations. Neither abstract establishes multilingual transfer. Language-specific label checks and threshold-transfer comparisons are our proposed protocol, not reproduced findings or population-wide guarantees.",
+            "sources": [
+              {
+                "label": "Social-science annotation audit, v2",
+                "url": "https://arxiv.org/abs/2609.24574v2"
+              },
+              {
+                "label": "JevOut, v2",
+                "url": "https://arxiv.org/abs/2609.30243v2"
+              }
+            ]
+          }
+        ]
+      },
+      {
         "id": "tables-and-cited-evidence",
         "title": "How should I test decisions over tables and cited evidence?",
         "paragraphs": [
@@ -371,6 +394,29 @@
               {
                 "label": "模型版本",
                 "url": "https://docs.typesafe.ai/models"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "confidence-transfer",
+        "title": "置信度门控可以直接迁移到其他语言或领域吗？",
+        "paragraphs": [
+          {
+            "text": "将置信度门控用于新的语言或领域前，应构建目标测试集，明确标签定义与标注来源；翻译标签或模型生成的标签不等于独立人工验证。比较沿用原门控与仅在单独目标领域验证集上调节阈值的方案，分别报告各组的接纳样本错误率和覆盖率，并检查经独立核验、保持答案不变的上下文补充是否造成高置信错误。",
+            "sources": []
+          },
+          {
+            "text": "社会科学标注论文使用基准标签，报告了随任务变化的置信度失效；JevOut 的人工检查仅覆盖成功扰动中的抽样子集。两篇摘要均未确立多语言迁移结论。分语言标签检查与阈值迁移比较是本项目建议的流程，并非已复现结果或总体保证。",
+            "sources": [
+              {
+                "label": "社会科学标注评测 v2",
+                "url": "https://arxiv.org/abs/2609.24574v2"
+              },
+              {
+                "label": "JevOut v2",
+                "url": "https://arxiv.org/abs/2609.30243v2"
               }
             ]
           }

@@ -90,3 +90,15 @@ Two display-only annotations make important boundaries explicit: the option-chan
 DeRef's separate dataset adds argument correctness/path labels and a controlled source-relocation set to existing benchmark material. It is one inspectable dataset artifact, not four separate configuration discoveries or a new independent task population. The companion code does not include model outputs or result caches. The confidence-audit repository fetches datasets separately under mixed source licenses, including noncommercial conditions; the guardrail repository's generated policy cases do not establish real-world attack prevalence.
 
 **中文：** 本批净新增10项：6篇直接论文、3个作者代码仓库与1个独立发布的标注数据资源，累计731项。原始摘要及README／数据卡均有独立重取与哈希核对；未执行代码、下载模型权重或数据行、复现实验。所有新条目同步提供中文简介；六篇提升为精选不再加数，DeRef四个配置合计只算一个数据集。
+
+## Reference-derived studies and companion artifacts
+
+This release adds **14 distinct resources**: eight direct preprints, five repositories and one author supplementary deposit. The expansion reaches **745 additions**, comprising 380 content-screened resources and 365 abstract-checked papers. The complete index contains 4,240 unique sources: 4,193 checked at their stated tiers and 47 metadata-only discoveries. Thirteen additions are directly related; the social-science upstream benchmark is explicitly adjacent.
+
+The [reference review](../../data/expansion-reference-review-2026-10-16.json) records the two four-paper inputs, normalized accepted records, independent source hashes and six-artifact review. Normalization maps initial submission dates and reviewed-version dates to separate fields and uses the scanner's fixed-version primary-abstract schema. It does not change hashes, retrieval times or evidence grades. A display-only annotation carries the medical manuscript's preliminary status into both discovery pages without altering the raw record.
+
+Companion materials count as whole resources. The medical manuscript PDF is not another resource beside its supplement; KITE's mirrors, forecast files, scripts and aggregates remain one repository; the legal package's records and plots remain one package. JevOut's already known implementation adds zero. The upstream social-science repository is cited for its task materials, not as a separate Jev experiment, and no top-level license was confirmed.
+
+All six primary artifact documents were independently refetched with matching hashes, including the medical deposit landing page. Two legal release-scope documents were checked separately. Readable-character counts were recomputed without changing original document hashes; the legal translation was corrected to describe a field-allowlisted export, not sample filtering. No archived contents, data rows, model weights or experiments were executed or independently reproduced. Every addition has a corresponding Chinese description.
+
+**中文：** 本批净新增14项（8篇论文、5个仓库、1个作者补充材料档案），累计745项。论文修订版、精选展示、镜像、脚本、结果子集及同项目PDF均不重复计数。新论文使用固定版本字段，初始与修订日期分开；原始哈希、抓取时间和等级不变。六个材料主页／README均独立重取核对哈希，法律发布范围另行复核；医学档案只查发布页与目录，未检查包内内容。全部新增条目已配中文简介。

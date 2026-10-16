@@ -3,35 +3,35 @@
   "baseline_commit": "3519c15d7e00686a8dbf9b1e184c68726327ab1e",
   "baseline_source_index_sha256": "8bfdd20564f2cda54bb8264c3c802f315e3e9a11b153bd85dde4325f53c841d5",
   "target_new_sources": 301,
-  "accepted_new_sources": 731,
+  "accepted_new_sources": 745,
   "remaining_to_target": 0,
   "target_count_reached": true,
   "current_index_counts": {
     "editorial_reviewed": 4,
-    "content_screened": 2353,
-    "abstract_checked": 1822,
+    "content_screened": 2359,
+    "abstract_checked": 1830,
     "metadata_only": 47,
-    "raw_records": 4240,
-    "unique_records": 4226,
+    "raw_records": 4254,
+    "unique_records": 4240,
     "duplicate_records": 14,
-    "checked_sources": 4179
+    "checked_sources": 4193
   },
   "by_category": {
     "Datasets": 101,
-    "Guides and evaluations": 36,
+    "Guides and evaluations": 37,
     "Models": 52,
-    "Papers": 16,
-    "Projects": 185,
+    "Papers": 24,
+    "Projects": 190,
     "Research foundations": 341
   },
   "by_relation": {
-    "adjacent": 24,
+    "adjacent": 25,
     "background": 341,
-    "direct": 366
+    "direct": 379
   },
   "by_verification_level": {
-    "abstract_checked": 357,
-    "content_screened": 374
+    "abstract_checked": 365,
+    "content_screened": 380
   },
   "verification_note": "Evidence depth is labeled per source. Content screening and abstract checks do not establish full-paper review, peer review, endorsement, or experimental reproduction.",
   "additions": [
@@ -1428,6 +1428,18 @@
       "ledger": "ecosystem-sources.jsonl"
     },
     {
+      "title": "Jev in Medicine — author supplementary release",
+      "url": "https://zenodo.org/records/23008156",
+      "category": "Guides and evaluations",
+      "topic": "evaluation-harness",
+      "description": "Medical benchmark supplementary code and shareable outputs; archive contents were not inspected, copyrighted NEJM text is excluded, and the release is not clinical validation.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "a4e00b3719107b3670b0eb4172fc5f1f631a668f429f82d8b94c2f5654e3d674",
+      "retrieved_at": "2026-10-16T11:57:25.427624+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
       "title": "Jev with coding agents",
       "url": "https://docs.typesafe.ai/introduction/coding-agents",
       "category": "Guides and evaluations",
@@ -2340,6 +2352,66 @@
       "ledger": "research-sources.jsonl"
     },
     {
+      "title": "Decision Hijacking: Prompt Injection Attacks on Jev's Typed Probabilistic Decisions",
+      "url": "https://arxiv.org/abs/2609.28613",
+      "category": "Papers",
+      "topic": "direct-decision-research",
+      "description": "Jev injection audit separates probability shifts from attacker-target selections; adaptive attacks are checked on fresh validation calls over reconstructed InjecAgent cases.",
+      "relation": "direct",
+      "verification_level": "abstract_checked",
+      "content_sha256": "898b72728a465d950ea191589cd6c4aebd1858bc658315ccf6cb7255a62a0d40",
+      "retrieved_at": "2026-10-16T11:40:20+00:00",
+      "ledger": "research-sources.jsonl"
+    },
+    {
+      "title": "Evaluating Decision Models for Text Annotation in Computational Social Science",
+      "url": "https://arxiv.org/abs/2609.24574",
+      "category": "Papers",
+      "topic": "direct-decision-research",
+      "description": "Evaluates decision models and confidence-routed LLM cascades on selected zero-shot social-science annotation tasks; lower cost coexists with task-dependent errors and overconfidence.",
+      "relation": "direct",
+      "verification_level": "abstract_checked",
+      "content_sha256": "0f5170a5e8987b1e9e6f432e25e6decd3e18e1353f489d024310b7afc116cff3",
+      "retrieved_at": "2026-10-16T11:40:20+00:00",
+      "ledger": "research-sources.jsonl"
+    },
+    {
+      "title": "JEV as a Judge for Agent Trace Security: An Empirical Comparison with Generative LLM Judges",
+      "url": "https://arxiv.org/abs/2609.34862",
+      "category": "Papers",
+      "topic": "direct-decision-research",
+      "description": "Retrospective agent-trace risk classification compares Jev with generative judges across four collections; rankings vary by dataset, and latency/cost summarize successful or valid calls.",
+      "relation": "direct",
+      "verification_level": "abstract_checked",
+      "content_sha256": "4aee8edd65542ffc0ba8800c681db222984cbf1bc40b239c829feb823aab3ffa",
+      "retrieved_at": "2026-10-16T11:40:20+00:00",
+      "ledger": "research-sources.jsonl"
+    },
+    {
+      "title": "Jev for Scientific Decisions: Evaluating Semantic Choices and Their Consequences",
+      "url": "https://arxiv.org/abs/2609.24965",
+      "category": "Papers",
+      "topic": "direct-decision-research",
+      "description": "A small scientific-workflow study separates semantic Choices, computed quantities and final labels; selection errors in comparison models can change intermediate counts without changing the final label.",
+      "relation": "direct",
+      "verification_level": "abstract_checked",
+      "content_sha256": "3c4bd5724102faa33a0da01e5fdee7b3e9d0ec4eb2533b02de24e85409147f4d",
+      "retrieved_at": "2026-10-16T11:52:08+00:00",
+      "ledger": "research-sources.jsonl"
+    },
+    {
+      "title": "Jev in Medicine: A Benchmark Evaluation",
+      "url": "https://arxiv.org/abs/2609.34024",
+      "category": "Papers",
+      "topic": "direct-decision-research",
+      "description": "Preliminary medical-benchmark evaluation of Jev 1.13 reports task-dependent accuracy, calibration and weak unanswerable-question detection; it does not establish clinical deployment validity.",
+      "relation": "direct",
+      "verification_level": "abstract_checked",
+      "content_sha256": "25988c14a48518f0e90f24f2f9b907edc4a4a96ef2f51fef7735cf38e89a5209",
+      "retrieved_at": "2026-10-16T11:52:08+00:00",
+      "ledger": "research-sources.jsonl"
+    },
+    {
       "title": "Jev-Mobile: Jev as an Executor for Mobile GUI Agents",
       "url": "https://arxiv.org/abs/2609.30186",
       "category": "Papers",
@@ -2364,6 +2436,18 @@
       "ledger": "research-sources.jsonl"
     },
     {
+      "title": "JevOut: Natural Context Can Flip Decision Models",
+      "url": "https://arxiv.org/abs/2609.30243",
+      "category": "Papers",
+      "topic": "direct-decision-research",
+      "description": "Probability-guided context additions redirect initially correct decisions in four systems while preserving questions and options; human validity checks cover only a sampled subset of successful attacks.",
+      "relation": "direct",
+      "verification_level": "abstract_checked",
+      "content_sha256": "3429d7a57eb41ced8ce4f3b9ca20f201017d85e97fd65d2e818db23bb354f0a3",
+      "retrieved_at": "2026-10-16T11:40:20+00:00",
+      "ledger": "research-sources.jsonl"
+    },
+    {
       "title": "Judges Follow the Reference: The Derivation Gap in Verifying Tool-Call Arguments",
       "url": "https://arxiv.org/abs/2610.18497",
       "category": "Papers",
@@ -2373,6 +2457,18 @@
       "verification_level": "abstract_checked",
       "content_sha256": "503058658264a84669534e672294ba2af62736c2ebd3ec95d08d1414d7e215a4",
       "retrieved_at": "2026-10-16T11:20:08+00:00",
+      "ledger": "research-sources.jsonl"
+    },
+    {
+      "title": "KITE: Scaling Jev Population Experiments with Sparse Flagship Calibration",
+      "url": "https://arxiv.org/abs/2609.27535",
+      "category": "Papers",
+      "topic": "direct-decision-research",
+      "description": "Combines Jev state tables, sparse flagship-model anchors and human–model discrepancy estimates; scaling a simulated population does not increase the underlying human evidence.",
+      "relation": "direct",
+      "verification_level": "abstract_checked",
+      "content_sha256": "7a1c1f4bb28c771a5da44f49801a8547590f941e331ec8bf081f6fcee169214e",
+      "retrieved_at": "2026-10-16T11:52:08+00:00",
       "ledger": "research-sources.jsonl"
     },
     {
@@ -2409,6 +2505,18 @@
       "verification_level": "abstract_checked",
       "content_sha256": "f6cbac19c9acb5fb9e0d10e8afb293704c90acb01ad1084fd5cc2ba182bbe968",
       "retrieved_at": "2026-10-16T10:01:25+00:00",
+      "ledger": "research-sources.jsonl"
+    },
+    {
+      "title": "Same Scores, Different Decisions: Evaluating JEV and Language Models for Legal Document Understanding",
+      "url": "https://arxiv.org/abs/2609.27678",
+      "category": "Papers",
+      "topic": "direct-decision-research",
+      "description": "Repeated ContractNLI evaluations show that opposing corrections and regressions can leave aggregate accuracy unchanged; consistent answers may remain wrong, while majority-vote gains are small and uncertain.",
+      "relation": "direct",
+      "verification_level": "abstract_checked",
+      "content_sha256": "e77c66ad5c4cc7007cadcf394cc654b163cbfd376127101c97c8710157dd8b4e",
+      "retrieved_at": "2026-10-16T11:52:08+00:00",
       "ledger": "research-sources.jsonl"
     },
     {
@@ -3000,6 +3108,18 @@
       "ledger": "ecosystem-sources.jsonl"
     },
     {
+      "title": "decision-models-css — social-science annotation replication package",
+      "url": "https://github.com/hazemibrahim97/decision-models-css",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "Jev annotation collection, saved-call analysis and confidence-routing scripts; fresh inference needs external task data, model access and renewed API spending.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "6ab7f703014db4c67112fbed8e4667d409bd3a0b3979e1257bbb08561b20977f",
+      "retrieved_at": "2026-10-16T11:52:17.630797+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
       "title": "dengyie/decidex",
       "url": "https://github.com/dengyie/decidex",
       "category": "Projects",
@@ -3480,6 +3600,18 @@
       "ledger": "ecosystem-sources.jsonl"
     },
     {
+      "title": "Jev-Benchmark — contract inference records and analysis",
+      "url": "https://github.com/zf-utokyo/jev-benchmark",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "ContractNLI scoring and sanitized prediction records for the initial comparison; raw API bodies and the full revised-paper follow-up are outside the documented release scope.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "b6941cbdf02a8922e12a58bfc853b1be2c8f2182148e28d7290c275961770f64",
+      "retrieved_at": "2026-10-16T11:57:24.072123+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
       "title": "Jev-Sinhala Capability, Primitive Consistency & Benchmark Census Probe",
       "url": "https://github.com/azri-muhsin/jev-sinhala-review",
       "category": "Projects",
@@ -3600,6 +3732,18 @@
       "ledger": "ecosystem-sources.jsonl"
     },
     {
+      "title": "KITE — population experiment code and aggregate evidence",
+      "url": "https://github.com/hengyuli-ozaki-lab/kite_population_simulator",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "Population-kernel simulation and aggregate evaluation records; survey microdata and Jev responses are withheld, and hosted-model reruns need not reproduce saved outputs.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "e008e4aeadc9bb2e941a1e67682b89583d8963a29704a8c4a3217d4ce54cb7ad",
+      "retrieved_at": "2026-10-16T11:57:23.819716+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
       "title": "kitfunso/hippo-memory",
       "url": "https://github.com/kitfunso/hippo-memory",
       "category": "Projects",
@@ -3705,6 +3849,18 @@
       "verification_level": "content_screened",
       "content_sha256": "5b984a917c8ac676e2f51ded74eea739d6756e12e1016a7f0d97ae6e675b6fab",
       "retrieved_at": "2026-10-16T10:39:11+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "LLMs for CSS — upstream task data and evaluation harness",
+      "url": "https://github.com/salt-nlp/llms_for_css",
+      "category": "Projects",
+      "topic": "benchmark-source",
+      "description": "Task data, prompt mappings and evaluation utilities explicitly required by the Jev social-science replication package; upstream benchmark material, not separate Jev results, and no top-level license was found.",
+      "relation": "adjacent",
+      "verification_level": "content_screened",
+      "content_sha256": "698568f67a5ff008970e4eb75e8fc3d4fe021b57bb611056afd1076063ea75c8",
+      "retrieved_at": "2026-10-16T11:52:17.773226+00:00",
       "ledger": "ecosystem-sources.jsonl"
     },
     {
@@ -4233,6 +4389,18 @@
       "verification_level": "content_screened",
       "content_sha256": "8d92da6a9b084f0ddc34e1f5820bcdaabd85a295b2d0f4dc8fab467bf5376b1d",
       "retrieved_at": "2026-10-16T10:05:38+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "Scientific Decision Evaluation — author code and prepared-case artifacts",
+      "url": "https://github.com/bydeng01/scientific-decision-eval",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "Scientific Choice runners and saved-result checks; current expanded development cases differ from the paper snapshot, and repeated prepared cases do not establish generalization.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "8f1c374132448584112508810e7ee024975bc6d4f581bf79116f0612bd786433",
+      "retrieved_at": "2026-10-16T11:57:23.843862+00:00",
       "ledger": "ecosystem-sources.jsonl"
     },
     {

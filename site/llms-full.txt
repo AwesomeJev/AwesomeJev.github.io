@@ -38,6 +38,12 @@ Separate prediction quality from probability quality. Alongside accuracy or a ta
 
 For abstention or escalation, report coverage and error among accepted cases, and test whether the fallback actually corrects mistakes. Freeze model versions and prompts; measure end-to-end latency, failures, and costs separately. This is an evaluation plan, not a result reported for Jev. [SelectiveNet](https://proceedings.mlr.press/v97/geifman19a.html) · [Model versions](https://docs.typesafe.ai/models)
 
+## Can I reuse a confidence gate across languages or domains?
+
+Before reusing a confidence gate in a new language or domain, build a target-specific test set with explicit label definitions and annotation provenance; translated or model-generated labels are not independent human validation. Compare the unchanged gate with a threshold tuned only on separate target-domain validation data. Report accepted-case error and coverage per group, including high-confidence errors under independently checked, answer-preserving context additions.
+
+The social-science audit reports task-dependent confidence failures using benchmark labels; JevOut’s human checks cover only sampled successful perturbations. Neither abstract establishes multilingual transfer. Language-specific label checks and threshold-transfer comparisons are our proposed protocol, not reproduced findings or population-wide guarantees. [Social-science annotation audit, v2](https://arxiv.org/abs/2609.24574v2) · [JevOut, v2](https://arxiv.org/abs/2609.30243v2)
+
 ## How should I test decisions over tables and cited evidence?
 
 Separate schema validity, stability under content-preserving changes, and semantic correctness against reference labels. For tables, pair original inputs with alternative layouts or row/column reorderings only when meaning is preserved. Keep values, relationships and arithmetic fixed, then compare choices and probability distributions. A stable answer can still be wrong; low confidence alone does not identify an error. [Tabular decision preprint, v1](https://arxiv.org/abs/2610.19536v1)
@@ -79,6 +85,14 @@ Papers · Chen et al. · 2026-10-15 · v1
 A benchmark spanning matched requests and closed-loop tasks. Experiments have not been reproduced here.
 
 Primary source: https://arxiv.org/abs/2610.21244v1
+
+## Jev for Scientific Decisions: Evaluating Semantic Choices and Their Consequences
+
+Papers · Deng, Fan, Zhang & Xie · 2026-10-15 · v3
+
+In ten prepared scientific cases, the authors separate semantic selections, computed quantities and final labels; comparison-model errors can be hidden by unchanged final labels.
+
+Primary source: https://arxiv.org/abs/2609.24965v3
 
 ## Selective Reasoning for Typed Decision Models: When to Start, Read, and Stop
 
@@ -192,6 +206,22 @@ Candidate-menu interventions and confidence cascades; ranking stability does not
 
 Primary source: https://arxiv.org/abs/2610.07716v2
 
+## Jev in Medicine: A Benchmark Evaluation
+
+Papers · Madrid-García & Merino-Barbancho · 2026-10-10 · v4
+
+Preliminary medical-benchmark evaluation of Jev 1.13 reports task-dependent accuracy, calibration and weak unanswerable-question detection; it does not establish clinical deployment validity.
+
+Primary source: https://arxiv.org/abs/2609.34024v4
+
+## Same Scores, Different Decisions: Evaluating JEV and Language Models for Legal Document Understanding
+
+Papers · Zhang et al. · 2026-10-10 · v2
+
+ContractNLI request variations can change which answers are wrong while aggregate accuracy stays unchanged; stable answers may preserve errors. This benchmark does not validate real legal deployment.
+
+Primary source: https://arxiv.org/abs/2609.27678v2
+
 ## JEV-as-a-Judge: Accept When Confident, Escalate When Unsure
 
 Papers · Li et al. · 2026-10-09 · v5
@@ -223,6 +253,14 @@ Papers · Cheng et al. · 2026-10-08 · v1
 Bi-encoder approach to multimodal decisions and retrieval through natural-language interfaces.
 
 Primary source: https://arxiv.org/abs/2610.11316v1
+
+## JevOut: Natural Context Can Flip Decision Models
+
+Papers · Xu et al. · 2026-10-08 · v2
+
+Optimizes context additions around unchanged questions and options in four decision systems; results concern initially correct decisions, and human validity checks cover a sampled subset of successful attacks.
+
+Primary source: https://arxiv.org/abs/2609.30243v2
 
 ## Type-Safe Is Not Error-Free: Typed Decision Models Follow the Option Name, Not the Definition Bound to It
 
@@ -328,6 +366,14 @@ A controlled calibration study using constructed probabilities. Interpretations 
 
 Primary source: https://arxiv.org/abs/2609.35342v1
 
+## JEV as a Judge for Agent Trace Security: An Empirical Comparison with Generative LLM Judges
+
+Papers · Wang & Gao · 2026-09-28 · v1
+
+Compares Jev and generative judges on retrospective agent-trace risk classification; dataset rankings vary, and successful-call latency and valid-judgment cost must be read with coverage.
+
+Primary source: https://arxiv.org/abs/2609.34862v1
+
 ## Beyond Calibration: Do Typed Decisions Obey the Probability Axioms?
 
 Papers · Li et al. · 2026-09-27 · v1
@@ -367,6 +413,30 @@ Papers · Zhou et al. · 2026-09-24 · v1
 A Jev-style visual-choice study separating adaptation gains, candidate-readout validity, and calibration limits.
 
 Primary source: https://arxiv.org/abs/2609.29283v1
+
+## Decision Hijacking: Prompt Injection Attacks on Jev's Typed Probabilistic Decisions
+
+Papers · Wu & Lim · 2026-09-23 · v1
+
+Audits Jev injection on reconstructed InjecAgent cases, separating probability shifts from attacker-target selections; optimization results are checked on fresh calls, within this benchmark setting.
+
+Primary source: https://arxiv.org/abs/2609.28613v1
+
+## KITE: Scaling Jev Population Experiments with Sparse Flagship Calibration
+
+Papers · Li · 2026-09-23 · v1
+
+Jev state tables and sparse flagship-model anchors support population simulations with shared human–model discrepancy estimates; larger simulations do not add human evidence or establish prospective intervention effects.
+
+Primary source: https://arxiv.org/abs/2609.27535v1
+
+## Evaluating Decision Models for Text Annotation in Computational Social Science
+
+Papers · Ibrahim & Zaki · 2026-09-23 · v2
+
+Evaluates zero-shot social-science annotation and confidence-routed LLM cascades; lower costs coexist with task-dependent errors and overconfidence, so confidence cannot substitute for label validation.
+
+Primary source: https://arxiv.org/abs/2609.24574v2
 
 ## REFLEX with Jev for Efficient Selective Control in LLM Agents
 

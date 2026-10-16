@@ -218,6 +218,13 @@
       "evidence_url": "https://arxiv.org/abs/2610.15710v1",
       "reviewed_at": "2026-10-16T11:27:34+00:00",
       "note": "Display-only scope clarification from the fixed-version original abstract. Name the mixed labeling and shared-error/selection mechanisms; avoid implying that Jev already distinguishes every confirmed change correctly. The raw abstract evidence and verification tier are unchanged."
+    },
+    {
+      "url": "https://arxiv.org/abs/2609.34024",
+      "relevance": "Preliminary medical-benchmark evaluation of Jev 1.13 reports task-dependent accuracy, calibration and weak unanswerable-question detection; it does not establish clinical deployment validity.",
+      "evidence_url": "https://arxiv.org/html/2609.34024v4",
+      "reviewed_at": "2026-10-16T12:07:43+00:00",
+      "note": "Display-only preliminary-status and clinical-scope clarification from the fixed-version manuscript notice. Original abstract evidence and grade remain unchanged; targeted notice inspection is not full-paper review."
     }
   ]
 }

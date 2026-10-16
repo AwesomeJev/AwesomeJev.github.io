@@ -1,0 +1,696 @@
+{
+  "schema_version": 1,
+  "baseline_current_commit": "9df0024860220ebf67075dada47ac80905a96e36",
+  "accepted_papers": 8,
+  "primary_checks": [
+    {
+      "url": "https://arxiv.org/abs/2609.28613",
+      "evidence_url": "https://arxiv.org/abs/2609.28613v1",
+      "abstract_sha256": "898b72728a465d950ea191589cd6c4aebd1858bc658315ccf6cb7255a62a0d40",
+      "primary_page_sha256": "857430cf2d395301bfdbae627ab7b75410ffdd10e5044aa8964cd54355dd399e",
+      "hash_match": true,
+      "http_status": 200,
+      "checked_at": "2026-10-16T11:57:09+00:00"
+    },
+    {
+      "url": "https://arxiv.org/abs/2609.30243",
+      "evidence_url": "https://arxiv.org/abs/2609.30243v2",
+      "abstract_sha256": "3429d7a57eb41ced8ce4f3b9ca20f201017d85e97fd65d2e818db23bb354f0a3",
+      "primary_page_sha256": "df742f0943a98c3a3da921f460d6fd30c9d0ece279f2bfc905ae092e6a12ccea",
+      "hash_match": true,
+      "http_status": 200,
+      "checked_at": "2026-10-16T11:57:09+00:00"
+    },
+    {
+      "url": "https://arxiv.org/abs/2609.34862",
+      "evidence_url": "https://arxiv.org/abs/2609.34862v1",
+      "abstract_sha256": "4aee8edd65542ffc0ba8800c681db222984cbf1bc40b239c829feb823aab3ffa",
+      "primary_page_sha256": "ea84968d6c4611f124b77d882fd399ef453e4bb1184a378f3885b4cc036650eb",
+      "hash_match": true,
+      "http_status": 200,
+      "checked_at": "2026-10-16T11:57:09+00:00"
+    },
+    {
+      "url": "https://arxiv.org/abs/2609.24574",
+      "evidence_url": "https://arxiv.org/abs/2609.24574v2",
+      "abstract_sha256": "0f5170a5e8987b1e9e6f432e25e6decd3e18e1353f489d024310b7afc116cff3",
+      "primary_page_sha256": "ad49342371567be3ceeece3a64f66713ea61a30c5072da5944349c4f959f3e77",
+      "hash_match": true,
+      "http_status": 200,
+      "checked_at": "2026-10-16T11:57:09+00:00"
+    },
+    {
+      "url": "https://arxiv.org/abs/2609.24965",
+      "evidence_url": "https://arxiv.org/abs/2609.24965v3",
+      "abstract_sha256": "3c4bd5724102faa33a0da01e5fdee7b3e9d0ec4eb2533b02de24e85409147f4d",
+      "primary_page_sha256": "ce306496c105bae81e4214f4612056859af51522205f391f80f71359c27cc47a",
+      "hash_match": true,
+      "http_status": 200,
+      "checked_at": "2026-10-16T11:57:10+00:00"
+    },
+    {
+      "url": "https://arxiv.org/abs/2609.27678",
+      "evidence_url": "https://arxiv.org/abs/2609.27678v2",
+      "abstract_sha256": "e77c66ad5c4cc7007cadcf394cc654b163cbfd376127101c97c8710157dd8b4e",
+      "primary_page_sha256": "8c23ae0e7c18c1364b6bbcb62110cc96c688c45b371531fd8b73cc918e64e124",
+      "hash_match": true,
+      "http_status": 200,
+      "checked_at": "2026-10-16T11:57:10+00:00"
+    },
+    {
+      "url": "https://arxiv.org/abs/2609.34024",
+      "evidence_url": "https://arxiv.org/abs/2609.34024v4",
+      "abstract_sha256": "25988c14a48518f0e90f24f2f9b907edc4a4a96ef2f51fef7735cf38e89a5209",
+      "primary_page_sha256": "3f9595573e7294dabad858a10fa95034ab221b18ff9bc5b762cf963bae81dcea",
+      "hash_match": true,
+      "http_status": 200,
+      "checked_at": "2026-10-16T11:57:10+00:00"
+    },
+    {
+      "url": "https://arxiv.org/abs/2609.27535",
+      "evidence_url": "https://arxiv.org/abs/2609.27535v1",
+      "abstract_sha256": "7a1c1f4bb28c771a5da44f49801a8547590f941e331ec8bf081f6fcee169214e",
+      "primary_page_sha256": "cf24e2e4f291f0dec427c4894b6a3794eee3c830114e463ab38f57a847db602b",
+      "hash_match": true,
+      "http_status": 200,
+      "checked_at": "2026-10-16T11:57:10+00:00"
+    }
+  ],
+  "first_batch_review": {
+    "schema_version": 1,
+    "reviewed_at": "2026-10-16T11:52:09+00:00",
+    "baseline_commit": "9df0024",
+    "candidate_file_sha256": "f5a1cdd82eb6d811b7e0bac8e7a272ba14347f12562f4441a04eca0c33acf5f3",
+    "review_scope": "Independent original-abstract, metadata, fixed-version submission-history, and author-line review; fixed-version HTML was used only for author metadata. The JevOut author repository citation was checked because its HTML omits the author line. No full-paper review, code execution or experimental reproduction.",
+    "eligible_new_papers": 4,
+    "excluded": [],
+    "deduplication": {
+      "current_ledgers": true,
+      "frozen_baseline_and_supplement": true,
+      "readme_docs_catalog_bib_citations": true,
+      "canonical_url_aliases": true,
+      "abstract_and_page_hashes": true,
+      "normalized_titles": true,
+      "duplicate_matches": 0
+    },
+    "integration_note": "Version-provenance fields were normalized in the accepted artifact so the pinned-primary scanner preserves these exact abstracts. published_at records first submission; reviewed_version_date records the checked revision. No source hash, verification grade or retrieval timestamp changed. All results remain author-reported preprints. No companion repository is added or counted again.",
+    "records": [
+      {
+        "url": "https://arxiv.org/abs/2609.28613",
+        "reviewed_version_url": "https://arxiv.org/abs/2609.28613v1",
+        "decision": "eligible_for_parent_reviewed_integration",
+        "abstract_hash_matches": true,
+        "abstract_page_hash_matches": true,
+        "abstract_sha256": "898b72728a465d950ea191589cd6c4aebd1858bc658315ccf6cb7255a62a0d40",
+        "abstract_page_sha256": "857430cf2d395301bfdbae627ab7b75410ffdd10e5044aa8964cd54355dd399e",
+        "title_and_author_metadata_match": true,
+        "first_submitted": "2026-09-23",
+        "version_date": "2026-09-23",
+        "version": "v1",
+        "primary_evidence_url": "https://arxiv.org/abs/2609.28613v1",
+        "author_evidence_url": "https://arxiv.org/html/2609.28613v1",
+        "author_check": "Visible fixed-version manuscript author line agrees with primary abstract metadata; no compound-name or accent correction found.",
+        "authors": [
+          "Wu, Tiantong",
+          "Lim, Wei Yang Bryan"
+        ],
+        "scope_note": "Probability movement is not equivalent to validated attacker-target selection. Reconstructed benchmark cases do not establish deployment-wide risk.",
+        "new_paper_identity": true,
+        "known_companion_repository": null,
+        "companion_counted_as_new": false,
+        "required_schema_normalization": null,
+        "preserve_fields": [
+          "abstract_sha256",
+          "abstract_page_sha256",
+          "retrieved_at",
+          "verification_level",
+          "first_submitted"
+        ],
+        "verification_level": "abstract_checked",
+        "full_text_reviewed": false,
+        "editorial_reviewed": false,
+        "applied_schema_normalization": {
+          "abstract_provider": "arxiv_primary_abstract_page",
+          "reviewed_version": "v1",
+          "reviewed_version_url": "https://arxiv.org/abs/2609.28613v1",
+          "reviewed_version_date": "2026-09-23",
+          "published_at": "2026-09-23"
+        }
+      },
+      {
+        "url": "https://arxiv.org/abs/2609.30243",
+        "reviewed_version_url": "https://arxiv.org/abs/2609.30243v2",
+        "decision": "eligible_for_parent_reviewed_integration",
+        "abstract_hash_matches": true,
+        "abstract_page_hash_matches": true,
+        "abstract_sha256": "3429d7a57eb41ced8ce4f3b9ca20f201017d85e97fd65d2e818db23bb354f0a3",
+        "abstract_page_sha256": "df742f0943a98c3a3da921f460d6fd30c9d0ece279f2bfc905ae092e6a12ccea",
+        "title_and_author_metadata_match": true,
+        "first_submitted": "2026-09-24",
+        "version_date": "2026-10-08",
+        "version": "v2",
+        "primary_evidence_url": "https://arxiv.org/abs/2609.30243v2",
+        "author_evidence_url": "https://github.com/xzx34/JevOut#citation",
+        "author_check": "Fixed-version HTML omits an author line. The author repository BibTeX independently agrees with all seven names and surname ordering in primary abstract metadata.",
+        "authors": [
+          "Xu, Zixiang",
+          "Song, Zirui",
+          "Zhang, Chiyu",
+          "Chen, Xiuying",
+          "Liu, Xi",
+          "Hu, Xiyang",
+          "Zhao, Yue"
+        ],
+        "scope_note": "Optimized adversarial additions are not a random sample of ordinary context. Human validity judgments apply to sampled successful attacks, not all perturbations.",
+        "new_paper_identity": true,
+        "known_companion_repository": "https://github.com/xzx34/JevOut",
+        "companion_counted_as_new": false,
+        "required_schema_normalization": null,
+        "preserve_fields": [
+          "abstract_sha256",
+          "abstract_page_sha256",
+          "retrieved_at",
+          "verification_level",
+          "first_submitted"
+        ],
+        "verification_level": "abstract_checked",
+        "full_text_reviewed": false,
+        "editorial_reviewed": false,
+        "applied_schema_normalization": {
+          "abstract_provider": "arxiv_primary_abstract_page",
+          "reviewed_version": "v2",
+          "reviewed_version_url": "https://arxiv.org/abs/2609.30243v2",
+          "reviewed_version_date": "2026-10-08",
+          "published_at": "2026-09-24"
+        }
+      },
+      {
+        "url": "https://arxiv.org/abs/2609.34862",
+        "reviewed_version_url": "https://arxiv.org/abs/2609.34862v1",
+        "decision": "eligible_for_parent_reviewed_integration",
+        "abstract_hash_matches": true,
+        "abstract_page_hash_matches": true,
+        "abstract_sha256": "4aee8edd65542ffc0ba8800c681db222984cbf1bc40b239c829feb823aab3ffa",
+        "abstract_page_sha256": "ea84968d6c4611f124b77d882fd399ef453e4bb1184a378f3885b4cc036650eb",
+        "title_and_author_metadata_match": true,
+        "first_submitted": "2026-09-28",
+        "version_date": "2026-09-28",
+        "version": "v1",
+        "primary_evidence_url": "https://arxiv.org/abs/2609.34862v1",
+        "author_evidence_url": "https://arxiv.org/html/2609.34862v1",
+        "author_check": "Visible fixed-version manuscript author line agrees with primary abstract metadata; no compound-name or accent correction found.",
+        "authors": [
+          "Wang, Zhiqiang",
+          "Gao, Yichao"
+        ],
+        "scope_note": "Retrospective trace classification does not demonstrate that a live guardrail prevents unsafe actions. Resource estimates concern successful or valid calls.",
+        "new_paper_identity": true,
+        "known_companion_repository": null,
+        "companion_counted_as_new": false,
+        "required_schema_normalization": null,
+        "preserve_fields": [
+          "abstract_sha256",
+          "abstract_page_sha256",
+          "retrieved_at",
+          "verification_level",
+          "first_submitted"
+        ],
+        "verification_level": "abstract_checked",
+        "full_text_reviewed": false,
+        "editorial_reviewed": false,
+        "applied_schema_normalization": {
+          "abstract_provider": "arxiv_primary_abstract_page",
+          "reviewed_version": "v1",
+          "reviewed_version_url": "https://arxiv.org/abs/2609.34862v1",
+          "reviewed_version_date": "2026-09-28",
+          "published_at": "2026-09-28"
+        }
+      },
+      {
+        "url": "https://arxiv.org/abs/2609.24574",
+        "reviewed_version_url": "https://arxiv.org/abs/2609.24574v2",
+        "decision": "eligible_for_parent_reviewed_integration",
+        "abstract_hash_matches": true,
+        "abstract_page_hash_matches": true,
+        "abstract_sha256": "0f5170a5e8987b1e9e6f432e25e6decd3e18e1353f489d024310b7afc116cff3",
+        "abstract_page_sha256": "ad49342371567be3ceeece3a64f66713ea61a30c5072da5944349c4f959f3e77",
+        "title_and_author_metadata_match": true,
+        "first_submitted": "2026-09-21",
+        "version_date": "2026-09-23",
+        "version": "v2",
+        "primary_evidence_url": "https://arxiv.org/abs/2609.24574v2",
+        "author_evidence_url": "https://arxiv.org/html/2609.24574v2",
+        "author_check": "Visible fixed-version manuscript author line agrees with primary abstract metadata; no compound-name or accent correction found.",
+        "authors": [
+          "Ibrahim, Hazem",
+          "Zaki, Yasir"
+        ],
+        "scope_note": "The abstract distinguishes 18 collected tasks from 15 evaluation tasks. Cost and cascade findings are author-reported snapshots of selected tasks and models.",
+        "new_paper_identity": true,
+        "known_companion_repository": null,
+        "companion_counted_as_new": false,
+        "required_schema_normalization": null,
+        "preserve_fields": [
+          "abstract_sha256",
+          "abstract_page_sha256",
+          "retrieved_at",
+          "verification_level",
+          "first_submitted"
+        ],
+        "verification_level": "abstract_checked",
+        "full_text_reviewed": false,
+        "editorial_reviewed": false,
+        "applied_schema_normalization": {
+          "abstract_provider": "arxiv_primary_abstract_page",
+          "reviewed_version": "v2",
+          "reviewed_version_url": "https://arxiv.org/abs/2609.24574v2",
+          "reviewed_version_date": "2026-09-23",
+          "published_at": "2026-09-21"
+        }
+      }
+    ],
+    "accepted_file_sha256": "76dbb71c545ec78b3b5b7e26d23769655059bda81dade9929f624f2f0baa41d7",
+    "normalization": {
+      "input_sha256": "f5a1cdd82eb6d811b7e0bac8e7a272ba14347f12562f4441a04eca0c33acf5f3",
+      "accepted_sha256": "76dbb71c545ec78b3b5b7e26d23769655059bda81dade9929f624f2f0baa41d7",
+      "abstract_provider": "arxiv_primary_abstract_page",
+      "published_at_semantics": "First submission date; candidate version dates are preserved as reviewed_version_date.",
+      "removed_aliases": [
+        "version",
+        "version_url"
+      ],
+      "field_mappings": [
+        {
+          "url": "https://arxiv.org/abs/2609.28613",
+          "from_published_at": "2026-09-23",
+          "published_at": "2026-09-23",
+          "reviewed_version_date": "2026-09-23",
+          "reviewed_version_url": "https://arxiv.org/abs/2609.28613v1",
+          "reviewed_version": "v1"
+        },
+        {
+          "url": "https://arxiv.org/abs/2609.30243",
+          "from_published_at": "2026-10-08",
+          "published_at": "2026-09-24",
+          "reviewed_version_date": "2026-10-08",
+          "reviewed_version_url": "https://arxiv.org/abs/2609.30243v2",
+          "reviewed_version": "v2"
+        },
+        {
+          "url": "https://arxiv.org/abs/2609.34862",
+          "from_published_at": "2026-09-28",
+          "published_at": "2026-09-28",
+          "reviewed_version_date": "2026-09-28",
+          "reviewed_version_url": "https://arxiv.org/abs/2609.34862v1",
+          "reviewed_version": "v1"
+        },
+        {
+          "url": "https://arxiv.org/abs/2609.24574",
+          "from_published_at": "2026-09-23",
+          "published_at": "2026-09-21",
+          "reviewed_version_date": "2026-09-23",
+          "reviewed_version_url": "https://arxiv.org/abs/2609.24574v2",
+          "reviewed_version": "v2"
+        }
+      ],
+      "all_four_pinned_primary_abstract": true,
+      "all_four_record_safe": true,
+      "evidence_hash_grade_and_retrieval_time_unchanged": true
+    }
+  },
+  "second_batch_review": {
+    "schema_version": 1,
+    "reviewed_at": "2026-10-16T11:57:21+00:00",
+    "baseline_commit": "9df0024860220ebf67075dada47ac80905a96e36",
+    "candidate_file_sha256": "ed05547b4a3197e34534fc24c2055037cc3b459b5f2b83bf5f3a38c7e8f295f7",
+    "review_scope": "Independent cached original-abstract, primary metadata, submission-history, and targeted fixed-version manuscript author-line checks. The medical manuscript preliminary-results notice was also checked. No full-paper methodology audit, code execution, experiment reproduction or clinical/legal validation.",
+    "eligible_new_papers": 4,
+    "excluded": [],
+    "deduplication": {
+      "current_committed_ledgers": true,
+      "frozen_baseline_and_supplement": true,
+      "readme_docs_catalog_bib_citations": true,
+      "prior_four_pending_papers": true,
+      "canonical_url_aliases": true,
+      "abstract_and_page_hashes": true,
+      "normalized_titles": true,
+      "duplicate_matches": 0
+    },
+    "source_boundary_note": "The abstract hashes identify the arXiv landing-page abstracts. Manuscript HTML is separately cited for author names and the explicit medical preliminary-results notice; it is not substituted for the hashed source.",
+    "records": [
+      {
+        "url": "https://arxiv.org/abs/2609.24965",
+        "decision": "eligible_for_parent_reviewed_integration",
+        "primary_evidence_url": "https://arxiv.org/abs/2609.24965v3",
+        "author_evidence_url": "https://arxiv.org/html/2609.24965v3",
+        "abstract_hash_matches": true,
+        "abstract_page_hash_matches": true,
+        "abstract_sha256": "3c4bd5724102faa33a0da01e5fdee7b3e9d0ec4eb2533b02de24e85409147f4d",
+        "abstract_page_sha256": "ce306496c105bae81e4214f4612056859af51522205f391f80f71359c27cc47a",
+        "title_and_author_metadata_match": true,
+        "first_submitted": "2026-09-21",
+        "reviewed_version": "v3",
+        "reviewed_version_date": "2026-10-15",
+        "authors": [
+          "Deng, Boyuan",
+          "Fan, Shuyi",
+          "Zhang, Hongyang",
+          "Xie, Xinhong"
+        ],
+        "author_check": "All four names agree with the visible fixed-version manuscript author line.",
+        "scope_note": "Twenty Choices in ten prepared scientific cases, with repeated calls. Repetition does not create additional scientific cases, and a correct final label can hide incorrect intermediate quantities.",
+        "suggested_visible_description": null,
+        "verification_level": "abstract_checked",
+        "full_text_reviewed": false,
+        "editorial_reviewed": false
+      },
+      {
+        "url": "https://arxiv.org/abs/2609.27678",
+        "decision": "eligible_for_parent_reviewed_integration",
+        "primary_evidence_url": "https://arxiv.org/abs/2609.27678v2",
+        "author_evidence_url": "https://arxiv.org/html/2609.27678v2",
+        "abstract_hash_matches": true,
+        "abstract_page_hash_matches": true,
+        "abstract_sha256": "e77c66ad5c4cc7007cadcf394cc654b163cbfd376127101c97c8710157dd8b4e",
+        "abstract_page_sha256": "8c23ae0e7c18c1364b6bbcb62110cc96c688c45b371531fd8b73cc918e64e124",
+        "title_and_author_metadata_match": true,
+        "first_submitted": "2026-09-23",
+        "reviewed_version": "v2",
+        "reviewed_version_date": "2026-10-10",
+        "authors": [
+          "Zhang, Fan",
+          "Chen, Yankai",
+          "Xie, Zhuohan",
+          "Zhou, Yixi",
+          "Peng, Sijia",
+          "Fan, Lei",
+          "Ji, Xinhua",
+          "Zheng, Cunyuan",
+          "Shan, Huangyong",
+          "Yu, Philip S.",
+          "Liu, Xue",
+          "Chen, Yu",
+          "Nakov, Preslav",
+          "He, Songwei"
+        ],
+        "author_check": "All fourteen names and their order agree with the visible fixed-version author line, including Philip S. Yu.",
+        "scope_note": "ContractNLI request-variation and repeated-call results concern benchmark judgments. Stable aggregate accuracy or repeated agreement does not establish correct legal interpretation or deployment suitability.",
+        "suggested_visible_description": null,
+        "verification_level": "abstract_checked",
+        "full_text_reviewed": false,
+        "editorial_reviewed": false
+      },
+      {
+        "url": "https://arxiv.org/abs/2609.34024",
+        "decision": "eligible_for_parent_reviewed_integration",
+        "primary_evidence_url": "https://arxiv.org/abs/2609.34024v4",
+        "author_evidence_url": "https://arxiv.org/html/2609.34024v4",
+        "abstract_hash_matches": true,
+        "abstract_page_hash_matches": true,
+        "abstract_sha256": "25988c14a48518f0e90f24f2f9b907edc4a4a96ef2f51fef7735cf38e89a5209",
+        "abstract_page_sha256": "3f9595573e7294dabad858a10fa95034ab221b18ff9bc5b762cf963bae81dcea",
+        "title_and_author_metadata_match": true,
+        "first_submitted": "2026-09-27",
+        "reviewed_version": "v4",
+        "reviewed_version_date": "2026-10-10",
+        "authors": [
+          "Madrid-García, Alfredo",
+          "Merino-Barbancho, Beatriz"
+        ],
+        "author_check": "The visible author line confirms Alfredo Madrid-García and Beatriz Merino-Barbancho, preserving both compound surnames and the García accent.",
+        "scope_note": "Selected medical QA and diagnostic-case benchmarks are not prospective clinical validation. The fixed-version manuscript explicitly marks findings preliminary; independent replication, clinical reference adjudication, and run-to-run stability remain pending.",
+        "suggested_visible_description": {
+          "en": "Preliminary medical benchmark evaluation of Jev 1.13 reports task-dependent accuracy and calibration plus weak unanswerable-question detection; it does not establish readiness for clinical decision-making.",
+          "zh": "Jev 1.13 的初步医学基准评测报告了随任务变化的准确率和校准表现，以及较弱的不可回答问题识别能力；这并不证明其已适用于临床决策。"
+        },
+        "verification_level": "abstract_checked",
+        "full_text_reviewed": false,
+        "editorial_reviewed": false
+      },
+      {
+        "url": "https://arxiv.org/abs/2609.27535",
+        "decision": "eligible_for_parent_reviewed_integration",
+        "primary_evidence_url": "https://arxiv.org/abs/2609.27535v1",
+        "author_evidence_url": "https://arxiv.org/html/2609.27535v1",
+        "abstract_hash_matches": true,
+        "abstract_page_hash_matches": true,
+        "abstract_sha256": "7a1c1f4bb28c771a5da44f49801a8547590f941e331ec8bf081f6fcee169214e",
+        "abstract_page_sha256": "cf24e2e4f291f0dec427c4894b6a3794eee3c830114e463ab38f57a847db602b",
+        "title_and_author_metadata_match": true,
+        "first_submitted": "2026-09-23",
+        "reviewed_version": "v1",
+        "reviewed_version_date": "2026-09-23",
+        "authors": [
+          "Li, Hengyu"
+        ],
+        "author_check": "Hengyu Li agrees with the visible fixed-version manuscript author line.",
+        "scope_note": "Population execution is simulation using published human evidence and model correction anchors. More simulated agents do not add independent human observations; retrospective coverage is not a prospective human trial.",
+        "suggested_visible_description": null,
+        "verification_level": "abstract_checked",
+        "full_text_reviewed": false,
+        "editorial_reviewed": false
+      }
+    ],
+    "accepted_file_sha256": "f994faf6c81f7031eb238346b0b48b0e21075f900eff747c585ad5a48edb6e3f",
+    "normalization": {
+      "input_sha256": "ed05547b4a3197e34534fc24c2055037cc3b459b5f2b83bf5f3a38c7e8f295f7",
+      "accepted_sha256": "f994faf6c81f7031eb238346b0b48b0e21075f900eff747c585ad5a48edb6e3f",
+      "published_at_semantics": "First submission date; original candidate version dates are preserved as reviewed_version_date.",
+      "removed_aliases": [
+        "version",
+        "version_url"
+      ],
+      "field_mappings": [
+        {
+          "url": "https://arxiv.org/abs/2609.24965",
+          "from_published_at": "2026-10-15",
+          "published_at": "2026-09-21",
+          "reviewed_version_date": "2026-10-15",
+          "reviewed_version": "v3",
+          "reviewed_version_url": "https://arxiv.org/abs/2609.24965v3"
+        },
+        {
+          "url": "https://arxiv.org/abs/2609.27678",
+          "from_published_at": "2026-10-10",
+          "published_at": "2026-09-23",
+          "reviewed_version_date": "2026-10-10",
+          "reviewed_version": "v2",
+          "reviewed_version_url": "https://arxiv.org/abs/2609.27678v2"
+        },
+        {
+          "url": "https://arxiv.org/abs/2609.34024",
+          "from_published_at": "2026-10-10",
+          "published_at": "2026-09-27",
+          "reviewed_version_date": "2026-10-10",
+          "reviewed_version": "v4",
+          "reviewed_version_url": "https://arxiv.org/abs/2609.34024v4"
+        },
+        {
+          "url": "https://arxiv.org/abs/2609.27535",
+          "from_published_at": "2026-09-23",
+          "published_at": "2026-09-23",
+          "reviewed_version_date": "2026-09-23",
+          "reviewed_version": "v1",
+          "reviewed_version_url": "https://arxiv.org/abs/2609.27535v1"
+        }
+      ],
+      "all_four_pinned_primary_abstract": true,
+      "all_four_record_safe": true,
+      "new_primary_abstract_schema_errors": [],
+      "evidence_hash_grade_retrieval_time_and_authors_unchanged": true
+    },
+    "all_four_primary_schema_valid": true
+  },
+  "counting_scope": "Eight canonical paper identities, once each. Revised versions and curated promotions do not add extra resources.",
+  "limits": "Original abstracts, bibliographic metadata and targeted author lines only. No full-paper review or experimental reproduction.",
+  "artifacts_review": {
+    "schema_version": 1,
+    "reviewed_at": "2026-10-16T12:05:24+00:00",
+    "accepted_count": 6,
+    "accepted_urls": [
+      "https://github.com/hazemibrahim97/decision-models-css",
+      "https://github.com/salt-nlp/llms_for_css",
+      "https://github.com/bydeng01/scientific-decision-eval",
+      "https://github.com/hengyuli-ozaki-lab/kite_population_simulator",
+      "https://github.com/zf-utokyo/jev-benchmark",
+      "https://zenodo.org/records/23008156"
+    ],
+    "input_sha256": {
+      "awesomejev-next-direct-paper-artifacts-reviewed.jsonl": "28e4311fdcd266b5c4cd5638924d0dd3c66144bb3db0a3b06e6d99ff86081b36",
+      "awesomejev-next-remaining-paper-artifacts-reviewed.jsonl": "8ff4e6af3fbaf6569c9b550525683ca6a61f366eb9ebfdef743073205140fd94"
+    },
+    "accepted_sha256": "5b70de9b0a578a9c6f366b143fda553c8491eab733488d709e0214159e56ea10",
+    "relations": {
+      "direct": 5,
+      "adjacent": 1
+    },
+    "verification_levels": {
+      "content_screened": 6
+    },
+    "source_body_hashes_preserved": true,
+    "urls_grades_and_retrieval_times_preserved": true,
+    "corrections": [
+      {
+        "url": "https://github.com/hazemibrahim97/decision-models-css",
+        "field": "readable_characters",
+        "previous": 4276,
+        "corrected": 3804,
+        "method": "Existing collect_ecosystem.readable with markdown input; source bytes and hash unchanged."
+      },
+      {
+        "url": "https://github.com/salt-nlp/llms_for_css",
+        "field": "readable_characters",
+        "previous": 2112,
+        "corrected": 1911,
+        "method": "Existing collect_ecosystem.readable with markdown input; source bytes and hash unchanged."
+      },
+      {
+        "url": "https://github.com/bydeng01/scientific-decision-eval",
+        "field": "readable_characters",
+        "previous": 4913,
+        "corrected": 3790,
+        "method": "Existing collect_ecosystem.readable with markdown input; source bytes and hash unchanged."
+      },
+      {
+        "url": "https://github.com/hengyuli-ozaki-lab/kite_population_simulator",
+        "field": "readable_characters",
+        "previous": 7778,
+        "corrected": 6595,
+        "method": "Existing collect_ecosystem.readable with markdown input; source bytes and hash unchanged."
+      },
+      {
+        "url": "https://github.com/zf-utokyo/jev-benchmark",
+        "field": "readable_characters",
+        "previous": 609,
+        "corrected": 326,
+        "method": "Existing collect_ecosystem.readable with markdown input; source bytes and hash unchanged."
+      },
+      {
+        "url": "https://github.com/zf-utokyo/jev-benchmark",
+        "fields": [
+          "limitations_zh",
+          "proposed_relevance_zh",
+          "relevance_zh"
+        ],
+        "reason": "The release exports an allowlist of fields and retains invalid attempts; sanitized does not mean selecting favorable prediction rows.",
+        "corrected_wording": "按字段白名单导出的预测记录",
+        "evidence_url": "https://raw.githubusercontent.com/ZF-Utokyo/Jev-Benchmark/57b42a356de9369fa07f9a67bb224228e9c4047b/docs/release_scope.md"
+      },
+      {
+        "url": "https://zenodo.org/records/23008156",
+        "field": "readable_characters",
+        "previous": 88715,
+        "corrected": 3709,
+        "method": "Existing collect_ecosystem.readable with html input; source bytes and hash unchanged."
+      }
+    ],
+    "scope_checks": [
+      {
+        "url": "https://github.com/hazemibrahim97/decision-models-css",
+        "finding": "Author CSS replication package; saved-output analysis and fresh inference remain distinct. Software MIT declaration does not relicense upstream task datasets.",
+        "counting_unit": "one repository"
+      },
+      {
+        "url": "https://github.com/salt-nlp/llms_for_css",
+        "finding": "SALT is an upstream benchmark dependency and remains adjacent. No top-level license or GitHub-detected license was identified; original dataset terms require separate checks.",
+        "counting_unit": "one upstream repository"
+      },
+      {
+        "url": "https://github.com/bydeng01/scientific-decision-eval",
+        "finding": "Scientific repository contains expanded prepared cases beyond the fixed paper study. Release documentation distinguishes current release hashes from historical manifests and omitted source/development files.",
+        "counting_unit": "one repository, not case or result subsets"
+      },
+      {
+        "url": "https://github.com/hengyuli-ozaki-lab/kite_population_simulator",
+        "finding": "KITE publishes aggregate evidence and code, not survey microdata, survey texts or Jev response caches. Later hosted runs need not reproduce saved outputs.",
+        "counting_unit": "one repository, excluding protocol mirrors and aggregate subfiles"
+      },
+      {
+        "url": "https://github.com/zf-utokyo/jev-benchmark",
+        "finding": "Legal release documents the initial ten-model and fixed-anchor comparison, not every v2 follow-up. Field-allowlisted predictions are not raw API bodies; all invalid attempts are retained according to the release scope.",
+        "counting_unit": "one repository"
+      },
+      {
+        "url": "https://zenodo.org/records/23008156",
+        "finding": "Zenodo is registered as a preprint deposit but separately lists a supplementary ZIP. Count the supplementary artifact once, not the manuscript PDF or archive members. Only landing/API inventory/server-rendered ZIP directory were inspected; no archive member, code, data row or archive license contents were read.",
+        "counting_unit": "one supplementary release",
+        "identity_aliases": [
+          "https://doi.org/10.5281/zenodo.23008156",
+          "https://doi.org/10.5281/zenodo.23008155",
+          "https://zenodo.org/records/23008155"
+        ]
+      }
+    ],
+    "deduplication": "Six canonical URLs and six evidence hashes are distinct. Current-ledger checks, including Zenodo record and concept DOI aliases, found no prior identity/evidence match during this review.",
+    "validation": "All six satisfy the existing public-ledger schema and privacy boundary. This cross-review made no new network requests and executed no downloaded source code or experiments.",
+    "limits": [
+      "Content-screened means the specified README/card/landing text was inspected, not that archived files or execution results were validated.",
+      "No full-paper review, experimental reproduction, clinical/legal deployment validation or unrestricted upstream-data license is claimed.",
+      "Original source bodies, contacts and local cache paths are excluded from this review record."
+    ]
+  },
+  "artifact_parent_checks": [
+    {
+      "url": "https://github.com/hazemibrahim97/decision-models-css",
+      "evidence_url": "https://raw.githubusercontent.com/hazemibrahim97/decision-models-css/311956c2d1096cabc0f09a1f248e7dc0e1c0c41e/README.md",
+      "http_status": 200,
+      "sha256": "6ab7f703014db4c67112fbed8e4667d409bd3a0b3979e1257bbb08561b20977f",
+      "hash_match": true,
+      "checked_at": "2026-10-16T12:01:00+00:00"
+    },
+    {
+      "url": "https://github.com/salt-nlp/llms_for_css",
+      "evidence_url": "https://raw.githubusercontent.com/SALT-NLP/LLMs_for_CSS/55183a64d7faaf6d5fc23eddf2bfc48ece4cacad/README.md",
+      "http_status": 200,
+      "sha256": "698568f67a5ff008970e4eb75e8fc3d4fe021b57bb611056afd1076063ea75c8",
+      "hash_match": true,
+      "checked_at": "2026-10-16T12:01:00+00:00"
+    },
+    {
+      "url": "https://github.com/bydeng01/scientific-decision-eval",
+      "evidence_url": "https://raw.githubusercontent.com/bydeng01/scientific-decision-eval/2b7c10a5d5af741cdb109dd8eeea296515c1d723/README.md",
+      "http_status": 200,
+      "sha256": "8f1c374132448584112508810e7ee024975bc6d4f581bf79116f0612bd786433",
+      "hash_match": true,
+      "checked_at": "2026-10-16T12:01:00+00:00"
+    },
+    {
+      "url": "https://github.com/hengyuli-ozaki-lab/kite_population_simulator",
+      "evidence_url": "https://raw.githubusercontent.com/HengyuLi-Ozaki-lab/kite_population_simulator/be8809fe3aafa80ce4e9e56c599cf9499f9dbe2a/README.md",
+      "http_status": 200,
+      "sha256": "e008e4aeadc9bb2e941a1e67682b89583d8963a29704a8c4a3217d4ce54cb7ad",
+      "hash_match": true,
+      "checked_at": "2026-10-16T12:01:00+00:00"
+    },
+    {
+      "url": "https://github.com/zf-utokyo/jev-benchmark",
+      "evidence_url": "https://raw.githubusercontent.com/ZF-Utokyo/Jev-Benchmark/57b42a356de9369fa07f9a67bb224228e9c4047b/README.md",
+      "http_status": 200,
+      "sha256": "b6941cbdf02a8922e12a58bfc853b1be2c8f2182148e28d7290c275961770f64",
+      "hash_match": true,
+      "checked_at": "2026-10-16T12:01:00+00:00"
+    },
+    {
+      "url": "https://zenodo.org/records/23008156",
+      "evidence_url": "https://zenodo.org/records/23008156",
+      "http_status": 200,
+      "sha256": "a4e00b3719107b3670b0eb4172fc5f1f631a668f429f82d8b94c2f5654e3d674",
+      "hash_match": true,
+      "checked_at": "2026-10-16T12:01:01+00:00"
+    }
+  ],
+  "release_document_parent_checks": [
+    {
+      "url": "https://raw.githubusercontent.com/ZF-Utokyo/Jev-Benchmark/57b42a356de9369fa07f9a67bb224228e9c4047b/docs/release_scope.md",
+      "sha256": "76245a5a1d997675375101797c3575833dfb71f664785e58146676aec57616e8",
+      "hash_match": true,
+      "checked_at": "2026-10-16T12:02:28+00:00"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/ZF-Utokyo/Jev-Benchmark/57b42a356de9369fa07f9a67bb224228e9c4047b/docs/reproduction.md",
+      "sha256": "85ce1c622828b814a4fa0a7b2e98ea588cb44844701def3ad35f75d2a1193084",
+      "hash_match": true,
+      "checked_at": "2026-10-16T12:02:28+00:00"
+    }
+  ]
+}

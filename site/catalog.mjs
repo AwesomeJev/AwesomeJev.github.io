@@ -268,6 +268,82 @@ const translations = {
 const resources = [
   {
     "category": "Papers",
+    "title": "Decision Hijacking: Prompt Injection Attacks on Jev's Typed Probabilistic Decisions",
+    "by": "Wu & Lim · 2026-09-23 · v1",
+    "date": "2026-09-23",
+    "url": "https://arxiv.org/abs/2609.28613v1",
+    "en": "Audits Jev injection on reconstructed InjecAgent cases, separating probability shifts from attacker-target selections; optimization results are checked on fresh calls, within this benchmark setting.",
+    "zh": "在重构的 InjecAgent 案例中审查 Jev 提示注入，区分概率偏移与攻击目标选择；优化结果通过新调用验证，结论限于该基准设置。"
+  },
+  {
+    "category": "Papers",
+    "title": "JevOut: Natural Context Can Flip Decision Models",
+    "by": "Xu et al. · 2026-10-08 · v2",
+    "date": "2026-10-08",
+    "url": "https://arxiv.org/abs/2609.30243v2",
+    "en": "Optimizes context additions around unchanged questions and options in four decision systems; results concern initially correct decisions, and human validity checks cover a sampled subset of successful attacks.",
+    "zh": "在四种决策系统中围绕不变的题目和选项优化上下文补充；结果针对原本答对的决策，人工有效性检查仅覆盖成功攻击的抽样子集。"
+  },
+  {
+    "category": "Papers",
+    "title": "JEV as a Judge for Agent Trace Security: An Empirical Comparison with Generative LLM Judges",
+    "by": "Wang & Gao · 2026-09-28 · v1",
+    "date": "2026-09-28",
+    "url": "https://arxiv.org/abs/2609.34862v1",
+    "en": "Compares Jev and generative judges on retrospective agent-trace risk classification; dataset rankings vary, and successful-call latency and valid-judgment cost must be read with coverage.",
+    "zh": "比较 Jev 与生成式评判模型对历史 agent 轨迹的风险分类；排名因数据集而异，成功调用耗时和有效判断成本需结合覆盖率解读。"
+  },
+  {
+    "category": "Papers",
+    "title": "Evaluating Decision Models for Text Annotation in Computational Social Science",
+    "by": "Ibrahim & Zaki · 2026-09-23 · v2",
+    "date": "2026-09-23",
+    "url": "https://arxiv.org/abs/2609.24574v2",
+    "en": "Evaluates zero-shot social-science annotation and confidence-routed LLM cascades; lower costs coexist with task-dependent errors and overconfidence, so confidence cannot substitute for label validation.",
+    "zh": "评估零样本社会科学标注与按置信度分流的 LLM 级联；低成本仍伴随任务相关误差和过度自信，置信度不能替代标签验证。"
+  },
+  {
+    "category": "Papers",
+    "title": "Jev for Scientific Decisions: Evaluating Semantic Choices and Their Consequences",
+    "by": "Deng, Fan, Zhang & Xie · 2026-10-15 · v3",
+    "date": "2026-10-15",
+    "first_submitted": "2026-09-21",
+    "url": "https://arxiv.org/abs/2609.24965v3",
+    "en": "In ten prepared scientific cases, the authors separate semantic selections, computed quantities and final labels; comparison-model errors can be hidden by unchanged final labels.",
+    "zh": "作者在十个预设科学案例中分别评估语义选择、计算得到的数值与最终标签；对比模型的错误可能被不变的最终标签掩盖。"
+  },
+  {
+    "category": "Papers",
+    "title": "Same Scores, Different Decisions: Evaluating JEV and Language Models for Legal Document Understanding",
+    "by": "Zhang et al. · 2026-10-10 · v2",
+    "date": "2026-10-10",
+    "first_submitted": "2026-09-23",
+    "url": "https://arxiv.org/abs/2609.27678v2",
+    "en": "ContractNLI request variations can change which answers are wrong while aggregate accuracy stays unchanged; stable answers may preserve errors. This benchmark does not validate real legal deployment.",
+    "zh": "ContractNLI 请求变化可能改变具体错误答案，而总体准确率保持不变；稳定答案也可能保留错误。该基准不能验证真实法律场景的部署有效性。"
+  },
+  {
+    "category": "Papers",
+    "title": "Jev in Medicine: A Benchmark Evaluation",
+    "by": "Madrid-García & Merino-Barbancho · 2026-10-10 · v4",
+    "date": "2026-10-10",
+    "first_submitted": "2026-09-27",
+    "url": "https://arxiv.org/abs/2609.34024v4",
+    "en": "Preliminary medical-benchmark evaluation of Jev 1.13 reports task-dependent accuracy, calibration and weak unanswerable-question detection; it does not establish clinical deployment validity.",
+    "zh": "Jev 1.13 的初步医学基准评测报告了随任务变化的准确率、校准表现及较弱的不可回答问题识别能力；这不能证明临床部署有效性。"
+  },
+  {
+    "category": "Papers",
+    "title": "KITE: Scaling Jev Population Experiments with Sparse Flagship Calibration",
+    "by": "Li · 2026-09-23 · v1",
+    "date": "2026-09-23",
+    "first_submitted": "2026-09-23",
+    "url": "https://arxiv.org/abs/2609.27535v1",
+    "en": "Jev state tables and sparse flagship-model anchors support population simulations with shared human–model discrepancy estimates; larger simulations do not add human evidence or establish prospective intervention effects.",
+    "zh": "Jev 状态表与少量强模型锚点支持纳入共享人—模型差异估计的群体模拟；扩大模拟规模不会增加人类证据，也不能确立前瞻性干预效果。"
+  },
+  {
+    "category": "Papers",
     "title": "Beyond Answer Confidence: A Controlled Audit of Self-Knowledge in a Black-Box Decision Model",
     "by": "Shankaranarayana, Runje & Jannink · 2026-10-01 · v1",
     "date": "2026-10-01",
