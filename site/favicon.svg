@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" fill="#0081a7" />
+  <rect width="64" height="64" fill="#0b3954" />
   <path
     d="M17 40h17m-9-17v22m15-22v16c0 10-4 14-12 14"
     fill="none"
-    stroke="#fdfcdc"
+    stroke="#ffffff"
     stroke-width="4"
   />
-  <circle cx="40" cy="15" r="2.5" fill="#fdfcdc" />
+  <circle cx="40" cy="15" r="2.5" fill="#ffffff" />
 </svg>
