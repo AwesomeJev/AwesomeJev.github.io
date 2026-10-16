@@ -83,6 +83,15 @@
                 "url": "https://docs.typesafe.ai/primitives/noul"
               }
             ]
+          },
+          {
+            "text": "Keep ordinal label usage, a Score mean, returned confidence, and probability calibration separate. In the tested models and datasets, the v2 ordinal-scale study reports concentrated final choices despite broad average candidate probabilities; finer scales increased compression, and accuracy gains did not necessarily restore utilization. Where a final label is selected, compare its frequency with reference-label frequencies; do not assume every level should occur equally often. Treat this as an additional diagnostic, not a calibration test. The findings are author-reported in the abstract, not our reproduction or evidence that Jev’s Score API has the same failure.",
+            "sources": [
+              {
+                "label": "Ordinal-scale utilization study, v2",
+                "url": "https://arxiv.org/abs/2609.38827v2"
+              }
+            ]
           }
         ]
       },
@@ -347,6 +356,15 @@
               {
                 "label": "Noul 文档",
                 "url": "https://docs.typesafe.ai/primitives/noul"
+              }
+            ]
+          },
+          {
+            "text": "应区分有序等级的使用分布、Score 均值、返回的置信度与概率校准。该量表研究 v2 在所测模型与数据集上报告：最终选择集中，即使平均候选概率分布较宽；细化量表加剧压缩，提高准确率也未必恢复等级使用。若系统最终选择一个等级，可将其频率与参考标签频率比较，而非假设各等级应均匀出现。这是额外诊断，不是校准检验。上述研究发现来自作者摘要，未经本项目复现，也不能据此断言 Jev 的 Score API 存在同样问题。",
+            "sources": [
+              {
+                "label": "有序量表使用偏差研究 v2",
+                "url": "https://arxiv.org/abs/2609.38827v2"
               }
             ]
           }

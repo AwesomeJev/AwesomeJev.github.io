@@ -55,6 +55,8 @@ def category(row: dict) -> str:
         return "Models"
     if "github.com" in url:
         return "Projects"
+    if row.get("source_type") == "anonymous_repository" and row.get("topic") == "implementation-repository":
+        return "Projects"
     return "Guides and evaluations"
 
 

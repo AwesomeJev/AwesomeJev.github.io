@@ -47,7 +47,7 @@ On **2026-10-16**, `jev-latest` points to `jev-1.13.0` and `jev-preview` to `jev
 
 ## Papers
 
-All 49 direct studies below are **arXiv preprints**. Dates identify the linked, reviewed version, not necessarily the first submission. Results are author-reported; this project has not reproduced their experiments. Titles that contain speed or cost claims retain the authors' wording. [Bibliography](references.bib) · [Evidence comparison](docs/survey.md)
+All 52 direct studies below are **arXiv preprints**. Dates identify the linked, reviewed version, not necessarily the first submission. Results are author-reported; this project has not reproduced their experiments. Titles that contain speed or cost claims retain the authors' wording. [Bibliography](references.bib) · [Evidence comparison](docs/survey.md)
 
 ### Evaluation and benchmarking
 
@@ -63,6 +63,7 @@ All 49 direct studies below are **arXiv preprints**. Dates identify the linked, 
 
 ### Probability calibration and coherence
 
+- **[More Choices, Fewer Decisions: Ordinal-Scale Bias in JEV-like Direct-Decision Models](https://arxiv.org/abs/2609.38827v2)** — Gao et al. *2026-10-14, arXiv v2; first submitted 2026-09-30*. Audits ordinal label underuse across selected decision models; finer scales increase compression, while accuracy, final-label utilization and averaged candidate probabilities remain distinct measures. [Anonymous code artifact](https://anonymous.4open.science/r/jev_ordinal_scale_bia/).
 - **[Beyond Answer Confidence: A Controlled Audit of Self-Knowledge in a Black-Box Decision Model](https://arxiv.org/abs/2610.01006v1)** — Shankaranarayana, Runje & Jannink. *2026-10-01, arXiv v1*. Controls information and surface cues to distinguish Jev answer confidence from self-knowledge; black-box behavior does not establish access to an internal knowledge state. [Code](https://github.com/syntheme/beyond-answer-confidence).
 - **[AnyJev Technical Report](https://arxiv.org/abs/2610.00831v1)** — Zhang et al. *2026-09-30, arXiv v1*. Training-free probability readout with label-prior and option-order correction. [Code](https://github.com/nokia-applied-research/AnyJev).
 - **[Jev thinks “I don’t know”, but doesn’t say it: Introducing Sys1Cal-v1 Dataset for Probability Calibration](https://arxiv.org/abs/2609.35342v1)** — Porcedda. *2026-09-28, arXiv v1*. Controlled probability targets for testing calibration.
@@ -105,6 +106,7 @@ All 49 direct studies below are **arXiv preprints**. Dates identify the linked, 
 - **[Chinese-Jev: Bringing System One Model to Chinese-Language Tasks](https://arxiv.org/abs/2609.36965v1)** — Wang et al. *2026-09-29, arXiv v1*. Chinese decision-model training and domain-specific evaluation.
 - **[Mnemon: Raw Records, Fast Judgments, Slow Thoughts](https://arxiv.org/abs/2609.36059v1)** — Wang. *2026-09-28, arXiv v1*. Keeps raw memory records, separating Jev relevance judgments from LLM search planning and answer generation. [Code and runs](https://github.com/Grivn/mnemon-memory-agent).
 - **[From Text Decisions to Pixels: An Study of Jev-Style Visual Choice Model](https://arxiv.org/abs/2609.29283v1)** — Zhou, Yang & Zhao. *2026-09-24, arXiv v1*. Visual choice models; adaptation and calibration evaluated separately.
+- **[Visual Jev: Accurate and Efficient Decisions from Shared Visual Context](https://arxiv.org/abs/2609.25845v1)** — Yu & Yao. *2026-09-22, arXiv v1*. An independent visual decision architecture shares image context across batched questions using an LM-head readout; warm amortized speedups trade higher peak memory, while accuracy gains concentrate on trained task families. [Code and reproduction scope](https://github.com/guanxuyu-sv/Visual-Jev).
 - **[Jev-Mem: System-One-Controlled Agentic Memory for Efficient AI Agents](https://arxiv.org/abs/2609.23986v1)** — Jiang, Li & Li. *2026-09-21, arXiv v1*. Decision-based control of agent memory construction and retrieval.
 - **[this-that-model-1.0: A typed decision model that decides in 30 ms, for a millionth of a cent](https://arxiv.org/abs/2609.23886v1)** — Cheng, Dai & Sun. *2026-09-20, arXiv v1*. A typed-decision architecture with hidden-state probability readout.
 
@@ -115,6 +117,7 @@ All 49 direct studies below are **arXiv preprints**. Dates identify the linked, 
 - **[Jev in Medicine: A Benchmark Evaluation](https://arxiv.org/abs/2609.34024v4)** — Madrid-García & Merino-Barbancho. *2026-10-10, arXiv v4; first submitted 2026-09-27*. Preliminary medical-benchmark evaluation of Jev 1.13 reports task-dependent accuracy, calibration and weak unanswerable-question detection; it does not establish clinical deployment validity. [Author supplement](https://zenodo.org/records/23008156).
 - **[Evaluating Decision Models for Text Annotation in Computational Social Science](https://arxiv.org/abs/2609.24574v2)** — Ibrahim & Zaki. *2026-09-23, arXiv v2; first submitted 2026-09-21*. Evaluates zero-shot social-science annotation and confidence-routed LLM cascades; lower costs coexist with task-dependent errors and overconfidence, so confidence cannot substitute for label validation. [Code and recorded calls](https://github.com/hazemibrahim97/decision-models-css).
 - **[KITE: Scaling Jev Population Experiments with Sparse Flagship Calibration](https://arxiv.org/abs/2609.27535v1)** — Li. *2026-09-23, arXiv v1*. Jev state tables and sparse flagship-model anchors support population simulations with shared human–model discrepancy estimates; larger simulations do not add human evidence or establish prospective intervention effects. [Code and aggregates](https://github.com/HengyuLi-Ozaki-lab/kite_population_simulator).
+- **[Can Jev Judge Radiology Reports? Evaluating a System One Model for Clinical Factuality](https://arxiv.org/abs/2609.27607v1)** — Huang et al. *2026-09-23, arXiv v1*. Jev checks support between generated and reference radiology reports in both directions; expert agreement depends on report size and error definitions and does not establish prospective clinical effectiveness.
 
 ## Models
 
@@ -197,7 +200,7 @@ Background literature and comparison methods. These works do **not** establish J
 | Composable pipelines | Khattab et al., *DSPy*. 2023. | [Paper](https://arxiv.org/abs/2310.03714) |
 | Efficient execution | Zheng et al., *SGLang*. NeurIPS, 2024. | [Paper](https://papers.nips.cc/paper_files/paper/2024/file/724be4472168f31ba1c9ac630f15dec8-Paper-Conference.pdf) · [Code](https://github.com/sgl-project/sglang) |
 
-All 57 selected papers are included in [references.bib](references.bib). See the [latest paper-selection review](docs/reviews/papers-2026-10-16.md) for verification scope and limitations.
+All 60 selected papers are included in [references.bib](references.bib). See the [latest paper-selection review](docs/reviews/papers-2026-10-16.md) for verification scope and limitations.
 
 ## Quick start
 

@@ -102,3 +102,13 @@ Companion materials count as whole resources. The medical manuscript PDF is not 
 All six primary artifact documents were independently refetched with matching hashes, including the medical deposit landing page. Two legal release-scope documents were checked separately. Readable-character counts were recomputed without changing original document hashes; the legal translation was corrected to describe a field-allowlisted export, not sample filtering. No archived contents, data rows, model weights or experiments were executed or independently reproduced. Every addition has a corresponding Chinese description.
 
 **中文：** 本批净新增14项（8篇论文、5个仓库、1个作者补充材料档案），累计745项。论文修订版、精选展示、镜像、脚本、结果子集及同项目PDF均不重复计数。新论文使用固定版本字段，初始与修订日期分开；原始哈希、抓取时间和等级不变。六个材料主页／README均独立重取核对哈希，法律发布范围另行复核；医学档案只查发布页与目录，未检查包内内容。全部新增条目已配中文简介。
+
+## Ordinal, visual and report-evaluation follow-up
+
+Five distinct additions—three primary-abstract paper records and two whole code projects—bring the expansion to **750 sources**, with 382 content-screened artifacts and 368 abstract-checked papers. The complete index has 4,245 unique sources: 4,198 checked at their stated tiers and 47 metadata-only discoveries. Curated promotion of the three papers adds zero further resources.
+
+The [review](../../data/expansion-ordinal-visual-review-2026-10-16.json) retains fixed versions, original hashes and review limits. Paper abstracts were independently refetched. Artifact checks instead used matching cached README, reproduction and selected-directory evidence; a parent batch refetch ended with HTTP 403 and is not represented as a fresh successful check. Original retrieval dates remain unchanged. The anonymous repository is categorized as a code project, with its file-revision and missing-material limits visible. Adapters, asset pieces, result subsets and project-page mirrors are not separate discoveries.
+
+The next bounded reference pass inspected 138 citations from these three fixed-version manuscripts and found no additional uncollected direct papers: two relevant papers and four non-paper direct references were already known, while the remaining citations were background. No ordinary background was added to fill a numerical quota. This is a statement about that inspected reference set, not a claim that no other relevant work exists.
+
+**中文：** 本批净新增5项（3篇论文、2个完整代码项目），累计750项；精选提升、适配器、分片和镜像不重复计数。论文原始摘要独立重取通过；代码资料按原缓存正文和目录哈希复核，不把HTTP403的新取失败写成成功，也不更新原抓取时间。后续检查三篇论文的138条引用，没有找到未收录的直接论文，未扩收普通背景凑数。

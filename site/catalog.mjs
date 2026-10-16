@@ -268,6 +268,36 @@ const translations = {
 const resources = [
   {
     "category": "Papers",
+    "title": "Can Jev Judge Radiology Reports? Evaluating a System One Model for Clinical Factuality",
+    "by": "Huang et al. · 2026-09-23 · v1",
+    "date": "2026-09-23",
+    "first_submitted": "2026-09-23",
+    "url": "https://arxiv.org/abs/2609.27607v1",
+    "en": "Jev checks support between generated and reference radiology reports in both directions; expert agreement depends on report size and error definitions and does not establish prospective clinical effectiveness.",
+    "zh": "Jev 双向检查生成与参考放射学报告之间的陈述支持关系；与专家的一致性受报告长度和错误定义影响，并不证明前瞻性临床效果。"
+  },
+  {
+    "category": "Papers",
+    "title": "More Choices, Fewer Decisions: Ordinal-Scale Bias in JEV-like Direct-Decision Models",
+    "by": "Gao et al. · 2026-10-14 · v2",
+    "date": "2026-10-14",
+    "first_submitted": "2026-09-30",
+    "url": "https://arxiv.org/abs/2609.38827v2",
+    "en": "Audits ordinal label underuse across selected decision models; finer scales increase compression, while accuracy, final-label utilization and averaged candidate probabilities remain distinct measures.",
+    "zh": "审查所选决策模型对有序标签的使用不足；细化量表会加重压缩，准确率、最终标签利用率和平均候选概率仍是不同测量。"
+  },
+  {
+    "category": "Papers",
+    "title": "Visual Jev: Accurate and Efficient Decisions from Shared Visual Context",
+    "by": "Yu & Yao · 2026-09-22 · v1",
+    "date": "2026-09-22",
+    "first_submitted": "2026-09-22",
+    "url": "https://arxiv.org/abs/2609.25845v1",
+    "en": "An independent visual decision architecture shares image context across batched questions using an LM-head readout; warm amortized speedups trade higher peak memory, while accuracy gains concentrate on trained task families.",
+    "zh": "独立的视觉决策架构以语言模型头读出，让批处理问题共享图像上下文；预热后的摊销加速伴随更高峰值内存，准确率收益集中于训练覆盖的任务家族。"
+  },
+  {
+    "category": "Papers",
     "title": "Decision Hijacking: Prompt Injection Attacks on Jev's Typed Probabilistic Decisions",
     "by": "Wu & Lim · 2026-09-23 · v1",
     "date": "2026-09-23",

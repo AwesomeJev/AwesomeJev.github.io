@@ -3,35 +3,35 @@
   "baseline_commit": "3519c15d7e00686a8dbf9b1e184c68726327ab1e",
   "baseline_source_index_sha256": "8bfdd20564f2cda54bb8264c3c802f315e3e9a11b153bd85dde4325f53c841d5",
   "target_new_sources": 301,
-  "accepted_new_sources": 745,
+  "accepted_new_sources": 750,
   "remaining_to_target": 0,
   "target_count_reached": true,
   "current_index_counts": {
     "editorial_reviewed": 4,
-    "content_screened": 2359,
-    "abstract_checked": 1830,
+    "content_screened": 2361,
+    "abstract_checked": 1833,
     "metadata_only": 47,
-    "raw_records": 4254,
-    "unique_records": 4240,
+    "raw_records": 4259,
+    "unique_records": 4245,
     "duplicate_records": 14,
-    "checked_sources": 4193
+    "checked_sources": 4198
   },
   "by_category": {
     "Datasets": 101,
     "Guides and evaluations": 37,
     "Models": 52,
-    "Papers": 24,
-    "Projects": 190,
+    "Papers": 27,
+    "Projects": 192,
     "Research foundations": 341
   },
   "by_relation": {
     "adjacent": 25,
     "background": 341,
-    "direct": 379
+    "direct": 384
   },
   "by_verification_level": {
-    "abstract_checked": 365,
-    "content_screened": 380
+    "abstract_checked": 368,
+    "content_screened": 382
   },
   "verification_note": "Evidence depth is labeled per source. Content screening and abstract checks do not establish full-paper review, peer review, endorsement, or experimental reproduction.",
   "additions": [
@@ -2352,6 +2352,18 @@
       "ledger": "research-sources.jsonl"
     },
     {
+      "title": "Can Jev Judge Radiology Reports? Evaluating a System One Model for Clinical Factuality",
+      "url": "https://arxiv.org/abs/2609.27607",
+      "category": "Papers",
+      "topic": "direct-decision-research",
+      "description": "Checks statement support in both directions between generated and reference radiology reports; agreement depends on report size and error scope, and a specialized comparator remains stronger on clinically significant errors.",
+      "relation": "direct",
+      "verification_level": "abstract_checked",
+      "content_sha256": "3239e5a740f99121cc1ba98c04e31709b3a18c695b6860a8520f838721714e79",
+      "retrieved_at": "2026-10-16T12:16:34.052101+00:00",
+      "ledger": "research-sources.jsonl"
+    },
+    {
       "title": "Decision Hijacking: Prompt Injection Attacks on Jev's Typed Probabilistic Decisions",
       "url": "https://arxiv.org/abs/2609.28613",
       "category": "Papers",
@@ -2484,6 +2496,18 @@
       "ledger": "research-sources.jsonl"
     },
     {
+      "title": "More Choices, Fewer Decisions: Ordinal-Scale Bias in JEV-like Direct-Decision Models",
+      "url": "https://arxiv.org/abs/2609.38827",
+      "category": "Papers",
+      "topic": "direct-decision-research",
+      "description": "Studies underuse of ordinal labels in direct-decision models; finer scales intensify compression, while better accuracy or shuffled option order does not necessarily restore scale utilization.",
+      "relation": "direct",
+      "verification_level": "abstract_checked",
+      "content_sha256": "11da327e2f623bfeb039d1d0f75b174b635d6dcb91612ae0fe8bf5f6ca47db7e",
+      "retrieved_at": "2026-10-16T12:16:34.055084+00:00",
+      "ledger": "research-sources.jsonl"
+    },
+    {
       "title": "One Word Opens the Gate: The Option-Channel Attack on Typed Decision Models as Agent Guardrails",
       "url": "https://arxiv.org/abs/2610.12292",
       "category": "Papers",
@@ -2601,6 +2625,18 @@
       "verification_level": "abstract_checked",
       "content_sha256": "5056cfae7d1c42b1545311a6e40fce0beaab00aefafcff3d8d08c247c65eecca",
       "retrieved_at": "2026-10-16T10:01:30+00:00",
+      "ledger": "research-sources.jsonl"
+    },
+    {
+      "title": "Visual Jev: Accurate and Efficient Decisions from Shared Visual Context",
+      "url": "https://arxiv.org/abs/2609.25845",
+      "category": "Papers",
+      "topic": "direct-decision-research",
+      "description": "Shares an image prefix across batched forced-choice questions; reported training gains concentrate on represented task families, and warm amortized execution savings trade off against peak memory.",
+      "relation": "direct",
+      "verification_level": "abstract_checked",
+      "content_sha256": "5d320d1459fc23efa2129117d8938563810fe99c4d40932bcea2cf6ae522ffad",
+      "retrieved_at": "2026-10-16T12:16:33.987559+00:00",
       "ledger": "research-sources.jsonl"
     },
     {
@@ -4164,6 +4200,18 @@
       "ledger": "ecosystem-sources.jsonl"
     },
     {
+      "title": "Ordinal-scale utilization — anonymous review artifact",
+      "url": "https://anonymous.4open.science/r/jev_ordinal_scale_bia",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "Anonymous ordinal-scale audit code, frozen indexes and documented prediction releases; original text and post-trained checkpoints are omitted, and unavailable historical data revisions can block exact reconstruction.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "d56870df6300d1ea9c1a303712a7c12dec59e140880e057ef00e9ff1c46b37bc",
+      "retrieved_at": "2026-10-16T12:22:44.534032+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
       "title": "OutThisLife/jev-tutorial",
       "url": "https://github.com/outthislife/jev-tutorial",
       "category": "Projects",
@@ -4785,6 +4833,18 @@
       "verification_level": "content_screened",
       "content_sha256": "0d101fd7b34d900d631a1bddae7b5946859acb7eb0a02171d97cc295e7093a82",
       "retrieved_at": "2026-10-16T10:05:38+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "Visual Jev — shared-image decision implementation",
+      "url": "https://github.com/guanxuyu-sv/visual-jev",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "Shared-image decision code and scored outputs; source images and raw per-example predictions are omitted, while fresh predictions require upstream datasets, model weights and compute.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "25d66790bc28cf10f3bf2af532771cfbf9e16d4aecd8f693a9cc46ff4c96983a",
+      "retrieved_at": "2026-10-16T12:21:32.279565+00:00",
       "ledger": "ecosystem-sources.jsonl"
     },
     {

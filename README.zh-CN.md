@@ -47,7 +47,7 @@ TypeSafe 的 Jev 接收状态与类型化问题，为应用代码返回决策和
 
 ## 论文
 
-下列 49 项直接研究均为 **arXiv 预印本**。日期对应已核查并链接的版本，不一定是首次提交日期。结果由作者报告，本项目没有复现实验。标题中的速度或成本主张保留作者原文。[参考文献](references.bib) · [证据比较](docs/survey.zh-CN.md)
+下列 52 项直接研究均为 **arXiv 预印本**。日期对应已核查并链接的版本，不一定是首次提交日期。结果由作者报告，本项目没有复现实验。标题中的速度或成本主张保留作者原文。[参考文献](references.bib) · [证据比较](docs/survey.zh-CN.md)
 
 ### 评测与基准
 
@@ -63,6 +63,7 @@ TypeSafe 的 Jev 接收状态与类型化问题，为应用代码返回决策和
 
 ### 概率校准与一致性
 
+- **[More Choices, Fewer Decisions: Ordinal-Scale Bias in JEV-like Direct-Decision Models](https://arxiv.org/abs/2609.38827v2)** — Gao et al. *2026-10-14, arXiv v2；首次提交 2026-09-30*. 审查所选决策模型对有序标签的使用不足；细化量表会加重压缩，准确率、最终标签利用率和平均候选概率仍是不同测量。 [匿名代码材料](https://anonymous.4open.science/r/jev_ordinal_scale_bia/)。
 - **[Beyond Answer Confidence: A Controlled Audit of Self-Knowledge in a Black-Box Decision Model](https://arxiv.org/abs/2610.01006v1)** — Shankaranarayana, Runje & Jannink. *2026-10-01, arXiv v1*. 通过控制信息与表面线索，区分 Jev 的答案置信度与是否知道答案的自评；黑盒表现并不证明能读取内部知识状态。 [代码](https://github.com/syntheme/beyond-answer-confidence)。
 - **[AnyJev Technical Report](https://arxiv.org/abs/2610.00831v1)** — Zhang et al. *2026-09-30, arXiv v1*. 无需训练的概率读出，修正标签先验与选项顺序偏差。 [代码](https://github.com/nokia-applied-research/AnyJev)。
 - **[Jev thinks “I don’t know”, but doesn’t say it: Introducing Sys1Cal-v1 Dataset for Probability Calibration](https://arxiv.org/abs/2609.35342v1)** — Porcedda. *2026-09-28, arXiv v1*. 以构造概率目标进行受控校准测试。
@@ -105,6 +106,7 @@ TypeSafe 的 Jev 接收状态与类型化问题，为应用代码返回决策和
 - **[Chinese-Jev: Bringing System One Model to Chinese-Language Tasks](https://arxiv.org/abs/2609.36965v1)** — Wang et al. *2026-09-29, arXiv v1*. 中文决策模型训练与领域评测。
 - **[Mnemon: Raw Records, Fast Judgments, Slow Thoughts](https://arxiv.org/abs/2609.36059v1)** — Wang. *2026-09-28, arXiv v1*. 保留原始记忆记录，将 Jev 相关性判断与 LLM 检索规划、回答生成分开。 [代码与运行记录](https://github.com/Grivn/mnemon-memory-agent)。
 - **[From Text Decisions to Pixels: An Study of Jev-Style Visual Choice Model](https://arxiv.org/abs/2609.29283v1)** — Zhou, Yang & Zhao. *2026-09-24, arXiv v1*. 视觉选择模型，分别考察适配与校准。
+- **[Visual Jev: Accurate and Efficient Decisions from Shared Visual Context](https://arxiv.org/abs/2609.25845v1)** — Yu & Yao. *2026-09-22, arXiv v1*. 独立的视觉决策架构以语言模型头读出，让批处理问题共享图像上下文；预热后的摊销加速伴随更高峰值内存，准确率收益集中于训练覆盖的任务家族。 [代码与复现范围](https://github.com/guanxuyu-sv/Visual-Jev)。
 - **[Jev-Mem: System-One-Controlled Agentic Memory for Efficient AI Agents](https://arxiv.org/abs/2609.23986v1)** — Jiang, Li & Li. *2026-09-21, arXiv v1*. 以决策模型控制 agent 记忆构建与检索。
 - **[this-that-model-1.0: A typed decision model that decides in 30 ms, for a millionth of a cent](https://arxiv.org/abs/2609.23886v1)** — Cheng, Dai & Sun. *2026-09-20, arXiv v1*. 采用隐藏状态概率读出的类型化决策架构。
 
@@ -115,6 +117,7 @@ TypeSafe 的 Jev 接收状态与类型化问题，为应用代码返回决策和
 - **[Jev in Medicine: A Benchmark Evaluation](https://arxiv.org/abs/2609.34024v4)** — Madrid-García & Merino-Barbancho. *2026-10-10, arXiv v4；首次提交 2026-09-27*. Jev 1.13 的初步医学基准评测报告了随任务变化的准确率、校准表现及较弱的不可回答问题识别能力；这不能证明临床部署有效性。 [作者补充材料](https://zenodo.org/records/23008156)。
 - **[Evaluating Decision Models for Text Annotation in Computational Social Science](https://arxiv.org/abs/2609.24574v2)** — Ibrahim & Zaki. *2026-09-23, arXiv v2；首次提交 2026-09-21*. 评估零样本社会科学标注与按置信度分流的 LLM 级联；低成本仍伴随任务相关误差和过度自信，置信度不能替代标签验证。 [代码与调用记录](https://github.com/hazemibrahim97/decision-models-css)。
 - **[KITE: Scaling Jev Population Experiments with Sparse Flagship Calibration](https://arxiv.org/abs/2609.27535v1)** — Li. *2026-09-23, arXiv v1*. Jev 状态表与少量强模型锚点支持纳入共享人—模型差异估计的群体模拟；扩大模拟规模不会增加人类证据，也不能确立前瞻性干预效果。 [代码与汇总记录](https://github.com/HengyuLi-Ozaki-lab/kite_population_simulator)。
+- **[Can Jev Judge Radiology Reports? Evaluating a System One Model for Clinical Factuality](https://arxiv.org/abs/2609.27607v1)** — Huang et al. *2026-09-23, arXiv v1*. Jev 双向检查生成与参考放射学报告之间的陈述支持关系；与专家的一致性受报告长度和错误定义影响，并不证明前瞻性临床效果。
 
 ## 模型
 
@@ -197,7 +200,7 @@ TypeSafe 的四个数据集提供工作流案例、模型生成的参考标签�
 | 可组合流水线 | Khattab et al., *DSPy*. 2023. | [论文](https://arxiv.org/abs/2310.03714) |
 | 高效执行 | Zheng et al., *SGLang*. NeurIPS, 2024. | [论文](https://papers.nips.cc/paper_files/paper/2024/file/724be4472168f31ba1c9ac630f15dec8-Paper-Conference.pdf) · [代码](https://github.com/sgl-project/sglang) |
 
-57 篇精选论文均收录于 [references.bib](references.bib)。核查范围与局限见[本次论文精选记录](docs/reviews/papers-2026-10-16.md)。
+60 篇精选论文均收录于 [references.bib](references.bib)。核查范围与局限见[本次论文精选记录](docs/reviews/papers-2026-10-16.md)。
 
 ## 快速开始
 

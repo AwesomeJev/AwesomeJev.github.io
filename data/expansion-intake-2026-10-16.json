@@ -887,6 +887,31 @@
       ],
       "evidence_scope": "Five repository resources and one author supplementary deposit. Fixed README or deposit descriptions independently refetched with matching hashes; inventories and selected release-scope documents inspected. ZIP contents and dataset rows were not inspected; no code was executed or experiment reproduced.",
       "accepted_at": "2026-10-16T12:06:57+00:00"
+    },
+    {
+      "name": "ordinal_visual_radiology_papers",
+      "input_sha256": "e7d6abbb7822b8329fd9b0780b980627b16e1bfff31dc02657ce7049f1750f3f",
+      "screened_records_proposed": 3,
+      "accepted_count": 3,
+      "accepted_urls": [
+        "https://arxiv.org/abs/2609.27607",
+        "https://arxiv.org/abs/2609.38827",
+        "https://arxiv.org/abs/2609.25845"
+      ],
+      "evidence_scope": "Three fixed-version original abstracts, metadata and author lines independently checked; no full-paper review or reproduced experiments.",
+      "accepted_at": "2026-10-16T12:29:48+00:00"
+    },
+    {
+      "name": "ordinal_visual_author_artifacts",
+      "input_sha256": "2a0ab9f05a6591e7bef469ee23eb092014f97ed0298d2d306ac99d7478723162",
+      "screened_records_proposed": 2,
+      "accepted_count": 2,
+      "accepted_urls": [
+        "https://github.com/guanxuyu-sv/visual-jev",
+        "https://anonymous.4open.science/r/jev_ordinal_scale_bia"
+      ],
+      "evidence_scope": "Two whole code projects. Original public README, reproduction document and selected directory snapshots reviewed with cached-hash checks; no execution, weights, source data or prediction downloads.",
+      "accepted_at": "2026-10-16T12:29:48+00:00"
     }
   ]
 }

@@ -28,6 +28,8 @@ Score evaluates ordered, descriptive levels. Its score is the probability-weight
 
 Noul returns the probability that a yes/no proposition is true. It has no separate confidence field. A value near the middle signals uncertainty, not necessarily a medium degree of the property. [Noul documentation](https://docs.typesafe.ai/primitives/noul)
 
+Keep ordinal label usage, a Score mean, returned confidence, and probability calibration separate. In the tested models and datasets, the v2 ordinal-scale study reports concentrated final choices despite broad average candidate probabilities; finer scales increased compression, and accuracy gains did not necessarily restore utilization. Where a final label is selected, compare its frequency with reference-label frequencies; do not assume every level should occur equally often. Treat this as an additional diagnostic, not a calibration test. The findings are author-reported in the abstract, not our reproduction or evidence that Jev’s Score API has the same failure. [Ordinal-scale utilization study, v2](https://arxiv.org/abs/2609.38827v2)
+
 ## Is confidence the probability that an answer is correct?
 
 Not automatically. TypeSafe derives confidence from the returned distribution. For Choice, four options with a highest probability of 0.70 produce confidence 0.60. Score uses a different formula. Calibration concerns observed frequencies across predictions, not a guarantee about one answer. [Confidence documentation](https://docs.typesafe.ai/confidence)
@@ -109,6 +111,14 @@ Papers · Zhang, Ye & Zha · 2026-10-14 · v1
 Tests classification and verification under content-preserving table rewrites across three task families; confidence can flag instability without proving correctness.
 
 Primary source: https://arxiv.org/abs/2610.19536v1
+
+## More Choices, Fewer Decisions: Ordinal-Scale Bias in JEV-like Direct-Decision Models
+
+Papers · Gao et al. · 2026-10-14 · v2
+
+Audits ordinal label underuse across selected decision models; finer scales increase compression, while accuracy, final-label utilization and averaged candidate probabilities remain distinct measures.
+
+Primary source: https://arxiv.org/abs/2609.38827v2
 
 ## DecisionRobust: Benchmarking Robustness for JEV Style Decision Models Across Text and Vision
 
@@ -422,6 +432,14 @@ Audits Jev injection on reconstructed InjecAgent cases, separating probability s
 
 Primary source: https://arxiv.org/abs/2609.28613v1
 
+## Can Jev Judge Radiology Reports? Evaluating a System One Model for Clinical Factuality
+
+Papers · Huang et al. · 2026-09-23 · v1
+
+Jev checks support between generated and reference radiology reports in both directions; expert agreement depends on report size and error definitions and does not establish prospective clinical effectiveness.
+
+Primary source: https://arxiv.org/abs/2609.27607v1
+
 ## KITE: Scaling Jev Population Experiments with Sparse Flagship Calibration
 
 Papers · Li · 2026-09-23 · v1
@@ -445,6 +463,14 @@ Papers · Wu & Lim · 2026-09-22 · v1
 Confidence-gated Jev control with LLM fallback; gains depend on action alternatives and baseline routing.
 
 Primary source: https://arxiv.org/abs/2609.26532v1
+
+## Visual Jev: Accurate and Efficient Decisions from Shared Visual Context
+
+Papers · Yu & Yao · 2026-09-22 · v1
+
+An independent visual decision architecture shares image context across batched questions using an LM-head readout; warm amortized speedups trade higher peak memory, while accuracy gains concentrate on trained task families.
+
+Primary source: https://arxiv.org/abs/2609.25845v1
 
 ## Jev-Mem: System-One-Controlled Agentic Memory
 
