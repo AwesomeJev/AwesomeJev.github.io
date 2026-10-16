@@ -88,6 +88,14 @@ Retain document identifiers when normalizing URLs: OpenReview's `id` and CiteSee
 
 Checked-source totals measure distinct documents under these rules. They do not measure independent studies or manually read papers. Preserve the distinction between provider claims, paper-reported results, and experiments actually run by this project. Record direct, adjacent and background relationships separately.
 
+## Preserve curation decisions
+
+[Source curation](../data/source-curation.json) records exact-URL exclusions and evidence-backed display corrections. Exclusions prevent rejected material from being reintroduced by a later scan. An excluded record still present in an accepted ledger fails validation; removing an existing record requires an explicit reviewed change.
+
+Annotations may correct a displayed title, first-submission date, topic, relationship, or relevance note. They include a primary-source URL and review date. Raw provider metadata, retrieval timestamps, hashes, and verification levels remain unchanged. The website exposes each correction's source under its corpus entry.
+
+When an update PR is still open, the publisher refuses to replace it with data that drops or downgrades previously gathered evidence or loses an outstanding editorial-review candidate. An explicit trusted exclusion can authorize a scope removal. A blocked update leaves the existing PR available for review.
+
 ## Maintain the editorial collection
 
 For a promoted resource, read the original source, pin the relevant version, state its purpose and a material limitation, and verify any license or access label. Synchronize its English and Chinese descriptions across `README.md`, `README.zh-CN.md`, and `site/app.js`. Add scholarly metadata to `references.bib`; update survey or audit prose only when the new evidence changes it.

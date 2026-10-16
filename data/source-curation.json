@@ -1,0 +1,130 @@
+{
+  "schema_version": 1,
+  "exclusions": [
+    {
+      "url": "https://github.com/futureppo/typesafe_register",
+      "reason": "Service-account registration and API-key utility; outside the collection’s decision-model research, evaluation, and implementation scope.",
+      "evidence_url": "https://github.com/futureppo/typesafe_register",
+      "reviewed_at": "2026-10-16T06:36:48Z"
+    },
+    {
+      "url": "https://arxiv.org/abs/2505.08685",
+      "reason": "An applied medical-image segmentation challenge. Calibration terminology alone does not establish relevance to typed decisions, LLM evaluation, or a general calibration method.",
+      "evidence_url": "https://arxiv.org/abs/2505.08685v2",
+      "reviewed_at": "2026-10-16T06:36:48Z"
+    },
+    {
+      "url": "https://arxiv.org/abs/2512.09059",
+      "reason": "An applied precipitation-forecasting framework. Its uncertainty assessment is not a contribution about typed decisions or language-model systems.",
+      "evidence_url": "https://arxiv.org/abs/2512.09059v1",
+      "reviewed_at": "2026-10-16T06:36:48Z"
+    }
+  ],
+  "annotations": [
+    {
+      "url": "https://arxiv.org/abs/2409.15518",
+      "evidence_url": "https://arxiv.org/abs/2409.15518v2",
+      "reviewed_at": "2026-10-16T06:36:48Z",
+      "first_submitted": "2024-09-23",
+      "note": "The first_submitted field is the initial arXiv submission date, not the revision date or the provider’s published_at value. Retain the provider date separately with its provenance."
+    },
+    {
+      "url": "https://arxiv.org/abs/2502.20576",
+      "evidence_url": "https://arxiv.org/abs/2502.20576v6",
+      "reviewed_at": "2026-10-16T06:36:48Z",
+      "first_submitted": "2025-02-27",
+      "note": "The first_submitted field is the initial arXiv submission date, not the revision date or the provider’s published_at value. Retain the provider date separately with its provenance."
+    },
+    {
+      "url": "https://arxiv.org/abs/2505.23052",
+      "evidence_url": "https://arxiv.org/abs/2505.23052v2",
+      "reviewed_at": "2026-10-16T06:36:48Z",
+      "title": "RAGRouter: Learning to Route Queries to Multiple Retrieval-Augmented Language Models",
+      "note": "Display title checked against the linked arXiv version. The retained provider title and provider-abstract evidence are unchanged; this correction does not imply full-paper review."
+    },
+    {
+      "url": "https://arxiv.org/abs/2506.01048",
+      "evidence_url": "https://arxiv.org/abs/2506.01048v2",
+      "reviewed_at": "2026-10-16T06:36:48Z",
+      "first_submitted": "2025-06-01",
+      "note": "The first_submitted field is the initial arXiv submission date, not the revision date or the provider’s published_at value. Retain the provider date separately with its provenance."
+    },
+    {
+      "url": "https://arxiv.org/abs/2507.10540",
+      "evidence_url": "https://arxiv.org/abs/2507.10540v3",
+      "reviewed_at": "2026-10-16T06:36:48Z",
+      "title": "FusionFactory: Fusing LLM Capabilities with Multi-LLM Log Data",
+      "note": "Display title checked against the linked arXiv version. The retained provider title and provider-abstract evidence are unchanged; this correction does not imply full-paper review."
+    },
+    {
+      "url": "https://arxiv.org/abs/2511.09373",
+      "evidence_url": "https://arxiv.org/abs/2511.09373v2",
+      "reviewed_at": "2026-10-16T06:36:48Z",
+      "first_submitted": "2025-11-12",
+      "note": "The first_submitted field is the initial arXiv submission date, not the revision date or the provider’s published_at value. Retain the provider date separately with its provenance."
+    },
+    {
+      "url": "https://arxiv.org/abs/2603.02482",
+      "topic": "judge_reliability",
+      "relation": "background",
+      "relevance": "Background on multi-turn multimodal safety evaluation and model-generated safety judgments; not a benchmark of routing quality.",
+      "note": "The current primary abstract centers safety evaluation. An older mirrored abstract mentions provider routing as a platform feature; that phrase does not justify the routing-topic assignment. Abstract and metadata inspection only.",
+      "evidence_url": "https://arxiv.org/abs/2603.02482v2",
+      "reviewed_at": "2026-10-16T06:36:48Z"
+    },
+    {
+      "url": "https://arxiv.org/abs/2603.24787",
+      "evidence_url": "https://arxiv.org/abs/2603.24787v3",
+      "reviewed_at": "2026-10-16T06:36:48Z",
+      "title": "ReLope: From Hidden-State Probing to a Decision Module for Multimodal LLM Routing",
+      "note": "Display title checked against the linked arXiv version. The retained provider title and provider-abstract evidence are unchanged; this correction does not imply full-paper review."
+    },
+    {
+      "url": "https://arxiv.org/abs/2604.06392",
+      "relation": "background",
+      "relevance": "Broad background on agent orchestration that includes multi-model routing and model-based judgment; not direct evidence about Jev.",
+      "note": "Retained as broad systems context. Its architecture and performance statements remain author-reported; this annotation is not a recommendation or experiment reproduction.",
+      "evidence_url": "https://arxiv.org/abs/2604.06392v1",
+      "reviewed_at": "2026-10-16T06:36:48Z"
+    },
+    {
+      "url": "https://arxiv.org/abs/2605.00180",
+      "evidence_url": "https://arxiv.org/abs/2605.00180v2",
+      "reviewed_at": "2026-10-16T06:36:48Z",
+      "title": "RouteProfile: Graph-Based Profiling for Cold-Start LLM Routing",
+      "note": "Display title checked against the linked arXiv version. The retained provider title and provider-abstract evidence are unchanged; this correction does not imply full-paper review."
+    },
+    {
+      "url": "https://arxiv.org/abs/2605.17106",
+      "evidence_url": "https://arxiv.org/abs/2605.17106v2",
+      "reviewed_at": "2026-10-16T06:36:48Z",
+      "first_submitted": "2026-05-16",
+      "note": "The first_submitted field is the initial arXiv submission date, not the revision date or the provider’s published_at value. Retain the provider date separately with its provenance."
+    },
+    {
+      "url": "https://arxiv.org/abs/2609.26758",
+      "title": "Type-Safe Is Not Error-Free: Typed Decision Models Follow the Option Name, Not the Definition Bound to It",
+      "note": "The display title follows arXiv v3. The Hugging Face mirror still uses the older title “Type-Safe Is Not Error-Free: A Constrained Decision Head Follows the Option Name, Not the Rubric Bound to It”; retain that provider snapshot as evidence provenance.",
+      "evidence_url": "https://arxiv.org/abs/2609.26758v3",
+      "reviewed_at": "2026-10-16T06:36:48Z"
+    },
+    {
+      "url": "https://arxiv.org/abs/2609.33887",
+      "topic": "selective_prediction",
+      "relation": "background",
+      "relevance": "Background for risk-constrained selection of faster language-model serving configurations using held-out calibration prompts.",
+      "note": "Here calibration data supports finite-sample risk control for configuration selection. It should not be described as calibration of a model’s reported decision probabilities. Abstract-level scope annotation.",
+      "evidence_url": "https://arxiv.org/abs/2609.33887v1",
+      "reviewed_at": "2026-10-16T06:36:48Z"
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.01293",
+      "topic": "direct-decision-research",
+      "relation": "direct",
+      "relevance": "A direct typed-audio-decision study mapping waveforms, questions, and supplied alternatives to candidate probabilities, with option-order calibration.",
+      "note": "AudioJev is an independent decision-model architecture. This relation describes topical relevance and does not establish TypeSafe Jev internals or independently validate the reported experiments.",
+      "evidence_url": "https://arxiv.org/abs/2610.01293v1",
+      "reviewed_at": "2026-10-16T06:36:48Z"
+    }
+  ]
+}

@@ -31,11 +31,13 @@ try:
     from . import collect_ecosystem as ecosystem
     from . import collect_research as research
     from . import build_source_index as index
+    from .source_policy import load_policy
     from .validate import LEAK_PATTERNS
 except ImportError:
     import collect_ecosystem as ecosystem
     import collect_research as research
     import build_source_index as index
+    from source_policy import load_policy
     from validate import LEAK_PATTERNS
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -253,18 +255,22 @@ class Ledger:
         return cls([json.loads(line) for line in lines], lines)
 
 
-def merge_records(old: Ledger, incoming, max_new=None):
+def merge_records(old: Ledger, incoming, max_new=None, policy=None):
     """Keep old bytes on unchanged hashes/failure; never grant editorial status."""
     rows, lines = list(old.rows), list(old.lines)
     positions = {identity(row): i for i, row in enumerate(rows)}
     hashes = {content_hash(row) for row in rows if content_hash(row)}
-    changes = {"added": [], "changed": [], "editorial_review_required": [], "duplicates": 0, "preserved_after_failure": 0, "rejected": 0}
+    changes = {"added": [], "changed": [], "editorial_review_required": [], "duplicates": 0, "preserved_after_failure": 0, "rejected": 0, "curation_excluded": []}
     candidates = {}
     for row in incoming:
         if not record_safe(row):
             changes["rejected"] += 1
             continue
         key = identity(row)
+        if policy and policy.exclusion(key):
+            if key not in changes["curation_excluded"]:
+                changes["curation_excluded"].append(key)
+            continue
         if key not in candidates or LEVEL.get(row.get("verification_level"), 0) > LEVEL.get(candidates[key].get("verification_level"), 0):
             candidates[key] = row
     for key, candidate in sorted(candidates.items()):
@@ -572,14 +578,15 @@ def main(argv=None):
         parser.error("workers must be 1–16 and max-new nonnegative")
     paths = [ROOT / "data/ecosystem-sources.jsonl", ROOT / "data/research-sources.jsonl"]
     originals = [Ledger.read(path) for path in paths]
+    policy = load_policy(ROOT / "data/source-curation.json", index.canonical)
     fetcher = PublicFetcher()
     scan = Scan(fetcher, args.workers)
     limit = min(args.max_new, 5) if args.smoke and args.max_new is not None else 5 if args.smoke else args.max_new
     ecosystem_rows = scan.scan_ecosystem(originals[0], limit, args.smoke)
     research_rows, direct = scan.scan_research(args.smoke)
-    merged_ecosystem, ec = merge_records(originals[0], ecosystem_rows + direct, limit)
+    merged_ecosystem, ec = merge_records(originals[0], ecosystem_rows + direct, limit, policy=policy)
     remaining = None if limit is None else max(0, limit - len(ec["added"]))
-    merged_research, rc = merge_records(originals[1], research_rows, remaining)
+    merged_research, rc = merge_records(originals[1], research_rows, remaining, policy=policy)
     changes = {k: ec[k] + rc[k] for k in ("added", "changed", "editorial_review_required")}
     report_path = ROOT / "data/scan-latest.json"
     previous = json.loads(report_path.read_text()) if report_path.exists() else {}
@@ -597,6 +604,7 @@ def main(argv=None):
     else:
         counts = json.loads((ROOT / "data/source-counts.json").read_text())["counts"]
     report = {"schema_version": 1, "started_at": started_at, "completed_at": now(), "status": status, "changed": changed, "dry_run": args.smoke, "added_count": len(changes["added"]), "changed_count": len(changes["changed"]), "editorial_review_required_count": pending_count, "added_urls": changes["added"][:100], "changed_urls": changes["changed"][:100], "editorial_refresh_candidates": pending, "editorial_examples_truncated": pending_count > 100, "error_count": len(scan.errors), "errors": sorted(scan.errors, key=lambda r: json.dumps(r, sort_keys=True))[:100], "counts": counts, "index_revision": scan.index_revision, "network_requests": fetcher.requests, "excluded_discoveries": scan.excluded, "preserved_after_failure": ec["preserved_after_failure"] + rc["preserved_after_failure"], "duplicate_candidates_skipped": ec["duplicates"] + rc["duplicates"], "privacy_rejected_records": ec["rejected"] + rc["rejected"], "verification_note": "Public document or original-abstract machine screening only; prior reviewed evidence is preserved and changed editorial sources require human review. Metadata-only records do not count as checked sources."}
+    report["curation_excluded_count"] = len(set(ec["curation_excluded"] + rc["curation_excluded"]))
     # Report every attempt, including failures. The publisher must gate on
     # report.changed, not this report's timestamp or a raw git-diff count.
     if not args.smoke:

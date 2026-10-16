@@ -1,0 +1,20 @@
+name: Schedule trigger probe
+
+# Temporary release diagnosis. Remove after observing a genuine scheduled run
+# or after the bounded observation window; this does not scan any sources.
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+
+permissions: {}
+
+jobs:
+  observe:
+    if: github.repository == 'reacher-z/Awesome-Jev' && github.ref == 'refs/heads/main' && github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    timeout-minutes: 1
+    steps:
+      - name: Record a genuine scheduler event
+        run: |
+          date -u
+          echo 'event=schedule; read-only trigger probe; no source scan performed'

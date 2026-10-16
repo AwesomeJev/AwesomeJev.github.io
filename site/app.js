@@ -94,6 +94,8 @@ const translations = {
     corpusIntro:
       "Mixed screening levels: editorial review, automated content screening, abstract checks, and metadata-only discovery. Inspect each entry’s label; inclusion is a research lead, not an endorsement.",
     corpusAudit: "Screening methodology",
+    metadataCorrection: "Metadata checked against the primary source",
+    primaryMetadata: "View the source used for this correction",
     verificationDepth: "Verification depth",
     verificationHint: "How to read the labels",
     levelEditorial: "Editorially reviewed",
@@ -217,6 +219,8 @@ const translations = {
     corpusIntro:
       "各来源核查深度不同：编辑审阅、自动内容筛查、摘要核查或仅元数据发现。请查看条目标注；收录代表研究线索，而非质量背书。",
     corpusAudit: "核查方法与范围",
+    metadataCorrection: "元数据已按原始来源核对",
+    primaryMetadata: "查看此次修正依据",
     verificationDepth: "核查深度",
     verificationHint: "如何理解来源标签",
     levelEditorial: "编辑审阅",
@@ -251,6 +255,51 @@ const translations = {
 
 // Descriptions are editorial summaries. Paper findings remain author-reported.
 const resources = [
+  {
+    category: "Papers",
+    title: "Type-Safe Is Not Error-Free: Typed Decision Models Follow the Option Name, Not the Definition Bound to It",
+    by: "Sun, Xu, Shi & Yang · 2026-10-08 · v3",
+    date: "2026-10-08",
+    url: "https://arxiv.org/abs/2609.26758v3",
+    en: "Tests conflicts between option names and definitions despite structurally valid outputs.",
+    zh: "检验输出结构合法时，选项名称与定义之间的冲突。",
+  },
+  {
+    category: "Papers",
+    title: "AnyJev Technical Report",
+    by: "Zhang et al. · 2026-09-30 · v1",
+    date: "2026-09-30",
+    url: "https://arxiv.org/abs/2610.00831v1",
+    en: "Training-free decision readout with label-prior and option-order correction.",
+    zh: "无需训练的决策读出，修正标签先验与选项顺序偏差。",
+  },
+  {
+    category: "Papers",
+    title: "LAVOIR: Teaching a Single-Pass Decision Encoder When and What to Ask with Amortized Value of Information",
+    by: "Yilmaz, Tasdemir & Gozay · 2026-09-25 · v1",
+    date: "2026-09-25",
+    url: "https://arxiv.org/abs/2609.30706v1",
+    en: "Estimates whether asking for missing information would improve a typed decision.",
+    zh: "估计追问缺失信息是否有助于改进类型化决策。",
+  },
+  {
+    category: "Papers",
+    title: "General Decision Models: Benchmarking and Insights Beyond Jev",
+    by: "Duan et al. · 2026-10-12 · v2",
+    date: "2026-10-12",
+    url: "https://arxiv.org/abs/2610.03935v2",
+    en: "Bilingual decision evaluation and reliability when local decisions compose into larger systems.",
+    zh: "双语决策评估，以及局部决策组合成更大系统时的可靠性。",
+  },
+  {
+    category: "Papers",
+    title: "JevAgentHarness: Benchmarking, Deploying and Training Decision Models That Share Control with LLMs",
+    by: "Zhu et al. · 2026-10-15 · v1",
+    date: "2026-10-15",
+    url: "https://arxiv.org/abs/2610.21412v1",
+    en: "Studies fitted confidence thresholds for sharing agent control with decision models.",
+    zh: "研究通过拟合置信度阈值，让决策模型参与 agent 控制。",
+  },
   {
     "category": "Datasets",
     "title": "evalsafe-invoice-processing",
@@ -1001,7 +1050,12 @@ function normalizeSource(source) {
     status: source.status || source.review_status || source.screening || "",
     relation: source.relation || "",
     verification: source.verification_level || "",
-    tags: Array.isArray(source.tags) ? source.tags.join(" ") : "",
+    tags: [source.topic, ...(Array.isArray(source.tags) ? source.tags : [])].filter(Boolean).join(" "),
+    curation: source.curation && safeURL(source.curation.evidence_url) ? {
+      url: safeURL(source.curation.evidence_url),
+      note: typeof source.curation.note === "string" ? source.curation.note : "",
+      date: typeof source.curation.reviewed_at === "string" ? source.curation.reviewed_at.slice(0, 10) : "",
+    } : null,
     by: source.authors || source.provider || source.source || "",
   };
 }
@@ -1036,6 +1090,11 @@ function corpusMetadata(source) {
     relationLabels[source.relation]?.[language === "zh" ? 1 : 0] ||
     source.relation;
   return [category, source.year, level, relation].filter(Boolean).join(" · ");
+}
+function curationDisclosure(source) {
+  if (!source.curation) return "";
+  const { url, note, date } = source.curation;
+  return `<details class="corpus-curation"><summary>${escapeHTML(t("metadataCorrection"))}</summary><p>${escapeHTML(note)}</p><a href="${escapeHTML(url)}" target="_blank" rel="noopener noreferrer">${escapeHTML(t("primaryMetadata"))}${date ? ` · ${escapeHTML(date)}` : ""}</a></details>`;
 }
 function renderCorpus() {
   if (!$("#corpus-list")) return;
@@ -1073,7 +1132,7 @@ function renderCorpus() {
     .slice(0, corpusLimit)
     .map(
       (source) =>
-        `<article class="corpus-row"><div><h3><a href="${escapeHTML(source.url)}" target="_blank" rel="noopener noreferrer">${escapeHTML(source.title)}</a></h3><p>${escapeHTML(language === "zh" && source.zh ? source.zh : source.description)}</p></div><div class="corpus-entry-meta" data-verification="${escapeHTML(source.verification)}">${escapeHTML(corpusMetadata(source))}<span aria-hidden="true">${icon("external")}</span></div></article>`,
+        `<article class="corpus-row"><div><h3><a href="${escapeHTML(source.url)}" target="_blank" rel="noopener noreferrer">${escapeHTML(source.title)}</a></h3><p>${escapeHTML(language === "zh" && source.zh ? source.zh : source.description)}</p>${curationDisclosure(source)}</div><div class="corpus-entry-meta" data-verification="${escapeHTML(source.verification)}">${escapeHTML(corpusMetadata(source))}<span aria-hidden="true">${icon("external")}</span></div></article>`,
     )
     .join("");
   if (corpusSources.length && !filtered.length)

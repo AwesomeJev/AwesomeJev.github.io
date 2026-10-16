@@ -44,28 +44,33 @@ On **2026-10-15**, `jev-latest` points to `jev-1.13.0` and `jev-preview` to `jev
 
 ## Papers
 
-All 16 direct studies below are **arXiv preprints**. Dates identify the linked, reviewed version, not necessarily the first submission. Results are author-reported; this project has not reproduced their experiments. Titles that contain speed or cost claims retain the authors' wording. [Bibliography](references.bib) · [Evidence comparison](docs/survey.md)
+All 21 direct studies below are **arXiv preprints**. Dates identify the linked, reviewed version, not necessarily the first submission. Results are author-reported; this project has not reproduced their experiments. Titles that contain speed or cost claims retain the authors' wording. [Bibliography](references.bib) · [Evidence comparison](docs/survey.md)
 
 ### Evaluation and benchmarking
 
 - **[System1-Arena: Which Decisions Can Be Left to System 1?](https://arxiv.org/abs/2610.21244v1)** — Chen et al. *2026-10-15, arXiv v1*. Matched requests and closed-loop tasks for decision and reasoning models.
+- **[General Decision Models: Benchmarking and Insights Beyond Jev](https://arxiv.org/abs/2610.03935v2)** — Duan et al. *2026-10-12, arXiv v2*. Bilingual decision evaluation and reliability in multi-step systems. [Training and inference code](https://github.com/amazingljy1206/SII-Decision).
 - **[JEV versus LLMs: Accuracy, Cost and Calibration on Seven Political Science Replications](https://arxiv.org/abs/2610.06625v2)** — Denney & DiGiuseppe. *2026-10-06, arXiv v2*. Seven domain-specific replications; accuracy, cost, and calibration.
 - **[Evaluating and Benchmarking the System One Model Jev](https://arxiv.org/abs/2609.37647v1)** — Deußer, Sparrenberg & Sifa. *2026-09-29, arXiv v1*. Classification and decision evaluation across 37 datasets. [Code](https://github.com/AppliedMachineLearning-Lab/jev-benchmarking).
 - **[Typed Decision Models: An Early Evidence Audit and Evaluation Checklist](https://arxiv.org/abs/2609.32160v1)** — Tang & Zheng. *2026-09-26, arXiv v1*. Evidence mapping and an evaluation checklist for typed decisions.
 
 ### Probability calibration and coherence
 
+- **[AnyJev Technical Report](https://arxiv.org/abs/2610.00831v1)** — Zhang et al. *2026-09-30, arXiv v1*. Training-free probability readout with label-prior and option-order correction. [Code](https://github.com/nokia-applied-research/AnyJev).
 - **[Jev thinks “I don’t know”, but doesn’t say it: Introducing Sys1Cal-v1 Dataset for Probability Calibration](https://arxiv.org/abs/2609.35342v1)** — Porcedda. *2026-09-28, arXiv v1*. Controlled probability targets for testing calibration.
 - **[Beyond Calibration: Do a Typed-Decision Model’s Probabilities Obey the Probability Axioms?](https://arxiv.org/abs/2609.33209v1)** — Li, He & Li. *2026-09-27, arXiv v1*. Logical coherence between related probability questions.
 
 ### Judging and selective automation
 
+- **[JevAgentHarness: Benchmarking, Deploying and Training Decision Models That Share Control with LLMs](https://arxiv.org/abs/2610.21412v1)** — Zhu et al. *2026-10-15, arXiv v1*. Per-choice thresholds for sharing agent control between decision models and LLMs. [Code](https://github.com/JevAgentHarness/JevAgentHarness).
 - **[Decision Models vs. LLMs as Rubric Judges: Cheaper, Faster, and Wrong in the Same Places](https://arxiv.org/abs/2609.29769v3)** — Rao & Callison-Burch. *2026-10-13, arXiv v3*. Rubric judging, correlated errors, and limits to cascade gains.
 - **[JEV-as-a-Judge: Accept When Confident, Escalate When Unsure](https://arxiv.org/abs/2609.26550v5)** — Li, Miao, Krishnan & Padman. *2026-10-09, arXiv v5*. Confidence-gated escalation from Jev to a reasoning judge.
+- **[LAVOIR: Teaching a Single-Pass Decision Encoder When and What to Ask with Amortized Value of Information](https://arxiv.org/abs/2609.30706v1)** — Yilmaz, Tasdemir & Gozay. *2026-09-25, arXiv v1*. Estimates the value of asking for missing information alongside decision probabilities. [Code](https://github.com/moganai/lavoir).
 
 ### Robustness and security
 
 - **[Same Attack, Different Judge: A First Controlled Adversarial Comparison of Jev, LLM Judges, and Purpose-Built Safety Classifiers](https://arxiv.org/abs/2610.17820v1)** — Li, Huang, Zhang & Liu. *2026-10-13, arXiv v1*. Controlled attacks against decision models and safety classifiers.
+- **[Type-Safe Is Not Error-Free: Typed Decision Models Follow the Option Name, Not the Definition Bound to It](https://arxiv.org/abs/2609.26758v3)** — Sun, Xu, Shi & Yang. *2026-10-08, arXiv v3*. Tests whether option names override assigned definitions despite structurally valid outputs.
 - **[Evaluating System One Models for Agent Security Decisions: Reliability, Calibration, and Selective Automation](https://arxiv.org/abs/2609.33401v3)** — Liu. *2026-10-03, arXiv v3*. Confident security errors and selective automation under asymmetric risks.
 - **[JevAdvBench: A Benchmark and Black-Box Attacks for Reinforcement Learning for Calibrated Decisions Models](https://arxiv.org/abs/2609.31142v1)** — Hu et al. *2026-09-25, arXiv v1*. Adversarial edits compared with clean inputs and repeated-call variation.
 
@@ -152,7 +157,7 @@ Background literature and comparison methods. These works do **not** establish J
 | Composable pipelines | Khattab et al., *DSPy*. 2023. | [Paper](https://arxiv.org/abs/2310.03714) |
 | Efficient execution | Zheng et al., *SGLang*. NeurIPS, 2024. | [Paper](https://papers.nips.cc/paper_files/paper/2024/file/724be4472168f31ba1c9ac630f15dec8-Paper-Conference.pdf) · [Code](https://github.com/sgl-project/sglang) |
 
-All 24 selected papers are included in [references.bib](references.bib).
+All 29 selected papers are included in [references.bib](references.bib).
 
 ## Quick start
 

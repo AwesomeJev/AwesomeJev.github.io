@@ -4,7 +4,9 @@
 
 [Resource index](../README.md) · [Machine-readable audit](../data/editorial-audit.json) · [Source counts](../data/source-counts.json)
 
-The collection contains **3,400 distinct source documents**, of which **3,352 passed a stated content or abstract check**. These are document counts, not independent studies, reproduced experiments, or papers read in full. The **1,929 records based on retrieved original source pages** are reported separately from the abstract-only layer.
+This page records the initial audit snapshot. For the current accepted registry, use [source counts](../data/source-counts.json); the [subsequent source-update review](reviews/scan-2026-10-16.md) records exclusions, metadata corrections, and accepted changes.
+
+At the initial snapshot, the collection contained **3,400 distinct source documents**, of which **3,352 passed a stated content or abstract check**. These are document counts, not independent studies, reproduced experiments, or papers read in full. The **1,929 records based on retrieved original source pages** are reported separately from the abstract-only layer.
 
 | Verification tier | Distinct records | Meaning |
 | --- | ---: | --- |
@@ -60,7 +62,7 @@ Exact hashes identify the retrieved bytes, not the truth of claims. Mutable page
 
 ## 中文说明
 
-本次合并后共有 **3,400 个来源文档**，其中 **3,352 个经过明确分级的检查**：4 个核心来源经编辑复核、1,925 个原始页面经自动正文筛查、1,423 个仅检查摘要；另有 48 个仅元数据记录，不计入已检查数量。前两类共 1,929 个，与摘要层单独统计。
+初始审计快照共有 **3,400 个来源文档**，其中 **3,352 个经过明确分级的检查**：4 个核心来源经编辑复核、1,925 个原始页面经自动正文筛查、1,423 个仅检查摘要；另有 48 个仅元数据记录，不计入已检查数量。前两类共 1,929 个，与摘要层单独统计。
 
 我们进一步阅读了 60 条分层样本的摘要或关键正文段落，没有宣称逐篇精读全部论文，也没有运行实验。抽查发现并修复了 URL 文档 ID 被误删造成的错误去重；通用标题、结果档案分类及上游数据数量矛盾均已记录。来源的存在不等于其准确率、校准、隐私或安全承诺得到验证。
 

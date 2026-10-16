@@ -22,6 +22,13 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
+try:
+    from . import build_source_index as source_index
+    from .source_policy import load_policy
+except ImportError:
+    import build_source_index as source_index
+    from source_policy import load_policy
+
 ROOT = Path(__file__).resolve().parents[1]
 REPOSITORY = "reacher-z/Awesome-Jev"
 BRANCH = "automation/source-scan"
@@ -286,7 +293,55 @@ Maintainers should inspect the diff and the scan report before deciding whether 
 """[:6000]
 
 
-def publish(api: GitHub, identity: dict, files: dict[str, bytes]) -> str:
+def ensure_pending_continuity(previous: dict[str, bytes], fresh: dict[str, bytes], policy=None) -> None:
+    """Do not erase evidence held only in an unmerged bot PR on a bad scan."""
+    ranks = {"metadata_only": 0, "abstract_checked": 1, "content_screened": 2, "editorial_reviewed": 3}
+
+    def records(payload):
+        found = {}
+        for name in LEDGERS:
+            for line in payload[name].decode("utf-8").splitlines():
+                if not line.strip():
+                    continue
+                row = json.loads(line)
+                url = row.get("canonical_url", row.get("url", ""))
+                if not isinstance(url, str) or not url:
+                    raise ScanError("Cannot establish pending source identity.")
+                key = source_index.canonical(url)
+                level = row.get("verification_level", "metadata_only")
+                if level not in ranks:
+                    raise ScanError("Cannot establish pending source verification level.")
+                if key not in found or ranks[level] > ranks[found[key].get("verification_level", "metadata_only")]:
+                    found[key] = row
+        return found
+
+    before, after = records(previous), records(fresh)
+    missing = downgraded = 0
+    for key, prior in before.items():
+        if policy and policy.exclusion(key):
+            continue
+        current = after.get(key)
+        if current is None:
+            missing += 1
+        elif ranks[current.get("verification_level", "metadata_only")] < ranks[prior.get("verification_level", "metadata_only")]:
+            downgraded += 1
+    prior_queue = json.loads(previous.get(REPORT, b"{}")).get("editorial_refresh_candidates", [])
+    fresh_queue = json.loads(fresh.get(REPORT, b"{}")).get("editorial_refresh_candidates", [])
+    queued_urls = {source_index.canonical(item["url"]) for item in fresh_queue}
+    unexplained = 0
+    for item in prior_queue:
+        key = source_index.canonical(item["url"])
+        if key in queued_urls or policy and policy.exclusion(key):
+            continue
+        current = after.get(key, {})
+        accepted_hash = current.get("content_sha256", current.get("abstract_sha256"))
+        if not item.get("observed_content_sha256") or accepted_hash != item["observed_content_sha256"]:
+            unexplained += 1
+    if missing or downgraded or unexplained:
+        raise ScanError(f"Pending PR evidence would be lost ({missing} missing, {downgraded} downgraded, {unexplained} unresolved editorial changes). Existing PR retained; review or merge it before retrying.")
+
+
+def publish(api: GitHub, identity: dict, files: dict[str, bytes], policy=None) -> str:
     main_ref = api.request("GET", "/git/ref/heads/main")
     if main_ref["object"]["sha"] != identity["base_sha"]:
         raise ScanError("Main advanced after scanning; rerun instead of overwriting newer source data.")
@@ -301,7 +356,10 @@ def publish(api: GitHub, identity: dict, files: dict[str, bytes]) -> str:
         previous = api.request("GET", "/commits/" + previous_sha)
         if previous.get("committer", {}).get("login") != BOT or not previous.get("commit", {}).get("message", "").startswith(TITLE):
             raise ScanError("The dedicated automation branch has non-bot changes; maintainer inspection is required.")
-        unchanged = meaningful_fingerprint(remote_comparison_files(api, previous_sha)) == meaningful_fingerprint(files)
+        previous_files = remote_comparison_files(api, previous_sha)
+        if opened:
+            ensure_pending_continuity(previous_files, files, policy)
+        unchanged = meaningful_fingerprint(previous_files) == meaningful_fingerprint(files)
     if unchanged and opened:
         return "The existing scan PR already contains these substantive source changes; no update made."
     if unchanged and previous_sha:
@@ -356,7 +414,8 @@ def main() -> int:
             token = os.environ.get("GH_TOKEN", "")
             if not token:
                 raise ScanError("The final publishing step requires the workflow GITHUB_TOKEN.")
-            write_summary(publish(GitHub(token), identity, files))
+            policy = load_policy(ROOT / "data/source-curation.json", source_index.canonical)
+            write_summary(publish(GitHub(token), identity, files, policy=policy))
         return 0
     except (ScanError, KeyError, TypeError, ValueError, OSError, subprocess.CalledProcessError) as exc:
         # Public-source responses, filesystem paths, and credentials stay out of logs.
