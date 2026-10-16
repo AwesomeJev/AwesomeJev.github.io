@@ -1,6 +1,6 @@
 # Resource expansion — 16 October 2026
 
-**719 newly added, evidence-checked sources / target: at least 301.**
+**721 newly added, evidence-checked sources / target: at least 301.**
 
 [Main collection](../README.md) · [Website source search](https://awesomejev.github.io/#corpus) · [Machine-readable progress](../data/expansion-progress-2026-10-16.json) · [Frozen baseline](../data/expansion-baseline-2026-10-16.json) · [Prior-citation supplement](../data/expansion-baseline-supplement-2026-10-16.json)
 
@@ -8,7 +8,7 @@ The baseline is [commit 3519c15](https://github.com/reacher-z/Awesome-Jev/tree/3
 
 Only sources in the [reviewed intake](../data/expansion-intake-2026-10-16.json) count toward this expansion. This is a discovery directory with explicit screening levels. **Direct** sources concern Jev or typed decision systems; **adjacent** resources implement closely related methods; **background** papers provide research context. Listing is not an endorsement or independent reproduction. The short descriptions explain relevance, not a universal recommendation.
 
-**中文：本轮已新增 719 项有核查证据的资源，目标至少 301 项。** 已有台账、精选与引用链接、重复正文或论文题名均不重复计数，仅元数据条目不计入目标。下表区分直接相关、邻近方法与背景研究；自动内容筛查或摘要检查不等于全文评审，也不代表实验复现。
+**中文：本轮已新增 721 项有核查证据的资源，目标至少 301 项。** 已有台账、精选与引用链接、重复正文或论文题名均不重复计数，仅元数据条目不计入目标。下表区分直接相关、邻近方法与背景研究；自动内容筛查或摘要检查不等于全文评审，也不代表实验复现。
 
 | Resource type | Newly added |
 | --- | ---: |
@@ -16,7 +16,7 @@ Only sources in the [reviewed intake](../data/expansion-intake-2026-10-16.json) 
 | Guides and evaluations | 36 |
 | Models | 52 |
 | Papers | 10 |
-| Projects | 180 |
+| Projects | 182 |
 | Research foundations | 341 |
 
 ## Datasets
@@ -226,16 +226,16 @@ Only sources in the [reviewed intake](../data/expansion-intake-2026-10-16.json) 
 
 | Resource | Relationship / evidence | Relevance |
 | --- | --- | --- |
-| [Bongard: Training Machine Intuition](https://arxiv.org/abs/2609.39111) | direct · `abstract_checked` | Original abstract explicitly discusses Jev or typed decision models; findings remain author-reported. |
+| [Bongard: Training Machine Intuition](https://arxiv.org/abs/2609.39111) | direct · `abstract_checked` | Shared evidence encoding and candidate-probability readout, trained with representation and action-outcome feedback. Results remain author-reported. |
 | [Jev-Mobile: Jev as an Executor for Mobile GUI Agents](https://arxiv.org/abs/2609.30186) | direct · `abstract_checked` | VLM local-goal planning with Jev action selection over mobile accessibility trees; time and cost comparisons are conditioned on successful trajectories. |
 | [JEV-Star: Fast, Low-Cost StarCraft II Control with Language-Model Planning](https://arxiv.org/abs/2609.27331) | direct · `abstract_checked` | Jev action selection paired with language-model planning for StarCraft II; concurrent interface changes prevent isolating the planning effect. |
-| [Mnemon: Raw Records, Fast Judgments, Slow Thoughts](https://arxiv.org/abs/2609.36059) | direct · `abstract_checked` | Original abstract explicitly discusses Jev or typed decision models; findings remain author-reported. |
-| [REFLEX with Jev for Efficient Selective Control in LLM Agents](https://arxiv.org/abs/2609.26532) | direct · `abstract_checked` | Original abstract explicitly discusses Jev or typed decision models; findings remain author-reported. |
+| [Mnemon: Raw Records, Fast Judgments, Slow Thoughts](https://arxiv.org/abs/2609.36059) | direct · `abstract_checked` | Keeps raw memory records, separating Jev relevance judgments from LLM search planning and answer generation. Results remain author-reported. |
+| [REFLEX with Jev for Efficient Selective Control in LLM Agents](https://arxiv.org/abs/2609.26532) | direct · `abstract_checked` | Confidence-gated Jev control with LLM fallback; gains depend on action alternatives and baseline routing. Results remain author-reported. |
 | [Same-Number Citation Swaps: Stress-Testing Jev as a Financial Evidence Judge](https://arxiv.org/abs/2610.08675) | direct · `abstract_checked` | Controlled same-number citation swaps test Jev source verification; detecting wrong financial roles trades off against accepting equivalent evidence. |
 | [Selective Reasoning for Typed Decision Models: When to Start, Read, and Stop](https://arxiv.org/abs/2610.19644) | direct · `abstract_checked` | Candidate-answer readout during interruptible reasoning, with gates for starting, reading and stopping; results depend on a fixed backbone and task suite. |
 | [Token-Efficient Multi-Agent Collaboration via System One-Guided Computational Division of Labor](https://arxiv.org/abs/2610.08155) | direct · `abstract_checked` | System One controllers coordinate bounded multi-agent decisions while LLM workers reason; reported efficiency concerns the complete collaboration framework. |
 | [Typed Decision Models on Tabular Data](https://arxiv.org/abs/2610.19536) | direct · `abstract_checked` | Typed-decision classification and verification under content-preserving table rewrites; confidence can indicate instability without establishing correctness. |
-| [VideoJev: System One Model for Video Understanding and Interaction](https://arxiv.org/abs/2610.18615) | direct · `abstract_checked` | Original abstract explicitly discusses Jev or typed decision models; findings remain author-reported. |
+| [VideoJev: System One Model for Video Understanding and Interaction](https://arxiv.org/abs/2610.18615) | direct · `abstract_checked` | Structured video decisions with temporal spans and candidate scores; cached and joint inference reuse visual computation. Results remain author-reported. |
 
 ## Projects
 
@@ -322,6 +322,7 @@ Only sources in the [reviewed intake](../data/expansion-intake-2026-10-16.json) 
 | [jasonduncan/semantic-operators](https://github.com/jasonduncan/semantic-operators) | direct · `content_screened` | Provider-neutral Python, CLI and MCP abstractions for typed questions, answer probabilities and uncertainty handling. |
 | [jerichosiahaya/naluri](https://github.com/jerichosiahaya/naluri) | direct · `content_screened` | XLM-RoBERTa-based multilingual decision model exposes yes/no, choice and ordinal questions, with fine-tuning and evaluation guidance. |
 | [Jev-Sinhala Capability, Primitive Consistency & Benchmark Census Probe](https://github.com/azri-muhsin/jev-sinhala-review) | direct · `content_screened` | Sinhala and Singlish evaluation using established benchmark labels, with script changes, question-language controls, option permutations and cross-primitive consistency tests. |
+| [JEV-Star](https://github.com/sc2musa/jev_star) | direct · `content_screened` | StarCraft II controllers and selected comparison artifacts; full original logs are excluded, version changes confound planning-effect claims, and live runs need game/model services. |
 | [jev-xray](https://github.com/aishwary-dongre/jev-xray) | direct · `content_screened` | Input-ablation tool measuring changes in typed decision probabilities; useful for testing distracting context without treating attribution as a causal explanation. |
 | [jhochenbaum/rlm-jev](https://github.com/jhochenbaum/rlm-jev) | direct · `content_screened` | Recursive-language-model integration exposing Jev classification and location judgments as bounded sub-calls. |
 | [jimador/bayes-of-our-lives](https://github.com/jimador/bayes-of-our-lives) | direct · `content_screened` | Embabel example comparing interchangeable Jev, OpenAI and deterministic local decision services. |
@@ -383,6 +384,7 @@ Only sources in the [reviewed intake](../data/expansion-intake-2026-10-16.json) 
 | [sathiskumarjothi0-oss/bev-decisions-pypi](https://github.com/sathiskumarjothi0-oss/bev-decisions-pypi) | direct · `content_screened` | Python package serves Beveridge model variants locally through yes/no, categorical-choice and ordinal-score interfaces. |
 | [schalkneethling/jev-3000](https://github.com/schalkneethling/jev-3000) | direct · `content_screened` | Interactive workbench comparing typed requests across Jev and other decision providers, including image inputs. |
 | [sdogantekin/jev-orchestrator](https://github.com/sdogantekin/jev-orchestrator) | direct · `content_screened` | Simulation-only payment-routing laboratory comparing Jev decisions with deterministic rules; no real payment execution. |
+| [Selective Reasoning for Typed Decision Models](https://github.com/binzheng-joey/selective-reasoning) | direct · `content_screened` | Candidate-readout policies and saved-measurement recomputation; fresh inference still needs external weights, benchmark data and feature caches. |
 | [seominpapa/siteeye](https://github.com/seominpapa/siteeye) | direct · `content_screened` | Construction-site research prototype combining vision detections with Jev near-miss judgments; safety effectiveness is not established here. |
 | [SergeyBazhmin/krasivo-jev](https://github.com/sergeybazhmin/krasivo-jev) | direct · `content_screened` | Dataset conversion, training and evaluation tools for single-pass multiple-choice decision models. |
 | [sgyaqing/verdict](https://github.com/sgyaqing/verdict) | direct · `content_screened` | Serving engine for models using the System One typed-decision protocol. |

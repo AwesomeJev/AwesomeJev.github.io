@@ -68,3 +68,13 @@ The expansion now contains **719 distinct additions**, comprising 368 content-sc
 The Chinese directory now translates every resource description, including qualifications about evidence, model-derived labels, private tests and reproduction limits. Translations share the original titles, URLs and evidence grades; they add no resources to the count. The build binds each translation to the exact English description and stops when a new or changed summary lacks a corresponding translation.
 
 **中文：** 另新增6篇直接相关预印本，逐篇核对固定版本的原始摘要，并独立重取核对摘要哈希；累计净新增719项。六篇仍标为摘要检查，未宣称全文审阅或实验复现。中文新增目录同步提供全部资源的中文简介，保留关键限定、原始题名和来源链接；翻译不增加资源数。精选首页仍为75项，精选论文与书目仍为32篇和40条。
+
+## Implementation follow-up
+
+Two author-linked repositories add independently inspectable code resources: [Selective Reasoning](https://github.com/binzheng-joey/selective-reasoning) and [JEV-Star](https://github.com/sc2musa/jev_star). Both primary READMEs were independently refetched with matching hashes, and public file/release inventories were inspected. The [implementation review](../../data/expansion-implementation-review-2026-10-16.json) records those checks. Software/data archives, selected replays and videos remain components of their repositories, not additional resources or independent studies.
+
+The expansion reaches **721 distinct additions**: 370 content-screened resources and 351 abstract-checked papers. The complete index has 4,216 unique sources, including 4,169 checked at their stated tiers and 47 metadata-only discoveries. Selective Reasoning's measurement recomputation does not rerun model inference; external weights, benchmarks and feature caches remain necessary. JEV-Star omits full original logs, and implementation/service timing differences confound causal claims about planning. Neither repository was executed.
+
+The Chinese directory provides corresponding summaries for both additions. Four existing paper descriptions were made more specific without changing evidence hashes or verification levels. The three curated-paper promotions recorded in the [selection review](papers-2026-10-16.md) are already counted sources, adding zero to the expansion.
+
+**中文：** 本次新增两个论文配套代码仓库，累计净新增721项；同仓压缩包、胜局回放与视频不拆开凑数。两个README均独立重取并核对哈希，文件及发布清单已检查，但未下载归档内容、运行模型或游戏、复现实验。中文简介保留外部依赖、日志不完整与版本混杂等限制；三篇论文提升为精选及四条简介细化均不增加来源数。

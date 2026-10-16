@@ -5,12 +5,12 @@ This directory makes discovery and screening inspectable. It does not claim that
 | File | Role |
 | --- | --- |
 | `ecosystem-sources.jsonl` | Direct and adjacent ecosystem sources, retrieved page evidence, provenance, and content hashes. |
-| `research-sources.jsonl` | Background research identified through public scholarly APIs, with abstract-level provenance and screening rules. |
+| `research-sources.jsonl` | Direct studies and background research, with primary-page or scholarly-API abstract provenance and explicit screening scope. |
 | `ecosystem-sources.excluded.jsonl` | Candidates excluded by the ecosystem screen. |
 | `source-curation.json` | Maintainer-reviewed exclusions and display-only metadata corrections, with primary-source evidence. |
 | `source-counts.json` | Counts after cross-ledger URL, content-hash, and paper-title deduplication. |
 
-Verification levels are `editorial_reviewed`, `content_screened`, `abstract_checked`, and `metadata_only`. The first denotes targeted editorial inspection; the next two denote automated screening of retrieved content or abstracts. Metadata-only entries and failed fetches do not count as checked content. Abstracts supplied through an index API do not imply that the original publisher page was fetched.
+Verification levels are `editorial_reviewed`, `content_screened`, `abstract_checked`, and `metadata_only`. The first denotes targeted editorial inspection; the next two record source-page or original-abstract checks at the scope stated in each record. Metadata-only entries and failed fetches do not count as checked content. Abstracts supplied through an index API do not imply that the original publisher page was fetched.
 
 Read [the audit methodology](../docs/source-audit.md). Generate the browser index with:
 

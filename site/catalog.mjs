@@ -267,6 +267,33 @@ const translations = {
 // Descriptions are editorial summaries. Paper findings remain author-reported.
 const resources = [
   {
+    "category": "Papers",
+    "title": "Typed Decision Models on Tabular Data",
+    "by": "Zhang, Ye & Zha · 2026-10-14 · v1",
+    "date": "2026-10-14",
+    "url": "https://arxiv.org/abs/2610.19536v1",
+    "en": "Tests classification and verification under content-preserving table rewrites across three task families; confidence can flag instability without proving correctness.",
+    "zh": "在三类表格任务中检验保持内容不变的改写对分类与验证的影响；置信度可提示不稳定，但不证明正确性。"
+  },
+  {
+    "category": "Papers",
+    "title": "Selective Reasoning for Typed Decision Models: When to Start, Read, and Stop",
+    "by": "Zheng & Chen · 2026-10-14 · v1",
+    "date": "2026-10-14",
+    "url": "https://arxiv.org/abs/2610.19644v1",
+    "en": "Gates reasoning start, candidate-answer reading and generation stopping; evidence is limited to a frozen Qwen backbone and three task families.",
+    "zh": "控制推理启动、候选答案读取与生成停止的时机；证据限于冻结的 Qwen 骨干及三类任务。"
+  },
+  {
+    "category": "Papers",
+    "title": "Same-Number Citation Swaps: Stress-Testing Jev as a Financial Evidence Judge",
+    "by": "Xu et al. · 2026-10-06 · v1",
+    "date": "2026-10-06",
+    "url": "https://arxiv.org/abs/2610.08675v1",
+    "en": "Same-number citation swaps probe financial-evidence verification; rejecting wrong roles trades off with accepting equivalent support in a constructed test.",
+    "zh": "以同数值引用替换检验金融证据验证；在构造测试中，识别财务项目错配与接受等价证据之间存在权衡。"
+  },
+  {
     category: "Papers",
     title: "REFLEX with Jev for Efficient Selective Control in LLM Agents",
     by: "Wu & Lim · 2026-09-22 · v1",
@@ -290,7 +317,7 @@ const resources = [
     by: "Ding, Jin & Ji · 2026-09-30 · v1",
     date: "2026-09-30",
     url: "https://arxiv.org/abs/2609.39111v1",
-    en: "Shared evidence encoding and candidate-probability heads, trained with representation and action-outcome feedback.",
+    en: "Shared evidence encoding and candidate-probability readout, trained with representation and action-outcome feedback.",
     zh: "共享证据编码与候选概率读出，结合表征学习和行动结果反馈训练。",
   },
   {

@@ -190,7 +190,6 @@
     "Turkish System One checkpoint using candidate-letter probabilities for finite-option questions.": "土耳其语 System One 检查点，使用候选字母的概率回答有限选项问题。",
     "W1 diffusion-model card documenting structured decision tasks and comparison artifacts, with publisher-reported performance.": "W1 扩散模型卡，记录结构化决策任务与对比材料；性能由发布者报告。",
     "Burmese XLM-RoBERTa decision model with Choice, Noul and Score questions and per-answer probabilities.": "缅甸语 XLM-RoBERTa 决策模型，支持 Choice、Noul 和 Score 问题，并输出各答案的概率。",
-    "Original abstract explicitly discusses Jev or typed decision models; findings remain author-reported.": "原始摘要明确讨论 Jev 或类型化决策模型；研究结果仍为作者报告。",
     "Claude Code and Codex routing helper uses decision models to choose execution models and reasoning effort, with provider fallbacks.": "Claude Code 与 Codex 路由助手，使用决策模型选择执行模型和推理强度，并支持服务商回退。",
     "Market-research pipeline combining deterministic indicators, Jev gates and evidence-constrained language-model analysis.": "市场研究流程，将确定性指标、Jev 门控与受证据约束的语言模型分析结合。",
     "RAG chatbot using Jev to route questions by complexity between local and hosted language models.": "RAG 聊天机器人，使用 Jev 按问题复杂度在本地与托管语言模型之间路由。",
@@ -382,6 +381,12 @@
     "System One controllers coordinate bounded multi-agent decisions while LLM workers reason; reported efficiency concerns the complete collaboration framework.": "由 System One 控制器协调多智能体的有界决策，让 LLM 承担推理；效率结果衡量完整协作框架。",
     "Controlled same-number citation swaps test Jev source verification; detecting wrong financial roles trades off against accepting equivalent evidence.": "通过同数值引用替换测试 Jev 的来源验证；识别引用中财务项目的错配与接受等价证据之间存在权衡。",
     "Jev action selection paired with language-model planning for StarCraft II; concurrent interface changes prevent isolating the planning effect.": "将 Jev 动作选择与语言模型规划用于星际争霸 II；接口同时变化，无法单独识别规划带来的效果。",
-    "VLM local-goal planning with Jev action selection over mobile accessibility trees; time and cost comparisons are conditioned on successful trajectories.": "VLM 制定局部目标，Jev 在移动端无障碍树上选择动作；时间和成本比较仅针对成功轨迹。"
+    "VLM local-goal planning with Jev action selection over mobile accessibility trees; time and cost comparisons are conditioned on successful trajectories.": "VLM 制定局部目标，Jev 在移动端无障碍树上选择动作；时间和成本比较仅针对成功轨迹。",
+    "Structured video decisions with temporal spans and candidate scores; cached and joint inference reuse visual computation. Results remain author-reported.": "以时间区间和候选分数表达视频决策，通过缓存与联合推理复用视觉计算。研究结果仍为作者报告。",
+    "Shared evidence encoding and candidate-probability readout, trained with representation and action-outcome feedback. Results remain author-reported.": "共享证据编码与候选概率读出，结合表征学习和行动结果反馈训练。研究结果仍为作者报告。",
+    "Keeps raw memory records, separating Jev relevance judgments from LLM search planning and answer generation. Results remain author-reported.": "保留原始记忆记录，将 Jev 相关性判断与 LLM 检索规划、回答生成分开。研究结果仍为作者报告。",
+    "Confidence-gated Jev control with LLM fallback; gains depend on action alternatives and baseline routing. Results remain author-reported.": "以置信度控制 Jev 与 LLM 回退；收益取决于候选动作与基线路由。研究结果仍为作者报告。",
+    "Candidate-readout policies and saved-measurement recomputation; fresh inference still needs external weights, benchmark data and feature caches.": "候选答案读出策略与已有测量重算工具；重新进行模型推理仍需外部权重、基准数据和特征缓存。",
+    "StarCraft II controllers and selected comparison artifacts; full original logs are excluded, version changes confound planning-effect claims, and live runs need game/model services.": "星际争霸 II 控制器与部分比较材料；完整原始日志未随仓库提供，版本变化混杂了规划效果，实际运行还需游戏和模型服务。"
   }
 }

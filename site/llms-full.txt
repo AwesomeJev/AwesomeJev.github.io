@@ -38,6 +38,12 @@ Separate prediction quality from probability quality. Alongside accuracy or a ta
 
 For abstention or escalation, report coverage and error among accepted cases, and test whether the fallback actually corrects mistakes. Freeze model versions and prompts; measure end-to-end latency, failures, and costs separately. This is an evaluation plan, not a result reported for Jev. [SelectiveNet](https://proceedings.mlr.press/v97/geifman19a.html) · [Model versions](https://docs.typesafe.ai/models)
 
+## How should I test decisions over tables and cited evidence?
+
+Separate schema validity, stability under content-preserving changes, and semantic correctness against reference labels. For tables, pair original inputs with alternative layouts or row/column reorderings only when meaning is preserved. Keep values, relationships and arithmetic fixed, then compare choices and probability distributions. A stable answer can still be wrong; low confidence alone does not identify an error. [Tabular decision preprint, v1](https://arxiv.org/abs/2610.19536v1)
+
+For citations, keep the claim and arithmetic fixed while swapping same-number passages that support a different financial role. Include equivalent valid evidence as positive controls, and measure false acceptance of mismatches and false rejection of valid support separately. Inspect paired disagreements rather than counting every changed answer as wrong. These constructed cases are diagnostic probes, not estimates of error rates in real traffic. [Same-number citation preprint, v1](https://arxiv.org/abs/2610.08675v1)
+
 ## Are the SDK and independent models released Jev weights?
 
 The official SDK is a client for TypeSafe’s hosted API, not a Jev checkpoint. Independent projects such as Laya publish their own model artifacts. Similar question types or API compatibility do not establish identical architecture, behavior, or accuracy. [Official Python SDK](https://github.com/typesafe-ai/typesafe-sdk-python) · [Laya model card](https://huggingface.co/convaiinnovations/laya)
@@ -67,6 +73,22 @@ Papers · Chen et al. · 2026-10-15 · v1
 A benchmark spanning matched requests and closed-loop tasks. Experiments have not been reproduced here.
 
 Primary source: https://arxiv.org/abs/2610.21244v1
+
+## Selective Reasoning for Typed Decision Models: When to Start, Read, and Stop
+
+Papers · Zheng & Chen · 2026-10-14 · v1
+
+Gates reasoning start, candidate-answer reading and generation stopping; evidence is limited to a frozen Qwen backbone and three task families.
+
+Primary source: https://arxiv.org/abs/2610.19644v1
+
+## Typed Decision Models on Tabular Data
+
+Papers · Zhang, Ye & Zha · 2026-10-14 · v1
+
+Tests classification and verification under content-preserving table rewrites across three task families; confidence can flag instability without proving correctness.
+
+Primary source: https://arxiv.org/abs/2610.19536v1
 
 ## DecisionRobust: Benchmarking Robustness for JEV Style Decision Models Across Text and Vision
 
@@ -172,6 +194,14 @@ Tests conflicts between option names and definitions despite structurally valid 
 
 Primary source: https://arxiv.org/abs/2609.26758v3
 
+## Same-Number Citation Swaps: Stress-Testing Jev as a Financial Evidence Judge
+
+Papers · Xu et al. · 2026-10-06 · v1
+
+Same-number citation swaps probe financial-evidence verification; rejecting wrong roles trades off with accepting equivalent support in a constructed test.
+
+Primary source: https://arxiv.org/abs/2610.08675v1
+
 ## JEV versus LLMs: Accuracy, Cost and Calibration on Seven Political Science Replications
 
 Papers · Denney & DiGiuseppe · 2026-10-06 · v2
@@ -208,7 +238,7 @@ Primary source: https://arxiv.org/abs/2610.00437v1
 
 Papers · Ding, Jin & Ji · 2026-09-30 · v1
 
-Shared evidence encoding and candidate-probability heads, trained with representation and action-outcome feedback.
+Shared evidence encoding and candidate-probability readout, trained with representation and action-outcome feedback.
 
 Primary source: https://arxiv.org/abs/2609.39111v1
 

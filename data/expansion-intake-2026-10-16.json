@@ -801,6 +801,18 @@
       ],
       "evidence_scope": "Six fixed-version primary arXiv abstracts and metadata inspected; every abstract independently refetched with matching hash. No full-paper review or experimental reproduction.",
       "accepted_at": "2026-10-16T11:00:42+00:00"
+    },
+    {
+      "name": "paper_implementations_followup",
+      "input_sha256": "b45438b012220ae066902e4588881f3ab6e781c3ec743214ce17b66a7f50ae08",
+      "screened_records_proposed": 2,
+      "accepted_count": 2,
+      "accepted_urls": [
+        "https://github.com/binzheng-joey/selective-reasoning",
+        "https://github.com/sc2musa/jev_star"
+      ],
+      "evidence_scope": "Two author-linked repositories: substantive README screening, independent matching-hash refetch, and public file/release inventory checks. No archive contents or model/game executions inspected. Companion archives and media counted within their repositories.",
+      "accepted_at": "2026-10-16T11:13:19+00:00"
     }
   ]
 }

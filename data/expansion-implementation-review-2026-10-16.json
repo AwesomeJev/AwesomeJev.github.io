@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "reviewed_at": "2026-10-16T11:10:46+00:00",
+  "input_sha256": "33c53038e9f5043c7b65fd113b1a2a85ea306413633660adb4eacb87e2c81b4f",
+  "recommended_count": 2,
+  "accepted_urls": [
+    "https://github.com/binzheng-joey/selective-reasoning",
+    "https://github.com/sc2musa/jev_star"
+  ],
+  "excluded": [],
+  "decision": "Accept as two separately inspectable implementation resources linked by the original papers; not as two additional independent studies or completed reproductions.",
+  "primary_checks": [
+    {
+      "url": "https://github.com/binzheng-joey/selective-reasoning",
+      "evidence_url": "https://raw.githubusercontent.com/binzheng-joey/selective-reasoning/main/README.md",
+      "http_status": 200,
+      "content_sha256": "4baa6da446c3b0eca4efb07a625810f30f61bc614a134c3f1d6c3c1d463e207e",
+      "matches_candidate_hash": true
+    },
+    {
+      "url": "https://github.com/sc2musa/jev_star",
+      "evidence_url": "https://raw.githubusercontent.com/sc2musa/jev_star/main/README.md",
+      "http_status": 200,
+      "content_sha256": "d2d620b5142438143329c8cd524bed46b7d0f59707ffaa200c4a2a9a1d074e54",
+      "matches_candidate_hash": true
+    }
+  ],
+  "implementation_inventory_checks": [
+    {
+      "url": "https://github.com/binzheng-joey/selective-reasoning",
+      "inventory_url": "https://api.github.com/repos/binzheng-joey/selective-reasoning/git/trees/main?recursive=1",
+      "inventory_sha256": "69e73c5eefb874bc242c22096421b61cc3bcd9031ccd83ce61e24344fb81b073",
+      "truncated": false,
+      "conclusion": "Inventory contains a saved-measurement recomputation script, manifests and evaluation metadata; implementation-archive contents were not inspected."
+    },
+    {
+      "url": "https://github.com/sc2musa/jev_star",
+      "inventory_url": "https://api.github.com/repos/sc2musa/jev_star/git/trees/main?recursive=1",
+      "inventory_sha256": "10e646a0df8feea5e4ef8d9a146829946ab6954435e205c724b90120dc609174",
+      "truncated": false,
+      "conclusion": "Inventory contains Jev and planning controllers, game-runtime adapters, offline tests and a source manifest; no source was executed."
+    }
+  ],
+  "deduplication": {
+    "current_ledger_url_intersection": 0,
+    "current_ledger_body_hash_intersection": 0,
+    "frozen_baseline_and_citation_url_intersection": 0,
+    "within_pair_url_or_body_duplicates": 0,
+    "both_code_links_present_in_fixed_version_arxiv_pages": true,
+    "version_file_or_archive_split_counting": false
+  },
+  "suggested_descriptions": [
+    {
+      "url": "https://github.com/binzheng-joey/selective-reasoning",
+      "relevance": "Candidate-readout policies and saved-measurement recomputation; fresh inference still needs external weights, benchmark data and feature caches.",
+      "relevance_zh": "候选答案读出策略与已有测量重算工具；重新进行模型推理仍需外部权重、基准数据和特征缓存。"
+    },
+    {
+      "url": "https://github.com/sc2musa/jev_star",
+      "relevance": "StarCraft II controllers and selected comparison artifacts; full original logs are excluded, version changes confound planning-effect claims, and live runs need game/model services.",
+      "relevance_zh": "星际争霸 II 控制器与部分比较材料；完整原始日志未随仓库提供，版本变化混杂了规划效果，实际运行还需游戏和模型服务。"
+    }
+  ],
+  "release_data_followup": {
+    "additional_distinct_resources_recommended": 0,
+    "reason": "Release assets are companion components or selected media of the same two repository identities, not separately counted datasets. No archive, replay, video, weight or benchmark row was downloaded.",
+    "checks": [
+      {
+        "url": "https://github.com/binzheng-joey/selective-reasoning",
+        "inventory_url": "https://api.github.com/repos/binzheng-joey/selective-reasoning/releases?per_page=5",
+        "inventory_sha256": "8dae1becbaaa03024563b1820260cd951e42da4163cfdaefd1d0a8288b6944a7",
+        "release_urls": [
+          "https://github.com/binzheng-joey/selective-reasoning/releases/tag/v1.0"
+        ],
+        "conclusion": "Public release metadata lists complementary software/data archives; count them within the existing repository resource. Archive names do not establish conference acceptance."
+      },
+      {
+        "url": "https://github.com/sc2musa/jev_star",
+        "inventory_url": "https://api.github.com/repos/sc2musa/jev_star/releases?per_page=5",
+        "inventory_sha256": "1c48003b4d92f773c80e40be823974fc55ee95872b474d212f88dee11f7debef",
+        "release_urls": [
+          "https://github.com/sc2musa/Jev_Star/releases/tag/media-20260923"
+        ],
+        "conclusion": "Public release metadata lists winning replays, selected videos and a manifest/checksum; these are not a new independent evaluation corpus."
+      }
+    ]
+  },
+  "limits": [
+    "All 2 README bodies were independently refetched and matched the candidate hashes. File and release inventories were checked without downloading their contents.",
+    "The Selective Reasoning CPU recomputation workflow is distinct from rerunning model inference; its external dependencies remain necessary.",
+    "JEV-Star current material expands beyond the linked paper snapshot, preserves selected winning media rather than full run logs, and has version/service timing confounds.",
+    "Maintain content_screened, not editorial_reviewed or full-paper-review status. No experimental result was reproduced."
+  ],
+  "reviewed_ledger_sha256": "b45438b012220ae066902e4588881f3ab6e781c3ec743214ce17b66a7f50ae08",
+  "privacy_note": "Only original review statements, public URLs and hashes are included here; no copied README body or contact details.",
+  "parent_decision": {
+    "accepted_count": 2,
+    "accepted_at": "2026-10-16T11:13:19+00:00",
+    "prior_published_expansion_count": 719,
+    "counting_scope": "Two repository resources, not two independent studies or extra counts for component archives."
+  }
+}

@@ -3,35 +3,35 @@
   "baseline_commit": "3519c15d7e00686a8dbf9b1e184c68726327ab1e",
   "baseline_source_index_sha256": "8bfdd20564f2cda54bb8264c3c802f315e3e9a11b153bd85dde4325f53c841d5",
   "target_new_sources": 301,
-  "accepted_new_sources": 719,
+  "accepted_new_sources": 721,
   "remaining_to_target": 0,
   "target_count_reached": true,
   "current_index_counts": {
     "editorial_reviewed": 4,
-    "content_screened": 2347,
+    "content_screened": 2349,
     "abstract_checked": 1816,
     "metadata_only": 47,
-    "raw_records": 4228,
-    "unique_records": 4214,
+    "raw_records": 4230,
+    "unique_records": 4216,
     "duplicate_records": 14,
-    "checked_sources": 4167
+    "checked_sources": 4169
   },
   "by_category": {
     "Datasets": 100,
     "Guides and evaluations": 36,
     "Models": 52,
     "Papers": 10,
-    "Projects": 180,
+    "Projects": 182,
     "Research foundations": 341
   },
   "by_relation": {
     "adjacent": 24,
     "background": 341,
-    "direct": 354
+    "direct": 356
   },
   "by_verification_level": {
     "abstract_checked": 351,
-    "content_screened": 368
+    "content_screened": 370
   },
   "verification_note": "Evidence depth is labeled per source. Content screening and abstract checks do not establish full-paper review, peer review, endorsement, or experimental reproduction.",
   "additions": [
@@ -2296,7 +2296,7 @@
       "url": "https://arxiv.org/abs/2609.39111",
       "category": "Papers",
       "topic": "direct-decision-research",
-      "description": "Original abstract explicitly discusses Jev or typed decision models; findings remain author-reported.",
+      "description": "Shared evidence encoding and candidate-probability readout, trained with representation and action-outcome feedback. Results remain author-reported.",
       "relation": "direct",
       "verification_level": "abstract_checked",
       "content_sha256": "eb8f13a8b534af9a3b9bcf907d3948c81f5bab91e0b9f3d80c26e7fd97299c00",
@@ -2332,7 +2332,7 @@
       "url": "https://arxiv.org/abs/2609.36059",
       "category": "Papers",
       "topic": "direct-decision-research",
-      "description": "Original abstract explicitly discusses Jev or typed decision models; findings remain author-reported.",
+      "description": "Keeps raw memory records, separating Jev relevance judgments from LLM search planning and answer generation. Results remain author-reported.",
       "relation": "direct",
       "verification_level": "abstract_checked",
       "content_sha256": "3d090d44f7c2ae808bf730adb6279d42462fd250ad70f2a6c4d58ab6798abbbc",
@@ -2344,7 +2344,7 @@
       "url": "https://arxiv.org/abs/2609.26532",
       "category": "Papers",
       "topic": "direct-decision-research",
-      "description": "Original abstract explicitly discusses Jev or typed decision models; findings remain author-reported.",
+      "description": "Confidence-gated Jev control with LLM fallback; gains depend on action alternatives and baseline routing. Results remain author-reported.",
       "relation": "direct",
       "verification_level": "abstract_checked",
       "content_sha256": "f6cbac19c9acb5fb9e0d10e8afb293704c90acb01ad1084fd5cc2ba182bbe968",
@@ -2404,7 +2404,7 @@
       "url": "https://arxiv.org/abs/2610.18615",
       "category": "Papers",
       "topic": "direct-decision-research",
-      "description": "Original abstract explicitly discusses Jev or typed decision models; findings remain author-reported.",
+      "description": "Structured video decisions with temporal spans and candidate scores; cached and joint inference reuse visual computation. Results remain author-reported.",
       "relation": "direct",
       "verification_level": "abstract_checked",
       "content_sha256": "5056cfae7d1c42b1545311a6e40fce0beaab00aefafcff3d8d08c247c65eecca",
@@ -3384,6 +3384,18 @@
       "ledger": "ecosystem-sources.jsonl"
     },
     {
+      "title": "JEV-Star",
+      "url": "https://github.com/sc2musa/jev_star",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "StarCraft II controllers and selected comparison artifacts; full original logs are excluded, version changes confound planning-effect claims, and live runs need game/model services.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "d2d620b5142438143329c8cd524bed46b7d0f59707ffaa200c4a2a9a1d074e54",
+      "retrieved_at": "2026-10-16T11:04:25+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
       "title": "jev-xray",
       "url": "https://github.com/aishwary-dongre/jev-xray",
       "category": "Projects",
@@ -4113,6 +4125,18 @@
       "verification_level": "content_screened",
       "content_sha256": "f49ebc1a2e578dc64dd986b18e53c0ec0f07cabe2e9c9cddcbfcfb2443a35c86",
       "retrieved_at": "2026-10-16T10:05:38+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "Selective Reasoning for Typed Decision Models",
+      "url": "https://github.com/binzheng-joey/selective-reasoning",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "Candidate-readout policies and saved-measurement recomputation; fresh inference still needs external weights, benchmark data and feature caches.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "4baa6da446c3b0eca4efb07a625810f30f61bc614a134c3f1d6c3c1d463e207e",
+      "retrieved_at": "2026-10-16T11:04:25+00:00",
       "ledger": "ecosystem-sources.jsonl"
     },
     {

@@ -176,6 +176,34 @@
       "note": "The display title describes the limited diagnostic scope rather than repeating a broad negative headline. This is not an independent model-performance finding.",
       "evidence_url": "https://raw.githubusercontent.com/zephyr4772/laya-zeroshot-agent-guard-eval/main/README.md",
       "reviewed_at": "2026-10-16T10:48:06+00:00"
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.18615",
+      "relevance": "Structured video decisions with temporal spans and candidate scores; cached and joint inference reuse visual computation. Results remain author-reported.",
+      "evidence_url": "https://arxiv.org/abs/2610.18615v1",
+      "reviewed_at": "2026-10-16T11:10:02+00:00",
+      "note": "Display-only expansion summary aligned with the existing curated entry and checked against the fixed-version primary abstract. Original ledger evidence and verification tier remain unchanged; no full-paper review or reproduction is claimed."
+    },
+    {
+      "url": "https://arxiv.org/abs/2609.39111",
+      "relevance": "Shared evidence encoding and candidate-probability readout, trained with representation and action-outcome feedback. Results remain author-reported.",
+      "evidence_url": "https://arxiv.org/abs/2609.39111v1",
+      "reviewed_at": "2026-10-16T11:10:02+00:00",
+      "note": "Display-only expansion summary aligned with the existing curated entry and checked against the fixed-version primary abstract. Original ledger evidence and verification tier remain unchanged; no full-paper review or reproduction is claimed."
+    },
+    {
+      "url": "https://arxiv.org/abs/2609.36059",
+      "relevance": "Keeps raw memory records, separating Jev relevance judgments from LLM search planning and answer generation. Results remain author-reported.",
+      "evidence_url": "https://arxiv.org/abs/2609.36059v1",
+      "reviewed_at": "2026-10-16T11:10:02+00:00",
+      "note": "Display-only expansion summary aligned with the existing curated entry and checked against the fixed-version primary abstract. Original ledger evidence and verification tier remain unchanged; no full-paper review or reproduction is claimed."
+    },
+    {
+      "url": "https://arxiv.org/abs/2609.26532",
+      "relevance": "Confidence-gated Jev control with LLM fallback; gains depend on action alternatives and baseline routing. Results remain author-reported.",
+      "evidence_url": "https://arxiv.org/abs/2609.26532v1",
+      "reviewed_at": "2026-10-16T11:10:02+00:00",
+      "note": "Display-only expansion summary aligned with the existing curated entry and checked against the fixed-version primary abstract. Original ledger evidence and verification tier remain unchanged; no full-paper review or reproduction is claimed."
     }
   ]
 }

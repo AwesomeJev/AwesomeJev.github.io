@@ -134,6 +134,30 @@
         ]
       },
       {
+        "id": "tables-and-cited-evidence",
+        "title": "How should I test decisions over tables and cited evidence?",
+        "paragraphs": [
+          {
+            "text": "Separate schema validity, stability under content-preserving changes, and semantic correctness against reference labels. For tables, pair original inputs with alternative layouts or row/column reorderings only when meaning is preserved. Keep values, relationships and arithmetic fixed, then compare choices and probability distributions. A stable answer can still be wrong; low confidence alone does not identify an error.",
+            "sources": [
+              {
+                "label": "Tabular decision preprint, v1",
+                "url": "https://arxiv.org/abs/2610.19536v1"
+              }
+            ]
+          },
+          {
+            "text": "For citations, keep the claim and arithmetic fixed while swapping same-number passages that support a different financial role. Include equivalent valid evidence as positive controls, and measure false acceptance of mismatches and false rejection of valid support separately. Inspect paired disagreements rather than counting every changed answer as wrong. These constructed cases are diagnostic probes, not estimates of error rates in real traffic.",
+            "sources": [
+              {
+                "label": "Same-number citation preprint, v1",
+                "url": "https://arxiv.org/abs/2610.08675v1"
+              }
+            ]
+          }
+        ]
+      },
+      {
         "id": "models-and-licenses",
         "title": "Are the SDK and independent models released Jev weights?",
         "paragraphs": [
@@ -323,6 +347,30 @@
               {
                 "label": "模型版本",
                 "url": "https://docs.typesafe.ai/models"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "tables-and-cited-evidence",
+        "title": "怎样测试模型对表格与引用证据的决策？",
+        "paragraphs": [
+          {
+            "text": "分别评估输出结构合法性、保持内容不变时的稳定性，以及相对于参考标签的语义正确性。对表格，将原输入与不同版式或行列重排配对，但仅在含义不变时进行；保持数值、关系和算术不变，再比较选项与概率分布。答案稳定仍可能错误；不能仅凭低置信度判定错误。",
+            "sources": [
+              {
+                "label": "表格决策预印本 v1",
+                "url": "https://arxiv.org/abs/2610.19536v1"
+              }
+            ]
+          },
+          {
+            "text": "对引用证据，固定待验证的主张和算术，将引文替换为数值相同、却对应不同财务项目的段落。保留等价有效证据作为正对照，分别统计误接纳错配证据与误拒绝有效支持的情况。检查配对差异，不把每次答案变化都当作错误。这些构造案例只是诊断探针，不能据此估计真实流量中的错误率。",
+            "sources": [
+              {
+                "label": "同数值引用替换预印本 v1",
+                "url": "https://arxiv.org/abs/2610.08675v1"
               }
             ]
           }
