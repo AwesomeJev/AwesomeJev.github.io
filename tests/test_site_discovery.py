@@ -3,13 +3,15 @@
 from datetime import date
 from collections import Counter
 from html.parser import HTMLParser
+import hashlib
 import json
 from pathlib import Path
 import re
 import shutil
 import subprocess
+import tempfile
 import unittest
-from urllib.parse import urlsplit
+from urllib.parse import parse_qs, urljoin, urlsplit
 from urllib.robotparser import RobotFileParser
 import xml.etree.ElementTree as ET
 
@@ -49,6 +51,9 @@ class CrawlPage(HTMLParser):
         self.cards = []
         self.headings = []
         self.structured = []
+        self.import_maps = []
+        self.scripts = []
+        self.stylesheets = []
         self.body_text = []
         self.ids = []
         self.links = []
@@ -78,11 +83,14 @@ class CrawlPage(HTMLParser):
                 self.canonicals.append(attrs.get("href", ""))
             if "alternate" in relation and "hreflang" in attrs:
                 self.alternates.append((attrs["hreflang"], attrs.get("href", "")))
+            if "stylesheet" in relation:
+                self.stylesheets.append(attrs.get("href", ""))
         elif tag == "meta" and attrs.get("name", "").lower() in {"robots", "googlebot", "bingbot"}:
             self.robots.append(attrs.get("content", ""))
         elif tag == "script":
             self._script = attrs.get("type", "other")
             self._script_text = []
+            self.scripts.append(attrs)
         elif tag == "style":
             self._style = True
         elif tag == "h1":
@@ -100,6 +108,8 @@ class CrawlPage(HTMLParser):
         if tag == "script":
             if self._script == "application/ld+json":
                 self.structured.append(json.loads("".join(self._script_text)))
+            elif self._script == "importmap":
+                self.import_maps.append(json.loads("".join(self._script_text)))
             self._script = None
         elif tag == "style":
             self._style = False
@@ -149,6 +159,110 @@ class SiteDiscoveryTests(unittest.TestCase):
                 self.assertTrue(all(urlsplit(card["url"]).scheme in {"http", "https"} and urlsplit(card["url"]).netloc for card in cards))
                 self.assertEqual(len({card["url"] for card in cards}), len(cards))
         self.assertEqual([c["url"] for c in self.pages["/"].cards], [c["url"] for c in self.pages["/zh/"].cards])
+
+    def test_home_module_graph_and_styles_resolve_to_current_file_bytes(self):
+        imports_pattern = re.compile(
+            r"^\s*(?:import\s+(?:[^;\n]*?\bfrom\s+)?|export\s+[^;\n]*?\bfrom\s+)[\"']([^\"']+)[\"']",
+            re.MULTILINE,
+        )
+
+        def check_version(url):
+            parsed = urlsplit(url)
+            self.assertEqual(parsed.netloc, urlsplit(BASE).netloc)
+            path = (ROOT / "site" / parsed.path.lstrip("/")).resolve()
+            self.assertTrue(path.is_relative_to(ROOT / "site"))
+            expected = hashlib.sha256(path.read_bytes()).hexdigest()[:12]
+            self.assertEqual(parse_qs(parsed.query), {"v": [expected]})
+            return path
+
+        for route in ("/", "/zh/"):
+            with self.subTest(route=route):
+                page = self.pages[route]
+                self.assertEqual(len(page.import_maps), 1)
+                module_positions = [i for i, script in enumerate(page.scripts) if script.get("type") == "module"]
+                map_positions = [i for i, script in enumerate(page.scripts) if script.get("type") == "importmap"]
+                self.assertEqual(len(module_positions), 1)
+                self.assertLess(map_positions[0], module_positions[0], "Map must precede module resolution")
+                entry = urljoin(BASE + route, page.scripts[module_positions[0]]["src"])
+                self.assertEqual(urlsplit(entry).path, "/app.js")
+                mappings = {urljoin(BASE + route, key): urljoin(BASE + route, value)
+                            for key, value in page.import_maps[0]["imports"].items()}
+                queue, visited, mapped = [entry], set(), set()
+                while queue:
+                    module_url = queue.pop()
+                    if module_url in visited:
+                        continue
+                    visited.add(module_url)
+                    path = check_version(module_url)
+                    for specifier in imports_pattern.findall(path.read_text()):
+                        dependency = urljoin(module_url, specifier)
+                        self.assertIn(dependency, mappings, "Every imported module needs a versioned resolution")
+                        mapped.add(dependency)
+                        queue.append(mappings[dependency])
+                self.assertEqual(mapped, set(mappings))
+
+        for route, page in self.pages.items():
+            with self.subTest(stylesheet_route=route):
+                self.assertEqual(len(page.stylesheets), 1)
+                check_version(urljoin(BASE + route, page.stylesheets[0]))
+
+    def test_catalog_update_changes_static_content_and_module_url_without_manual_version_bump(self):
+        node = shutil.which("node")
+        self.assertIsNotNone(node)
+        inputs = (
+            "scripts/build_site.mjs", "templates/index.html", "data/search-guide.json",
+            "data/expansion-progress-2026-10-16.json", "references.bib",
+            "site/app.js", "site/catalog.mjs", "site/resource-view.mjs", "site/styles.css",
+        )
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            for name in inputs:
+                destination = root / name
+                destination.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copyfile(ROOT / name, destination)
+
+            def build(*args):
+                result = subprocess.run([node, "scripts/build_site.mjs", *args], cwd=root,
+                                        capture_output=True, text=True, timeout=45)
+                self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+
+            def home():
+                return CrawlPage((root / "site/index.html").read_text())
+
+            build()
+            before = home()
+            published = {p.relative_to(root): p.read_bytes() for p in (root / "site").rglob("*") if p.is_file()}
+            build()
+            self.assertEqual(published, {p.relative_to(root): p.read_bytes() for p in (root / "site").rglob("*") if p.is_file()})
+            build("--check")
+
+            catalog = root / "site/catalog.mjs"
+            probe = {"category": "Guides", "title": "Cache coherency probe", "url": "https://example.org/cache-probe",
+                     "by": "Test fixture", "en": "A newly published resource.", "zh": "新发布的资源。"}
+            catalog.write_text(catalog.read_text() + "\nresources.push(" + json.dumps(probe) + ");\n")
+            stale = subprocess.run([node, "scripts/build_site.mjs", "--check"], cwd=root,
+                                   capture_output=True, text=True, timeout=45)
+            self.assertNotEqual(stale.returncode, 0, "A changed catalog must invalidate the generated pages")
+            build()
+            after = home()
+            self.assertIn(probe["url"], [card["url"] for card in after.cards])
+            self.assertEqual(len(after.cards), len(before.cards) + 1)
+            self.assertNotEqual(before.import_maps[0]["imports"]["/catalog.mjs"], after.import_maps[0]["imports"]["/catalog.mjs"])
+            self.assertEqual(before.import_maps[0]["imports"]["/resource-view.mjs"], after.import_maps[0]["imports"]["/resource-view.mjs"])
+            before_entry = next(s["src"] for s in before.scripts if s.get("type") == "module")
+            after_entry = next(s["src"] for s in after.scripts if s.get("type") == "module")
+            self.assertEqual(before_entry, after_entry, "Unchanged application bytes should retain their cache URL")
+            build("--check")
+
+            for filename in ("app.js", "resource-view.mjs", "styles.css"):
+                path = root / "site" / filename
+                path.write_text(path.read_text() + "\n/* Cache invalidation fixture. */\n")
+            build()
+            changed = home()
+            self.assertNotEqual(after_entry, next(s["src"] for s in changed.scripts if s.get("type") == "module"))
+            self.assertNotEqual(after.import_maps[0]["imports"]["/resource-view.mjs"], changed.import_maps[0]["imports"]["/resource-view.mjs"])
+            self.assertNotEqual(after.stylesheets, changed.stylesheets)
+            build("--check")
 
     def test_each_language_page_has_a_distinct_self_canonical_and_reciprocal_alternates(self):
         observed = []

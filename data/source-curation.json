@@ -168,6 +168,14 @@
       "note": "Card v2.1 changes teacher soft-target rankings; publisher terminology \"calibrated\" is not independent proof that the corrected probabilities remain calibrated.",
       "evidence_url": "https://huggingface.co/datasets/m-lagnajit/calibrated-typed-decisions/raw/main/README.md",
       "reviewed_at": "2026-10-16T10:14:43+00:00"
+    },
+    {
+      "url": "https://github.com/zephyr4772/laya-zeroshot-agent-guard-eval",
+      "title": "Laya zero-shot agent-step guard evaluation",
+      "relevance": "Small handwritten zero-shot diagnostic of agent-step decisions; reported failures are specific to the tested prompts and model configuration.",
+      "note": "The display title describes the limited diagnostic scope rather than repeating a broad negative headline. This is not an independent model-performance finding.",
+      "evidence_url": "https://raw.githubusercontent.com/zephyr4772/laya-zeroshot-agent-guard-eval/main/README.md",
+      "reviewed_at": "2026-10-16T10:48:06+00:00"
     }
   ]
 }

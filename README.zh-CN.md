@@ -112,6 +112,9 @@ TypeSafe 的 Jev 接收状态与类型化问题，为应用代码返回决策和
 
 ## 基准与评测工具
 
+- **[Artificial Analysis Decision Index](https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index)** — 第三方能力、校准、成本与延迟评测。[方法说明](https://artificialanalysis.ai/methodology/decision-index)列出任务过滤规则与私有知识子集；完整测试集不能公开复现。
+- **[Entagl 工作流评测](https://www.entagl.com/blog/typesafe-jev-benchmark-ai-decision-models)** — 2026年9月23日发布的作者标注决策与客户工作流重放；私有案例和任务特定阈值限制公开复现及泛化。
+
 - **[Jev Decision Index](https://huggingface.co/spaces/multimodalart/jev-decision-index)** — 决策模型与比较评测的社区索引。[方法](https://multimodalart-jev-decision-index.static.hf.space/methodology.html) · [动态](https://multimodalart-jev-decision-index.static.hf.space/news.html) · [源文件](https://huggingface.co/spaces/multimodalart/jev-decision-index/tree/main)。完整分数包含私有测试，公开榜单不等于完整可复现材料。
 - **[TypeSafe WorkflowEvals](https://github.com/typesafe-ai/WorkflowEvals)** — 官方工作流定义、运行器、已记录结果与评分代码。[交互结果](https://evals.typesafe.ai/) · [数据集合集](https://huggingface.co/collections/typesafeAI/workflowevals)。参考答案采用模型共识，并非独立建立的人工金标准。
 - **[jev-benchmarking](https://github.com/AppliedMachineLearning-Lab/jev-benchmarking)** — Deußer 等人 37 数据集研究的配套代码。[论文](https://arxiv.org/abs/2609.37647v1)。
@@ -147,6 +150,9 @@ TypeSafe 的四个数据集提供工作流案例、模型生成的参考标签�
 ## 实践指南
 
 以下是厂商编写的实践教程；应使用自身任务的独立测试样例验证阈值。
+
+- [SDE 级联](https://docs.typesafe.ai/cookbooks/sde_cascade) — 用逐字段 Jev 问题核查低成本结构化抽取，再决定是否升级；教程使用缓存与示意输出。
+- [结构恢复](https://docs.typesafe.ai/cookbooks/autoformat) — 用续行与块类型判断恢复 Markdown 结构，不重写输入措辞。
 
 - [置信度路由](https://docs.typesafe.ai/patterns/confidence-routing) — 将不确定案例转交其他系统或人工。
 - [组合评分](https://docs.typesafe.ai/patterns/composite-scoring) — 在代码中按权重组合独立判断。

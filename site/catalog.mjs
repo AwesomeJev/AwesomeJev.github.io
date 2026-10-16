@@ -73,6 +73,8 @@ const translations = {
     preprint: "Preprint · author-reported",
     background: "Background literature",
     community: "Community resource",
+    independent: "Independent evaluation",
+    reportedEvaluation: "Author-reported evaluation",
     modelcard: "Publisher model card",
     readFurther: "Project links",
     readmeLink: "README",
@@ -203,6 +205,8 @@ const translations = {
     preprint: "预印本 · 作者报告",
     background: "背景文献",
     community: "社区资源",
+    independent: "独立评测",
+    reportedEvaluation: "作者报告的评测",
     modelcard: "发布者模型卡",
     readFurther: "项目链接",
     readmeLink: "项目说明",
@@ -879,6 +883,42 @@ const resources = [
     url: "https://arxiv.org/abs/2312.07104",
     en: "Efficient execution of structured language-model programs.",
     zh: "结构化语言模型程序的高效执行。",
+  },
+  {
+    "category": "Evaluations",
+    "title": "Artificial Analysis Decision Index",
+    "by": "Artificial Analysis · Methodology v1.0",
+    "provenance": "independent",
+    "url": "https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index",
+    "en": "External evaluation of classification, tool calling, knowledge and reasoning. The suite includes private questions.",
+    "zh": "第三方分类、工具调用、知识与推理评测；测试集包含私有问题。"
+  },
+  {
+    "category": "Evaluations",
+    "title": "Entagl: Jev vs Gemini workflow evaluation",
+    "by": "Entagl Research · 2026-09-23",
+    "provenance": "reportedEvaluation",
+    "url": "https://www.entagl.com/blog/typesafe-jev-benchmark-ai-decision-models",
+    "en": "Author-run labeled decisions and workflow replays. Private customer cases limit public reproducibility.",
+    "zh": "作者开展的标注决策与工作流重放评测；私有客户案例限制公开复现。"
+  },
+  {
+    "category": "Guides",
+    "title": "SDE cascade",
+    "by": "TypeSafe · Official cookbook",
+    "provenance": "official",
+    "url": "https://docs.typesafe.ai/cookbooks/sde_cascade",
+    "en": "Check inexpensive extraction with per-field Jev questions before escalation; the walkthrough uses cached and illustrative outputs.",
+    "zh": "先用逐字段 Jev 问题核查低成本抽取，再决定是否升级；教程使用缓存及示意输出。"
+  },
+  {
+    "category": "Guides",
+    "title": "Structure recovery",
+    "by": "TypeSafe · Official cookbook",
+    "provenance": "official",
+    "url": "https://docs.typesafe.ai/cookbooks/autoformat",
+    "en": "Restore Markdown structure through line-continuation and block-type decisions while code retains the original wording.",
+    "zh": "通过续行和块类型判断恢复 Markdown 结构，由代码保留原始措辞。"
   },
 ];
 

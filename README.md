@@ -112,6 +112,9 @@ These are independent implementations, not released TypeSafe weights. Licenses b
 
 ## Benchmarks and evaluation tools
 
+- **[Artificial Analysis Decision Index](https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index)** — third-party capability, calibration, cost and latency evaluation. [Methodology](https://artificialanalysis.ai/methodology/decision-index) specifies task filtering and a private knowledge subset; the complete suite is not publicly reproducible.
+- **[Entagl workflow evaluation](https://www.entagl.com/blog/typesafe-jev-benchmark-ai-decision-models)** — author-run labeled decisions and customer-workflow replays, published 23 September 2026. Private cases and workload-specific thresholds constrain reproduction and generalization.
+
 - **[Jev Decision Index](https://huggingface.co/spaces/multimodalart/jev-decision-index)** — community index of models and comparative evaluations. [Methodology](https://multimodalart-jev-decision-index.static.hf.space/methodology.html) · [News](https://multimodalart-jev-decision-index.static.hf.space/news.html) · [Source](https://huggingface.co/spaces/multimodalart/jev-decision-index/tree/main). The full score includes private tests; the public leaderboard is not a complete reproducibility package.
 - **[TypeSafe WorkflowEvals](https://github.com/typesafe-ai/WorkflowEvals)** — official workflow definitions, runner, recorded results, and scoring. [Interactive results](https://evals.typesafe.ai/) · [Dataset collection](https://huggingface.co/collections/typesafeAI/workflowevals). Its reference is model consensus, not independently established human ground truth.
 - **[jev-benchmarking](https://github.com/AppliedMachineLearning-Lab/jev-benchmarking)** — code accompanying Deußer et al.'s 37-dataset study. [Paper](https://arxiv.org/abs/2609.37647v1).
@@ -147,6 +150,9 @@ The four TypeSafe datasets contain workflow cases, model-generated references, a
 ## Practical guides
 
 Provider-authored recipes; validate thresholds on held-out examples from your own workload.
+
+- [SDE cascade](https://docs.typesafe.ai/cookbooks/sde_cascade) — check inexpensive structured extraction with per-field Jev questions before escalation; the walkthrough uses cached and illustrative outputs.
+- [Structure recovery](https://docs.typesafe.ai/cookbooks/autoformat) — use continuation and block-type decisions to recover Markdown structure without rewriting the input text.
 
 - [Confidence-gated routing](https://docs.typesafe.ai/patterns/confidence-routing) — route uncertain cases to another system or a person.
 - [Composite scoring](https://docs.typesafe.ai/patterns/composite-scoring) — combine separate judgments with weights controlled by code.

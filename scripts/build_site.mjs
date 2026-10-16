@@ -2,6 +2,7 @@
 // Build ordinary HTML from the same curated data used by the browser.
 // No remote requests, clock-based dates, dependencies, or crawler-specific output.
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { resolve, dirname } from 'node:path';
 import { resources, translations } from '../site/catalog.mjs';
@@ -14,6 +15,18 @@ const contentDate = '2026-10-16'; // Update only when curated page content chang
 const guide = JSON.parse(await readFile(resolve(root, 'data/search-guide.json'), 'utf8'));
 const expansion = JSON.parse(await readFile(resolve(root, 'data/expansion-progress-2026-10-16.json'), 'utf8'));
 const template = await readFile(resolve(root, 'templates/index.html'), 'utf8');
+// Stable URLs for unchanged bytes; changed data cannot reuse an older browser cache entry.
+const assetURLs = Object.fromEntries(await Promise.all(
+  ['app.js', 'catalog.mjs', 'resource-view.mjs', 'styles.css'].map(async name => {
+    const bytes = await readFile(resolve(root, 'site', name));
+    const digest = createHash('sha256').update(bytes).digest('hex').slice(0, 12);
+    return [name, `/${name}?v=${digest}`];
+  }),
+));
+const importMap = {imports: {
+  '/catalog.mjs': assetURLs['catalog.mjs'],
+  '/resource-view.mjs': assetURLs['resource-view.mjs'],
+}};
 const papers = resources.filter(row => row.category === 'Papers');
 const categoryOrder = ['Papers','Models','Datasets','Projects','Tools','Evaluations','Guides and evaluations','Guides','Research foundations','Foundations'];
 const relationLabels = {direct:['Directly related','直接相关'],adjacent:['Related field','邻近领域'],background:['Research background','研究背景']};
@@ -66,6 +79,9 @@ function home(language) {
   const description = t(language,'metaDescription');
   let html = template.replace('<html lang="en">',`<html lang="${language==='zh'?'zh-CN':'en'}">`);
   const values = {TITLE:esc(title),CANONICAL:origin+route(language),STRUCTURED_DATA:schemaTag(pageSchema(language,'',title,description,resources)),PAPERS_URL:route(language,'papers'),PAPERS_LABEL:language==='zh'?'论文目录':'Research papers',DISCOVERIES_URL:route(language,'discoveries'),DISCOVERIES_LABEL:language==='zh'?'新增资源':'New resources',RESOURCE_ROWS:resources.map(row=>renderResource(row,language,translations)).join('\n'),RESOURCE_COUNT:esc(t(language,'resourceCount')(resources.length,resources.length)),NOSCRIPT_NOTE:language==='zh'?'所有精选资源已列在本页。启用 JavaScript 后可使用搜索与筛选；也可浏览独立论文目录。':'All curated resources are listed on this page. Enable JavaScript to search and filter, or browse the dedicated papers directory.'};
+  values.IMPORT_MAP = `<script type="importmap">${json(importMap)}</script>`;
+  values.APP_MODULE_URL = esc(assetURLs['app.js']);
+  values.STYLESHEET_URL = esc(assetURLs['styles.css']);
   for (const [key,value] of Object.entries(values)) html=html.replaceAll(`{{${key}}}`,value);
   html=localizeHTML(html,language)
     .replace(/(<meta\s+(?:name="description"|property="og:description"|name="twitter:description")\s+content=")[^"]*("\s*\/>)/g,`$1${esc(description)}$2`)
@@ -89,7 +105,7 @@ ${alternates(section)}
 <meta property="og:type" content="${section==='guide'?'article':'website'}" /><meta property="og:site_name" content="AwesomeJev" />
 <meta property="og:title" content="${esc(title)}" /><meta property="og:description" content="${esc(description)}" /><meta property="og:url" content="${pageURL}" />
 <meta property="og:locale" content="${isZh?'zh_CN':'en_US'}" /><meta property="og:image" content="${origin}/assets/social.png" /><meta name="twitter:card" content="summary_large_image" />
-<link rel="icon" href="/favicon.svg" type="image/svg+xml" /><link rel="stylesheet" href="/styles.css?v=8" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" /><link rel="stylesheet" href="${assetURLs['styles.css']}" />
 ${schemaTag(pageSchema(language,section,title,description,list))}
 </head><body><a class="skip-link" href="#main">${isZh?'跳转到正文':'Skip to content'}</a><div class="page-shell">
 <header class="masthead"><a class="wordmark" href="${route(language)}"><span class="brand-mark" aria-hidden="true">aj</span>AwesomeJev.</a>

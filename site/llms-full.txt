@@ -500,6 +500,22 @@ Published cases, model-generated references, and recorded runs for inspecting re
 
 Primary source: https://huggingface.co/collections/typesafeAI/workflowevals
 
+## Artificial Analysis Decision Index
+
+Evaluations · Artificial Analysis · Methodology v1.0
+
+External evaluation of classification, tool calling, knowledge and reasoning. The suite includes private questions.
+
+Primary source: https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index
+
+## Entagl: Jev vs Gemini workflow evaluation
+
+Evaluations · Entagl Research · 2026-09-23
+
+Author-run labeled decisions and workflow replays. Private customer cases limit public reproducibility.
+
+Primary source: https://www.entagl.com/blog/typesafe-jev-benchmark-ai-decision-models
+
 ## Introducing System One Models & Jev
 
 Guides · TypeSafe · September 15, 2026
@@ -555,6 +571,22 @@ Guides · Official cookbook
 Use Choice probabilities to explore deep classification trees.
 
 Primary source: https://docs.typesafe.ai/cookbooks/hierarchical_classification
+
+## SDE cascade
+
+Guides · TypeSafe · Official cookbook
+
+Check inexpensive extraction with per-field Jev questions before escalation; the walkthrough uses cached and illustrative outputs.
+
+Primary source: https://docs.typesafe.ai/cookbooks/sde_cascade
+
+## Structure recovery
+
+Guides · TypeSafe · Official cookbook
+
+Restore Markdown structure through line-continuation and block-type decisions while code retains the original wording.
+
+Primary source: https://docs.typesafe.ai/cookbooks/autoformat
 
 ## Strictly Proper Scoring Rules, Prediction, and Estimation
 

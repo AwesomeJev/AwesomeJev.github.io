@@ -1,0 +1,177 @@
+{
+  "schema_version": 1,
+  "baseline_current_commit": "82ec85032dc6c184b1dc7839bec3449cd7f6edef",
+  "new_unique_sources": 58,
+  "cross_batch_duplicate": "https://github.com/tynamite/evaluation-behavioral-system-one",
+  "preferred_duplicate_record": "robustness_resources",
+  "counts": {
+    "followup_projects": 32,
+    "reproducibility_materials": 12,
+    "robustness_resources": 14
+  },
+  "scope": "Primary README/card and file-inventory inspection; not code execution, full-paper review or reproduced experiments.",
+  "primary_spot_checks": {
+    "projects": 8,
+    "reproducibility": 6,
+    "robustness": 5,
+    "all_hashes_matched": true
+  },
+  "robustness_review": {
+    "schema_version": 1,
+    "reviewed_at": "2026-10-16T10:44:34+00:00",
+    "baseline_current_commit": "82ec85032dc6c184b1dc7839bec3449cd7f6edef",
+    "input_sha256": "bfecb55e37bfed0eaa660c78362b847362a2fb068f97d08c45f6abd68d7450d3",
+    "input_count": 14,
+    "accepted_count": 13,
+    "accepted_urls": [
+      "https://github.com/aishwary-dongre/jev-xray",
+      "https://github.com/azri-muhsin/jev-sinhala-review",
+      "https://github.com/banhun28/laya-benchmark-poc",
+      "https://github.com/chaddacus/crosstalk-lab",
+      "https://github.com/cyber-traveller/safeticket",
+      "https://github.com/cymcharming/system1bench",
+      "https://github.com/sakhadib/literal-lock-in",
+      "https://github.com/ugly-custard/sys1-bench",
+      "https://github.com/zephyr4772/laya-zeroshot-agent-guard-eval",
+      "https://huggingface.co/datasets/SimpleJev/JevJudge-Robotics-Public",
+      "https://huggingface.co/datasets/cnfeichen/jev-rag-zh-bench",
+      "https://huggingface.co/datasets/kangjwme/jev-opentwbench-results",
+      "https://huggingface.co/datasets/tudo-vn/JEV-Contrast"
+    ],
+    "exclusions": [
+      {
+        "url": "https://github.com/tynamite/evaluation-behavioral-system-one",
+        "reason_code": "duplicate_pending_github_proposal",
+        "reason": "Already proposed in awesomejev-next-github.jsonl; count only once across batches. The robustness record is more specific and may replace the simpler GitHub proposal without increasing the source count.",
+        "preferred_record": "awesomejev-next-robustness.jsonl"
+      }
+    ],
+    "clarifications": [
+      {
+        "url": "https://huggingface.co/datasets/tudo-vn/JEV-Contrast",
+        "required_before_counting": true,
+        "finding": "Both candidate sets place the correct answer first. Unshuffled evaluation leaks answer position.",
+        "suggested_relevance": "Visual-choice benchmark with source-derived labels and model-written distractors, not fully human-verified; both option lists place the gold answer first and require shuffling with label remapping.",
+        "suggested_additional_limitation": "Randomize and remap option order before evaluation; both stored candidate lists begin with the gold answer. Labels and evidence boxes are not fully human-verified.",
+        "evidence_url": "https://huggingface.co/datasets/tudo-vn/JEV-Contrast/raw/main/README.md",
+        "evidence_lines": [
+          68,
+          82
+        ]
+      },
+      {
+        "url": "https://github.com/chaddacus/crosstalk-lab",
+        "required_before_counting": false,
+        "finding": "Published numbers and screenshots concern a deterministic lexical mock, not Jev; synthetic labels await sampled human review.",
+        "action": "Retain as an evaluation tool, not empirical model-performance evidence. Existing relevance and limitations correctly disclose this."
+      },
+      {
+        "url": "https://github.com/cyber-traveller/safeticket",
+        "required_before_counting": false,
+        "finding": "Fixtures and policy share an author; neutral independently labeled tickets are unfinished.",
+        "action": "Retain as a policy harness, not independently validated customer-routing evidence."
+      },
+      {
+        "url": "https://github.com/ugly-custard/sys1-bench",
+        "required_before_counting": true,
+        "finding": "Human review coverage differs between core and extension.",
+        "action": "Keep single-annotator core and LLM-assisted, partially checked extension separate in any comparison.",
+        "suggested_relevance": "Decision-encoder robustness tests on a single-annotator core and a partly checked, LLM-assisted extension; examines option order, label naming and equivalent binary questions."
+      },
+      {
+        "url": "https://huggingface.co/datasets/SimpleJev/JevJudge-Robotics-Public",
+        "required_before_counting": false,
+        "finding": "Adds blank/shuffled-media and option controls over reused public robot sources; this is an original evaluation artifact, not a newly human-labeled corpus.",
+        "action": "Preserve human-versus-construction label distinction, text-shortcut caveat and evaluation-only terms. Construction validity is author-described, not independently established here."
+      },
+      {
+        "url": "https://github.com/sakhadib/literal-lock-in",
+        "required_before_counting": false,
+        "finding": "Bengali study reuses expert source labels; paired English questions are controls.",
+        "action": "Describe the new resource as an experimental evaluation, not an independently annotated English translation dataset."
+      },
+      {
+        "url": "https://github.com/zephyr4772/laya-zeroshot-agent-guard-eval",
+        "required_before_counting": false,
+        "finding": "Source title phrases negative outcomes broadly, while the evidence is a small handwritten zero-shot diagnostic.",
+        "suggested_display_title": "Laya zero-shot agent-step guard evaluation",
+        "action": "Keep the existing small-sample limitation visible; avoid interpreting the headline as a universal statement about Laya."
+      },
+      {
+        "url": "https://huggingface.co/datasets/cnfeichen/jev-rag-zh-bench",
+        "required_before_counting": false,
+        "finding": "Contains a reranking run archive using existing source relevance labels.",
+        "action": "Keep result-archive wording; do not relabel it as new training data or fresh independent annotation."
+      },
+      {
+        "url": "https://huggingface.co/datasets/kangjwme/jev-opentwbench-results",
+        "required_before_counting": false,
+        "finding": "Contains predictions joined to existing Traditional-Chinese benchmark questions.",
+        "action": "Keep result-archive wording and requirement to reproduce joins against upstream item identities."
+      }
+    ],
+    "primary_checks": [
+      {
+        "index": 3,
+        "url": "https://github.com/chaddacus/crosstalk-lab",
+        "retrieved_url": "https://raw.githubusercontent.com/chaddacus/crosstalk-lab/main/README.md",
+        "retrieved_at": "2026-10-16T10:43:03+00:00",
+        "sha256": "b49f69a723661bac72dab9e9d2321ea8cb5baaf5a2cad05a725498b70da1f3ab",
+        "input_hash_match": true,
+        "bytes": 24345
+      },
+      {
+        "index": 4,
+        "url": "https://github.com/cyber-traveller/safeticket",
+        "retrieved_url": "https://raw.githubusercontent.com/cyber-traveller/safeticket/main/README.md",
+        "retrieved_at": "2026-10-16T10:43:03+00:00",
+        "sha256": "da43ec756e3eb625c408f0a22ae026a4cefac8a7706272112adb6a3592578c6d",
+        "input_hash_match": true,
+        "bytes": 13373
+      },
+      {
+        "index": 8,
+        "url": "https://github.com/ugly-custard/sys1-bench",
+        "retrieved_url": "https://raw.githubusercontent.com/ugly-custard/sys1-bench/main/README.md",
+        "retrieved_at": "2026-10-16T10:43:03+00:00",
+        "sha256": "b8607b1d47266d815152684b240bc71ccf1fd0699f2611e1f98f767f14144220",
+        "input_hash_match": true,
+        "bytes": 8338
+      },
+      {
+        "index": 10,
+        "url": "https://huggingface.co/datasets/SimpleJev/JevJudge-Robotics-Public",
+        "retrieved_url": "https://huggingface.co/datasets/SimpleJev/JevJudge-Robotics-Public/raw/main/README.md",
+        "retrieved_at": "2026-10-16T10:43:03+00:00",
+        "sha256": "ca2bf9f1550d2a3c43296b07568a8ae17c6806e7005f03d67845b24c6c4f4bb2",
+        "input_hash_match": true,
+        "bytes": 17333
+      },
+      {
+        "index": 13,
+        "url": "https://huggingface.co/datasets/tudo-vn/JEV-Contrast",
+        "retrieved_url": "https://huggingface.co/datasets/tudo-vn/JEV-Contrast/raw/main/README.md",
+        "retrieved_at": "2026-10-16T10:43:03+00:00",
+        "sha256": "7384f4309e713b1e91bfc3b103130321f57610c1721296f064378a5bc88a6eb0",
+        "input_hash_match": true,
+        "bytes": 6402
+      }
+    ],
+    "deduplication": {
+      "current_ledger_url_overlap": [],
+      "current_ledger_hash_overlap": [],
+      "internal_unique_urls": 14,
+      "internal_unique_hashes": 14,
+      "pending_batch_overlap": [
+        "https://github.com/tynamite/evaluation-behavioral-system-one"
+      ]
+    },
+    "limits": [
+      "All14 candidate descriptions, label provenance and evaluation limitations were inspected; five highest-risk primary cards were refetched, with all five hashes matching.",
+      "Remaining source checks rely on the collector evidence and its inspected primary excerpts; no fresh full-batch scan was performed.",
+      "No dataset rows, model executions, benchmark results or licenses were independently reproduced or exhaustively audited.",
+      "All evidence grades remain content_screened; acceptance is source relevance/provenance review, not scientific endorsement.",
+      "13 unique additions are recommended after deduplication with the pending33-project GitHub batch; the duplicate source may be represented by the richer robustness record instead."
+    ]
+  }
+}

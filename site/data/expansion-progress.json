@@ -3,38 +3,62 @@
   "baseline_commit": "3519c15d7e00686a8dbf9b1e184c68726327ab1e",
   "baseline_source_index_sha256": "8bfdd20564f2cda54bb8264c3c802f315e3e9a11b153bd85dde4325f53c841d5",
   "target_new_sources": 301,
-  "accepted_new_sources": 655,
+  "accepted_new_sources": 713,
   "remaining_to_target": 0,
   "target_count_reached": true,
   "current_index_counts": {
     "editorial_reviewed": 4,
-    "content_screened": 2289,
+    "content_screened": 2347,
     "abstract_checked": 1810,
     "metadata_only": 47,
-    "raw_records": 4164,
-    "unique_records": 4150,
+    "raw_records": 4222,
+    "unique_records": 4208,
     "duplicate_records": 14,
-    "checked_sources": 4103
+    "checked_sources": 4161
   },
   "by_category": {
-    "Datasets": 90,
+    "Datasets": 100,
     "Guides and evaluations": 36,
     "Models": 52,
     "Papers": 4,
-    "Projects": 132,
+    "Projects": 180,
     "Research foundations": 341
   },
   "by_relation": {
     "adjacent": 24,
     "background": 341,
-    "direct": 290
+    "direct": 348
   },
   "by_verification_level": {
     "abstract_checked": 345,
-    "content_screened": 310
+    "content_screened": 368
   },
   "verification_note": "Evidence depth is labeled per source. Content screening and abstract checks do not establish full-paper review, peer review, endorsement, or experimental reproduction.",
   "additions": [
+    {
+      "title": "AgentDecision-train",
+      "url": "https://huggingface.co/datasets/JevAgentHarness/AgentDecision-train",
+      "category": "Datasets",
+      "topic": "training-dataset",
+      "description": "Task-separated agent-state training with gold and teacher targets; raw trajectories and some training sources are omitted, with noncommercial terms stated.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "cc24f024ed1a26b1915c3332c105e9cb4ed31fd4e585eb5d699bcf03df3391ab",
+      "retrieved_at": "2026-10-16T10:39:11+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "AgentDecisionBench",
+      "url": "https://huggingface.co/datasets/JevAgentHarness/AgentDecisionBench",
+      "category": "Datasets",
+      "topic": "benchmark-source",
+      "description": "Recorded agent states, answer keys and model outputs; L1 question texts are omitted, and closed-loop evaluation requires the separate harness and live models.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "3f2102af399d6b88f9a37c6d4cb1c588db395b04c4c19aba2e0cb1d9198c6ba6",
+      "retrieved_at": "2026-10-16T10:39:12+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
     {
       "title": "AIM Decision Model Browser Benchmark: 10-task sample",
       "url": "https://huggingface.co/datasets/AIMultiple/aimultiple-decision-models-browser",
@@ -156,6 +180,30 @@
       "ledger": "ecosystem-sources.jsonl"
     },
     {
+      "title": "CJ-Bench",
+      "url": "https://huggingface.co/datasets/bbldCVer-hf/CJ-Bench",
+      "category": "Datasets",
+      "topic": "benchmark-source",
+      "description": "Chinese typed-decision test cases and scoring eligibility; related rows can share parent material, while contamination and cross-domain overlap remain incompletely audited.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "801ad1008ac7324fca5551fd0585b5e636ba77e9c32721068052a4fe22c8e123",
+      "retrieved_at": "2026-10-16T10:39:12+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "CJ-Dataset",
+      "url": "https://huggingface.co/datasets/bbldCVer-hf/CJ-Dataset",
+      "category": "Datasets",
+      "topic": "training-dataset",
+      "description": "Chinese typed-decision training/validation mixtures with provenance; source tasks are imbalanced, some labels are model-generated, and source-specific restrictions remain.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "14e45902d71c992a2f20e8cdf2050cb4511d310bfb20ce7d84f586f0d05d5a5f",
+      "retrieved_at": "2026-10-16T10:39:12+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
       "title": "ClassOne System 1 Decision Curriculum (23,503 Examples)",
       "url": "https://huggingface.co/datasets/devops-thiago/classone-system-one-curriculum",
       "category": "Datasets",
@@ -177,6 +225,18 @@
       "verification_level": "content_screened",
       "content_sha256": "ebffec9ea384cfdcb72eb35d7ea901c8f5702adddd3f7190aeff2210e50e3421",
       "retrieved_at": "2026-10-16T10:05:28+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "Coding-agent routing decisions (Terminal-Bench 2.0)",
+      "url": "https://huggingface.co/datasets/JevAgentHarness/coding-agent-decisions",
+      "category": "Datasets",
+      "topic": "benchmark-source",
+      "description": "Coding-agent routing states and outcomes on Terminal-Bench; this is a single-trial-per-task/arm run archive, not a newly independent task benchmark.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "46ebfc7c0b87ecb7a0ebb103b57b5dd18206bc2ce47de83c3efbc273a9876add",
+      "retrieved_at": "2026-10-16T10:39:12+00:00",
       "ledger": "ecosystem-sources.jsonl"
     },
     {
@@ -312,6 +372,18 @@
       "ledger": "ecosystem-sources.jsonl"
     },
     {
+      "title": "Jev 1.13 on OpenTWBench (self-reported)",
+      "url": "https://huggingface.co/datasets/kangjwme/jev-opentwbench-results",
+      "category": "Datasets",
+      "topic": "multilingual-evaluation-results",
+      "description": "Traditional-Chinese benchmark result archive recording option permutations and mapped predictions; question text remains in the upstream labeled datasets.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "339e6c0719201c36e44636ec12f3cb2638491ec3edba4f260504c2a4c44ad438",
+      "retrieved_at": "2026-10-16T10:37:59+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
       "title": "Jev Decisions v1",
       "url": "https://huggingface.co/datasets/samatv256/jev-decisions-v1",
       "category": "Datasets",
@@ -357,6 +429,18 @@
       "verification_level": "content_screened",
       "content_sha256": "937d947e512adb4e917c26ec0fc632cc261497bcbd9233816cdc142f2deb512e",
       "retrieved_at": "2026-10-16T10:05:27+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "Jev RAG Chinese Benchmark (S1)",
+      "url": "https://huggingface.co/datasets/cnfeichen/jev-rag-zh-bench",
+      "category": "Datasets",
+      "topic": "multilingual-evaluation-results",
+      "description": "Chinese reranking run archive on public hard-negative retrieval queries, comparing Jev question primitives with a lexical baseline on shared relevance labels.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "ac64b9376e970c941768720d81518b24fc537c65e96dbc2d504ba382f840407f",
+      "retrieved_at": "2026-10-16T10:37:59+00:00",
       "ledger": "ecosystem-sources.jsonl"
     },
     {
@@ -429,6 +513,18 @@
       "verification_level": "content_screened",
       "content_sha256": "f428808082e354ee380f167aab10c00720d60e27b4d82446087ccfe9daab9944",
       "retrieved_at": "2026-10-16T10:05:28+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "JEV-Contrast",
+      "url": "https://huggingface.co/datasets/tudo-vn/JEV-Contrast",
+      "category": "Datasets",
+      "topic": "multimodal-robustness-benchmark",
+      "description": "Visual-choice benchmark with source-derived labels and model-written distractors, not fully human-verified; both option lists place the gold answer first and require shuffling with label remapping.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "7384f4309e713b1e91bfc3b103130321f57610c1721296f064378a5bc88a6eb0",
+      "retrieved_at": "2026-10-16T10:37:59+00:00",
       "ledger": "ecosystem-sources.jsonl"
     },
     {
@@ -573,6 +669,18 @@
       "verification_level": "content_screened",
       "content_sha256": "94266340ec028d496d22dd5de854a6e7a686ab1d1266b4899178b8c762306654",
       "retrieved_at": "2026-10-16T10:05:26+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "JevJudge-Robotics-Public v0.1: Judging Robot Manipulation",
+      "url": "https://huggingface.co/datasets/SimpleJev/JevJudge-Robotics-Public",
+      "category": "Datasets",
+      "topic": "multimodal-robustness-benchmark",
+      "description": "Robotics-judge evaluation with blank-media, shuffled-media and permuted-option controls, disclosing human and construction-based labels plus text-shortcut risks.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "ca2bf9f1550d2a3c43296b07568a8ae17c6806e7005f03d67845b24c6c4f4bb2",
+      "retrieved_at": "2026-10-16T10:38:00+00:00",
       "ledger": "ecosystem-sources.jsonl"
     },
     {
@@ -801,6 +909,18 @@
       "verification_level": "content_screened",
       "content_sha256": "f121531a137cf06e766db95c698ee3d2c00766c46c20b012c0ab716b7aab6263",
       "retrieved_at": "2026-10-16T10:05:26+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "SII-Decision-27B Training Data",
+      "url": "https://huggingface.co/datasets/jylin001206/SII-Decision-27B-Training-Data",
+      "category": "Datasets",
+      "topic": "training-dataset",
+      "description": "Teacher-probability targets for SII-Decision training, with validation and source manifests; targets are model-derived, and upstream data licenses vary.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "63c3d0934a7dd788c6f5ed9a141874ff8918c56bac920ac565cd27e8dda6ce47",
+      "retrieved_at": "2026-10-16T10:39:10+00:00",
       "ledger": "ecosystem-sources.jsonl"
     },
     {
@@ -2220,6 +2340,18 @@
       "ledger": "research-sources.jsonl"
     },
     {
+      "title": "0xjgv/system-one-router",
+      "url": "https://github.com/0xjgv/system-one-router",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "Claude Code and Codex routing helper uses decision models to choose execution models and reasoning effort, with provider fallbacks.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "3fbe7a0ffbb1e98bf1c708759054c95294566eac923bdb44a4a76c8bc6fda0b8",
+      "retrieved_at": "2026-10-16T10:37:09+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
       "title": "0xLeonhack/tellagent",
       "url": "https://github.com/0xleonhack/tellagent",
       "category": "Projects",
@@ -2253,6 +2385,30 @@
       "verification_level": "content_screened",
       "content_sha256": "7a3990ef88bc02460ed66a45f5ab6f855e082f06db4d6d96cb876d9643b71f36",
       "retrieved_at": "2026-10-16T10:05:37+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "acquiredintelligence/attend",
+      "url": "https://github.com/acquiredintelligence/attend",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "Event-stream coordinator uses Jev judgments to choose whether agent notifications should interrupt, queue, remain passive or be suppressed.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "8f79d7a8b7eb2fd6a7b776c65fb75039ea4a5cbbd1de8316bcae29c42af67fff",
+      "retrieved_at": "2026-10-16T10:37:09+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "adelvillar1/agnostic-router-kit",
+      "url": "https://github.com/adelvillar1/agnostic-router-kit",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "Provider-independent workflow router with local-judge/Jev cascades, quota-aware model selection, execution controls and journaled runs.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "4b2daa63984fd582f52ad881c6b9f480b37da9306698d168d4a048292857a8e1",
+      "retrieved_at": "2026-10-16T10:37:08+00:00",
       "ledger": "ecosystem-sources.jsonl"
     },
     {
@@ -2304,6 +2460,18 @@
       "ledger": "ecosystem-sources.jsonl"
     },
     {
+      "title": "ai-ecoverse/kev.js",
+      "url": "https://github.com/ai-ecoverse/kev.js",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "Browser runtime for Kev models using WebGPU or WASM, with tokenization and decision heads in a Web Worker.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "267ba2a98f769c0c209e5e90063fbe54c572360963710d680643ea472c3c49d9",
+      "retrieved_at": "2026-10-16T10:37:08+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
       "title": "aikeluargalee-tech/jev-v8",
       "url": "https://github.com/aikeluargalee-tech/jev-v8",
       "category": "Projects",
@@ -2340,6 +2508,18 @@
       "ledger": "ecosystem-sources.jsonl"
     },
     {
+      "title": "aoprisan/typesafe-ai-rust-sdk",
+      "url": "https://github.com/aoprisan/typesafe-ai-rust-sdk",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "Unofficial Rust client for typed TypeSafe requests, including derived rubric structs, asynchronous calls and a blocking-client option.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "5985991776a10a501962f08606c3bf81d3087bed0720758ef654cdfc94808b68",
+      "retrieved_at": "2026-10-16T10:37:07+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
       "title": "Atishay8192261/card-rewards-optimizer",
       "url": "https://github.com/atishay8192261/card-rewards-optimizer",
       "category": "Projects",
@@ -2364,6 +2544,18 @@
       "ledger": "ecosystem-sources.jsonl"
     },
     {
+      "title": "Barneyjm/decision-circuits",
+      "url": "https://github.com/barneyjm/decision-circuits",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "Python library composes model probability answers into deterministic gates, with explicit abstention, escalation and per-item traces.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "5e69c3574a1a119edb2883290e0ea1aa5aff8de9aa9a414c99579e1685c08faf",
+      "retrieved_at": "2026-10-16T10:37:08+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
       "title": "basi/typesafe-ai-php-client",
       "url": "https://github.com/basi/typesafe-ai-php-client",
       "category": "Projects",
@@ -2373,6 +2565,42 @@
       "verification_level": "content_screened",
       "content_sha256": "fa034a61c16b6a787dc6a3c9c3f048788c6ce8059a73401e92835cc347091cd5",
       "retrieved_at": "2026-10-16T10:05:40+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "Beyond Calibration: Do a Typed-Decision Model's Probabilities Obey the Probability Axioms?",
+      "url": "https://github.com/bro789/typed-decision-coherence",
+      "category": "Projects",
+      "topic": "evaluation-harness",
+      "description": "Recorded Jev/Qwen calls and analysis scripts for probability coherence; repeated responses share source items, and post-hoc analyses are exploratory.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "c6d9baee6a035052fc31c1065c52dc166cad37264b193f5b564f32d31bb88081",
+      "retrieved_at": "2026-10-16T10:39:11+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "Blakeem/logit-classifier",
+      "url": "https://github.com/blakeem/logit-classifier",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "Local text-and-image classifier reads answer probabilities from logits under System One question contracts and exposes a separate abstention signal.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "5985c98a6d72ba17a4d61eb25e1515fceed9e8b2f9377a03f42d0c7e17392e43",
+      "retrieved_at": "2026-10-16T10:37:09+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "Bongard",
+      "url": "https://github.com/agentbull/bongard",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "Inference, supervised training and typed-decision evaluation code; full training data and later-stage objectives and recipes are absent.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "ec8cbe0279e57ba5cee8948b859f507e942fd4e93d2bf30c284c926ca4bb92e5",
+      "retrieved_at": "2026-10-16T10:39:11+00:00",
       "ledger": "ecosystem-sources.jsonl"
     },
     {
@@ -2460,6 +2688,18 @@
       "ledger": "ecosystem-sources.jsonl"
     },
     {
+      "title": "Chinese-Jev: Bringing System One Model to Chinese-Language Tasks",
+      "url": "https://github.com/gulucaptain/chinese-jev",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "Dataset construction, fine-tuning, calibration and evaluation pipeline; the documented Chinese-Jev trained weights remain pending.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "e1dedf1fa7160c9303a430b488c2702b627b0ae4aac51454a00b83677494b158",
+      "retrieved_at": "2026-10-16T10:39:11+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
       "title": "chkalofff/decision-qa",
       "url": "https://github.com/chkalofff/decision-qa",
       "category": "Projects",
@@ -2496,6 +2736,18 @@
       "ledger": "ecosystem-sources.jsonl"
     },
     {
+      "title": "corolin/vibrato",
+      "url": "https://github.com/corolin/vibrato",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "Independent emotion decision model turns message context into structured affect estimates and categorical probability outputs.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "be3009dec2ed0142ef6b402f36b9e57022c4dc62889fcc32255f8ad2c4ed9409",
+      "retrieved_at": "2026-10-16T10:37:09+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
       "title": "CR0ZER/NHL-Predictor",
       "url": "https://github.com/cr0zer/nhl-predictor",
       "category": "Projects",
@@ -2505,6 +2757,18 @@
       "verification_level": "content_screened",
       "content_sha256": "d95d0788578a1e00857a962a90c6fb8361804e2527caad4e02d20943328a1bf0",
       "retrieved_at": "2026-10-16T10:05:40+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "Crosstalk",
+      "url": "https://github.com/chaddacus/crosstalk-lab",
+      "category": "Projects",
+      "topic": "decision-evaluation-tool",
+      "description": "Candidate-wording diagnostic workbench with sealed test handling; published demonstrations use a lexical mock and synthetic queries, not measured Jev behavior.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "b49f69a723661bac72dab9e9d2321ea8cb5baaf5a2cad05a725498b70da1f3ab",
+      "retrieved_at": "2026-10-16T10:37:59+00:00",
       "ledger": "ecosystem-sources.jsonl"
     },
     {
@@ -2556,6 +2820,18 @@
       "ledger": "ecosystem-sources.jsonl"
     },
     {
+      "title": "davyjones7321/jev-state-engine",
+      "url": "https://github.com/davyjones7321/jev-state-engine",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "LangGraph coding workflow applies deterministic validation before Jev semantic checks on changes developed in isolated Git worktrees.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "aa3c6c9d38a68c6bea9e56686cbdc24901fd1836ba987977082e190f22dc63c5",
+      "retrieved_at": "2026-10-16T10:37:09+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
       "title": "dengyie/decidex",
       "url": "https://github.com/dengyie/decidex",
       "category": "Projects",
@@ -2604,6 +2880,30 @@
       "ledger": "ecosystem-sources.jsonl"
     },
     {
+      "title": "Does a \"System One\" model behave like human System 1?",
+      "url": "https://github.com/tynamite/evaluation-behavioral-system-one",
+      "category": "Projects",
+      "topic": "option-order-evaluation",
+      "description": "Personal behavioral-evaluation archive with a preregistered option-order addendum and repeat-noise controls; it does not establish human-like psychological properties.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "0cc639bdb29c1213b2e1294cda17c4af29d2d342c672710c8cb7ff48334e8723",
+      "retrieved_at": "2026-10-16T10:37:58+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "DuvInc/jev-table-import-mapper",
+      "url": "https://github.com/duvinc/jev-table-import-mapper",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "CSV-import library resolves exact column-name matches first, then asks Jev about the remaining source-to-destination column pairs.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "77dd05e9917c6d16ae72dd0b16d9ef63d6ac08b29a5acb30f1ad742c3e657898",
+      "retrieved_at": "2026-10-16T10:37:10+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
       "title": "eaisdevelopment/jevmcp",
       "url": "https://github.com/eaisdevelopment/jevmcp",
       "category": "Projects",
@@ -2628,6 +2928,30 @@
       "ledger": "ecosystem-sources.jsonl"
     },
     {
+      "title": "emo333/jev-llm-router",
+      "url": "https://github.com/emo333/jev-llm-router",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "Pi extension uses Jev to select a model and reasoning budget at task entry, retaining that choice across tool continuations.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "7fe67557fffa71b5b5eae656d36c2597cc15dbe3c6df79b868562271eec6f3d8",
+      "retrieved_at": "2026-10-16T10:37:10+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "exoticknight/dsh-system1",
+      "url": "https://github.com/exoticknight/dsh-system1",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "Shared typed-decision service for DeepSeek Harness plugins, with request validation, cancellation, timeouts and pluggable model providers.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "2c2b3eed85d87fa63bde73282d0d4e27a9860e81f921225ec3c6aa2db1a21338",
+      "retrieved_at": "2026-10-16T10:37:10+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
       "title": "fanweiya/gomoku-jev",
       "url": "https://github.com/fanweiya/gomoku-jev",
       "category": "Projects",
@@ -2649,6 +2973,30 @@
       "verification_level": "content_screened",
       "content_sha256": "30500b43a564e08df8786d034c0326f2be0f6ac80f393575480d88834fe067bb",
       "retrieved_at": "2026-10-16T10:05:40+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "Fox-Islam/typesafe-sdk-php",
+      "url": "https://github.com/fox-islam/typesafe-sdk-php",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "Unofficial PHP client offers fluent typed-question construction and switching between TypeSafe and OpenRouter endpoints.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "709a1491bfc04504fc3da1780f386855061831c336ac02f65d8aee950ca8c849",
+      "retrieved_at": "2026-10-16T10:37:10+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "FrantisekJanos/PickBench",
+      "url": "https://github.com/frantisekjanos/pickbench",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "Decision-model benchmark combines interactive games with measurements of latency, confidence calibration, prompt variation and injection resistance.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "a3d26e87fe06d0f10a46cb9ef3cc1a48eb4e950e8c4f9421c21d8ffc10475394",
+      "retrieved_at": "2026-10-16T10:37:10+00:00",
       "ledger": "ecosystem-sources.jsonl"
     },
     {
@@ -2697,6 +3045,30 @@
       "verification_level": "content_screened",
       "content_sha256": "5f8d36417983f194372bb5f1488289526d4373ee4d2873fadd680f95ed09d002",
       "retrieved_at": "2026-10-16T10:05:38+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "Giamme/apple-silicon-systemone-benchmark",
+      "url": "https://github.com/giamme/apple-silicon-systemone-benchmark",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "Apple Silicon harness compares local decision models and hosted services on shared labeled cases, exporting dashboards and request-level records.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "b62e97c372295a8450a983196de50e6b56a9818e1ea22d18269bb12e23fb6bad",
+      "retrieved_at": "2026-10-16T10:37:08+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "grafuls/huncho",
+      "url": "https://github.com/grafuls/huncho",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "Rust inference server hosts local decision-model families behind a TypeSafe-compatible HTTP endpoint and supports multiple execution backends.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "8158a36169367dd53bce6921ead43f292b227d3d3679f8568ac1b38e85d3f687",
+      "retrieved_at": "2026-10-16T10:37:10+00:00",
       "ledger": "ecosystem-sources.jsonl"
     },
     {
@@ -2757,6 +3129,18 @@
       "verification_level": "content_screened",
       "content_sha256": "9b799146e3378d07ccd8cd8709e22e92e73e2da5999e43c1a98a0670c3217929",
       "retrieved_at": "2026-10-16T10:05:40+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "Hetgandhi25/jev-decision-studio",
+      "url": "https://github.com/hetgandhi25/jev-decision-studio",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "Incident-triage application combines local Laya classification with an LLM fallback to produce category, urgency and severity fields.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "e24b4395466371ec31ae227353c22af441c45e440922d6d1e1f353ed673bddcd",
+      "retrieved_at": "2026-10-16T10:37:10+00:00",
       "ledger": "ecosystem-sources.jsonl"
     },
     {
@@ -2904,6 +3288,42 @@
       "ledger": "ecosystem-sources.jsonl"
     },
     {
+      "title": "jerichosiahaya/naluri",
+      "url": "https://github.com/jerichosiahaya/naluri",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "XLM-RoBERTa-based multilingual decision model exposes yes/no, choice and ordinal questions, with fine-tuning and evaluation guidance.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "e9c379f2bd7120d0d9b32512430b9c5f9c930910b40a3cb30ef1d13807354fd7",
+      "retrieved_at": "2026-10-16T10:37:10+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "Jev-Sinhala Capability, Primitive Consistency & Benchmark Census Probe",
+      "url": "https://github.com/azri-muhsin/jev-sinhala-review",
+      "category": "Projects",
+      "topic": "multilingual-robustness-evaluation",
+      "description": "Sinhala and Singlish evaluation using established benchmark labels, with script changes, question-language controls, option permutations and cross-primitive consistency tests.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "30558333a111edb418272359343e250d82ef45323ec5a4505fd0e0c96020d214",
+      "retrieved_at": "2026-10-16T10:37:58+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "jev-xray",
+      "url": "https://github.com/aishwary-dongre/jev-xray",
+      "category": "Projects",
+      "topic": "decision-evaluation-tool",
+      "description": "Input-ablation tool measuring changes in typed decision probabilities; useful for testing distracting context without treating attribution as a causal explanation.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "18a9f5a7fb939dc63c23153ace40d5f4486f7d490180b31be3b0d9364fc4e822",
+      "retrieved_at": "2026-10-16T10:37:58+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
       "title": "jhochenbaum/rlm-jev",
       "url": "https://github.com/jhochenbaum/rlm-jev",
       "category": "Projects",
@@ -3012,6 +3432,18 @@
       "ledger": "ecosystem-sources.jsonl"
     },
     {
+      "title": "klnstprx/typesafe-sdk-go",
+      "url": "https://github.com/klnstprx/typesafe-sdk-go",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "Community Go library for TypeSafe questions and typed responses, with configurable retries, custom response types and logging.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "80a7e79b584b9a0375c51ad2ff4034752a125590ce4f7408b328cf7884587489",
+      "retrieved_at": "2026-10-16T10:37:07+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
       "title": "kodr-pro/AiWrangler",
       "url": "https://github.com/kodr-pro/aiwrangler",
       "category": "Projects",
@@ -3021,6 +3453,30 @@
       "verification_level": "content_screened",
       "content_sha256": "5ba25733f03c55ccc063739f28600e77c9b0531d7014ffd4b537c6249c33e510",
       "retrieved_at": "2026-10-16T10:05:40+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "Laya benchmark and PoC",
+      "url": "https://github.com/banhun28/laya-benchmark-poc",
+      "category": "Projects",
+      "topic": "multilingual-robustness-evaluation",
+      "description": "Korean decision-model study with matched Jev/Laya comparisons, fine-tuning controls and option-order probes; published replication limitations remain explicit.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "dbaeb1eab4bb7c638b05c82ff22f81faec6047e3d6a49d767cc1ac7e40152a16",
+      "retrieved_at": "2026-10-16T10:37:59+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "Laya zero-shot agent-step guard evaluation",
+      "url": "https://github.com/zephyr4772/laya-zeroshot-agent-guard-eval",
+      "category": "Projects",
+      "topic": "decision-robustness-benchmark",
+      "description": "Small handwritten zero-shot diagnostic of agent-step decisions; reported failures are specific to the tested prompts and model configuration.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "2a3abd27037c89beec0241e5d4ed8ab747e64b8528b8030f39ccd95a72b4de5a",
+      "retrieved_at": "2026-10-16T10:37:59+00:00",
       "ledger": "ecosystem-sources.jsonl"
     },
     {
@@ -3045,6 +3501,18 @@
       "verification_level": "content_screened",
       "content_sha256": "501d426b39df6a1e1e08cef95bb3efa48ce84ba993ae2d1c7f2045808c2694b1",
       "retrieved_at": "2026-10-16T10:05:39+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "LightJev",
+      "url": "https://github.com/rongxinzy/lightjev",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "Finite-candidate scoring, CE/Brier training and temperature fitting; published results cover synthetic tasks and one seed, not proprietary RLCD reproduction.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "5b984a917c8ac676e2f51ded74eea739d6756e12e1016a7f0d97ae6e675b6fab",
+      "retrieved_at": "2026-10-16T10:39:11+00:00",
       "ledger": "ecosystem-sources.jsonl"
     },
     {
@@ -3081,6 +3549,18 @@
       "verification_level": "content_screened",
       "content_sha256": "11b53aa30799c5ef0049f3c96dfb1395bd54e32be28fb0d43ddfea4b18bd7081",
       "retrieved_at": "2026-10-16T10:05:37+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "maloosatyam-google/apigee-ai-gateway-reference",
+      "url": "https://github.com/maloosatyam-google/apigee-ai-gateway-reference",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "Apigee gateway demonstration classifies prompts with Jev, then maps categories to model providers through API-product policies and quotas.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "6d60bb5ee57616d44d72fe31cd94d21072f7f93c4c4f61dd893dc0082e3056f0",
+      "retrieved_at": "2026-10-16T10:37:10+00:00",
       "ledger": "ecosystem-sources.jsonl"
     },
     {
@@ -3240,6 +3720,18 @@
       "ledger": "ecosystem-sources.jsonl"
     },
     {
+      "title": "nedcut/gm-bench",
+      "url": "https://github.com/nedcut/gm-bench",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "Multi-season sports-management benchmark with a separate Jev question-scaffold lane, documented apart from its preregistered chat-model comparison.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "0a034c829b991948acb4170b8e735f036bb7977af15756efcd1668832e30b4fd",
+      "retrieved_at": "2026-10-16T10:37:08+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
       "title": "neostryder/augur",
       "url": "https://github.com/neostryder/augur",
       "category": "Projects",
@@ -3249,6 +3741,18 @@
       "verification_level": "content_screened",
       "content_sha256": "994b1bb9855a61cc0398e8e96a49560931e09da2d58d4dacdac684632745e7f9",
       "retrieved_at": "2026-10-16T10:05:38+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "NMTZ-z/system-one-benchmark-lab",
+      "url": "https://github.com/nmtz-z/system-one-benchmark-lab",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "Local agent-control runtime combines Laya decisions, an optional Apple Neural Engine backend, policy gates and platform-specific adapters.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "e2b48fec25acf98de7a12784221178b716461c5a622b399d2ea49d92c89c4cd6",
+      "retrieved_at": "2026-10-16T10:37:08+00:00",
       "ledger": "ecosystem-sources.jsonl"
     },
     {
@@ -3348,6 +3852,18 @@
       "ledger": "ecosystem-sources.jsonl"
     },
     {
+      "title": "Parcha-ai/agentrun",
+      "url": "https://github.com/parcha-ai/agentrun",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "Workflow language connects Jev judgments, application tools and delegated agents through explicit adapters, with offline fixtures and live-provider integration.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "b6317b10d64a855efbfe28caf6c79932cfd078497bbffaaac6f63a57050c7003",
+      "retrieved_at": "2026-10-16T10:37:11+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
       "title": "patkusch/assay",
       "url": "https://github.com/patkusch/assay",
       "category": "Projects",
@@ -3357,6 +3873,18 @@
       "verification_level": "content_screened",
       "content_sha256": "6416193fcc41085fb50ccd63617e17733aff6cc3d610dd946177710c9caad1d5",
       "retrieved_at": "2026-10-16T10:05:38+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "ppweni/typesafe_rs",
+      "url": "https://github.com/ppweni/typesafe_rs",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "Asynchronous Rust client supports TypeSafe text, image and Box questions, with typed response handling and configurable transport behavior.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "56bffb38356f9d410e61f71ee027fe2b60d21f15548b96c51d2074b55edf79a3",
+      "retrieved_at": "2026-10-16T10:37:11+00:00",
       "ledger": "ecosystem-sources.jsonl"
     },
     {
@@ -3381,6 +3909,18 @@
       "verification_level": "content_screened",
       "content_sha256": "63aed3a3aa3c56fe750f77da742bab80bc315203d3c513e74f7b377ad27e9c83",
       "retrieved_at": "2026-10-16T10:05:40+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "raullenchai/Rapid-MLX",
+      "url": "https://github.com/raullenchai/rapid-mlx",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "Apple Silicon inference server includes MLX-based System One serving for Laya and other decision-model backbones.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "ae66c7a35722410c670b4274c8074b353f5163b0b1edf77f5b115fc015f1a18d",
+      "retrieved_at": "2026-10-16T10:37:11+00:00",
       "ledger": "ecosystem-sources.jsonl"
     },
     {
@@ -3441,6 +3981,42 @@
       "verification_level": "content_screened",
       "content_sha256": "7ef50964ae9b77d8fdcac9f4ce49faa7eeb7c98c3b972137cadd2c7765787c37",
       "retrieved_at": "2026-10-16T10:05:39+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "SafeTicket",
+      "url": "https://github.com/cyber-traveller/safeticket",
+      "category": "Projects",
+      "topic": "robustness-policy-harness",
+      "description": "Support-routing policy harness testing option permutations, ambiguous tickets and injection review gates; fixtures are authored synthetic cases, not independent customer evidence.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "da43ec756e3eb625c408f0a22ae026a4cefac8a7706272112adb6a3592578c6d",
+      "retrieved_at": "2026-10-16T10:37:59+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "sakhadib/literal-lock-in",
+      "url": "https://github.com/sakhadib/literal-lock-in",
+      "category": "Projects",
+      "topic": "multilingual-robustness-evaluation",
+      "description": "Bengali idiom study controlling literal distractors, option labels and question language while reusing expert figurative-meaning and literal-gloss annotations.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "d3f0869ae9db200d746bec6ae6d9cfde906fbc16511dca0ad3544f0623d91061",
+      "retrieved_at": "2026-10-16T10:37:58+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "sathiskumarjothi0-oss/bev-decisions-pypi",
+      "url": "https://github.com/sathiskumarjothi0-oss/bev-decisions-pypi",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "Python package serves Beveridge model variants locally through yes/no, categorical-choice and ordinal-score interfaces.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "8a14cc11de80c62b8b98c3cc26dc14412e6b10287ae9da6dfaff0ad19f1cbb45",
+      "retrieved_at": "2026-10-16T10:37:11+00:00",
       "ledger": "ecosystem-sources.jsonl"
     },
     {
@@ -3516,6 +4092,30 @@
       "ledger": "ecosystem-sources.jsonl"
     },
     {
+      "title": "shivanathd/jev-playground",
+      "url": "https://github.com/shivanathd/jev-playground",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "Browser playground that exposes Jev probabilities, confidence thresholds and request/response JSON across typed-question workflow examples.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "3d6f752acd504b4de0cddc6a2ef838b3037d12d318f18e665bf1a68602182e62",
+      "retrieved_at": "2026-10-16T10:37:07+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "shyamsfo/bernoulli",
+      "url": "https://github.com/shyamsfo/bernoulli",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "Self-hosted typed-decision implementation built on open-weight vision-language backbones, with HTTP, command-line and benchmark adapters; independent of Jev internals.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "83678bd5070bdab3693c58cc070ba23ba229f68efdd5719fa8c31f6dadf0917f",
+      "retrieved_at": "2026-10-16T10:37:07+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
       "title": "StefH/typesafe-ai.sdk",
       "url": "https://github.com/stefh/typesafe-ai.sdk",
       "category": "Projects",
@@ -3588,6 +4188,66 @@
       "ledger": "ecosystem-sources.jsonl"
     },
     {
+      "title": "sys1-bench",
+      "url": "https://github.com/ugly-custard/sys1-bench",
+      "category": "Projects",
+      "topic": "option-order-evaluation",
+      "description": "Decision-encoder robustness tests on a single-annotator core and a partly checked, LLM-assisted extension; examines option order, label naming and equivalent binary questions.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "b8607b1d47266d815152684b240bc71ccf1fd0699f2611e1f98f767f14144220",
+      "retrieved_at": "2026-10-16T10:37:59+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "Sys1Cal",
+      "url": "https://github.com/little-g-ai/sys1cal-v1",
+      "category": "Projects",
+      "topic": "evaluation-harness",
+      "description": "Generators and saved reports for probability fidelity across typed primitives; exact targets are procedural, not human annotation of natural-language cases.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "ddaf0646689ca54533acd7b20b5c9f5399d93c2d288eef2a55c430e90a27ab54",
+      "retrieved_at": "2026-10-16T10:39:11+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "System One Security Evaluation",
+      "url": "https://github.com/yxsec/system-one-security-eval",
+      "category": "Projects",
+      "topic": "evaluation-harness",
+      "description": "Security-decision runners and saved-observation analyses; raw benchmark inputs and raw response text are not redistributed.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "8006bbcf86f24a673ef8dce91cf0e34ef52fe4aa6374f594084b7a0efb722b5b",
+      "retrieved_at": "2026-10-16T10:39:11+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "System1Bench: Benchmarking Jev-Style Decision Models",
+      "url": "https://github.com/cymcharming/system1bench",
+      "category": "Projects",
+      "topic": "decision-robustness-benchmark",
+      "description": "Multi-suite decision evaluation with bilingual tasks, out-of-scope detection and option-order perturbations, keeping human-source and synthetic-reference results separate.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "fbdf0f17f94a6ad5fc8ae133448a694528c5744592f4ef3072aadc11840c3a8e",
+      "retrieved_at": "2026-10-16T10:37:59+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "systemonedev/systemone-builder",
+      "url": "https://github.com/systemonedev/systemone-builder",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "Toolkit for training, packaging, serving and evaluating typed-decision models, including Kenning, through a System One-compatible interface.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "ae61b6b39be083337f6610effa47a6d254768ee4c11274a3642057cc7cccf2a1",
+      "retrieved_at": "2026-10-16T10:37:08+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
       "title": "tak-bro/local-jev-bench",
       "url": "https://github.com/tak-bro/local-jev-bench",
       "category": "Projects",
@@ -3609,6 +4269,18 @@
       "verification_level": "content_screened",
       "content_sha256": "aa23d4212578de1facff64d54aa30749e48763e78461c5ab7793cb1011938339",
       "retrieved_at": "2026-10-16T10:05:38+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "Temikus/lgtm",
+      "url": "https://github.com/temikus/lgtm",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "Prerelease pull-request scoring tool combines typed model judgments into verdicts with a human-review path and configurable thresholds.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "73a82b9fb96ddab8b4e3464454186ad44cb20382756a0e1f19e4f0e38cf61889",
+      "retrieved_at": "2026-10-16T10:37:11+00:00",
       "ledger": "ecosystem-sources.jsonl"
     },
     {
@@ -3708,6 +4380,18 @@
       "ledger": "ecosystem-sources.jsonl"
     },
     {
+      "title": "vilinski/jev",
+      "url": "https://github.com/vilinski/jev",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "Command-line adapter sends a common typed-question format to TypeSafe, Cloudflare, local Ollama and token-log-probability backends.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "3136427e6ce61268502f4d313d968ca3c778efc00e82af7448e783dd16d0f74e",
+      "retrieved_at": "2026-10-16T10:37:11+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
       "title": "Viperwow/jeff",
       "url": "https://github.com/viperwow/jeff",
       "category": "Projects",
@@ -3777,6 +4461,18 @@
       "verification_level": "content_screened",
       "content_sha256": "56f945e5ea16c8d68ae1119ca5162f90aded1632adb046619c06a0fff15b40a0",
       "retrieved_at": "2026-10-16T10:05:39+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "yuan-phd/jevmark",
+      "url": "https://github.com/yuan-phd/jevmark",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "Independent Qwen/LoRA training project compares supervised learning with RLCD using decision-probability and calibration evaluations.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "58535c3cd6e1e6f2c5445ecb2f33f54be6bc620830d6be753bcfda65dc2150e3",
+      "retrieved_at": "2026-10-16T10:37:11+00:00",
       "ledger": "ecosystem-sources.jsonl"
     },
     {

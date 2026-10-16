@@ -2,7 +2,7 @@
 
 The expansion is measured against [commit 3519c15](https://github.com/reacher-z/Awesome-Jev/tree/3519c15d7e00686a8dbf9b1e184c68726327ab1e), not against zero. The baseline contained 3,495 unique indexed sources and 67 curated entries. The [frozen baseline](../../data/expansion-baseline-2026-10-16.json) records known identities and evidence; an [exclusion-only supplement](../../data/expansion-baseline-supplement-2026-10-16.json), derived entirely from that same commit, adds older citations and title variants initially missed by extraction. It does not change the baseline or admit new resources.
 
-## Accepted intake
+## First published intake
 
 | Batch | Accepted into the ledgers | Evidence depth |
 | --- | ---: | --- |
@@ -12,9 +12,9 @@ The expansion is measured against [commit 3519c15](https://github.com/reacher-z/
 | Research papers | 345 | Original-abstract checks via Hugging Face or reconstruction from OpenAlex metadata. |
 | **Total** | **655** | **310 content-screened resources and 345 abstract-checked papers.** |
 
-All accepted identities are listed in the [intake](../../data/expansion-intake-2026-10-16.json). The [generated progress report](../../data/expansion-progress-2026-10-16.json) independently excludes prior URLs, repository/README aliases, arXiv DOI aliases, duplicate evidence hashes, duplicate paper titles, unreviewed additions and metadata-only records. Its count remains 655 after the baseline supplement and alias checks. Source artifacts are not necessarily independent models, test sets or studies.
+All accepted identities are listed in the [intake](../../data/expansion-intake-2026-10-16.json). The [generated progress report](../../data/expansion-progress-2026-10-16.json) independently excludes prior URLs, repository/README aliases, arXiv DOI aliases, duplicate evidence hashes, duplicate paper titles, unreviewed additions and metadata-only records. For the first published intake, the count was 655 after the baseline supplement and alias checks. Source artifacts are not necessarily independent models, test sets or studies.
 
-The new sources comprise 290 directly related resources, 24 adjacent resources and 341 background-method papers. The relationship labels distinguish relevance to Jev from evidence about TypeSafe's proprietary implementation. The expanded directory and its Chinese counterpart display every accepted source, its relationship, and its evidence tier directly in HTML.
+That first batch comprises 290 directly related resources, 24 adjacent resources and 341 background-method papers. The relationship labels distinguish relevance to Jev from evidence about TypeSafe's proprietary implementation. The expanded directory and its Chinese counterpart display every accepted source, its relationship, and its evidence tier directly in HTML.
 
 ## Scope and corrections
 
@@ -29,7 +29,7 @@ No source was newly granted `editorial_reviewed`. No model weights or datasets w
 
 ## Publication and continued maintenance
 
-The main curated collection also gained four versioned preprints: REFLEX with Jev, Mnemon, Bongard and VideoJev. Those four source identities are counted once in the 655 additions, not again because they appear in the curated list. The curated collection now has 71 resources, including 32 direct papers and 40 BibTeX entries.
+The main curated collection also gained four versioned preprints: REFLEX with Jev, Mnemon, Bongard and VideoJev. Those four source identities are counted once in the 655 additions, not again because they appear in the curated list. The initial expanded curated collection had 71 resources, including 32 direct papers and 40 BibTeX entries.
 
 The separate twice-daily public-source workflow remains enabled. Its data-only PR and human merge/publication boundaries are unchanged. Future exploration can add another reviewed intake batch and rebuild the report; a clock change alone or a repeated source does not count as progress.
 
@@ -38,3 +38,16 @@ The separate twice-daily public-source workflow remains enabled. Its data-only P
 本轮相对固定版本3519c15新增655项资源，包含310项正文筛查资源和345篇摘要检查论文；不是把原有3,495项重新计数。补充清单只补齐旧引用的排除依据，不修改原基线。仓库README、模型卡、数据卡、论文摘要及原始评测页面均保留来源、抓取时间和哈希；关系标签区分290项直接相关、24项邻近领域和341项背景研究。
 
 复核剔除了尚未实现的集成、移植副本、格式/抽样数据、被误当论文的会议录像与项目记录，以及范围偏离材料。没有新增编辑审阅等级，不代表全文精读、科学同行评审或实验复现。四篇新精选论文只在655项中计数一次；持续扫描继续保留，后续新增仍须经过相同的去重、范围与证据检查。
+
+
+## Follow-up intake: reproducibility and robustness
+
+A second reviewed release adds **58 distinct resources**: 32 additional projects from the reserve, 12 paper-linked reproducibility artifacts, and 14 robustness tools or result archives. One project appeared in both candidate batches; its richer robustness record was retained once, not counted twice. The cumulative expansion is **713 new sources**, including 368 content-screened artifacts and 345 abstract-checked papers. The full index contains 4,208 unique sources, with 4,161 checked at their explicit tiers and 47 metadata-only entries.
+
+Eight selected project READMEs and six selected reproducibility cards were independently refetched; every fetched body matched the input hash. Five selected robustness cards were separately refetched and matched. File inventories were inspected for the reproducibility artifacts, without downloading dataset rows or model weights, executing software, or reproducing results.
+
+Material limits are visible in the directory descriptions. SecurityEval distributes saved observations without original input or response text; Bongard omits part of its training recipe; Chinese-Jev model weights remain pending; some agent datasets omit question texts or raw trajectories. JEV-Contrast stores the gold answer first in both candidate arrays, so evaluation requires shuffling with label remapping. Mock demonstrations, synthetic policy-author fixtures and partially reviewed LLM-assisted annotations remain labeled as such. A neutral display title keeps a small zero-shot Laya diagnostic from reading as a universal model verdict.
+
+Four sources already included in the first intake were promoted to the main curated collection: the Artificial Analysis Decision Index, Entagl's dated workflow evaluation, and the official SDE cascade and Structure recovery cookbooks. This brings the curated collection to 75 entries; these promotions add **zero** to the distinct expansion count. Artificial Analysis includes private questions, Entagl's private customer replays limit reproduction, and the cookbook walkthroughs are not independently reproduced experiments.
+
+**后续批次：** 本次新增58项，跨批次重复项目只保留一次，累计净新增713项。其中368项为正文筛查、345篇为摘要检查；全文精读、模型运行和实验复现均未被声称。关键复现限制、正确选项位置泄漏、模拟或合成标签等信息已直接写入展示简介。四项既有来源提升为精选条目不增加净新增计数，精选目录现有75项。
