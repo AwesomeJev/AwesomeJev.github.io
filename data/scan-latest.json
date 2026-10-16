@@ -1,0 +1,562 @@
+{
+  "added_count": 89,
+  "added_urls": [
+    "https://arxiv.org/abs/2609.22753",
+    "https://arxiv.org/abs/2609.23136",
+    "https://arxiv.org/abs/2609.26550",
+    "https://arxiv.org/abs/2609.26758",
+    "https://arxiv.org/abs/2609.29429",
+    "https://arxiv.org/abs/2609.30706",
+    "https://arxiv.org/abs/2609.34227",
+    "https://arxiv.org/abs/2609.40241",
+    "https://arxiv.org/abs/2610.00346",
+    "https://arxiv.org/abs/2610.00831",
+    "https://arxiv.org/abs/2610.02076",
+    "https://arxiv.org/abs/2610.02293",
+    "https://arxiv.org/abs/2610.02486",
+    "https://arxiv.org/abs/2610.02586",
+    "https://arxiv.org/abs/2610.03935",
+    "https://arxiv.org/abs/2610.06354",
+    "https://arxiv.org/abs/2610.06744",
+    "https://arxiv.org/abs/2610.07716",
+    "https://arxiv.org/abs/2610.07730",
+    "https://arxiv.org/abs/2610.09683",
+    "https://arxiv.org/abs/2610.17113",
+    "https://arxiv.org/abs/2610.17205",
+    "https://arxiv.org/abs/2610.17309",
+    "https://arxiv.org/abs/2610.21412",
+    "https://arxiv.org/abs/2610.22131",
+    "https://github.com/aliceroselia/typesafe_chess_eval",
+    "https://github.com/bestagentkits/jev-skillful",
+    "https://github.com/chez-shanpu/typesafeai-go",
+    "https://github.com/codeitlikemiley/system-one-adapter-rust",
+    "https://github.com/deepbluedynamics/typesafe-arena",
+    "https://github.com/eminetto/typesafe-poc",
+    "https://github.com/futureppo/typesafe_register",
+    "https://github.com/hemanth/pkg-gate",
+    "https://github.com/insanearts/typesafe-sdk-swift",
+    "https://github.com/interfazeai/lev",
+    "https://github.com/nshkrdotcom/typesafe_sdk",
+    "https://github.com/twister915/typesafe-ai",
+    "https://github.com/typesafe-ai/system-one-adapter-python",
+    "https://github.com/typesafe-ai/typesafe-sdk-python",
+    "https://github.com/vinnie357/typesafe_sdk_ex",
+    "https://arxiv.org/abs/2311.14743",
+    "https://arxiv.org/abs/2403.12031",
+    "https://arxiv.org/abs/2409.15518",
+    "https://arxiv.org/abs/2412.04692",
+    "https://arxiv.org/abs/2502.04411",
+    "https://arxiv.org/abs/2502.16696",
+    "https://arxiv.org/abs/2502.18482",
+    "https://arxiv.org/abs/2502.20576",
+    "https://arxiv.org/abs/2504.07113",
+    "https://arxiv.org/abs/2505.08685",
+    "https://arxiv.org/abs/2505.17989",
+    "https://arxiv.org/abs/2506.01048",
+    "https://arxiv.org/abs/2506.06579",
+    "https://arxiv.org/abs/2506.16655",
+    "https://arxiv.org/abs/2506.22716",
+    "https://arxiv.org/abs/2507.10540",
+    "https://arxiv.org/abs/2507.17746",
+    "https://arxiv.org/abs/2509.02718",
+    "https://arxiv.org/abs/2511.09373",
+    "https://arxiv.org/abs/2511.16883",
+    "https://arxiv.org/abs/2511.20975",
+    "https://arxiv.org/abs/2512.09059",
+    "https://arxiv.org/abs/2601.02695",
+    "https://arxiv.org/abs/2601.17814",
+    "https://arxiv.org/abs/2602.02823",
+    "https://arxiv.org/abs/2602.23681",
+    "https://arxiv.org/abs/2603.02482",
+    "https://arxiv.org/abs/2603.04444",
+    "https://arxiv.org/abs/2603.09117",
+    "https://arxiv.org/abs/2603.12933",
+    "https://arxiv.org/abs/2603.24787",
+    "https://arxiv.org/abs/2604.06392",
+    "https://arxiv.org/abs/2605.00180",
+    "https://arxiv.org/abs/2605.17106",
+    "https://arxiv.org/abs/2605.18859",
+    "https://arxiv.org/abs/2605.25558",
+    "https://arxiv.org/abs/2606.00869",
+    "https://arxiv.org/abs/2606.06350",
+    "https://arxiv.org/abs/2606.17949",
+    "https://arxiv.org/abs/2606.22902",
+    "https://arxiv.org/abs/2606.31163",
+    "https://arxiv.org/abs/2607.15899",
+    "https://arxiv.org/abs/2609.33887",
+    "https://arxiv.org/abs/2609.37402",
+    "https://arxiv.org/abs/2610.01293",
+    "https://arxiv.org/abs/2610.03240",
+    "https://arxiv.org/abs/2610.09683",
+    "https://arxiv.org/abs/2610.12242",
+    "https://arxiv.org/abs/2610.15993"
+  ],
+  "changed": true,
+  "changed_count": 25,
+  "changed_urls": [
+    "https://arxiv.org/abs/1910.14599",
+    "https://github.com/aminry/decisio",
+    "https://github.com/anotiawang/awesome-decision-models",
+    "https://github.com/anotiawang/awesome-jev",
+    "https://github.com/caiovicentino/jev-risk-check-provider",
+    "https://github.com/fatwang2/awesome-jev",
+    "https://github.com/fr0zencrane/jev-spatial",
+    "https://github.com/hugues-vnsgn/jev-ios-bridge",
+    "https://github.com/keta1930/what-the-jev",
+    "https://github.com/luobosibing2/dsh-jev-plugin",
+    "https://github.com/manifoldor/xtags",
+    "https://github.com/mrjev/awesome-jev",
+    "https://github.com/run-saina/saina-decision-index",
+    "https://github.com/tiffygk/jev-mode",
+    "https://github.com/tontoko/jev-browser",
+    "https://github.com/wh000wh000/awesome-jev-live",
+    "https://github.com/wide3751/sommelier",
+    "https://huggingface.co/datasets/tasksource/tasksource-jev-typed-decisions",
+    "https://huggingface.co/internlm/Intern-Decision-4B",
+    "https://huggingface.co/run-saina/saina-helm-2-0.8b",
+    "https://vllm-sr.ai/blog/decision-models",
+    "https://zenodo.org/records/7299879",
+    "https://arxiv.org/abs/2505.23052",
+    "https://arxiv.org/abs/2603.12823",
+    "https://arxiv.org/abs/2609.34736"
+  ],
+  "completed_at": "2026-10-16T04:07:11+00:00",
+  "counts": {
+    "abstract_checked": 1492,
+    "checked_sources": 3436,
+    "content_screened": 1940,
+    "duplicate_records": 13,
+    "editorial_reviewed": 4,
+    "metadata_only": 48,
+    "raw_records": 3497,
+    "unique_records": 3484
+  },
+  "dry_run": false,
+  "duplicate_candidates_skipped": 0,
+  "editorial_examples_truncated": false,
+  "editorial_refresh_candidates": [],
+  "editorial_review_required_count": 0,
+  "error_count": 93,
+  "errors": [
+    {
+      "code": "insufficient_content",
+      "url": "https://contrastive-lm.notion.site"
+    },
+    {
+      "code": "insufficient_content",
+      "url": "https://dev.to/mapika/decider-one-forward-pass-typed-decisions-calibrated-probabilities-32c9"
+    },
+    {
+      "code": "insufficient_content",
+      "url": "https://dev.to/nandakishor_m_6cc0adfde9f/i-built-non-autoregressive-decision-models-a-year-ago-then-a-frontier-lab-called-it-a-18me"
+    },
+    {
+      "code": "insufficient_content",
+      "url": "https://github.com/bebechien/gemma"
+    },
+    {
+      "code": "insufficient_content",
+      "url": "https://github.com/cardotrejos/jev-ad-preflight"
+    },
+    {
+      "code": "insufficient_content",
+      "url": "https://github.com/cardotrejos/jev-should-i-apply"
+    },
+    {
+      "code": "insufficient_content",
+      "url": "https://github.com/cardotrejos/jev-user-jury"
+    },
+    {
+      "code": "insufficient_content",
+      "url": "https://github.com/compozy/compozy"
+    },
+    {
+      "code": "insufficient_content",
+      "url": "https://github.com/dao-ailab/causal-conv1d"
+    },
+    {
+      "code": "insufficient_content",
+      "url": "https://github.com/deepdave98/jev-playground"
+    },
+    {
+      "code": "insufficient_content",
+      "url": "https://github.com/emayfield/afd_decision_corpus"
+    },
+    {
+      "code": "insufficient_content",
+      "url": "https://github.com/futureppo/typesafe_register"
+    },
+    {
+      "code": "insufficient_content",
+      "url": "https://github.com/jon-devlapaz/jev-me"
+    },
+    {
+      "code": "insufficient_content",
+      "url": "https://github.com/jordiparracrespo/typesafe-ai-trading-showcase"
+    },
+    {
+      "code": "insufficient_content",
+      "url": "https://github.com/jupyter/governance"
+    },
+    {
+      "code": "insufficient_content",
+      "url": "https://github.com/lmstudio-ai/lmstudio-bug-tracker"
+    },
+    {
+      "code": "insufficient_content",
+      "url": "https://github.com/malduffin/typesafe-3d-chess"
+    },
+    {
+      "code": "insufficient_content",
+      "url": "https://github.com/mikesmullin/tetris"
+    },
+    {
+      "code": "insufficient_content",
+      "url": "https://github.com/mlc-ai/xgrammar"
+    },
+    {
+      "code": "insufficient_content",
+      "url": "https://github.com/ndolinschi/cartshield"
+    },
+    {
+      "code": "insufficient_content",
+      "url": "https://github.com/ndolinschi/harnessjudge"
+    },
+    {
+      "code": "insufficient_content",
+      "url": "https://github.com/ndolinschi/hiresignal"
+    },
+    {
+      "code": "insufficient_content",
+      "url": "https://github.com/ndolinschi/jevplay"
+    },
+    {
+      "code": "insufficient_content",
+      "url": "https://github.com/ndolinschi/lanebreak"
+    },
+    {
+      "code": "insufficient_content",
+      "url": "https://github.com/ndolinschi/mcpmatch"
+    },
+    {
+      "code": "insufficient_content",
+      "url": "https://github.com/ndolinschi/spendbrake"
+    },
+    {
+      "code": "insufficient_content",
+      "url": "https://github.com/ndolinschi/swarmrouter"
+    },
+    {
+      "code": "insufficient_content",
+      "url": "https://github.com/ndolinschi/toolgate"
+    },
+    {
+      "code": "insufficient_content",
+      "url": "https://github.com/ndolinschi/trustgate"
+    },
+    {
+      "code": "insufficient_content",
+      "url": "https://github.com/onionminionops-beep/pdoom-protocol"
+    },
+    {
+      "code": "insufficient_content",
+      "url": "https://github.com/pjt3591oo/laya-server"
+    },
+    {
+      "code": "insufficient_content",
+      "url": "https://github.com/pyris/sentfin"
+    },
+    {
+      "code": "insufficient_content",
+      "url": "https://github.com/sd109/typesafe-go"
+    },
+    {
+      "code": "insufficient_content",
+      "url": "https://github.com/siat-nlp/mams-for-absa"
+    },
+    {
+      "code": "insufficient_content",
+      "url": "https://github.com/sourcegraph/handbook"
+    },
+    {
+      "code": "insufficient_content",
+      "url": "https://github.com/stanfordnlp/contract-nli"
+    },
+    {
+      "code": "insufficient_content",
+      "url": "https://github.com/symfony/ai-type-safe-platform"
+    },
+    {
+      "code": "insufficient_content",
+      "url": "https://github.com/vercel-labs/ai-cli"
+    },
+    {
+      "code": "insufficient_content",
+      "url": "https://github.com/vllm-project/media-kit"
+    },
+    {
+      "code": "insufficient_content",
+      "url": "https://github.com/yonaskolb/xcodegen"
+    },
+    {
+      "code": "insufficient_content",
+      "url": "https://github.com/zhirschtritt/typesafe-go"
+    },
+    {
+      "code": "insufficient_content",
+      "url": "https://huggingface.co/datasets/Itau-Unibanco/FAQ_BACEN"
+    },
+    {
+      "code": "insufficient_content",
+      "url": "https://huggingface.co/datasets/causalNLP/cladder"
+    },
+    {
+      "code": "insufficient_content",
+      "url": "https://huggingface.co/datasets/glaiveai/glaive-function-calling-v2"
+    },
+    {
+      "code": "insufficient_content",
+      "url": "https://huggingface.co/datasets/liminghao1630/API-Bank"
+    },
+    {
+      "code": "insufficient_content",
+      "url": "https://huggingface.co/datasets/theatticusproject/cuad"
+    },
+    {
+      "code": "paper_query_failed:FetchError",
+      "url": "https://huggingface.co/api/papers/search?q=LLM+judge+bias&limit=120"
+    },
+    {
+      "code": "paper_query_failed:FetchError",
+      "url": "https://huggingface.co/api/papers/search?q=LLM+judge+consistency&limit=120"
+    },
+    {
+      "code": "paper_query_failed:FetchError",
+      "url": "https://huggingface.co/api/papers/search?q=LLM+judges+uncertainty&limit=120"
+    },
+    {
+      "code": "paper_query_failed:FetchError",
+      "url": "https://huggingface.co/api/papers/search?q=calibrating+language+model+evaluators&limit=120"
+    },
+    {
+      "code": "paper_query_failed:FetchError",
+      "url": "https://huggingface.co/api/papers/search?q=language+model+self+evaluation+confidence&limit=120"
+    },
+    {
+      "code": "paper_query_failed:FetchError",
+      "url": "https://huggingface.co/api/papers/search?q=rubric+language+model+evaluation&limit=120"
+    },
+    {
+      "code": "unavailable",
+      "url": "https://github.com/arelit/phishnchips"
+    },
+    {
+      "code": "unavailable",
+      "url": "https://github.com/bestagentkits/typesafe-demo-mcp"
+    },
+    {
+      "code": "unavailable",
+      "url": "https://github.com/choxos/jev-reviewer"
+    },
+    {
+      "code": "unavailable",
+      "url": "https://github.com/fastino-ai/flashdeberta"
+    },
+    {
+      "code": "unavailable",
+      "url": "https://github.com/getainode/ainode"
+    },
+    {
+      "code": "unavailable",
+      "url": "https://github.com/hardel-dw/jev.mods"
+    },
+    {
+      "code": "unavailable",
+      "url": "https://github.com/iamno1special/typesafe-sdk-godot"
+    },
+    {
+      "code": "unavailable",
+      "url": "https://github.com/jev-chat/jev-chat-jarvis"
+    },
+    {
+      "code": "unavailable",
+      "url": "https://github.com/jev-sec/jev-sec.github.io"
+    },
+    {
+      "code": "unavailable",
+      "url": "https://github.com/jev27b/jev-27b-desktop"
+    },
+    {
+      "code": "unavailable",
+      "url": "https://github.com/markfive-proto/typesafe-vs-deepseek"
+    },
+    {
+      "code": "unavailable",
+      "url": "https://github.com/metask-ai/metask-jev-lab"
+    },
+    {
+      "code": "unavailable",
+      "url": "https://github.com/shibadogcap/kyotsu-ai-bench"
+    },
+    {
+      "code": "unavailable",
+      "url": "https://github.com/shifros/search-function-test"
+    },
+    {
+      "code": "unavailable",
+      "url": "https://github.com/thodoh1/financialpredictionjev"
+    },
+    {
+      "code": "unavailable",
+      "url": "https://github.com/user-attachments/assets"
+    },
+    {
+      "code": "unavailable",
+      "url": "https://github.com/x0ef/jev_projects"
+    },
+    {
+      "code": "unavailable",
+      "url": "https://github.com/your-org/parallel-constrained-decoding"
+    },
+    {
+      "code": "unavailable",
+      "url": "https://huggingface.co/MoLeMo-Lab/mojev"
+    },
+    {
+      "code": "unavailable",
+      "url": "https://huggingface.co/datasets/Idavidrein/gpqa"
+    },
+    {
+      "code": "unavailable",
+      "url": "https://huggingface.co/datasets/Maincode/matilda-jev-decision-index"
+    },
+    {
+      "code": "unavailable",
+      "url": "https://huggingface.co/datasets/Mapika/decision-index-results"
+    },
+    {
+      "code": "unavailable",
+      "url": "https://huggingface.co/datasets/Narsil/asr_dummy"
+    },
+    {
+      "code": "unavailable",
+      "url": "https://huggingface.co/datasets/Salesforce/xlam-function-calling-60k"
+    },
+    {
+      "code": "unavailable",
+      "url": "https://huggingface.co/datasets/cais/hle"
+    },
+    {
+      "code": "unavailable",
+      "url": "https://huggingface.co/datasets/ctaxnagomi/DGUI_HYPERMEM-JEV"
+    },
+    {
+      "code": "unavailable",
+      "url": "https://huggingface.co/datasets/e12ex2/jev-vision-27b-results"
+    },
+    {
+      "code": "unavailable",
+      "url": "https://huggingface.co/datasets/jaredpalmer/kev-suites"
+    },
+    {
+      "code": "unavailable",
+      "url": "https://huggingface.co/datasets/kirp/decision-index-results-jpt-0.8b"
+    },
+    {
+      "code": "unavailable",
+      "url": "https://huggingface.co/datasets/kirp/decision-index-results-jpt-35b-a3b"
+    },
+    {
+      "code": "unavailable",
+      "url": "https://huggingface.co/datasets/kirp/decision-index-results-jpt-4b"
+    },
+    {
+      "code": "unavailable",
+      "url": "https://huggingface.co/datasets/kirp/decision-index-results-jpt-9b"
+    },
+    {
+      "code": "unavailable",
+      "url": "https://huggingface.co/datasets/kpiya/decision-index-results"
+    },
+    {
+      "code": "unavailable",
+      "url": "https://huggingface.co/datasets/merve/coco"
+    },
+    {
+      "code": "unavailable",
+      "url": "https://huggingface.co/datasets/pngwn/typed-decisions-causal-experiment"
+    },
+    {
+      "code": "unavailable",
+      "url": "https://huggingface.co/datasets/tasksource/decision-index-results"
+    },
+    {
+      "code": "unavailable",
+      "url": "https://huggingface.co/empiriolabsai/aplomb-1"
+    },
+    {
+      "code": "unavailable",
+      "url": "https://huggingface.co/michaljach/jet"
+    },
+    {
+      "code": "unavailable",
+      "url": "https://huggingface.co/surogate/rune-26b-a4b-GGUF"
+    },
+    {
+      "code": "unavailable",
+      "url": "https://nlp.cs.unc.edu/data/hover/wiki_wo_links.db"
+    },
+    {
+      "code": "unavailable",
+      "url": "https://reddit.com/r/LocalLLaMA/comments/1wjieap/made_the_horizontal_opensource_model_for_jev_with"
+    }
+  ],
+  "excluded_discoveries": 161,
+  "index_revision": "5d09dd9cf226338c68fad22284c4982e6680af7d",
+  "maintainer_review": {
+    "accepted_added_records": 86,
+    "accepted_counts": {
+      "abstract_checked": 1490,
+      "checked_sources": 3434,
+      "content_screened": 1940,
+      "duplicate_records": 13,
+      "editorial_reviewed": 4,
+      "metadata_only": 47,
+      "raw_records": 3494,
+      "unique_records": 3481
+    },
+    "accepted_updated_records": 25,
+    "curation_policy": "data/source-curation.json",
+    "excluded_sources": [
+      {
+        "evidence_url": "https://github.com/futureppo/typesafe_register",
+        "reason": "Service-account registration and API-key utility; outside the collection’s decision-model research, evaluation, and implementation scope.",
+        "reviewed_at": "2026-10-16T06:36:48Z",
+        "url": "https://github.com/futureppo/typesafe_register"
+      },
+      {
+        "evidence_url": "https://arxiv.org/abs/2505.08685v2",
+        "reason": "An applied medical-image segmentation challenge. Calibration terminology alone does not establish relevance to typed decisions, LLM evaluation, or a general calibration method.",
+        "reviewed_at": "2026-10-16T06:36:48Z",
+        "url": "https://arxiv.org/abs/2505.08685"
+      },
+      {
+        "evidence_url": "https://arxiv.org/abs/2512.09059v1",
+        "reason": "An applied precipitation-forecasting framework. Its uncertainty assessment is not a contribution about typed decisions or language-model systems.",
+        "reviewed_at": "2026-10-16T06:36:48Z",
+        "url": "https://arxiv.org/abs/2512.09059"
+      }
+    ],
+    "experimental_results_reproduced": false,
+    "review_note": "docs/reviews/scan-2026-10-16.md",
+    "reviewed_at": "2026-10-16T06:41:59+00:00",
+    "scope": "Primary-source metadata, abstract-level relevance and provenance inspection; no full-paper or experiment-reproduction claim."
+  },
+  "network_requests": 2656,
+  "preserved_after_failure": 27,
+  "privacy_rejected_records": 0,
+  "schema_version": 1,
+  "started_at": "2026-10-16T04:04:21+00:00",
+  "status": "partial",
+  "verification_note": "Public document or original-abstract machine screening only; prior reviewed evidence is preserved and changed editorial sources require human review. Metadata-only records do not count as checked sources."
+}

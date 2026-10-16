@@ -21,6 +21,13 @@ import subprocess
 import sys
 from urllib.parse import parse_qsl, unquote, urlsplit
 
+try:
+    from . import build_source_index as source_index
+    from .source_policy import load_policy, PolicyError
+except ImportError:
+    import build_source_index as source_index
+    from source_policy import load_policy, PolicyError
+
 ROOT = Path(__file__).resolve().parents[1]
 SKIP = {".git", "node_modules", ".venv", "__pycache__", ".cache", "tmp", "artifacts"}
 TEXT_SUFFIXES = {".md", ".py", ".js", ".json", ".jsonl", ".yml", ".yaml", ".html", ".css", ".svg", ".bib", ".txt"}
@@ -146,7 +153,7 @@ def check_text(path: Path, text: str) -> None:
             fail(relative, f"Python syntax error at line {exc.lineno}")
 
 
-def check_ledger(path: Path) -> list[dict]:
+def check_ledger(path: Path, policy=None) -> list[dict]:
     result: list[dict] = []
     urls: set[str] = set()
     for number, line in enumerate(path.read_text().splitlines(), 1):
@@ -163,6 +170,8 @@ def check_ledger(path: Path) -> list[dict]:
             continue
         result.append(row)
         url = row.get("canonical_url", row.get("url"))
+        if policy and isinstance(url, str) and ".excluded." not in path.name and policy.exclusion(url):
+            fail(location, "source is explicitly excluded by data/source-curation.json")
         if not public_url(url):
             fail(location, "canonical URL must be public HTTP(S), without credentials")
         elif url in urls:
@@ -237,6 +246,11 @@ def check_index(expected_raw_records: int) -> None:
 
 def main() -> int:
     all_files = files()
+    try:
+        policy = load_policy(ROOT / "data/source-curation.json", source_index.canonical)
+    except PolicyError as exc:
+        fail("data/source-curation.json", str(exc))
+        policy = None
     ledgers = []
     for path in all_files:
         relative = path.relative_to(ROOT)
@@ -255,7 +269,7 @@ def main() -> int:
                 continue
             check_text(path, text)
         if path.suffix == ".jsonl" and path.parent == ROOT / "data":
-            rows = check_ledger(path)
+            rows = check_ledger(path, policy)
             if ".excluded." not in path.name:
                 ledgers.extend(rows)
     if not ledgers:

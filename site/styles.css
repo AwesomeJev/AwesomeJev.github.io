@@ -2090,3 +2090,12 @@ html[lang="zh"] .featured-copy h2 {
 html[lang="zh"] h1, html[lang="zh"] h2, html[lang="zh"] h3 {
   letter-spacing: 0;
 }
+
+.corpus-curation {
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--muted);
+}
+.corpus-curation summary { cursor: pointer; }
+.corpus-curation p { font-size: 13px; line-height: 1.6; }
+.corpus-curation a { text-decoration: underline; text-underline-offset: 3px; }

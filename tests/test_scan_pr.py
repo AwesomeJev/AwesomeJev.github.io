@@ -7,6 +7,7 @@ import unittest
 from unittest.mock import patch
 
 from scripts import open_scan_pr as scan
+from scripts.source_policy import SourcePolicy
 
 
 IDENTITY = {"repository": scan.REPOSITORY, "base_sha": "a" * 40, "run_id": "123", "run_attempt": "1"}
@@ -154,6 +155,47 @@ class PublicationTests(unittest.TestCase):
         self.assertEqual(commit["parents"], [OLD_SHA, IDENTITY["base_sha"]])
         self.assertTrue(any(method == "PATCH" and endpoint == "/pulls/7" for method, endpoint, _ in api.calls))
         self.assertFalse(any(method == "POST" and endpoint == "/pulls" for method, endpoint, _ in api.calls))
+
+    def test_open_pr_pending_only_source_cannot_disappear_on_next_scan(self):
+        prior = files()
+        extra = {"url": "https://example.org/pending-only", "title": "Previously discovered", "verification_level": "content_screened", "content_sha256": "b" * 64}
+        prior[scan.LEDGERS[0]] += (json.dumps(extra) + "\n").encode()
+        api = FakeGitHub(previous=True, opened=True)
+        with patch.object(scan, "remote_comparison_files", return_value=prior), self.assertRaises(scan.ScanError):
+            scan.publish(api, IDENTITY, files())
+        self.assertTrue(all(method == "GET" for method, _, _ in api.calls))
+
+    def test_pending_evidence_tier_cannot_be_downgraded(self):
+        prior, fresh = files(), files()
+        for name in scan.LEDGERS:
+            row = json.loads(prior[name])
+            row["verification_level"] = "content_screened"
+            prior[name] = json.dumps(row).encode()
+        with self.assertRaises(scan.ScanError):
+            scan.ensure_pending_continuity(prior, fresh)
+
+    def test_editorial_pending_loss_requires_acceptance_or_trusted_exclusion(self):
+        prior, fresh = files(), files()
+        report = json.loads(prior[scan.REPORT])
+        report["editorial_refresh_candidates"] = [{"url": "https://example.org/source", "old_content_sha256": "a" * 64, "observed_content_sha256": "b" * 64}]
+        prior[scan.REPORT] = json.dumps(report).encode()
+        with self.assertRaises(scan.ScanError):
+            scan.ensure_pending_continuity(prior, fresh)
+        accepted = files()
+        for name in scan.LEDGERS:
+            row = json.loads(accepted[name])
+            row["content_sha256"] = "b" * 64
+            accepted[name] = json.dumps(row).encode()
+        scan.ensure_pending_continuity(prior, accepted)
+        policy = SourcePolicy({"https://example.org/source": {"reason": "Reviewed exclusion"}}, {}, scan.source_index.canonical)
+        scan.ensure_pending_continuity(prior, fresh, policy)
+
+    def test_trusted_exclusion_permits_intentional_pending_record_removal(self):
+        prior = files()
+        extra_url = "https://example.org/pending-only"
+        prior[scan.LEDGERS[0]] += (json.dumps({"url": extra_url, "verification_level": "content_screened"}) + "\n").encode()
+        policy = SourcePolicy({extra_url: {"reason": "Reviewed out-of-scope source"}}, {}, scan.source_index.canonical)
+        scan.ensure_pending_continuity(prior, files(), policy)
 
 
 if __name__ == "__main__":
