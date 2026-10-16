@@ -41,6 +41,8 @@ GitHub may place CI for a PR created or updated with `GITHUB_TOKEN` in an approv
 
 GitHub schedules are best-effort: runs may be delayed, and public-repository schedules can be disabled after 60 days without repository activity. See [GitHub's schedule documentation](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule). If the schedule is disabled, re-enable it in Actions and inspect a manual run before relying on later scans.
 
+**Operational check, 2026-10-16:** the [full manual scan and publication run](https://github.com/reacher-z/Awesome-Jev/actions/runs/38848656459) succeeded. A temporary, read-only five-minute UTC probe produced no `event=schedule` runs during **06:50:35–07:05:33 UTC**, covering the 06:55, 07:00, and 07:05 opportunities. The probe was then removed. The twice-daily schedule remains configured, but automatic cron execution has not yet been demonstrated; the cause of the missing events is unconfirmed.
+
 ### Trust and publication boundaries
 
 Fetched pages, model cards, metadata, and repository descriptions are **untrusted data**. The scanner does not execute their code, follow instructions embedded in them, or install packages they recommend. Requests are public and unauthenticated; credential-bearing URLs and private network addresses are outside the scan scope. Provider failures and retry exhaustion must remain visible without destroying prior evidence.
@@ -142,6 +144,8 @@ Preserve the individual licenses of third-party resources. A repository license 
 内容未变时保留原有证据和抓取时间，避免仅更新时间戳的 PR。抓取失败或重试耗尽时保留既有成功记录并报告失败，不能把失败伪装为新的成功核查。自动扫描不授予 `editorial_reviewed`；已有编辑审阅的来源发生变化时，应区分旧已审版本与待复核的新内容。
 
 手动运行：**Actions → Scan public sources → Run workflow**，选择 `main`。GitHub 定时运行可能延迟，公开仓库长期无活动时也可能停用；以 Actions 状态和运行摘要为准。扫描成功不等于 PR 已合并或网站已发布。
+
+**2026-10-16 运行核查：**[完整手动扫描及发布流程](https://github.com/reacher-z/Awesome-Jev/actions/runs/38848656459)已成功。临时只读的五分钟 UTC 探针在 **06:50:35–07:05:33 UTC** 观察窗口内没有产生 `event=schedule` 运行，覆盖 06:55、07:00 和 07:05 三次机会；观察结束后已移除探针。每日两次配置仍保留，但尚未实证自动定时触发，缺失事件的原因未确认。
 
 由 `GITHUB_TOKEN` 创建或更新的 PR，其 CI 可能处于等待批准状态；有写权限的维护者可在 PR 上选择 **Approve workflows to run**。扫描本身会在发布 PR 之前校验，但不能因此假定 PR 已取得全部独立检查结果。
 

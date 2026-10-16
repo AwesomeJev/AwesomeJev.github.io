@@ -24,6 +24,59 @@ def ledger(*rows):
 
 
 class IncrementalEvidenceTests(unittest.TestCase):
+    def test_canonical_body_fetch_updates_only_page_provenance_not_review_scope(self):
+        url = "https://arxiv.org/abs/2609.12345"
+        prior = row(url, level="abstract_checked", abstract_provider="huggingface_papers_api",
+                    abstract_sha256=hashlib.sha256(b"original abstract").hexdigest(),
+                    canonical_page_separately_fetched=False, full_text_reviewed=False,
+                    editorial_reviewed=False)
+        prior.pop("content_sha256")
+        fresh = row(url, body="primary page", status="screened", retrieved_url=url + "v2")
+        result, _ = refresh.merge_records(ledger(prior), [fresh])
+        updated = result.rows[0]
+        self.assertTrue(updated["canonical_page_separately_fetched"])
+        for field in ("abstract_provider", "abstract_sha256", "full_text_reviewed", "editorial_reviewed"):
+            self.assertEqual(updated[field], prior[field])
+        self.assertEqual(updated["verification_level"], "content_screened")
+
+    def test_same_body_legacy_flag_repair_preserves_dates_and_other_evidence(self):
+        url = "https://arxiv.org/abs/2609.12345"
+        prior = row(url, status="screened", canonical_page_separately_fetched=False,
+                    abstract_provider="huggingface_papers_api", full_text_reviewed=False,
+                    editorial_reviewed=False, editorial_note="Retain this note")
+        fresh = row(url, status="screened", retrieved_url=url,
+                    retrieved_at="2026-10-16T00:00:00Z", title="Changed automatic title")
+        result, changes = refresh.merge_records(ledger(prior), [fresh])
+        self.assertEqual(result.rows[0], {**prior, "canonical_page_separately_fetched": True})
+        self.assertEqual(changes["changed"], [url])
+        # Repeating the same observation becomes a byte-identical no-op.
+        repeated, repeated_changes = refresh.merge_records(result, [fresh])
+        self.assertEqual(repeated.lines, result.lines)
+        self.assertEqual(repeated_changes["changed"], [])
+
+    def test_mirror_body_does_not_substantiate_a_canonical_page_claim(self):
+        url = "https://arxiv.org/abs/2609.12345"
+        prior = row(url, canonical_page_separately_fetched=False,
+                    abstract_provider="huggingface_papers_api", full_text_reviewed=False,
+                    editorial_reviewed=False)
+        fresh = row(url, body="changed mirror body", status="screened",
+                    retrieved_url="https://example.org/paper-mirror",
+                    canonical_page_separately_fetched=True)
+        result, _ = refresh.merge_records(ledger(prior), [fresh])
+        self.assertFalse(result.rows[0]["canonical_page_separately_fetched"])
+        self.assertFalse(result.rows[0]["full_text_reviewed"])
+        self.assertFalse(result.rows[0]["editorial_reviewed"])
+
+    def test_canonical_page_flag_requires_body_hash_and_screened_status(self):
+        url = "https://arxiv.org/abs/2609.12345"
+        valid = row(url, status="screened", retrieved_url=url)
+        for candidate in [dict(valid, status="unavailable"),
+                          dict(valid, content_sha256=""),
+                          dict(valid, verification_level="abstract_checked"),
+                          dict(valid, retrieved_url=None)]:
+            with self.subTest(candidate_status=candidate.get("status")):
+                self.assertFalse(refresh.canonical_page_observed(candidate))
+
     def test_unchanged_hash_preserves_exact_old_record_bytes_and_manual_fields(self):
         prior = row(editorial_note="Manually inspected evidence", title="Corrected title")
         old = ledger(prior)

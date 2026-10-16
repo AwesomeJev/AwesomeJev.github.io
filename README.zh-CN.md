@@ -6,7 +6,7 @@
 
 **[主仓库](https://github.com/reacher-z/Awesome-Jev)** · [网站](https://awesomejev.github.io/?lang=zh) · [English](README.md) · [综述](docs/survey.zh-CN.md) · [BibTeX](references.bib) · [参与贡献](CONTRIBUTING.md)
 
-独立社区项目，与 TypeSafe AI 无隶属关系。最近整理：**2026-10-15**。网站从 [AwesomeJev.github.io](https://github.com/AwesomeJev/AwesomeJev.github.io) 仓库发布。
+独立社区项目，与 TypeSafe AI 无隶属关系。最近整理：**2026-10-16**。网站从 [AwesomeJev.github.io](https://github.com/AwesomeJev/AwesomeJev.github.io) 仓库发布。
 
 ## 目录
 
