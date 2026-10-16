@@ -1,0 +1,92 @@
+# Search discovery and AI-search readiness
+
+Guidance checked against official documentation on **2026-10-16**. These changes make content easier to discover and inspect; they do not guarantee crawling, indexing, rankings, or citations in an AI answer. Search visibility and account-level settings must be checked separately from a successful deployment.
+
+## Authoring and building the public pages
+
+Edit the shared sources, then rebuild from the repository root:
+
+```sh
+node scripts/build_site.mjs
+node scripts/build_site.mjs --check
+```
+
+The first command generates the public files. `--check` makes no changes and fails if a generated file is missing or differs from its source. The build uses local files only; it does not fetch sources or refresh verification dates.
+
+| Content | Source to edit |
+| --- | --- |
+| Curated entries and interface translations | [site/catalog.mjs](../site/catalog.mjs) |
+| Homepage layout | [templates/index.html](../templates/index.html) |
+| Shared resource-row rendering | [site/resource-view.mjs](../site/resource-view.mjs) |
+| English and Chinese guide text and citations | [data/search-guide.json](../data/search-guide.json) |
+| Bibliography | [references.bib](../references.bib) |
+| Page generation, metadata, and sitemap rules | [scripts/build_site.mjs](../scripts/build_site.mjs) |
+
+`site/app.js` enhances the browser interface; the resource catalog now belongs in `site/catalog.mjs`. Do not maintain a second copy of the entries in the application script.
+
+Do not hand-edit the six generated HTML pages: `/`, `/zh/`, `/guide/`, `/zh/guide/`, `/papers/`, and `/zh/papers/`. The build also owns `site/sitemap.xml`, `site/references.bib`, `site/papers.json`, `site/llms.txt`, and `site/llms-full.txt`. Change their source files or generator, rebuild, and include both source and output changes in the same review. Update the generator's `contentDate` or the guide's `updated` date only when the corresponding substantive content changes; a no-op scan does not justify a new date.
+
+## Public content and crawlability
+
+Serve the curated resource entries and guide text in the initial HTML, with normal links. JavaScript can enhance filtering and search. Google can render JavaScript, but recommends pre-rendering where useful because other crawlers may not execute it. Do not describe client-rendered content as inherently unindexable by Google. [Google JavaScript SEO guidance](https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics)
+
+The public guide is authored in [data/search-guide.json](../data/search-guide.json), with parallel English and Chinese content and paragraph-level source links. Keep those citations visible in the generated guide pages. Maintain the distinction between provider descriptions, author-reported studies, source screening, and experiments actually reproduced by this project.
+
+Use stable language URLs, such as `/` and `/zh/`, and `/guide/` and `/zh/guide/`. Each translated page should serve its own language without requiring a button click, use a self-consistent canonical URL, and list reciprocal `hreflang` alternatives including itself. Keep the language switch usable as ordinary links. [Google localized-page guidance](https://developers.google.com/search/docs/specialty/international/localized-versions)
+
+Keep an accurate XML sitemap at the site root, referenced by `robots.txt`. Include canonical first-party pages that should be searchable; external papers in the resource collection do not belong in this site's sitemap. Update `lastmod` when the page's substantive content changes, not whenever a collector or build runs. Google and Bing ignore the optional `priority` and `changefreq` fields. [Google sitemap guidance](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap) · [Bing sitemap guidance](https://blogs.bing.com/webmaster/2025/7/Keeping-Content-Discoverable-with-Sitemaps-in-AI-Powered-Search/)
+
+Do not generate thousands of near-empty pages from the broad source corpus just to increase indexable URL counts. Curated explanations, transparent evidence notes, and useful navigation provide more value than mechanically repeating titles and links. [Google generative-AI optimization guidance](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)
+
+## Structured data and answer-oriented writing
+
+Structured data must describe what readers can actually see. A resource collection can use ordinary website/collection/list semantics; the explanatory guide can describe its real title, author or maintainer, language, sources, and update date. Do not invent reviews, ratings, qualifications, or evidence that the project did not produce. Valid markup is not a guarantee of a rich result. [Google structured-data policies](https://developers.google.com/search/docs/appearance/structured-data/sd-policies)
+
+Question headings are useful when they answer readers' real questions. They do not imply special search eligibility. Google's FAQ rich-result feature was retired in May 2026; do not promise FAQ rich results from this guide. [Google documentation updates](https://developers.google.com/search/updates)
+
+Google explicitly says it does not use `llms.txt` to improve visibility or ranking. Such a file may be maintained as an optional navigation aid for other tools, but it is not an indexing requirement or an AEO shortcut. There is no special structured-data type required for Google's generative search features. [Google AI optimization guide](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)
+
+## Google: what an owner should check
+
+Pages must meet ordinary Search requirements and be indexed with snippet eligibility to appear as supporting links in AI Overviews or AI Mode. The site's generative-AI inclusion control must also permit participation, as described below. [Google AI-feature requirements](https://developers.google.com/search/docs/appearance/ai-features)
+
+The Search Console **Settings → Search generative AI** control defaults to inclusion; a child property can inherit a parent's setting. Check the effective setting rather than assuming a new manual opt-in is always necessary. This control is separate from ordinary Search inclusion and from AI-training controls. The project's inherited effective setting was confirmed in Search Console as **Current control: Include** on 2026-10-16. [Search generative AI control](https://support.google.com/webmasters/answer/16908024)
+
+An owner can verify the exact `https://awesomejev.github.io/` URL-prefix property, inspect a live URL, submit the sitemap, and monitor indexing and search performance. Use the owner's actual verification file or tag; never add a placeholder verification token and call the site verified. Account verification and a submitted sitemap do not themselves prove indexing. [Search Console ownership verification](https://support.google.com/webmasters/answer/9008080) · [Google sitemap submission](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap#submit-sitemap)
+
+**Project status, 2026-10-16:** Google Search Console ownership verification succeeded using the site's HTML verification file, and the inherited effective Search generative AI control is **Include**. Keep the verification file publicly accessible; do not record the owner's account name or email in this repository. Submission of the new six-page sitemap is pending deployment. Ownership verification and an inclusive control do not establish indexing or appearance in an AI answer.
+
+## Bing and IndexNow
+
+For normal discovery, retain crawlable internal links and a root sitemap referenced in `robots.txt`. Bing Webmaster Tools can verify sitemap processing and indexing through an owner account. Accurate modification dates matter; a fresh build timestamp is not evidence that page content changed. [Bing sitemap guidance](https://blogs.bing.com/webmaster/2025/7/Keeping-Content-Discoverable-with-Sitemaps-in-AI-Powered-Search/)
+
+IndexNow is an optional change-notification protocol. It requires a valid key and a UTF-8 verification file on the same host as the submitted URLs. A root-level key file covers the host; a key hosted in a subdirectory covers only the corresponding URL prefix. Submit only this site's added, changed, or removed page URLs, not the external source URLs collected in its ledgers. A `200` response means receipt, and `202` means key verification is pending; neither guarantees crawling or indexing. [IndexNow protocol](https://www.indexnow.org/documentation) · [Bing's IndexNow setup](https://www.bing.com/indexnow/IndexNowView/IndexNowGetStartedView)
+
+**GitHub Pages compatibility is an implementation inference:** GitHub Pages serves static repository files, so it can serve the required verification file. A separate post-deployment process could then submit changed first-party URLs. This does not mean GitHub Pages automatically enables IndexNow for this site. Verify the key file is live before making any submission. [GitHub Pages hosting](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages) · [IndexNow verification](https://www.indexnow.org/documentation)
+
+**Project status, 2026-10-16:** Bing Webmaster Tools verification remains pending the owner's account/passkey interaction. The IndexNow submission script and public proof file are prepared; a successful submission has not yet been established. Check the deployed proof and sitemap before using [scripts/submit_indexnow.py](../scripts/submit_indexnow.py), then record the actual response and submitted first-party URLs. Do not report a prepared file or script as a completed submission.
+
+## OpenAI search crawlers
+
+`OAI-SearchBot` is the relevant crawler for discovery in ChatGPT search. OpenAI recommends allowing it in `robots.txt` and not blocking its published IP ranges at the hosting layer. `GPTBot` has a separate training purpose, and its setting is independent. `ChatGPT-User` is for user-triggered visits, not the search-index control. Do not conflate these agents or change a training preference merely to enable search discovery. [Official OpenAI crawler documentation](https://developers.openai.com/api/docs/bots)
+
+An unrestricted public `User-agent: *` rule already permits compliant search crawlers unless a more specific rule overrides it. A public HTTP response and a permissive robots file establish accessibility, not that OpenAI or another service has indexed or selected the page.
+
+## Release checks
+
+- Run `node scripts/build_site.mjs --check` after generating pages; source changes and generated outputs must agree.
+- Inspect the fetched HTML without JavaScript: important headings, explanations, resource links, and citations should be present.
+- Confirm each language page returns HTTP 200 with the intended language, title, canonical, and reciprocal alternatives.
+- Check sitemap URLs, actual modification dates, and the live `robots.txt` response.
+- Check JSON-LD against visible content and avoid unsupported claims about search features.
+- Keep publication, search-engine submission, index inclusion, and observed traffic as separate statuses.
+
+## 中文说明
+
+优先把精选资源、指南正文和引用直接写入静态 HTML，让 JavaScript 只增强搜索与筛选。英文和中文使用独立可访问的 URL、相符的 canonical 和互相指向的 `hreflang`；sitemap 只列本站规范页面，更新时间应对应内容实质变化。
+
+维护时修改 `site/catalog.mjs` 中的共享资源与翻译、`templates/index.html` 首页模板、`data/search-guide.json` 双语指南或根目录 `references.bib`，再执行 `node scripts/build_site.mjs`，并用 `node scripts/build_site.mjs --check` 检查一致性。不要直接编辑六个生成页面、sitemap、站点引用副本、论文 JSON 或 `llms` 文件；`site/app.js` 只负责浏览器交互，不再保存另一份资源目录。
+
+这些措施改善可抓取性，不保证收录、排名或 AI 引用。Google 明确表示 `llms.txt` 不提升其排名；问答式正文也不意味着 FAQ 富结果。Search Console 的生成式 AI 控制默认包含，但子属性可能继承上级设置。截至 2026-10-16，Google 站点所有权已通过 HTML 文件验证，控制界面也已确认继承后的有效设置为 **Current control: Include**；新 sitemap 待部署后提交。保留公开验证文件，不在仓库记录账号姓名或邮箱。所有权验证和 Include 设置不代表页面已收录或已出现在 AI 回答中。
+
+Bing 验证仍待所有者完成账号／通行密钥交互。IndexNow 脚本与公开校验文件已准备，但尚未确认提交成功；部署后应先验证文件可访问，再记录提交响应。只提交本站发生变化的 URL，不提交资源库中的外站论文链接。OpenAI 搜索使用 `OAI-SearchBot`，与用于训练的 `GPTBot` 相互独立。所有外部验证、提交和收录状态都应以实际结果记录，不能由本地文件推断。

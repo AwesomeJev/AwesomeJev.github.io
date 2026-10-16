@@ -4,7 +4,7 @@
 
 A curated list of **Jev and typed decision model** papers, models, datasets, evaluation tools, and practical guides.
 
-**[Main repository](https://github.com/reacher-z/Awesome-Jev)** · [Website](https://awesomejev.github.io/) · [中文](README.zh-CN.md) · [Survey](docs/survey.md) · [BibTeX](references.bib) · [Contribute](CONTRIBUTING.md)
+**[Main repository](https://github.com/reacher-z/Awesome-Jev)** · [Website](https://awesomejev.github.io/) · [Papers](https://awesomejev.github.io/papers/) · [Research guide](https://awesomejev.github.io/guide/) · [中文](README.zh-CN.md) · [Survey](docs/survey.md) · [BibTeX](references.bib) · [Contribute](CONTRIBUTING.md)
 
 Independent community project; not affiliated with TypeSafe AI. Last curated: **2026-10-16**. The website is published from [AwesomeJev.github.io](https://github.com/AwesomeJev/AwesomeJev.github.io).
 
@@ -44,11 +44,12 @@ On **2026-10-15**, `jev-latest` points to `jev-1.13.0` and `jev-preview` to `jev
 
 ## Papers
 
-All 21 direct studies below are **arXiv preprints**. Dates identify the linked, reviewed version, not necessarily the first submission. Results are author-reported; this project has not reproduced their experiments. Titles that contain speed or cost claims retain the authors' wording. [Bibliography](references.bib) · [Evidence comparison](docs/survey.md)
+All 25 direct studies below are **arXiv preprints**. Dates identify the linked, reviewed version, not necessarily the first submission. Results are author-reported; this project has not reproduced their experiments. Titles that contain speed or cost claims retain the authors' wording. [Bibliography](references.bib) · [Evidence comparison](docs/survey.md)
 
 ### Evaluation and benchmarking
 
 - **[System1-Arena: Which Decisions Can Be Left to System 1?](https://arxiv.org/abs/2610.21244v1)** — Chen et al. *2026-10-15, arXiv v1*. Matched requests and closed-loop tasks for decision and reasoning models.
+- **[Reading Right, Acting Wrong: Diagnosing Decision Failures of System One Models in Agent Loops](https://arxiv.org/abs/2610.18579v1)** — Li, Krishnan & Padman. *2026-10-13, arXiv v1*. Pairs factual probes with action choices to diagnose decision failures.
 - **[General Decision Models: Benchmarking and Insights Beyond Jev](https://arxiv.org/abs/2610.03935v2)** — Duan et al. *2026-10-12, arXiv v2*. Bilingual decision evaluation and reliability in multi-step systems. [Training and inference code](https://github.com/amazingljy1206/SII-Decision).
 - **[JEV versus LLMs: Accuracy, Cost and Calibration on Seven Political Science Replications](https://arxiv.org/abs/2610.06625v2)** — Denney & DiGiuseppe. *2026-10-06, arXiv v2*. Seven domain-specific replications; accuracy, cost, and calibration.
 - **[Evaluating and Benchmarking the System One Model Jev](https://arxiv.org/abs/2609.37647v1)** — Deußer, Sparrenberg & Sifa. *2026-09-29, arXiv v1*. Classification and decision evaluation across 37 datasets. [Code](https://github.com/AppliedMachineLearning-Lab/jev-benchmarking).
@@ -69,6 +70,7 @@ All 21 direct studies below are **arXiv preprints**. Dates identify the linked, 
 
 ### Robustness and security
 
+- **[DecisionRobust: Benchmarking Robustness for JEV Style Decision Models Across Text and Vision](https://arxiv.org/abs/2610.19118v1)** — Lan et al. *2026-10-13, arXiv v1*. Text and vision attacks with label-validity checks and held-out models. [Code](https://github.com/Yifan-Lan/DecisionRobust) · [Benchmark](https://yifan-lan.github.io/DecisionRobust/).
 - **[Same Attack, Different Judge: A First Controlled Adversarial Comparison of Jev, LLM Judges, and Purpose-Built Safety Classifiers](https://arxiv.org/abs/2610.17820v1)** — Li, Huang, Zhang & Liu. *2026-10-13, arXiv v1*. Controlled attacks against decision models and safety classifiers.
 - **[Type-Safe Is Not Error-Free: Typed Decision Models Follow the Option Name, Not the Definition Bound to It](https://arxiv.org/abs/2609.26758v3)** — Sun, Xu, Shi & Yang. *2026-10-08, arXiv v3*. Tests whether option names override assigned definitions despite structurally valid outputs.
 - **[Evaluating System One Models for Agent Security Decisions: Reliability, Calibration, and Selective Automation](https://arxiv.org/abs/2609.33401v3)** — Liu. *2026-10-03, arXiv v3*. Confident security errors and selective automation under asymmetric risks.
@@ -77,6 +79,8 @@ All 21 direct studies below are **arXiv preprints**. Dates identify the linked, 
 ### Architectures, memory, and multimodality
 
 - **[Jeva: System One Models from First Principles](https://arxiv.org/abs/2610.18773v1)** — Li & Wang. *2026-10-13, arXiv v1*. Null handling, option permutation, variable candidate sets, and caching.
+- **[MetaEncoder: Exploring the Limit of Bi-Encoders for Multimodal System One Decision Making with Natural Language Interface](https://arxiv.org/abs/2610.11316v1)** — Cheng et al. *2026-10-08, arXiv v1*. Bi-encoder approach to multimodal decisions and retrieval through natural-language interfaces. [Evaluation code](https://github.com/facebook/meta-encoder-eval).
+- **[JevSpawn: Adaptive Agentic Inference through Compositional Action Spaces](https://arxiv.org/abs/2610.00437v1)** — Su & Huang. *2026-09-30, arXiv v1*. Composes finite action fields and explores alternatives using interaction feedback. [Code](https://github.com/Hoyant-Su/JevSpawn).
 - **[Chinese-Jev: Bringing System One Model to Chinese-Language Tasks](https://arxiv.org/abs/2609.36965v1)** — Wang et al. *2026-09-29, arXiv v1*. Chinese decision-model training and domain-specific evaluation.
 - **[From Text Decisions to Pixels: An Study of Jev-Style Visual Choice Model](https://arxiv.org/abs/2609.29283v1)** — Zhou, Yang & Zhao. *2026-09-24, arXiv v1*. Visual choice models; adaptation and calibration evaluated separately.
 - **[Jev-Mem: System-One-Controlled Agentic Memory for Efficient AI Agents](https://arxiv.org/abs/2609.23986v1)** — Jiang, Li & Li. *2026-09-21, arXiv v1*. Decision-based control of agent memory construction and retrieval.
@@ -157,7 +161,7 @@ Background literature and comparison methods. These works do **not** establish J
 | Composable pipelines | Khattab et al., *DSPy*. 2023. | [Paper](https://arxiv.org/abs/2310.03714) |
 | Efficient execution | Zheng et al., *SGLang*. NeurIPS, 2024. | [Paper](https://papers.nips.cc/paper_files/paper/2024/file/724be4472168f31ba1c9ac630f15dec8-Paper-Conference.pdf) · [Code](https://github.com/sgl-project/sglang) |
 
-All 29 selected papers are included in [references.bib](references.bib).
+All 33 selected papers are included in [references.bib](references.bib). See the [latest paper-selection review](docs/reviews/papers-2026-10-16.md) for verification scope and limitations.
 
 ## Quick start
 

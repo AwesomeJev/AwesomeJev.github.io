@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta
+      name="description"
+      content="Papers, models, datasets, and tools for Jev and typed decision models."
+    />
+    <meta property="og:title" content="Awesome Jev — Typed decision resources" />
+    <meta
+      property="og:description"
+      content="Papers, models, datasets, and tools for Jev and typed decision models."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="AwesomeJev" />
+    <meta property="og:url" content="https://awesomejev.github.io/" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="zh_CN" />
+    <meta
+      property="og:image"
+      content="https://awesomejev.github.io/assets/social.png"
+    />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="AwesomeJev — an independent field guide to typed decision models. Research, models, tools, and evidence."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Awesome Jev — Typed decision resources" />
+    <meta
+      name="twitter:description"
+      content="Papers, models, datasets, and tools for Jev and typed decision models."
+    />
+    <meta
+      name="twitter:image"
+      content="https://awesomejev.github.io/assets/social.png"
+    />
+    <meta
+      name="twitter:image:alt"
+      content="AwesomeJev — an independent field guide to typed decision models. Research, models, tools, and evidence."
+    />
+    <title>{{TITLE}}</title>
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    {{STRUCTURED_DATA}}
+    <link rel="canonical" href="{{CANONICAL}}" />
+    <link rel="alternate" hreflang="en" href="https://awesomejev.github.io/" />
+    <link
+      rel="alternate"
+      hreflang="zh-CN"
+      href="https://awesomejev.github.io/zh/"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://awesomejev.github.io/"
+    />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link
+      rel="preload"
+      href="/assets/fonts/inter-latin-wght-normal.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="stylesheet" href="/styles.css?v=7" />
+    <script type="module" src="/app.js?v=7"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#collection" data-i18n="skip"
+      >Skip to the collection</a
+    >
+    <div class="page-shell">
+      <header class="masthead">
+        <a class="wordmark" href="#" aria-label="AwesomeJev home"
+          ><span class="brand-mark" aria-hidden="true">a<span>j</span></span
+          >Awesome<span class="brand-jev">Jev</span
+          ><span class="brand-period">.</span></a
+        >
+        <nav
+          class="main-nav"
+          aria-label="Main navigation"
+          data-i18n-aria="navLabel"
+        >
+          <a href="#collection" data-i18n="navIndex">The index</a>
+          <a href="#start" data-i18n="navStart">Get started</a>
+          <a
+            href="https://huggingface.co/spaces/multimodalart/jev-decision-index"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Decision Index
+            <svg class="icon" aria-hidden="true">
+              <use href="/assets/fontawesome/icons.svg#external"></use></svg
+          ></a>
+          <a
+            href="https://github.com/reacher-z/Awesome-Jev"
+            target="_blank"
+            rel="noopener noreferrer"
+            ><svg class="icon" aria-hidden="true">
+              <use href="/assets/fontawesome/icons.svg#github"></use>
+            </svg>
+            GitHub</a
+          >
+        </nav>
+        <div class="language-switch" role="group" aria-label="Language / 语言">
+          <a href="/" data-language="en" lang="en" hreflang="en">EN</a>
+          <span aria-hidden="true">/</span>
+          <a href="/zh/" data-language="zh" lang="zh-CN" hreflang="zh-CN">中文</a>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero project-intro" aria-labelledby="hero-title">
+          <div class="hero-main">
+            <h1 id="hero-title" data-i18n="heroLine1">Awesome Jev</h1>
+            <p class="hero-description" data-i18n="heroDescription">
+              Papers, models, datasets, and tools for typed decisions.
+            </p>
+            <nav class="reference-links intro-links" aria-label="Project links" data-i18n-aria="readFurther">
+              <a href="https://github.com/reacher-z/Awesome-Jev/blob/main/README.md" data-document="readme" data-i18n="readmeLink">README</a>
+              <a href="/guide/" data-document="survey" data-i18n="surveyLink">Research survey</a>
+              <a href="{{PAPERS_URL}}">{{PAPERS_LABEL}}</a>
+              <a href="/references.bib" data-i18n="bibtexLink">BibTeX</a>
+              <a href="https://huggingface.co/spaces/multimodalart/jev-decision-index" target="_blank" rel="noopener noreferrer" data-i18n="indexTitle">Decision Index</a>
+            </nav>
+          </div>
+        </section>
+
+        <section
+          class="collection-section"
+          id="collection"
+          aria-labelledby="collection-title"
+          tabindex="-1"
+        >
+          <div class="section-heading">
+            <div>
+              <h2 id="collection-title" data-i18n="collectionTitle">
+                Resource index
+              </h2>
+            </div>
+            <p class="section-intro" data-i18n="collectionIntro">
+              Filter by type or search titles and descriptions.
+            </p>
+          </div>
+          <div class="collection-controls">
+            <div
+              class="filter-group"
+              role="group"
+              aria-label="Filter resources"
+              data-i18n-aria="filterLabel"
+            >
+              <button type="button" class="filter-button active" data-filter="All" aria-pressed="true" data-i18n="filterAll">All</button>
+              <button type="button" class="filter-button" data-filter="Papers" aria-pressed="false" data-i18n="filterPapers">Papers</button>
+              <button type="button" class="filter-button" data-filter="Models" aria-pressed="false" data-i18n="filterModels">Models</button>
+              <button type="button" class="filter-button" data-filter="Tools" aria-pressed="false" data-i18n="filterTools">Tools</button>
+              <button type="button" class="filter-button" data-filter="Datasets" aria-pressed="false" data-i18n="filterDatasets">Datasets</button>
+              <button type="button" class="filter-button" data-filter="Evaluations" aria-pressed="false" data-i18n="filterEvaluations">Evaluations</button>
+              <button type="button" class="filter-button" data-filter="Guides" aria-pressed="false" data-i18n="filterGuides">Guides</button>
+              <button type="button" class="filter-button" data-filter="Foundations" aria-pressed="false" data-i18n="filterFoundations">Foundations</button>
+            </div>
+            <form class="search-field" role="search">
+              <label
+                class="sr-only"
+                for="resource-search"
+                data-i18n="searchLabel"
+                >Search resources</label
+              ><svg class="icon" aria-hidden="true">
+                <use href="/assets/fontawesome/icons.svg#search"></use></svg
+              ><input
+                type="search"
+                id="resource-search"
+                placeholder="Find something useful…"
+                data-i18n-placeholder="searchPlaceholder"
+                autocomplete="off"
+              /><kbd aria-hidden="true">/</kbd>
+            </form>
+          </div>
+          <aside class="version-note compact-version">
+            <span data-i18n="versionNote">Stable: Jev 1.13 · Preview: Jev 1.14.</span>
+            <a href="https://docs.typesafe.ai/models" target="_blank" rel="noopener noreferrer" data-i18n="modelNotes">Model notes ↗</a>
+            <time datetime="2026-10-15">2026-10-15</time>
+          </aside>
+          <div class="index-meta">
+            <p id="result-count" role="status" aria-live="polite">{{RESOURCE_COUNT}}</p>
+            <span data-i18n="sourceNote">DIRECT LINKS · CLEAR PROVENANCE</span>
+          </div>
+          <p
+            class="model-evidence"
+            id="model-evidence"
+            data-i18n="modelEvidence"
+            hidden
+          >
+            Model capabilities and licenses follow publisher cards. API
+            compatibility does not establish equivalent behavior or accuracy.
+          </p>
+          <div id="resource-list" class="resource-list">{{RESOURCE_ROWS}}</div>
+          <div class="empty-state" id="empty-state" hidden>
+            <span aria-hidden="true">∅</span>
+            <h3 data-i18n="emptyTitle">No matches, yet.</h3>
+            <p data-i18n="emptyDescription">
+              Try a broader term, or explore the full collection.
+            </p>
+            <button type="button" id="reset-filters" data-i18n="resetFilters">
+              Clear search & filters
+            </button>
+          </div>
+          <noscript><p>{{NOSCRIPT_NOTE}}</p></noscript>
+          <p class="editorial-note">
+            <span aria-hidden="true">↳</span
+            ><span data-i18n="editorialNote"
+              >Preprints report their authors’ findings; listing is not
+              independent validation. Foundations provide context, not evidence
+              of Jev’s internal architecture.</span
+            >
+          </p>
+        </section>
+
+        <section
+          class="corpus-section"
+          id="corpus"
+          aria-labelledby="corpus-title"
+        >
+          <div class="corpus-heading">
+            <div>
+              <p class="eyebrow" data-i18n="corpusEyebrow">
+                THE WIDER RESEARCH CORPUS
+              </p>
+              <h2 id="corpus-title" data-i18n="corpusTitle">
+                Follow the connections.
+              </h2>
+            </div>
+            <p data-i18n="corpusIntro">
+              Mixed screening levels: editorial review, automated content
+              screening, abstract checks, and metadata-only discovery. Inspect
+              each entry’s label; inclusion is a research lead, not an
+              endorsement.
+            </p>
+          </div>
+          <div class="corpus-audit-line">
+            <p id="corpus-audit-counts" aria-live="polite"></p>
+            <a
+              href="https://github.com/reacher-z/Awesome-Jev/blob/main/docs/source-audit.md"
+              target="_blank"
+              rel="noopener noreferrer"
+              ><span data-i18n="corpusAudit">Screening methodology</span>
+              <svg class="icon" aria-hidden="true">
+                <use href="/assets/fontawesome/icons.svg#external"></use></svg
+            ></a>
+          </div>
+          <details class="verification-legend">
+            <summary>
+              <span data-i18n="verificationDepth">Verification depth</span
+              ><span class="verification-hint" data-i18n="verificationHint"
+                >How to read the labels</span
+              ><span aria-hidden="true">+</span>
+            </summary>
+            <dl>
+              <div>
+                <dt>
+                  <span data-i18n="levelEditorial">Editorially reviewed</span
+                  ><span data-count-key="editorial_reviewed"></span>
+                </dt>
+                <dd data-i18n="editorialDefinition">
+                  Focused editorial inspection of core Decision Index sources.
+                  This label does not imply experimental reproduction.
+                </dd>
+              </div>
+              <div>
+                <dt>
+                  <span data-i18n="levelContent">Content screened</span
+                  ><span data-count-key="content_screened"></span>
+                </dt>
+                <dd data-i18n="contentDefinition">
+                  A public README, model card, or page passed automated
+                  relevance and substance checks. An arXiv landing page is an
+                  abstract, not a full-paper review.
+                </dd>
+              </div>
+              <div>
+                <dt>
+                  <span data-i18n="levelAbstract">Abstract checked</span
+                  ><span data-count-key="abstract_checked"></span>
+                </dt>
+                <dd data-i18n="abstractDefinition">
+                  An abstract was screened through Hugging Face Papers or
+                  reconstructed from OpenAlex metadata. Retrieval of the
+                  original publisher page is not implied.
+                </dd>
+              </div>
+              <div>
+                <dt>
+                  <span data-i18n="levelMetadata">Metadata only</span
+                  ><span data-count-key="metadata_only"></span>
+                </dt>
+                <dd data-i18n="metadataDefinition">
+                  A source was discovered, but its content check did not pass.
+                  These entries are excluded from the checked-source total.
+                </dd>
+              </div>
+            </dl>
+          </details>
+          <details class="corpus-disclosure">
+            <summary>
+              <span data-i18n="corpusSummary">Browse the research corpus</span
+              ><span id="corpus-count"></span
+              ><span class="corpus-open-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="corpus-content">
+              <div class="corpus-search-row">
+                <label class="search-field" for="corpus-search"
+                  ><svg class="icon" aria-hidden="true">
+                    <use
+                      href="/assets/fontawesome/icons.svg#search"
+                    ></use></svg
+                  ><span class="sr-only" data-i18n="corpusSearch"
+                    >Search the research corpus</span
+                  ><input
+                    id="corpus-search"
+                    type="search"
+                    placeholder="Search titles, topics, or sources…"
+                    data-i18n-placeholder="corpusPlaceholder"
+                    autocomplete="off" /></label
+                ><span class="tiny-label" data-i18n="corpusToggle"
+                  >SEARCHABLE SOURCE REGISTER</span
+                >
+              </div>
+              <p id="corpus-status" role="status" aria-live="polite"></p>
+              <div id="corpus-list"></div>
+              <button
+                type="button"
+                id="corpus-more"
+                data-i18n="corpusMore"
+                hidden
+              >
+                Show more sources
+              </button>
+            </div>
+          </details>
+        </section>
+      </main>
+    </div>
+
+    <section class="getting-started" id="start" aria-labelledby="start-title">
+      <div class="start-inner">
+        <div class="start-copy">
+          <p class="eyebrow" data-i18n="startEyebrow">
+            A SMALL, PRACTICAL START
+          </p>
+          <h2 id="start-title" data-i18n="startTitle">
+            One call.<br /><em>Typed decisions.</em>
+          </h2>
+          <p data-i18n="startDescription">
+            Give Jev the context and a bounded question. Keep the next action in
+            your code.
+          </p>
+          <a
+            href="https://docs.typesafe.ai/introduction/quickstart"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-cta"
+            ><span data-i18n="fullQuickstart">Read the official quickstart</span
+            ><svg class="icon" aria-hidden="true">
+              <use href="/assets/fontawesome/icons.svg#external"></use></svg
+          ></a>
+          <p class="start-footnote" data-i18n="startFootnote">
+            Requires your own API key. This page makes no model calls.
+            Confidence is a routing signal, not a correctness guarantee.
+          </p>
+        </div>
+        <div class="code-panel">
+          <div class="code-toolbar">
+            <span
+              ><span class="code-dot" aria-hidden="true"></span>PYTHON
+              <span class="code-version">/ jev-1.13.0</span></span
+            ><button id="copy-code" type="button" data-i18n="copyCode">
+              Copy code ↗
+            </button>
+          </div>
+          <pre
+            class="install-command"
+          ><code>pip install typesafe-sdk</code></pre>
+          <p class="key-note" data-i18n="keyNote">
+            Set TYPESAFE_API_KEY in your environment, then run:
+          </p>
+          <pre
+            class="python-code"
+          ><code id="quickstart-code">from typesafe_sdk import Choice, TypeSafeClient
+
+with TypeSafeClient() as client:
+    result = client.system_one(
+        model="jev-1.13.0",
+        state="I was charged twice.",
+        questions={
+            "category": Choice(
+                instructions="What is this ticket about?",
+                criteria={
+                    "billing": "Charges and refunds",
+                    "technical": "Technical problems",
+                    "other": "None of the above",
+                },
+            )
+        },
+    )
+
+answer = result.choices["category"]
+print(answer.choice, answer.confidence)</code></pre>
+          <p
+            id="copy-status"
+            class="sr-only"
+            role="status"
+            aria-live="polite"
+          ></p>
+        </div>
+      </div>
+    </section>
+
+    <div class="page-shell">
+      <section class="contribute-section">
+        <div>
+          <p class="eyebrow" data-i18n="contributeEyebrow">
+            A LIVING COLLECTION
+          </p>
+          <h2 data-i18n="contributeTitle">Good work belongs here.</h2>
+        </div>
+        <div>
+          <p data-i18n="contributeDescription">
+            Found a thoughtful paper, a useful tool, or a result worth
+            reproducing? Help make the collection better.
+          </p>
+          <a
+            href="https://github.com/reacher-z/Awesome-Jev"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-cta"
+            ><span data-i18n="contributeLink">Contribute on GitHub</span
+            ><svg class="icon" aria-hidden="true">
+              <use href="/assets/fontawesome/icons.svg#external"></use></svg
+          ></a>
+        </div>
+      </section>
+      <footer class="footer">
+        <a class="footer-brand" href="#">AwesomeJev<span>.</span></a>
+        <p data-i18n="independent">
+          Independent project. Not affiliated with TypeSafe AI.
+        </p>
+        <a
+          class="footer-source"
+          href="https://github.com/AwesomeJev/AwesomeJev.github.io"
+          target="_blank"
+          rel="noopener noreferrer"
+          ><svg class="icon" aria-hidden="true">
+            <use href="/assets/fontawesome/icons.svg#github"></use></svg
+          ><span data-i18n="sourceLink">Website source</span></a
+        >
+        <p class="footer-date" data-i18n="lastCurated">
+          Last curated · October 16, 2026
+        </p>
+        <a
+          href="#"
+          class="back-top"
+          aria-label="Back to top"
+          data-i18n-aria="backTop"
+          >↑</a
+        >
+      </footer>
+    </div>
+  </body>
+</html>

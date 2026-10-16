@@ -2,7 +2,9 @@
 
 [Contributing](../CONTRIBUTING.md) · [Source audit](source-audit.md) · [Source ledgers](../data/README.md)
 
-The site has two layers: an editorial selection in [site/app.js](../site/app.js), and a searchable source index generated from the public ledgers. A new scanned source does not automatically belong in the editorial selection.
+The site has two layers: an editorial selection in [site/catalog.mjs](../site/catalog.mjs), and a searchable source index generated from the public ledgers. A new scanned source does not automatically belong in the editorial selection.
+
+The HTML pages are generated with `node scripts/build_site.mjs` from the shared catalog, the homepage template, and the source-backed guide. See [Search discovery](search-discovery.md) for canonical language routes, verification, and submission procedures.
 
 ## Repository roles
 
@@ -100,7 +102,7 @@ When an update PR is still open, the publisher refuses to replace it with data t
 
 ## Maintain the editorial collection
 
-For a promoted resource, read the original source, pin the relevant version, state its purpose and a material limitation, and verify any license or access label. Synchronize its English and Chinese descriptions across `README.md`, `README.zh-CN.md`, and `site/app.js`. Add scholarly metadata to `references.bib`; update survey or audit prose only when the new evidence changes it.
+For a promoted resource, read the original source, pin the relevant version, state its purpose and a material limitation, and verify any license or access label. Synchronize its English and Chinese descriptions across `README.md`, `README.zh-CN.md`, and `site/catalog.mjs`. Add scholarly metadata to `references.bib`; update survey or audit prose only when the new evidence changes it.
 
 Review the site locally after interface changes:
 

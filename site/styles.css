@@ -161,19 +161,77 @@ input:focus-visible {
   border-left: 1px solid var(--line);
   font: 13px var(--sans);
 }
-.language-switch button {
+.language-switch button,
+.language-switch a {
   background: none;
   border: 0;
   padding: 6px 2px;
   color: var(--muted);
 }
-.language-switch button[aria-pressed="true"] {
+.language-switch button[aria-pressed="true"],
+.language-switch a[aria-current="page"] {
   color: var(--ink);
   border-bottom: 1px solid var(--ink);
 }
 .language-switch > span {
   color: var(--muted);
 }
+html:not(.js) .collection-controls,
+html:not(.js) .corpus-disclosure {
+  display: none;
+}
+.document-main {
+  padding: 40px 0 72px;
+}
+.document-main > h1 {
+  max-width: 1040px;
+  font-size: clamp(30px, 3.6vw, 44px);
+  line-height: 1.25;
+  letter-spacing: -0.035em;
+  font-weight: 650;
+  margin: 24px 0 18px;
+}
+.document-deck,
+.document-main > p,
+.prose,
+.document-toc {
+  max-width: 850px;
+}
+.document-deck {
+  font-size: 19px;
+  line-height: 1.7;
+}
+.breadcrumbs,
+.document-date,
+.document-footer {
+  font-size: 14px;
+  color: var(--muted);
+}
+.document-main a:not(.resource-title a),
+.document-footer a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.document-toc {
+  padding: 18px 24px;
+  margin: 32px 0;
+  border-block: 1px solid var(--line);
+}
+.document-toc ol {
+  padding-left: 20px;
+  margin: 0;
+}
+.document-toc li + li { margin-top: 8px; }
+.prose section { margin: 40px 0; }
+.prose h2 { font-size: 25px; line-height: 1.4; letter-spacing: -0.02em; }
+.prose p { line-height: 1.85; }
+.source-links { font-size: 14px; }
+.source-links a { color: var(--link); }
+.document-footer {
+  border-top: 1px solid var(--line);
+  padding: 24px 0 36px;
+}
+.document-main .resource-list { margin-top: 40px; }
 .hero {
   display: grid;
   grid-template-columns: 1fr;

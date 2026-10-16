@@ -1,0 +1,233 @@
+{
+  "title": "Awesome Jev research papers",
+  "url": "https://awesomejev.github.io/papers/",
+  "updated": "2026-10-16",
+  "scope": "Curated direct preprints; findings remain author-reported. No experimental reproduction implied.",
+  "papers": [
+    {
+      "category": "Papers",
+      "title": "JevAgentHarness: Benchmarking, Deploying and Training Decision Models That Share Control with LLMs",
+      "by": "Zhu et al. · 2026-10-15 · v1",
+      "date": "2026-10-15",
+      "url": "https://arxiv.org/abs/2610.21412v1",
+      "en": "Studies fitted confidence thresholds for sharing agent control with decision models.",
+      "zh": "研究通过拟合置信度阈值，让决策模型参与 agent 控制。"
+    },
+    {
+      "category": "Papers",
+      "title": "System1-Arena: Which Decisions Can Be Left to System 1?",
+      "by": "Chen et al. · 2026-10-15 · v1",
+      "date": "2026-10-15",
+      "url": "https://arxiv.org/abs/2610.21244v1",
+      "en": "A benchmark spanning matched requests and closed-loop tasks. Experiments have not been reproduced here.",
+      "zh": "涵盖匹配请求与闭环任务的基准；本项目尚未复现其实验。"
+    },
+    {
+      "category": "Papers",
+      "title": "DecisionRobust: Benchmarking Robustness for JEV Style Decision Models Across Text and Vision",
+      "by": "Lan et al. · 2026-10-13 · v1",
+      "date": "2026-10-13",
+      "url": "https://arxiv.org/abs/2610.19118v1",
+      "en": "Text and vision attacks with label-validity checks and held-out evaluation models.",
+      "zh": "结合标签有效性检查与留出评测模型，考察文本和视觉攻击。"
+    },
+    {
+      "category": "Papers",
+      "title": "Jeva: System One Models from First Principles",
+      "by": "Li & Wang · 2026-10-13 · v1",
+      "date": "2026-10-13",
+      "url": "https://arxiv.org/abs/2610.18773v1",
+      "en": "A decision-model architecture exploring null handling, option permutations, scaling, and caching. Its design is Jeva’s, not Jev’s disclosed internals.",
+      "zh": "探索空答案、选项排列、规模扩展与缓存的决策架构。这是 Jeva 的设计，并非 Jev 已披露的内部实现。"
+    },
+    {
+      "category": "Papers",
+      "title": "Reading Right, Acting Wrong: Diagnosing Decision Failures of System One Models in Agent Loops",
+      "by": "Li, Krishnan & Padman · 2026-10-13 · v1",
+      "date": "2026-10-13",
+      "url": "https://arxiv.org/abs/2610.18579v1",
+      "en": "Pairs factual probes with action choices to diagnose decision failures.",
+      "zh": "将事实探针与行动选择配对，诊断决策失败。"
+    },
+    {
+      "category": "Papers",
+      "title": "Same Attack, Different Judge",
+      "by": "Li et al. · 2026-10-13 · v1",
+      "date": "2026-10-13",
+      "url": "https://arxiv.org/abs/2610.17820v1",
+      "en": "A controlled adversarial comparison of Jev, LLM judges, and purpose-built safety classifiers.",
+      "zh": "对 Jev、LLM 评判模型与专用安全分类器进行受控对抗比较。"
+    },
+    {
+      "category": "Papers",
+      "title": "Decision Models vs. LLMs as Rubric Judges",
+      "by": "Rao & Callison-Burch · 2026-10-13 · v3",
+      "date": "2026-10-13",
+      "url": "https://arxiv.org/abs/2609.29769v3",
+      "en": "Compares rubric judges and examines correlated errors that can limit cascade improvements.",
+      "zh": "比较评分准则评判模型，考察相关错误如何限制级联系统的收益。"
+    },
+    {
+      "category": "Papers",
+      "title": "General Decision Models: Benchmarking and Insights Beyond Jev",
+      "by": "Duan et al. · 2026-10-12 · v2",
+      "date": "2026-10-12",
+      "url": "https://arxiv.org/abs/2610.03935v2",
+      "en": "Bilingual decision evaluation and reliability when local decisions compose into larger systems.",
+      "zh": "双语决策评估，以及局部决策组合成更大系统时的可靠性。"
+    },
+    {
+      "category": "Papers",
+      "title": "JEV-as-a-Judge: Accept When Confident, Escalate When Unsure",
+      "by": "Li et al. · 2026-10-09 · v5",
+      "date": "2026-10-09",
+      "url": "https://arxiv.org/abs/2609.26550v5",
+      "en": "Studies confidence-based escalation from Jev to a reasoning judge, including limits under distribution shift.",
+      "zh": "研究基于置信度从 Jev 升级到推理评判模型的方法，以及分布变化下的局限。"
+    },
+    {
+      "category": "Papers",
+      "title": "MetaEncoder: Exploring the Limit of Bi-Encoders for Multimodal System One Decision Making with Natural Language Interface",
+      "by": "Cheng et al. · 2026-10-08 · v1",
+      "date": "2026-10-08",
+      "url": "https://arxiv.org/abs/2610.11316v1",
+      "en": "Bi-encoder approach to multimodal decisions and retrieval through natural-language interfaces.",
+      "zh": "通过自然语言接口实现多模态决策与检索的双编码器方法。"
+    },
+    {
+      "category": "Papers",
+      "title": "Type-Safe Is Not Error-Free: Typed Decision Models Follow the Option Name, Not the Definition Bound to It",
+      "by": "Sun, Xu, Shi & Yang · 2026-10-08 · v3",
+      "date": "2026-10-08",
+      "url": "https://arxiv.org/abs/2609.26758v3",
+      "en": "Tests conflicts between option names and definitions despite structurally valid outputs.",
+      "zh": "检验输出结构合法时，选项名称与定义之间的冲突。"
+    },
+    {
+      "category": "Papers",
+      "title": "JEV versus LLMs: Accuracy, Cost and Calibration on Seven Political Science Replications",
+      "by": "Denney & DiGiuseppe · 2026-10-06 · v2",
+      "date": "2026-10-06",
+      "url": "https://arxiv.org/abs/2610.06625v2",
+      "en": "Studies accuracy, cost, and calibration in seven political-science replication tasks.",
+      "zh": "在七项政治学复现任务中考察准确率、成本与校准。"
+    },
+    {
+      "category": "Papers",
+      "title": "System One Models for Agent Security Decisions",
+      "by": "Liu · 2026-10-03 · v3",
+      "date": "2026-10-03",
+      "url": "https://arxiv.org/abs/2609.33401v3",
+      "en": "Examines reliability, group-specific confident errors, and selective automation in security decisions.",
+      "zh": "研究安全决策中的可靠性、不同群体的高置信错误与选择性自动化。"
+    },
+    {
+      "category": "Papers",
+      "title": "AnyJev Technical Report",
+      "by": "Zhang et al. · 2026-09-30 · v1",
+      "date": "2026-09-30",
+      "url": "https://arxiv.org/abs/2610.00831v1",
+      "en": "Training-free decision readout with label-prior and option-order correction.",
+      "zh": "无需训练的决策读出，修正标签先验与选项顺序偏差。"
+    },
+    {
+      "category": "Papers",
+      "title": "JevSpawn: Adaptive Agentic Inference through Compositional Action Spaces",
+      "by": "Su & Huang · 2026-09-30 · v1",
+      "date": "2026-09-30",
+      "url": "https://arxiv.org/abs/2610.00437v1",
+      "en": "Composes finite action fields and explores alternatives using interaction feedback.",
+      "zh": "组合有限行动字段，利用交互反馈探索候选路径。"
+    },
+    {
+      "category": "Papers",
+      "title": "Evaluating and Benchmarking the System One Model Jev",
+      "by": "Deußer et al. · 2026-09-29 · v1",
+      "date": "2026-09-29",
+      "url": "https://arxiv.org/abs/2609.37647v1",
+      "en": "An early benchmark study of Jev. Read the task selection and evaluation setup alongside its reported results.",
+      "zh": "Jev 的早期基准研究。阅读报告结果时，同时检查任务选择与评测设置。"
+    },
+    {
+      "category": "Papers",
+      "title": "Chinese-Jev: Bringing System One Models to Chinese-Language Tasks",
+      "by": "Wang et al. · 2026-09-29 · v1",
+      "date": "2026-09-29",
+      "url": "https://arxiv.org/abs/2609.36965v1",
+      "en": "A Chinese typed-decision model and proposed benchmark; domain-specific training calls for independent validation.",
+      "zh": "面向中文的类型化决策模型与新基准；领域专用训练的效果仍需独立验证。"
+    },
+    {
+      "category": "Papers",
+      "title": "Sys1Cal-v1: A Dataset for Probability Calibration",
+      "by": "Porcedda · 2026-09-28 · v1",
+      "date": "2026-09-28",
+      "url": "https://arxiv.org/abs/2609.35342v1",
+      "en": "A controlled calibration study using constructed probabilities. Interpretations of latent uncertainty remain hypotheses.",
+      "zh": "使用构造概率进行受控校准测试；对潜在不确定性的解释仍属研究假说。"
+    },
+    {
+      "category": "Papers",
+      "title": "Beyond Calibration: Do Typed Decisions Obey the Probability Axioms?",
+      "by": "Li et al. · 2026-09-27 · v1",
+      "date": "2026-09-27",
+      "url": "https://arxiv.org/abs/2609.33209v1",
+      "en": "Tests coherence between logically related probabilities, separately from accuracy and calibration.",
+      "zh": "检验逻辑相关命题的概率一致性，与准确率和校准分别考察。"
+    },
+    {
+      "category": "Papers",
+      "title": "Typed Decision Models: An Early Evidence Audit and Evaluation Checklist",
+      "by": "Tang & Zheng · 2026-09-26 · v1",
+      "date": "2026-09-26",
+      "url": "https://arxiv.org/abs/2609.32160v1",
+      "en": "An evidence audit and a checklist for evaluating typed decision models.",
+      "zh": "围绕类型化决策模型的证据审查与评估清单。"
+    },
+    {
+      "category": "Papers",
+      "title": "JevAdvBench",
+      "by": "Hu et al. · 2026-09-25 · v1",
+      "date": "2026-09-25",
+      "url": "https://arxiv.org/abs/2609.31142v1",
+      "en": "A black-box adversarial benchmark. A changed decision is not necessarily an incorrect decision.",
+      "zh": "黑盒对抗评测基准。决策发生变化，并不必然代表决策错误。"
+    },
+    {
+      "category": "Papers",
+      "title": "LAVOIR: Teaching a Single-Pass Decision Encoder When and What to Ask with Amortized Value of Information",
+      "by": "Yilmaz, Tasdemir & Gozay · 2026-09-25 · v1",
+      "date": "2026-09-25",
+      "url": "https://arxiv.org/abs/2609.30706v1",
+      "en": "Estimates whether asking for missing information would improve a typed decision.",
+      "zh": "估计追问缺失信息是否有助于改进类型化决策。"
+    },
+    {
+      "category": "Papers",
+      "title": "From Text Decisions to Pixels",
+      "by": "Zhou et al. · 2026-09-24 · v1",
+      "date": "2026-09-24",
+      "url": "https://arxiv.org/abs/2609.29283v1",
+      "en": "A Jev-style visual-choice study separating adaptation gains, candidate-readout validity, and calibration limits.",
+      "zh": "Jev 风格视觉选择模型研究，区分适配收益、候选读出有效性与校准局限。"
+    },
+    {
+      "category": "Papers",
+      "title": "Jev-Mem: System-One-Controlled Agentic Memory",
+      "by": "Jiang et al. · 2026-09-21 · v1",
+      "date": "2026-09-21",
+      "url": "https://arxiv.org/abs/2609.23986v1",
+      "en": "Studies Jev as a controller for agent memory. Reported outcomes concern the complete memory workflow.",
+      "zh": "研究以 Jev 控制 agent 记忆；报告结果衡量完整记忆工作流。"
+    },
+    {
+      "category": "Papers",
+      "title": "this-that-model-1.0",
+      "by": "Cheng et al. · 2026-09-20 · v1",
+      "date": "2026-09-20",
+      "url": "https://arxiv.org/abs/2609.23886v1",
+      "en": "An open typed-decision model using hidden-state readout. The abstract reports a small external comparison.",
+      "zh": "采用隐藏状态读出的开放类型化决策模型。摘要报告了一项小规模外部比较。"
+    }
+  ]
+}

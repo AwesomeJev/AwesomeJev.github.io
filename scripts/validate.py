@@ -30,7 +30,7 @@ except ImportError:
 
 ROOT = Path(__file__).resolve().parents[1]
 SKIP = {".git", "node_modules", ".venv", "__pycache__", ".cache", "tmp", "artifacts"}
-TEXT_SUFFIXES = {".md", ".py", ".js", ".json", ".jsonl", ".yml", ".yaml", ".html", ".css", ".svg", ".bib", ".txt"}
+TEXT_SUFFIXES = {".md", ".py", ".js", ".mjs", ".json", ".jsonl", ".yml", ".yaml", ".html", ".css", ".svg", ".xml", ".bib", ".txt"}
 LEVELS = {"metadata_only", "abstract_checked", "content_screened", "editorial_reviewed"}
 CHECKED = LEVELS - {"metadata_only"}
 HASH = re.compile(r"^[0-9a-f]{64}$")
@@ -128,10 +128,11 @@ def local_link(path: Path, value: str) -> None:
 
 def check_text(path: Path, text: str) -> None:
     relative = str(path.relative_to(ROOT))
+    is_html_template = path.suffix == ".html" and "templates" in path.relative_to(ROOT).parts
     for label, pattern in LEAK_PATTERNS.items():
         if pattern.search(text):
             fail(relative, f"possible {label}; inspect locally (value redacted)")
-    if path.suffix in {".md", ".html", ".svg"}:
+    if path.suffix in {".md", ".html", ".svg"} and not is_html_template:
         parser = Markup()
         parser.feed(text)
         for link in parser.links:
@@ -143,7 +144,7 @@ def check_text(path: Path, text: str) -> None:
                 local_link(path, link)
             for link in re.findall(r"^\s*\[[^]]+\]:\s*(\S+)", rendered, re.M):
                 local_link(path, link)
-    if path.suffix in {".css", ".html"}:
+    if path.suffix in {".css", ".html"} and not is_html_template:
         for link in re.findall(r"url\(\s*['\"]?([^)'\"]+)['\"]?\s*\)", text):
             local_link(path, link.strip())
     if path.suffix == ".py":
@@ -279,7 +280,7 @@ def main() -> int:
         fail("JavaScript", "Node.js is required for syntax validation")
     else:
         for path in all_files:
-            if path.suffix == ".js":
+            if path.suffix in {".js", ".mjs"}:
                 result = subprocess.run([node, "--check", str(path.relative_to(ROOT))], cwd=ROOT, capture_output=True)
                 if result.returncode:
                     fail(str(path.relative_to(ROOT)), "JavaScript syntax check failed")
