@@ -1,8 +1,9 @@
-Source: @fontsource/instrument-serif version 5.3.0
-https://www.npmjs.com/package/@fontsource/instrument-serif/v/5.3.0
-Files: instrument-serif-latin-400-normal.woff2, instrument-serif-latin-400-italic.woff2
+Inter variable
+Source: @fontsource-variable/inter version 5.3.0
+https://www.npmjs.com/package/@fontsource-variable/inter/v/5.3.0
+Files: inter-latin-wght-normal.woff2, inter-latin-ext-wght-normal.woff2
 
-Copyright 2022 The Instrument Serif Project Authors (https://github.com/Instrument/instrument-serif) InstrumentSerif-Italic.ttf: Copyright 2022 The Instrument Serif Project Authors (https://github.com/Instrument/instrument-serif)
+Copyright 2016 The Inter Project Authors (https://github.com/rsms/inter) Inter-Italic[opsz,wght].ttf: Copyright 2016 The Inter Project Authors (https://github.com/rsms/inter)
 
 This Font Software is licensed under the SIL Open Font License, Version 1.1.
 This license is copied below, and is also available with a FAQ at:

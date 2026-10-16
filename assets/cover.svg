@@ -7,7 +7,7 @@
     <text x="57" y="43">THE DECISION MODEL FIELD GUIDE</text>
     <text x="1224" y="43" text-anchor="end">RESEARCH · CODE · EVIDENCE</text>
   </g>
-  <text x="50" y="214" fill="#111827" font-family="Georgia,Times New Roman,serif" font-size="126" letter-spacing="-6">Awesome Jev<tspan fill="#111827">.</tspan></text>
+  <text x="50" y="214" fill="#111827" font-family="Arial,Helvetica,sans-serif" font-size="126" font-weight="600" letter-spacing="-3">Awesome Jev<tspan fill="#111827">.</tspan></text>
   <text x="58" y="271" fill="#111827" font-family="Arial,Helvetica,sans-serif" font-size="23">Small decisions. An expanding field.</text>
   <text x="58" y="313" fill="#111827" font-family="Arial,Helvetica,sans-serif" font-size="16">A considered collection of papers, models, tools, and benchmarks.</text>
   <g transform="translate(913 101)">
