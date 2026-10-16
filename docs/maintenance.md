@@ -183,3 +183,7 @@ python3 -m unittest discover -s tests
 ```
 
 The generated discoveries pages are snapshots of the reviewed intake, separate from the live searchable corpus. The recurring scanner retains its existing data-only PR boundary and does not silently rewrite the expansion report or directory. Continue to inspect proposed resources, verification scope, duplicates, and any licensed or experimental limitations before publication.
+
+The Chinese directory uses [discovery-translations.zh-CN.json](../data/discovery-translations.zh-CN.json) for its resource descriptions. Each translation is keyed by the exact reviewed English description, so a changed qualification cannot silently retain an older translation. Add or review the Chinese wording whenever an accepted description changes, preserving private-data, label-provenance, license and reproduction limits. The build stops if a current description lacks Chinese text. Original source titles and links remain unchanged; translating a summary does not add another source or upgrade its evidence tier.
+
+中文资源简介保存在独立翻译文件中，以完整英文简介对应。新增或修改来源简介时同步校对译文，保留数据私有性、标签来源、许可和复现限制；缺少对应中文时，构建会停止。翻译不改变来源数量、原始标题、链接或证据等级。

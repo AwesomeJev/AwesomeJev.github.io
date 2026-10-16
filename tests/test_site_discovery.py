@@ -19,6 +19,11 @@ ROOT = Path(__file__).resolve().parents[1]
 BASE = "https://awesomejev.github.io"
 ROUTES = ("/", "/zh/", "/guide/", "/zh/guide/", "/papers/", "/zh/papers/", "/discoveries/", "/zh/discoveries/")
 PAIRS = (("/", "/zh/"), ("/guide/", "/zh/guide/"), ("/papers/", "/zh/papers/"), ("/discoveries/", "/zh/discoveries/"))
+BUILD_INPUTS = (
+    "scripts/build_site.mjs", "templates/index.html", "data/search-guide.json",
+    "data/expansion-progress-2026-10-16.json", "data/discovery-translations.zh-CN.json", "references.bib",
+    "site/app.js", "site/catalog.mjs", "site/resource-view.mjs", "site/styles.css",
+)
 
 
 def words(value):
@@ -63,6 +68,7 @@ class CrawlPage(HTMLParser):
         self._h1 = None
         self._card = None
         self._card_title = False
+        self._card_description = False
         self._style = False
         self.feed(source)
 
@@ -96,13 +102,15 @@ class CrawlPage(HTMLParser):
         elif tag == "h1":
             self._h1 = []
         elif tag == "article" and "resource-row" in classes:
-            self._card = {"url": "", "name": [], "text": [], "hidden": "hidden" in attrs or attrs.get("aria-hidden") == "true",
+            self._card = {"url": "", "name": [], "text": [], "description": [], "hidden": "hidden" in attrs or attrs.get("aria-hidden") == "true",
                           "category": attrs.get("data-category", ""), "relation": attrs.get("data-relation", ""),
                           "verification_level": attrs.get("data-verification-level", "")}
         elif tag == "h3" and self._card is not None:
             self._card_title = True
         elif tag == "a" and self._card is not None and self._card_title:
             self._card["url"] = attrs.get("href", "")
+        elif tag == "p" and self._card is not None and "resource-description" in classes:
+            self._card_description = True
 
     def handle_endtag(self, tag):
         if tag == "script":
@@ -120,9 +128,12 @@ class CrawlPage(HTMLParser):
             self._h1 = None
         elif tag == "h3":
             self._card_title = False
+        elif tag == "p":
+            self._card_description = False
         elif tag == "article" and self._card is not None:
             self._card["name"] = words("".join(self._card["name"]))
             self._card["text"] = words(" ".join(self._card["text"]))
+            self._card["description"] = words("".join(self._card["description"]))
             self.cards.append(self._card)
             self._card = None
 
@@ -140,6 +151,8 @@ class CrawlPage(HTMLParser):
             self._card["name"].append(value)
         if self._card is not None:
             self._card["text"].append(value)
+            if self._card_description:
+                self._card["description"].append(value)
 
 
 class SiteDiscoveryTests(unittest.TestCase):
@@ -209,14 +222,9 @@ class SiteDiscoveryTests(unittest.TestCase):
     def test_catalog_update_changes_static_content_and_module_url_without_manual_version_bump(self):
         node = shutil.which("node")
         self.assertIsNotNone(node)
-        inputs = (
-            "scripts/build_site.mjs", "templates/index.html", "data/search-guide.json",
-            "data/expansion-progress-2026-10-16.json", "references.bib",
-            "site/app.js", "site/catalog.mjs", "site/resource-view.mjs", "site/styles.css",
-        )
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
-            for name in inputs:
+            for name in BUILD_INPUTS:
                 destination = root / name
                 destination.parent.mkdir(parents=True, exist_ok=True)
                 shutil.copyfile(ROOT / name, destination)
@@ -315,6 +323,7 @@ class SiteDiscoveryTests(unittest.TestCase):
 
     def test_new_source_directory_preserves_every_accepted_resource_and_evidence_label(self):
         report = json.loads((ROOT / "data/expansion-progress-2026-10-16.json").read_text())
+        translations = json.loads((ROOT / "data/discovery-translations.zh-CN.json").read_text())["translations"]
         sources = {row["url"]: row for row in report["additions"]}
         self.assertEqual(len(sources), report["accepted_new_sources"])
         labels = {
@@ -334,12 +343,43 @@ class SiteDiscoveryTests(unittest.TestCase):
                     source = sources[card["url"]]
                     self.assertFalse(card["hidden"])
                     self.assertEqual(card["name"], words(source["title"]))
-                    self.assertIn(words(source["description"]), card["text"])
+                    description = source["description"] if language == "en" else translations[source["description"]]
+                    self.assertEqual(words(description), card["description"])
+                    if language == "zh":
+                        self.assertRegex(description, r"[\u3400-\u9fff]", "Every Chinese directory entry needs a translated description")
+                        self.assertNotEqual(words(source["description"]), card["description"])
                     self.assertEqual(card["relation"], source["relation"])
                     self.assertEqual(card["verification_level"], source["verification_level"])
                     self.assertIn(labels[language][source["relation"]], card["text"])
                     self.assertIn(labels[language][source["verification_level"]], card["text"])
         self.assertEqual([card["url"] for card in self.pages["/discoveries/"].cards], [card["url"] for card in self.pages["/zh/discoveries/"].cards])
+
+    def test_changed_or_missing_source_translation_stops_build_before_publication(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            for name in BUILD_INPUTS:
+                destination = root / name
+                destination.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copyfile(ROOT / name, destination)
+            path = root / "data/expansion-progress-2026-10-16.json"
+            report = json.loads(path.read_text())
+            # A newly discovered material limitation must not keep an old translation.
+            report["additions"][0]["description"] += " A newly reported reproduction limit."
+            path.write_text(json.dumps(report))
+            result = subprocess.run([shutil.which("node"), "scripts/build_site.mjs"], cwd=root,
+                                    capture_output=True, text=True, timeout=45)
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn("Missing Chinese discovery description translation", result.stderr)
+            self.assertFalse((root / "site/zh/discoveries/index.html").exists())
+
+            localization_path = root / "data/discovery-translations.zh-CN.json"
+            localization = json.loads(localization_path.read_text())
+            localization["translations"][report["additions"][0]["description"]] = "翻译后的新条目，并保留新增的复现限制。"
+            localization_path.write_text(json.dumps(localization))
+            result = subprocess.run([shutil.which("node"), "scripts/build_site.mjs"], cwd=root,
+                                    capture_output=True, text=True, timeout=45)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertIn("翻译后的新条目，并保留新增的复现限制。", (root / "site/zh/discoveries/index.html").read_text())
 
     def test_homepages_link_localized_discoveries_and_download_matches_source_report(self):
         self.assertIn("/discoveries/", self.pages["/"].links)

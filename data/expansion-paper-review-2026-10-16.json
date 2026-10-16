@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "baseline_current_commit": "d640802c0f8f1cedf32bbda0a22037f418e48e21",
+  "accepted_count": 6,
+  "input_sha256": "df8b3eed74b870d87de76eea83f25cb7b2c7e1bf73c8f5fdb403dbf5858481bb",
+  "scope": "Six fixed-version primary arXiv abstracts and metadata inspected; every abstract independently refetched with matching hash. No full-paper review or experimental reproduction.",
+  "primary_checks": [
+    {
+      "url": "https://arxiv.org/abs/2610.19536",
+      "evidence_url": "https://arxiv.org/abs/2610.19536v1",
+      "http_status": 200,
+      "abstract_sha256": "a777f98a0cbaad39aa01cb1eaefa9fdf85c6301e49428577fd3b966ebf617bcb",
+      "matches_collector_hash": true,
+      "retrieved_at": "2026-10-16T11:00:22+00:00"
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.19644",
+      "evidence_url": "https://arxiv.org/abs/2610.19644v1",
+      "http_status": 200,
+      "abstract_sha256": "fc2f52f0f0bd8395c70abfe3511f2fe9c16e98c0108bd378199458aff6165968",
+      "matches_collector_hash": true,
+      "retrieved_at": "2026-10-16T11:00:22+00:00"
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.08155",
+      "evidence_url": "https://arxiv.org/abs/2610.08155v1",
+      "http_status": 200,
+      "abstract_sha256": "2b2eba5bd11807c0cfa6b2acb758e2fb997e7f101dd8e6e81570ae51b7761084",
+      "matches_collector_hash": true,
+      "retrieved_at": "2026-10-16T11:00:22+00:00"
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.08675",
+      "evidence_url": "https://arxiv.org/abs/2610.08675v1",
+      "http_status": 200,
+      "abstract_sha256": "a71eeed52135068e8db08487008090e5f61b830cd1632f2c8a827f8c569d2366",
+      "matches_collector_hash": true,
+      "retrieved_at": "2026-10-16T11:00:22+00:00"
+    },
+    {
+      "url": "https://arxiv.org/abs/2609.27331",
+      "evidence_url": "https://arxiv.org/abs/2609.27331v1",
+      "http_status": 200,
+      "abstract_sha256": "1200b29815b7e13b36740843f0286ad6316d575dfa61d30989bd4355d7e0ffb0",
+      "matches_collector_hash": true,
+      "retrieved_at": "2026-10-16T11:00:22+00:00"
+    },
+    {
+      "url": "https://arxiv.org/abs/2609.30186",
+      "evidence_url": "https://arxiv.org/abs/2609.30186v1",
+      "http_status": 200,
+      "abstract_sha256": "b387c1cfe77f6e06477415944b3923189a1f0ca30be0680f01815cb65b0067bc",
+      "matches_collector_hash": true,
+      "retrieved_at": "2026-10-16T11:00:22+00:00"
+    }
+  ],
+  "limitations": {
+    "https://arxiv.org/abs/2610.19536": "Three tabular task families and author-reported model/API snapshots; dedicated study code was not verified.",
+    "https://arxiv.org/abs/2610.19644": "The abstract reports a frozen Qwen backbone and three task families. The linked repository documents saved measurements; no inference or statistical replication was executed.",
+    "https://arxiv.org/abs/2610.08155": "Primary abstract and selected implementation passages were checked; dedicated code and independent reproduction were not established.",
+    "https://arxiv.org/abs/2610.08675": "A constructed financial-evidence test, not a population estimate or investment guidance; findings remain author-reported and dedicated code was not verified.",
+    "https://arxiv.org/abs/2609.27331": "Small complete-system comparisons and limited full games; the abstract explicitly says planning lacks an isolated controlled ablation. A code link is author-provided but not inspected in this pass.",
+    "https://arxiv.org/abs/2609.30186": "AndroidWorld evaluation and success-conditioned efficiency summaries; no dedicated implementation or independent reproduction was verified."
+  },
+  "deduplication": "Compared canonical URLs, abstract hashes and normalized titles against the existing source index and frozen expansion baseline. All six are new."
+}

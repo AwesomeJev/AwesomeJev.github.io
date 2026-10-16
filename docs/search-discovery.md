@@ -16,6 +16,7 @@ The first command generates the public files. `--check` makes no changes and fai
 | Content | Source to edit |
 | --- | --- |
 | Curated entries and interface translations | [site/catalog.mjs](../site/catalog.mjs) |
+| Chinese discovery descriptions | [data/discovery-translations.zh-CN.json](../data/discovery-translations.zh-CN.json) |
 | Homepage layout | [templates/index.html](../templates/index.html) |
 | Shared resource-row rendering | [site/resource-view.mjs](../site/resource-view.mjs) |
 | English and Chinese guide text and citations | [data/search-guide.json](../data/search-guide.json) |
@@ -25,6 +26,8 @@ The first command generates the public files. `--check` makes no changes and fai
 `site/app.js` enhances the browser interface; the resource catalog now belongs in `site/catalog.mjs`. Do not maintain a second copy of the entries in the application script.
 
 The build adds content-hash URLs for the entry script, its imported modules and CSS. The homepage import map keeps browser-rendered entries consistent with its static HTML when the shared catalog changes; authors do not need to bump query versions by hand.
+
+The Chinese discoveries page translates the resource descriptions as well as the navigation. Its translations are bound to the exact English summary, and missing or outdated mappings stop the build. Preserve the same source links, evidence tiers and limitations in both languages. Google determines page language from visible content; translating the navigation alone does not make the main content Chinese. [Google multilingual-site guidance](https://developers.google.com/search/docs/specialty/international/managing-multi-regional-sites)
 
 Do not hand-edit the eight generated HTML pages: `/`, `/zh/`, `/guide/`, `/zh/guide/`, `/papers/`, `/zh/papers/`, `/discoveries/`, and `/zh/discoveries/`. The build also owns `site/sitemap.xml`, `site/references.bib`, `site/papers.json`, `site/llms.txt`, `site/llms-full.txt`, and the published `site/data/expansion-progress.json` copy. Change their source files or generator, rebuild, and include both source and output changes in the same review. Update the generator's `contentDate` or the guide's `updated` date only when the corresponding substantive content changes; a no-op scan does not justify a new date.
 

@@ -14,6 +14,12 @@ const repo = 'https://github.com/reacher-z/Awesome-Jev';
 const contentDate = '2026-10-16'; // Update only when curated page content changes.
 const guide = JSON.parse(await readFile(resolve(root, 'data/search-guide.json'), 'utf8'));
 const expansion = JSON.parse(await readFile(resolve(root, 'data/expansion-progress-2026-10-16.json'), 'utf8'));
+const discoveryLocalization = JSON.parse(await readFile(resolve(root, 'data/discovery-translations.zh-CN.json'), 'utf8'));
+if (discoveryLocalization.schema_version !== 1 || discoveryLocalization.language !== 'zh-CN' ||
+    !discoveryLocalization.translations || typeof discoveryLocalization.translations !== 'object' || Array.isArray(discoveryLocalization.translations)) {
+  throw new Error('Invalid Chinese discovery translations.');
+}
+const discoveryTranslations = discoveryLocalization.translations;
 const template = await readFile(resolve(root, 'templates/index.html'), 'utf8');
 // Stable URLs for unchanged bytes; changed data cannot reuse an older browser cache entry.
 const assetURLs = Object.fromEntries(await Promise.all(
@@ -35,6 +41,12 @@ const categoryLabels = {Papers:'论文',Models:'模型',Datasets:'数据集',Pro
 if (!Array.isArray(expansion.additions) || !Number.isInteger(expansion.accepted_new_sources) || expansion.accepted_new_sources !== expansion.additions.length || !Number.isInteger(expansion.target_new_sources) || expansion.target_new_sources < 1) throw new Error('Invalid expansion report counts.');
 for (const row of expansion.additions) {
   if (['title','url','category','description'].some(key=>typeof row[key]!=='string' || !row[key].trim()) || !Object.hasOwn(relationLabels,row.relation) || !Object.hasOwn(evidenceLabels,row.verification_level)) throw new Error('Invalid expansion source metadata or evidence tier.');
+  // Exact source text binds a translation to the reviewed wording. A changed
+  // limitation must be translated again instead of silently reusing stale text.
+  const translated = discoveryTranslations[row.description];
+  if (!Object.hasOwn(discoveryTranslations, row.description) || typeof translated !== 'string' || !/[\u3400-\u9fff]/u.test(translated)) {
+    throw new Error('Missing Chinese discovery description translation. Update data/discovery-translations.zh-CN.json.');
+  }
   const url = new URL(row.url);
   if (!['https:','http:'].includes(url.protocol) || url.username || url.password) throw new Error('Invalid expansion source URL.');
 }
@@ -137,7 +149,7 @@ function discoveriesPage(language) {
   const toc=discoveryCategories.length?`<nav class="document-toc" aria-label="${isZh?'按分类浏览':'Browse by category'}"><ul class="discovery-category-list">${discoveryCategories.map(category=>`<li><a href="#${categoryId(category)}">${esc(categoryLabel(category))} (${discoveryCounts[category]})</a></li>`).join('')}</ul></nav>`:'';
   const cards=discoveryCategories.map(category=>`<section id="${categoryId(category)}"><h2>${esc(categoryLabel(category))} (${discoveryCounts[category]})</h2><div class="resource-list">${discoveries.filter(row=>row.category===category).map(row=>{
     const retrieved=typeof row.retrieved_at==='string'?row.retrieved_at.slice(0,10):'';
-    return `<article class="resource-row" data-category="${esc(row.category)}" data-relation="${esc(row.relation)}" data-verification-level="${esc(row.verification_level)}"><div class="resource-kind"><span class="resource-category">${esc(categoryLabel(row.category))}</span><span class="resource-provenance">${esc(relationLabels[row.relation][labelIndex])}</span></div><div class="resource-heading"><h3 class="resource-title"><a href="${esc(row.url)}" target="_blank" rel="noopener noreferrer">${esc(row.title)}</a></h3><p class="resource-subtitle">${isZh?'证据：':'Evidence: '}${esc(evidenceLabels[row.verification_level][labelIndex])}${retrieved?` · ${isZh?'抓取于':'Retrieved'} <time datetime="${esc(retrieved)}">${esc(retrieved)}</time>`:''}</p></div><p class="resource-description">${esc(row.description)}</p><span class="resource-arrow" aria-hidden="true">↗</span></article>`;
+    return `<article class="resource-row" data-category="${esc(row.category)}" data-relation="${esc(row.relation)}" data-verification-level="${esc(row.verification_level)}"><div class="resource-kind"><span class="resource-category">${esc(categoryLabel(row.category))}</span><span class="resource-provenance">${esc(relationLabels[row.relation][labelIndex])}</span></div><div class="resource-heading"><h3 class="resource-title"><a href="${esc(row.url)}" target="_blank" rel="noopener noreferrer">${esc(row.title)}</a></h3><p class="resource-subtitle">${isZh?'证据：':'Evidence: '}${esc(evidenceLabels[row.verification_level][labelIndex])}${retrieved?` · ${isZh?'抓取于':'Retrieved'} <time datetime="${esc(retrieved)}">${esc(retrieved)}</time>`:''}</p></div><p class="resource-description">${esc(isZh?discoveryTranslations[row.description]:row.description)}</p><span class="resource-arrow" aria-hidden="true">↗</span></article>`;
   }).join('\n')}</div></section>`).join('\n');
   const baseline=typeof expansion.baseline_commit==='string' && /^[a-f0-9]{40}$/.test(expansion.baseline_commit)?` <a href="${repo}/commit/${expansion.baseline_commit}">${expansion.baseline_commit.slice(0,7)}</a>`:'';
   const body=`<p class="document-date"><strong>${discoveries.length.toLocaleString('en-US')}</strong> ${isZh?'项新增来源':'added sources'} · <time datetime="${discoveryDate}">${discoveryDate}</time> · <a href="/data/expansion-progress.json">${isZh?'下载 JSON':'Download JSON'}</a></p><p>${isZh?'条目标明与 Jev 直接相关、邻近领域或背景研究。正文筛查与摘要检查不代表全文评审、质量背书或实验复现。':'Entries distinguish direct Jev resources, related methods and research background. Source-page and abstract checks do not imply full-paper review, endorsement or experimental reproduction.'}</p>${toc}<details class="verification-legend"><summary>${isZh?'核查与计数方法':'Verification and counting method'}</summary><p>${isZh?'本目录相对冻结版本新增，排除旧链接、重复正文和论文题名。基线：':'This directory excludes prior URLs, repeated evidence and duplicate paper titles. Baseline:'}${baseline || (isZh?'见 JSON':'see JSON')}.</p><p><a href="${repo}/blob/main/docs/reviews/expansion-2026-10-16.md">${isZh?'查看本轮审阅记录':'Read the expansion review'}</a> · <a href="${repo}/blob/main/docs/source-audit.md">${isZh?'证据等级说明':'Evidence-level definitions'}</a></p></details><p><a href="${route(language)}#corpus">${isZh?'搜索完整来源库':'Search the complete source corpus'} →</a></p>${cards || `<p>${isZh?'本轮尚无已接受的新增来源。':'No new sources have been accepted in this expansion yet.'}</p>`}`;

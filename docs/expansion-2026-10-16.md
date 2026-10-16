@@ -1,6 +1,6 @@
 # Resource expansion — 16 October 2026
 
-**713 newly added, evidence-checked sources / target: at least 301.**
+**719 newly added, evidence-checked sources / target: at least 301.**
 
 [Main collection](../README.md) · [Website source search](https://awesomejev.github.io/#corpus) · [Machine-readable progress](../data/expansion-progress-2026-10-16.json) · [Frozen baseline](../data/expansion-baseline-2026-10-16.json) · [Prior-citation supplement](../data/expansion-baseline-supplement-2026-10-16.json)
 
@@ -8,14 +8,14 @@ The baseline is [commit 3519c15](https://github.com/reacher-z/Awesome-Jev/tree/3
 
 Only sources in the [reviewed intake](../data/expansion-intake-2026-10-16.json) count toward this expansion. This is a discovery directory with explicit screening levels. **Direct** sources concern Jev or typed decision systems; **adjacent** resources implement closely related methods; **background** papers provide research context. Listing is not an endorsement or independent reproduction. The short descriptions explain relevance, not a universal recommendation.
 
-**中文：本轮已新增 713 项有核查证据的资源，目标至少 301 项。** 已有台账、精选与引用链接、重复正文或论文题名均不重复计数，仅元数据条目不计入目标。下表区分直接相关、邻近方法与背景研究；自动内容筛查或摘要检查不等于全文评审，也不代表实验复现。
+**中文：本轮已新增 719 项有核查证据的资源，目标至少 301 项。** 已有台账、精选与引用链接、重复正文或论文题名均不重复计数，仅元数据条目不计入目标。下表区分直接相关、邻近方法与背景研究；自动内容筛查或摘要检查不等于全文评审，也不代表实验复现。
 
 | Resource type | Newly added |
 | --- | ---: |
 | Datasets | 100 |
 | Guides and evaluations | 36 |
 | Models | 52 |
-| Papers | 4 |
+| Papers | 10 |
 | Projects | 180 |
 | Research foundations | 341 |
 
@@ -227,8 +227,14 @@ Only sources in the [reviewed intake](../data/expansion-intake-2026-10-16.json) 
 | Resource | Relationship / evidence | Relevance |
 | --- | --- | --- |
 | [Bongard: Training Machine Intuition](https://arxiv.org/abs/2609.39111) | direct · `abstract_checked` | Original abstract explicitly discusses Jev or typed decision models; findings remain author-reported. |
+| [Jev-Mobile: Jev as an Executor for Mobile GUI Agents](https://arxiv.org/abs/2609.30186) | direct · `abstract_checked` | VLM local-goal planning with Jev action selection over mobile accessibility trees; time and cost comparisons are conditioned on successful trajectories. |
+| [JEV-Star: Fast, Low-Cost StarCraft II Control with Language-Model Planning](https://arxiv.org/abs/2609.27331) | direct · `abstract_checked` | Jev action selection paired with language-model planning for StarCraft II; concurrent interface changes prevent isolating the planning effect. |
 | [Mnemon: Raw Records, Fast Judgments, Slow Thoughts](https://arxiv.org/abs/2609.36059) | direct · `abstract_checked` | Original abstract explicitly discusses Jev or typed decision models; findings remain author-reported. |
 | [REFLEX with Jev for Efficient Selective Control in LLM Agents](https://arxiv.org/abs/2609.26532) | direct · `abstract_checked` | Original abstract explicitly discusses Jev or typed decision models; findings remain author-reported. |
+| [Same-Number Citation Swaps: Stress-Testing Jev as a Financial Evidence Judge](https://arxiv.org/abs/2610.08675) | direct · `abstract_checked` | Controlled same-number citation swaps test Jev source verification; detecting wrong financial roles trades off against accepting equivalent evidence. |
+| [Selective Reasoning for Typed Decision Models: When to Start, Read, and Stop](https://arxiv.org/abs/2610.19644) | direct · `abstract_checked` | Candidate-answer readout during interruptible reasoning, with gates for starting, reading and stopping; results depend on a fixed backbone and task suite. |
+| [Token-Efficient Multi-Agent Collaboration via System One-Guided Computational Division of Labor](https://arxiv.org/abs/2610.08155) | direct · `abstract_checked` | System One controllers coordinate bounded multi-agent decisions while LLM workers reason; reported efficiency concerns the complete collaboration framework. |
+| [Typed Decision Models on Tabular Data](https://arxiv.org/abs/2610.19536) | direct · `abstract_checked` | Typed-decision classification and verification under content-preserving table rewrites; confidence can indicate instability without establishing correctness. |
 | [VideoJev: System One Model for Video Understanding and Interaction](https://arxiv.org/abs/2610.18615) | direct · `abstract_checked` | Original abstract explicitly discusses Jev or typed decision models; findings remain author-reported. |
 
 ## Projects

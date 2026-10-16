@@ -51,3 +51,20 @@ Material limits are visible in the directory descriptions. SecurityEval distribu
 Four sources already included in the first intake were promoted to the main curated collection: the Artificial Analysis Decision Index, Entagl's dated workflow evaluation, and the official SDE cascade and Structure recovery cookbooks. This brings the curated collection to 75 entries; these promotions add **zero** to the distinct expansion count. Artificial Analysis includes private questions, Entagl's private customer replays limit reproduction, and the cookbook walkthroughs are not independently reproduced experiments.
 
 **后续批次：** 本次新增58项，跨批次重复项目只保留一次，累计净新增713项。其中368项为正文筛查、345篇为摘要检查；全文精读、模型运行和实验复现均未被声称。关键复现限制、正确选项位置泄漏、模拟或合成标签等信息已直接写入展示简介。四项既有来源提升为精选条目不增加净新增计数，精选目录现有75项。
+
+## Direct-paper follow-up and Chinese descriptions
+
+Six further preprints add direct research on table rewrites, selective reasoning, multi-agent coordination, citation verification, StarCraft control and mobile GUI execution. All six fixed-version arXiv abstracts were read and independently refetched; their abstract hashes matched the collector records. The [paper review record](../../data/expansion-paper-review-2026-10-16.json) retains the evidence URLs, hashes and limitations. These entries are **abstract checked**, with no claim of full-paper review or reproduced results.
+
+- [Typed Decision Models on Tabular Data](https://arxiv.org/abs/2610.19536v1): content-preserving table and question rewrites; low decision probability may indicate instability, without establishing correctness.
+- [Selective Reasoning for Typed Decision Models](https://arxiv.org/abs/2610.19644v1): candidate-answer reads during interruptible reasoning; results depend on the fixed backbone and three task families.
+- [System One-guided multi-agent collaboration](https://arxiv.org/abs/2610.08155v1): bounded coordination decisions and LLM workers; reported efficiency concerns the entire collaboration framework.
+- [Same-Number Citation Swaps](https://arxiv.org/abs/2610.08675v1): a controlled financial-evidence test, not a population estimate of verifier quality.
+- [JEV-Star](https://arxiv.org/abs/2609.27331v1): simultaneous interface changes prevent isolating the effect of planning.
+- [Jev-Mobile](https://arxiv.org/abs/2609.30186v1): efficiency comparisons are conditioned on successful trajectories.
+
+The expansion now contains **719 distinct additions**, comprising 368 content-screened sources and 351 abstract-checked papers. The complete index has 4,214 unique sources, including 4,167 checked at their stated tiers. The curated homepage remains at 75 selections; the six new papers appear in the discovery directory, not as additional curated-paper or bibliography entries.
+
+The Chinese directory now translates every resource description, including qualifications about evidence, model-derived labels, private tests and reproduction limits. Translations share the original titles, URLs and evidence grades; they add no resources to the count. The build binds each translation to the exact English description and stops when a new or changed summary lacks a corresponding translation.
+
+**中文：** 另新增6篇直接相关预印本，逐篇核对固定版本的原始摘要，并独立重取核对摘要哈希；累计净新增719项。六篇仍标为摘要检查，未宣称全文审阅或实验复现。中文新增目录同步提供全部资源的中文简介，保留关键限定、原始题名和来源链接；翻译不增加资源数。精选首页仍为75项，精选论文与书目仍为32篇和40条。

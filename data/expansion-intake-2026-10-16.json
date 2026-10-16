@@ -785,6 +785,22 @@
       ],
       "evidence_scope": "All 14 descriptions and label/limitation metadata reviewed; five primary cards independently refetched with matching hashes. Correct-answer-position and annotation-coverage limitations clarified.",
       "accepted_at": "2026-10-16T10:48:06+00:00"
+    },
+    {
+      "name": "direct_research_followup",
+      "input_sha256": "df8b3eed74b870d87de76eea83f25cb7b2c7e1bf73c8f5fdb403dbf5858481bb",
+      "screened_records_proposed": 6,
+      "accepted_count": 6,
+      "accepted_urls": [
+        "https://arxiv.org/abs/2610.19536",
+        "https://arxiv.org/abs/2610.19644",
+        "https://arxiv.org/abs/2610.08155",
+        "https://arxiv.org/abs/2610.08675",
+        "https://arxiv.org/abs/2609.27331",
+        "https://arxiv.org/abs/2609.30186"
+      ],
+      "evidence_scope": "Six fixed-version primary arXiv abstracts and metadata inspected; every abstract independently refetched with matching hash. No full-paper review or experimental reproduction.",
+      "accepted_at": "2026-10-16T11:00:42+00:00"
     }
   ]
 }

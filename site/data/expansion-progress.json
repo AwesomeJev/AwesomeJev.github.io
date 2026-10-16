@@ -3,34 +3,34 @@
   "baseline_commit": "3519c15d7e00686a8dbf9b1e184c68726327ab1e",
   "baseline_source_index_sha256": "8bfdd20564f2cda54bb8264c3c802f315e3e9a11b153bd85dde4325f53c841d5",
   "target_new_sources": 301,
-  "accepted_new_sources": 713,
+  "accepted_new_sources": 719,
   "remaining_to_target": 0,
   "target_count_reached": true,
   "current_index_counts": {
     "editorial_reviewed": 4,
     "content_screened": 2347,
-    "abstract_checked": 1810,
+    "abstract_checked": 1816,
     "metadata_only": 47,
-    "raw_records": 4222,
-    "unique_records": 4208,
+    "raw_records": 4228,
+    "unique_records": 4214,
     "duplicate_records": 14,
-    "checked_sources": 4161
+    "checked_sources": 4167
   },
   "by_category": {
     "Datasets": 100,
     "Guides and evaluations": 36,
     "Models": 52,
-    "Papers": 4,
+    "Papers": 10,
     "Projects": 180,
     "Research foundations": 341
   },
   "by_relation": {
     "adjacent": 24,
     "background": 341,
-    "direct": 348
+    "direct": 354
   },
   "by_verification_level": {
-    "abstract_checked": 345,
+    "abstract_checked": 351,
     "content_screened": 368
   },
   "verification_note": "Evidence depth is labeled per source. Content screening and abstract checks do not establish full-paper review, peer review, endorsement, or experimental reproduction.",
@@ -2304,6 +2304,30 @@
       "ledger": "research-sources.jsonl"
     },
     {
+      "title": "Jev-Mobile: Jev as an Executor for Mobile GUI Agents",
+      "url": "https://arxiv.org/abs/2609.30186",
+      "category": "Papers",
+      "topic": "direct-decision-research",
+      "description": "VLM local-goal planning with Jev action selection over mobile accessibility trees; time and cost comparisons are conditioned on successful trajectories.",
+      "relation": "direct",
+      "verification_level": "abstract_checked",
+      "content_sha256": "b387c1cfe77f6e06477415944b3923189a1f0ca30be0680f01815cb65b0067bc",
+      "retrieved_at": "2026-10-16T10:59:20+00:00",
+      "ledger": "research-sources.jsonl"
+    },
+    {
+      "title": "JEV-Star: Fast, Low-Cost StarCraft II Control with Language-Model Planning",
+      "url": "https://arxiv.org/abs/2609.27331",
+      "category": "Papers",
+      "topic": "direct-decision-research",
+      "description": "Jev action selection paired with language-model planning for StarCraft II; concurrent interface changes prevent isolating the planning effect.",
+      "relation": "direct",
+      "verification_level": "abstract_checked",
+      "content_sha256": "1200b29815b7e13b36740843f0286ad6316d575dfa61d30989bd4355d7e0ffb0",
+      "retrieved_at": "2026-10-16T10:59:20+00:00",
+      "ledger": "research-sources.jsonl"
+    },
+    {
       "title": "Mnemon: Raw Records, Fast Judgments, Slow Thoughts",
       "url": "https://arxiv.org/abs/2609.36059",
       "category": "Papers",
@@ -2325,6 +2349,54 @@
       "verification_level": "abstract_checked",
       "content_sha256": "f6cbac19c9acb5fb9e0d10e8afb293704c90acb01ad1084fd5cc2ba182bbe968",
       "retrieved_at": "2026-10-16T10:01:25+00:00",
+      "ledger": "research-sources.jsonl"
+    },
+    {
+      "title": "Same-Number Citation Swaps: Stress-Testing Jev as a Financial Evidence Judge",
+      "url": "https://arxiv.org/abs/2610.08675",
+      "category": "Papers",
+      "topic": "direct-decision-research",
+      "description": "Controlled same-number citation swaps test Jev source verification; detecting wrong financial roles trades off against accepting equivalent evidence.",
+      "relation": "direct",
+      "verification_level": "abstract_checked",
+      "content_sha256": "a71eeed52135068e8db08487008090e5f61b830cd1632f2c8a827f8c569d2366",
+      "retrieved_at": "2026-10-16T10:59:20+00:00",
+      "ledger": "research-sources.jsonl"
+    },
+    {
+      "title": "Selective Reasoning for Typed Decision Models: When to Start, Read, and Stop",
+      "url": "https://arxiv.org/abs/2610.19644",
+      "category": "Papers",
+      "topic": "direct-decision-research",
+      "description": "Candidate-answer readout during interruptible reasoning, with gates for starting, reading and stopping; results depend on a fixed backbone and task suite.",
+      "relation": "direct",
+      "verification_level": "abstract_checked",
+      "content_sha256": "fc2f52f0f0bd8395c70abfe3511f2fe9c16e98c0108bd378199458aff6165968",
+      "retrieved_at": "2026-10-16T10:59:19+00:00",
+      "ledger": "research-sources.jsonl"
+    },
+    {
+      "title": "Token-Efficient Multi-Agent Collaboration via System One-Guided Computational Division of Labor",
+      "url": "https://arxiv.org/abs/2610.08155",
+      "category": "Papers",
+      "topic": "direct-decision-research",
+      "description": "System One controllers coordinate bounded multi-agent decisions while LLM workers reason; reported efficiency concerns the complete collaboration framework.",
+      "relation": "direct",
+      "verification_level": "abstract_checked",
+      "content_sha256": "2b2eba5bd11807c0cfa6b2acb758e2fb997e7f101dd8e6e81570ae51b7761084",
+      "retrieved_at": "2026-10-16T10:59:20+00:00",
+      "ledger": "research-sources.jsonl"
+    },
+    {
+      "title": "Typed Decision Models on Tabular Data",
+      "url": "https://arxiv.org/abs/2610.19536",
+      "category": "Papers",
+      "topic": "direct-decision-research",
+      "description": "Typed-decision classification and verification under content-preserving table rewrites; confidence can indicate instability without establishing correctness.",
+      "relation": "direct",
+      "verification_level": "abstract_checked",
+      "content_sha256": "a777f98a0cbaad39aa01cb1eaefa9fdf85c6301e49428577fd3b966ebf617bcb",
+      "retrieved_at": "2026-10-16T10:59:19+00:00",
       "ledger": "research-sources.jsonl"
     },
     {
