@@ -121,3 +121,11 @@ Bing 验证停在所有者的通行密钥交互步骤，尚未确认完成。Ind
 **后续确认（2026-10-16）：** Google URL 检查现已明确显示规范首页 `https://awesomejev.github.io/` 为 **URL is on Google／Page is indexed**。这一确认只适用于首页，不代表另外五页、排名或 AI 回答引用已经确认；sitemap 报表复查仍保留此前的读取失败状态，两者分开记录。
 
 **后续通知（2026-10-16）：** 发布 `67edcc3` 后，仅将四个实际改变的 HTML 页面（`/`、`/zh/`、`/papers/`、`/zh/papers/`）通过一次 IndexNow POST 通知，返回 **HTTP 200**，确认已接收。未改变的两篇指南没有重复提交；这一回执仍不代表已收录或 Bing 站长账号验证完成。
+
+## Expansion release follow-up
+
+On 2026-10-16, release `f8194d4` published the English and Chinese `/discoveries/` directories with 655 verified-depth additions and expanded the sitemap to eight canonical pages. One IndexNow POST for the eight changed pages returned **HTTP 200**, confirming receipt, not index inclusion.
+
+The Google URL Inspection request for `https://awesomejev.github.io/discoveries/` returned **Quota Exceeded** and was not accepted. The Chinese directory was not submitted after that service limit. Retry only after the quota resets; do not switch accounts or repeatedly submit to try to bypass the limit. The new directories remain reachable through ordinary internal links and the sitemap. This does not alter the earlier confirmed indexing of the homepage or turn the two new directories into confirmed indexed pages.
+
+**中文：** `f8194d4` 已发布包含655项新增来源的中英文目录，sitemap扩为八页；八个更新页面通过一次IndexNow通知返回HTTP 200。Google对英文新增目录的手动索引请求返回“Quota Exceeded”，未受理；因此未再提交中文目录。待服务配额重置后再申请，保持普通站内链接与sitemap发现入口；首页已收录的确认不等于这两个新目录也已收录。
