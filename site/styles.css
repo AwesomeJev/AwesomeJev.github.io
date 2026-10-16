@@ -602,8 +602,9 @@ figcaption {
   margin-top: 10px;
 }
 .getting-started {
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--paper);
+  border-top: 1px solid var(--line);
+  color: var(--ink);
   padding: 75px 0 78px;
 }
 .start-inner {
@@ -618,7 +619,7 @@ figcaption {
   padding-top: 12px;
 }
 .start-copy .eyebrow {
-  color: var(--line);
+  color: var(--ink);
   margin-bottom: 34px;
 }
 .start-copy h2 {
@@ -632,7 +633,7 @@ figcaption {
 .start-copy > p:not(.eyebrow) {
   font-size: 13px;
   line-height: 1.8;
-  color: #bfd7ea;
+  color: var(--ink);
   max-width: 290px;
 }
 .start-copy .text-cta {
@@ -671,17 +672,17 @@ figcaption {
   background: var(--accent);
 }
 .code-version {
-  color: #bfd7ea;
+  color: var(--ink);
 }
 .code-toolbar button {
   border: 0;
   background: none;
-  color: var(--line);
+  color: var(--ink);
   font: 12px var(--mono);
   padding: 4px 0;
 }
 .code-toolbar button:focus-visible {
-  outline-color: var(--accent);
+  outline-color: var(--ink);
 }
 .code-panel pre {
   white-space: pre;
@@ -695,18 +696,18 @@ figcaption {
   font: inherit;
 }
 .install-command {
-  color: var(--line);
+  color: var(--ink);
   border-bottom: 1px solid #bfd7ea;
 }
 .key-note {
   font: 12px/1.7 var(--mono);
-  color: #bfd7ea;
+  color: var(--ink);
   padding: 16px 20px 0;
   margin: 0;
 }
 .code-panel .python-code {
   padding-top: 12px;
-  color: #ffffff;
+  color: var(--ink);
   font-size: 12px;
 }
 .contribute-section {
@@ -1798,7 +1799,7 @@ html[lang="zh"] .featured-copy h2 {
 
 .getting-started a:focus-visible,
 .getting-started button:focus-visible {
-  outline-color: var(--line);
+  outline-color: var(--ink);
 }
 
 .intro-links {

@@ -4,6 +4,16 @@
 
 The site has two layers: an editorial selection in [site/app.js](../site/app.js), and a searchable source index generated from the public ledgers. A new scanned source does not automatically belong in the editorial selection.
 
+## Repository roles
+
+| Destination | Purpose |
+| --- | --- |
+| [reacher-z/Awesome-Jev](https://github.com/reacher-z/Awesome-Jev) | Main resource collection and the destination for issues and pull requests. |
+| [awesomejev.github.io](https://awesomejev.github.io) | Published website. |
+| [AwesomeJev/AwesomeJev.github.io](https://github.com/AwesomeJev/AwesomeJev.github.io) | Deployment mirror serving GitHub Pages. |
+
+Keep both repositories on the same tested source snapshot. Synchronization is a maintainer action; there is no automatic repository-mirroring workflow.
+
 ## Refresh the evidence
 
 Run these commands from the repository root. Collector options below were checked against their actual `--help` output. Collection makes public network requests and replaces the default output ledgers; inspect the resulting changes before committing.
@@ -57,9 +67,16 @@ Check both languages, search, category filters, source-tier labels, keyboard foc
 
 ## Review and publish
 
-[Repository CI](../.github/workflows/ci.yml) checks repository integrity. The [automated PR review](../.github/workflows/pr-review.yml) comments on bounded patches and provenance fields. It is deterministic assistance, not human scholarly review, verification of linked claims, or approval to merge. Keep its privileged workflow restricted to trusted base-branch logic: it must not check out or execute pull-request code.
+[Repository CI](../.github/workflows/ci.yml) checks repository integrity in both repositories. Send proposed changes to the [main collection](https://github.com/reacher-z/Awesome-Jev). The [automated PR review](../.github/workflows/pr-review.yml) comments on bounded patches and provenance fields. It is deterministic assistance, not human scholarly review, verification of linked claims, or approval to merge. Keep its privileged workflow restricted to trusted base-branch logic: it must not check out or execute pull-request code.
 
-Configure repository Pages publishing to use GitHub Actions. The existing [Pages workflow](../.github/workflows/pages.yml) runs on a push to `main` or a manual workflow dispatch, validates the publication, and uploads only `site/`. After deployment, inspect the workflow result and the live English and Chinese views. A local preview or a successful validation run is not evidence that deployment completed.
+After merging and testing `main`, maintainers publish the same commit to both remotes. In the maintainer checkout, `origin` points to `reacher-z/Awesome-Jev` and `awesomejev` points to `AwesomeJev/AwesomeJev.github.io`; confirm those destinations before using these commands:
+
+```sh
+git push origin main
+git push awesomejev main
+```
+
+Configure Pages in the deployment repository to use GitHub Actions. The [Pages workflow](../.github/workflows/pages.yml) responds to a push to `main` or a manual dispatch, but its deployment job explicitly runs only when `github.repository` is `AwesomeJev/AwesomeJev.github.io`. It validates the publication and uploads only `site/`. Verify that both remote `main` branches identify the same commit, inspect CI in both repositories, and inspect the deployment result and live bilingual views. A local preview or a successful validation run is not evidence that deployment completed.
 
 ## Public-source and license boundaries
 
@@ -71,6 +88,8 @@ Preserve the individual licenses of third-party resources. A repository license 
 
 维护顺序是：刷新公开来源清单 → 生成网站索引与计数 → 运行校验和回归测试 → 同步中英文精选内容 → 检查暂存区后发布。`--resume` 与 `--offline` 会复用已有材料，不能写成全部来源重新抓取。
 
-自动正文筛查、摘要检查、编辑复核和亲自复现是不同层级。PR 自动评论不等于学术审查，也不批准合并。GitHub Pages 工作流只发布 `site/`；完成后检查 Actions 结果和线上双语页面。
+[reacher-z/Awesome-Jev](https://github.com/reacher-z/Awesome-Jev) 是资源主仓库，也是 issue 和 PR 的统一入口；[组织仓库](https://github.com/AwesomeJev/AwesomeJev.github.io) 是网站部署镜像。维护者将验证通过的同一个 `main` 提交推送到 `origin` 与 `awesomejev`，并核对两边提交一致；当前没有自动镜像同步。
+
+自动正文筛查、摘要检查、编辑复核和亲自复现是不同层级。PR 自动评论不等于学术审查，也不批准合并。CI 在两个仓库运行，Pages 部署 job 仅允许组织部署仓库执行、只发布 `site/`；完成后检查两边 Actions 与线上双语页面。
 
 只使用公开来源，不提交密钥、私人对话、个人路径或原始缓存。保留第三方字体、图标、模型与数据的许可边界，不将商业受限资源描述为可任意使用的开源资源。

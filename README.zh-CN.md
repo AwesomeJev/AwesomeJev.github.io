@@ -1,189 +1,185 @@
-<p align="center">
-  <img src="assets/cover.svg" width="100%" alt="Awesome Jev：类型化决策的独立研究指南，涵盖论文、模型、工具与评测。" />
-</p>
+# Awesome Jev
 
-<p align="center">
-  <a href="https://awesomejev.github.io"><img src="https://img.shields.io/badge/explore-the%20website-0081A7?style=flat-square&labelColor=07566B" alt="浏览官网" /></a>
-  <a href="README.md"><img src="https://img.shields.io/badge/languages-EN%20%2F%20中文-00AFB9?style=flat-square&labelColor=07566B" alt="中英文" /></a>
-  <a href="docs/survey.zh-CN.md"><img src="https://img.shields.io/badge/read-the%20survey-FED9B7?style=flat-square&labelColor=07566B" alt="阅读综述" /></a>
-  <a href="docs/source-audit.md"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fawesomejev.github.io%2Fdata%2Fsource-badge.json&amp;style=flat-square" alt="Auditable content-screening count" /></a>
-  <a href="https://github.com/AwesomeJev/AwesomeJev.github.io/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/AwesomeJev/AwesomeJev.github.io/ci.yml?branch=main&amp;style=flat-square&amp;label=checks&amp;color=00AFB9&amp;labelColor=07566B" alt="Repository checks" /></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-F07167?style=flat-square&labelColor=07566B" alt="MIT许可" /></a>
-</p>
+[![Website](https://img.shields.io/badge/website-awesomejev.github.io-087E8B?style=flat-square&labelColor=0B3954)](https://awesomejev.github.io/?lang=zh) [![Checks](https://img.shields.io/github/actions/workflow/status/reacher-z/Awesome-Jev/ci.yml?branch=main&style=flat-square&label=checks&color=087E8B&labelColor=0B3954)](https://github.com/reacher-z/Awesome-Jev/actions/workflows/ci.yml) [![License](https://img.shields.io/badge/license-MIT-C81D25?style=flat-square&labelColor=0B3954)](LICENSE)
 
-<p align="center"><strong><a href="https://awesomejev.github.io/?lang=zh">浏览资源</a> · <a href="docs/survey.zh-CN.md">阅读综述</a> · <a href="README.md">English</a> · <a href="CONTRIBUTING.md">参与贡献</a></strong></p>
+围绕 **Jev 与类型化决策模型**，整理研究论文、模型、数据集、评测工具与实践指南。
 
-Jev 提出了一个具体的问题：**当模型直接返回代码可消费的决策，系统会发生什么变化？** Awesome Jev 围绕这个问题，整理研究论文、开发工具、开放实验与可检查的评测证据。
+**[主仓库](https://github.com/reacher-z/Awesome-Jev)** · [网站](https://awesomejev.github.io/?lang=zh) · [English](README.md) · [综述](docs/survey.zh-CN.md) · [BibTeX](references.bib) · [参与贡献](CONTRIBUTING.md)
 
-由 [AwesomeJev](https://github.com/AwesomeJev) 维护的独立社区项目，与 TypeSafe AI 无隶属关系。整理日期：**2026-10-15**。模型能力、别名、定价和榜单结果均有时间范围。
+独立社区项目，与 TypeSafe AI 无隶属关系。最近整理：**2026-10-15**。网站从 [AwesomeJev.github.io](https://github.com/AwesomeJev/AwesomeJev.github.io) 仓库发布。
 
-## 从这里开始
+## 目录
 
-| 你的目标 | 阅读入口 |
-| :--- | :--- |
-| 理解基本概念 | [System One 与 Jev 发布文章](https://typesafe.ai/blog/introducing-system-one-models-and-jev) → [中文综述](docs/survey.zh-CN.md) |
-| 了解开放生态 | **[Jev Decision Index](https://huggingface.co/spaces/multimodalart/jev-decision-index)** → [动态与复现项目](https://multimodalart-jev-decision-index.static.hf.space/news.html) |
-| 开始开发 | [官方快速入门](https://docs.typesafe.ai/introduction/quickstart) → [Python SDK](https://github.com/typesafe-ai/typesafe-sdk-python) |
-| 判断评测证据 | [直接研究](#直接研究) → [评测资源](#评测资源) → [复现方案](docs/survey.zh-CN.md) |
-| 追溯相关技术 | [相关研究](#相关研究) · [BibTeX](references.bib) |
+- [概览与官方资源](#概览与官方资源)
+- [论文](#论文)
+  - [评测与基准](#评测与基准)
+  - [概率校准与一致性](#概率校准与一致性)
+  - [评判与选择性自动化](#评判与选择性自动化)
+  - [鲁棒性与安全](#鲁棒性与安全)
+  - [架构、记忆与多模态](#架构记忆与多模态)
+- [模型](#模型)
+- [基准与评测工具](#基准与评测工具)
+- [数据集](#数据集)
+- [SDK 与集成](#sdk-与集成)
+- [实践指南](#实践指南)
+- [基础与相关研究](#基础与相关研究)
+- [快速开始](#快速开始)
+- [来源核查](#来源核查)
+- [参与贡献](#参与贡献)
+- [许可](#许可)
 
-## 模型与接口
+## 概览与官方资源
 
-TypeSafe 将 Jev 称为 **System One 模型**：输入状态与类型化问题，返回限定空间中的决策和概率。核心接口有三个原语。[官方介绍](https://docs.typesafe.ai/introduction)
+TypeSafe 的 Jev 接收状态与类型化问题，为应用代码返回决策和概率。输出格式合法、语义正确和概率校准是不同的性质。
 
-| 原语 | 典型用途 | 输出 |
+- [Introducing System One Models & Jev](https://typesafe.ai/blog/introducing-system-one-models-and-jev) — 发布文章与厂商主张。
+- [官方文档](https://docs.typesafe.ai/introduction) · [API](https://docs.typesafe.ai/api) · [模型与版本](https://docs.typesafe.ai/models)。
+- [Choice](https://docs.typesafe.ai/primitives/choice) — 在最多 255 个选项中选择，返回概率分布与置信度。
+- [Score](https://docs.typesafe.ai/primitives/score) — 在文字描述的有序等级上返回概率加权位置。
+- [Noul](https://docs.typesafe.ai/primitives/noul) — 返回“是”的概率，没有独立的 confidence 字段。
+- [置信度说明](https://docs.typesafe.ai/confidence) · [Jev 1.13 已知局限](https://docs.typesafe.ai/model-jaggedness/jev-1.13)。
+- [实验性图片输入](https://docs.typesafe.ai/images) · [Box](https://docs.typesafe.ai/primitives/box) — 需显式开启；Box 要求 Jev 1.14。
+
+截至 **2026-10-15**，`jev-latest` 指向 `jev-1.13.0`，`jev-preview` 指向 `jev-1.14.0`。评测时应固定版本。概念区别与评估协议见[综述](docs/survey.zh-CN.md)。
+
+## 论文
+
+下列 16 项直接研究均为 **arXiv 预印本**。日期对应已核查并链接的版本，不一定是首次提交日期。结果由作者报告，本项目没有复现实验。标题中的速度或成本主张保留作者原文。[参考文献](references.bib) · [证据比较](docs/survey.zh-CN.md)
+
+### 评测与基准
+
+- **[System1-Arena: Which Decisions Can Be Left to System 1?](https://arxiv.org/abs/2610.21244v1)** — Chen et al. *2026-10-15, arXiv v1*. 以匹配请求与闭环任务比较决策模型和推理模型。
+- **[JEV versus LLMs: Accuracy, Cost and Calibration on Seven Political Science Replications](https://arxiv.org/abs/2610.06625v2)** — Denney & DiGiuseppe. *2026-10-06, arXiv v2*. 七项领域复现，比较准确率、成本与校准。
+- **[Evaluating and Benchmarking the System One Model Jev](https://arxiv.org/abs/2609.37647v1)** — Deußer, Sparrenberg & Sifa. *2026-09-29, arXiv v1*. 覆盖 37 个数据集的分类与决策评测。 [代码](https://github.com/AppliedMachineLearning-Lab/jev-benchmarking).
+- **[Typed Decision Models: An Early Evidence Audit and Evaluation Checklist](https://arxiv.org/abs/2609.32160v1)** — Tang & Zheng. *2026-09-26, arXiv v1*. 类型化决策的早期证据梳理与评估清单。
+
+### 概率校准与一致性
+
+- **[Jev thinks “I don’t know”, but doesn’t say it: Introducing Sys1Cal-v1 Dataset for Probability Calibration](https://arxiv.org/abs/2609.35342v1)** — Porcedda. *2026-09-28, arXiv v1*. 以构造概率目标进行受控校准测试。
+- **[Beyond Calibration: Do a Typed-Decision Model’s Probabilities Obey the Probability Axioms?](https://arxiv.org/abs/2609.33209v1)** — Li, He & Li. *2026-09-27, arXiv v1*. 检验逻辑相关问题之间的概率一致性。
+
+### 评判与选择性自动化
+
+- **[Decision Models vs. LLMs as Rubric Judges: Cheaper, Faster, and Wrong in the Same Places](https://arxiv.org/abs/2609.29769v3)** — Rao & Callison-Burch. *2026-10-13, arXiv v3*. 评分准则评判、相关错误与级联收益的局限。
+- **[JEV-as-a-Judge: Accept When Confident, Escalate When Unsure](https://arxiv.org/abs/2609.26550v5)** — Li, Miao, Krishnan & Padman. *2026-10-09, arXiv v5*. 基于置信度从 Jev 升级到推理评判模型。
+
+### 鲁棒性与安全
+
+- **[Same Attack, Different Judge: A First Controlled Adversarial Comparison of Jev, LLM Judges, and Purpose-Built Safety Classifiers](https://arxiv.org/abs/2610.17820v1)** — Li, Huang, Zhang & Liu. *2026-10-13, arXiv v1*. 对决策模型与安全分类器进行受控对抗比较。
+- **[Evaluating System One Models for Agent Security Decisions: Reliability, Calibration, and Selective Automation](https://arxiv.org/abs/2609.33401v3)** — Liu. *2026-10-03, arXiv v3*. 考察非对称风险下的高置信安全错误与选择性自动化。
+- **[JevAdvBench: A Benchmark and Black-Box Attacks for Reinforcement Learning for Calibrated Decisions Models](https://arxiv.org/abs/2609.31142v1)** — Hu et al. *2026-09-25, arXiv v1*. 将对抗输入变化与干净输入、重复调用的自然波动对照。
+
+### 架构、记忆与多模态
+
+- **[Jeva: System One Models from First Principles](https://arxiv.org/abs/2610.18773v1)** — Li & Wang. *2026-10-13, arXiv v1*. 空答案、选项排列、可变候选集与缓存机制。
+- **[Chinese-Jev: Bringing System One Model to Chinese-Language Tasks](https://arxiv.org/abs/2609.36965v1)** — Wang et al. *2026-09-29, arXiv v1*. 中文决策模型训练与领域评测。
+- **[From Text Decisions to Pixels: An Study of Jev-Style Visual Choice Model](https://arxiv.org/abs/2609.29283v1)** — Zhou, Yang & Zhao. *2026-09-24, arXiv v1*. 视觉选择模型，分别考察适配与校准。
+- **[Jev-Mem: System-One-Controlled Agentic Memory for Efficient AI Agents](https://arxiv.org/abs/2609.23986v1)** — Jiang, Li & Li. *2026-09-21, arXiv v1*. 以决策模型控制 agent 记忆构建与检索。
+- **[this-that-model-1.0: A typed decision model that decides in 30 ms, for a millionth of a cent](https://arxiv.org/abs/2609.23886v1)** — Cheng, Dai & Sun. *2026-09-20, arXiv v1*. 采用隐藏状态概率读出的类型化决策架构。
+
+## 模型
+
+这些是独立实现，并非 TypeSafe 发布的模型权重。许可依据所链接的模型卡。API 兼容并不表示行为或准确率等同。
+
+| 模型 | 发布者 | 声明许可 | 范围 |
+| :--- | :--- | :--- | :--- |
+| [Laya](https://huggingface.co/convaiinnovations/laya) | Convai Innovations | Apache-2.0 | 基于编码器的英语、多语言与工作流专用检查点。 |
+| [Kev-4B](https://huggingface.co/jaredpalmer/kev-4b) | Jared Palmer | Apache-2.0 | Qwen3.5-4B-Base LoRA 适配器与指针头。 |
+| [Bespoke Nimble 9B v3](https://huggingface.co/bespokelabs/Bespoke-Nimble-9B-v3) | Bespoke Labs | **CC BY-NC 4.0** | Qwen3.5-9B 适配器；非商业用途许可。 |
+| [Intern-Decision-4B](https://huggingface.co/internlm/Intern-Decision-4B) | InternLM | Apache-2.0 | 经过决策微调的 Qwen 检查点，支持图片输入。 |
+| [Perplexity Decider v1.1 27B](https://huggingface.co/perplexity-ai/pplx-decider-v1.1-27b) | Perplexity | Apache-2.0 | 独立决策读出；需查看注意力模式与访问说明。 |
+| [GLiNER2.5-Decide](https://huggingface.co/fastino/GLiNER2.5-Decide) | Fastino | Apache-2.0 | 支持调用时指定标签集合的英语分类器，可输出多标签。 |
+| [d3](https://huggingface.co/vllm-sr/d3) | vLLM Semantic Router | Apache-2.0 | 文本、图片与视频决策。 |
+| [Clef](https://huggingface.co/Cloudflare/clef) | Cloudflare | Apache-2.0 | 采用联合 schema 预测头的多模态决策模型。 |
+
+## 基准与评测工具
+
+- **[Jev Decision Index](https://huggingface.co/spaces/multimodalart/jev-decision-index)** — 决策模型与比较评测的社区索引。[方法](https://multimodalart-jev-decision-index.static.hf.space/methodology.html) · [动态](https://multimodalart-jev-decision-index.static.hf.space/news.html) · [源文件](https://huggingface.co/spaces/multimodalart/jev-decision-index/tree/main)。完整分数包含私有测试，公开榜单不等于完整可复现材料。
+- **[TypeSafe WorkflowEvals](https://github.com/typesafe-ai/WorkflowEvals)** — 官方工作流定义、运行器、已记录结果与评分代码。[交互结果](https://evals.typesafe.ai/) · [数据集合集](https://huggingface.co/collections/typesafeAI/workflowevals)。参考答案采用模型共识，并非独立建立的人工金标准。
+- **[jev-benchmarking](https://github.com/AppliedMachineLearning-Lab/jev-benchmarking)** — Deußer 等人 37 数据集研究的配套代码。[论文](https://arxiv.org/abs/2609.37647v1)。
+- **[PavelRavvich / jev-bench](https://github.com/PavelRavvich/jev-bench)** — 分类、原始预测、校准、延迟、成本与级联分析；比较前需核对采样和置信度定义。
+- **[AY Automate benchmark](https://www.ayautomate.com/blog/jev-vs-llm-benchmark)** — 路由与注入检测实验，附代码和原始调用；结果由评测作者报告。
+
+比较时记录模型版本、数据划分、概率接口、推理设置、访问路径、延迟分布及失败处理方式。参见[评估协议](docs/survey.zh-CN.md)。
+
+## 数据集
+
+TypeSafe 的四个数据集提供工作流案例、模型生成的参考标签与已发布运行记录。以下数量是所核查快照的案例数，不是独立人工标注数。另两项分别为训练混合数据和评测运行归档；不能直接当作独立测试基准，应先核对来源。
+
+| 数据集 | 发布者 | 内容 |
 | :--- | :--- | :--- |
-| [Choice](https://docs.typesafe.ai/primitives/choice) | 分类、路由 | 选项、完整概率分布与 confidence；最多 255 个选项 |
-| [Score](https://docs.typesafe.ai/primitives/score) | 按量表评分 | 描述等级上的概率加权分数、分布与 confidence |
-| [Noul](https://docs.typesafe.ai/primitives/noul) | 判断命题是否成立 | [0, 1] 概率；没有独立 confidence 字段 |
+| [Invoice Processing](https://huggingface.co/datasets/typesafeAI/evalsafe-invoice-processing) | TypeSafe | 150 个案例；发票动作、逐题参考标签与运行记录。 |
+| [Customer Service](https://huggingface.co/datasets/typesafeAI/evalsafe-customer-service) | TypeSafe | 204 个案例；客服路由与动作选择。 |
+| [Agent Trace Observability](https://huggingface.co/datasets/typesafeAI/evalsafe-agent-trace-observability) | TypeSafe | 111 个案例；针对 agent 运行轨迹的复核决策。 |
+| [Security Incidents](https://huggingface.co/datasets/typesafeAI/evalsafe-security-incidents) | TypeSafe | 240 个案例；安全告警分诊与处置。 |
+| [Bekko System One dataset v0](https://huggingface.co/datasets/hotchpotch/bekko-system-one-dataset-v0) | hotchpotch | 决策模型训练混合数据；需检查各组成来源和划分方式。 |
+| [Bespoke Nimble v3 Decision Index archive](https://huggingface.co/datasets/bespokelabs/bespoke-nimble-9b-v3-decision-index) | Bespoke Labs | 已发布评测运行归档与推理材料，并非独立测试集。 |
 
-类型合法、语义正确与概率校准是不同性质。[Confidence](https://docs.typesafe.ai/confidence) 是由输出分布计算的统计量，不能直接等同于实测正确率。
+## SDK 与集成
 
-**版本说明。** 截至 2026-10-15，`jev-latest` 指向 `jev-1.13.0`，`jev-preview` 指向 `jev-1.14.0`；复现时应固定具体 ID。[图片输入](https://docs.typesafe.ai/images)与 1.14 的 [Box](https://docs.typesafe.ai/primitives/box) 属于需显式开启的实验能力，应与默认文本能力区分。[模型页面](https://docs.typesafe.ai/models) · [Jev 1.13 已知局限](https://docs.typesafe.ai/model-jaggedness/jev-1.13)
-
-## 直接研究
-
-以下均为 **arXiv 预印本**，链接固定到本项目核查的版本。结论由论文作者报告，收录不表示我们已经复现实验。
-
-- **[Evaluating and Benchmarking the System One Model Jev](https://arxiv.org/abs/2609.37647v1)** — Deußer、Sparrenberg、Sifa，2026-09。覆盖 37 个数据集的分类与决策评测。[代码](https://github.com/AppliedMachineLearning-Lab/jev-benchmarking)
-- **[Typed Decision Models: An Early Evidence Audit and Evaluation Checklist](https://arxiv.org/abs/2609.32160v1)** — Tang、Zheng，2026-09。早期证据与评测设计索引，可沿引用回到原始研究。
-- **[JEV-as-a-Judge: Accept When Confident, Escalate When Unsure](https://arxiv.org/abs/2609.26550v5)** — Li 等，2026-10 修订。基于置信度的评判与升级处理。
-- **[Decision Models vs. LLMs as Rubric Judges: Cheaper, Faster, and Wrong in the Same Places](https://arxiv.org/abs/2609.29769v3)** — Rao、Callison-Burch，2026-10 修订。量表评判、错误相关性及级联系统的收益边界。
-- **[JEV versus LLMs: Accuracy, Cost and Calibration on Seven Political Science Replications](https://arxiv.org/abs/2610.06625v2)** — Denney、DiGiuseppe，2026-10。政治科学任务中的复现实验和成本比较。
-- **[Same Attack, Different Judge](https://arxiv.org/abs/2610.17820v1)** — Li 等，2026-10。对 Jev、LLM judge 和安全分类器的受控对抗比较。
-
-详见[证据对照与开放问题](docs/survey.zh-CN.md)，书目可导入 [references.bib](references.bib)。
-
-<details>
-<summary>更多直接研究</summary>
-
-以下均为 **arXiv 预印本**，链接固定到所读版本；结论由论文作者报告。
-
-- [this-that-model-1.0](https://arxiv.org/abs/2609.23886v1) · 2026-09-20 — 本地推理与显式概率读出的开放类型化决策模型。
-- [Jev-Mem](https://arxiv.org/abs/2609.23986v1) · 2026-09-21 — 用决策模型控制记忆构建、检索与 agent 推理。
-- [PixelJev](https://arxiv.org/abs/2609.29283v1) · 2026-09-24 — 分别评估视觉候选评分、模型适配与概率校准。
-- [JevAdvBench](https://arxiv.org/abs/2609.31142v1) · 2026-09-25 — 将对抗请求扰动与原始决策、重复调用波动对照。
-- [Beyond Calibration](https://arxiv.org/abs/2609.33209v1) · 2026-09-27 — 检验相关概率问题之间的逻辑一致性。
-- [System One Models for Agent Security Decisions](https://arxiv.org/abs/2609.33401v3) · 2026-10-03 修订 — 研究高置信安全错误及非对称风险下的选择性自动化。
-- [Sys1Cal-v1](https://arxiv.org/abs/2609.35342v1) · 2026-09-28 — 用构造的已知概率目标检验 Jev 各原语的校准。
-- [Chinese-Jev](https://arxiv.org/abs/2609.36965v1) · 2026-09-29 — 面向中文通用及专业领域的决策训练与评估。
-- [Jeva](https://arxiv.org/abs/2610.18773v1) · 2026-10-13 — 缺失答案处理、选项置换、可变候选集与选项表示复用。
-- [System1-Arena](https://arxiv.org/abs/2610.21244v1) · 2026-10-15 — 以统一决策请求和闭环环境比较决策模型与推理模型。
-
-</details>
-
-## 评测资源
-
-### Jev Decision Index
-
-**[Decision Index](https://huggingface.co/spaces/multimodalart/jev-decision-index)** 是本项目重点跟踪的生态入口，覆盖 Jev 启发的模型、开放实验与比较结果。建议结合[评测方法](https://multimodalart-jev-decision-index.static.hf.space/methodology.html)、[动态](https://multimodalart-jev-decision-index.static.hf.space/news.html)和[源文件](https://huggingface.co/spaces/multimodalart/jev-decision-index/tree/main)阅读。
-
-开放复现是各自独立的实现，不代表 TypeSafe 官方权重。榜单 Full score 包含未公开的私有测试，因此不能将“公开榜单”理解成“完整评测可复现”。
-
-### 评测实现
-
-| 资源 | 内容与范围 |
-| :--- | :--- |
-| [TypeSafe WorkflowEvals](https://github.com/typesafe-ai/WorkflowEvals) | 官方运行器、工作流、已发布运行与评分代码。[评测站](https://evals.typesafe.ai/) · [数据](https://huggingface.co/collections/typesafeAI/workflowevals) |
-| [jev-benchmarking](https://github.com/AppliedMachineLearning-Lab/jev-benchmarking) | 上述 37 数据集论文的实验框架。 |
-| [PavelRavvich / jev-bench](https://github.com/PavelRavvich/jev-bench) | 公共分类任务、逐条预测、校准、延迟、成本与级联分析；注意小样本和不同置信度接口。 |
-| [AY Automate benchmark](https://www.ayautomate.com/blog/jev-vs-llm-benchmark) | 路由和注入检测，附代码与原始调用；应连同采样和推理配置一起阅读。 |
-
-官方 WorkflowEvals 使用模型共识作为参考；与共识一致和对人类标签正确，是两个不同问题。比较速度或价格前，应对齐模型版本、任务、调用路径、概率接口和推理配置。[评测方法](https://evals.typesafe.ai/)
-
-## 开发工具
-
-### 开放模型实验
-
-独立实现提供检验设计选择的机会。使用前应阅读模型卡中的许可、训练数据、评测设置和访问条件；这些并不是 TypeSafe 的模型权重。
-
-| 模型 | 发布者 | 声明的许可 |
+| 项目 | 维护方 | 用途 |
 | :--- | :--- | :--- |
-| [Laya](https://huggingface.co/convaiinnovations/laya) | Convai Innovations | Apache-2.0 |
-| [Kev-4B](https://huggingface.co/jaredpalmer/kev-4b) | Jared Palmer | Apache-2.0 |
-| [Bespoke Nimble 9B v3](https://huggingface.co/bespokelabs/Bespoke-Nimble-9B-v3) | Bespoke Labs | **CC BY-NC 4.0，限非商业用途** |
-| [Intern-Decision-4B](https://huggingface.co/internlm/Intern-Decision-4B) | InternLM | Apache-2.0 |
-| [Perplexity Decider v1.1 27B](https://huggingface.co/perplexity-ai/pplx-decider-v1.1-27b) | Perplexity | Apache-2.0；注意访问说明 |
-| [GLiNER2.5-Decide](https://huggingface.co/fastino/GLiNER2.5-Decide) | Fastino | Apache-2.0 |
-| [d3](https://huggingface.co/vllm-sr/d3) | vLLM Semantic Router | Apache-2.0 |
-| [Clef](https://huggingface.co/Cloudflare/clef) | Cloudflare | Apache-2.0 |
-
-### SDK 与集成
-
-| 项目 | 用途 |
-| :--- | :--- |
-| [Python SDK](https://github.com/typesafe-ai/typesafe-sdk-python) | 官方同步与异步 Python 客户端。 |
-| [TypeScript SDK](https://github.com/typesafe-ai/typesafe-sdk-js) | 官方 JavaScript / TypeScript 客户端。 |
-| [System One Adapter](https://github.com/typesafe-ai/system-one-adapter-python) | 在可比较的类型化问题接口下接入 LLM 基线。 |
-| [Public examples](https://github.com/typesafe-ai/typesafe-public-examples) | 官方示例与 cookbook 代码。 |
-| [Agent skills](https://github.com/typesafe-ai/skills) | 编码 agent 的集成指南。 |
-| [n8n nodes](https://github.com/typesafe-ai/n8n-nodes-typesafe-ai) | n8n 工作流集成。 |
-
-### 第一个类型化决策
-
-安装 `typesafe-sdk`，在环境中设置 `TYPESAFE_API_KEY`。下面采用官方 SDK 的接口，并固定模型版本；运行需要 API 权限并产生用量费用。本项目整理时未执行真实 API 调用。
-
-```python
-from typesafe_sdk import Choice, TypeSafeClient
-
-with TypeSafeClient() as client:
-    result = client.system_one(
-        model="jev-1.13.0",
-        state={"ticket": "I was charged twice. Please fix this."},
-        questions={
-            "category": Choice(
-                instructions="What is this ticket about?",
-                criteria={
-                    "billing": "Charges, payments, or refunds",
-                    "technical": "Bugs or technical failures",
-                    "other": "None of the above",
-                },
-            )
-        },
-    )
-
-answer = result.choices["category"]
-print(answer.choice, answer.probabilities, answer.confidence)
-```
-
-安装方式和返回类型以[官方 SDK 文档](https://github.com/typesafe-ai/typesafe-sdk-python)为准。
+| [Python SDK](https://github.com/typesafe-ai/typesafe-sdk-python) | TypeSafe | 官方 Python 同步与异步客户端。 |
+| [JavaScript / TypeScript SDK](https://github.com/typesafe-ai/typesafe-sdk-js) | TypeSafe | 官方客户端，支持答案类型推导。 |
+| [System One Adapter](https://github.com/typesafe-ai/system-one-adapter-python) | TypeSafe | 用可比较的类型化问题接口评估 LLM 基线。 |
+| [Public examples](https://github.com/typesafe-ai/typesafe-public-examples) | TypeSafe | 文档、演示与实践教程配套代码。 |
+| [Agent skills](https://github.com/typesafe-ai/skills) | TypeSafe | 面向编码 agent 的集成指引。 |
+| [n8n nodes](https://github.com/typesafe-ai/n8n-nodes-typesafe-ai) | TypeSafe | n8n 工作流节点。 |
 
 ## 实践指南
 
-| 任务 | 入口 |
-| :--- | :--- |
-| 对不确定样本升级处理 | [Confidence-gated routing](https://docs.typesafe.ai/patterns/confidence-routing) |
-| 多维度判断 | [Composite scoring](https://docs.typesafe.ai/patterns/composite-scoring) |
-| 检查生成内容 | [LLM guardrails](https://docs.typesafe.ai/cookbooks/llm_guardrails) · [Citation checking](https://docs.typesafe.ai/cookbooks/citation_check) |
-| 筛选检索片段 | [RAG passage classification](https://docs.typesafe.ai/cookbooks/classifying_rag_passages) |
-| 遍历大型分类树 | [Hierarchical classification](https://docs.typesafe.ai/cookbooks/hierarchical_classification) |
-| 选择候选抽取值 | [Pre-parsed value extraction](https://docs.typesafe.ai/cookbooks/pre_parsed_value_extraction_cookbook) · [日期](https://docs.typesafe.ai/cookbooks/date_extraction_cookbook) |
+以下是厂商编写的实践教程；应使用自身任务的独立测试样例验证阈值。
 
-这些是厂商编写的配方。阈值需在留出数据上验证，算术、解析和业务规则尽量保留在代码中。
+- [置信度路由](https://docs.typesafe.ai/patterns/confidence-routing) — 将不确定案例转交其他系统或人工。
+- [组合评分](https://docs.typesafe.ai/patterns/composite-scoring) — 在代码中按权重组合独立判断。
+- [LLM 护栏](https://docs.typesafe.ai/cookbooks/llm_guardrails) · [引用核查](https://docs.typesafe.ai/cookbooks/citation_check) — 对照标准与来源检查生成内容。
+- [RAG 段落分类](https://docs.typesafe.ai/cookbooks/classifying_rag_passages) — 筛选检索上下文。
+- [层级分类](https://docs.typesafe.ai/cookbooks/hierarchical_classification) — 遍历大型标签树。
+- [预解析值选择](https://docs.typesafe.ai/cookbooks/pre_parsed_value_extraction_cookbook) · [日期抽取](https://docs.typesafe.ai/cookbooks/date_extraction_cookbook) — 选择有限候选值，在代码中完成规范化与计算。
 
-## 相关研究
+## 基础与相关研究
 
-这些工作提供背景和基线，不说明 Jev 实际采用了其中的架构、训练目标或采样器。
+以下文献提供背景与比较方法，**不能据此推断 Jev 的内部架构、训练目标或采样器实现**。
 
-| 方向 | 精选文献 |
-| :--- | :--- |
-| 概率评分 | Gneiting、Raftery，**[Strictly Proper Scoring Rules, Prediction, and Estimation](https://doi.org/10.1198/016214506000001437)**，2007 |
-| 概率校准 | Guo 等，**[On Calibration of Modern Neural Networks](https://proceedings.mlr.press/v70/guo17a.html)**，2017 |
-| 选择性预测 | Geifman、El-Yaniv，**[SelectiveNet](https://proceedings.mlr.press/v97/geifman19a.html)**，2019 |
-| LM 自我评估 | Kadavath 等，**[Language Models (Mostly) Know What They Know](https://arxiv.org/abs/2207.05221)**，2022 |
-| 带约束的 LM 程序 | Beurer-Kellner 等，**[Prompting Is Programming](https://www.sri.inf.ethz.ch/publications/beurerkellner2023prompting)**，PLDI 2023 |
-| 结构化生成 | Dong 等，**[XGrammar](https://arxiv.org/abs/2411.15100)**，2024 · [代码](https://github.com/mlc-ai/xgrammar) |
-| 可组合流水线 | Khattab 等，**[DSPy](https://arxiv.org/abs/2310.03714)**，2023 |
-| 高效执行 | Zheng 等，**[SGLang](https://papers.nips.cc/paper_files/paper/2024/file/724be4472168f31ba1c9ac630f15dec8-Paper-Conference.pdf)**，NeurIPS 2024 · [代码](https://github.com/sgl-project/sglang) |
+| 主题 | 文献 | 链接 |
+| :--- | :--- | :--- |
+| 严格适当评分规则 | Gneiting & Raftery, *Strictly Proper Scoring Rules, Prediction, and Estimation*. JASA, 2007. | [论文](https://sites.stat.washington.edu/people/raftery/Research/PDF/Gneiting2007jasa.pdf) · [DOI](https://doi.org/10.1198/016214506000001437) |
+| 校准 | Guo et al., *On Calibration of Modern Neural Networks*. ICML, 2017. | [论文](https://proceedings.mlr.press/v70/guo17a.html) |
+| 选择性预测 | Geifman & El-Yaniv, *SelectiveNet*. ICML, 2019. | [论文](https://proceedings.mlr.press/v97/geifman19a.html) |
+| 语言模型自我评估 | Kadavath et al., *Language Models (Mostly) Know What They Know*. 2022. | [论文](https://arxiv.org/abs/2207.05221) |
+| 受约束的语言模型程序 | Beurer-Kellner et al., *Prompting Is Programming: A Query Language for Large Language Models*. PLDI, 2023. | [论文](https://www.sri.inf.ethz.ch/publications/beurerkellner2023prompting) |
+| 结构化生成 | Dong et al., *XGrammar*. 2024. | [论文](https://arxiv.org/abs/2411.15100) · [代码](https://github.com/mlc-ai/xgrammar) |
+| 可组合流水线 | Khattab et al., *DSPy*. 2023. | [论文](https://arxiv.org/abs/2310.03714) |
+| 高效执行 | Zheng et al., *SGLang*. NeurIPS, 2024. | [论文](https://papers.nips.cc/paper_files/paper/2024/file/724be4472168f31ba1c9ac630f15dec8-Paper-Conference.pdf) · [代码](https://github.com/sgl-project/sglang) |
+
+24 篇精选论文均收录于 [references.bib](references.bib)。
+
+## 快速开始
+
+```sh
+pip install typesafe-sdk
+```
+
+设置 `TYPESAFE_API_KEY` 后，参照[最小 Python 示例](docs/quickstart.zh-CN.md)或[官方快速开始](https://docs.typesafe.ai/introduction/quickstart)。示例固定 `jev-1.13.0` 并展示 Choice 输出；已核对 SDK 接口，没有调用付费 API。
 
 ## 来源核查
 
-上面的精简列表经过编辑精选；更大的研究语料库保留获取出处、相关性信号和核查深度。**内容筛查不等于全文精读，也不等于实验复现。** 获取失败和仅有元数据的条目会单独标记。
+[![Checked source corpus](https://img.shields.io/endpoint?url=https%3A%2F%2Fawesomejev.github.io%2Fdata%2Fsource-badge.json&style=flat-square)](docs/source-audit.md)
 
-查看[核查方法](docs/source-audit.md)、[来源数据](data/)，或在[网站](https://awesomejev.github.io/#corpus)搜索研究语料。收录不表示背书，模型和数据保留各自许可。
+上面的精选资源与更大的[可搜索来源库](https://awesomejev.github.io/?lang=zh#corpus)用途不同。来源库保留发现路径，并区分编辑审阅、自动内容筛查、摘要核查与仅元数据记录。**筛查不等于阅读全文或复现实验。**
+
+- [方法与数量口径](docs/source-audit.md)
+- [来源台账](data/) · [编辑抽样核查](data/editorial-audit.json)
+- [维护流程](docs/maintenance.md)
 
 ## 参与贡献
 
-优质条目需要说明：**提供什么价值、核查了哪个版本、证据在哪里。** 详见 [CONTRIBUTING.md](CONTRIBUTING.md)，欢迎纠错和负面结果。
+维护者：[reacher-z](https://github.com/reacher-z)。
 
-原创项目内容与代码采用 [MIT 许可](LICENSE)。外链论文、数据集、模型权重和第三方资源保留各自许可。
+请向 **[reacher-z/Awesome-Jev](https://github.com/reacher-z/Awesome-Jev)** 提交补充与纠错，提供一手来源、作者或发布者、日期／版本、研究主题，以及实际核查内容。欢迎补充代码、数据、局限与负面结果。流程见 [CONTRIBUTING.md](CONTRIBUTING.md)。
+
+目录与条目组织参考了 [awesome-RLHF](https://github.com/opendilab/awesome-RLHF)，本项目保留独立的主题范围与来源核查规则。
+
+## 许可
+
+原创内容与代码采用 [MIT 许可](LICENSE)。外链论文、数据集、模型和第三方素材保留各自许可。

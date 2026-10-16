@@ -3,15 +3,15 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#fdfcdc" />
+    <meta name="theme-color" content="#ffffff" />
     <meta
       name="description"
-      content="An independent field guide to Jev and typed decision models. Curated research, developer tools, and reproducible evaluations."
+      content="Papers, models, datasets, and tools for Jev and typed decision models."
     />
-    <meta property="og:title" content="AwesomeJev — Decisions, by design." />
+    <meta property="og:title" content="Awesome Jev — Typed decision resources" />
     <meta
       property="og:description"
-      content="An independent field guide to Jev. Research and practical resources, carefully connected."
+      content="Papers, models, datasets, and tools for Jev and typed decision models."
     />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="AwesomeJev" />
@@ -30,10 +30,10 @@
       content="AwesomeJev — an independent field guide to typed decision models. Research, models, tools, and evidence."
     />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="AwesomeJev — Decisions, by design." />
+    <meta name="twitter:title" content="Awesome Jev — Typed decision resources" />
     <meta
       name="twitter:description"
-      content="An independent field guide to Jev and typed decision models. Curated research, developer tools, and reproducible evaluations."
+      content="Papers, models, datasets, and tools for Jev and typed decision models."
     />
     <meta
       name="twitter:image"
@@ -43,7 +43,7 @@
       name="twitter:image:alt"
       content="AwesomeJev — an independent field guide to typed decision models. Research, models, tools, and evidence."
     />
-    <title>AwesomeJev — Decisions, by design.</title>
+    <title>Awesome Jev — Typed decision resources</title>
     <link rel="canonical" href="https://awesomejev.github.io/" />
     <link rel="alternate" hreflang="en" href="https://awesomejev.github.io/" />
     <link
@@ -94,7 +94,7 @@
               <use href="./assets/fontawesome/icons.svg#external"></use></svg
           ></a>
           <a
-            href="https://github.com/AwesomeJev/AwesomeJev.github.io"
+            href="https://github.com/reacher-z/Awesome-Jev"
             target="_blank"
             rel="noopener noreferrer"
             ><svg class="icon" aria-hidden="true">
@@ -114,185 +114,20 @@
       </header>
 
       <main>
-        <section class="hero" aria-labelledby="hero-title">
+        <section class="hero project-intro" aria-labelledby="hero-title">
           <div class="hero-main">
-            <p class="eyebrow">
-              <span class="status-dot" aria-hidden="true"></span
-              ><span data-i18n="heroEyebrow">AN INDEPENDENT FIELD GUIDE</span>
-            </p>
-            <h1 id="hero-title">
-              <span data-i18n="heroLine1">Decisions,</span><br /><em
-                data-i18n="heroLine2"
-                >by design.</em
-              >
-            </h1>
+            <h1 id="hero-title" data-i18n="heroLine1">Awesome Jev</h1>
             <p class="hero-description" data-i18n="heroDescription">
-              A considered collection of research, tools, and practical ideas
-              around Jev and typed decision models.
+              Papers, models, datasets, and tools for typed decisions.
             </p>
-            <a class="text-cta" href="#collection"
-              ><span data-i18n="explore">Explore the collection</span
-              ><svg class="icon" aria-hidden="true">
-                <use href="./assets/fontawesome/icons.svg#external"></use></svg
-            ></a>
+            <nav class="reference-links intro-links" aria-label="Project links" data-i18n-aria="readFurther">
+              <a href="https://github.com/reacher-z/Awesome-Jev/blob/main/README.md" data-document="readme" data-i18n="readmeLink">README</a>
+              <a href="https://github.com/reacher-z/Awesome-Jev/blob/main/docs/survey.md" data-document="survey" data-i18n="surveyLink">Research survey</a>
+              <a href="https://github.com/reacher-z/Awesome-Jev/blob/main/references.bib" data-i18n="bibtexLink">BibTeX</a>
+              <a href="https://huggingface.co/spaces/multimodalart/jev-decision-index" target="_blank" rel="noopener noreferrer" data-i18n="indexTitle">Decision Index</a>
+            </nav>
           </div>
-          <figure class="decision-figure">
-            <div class="figure-top">
-              <span data-i18n="figureTitle">FROM CONTEXT TO CHOICE</span
-              ><span aria-hidden="true">FIG. 01</span>
-            </div>
-            <div class="state-block">
-              <span class="tiny-label">INPUT.STATE</span>
-              <p data-i18n="figureInput">
-                “I was charged twice.<br />Could you help?”
-              </p>
-            </div>
-            <div class="flow-connector" aria-hidden="true">
-              <span></span><span>↓</span><span></span>
-            </div>
-            <div class="decision-node">
-              <span class="node-symbol" aria-hidden="true">∴</span
-              ><span>JEV</span><span class="node-type">CHOICE</span>
-            </div>
-            <div
-              class="distribution"
-              role="img"
-              aria-label="Illustrative probabilities: billing 84 percent, technical 11 percent, other 5 percent"
-              data-i18n-aria="figureAria"
-            >
-              <div class="probability-row">
-                <span>billing</span
-                ><span class="probability-track"
-                  ><span
-                    class="probability-fill primary"
-                    style="width: 84%"
-                  ></span></span
-                ><span>0.84</span>
-              </div>
-              <div class="probability-row">
-                <span>technical</span
-                ><span class="probability-track"
-                  ><span
-                    class="probability-fill"
-                    style="width: 11%"
-                  ></span></span
-                ><span>0.11</span>
-              </div>
-              <div class="probability-row">
-                <span>other</span
-                ><span class="probability-track"
-                  ><span
-                    class="probability-fill"
-                    style="width: 5%"
-                  ></span></span
-                ><span>0.05</span>
-              </div>
-            </div>
-            <figcaption>
-              <span class="figure-cross" aria-hidden="true">+</span
-              ><span data-i18n="figureCaption"
-                >Illustrative output. Not a live call or a benchmark.</span
-              >
-            </figcaption>
-          </figure>
         </section>
-
-        <div
-          class="reading-paths"
-          aria-label="Reading paths"
-          data-i18n-aria="pathsLabel"
-        >
-          <a href="#collection" data-filter-link="Papers"
-            ><span class="path-number">01 /</span
-            ><span
-              ><strong data-i18n="pathResearch">Read the research</strong
-              ><span data-i18n="pathResearchSub"
-                >Early evidence, open questions</span
-              ></span
-            ><span class="path-arrow" aria-hidden="true"
-              ><svg class="icon" aria-hidden="true">
-                <use
-                  href="./assets/fontawesome/icons.svg#external"
-                ></use></svg></span
-          ></a>
-          <a href="#collection" data-filter-link="Tools"
-            ><span class="path-number">02 /</span
-            ><span
-              ><strong data-i18n="pathBuild">Build with intention</strong
-              ><span data-i18n="pathBuildSub"
-                >SDKs, patterns, working examples</span
-              ></span
-            ><span class="path-arrow" aria-hidden="true"
-              ><svg class="icon" aria-hidden="true">
-                <use
-                  href="./assets/fontawesome/icons.svg#external"
-                ></use></svg></span
-          ></a>
-          <a href="#collection" data-filter-link="Evaluations"
-            ><span class="path-number">03 /</span
-            ><span
-              ><strong data-i18n="pathEvaluate">Inspect the evidence</strong
-              ><span data-i18n="pathEvaluateSub"
-                >Methods, datasets, reproducibility</span
-              ></span
-            ><span class="path-arrow" aria-hidden="true"
-              ><svg class="icon" aria-hidden="true">
-                <use
-                  href="./assets/fontawesome/icons.svg#external"
-                ></use></svg></span
-          ></a>
-        </div>
-
-        <aside class="version-note">
-          <span class="tiny-label" data-i18n="snapshot">CURRENT SNAPSHOT</span>
-          <p>
-            <span data-i18n="versionNote"
-              >Stable: Jev 1.13 · Preview: Jev 1.14. Pin model versions when
-              comparing results.</span
-            >
-            <a
-              href="https://docs.typesafe.ai/models"
-              target="_blank"
-              rel="noopener noreferrer"
-              data-i18n="modelNotes"
-              >Model notes ↗</a
-            >
-          </p>
-          <time datetime="2026-10-15">15 OCT 2026</time>
-        </aside>
-
-        <aside class="featured-index" aria-labelledby="decision-index-title">
-          <div class="featured-symbol" aria-hidden="true">
-            <span></span><span></span><span></span>
-          </div>
-          <div class="featured-copy">
-            <p class="eyebrow" data-i18n="indexEyebrow">
-              AN ECOSYSTEM WORTH EXPLORING
-            </p>
-            <h2 id="decision-index-title" data-i18n="indexTitle">
-              The Jev Decision Index
-            </h2>
-            <p data-i18n="indexDescription">
-              Explore decision models and community evaluations, including open
-              Jev-inspired alternatives.
-            </p>
-          </div>
-          <div class="featured-action">
-            <a
-              class="text-cta"
-              href="https://huggingface.co/spaces/multimodalart/jev-decision-index"
-              target="_blank"
-              rel="noopener noreferrer"
-              ><span data-i18n="indexLink">Open the Decision Index</span
-              ><svg class="icon" aria-hidden="true">
-                <use href="./assets/fontawesome/icons.svg#external"></use></svg
-            ></a>
-            <p data-i18n="indexCaveat">
-              Community-maintained. Full scores include private tests; public
-              materials do not reproduce the entire ranking.
-            </p>
-          </div>
-        </aside>
 
         <section
           class="collection-section"
@@ -302,49 +137,14 @@
         >
           <div class="section-heading">
             <div>
-              <p class="eyebrow" data-i18n="collectionEyebrow">
-                THE CURATED INDEX
-              </p>
               <h2 id="collection-title" data-i18n="collectionTitle">
-                A useful place<br />to begin.
+                Resource index
               </h2>
             </div>
             <p class="section-intro" data-i18n="collectionIntro">
-              Primary sources first. Research and practice in equal measure.
-              Each entry is a starting point for your own reading and
-              experiments.
+              Filter by type or search titles and descriptions.
             </p>
           </div>
-          <nav
-            class="reference-links"
-            aria-label="Further reading"
-            data-i18n-aria="readFurther"
-          >
-            <span class="tiny-label" data-i18n="readFurther">READ FURTHER</span>
-            <a
-              href="https://github.com/AwesomeJev/AwesomeJev.github.io/blob/main/README.md"
-              data-document="readme"
-              target="_blank"
-              rel="noopener noreferrer"
-              data-i18n="readmeLink"
-              >README</a
-            >
-            <a
-              href="https://github.com/AwesomeJev/AwesomeJev.github.io/blob/main/docs/survey.md"
-              data-document="survey"
-              target="_blank"
-              rel="noopener noreferrer"
-              data-i18n="surveyLink"
-              >Research survey</a
-            >
-            <a
-              href="https://github.com/AwesomeJev/AwesomeJev.github.io/blob/main/references.bib"
-              target="_blank"
-              rel="noopener noreferrer"
-              data-i18n="bibtexLink"
-              >BibTeX</a
-            >
-          </nav>
           <div class="collection-controls">
             <div
               class="filter-group"
@@ -352,69 +152,14 @@
               aria-label="Filter resources"
               data-i18n-aria="filterLabel"
             >
-              <button
-                type="button"
-                class="filter-button active"
-                data-filter="All"
-                aria-pressed="true"
-                data-i18n="filterAll"
-              >
-                All
-              </button>
-              <button
-                type="button"
-                class="filter-button"
-                data-filter="Papers"
-                aria-pressed="false"
-                data-i18n="filterPapers"
-              >
-                Papers
-              </button>
-              <button
-                type="button"
-                class="filter-button"
-                data-filter="Models"
-                aria-pressed="false"
-                data-i18n="filterModels"
-              >
-                Models
-              </button>
-              <button
-                type="button"
-                class="filter-button"
-                data-filter="Tools"
-                aria-pressed="false"
-                data-i18n="filterTools"
-              >
-                Tools
-              </button>
-              <button
-                type="button"
-                class="filter-button"
-                data-filter="Guides"
-                aria-pressed="false"
-                data-i18n="filterGuides"
-              >
-                Guides
-              </button>
-              <button
-                type="button"
-                class="filter-button"
-                data-filter="Evaluations"
-                aria-pressed="false"
-                data-i18n="filterEvaluations"
-              >
-                Evaluations
-              </button>
-              <button
-                type="button"
-                class="filter-button"
-                data-filter="Foundations"
-                aria-pressed="false"
-                data-i18n="filterFoundations"
-              >
-                Foundations
-              </button>
+              <button type="button" class="filter-button active" data-filter="All" aria-pressed="true" data-i18n="filterAll">All</button>
+              <button type="button" class="filter-button" data-filter="Papers" aria-pressed="false" data-i18n="filterPapers">Papers</button>
+              <button type="button" class="filter-button" data-filter="Models" aria-pressed="false" data-i18n="filterModels">Models</button>
+              <button type="button" class="filter-button" data-filter="Tools" aria-pressed="false" data-i18n="filterTools">Tools</button>
+              <button type="button" class="filter-button" data-filter="Datasets" aria-pressed="false" data-i18n="filterDatasets">Datasets</button>
+              <button type="button" class="filter-button" data-filter="Evaluations" aria-pressed="false" data-i18n="filterEvaluations">Evaluations</button>
+              <button type="button" class="filter-button" data-filter="Guides" aria-pressed="false" data-i18n="filterGuides">Guides</button>
+              <button type="button" class="filter-button" data-filter="Foundations" aria-pressed="false" data-i18n="filterFoundations">Foundations</button>
             </div>
             <form class="search-field" role="search">
               <label
@@ -433,6 +178,11 @@
               /><kbd aria-hidden="true">/</kbd>
             </form>
           </div>
+          <aside class="version-note compact-version">
+            <span data-i18n="versionNote">Stable: Jev 1.13 · Preview: Jev 1.14.</span>
+            <a href="https://docs.typesafe.ai/models" target="_blank" rel="noopener noreferrer" data-i18n="modelNotes">Model notes ↗</a>
+            <time datetime="2026-10-15">2026-10-15</time>
+          </aside>
           <div class="index-meta">
             <p id="result-count" role="status" aria-live="polite"></p>
             <span data-i18n="sourceNote">DIRECT LINKS · CLEAR PROVENANCE</span>
@@ -461,7 +211,7 @@
             ><p>
               This index uses JavaScript for search and bilingual descriptions.
               Browse the
-              <a href="https://github.com/AwesomeJev/AwesomeJev.github.io"
+              <a href="https://github.com/reacher-z/Awesome-Jev"
                 >AwesomeJev repository</a
               >
               for the Markdown collection, or start with the
@@ -504,7 +254,7 @@
           <div class="corpus-audit-line">
             <p id="corpus-audit-counts" aria-live="polite"></p>
             <a
-              href="https://github.com/AwesomeJev/AwesomeJev.github.io/blob/main/docs/source-audit.md"
+              href="https://github.com/reacher-z/Awesome-Jev/blob/main/docs/source-audit.md"
               target="_blank"
               rel="noopener noreferrer"
               ><span data-i18n="corpusAudit">Screening methodology</span>
@@ -693,7 +443,7 @@ print(answer.choice, answer.confidence)</code></pre>
             reproducing? Help make the collection better.
           </p>
           <a
-            href="https://github.com/AwesomeJev/AwesomeJev.github.io"
+            href="https://github.com/reacher-z/Awesome-Jev"
             target="_blank"
             rel="noopener noreferrer"
             class="text-cta"
@@ -715,7 +465,7 @@ print(answer.choice, answer.confidence)</code></pre>
           rel="noopener noreferrer"
           ><svg class="icon" aria-hidden="true">
             <use href="./assets/fontawesome/icons.svg#github"></use></svg
-          ><span data-i18n="sourceLink">Source</span></a
+          ><span data-i18n="sourceLink">Website source</span></a
         >
         <p class="footer-date" data-i18n="lastCurated">
           Last curated · October 15, 2026
