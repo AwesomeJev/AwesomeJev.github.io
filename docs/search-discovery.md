@@ -54,7 +54,13 @@ The Search Console **Settings → Search generative AI** control defaults to inc
 
 An owner can verify the exact `https://awesomejev.github.io/` URL-prefix property, inspect a live URL, submit the sitemap, and monitor indexing and search performance. Use the owner's actual verification file or tag; never add a placeholder verification token and call the site verified. Account verification and a submitted sitemap do not themselves prove indexing. [Search Console ownership verification](https://support.google.com/webmasters/answer/9008080) · [Google sitemap submission](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap#submit-sitemap)
 
-**Project status, 2026-10-16:** Google Search Console ownership verification succeeded using the site's HTML verification file, and the inherited effective Search generative AI control is **Include**. Keep the verification file publicly accessible; do not record the owner's account name or email in this repository. Submission of the new six-page sitemap is pending deployment. Ownership verification and an inclusive control do not establish indexing or appearance in an AI answer.
+**Observed project status, 2026-10-16:** Google Search Console ownership verification succeeded using the site's HTML verification file, and the inherited effective Search generative AI control is **Include**. Keep the verification file publicly accessible; do not record the owner's account name or email in this repository.
+
+- The homepage's live test reported **URL is available to Google** and **Page can be indexed**.
+- Each of the six canonical HTML pages—`/`, `/zh/`, `/guide/`, `/zh/guide/`, `/papers/`, and `/zh/papers/`—was submitted once and received **Indexing requested** confirmation and the message that the URL was added to a priority crawl queue. These are confirmed requests, not confirmed index inclusion; do not submit the same pages repeatedly to try to advance their queue position.
+- The six-page `https://awesomejev.github.io/sitemap.xml` was submitted and the submission was acknowledged. Its Sitemaps report still showed **Couldn't fetch**, type **Unknown**, and **0 discovered pages** at the latest check. A separate live inspection of that exact URL succeeded: **Crawl allowed? Yes**, **Page fetch Successful**, inspected as **Google Inspection Tool smartphone**. A successful live fetch does not establish successful sitemap processing or invalidate the report's unresolved failure. Recheck processing later; no site-side defect has been established from these observations.
+
+Ownership verification, an inclusive AI control, successful live tests, and queued requests do not establish indexing or appearance in an AI answer. Record subsequent processing results separately instead of replacing these observations with an assumption of success.
 
 ## Bing and IndexNow
 
@@ -64,7 +70,22 @@ IndexNow is an optional change-notification protocol. It requires a valid key an
 
 **GitHub Pages compatibility is an implementation inference:** GitHub Pages serves static repository files, so it can serve the required verification file. A separate post-deployment process could then submit changed first-party URLs. This does not mean GitHub Pages automatically enables IndexNow for this site. Verify the key file is live before making any submission. [GitHub Pages hosting](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages) · [IndexNow verification](https://www.indexnow.org/documentation)
 
-**Project status, 2026-10-16:** Bing Webmaster Tools verification remains pending the owner's account/passkey interaction. The IndexNow submission script and public proof file are prepared; a successful submission has not yet been established. Check the deployed proof and sitemap before using [scripts/submit_indexnow.py](../scripts/submit_indexnow.py), then record the actual response and submitted first-party URLs. Do not report a prepared file or script as a completed submission.
+**Observed project status, 2026-10-16:** Bing Webmaster Tools verification is blocked at the owner's passkey interaction and is not confirmed. IndexNow received one POST containing the six canonical page URLs: `/`, `/zh/`, `/guide/`, `/zh/guide/`, `/papers/`, and `/zh/papers/`. The response was **HTTP 202: key validation pending**. This confirms receipt pending key validation, not completed verification, crawling, or indexing. No automatic retry was made.
+
+For future content changes, [scripts/submit_indexnow.py](../scripts/submit_indexnow.py) defaults to a local dry run with no network requests:
+
+```sh
+python3 scripts/submit_indexnow.py
+```
+
+After deploying actual changes, select the changed canonical pages with repeatable `--url` arguments. Inspect that selection without `--submit` first. The explicit submission command verifies the live proof file and selected pages, then sends one POST:
+
+```sh
+python3 scripts/submit_indexnow.py --url https://awesomejev.github.io/guide/
+python3 scripts/submit_indexnow.py --submit --url https://awesomejev.github.io/guide/
+```
+
+These are maintenance examples, not a request to resubmit an unchanged page. Omitting `--url` selects all six sitemap pages, which was appropriate for their initial publication. Record the actual response each time; do not use repeated notices to bypass pending validation or rate limits.
 
 ## OpenAI search crawlers
 
@@ -87,6 +108,8 @@ An unrestricted public `User-agent: *` rule already permits compliant search cra
 
 维护时修改 `site/catalog.mjs` 中的共享资源与翻译、`templates/index.html` 首页模板、`data/search-guide.json` 双语指南或根目录 `references.bib`，再执行 `node scripts/build_site.mjs`，并用 `node scripts/build_site.mjs --check` 检查一致性。不要直接编辑六个生成页面、sitemap、站点引用副本、论文 JSON 或 `llms` 文件；`site/app.js` 只负责浏览器交互，不再保存另一份资源目录。
 
-这些措施改善可抓取性，不保证收录、排名或 AI 引用。Google 明确表示 `llms.txt` 不提升其排名；问答式正文也不意味着 FAQ 富结果。Search Console 的生成式 AI 控制默认包含，但子属性可能继承上级设置。截至 2026-10-16，Google 站点所有权已通过 HTML 文件验证，控制界面也已确认继承后的有效设置为 **Current control: Include**；新 sitemap 待部署后提交。保留公开验证文件，不在仓库记录账号姓名或邮箱。所有权验证和 Include 设置不代表页面已收录或已出现在 AI 回答中。
+这些措施改善可抓取性，不保证收录、排名或 AI 引用。Google 明确表示 `llms.txt` 不提升其排名；问答式正文也不意味着 FAQ 富结果。Search Console 的生成式 AI 控制默认包含，但子属性可能继承上级设置。截至 2026-10-16，Google 站点所有权已通过 HTML 文件验证，控制界面也已确认继承后的有效设置为 **Current control: Include**。保留公开验证文件，不在仓库记录账号姓名或邮箱。
 
-Bing 验证仍待所有者完成账号／通行密钥交互。IndexNow 脚本与公开校验文件已准备，但尚未确认提交成功；部署后应先验证文件可访问，再记录提交响应。只提交本站发生变化的 URL，不提交资源库中的外站论文链接。OpenAI 搜索使用 `OAI-SearchBot`，与用于训练的 `GPTBot` 相互独立。所有外部验证、提交和收录状态都应以实际结果记录，不能由本地文件推断。
+Google 首页实时测试显示可访问、可索引；六个规范 HTML 页面 `/`、`/zh/`、`/guide/`、`/zh/guide/`、`/papers/`、`/zh/papers/` 均各提交一次，并分别收到 **Indexing requested** 确认，已加入优先抓取队列，不代表已收录。六页 sitemap 已提交并收到提交确认，但最近一次 Sitemaps 报表仍显示 **Couldn't fetch／Unknown／发现 0 页**。对同一个 sitemap URL 的独立实时测试则显示允许抓取、抓取成功，由 Google Inspection Tool smartphone 执行。实时测试成功不等于 sitemap 已处理成功，也不能覆盖报表的未解决状态；后续需复查，当前观察尚未确立本站存在需修复的缺陷。
+
+Bing 验证停在所有者的通行密钥交互步骤，尚未确认完成。IndexNow 已通过一次 POST 提交上述六个规范页面 URL，返回 **HTTP 202，密钥验证待完成**；这不代表已验证、已抓取或已收录，没有自动重试。脚本默认 dry run，不发网络请求；未来部署实质变更后，用 `--url` 选择变更页面，核对预览，再显式使用 `--submit` 发送一次通知。不要重复提交未变化页面，也不要提交外站论文链接。OpenAI 搜索使用 `OAI-SearchBot`，与用于训练的 `GPTBot` 相互独立。所有外部验证、提交和收录状态都应以实际结果记录，不能由本地文件推断。

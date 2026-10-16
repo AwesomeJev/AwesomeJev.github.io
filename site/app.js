@@ -7,6 +7,7 @@ let activeFilter = "All";
 let corpusSources = [];
 let corpusCounts = {};
 let corpusLoaded = false;
+let corpusLoadPromise;
 let corpusLimit = 24;
 let copyTimer;
 const $ = (selector) => document.querySelector(selector);
@@ -299,16 +300,9 @@ function renderCorpus() {
       `<p class="corpus-empty">${escapeHTML(t("corpusEmpty"))}</p>`;
   $("#corpus-more").hidden = filtered.length <= corpusLimit;
 }
-if ($("#corpus-search")) {
-  $("#corpus-search").addEventListener("input", () => {
-    corpusLimit = 24;
-    renderCorpus();
-  });
-  $("#corpus-more").addEventListener("click", () => {
-    corpusLimit += 24;
-    renderCorpus();
-  });
-  fetch("/data/source-index.json", { cache: "no-cache" })
+function loadCorpus() {
+  if (corpusLoadPromise) return corpusLoadPromise;
+  corpusLoadPromise = fetch("/data/source-index.json", { cache: "no-cache" })
     .then((response) => {
       if (!response.ok) throw new Error("Source index not available");
       return response.json();
@@ -327,6 +321,34 @@ if ($("#corpus-search")) {
       corpusLoaded = true;
       renderCorpus();
     });
+  return corpusLoadPromise;
+}
+if ($("#corpus-search")) {
+  $("#corpus-search").addEventListener("input", () => {
+    corpusLimit = 24;
+    renderCorpus();
+  });
+  $("#corpus-more").addEventListener("click", () => {
+    corpusLimit += 24;
+    renderCorpus();
+  });
+  const disclosure = $(".corpus-disclosure");
+  disclosure?.addEventListener("toggle", () => {
+    if (disclosure.open) loadCorpus();
+  });
+  const corpus = $("#corpus");
+  if ("IntersectionObserver" in window && corpus) {
+    const observer = new IntersectionObserver((entries) => {
+      if (entries.some((entry) => entry.isIntersecting)) {
+        observer.disconnect();
+        loadCorpus();
+      }
+    }, { rootMargin: "300px" });
+    observer.observe(corpus);
+    if (disclosure?.open) loadCorpus();
+  } else {
+    loadCorpus();
+  }
 }
 // Preserve old shared language links while serving each language at its own URL.
 const requestedLanguage = new URLSearchParams(window.location.search).get("lang");
