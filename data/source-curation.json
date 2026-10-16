@@ -233,6 +233,61 @@
       "evidence_url": "https://arxiv.org/abs/2609.29429v1",
       "reviewed_at": "2026-10-16T13:02:42.005734+00:00",
       "note": "Display-only title and scope annotation from the original v1 abstract. Preserve the existing raw page/Hugging Face evidence, retrieval time and content-screened tier; no full-paper review or experiment reproduction."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.00346",
+      "title": "Benchmarking System One decision models against trained classifiers and language models for automated decision gates",
+      "first_submitted": "2026-09-29",
+      "topic": "direct-decision-research",
+      "relation": "direct",
+      "relevance": "A common-request harness compares typed decision models, generative readouts and trained classifiers; accuracy, selective coverage and out-of-scope acceptance depend on label access and task.",
+      "note": "Proposed display annotation based on the fixed original abstract and metadata. Preserve raw provider rows, their hashes and verification levels; no full-paper review or experimental reproduction.",
+      "evidence_url": "https://arxiv.org/abs/2610.00346v2",
+      "reviewed_at": "2026-10-16T13:15:58.427059+00:00"
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.02076",
+      "title": "LLM-as-Jev: LLMs Are Already Jev-Style Decision Models -- When and How to Fine-Tune Them",
+      "first_submitted": "2026-10-01",
+      "topic": "direct-decision-research",
+      "relation": "direct",
+      "relevance": "Compares frozen Qwen decision readouts with optional KL-anchored fine-tuning and budgeted reasoning; reported gains depend on backbone size and routing workload, not disclosure of hosted Jev internals.",
+      "note": "Proposed display annotation based on the fixed original abstract and metadata. Preserve raw provider rows, their hashes and verification levels; no full-paper review or experimental reproduction.",
+      "evidence_url": "https://arxiv.org/abs/2610.02076v3",
+      "reviewed_at": "2026-10-16T13:15:58.427284+00:00"
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.02293",
+      "title": "HakemBench: A Turkish Benchmark of Typed Decisions",
+      "first_submitted": "2026-10-01",
+      "topic": "direct-decision-research",
+      "relation": "direct",
+      "relevance": "Turkish typed-decision evaluation reports decision quality, Brier-based probability quality and risk–coverage alongside input probes; most labels are AI-derived, and the lab’s model used feedback from earlier test results.",
+      "note": "Proposed display annotation based on the fixed original abstract and metadata. Preserve raw provider rows, their hashes and verification levels; no full-paper review or experimental reproduction.",
+      "evidence_url": "https://arxiv.org/abs/2610.02293v1",
+      "reviewed_at": "2026-10-16T13:15:58.427291+00:00"
+    },
+    {
+      "url": "https://arxiv.org/abs/2510.01237",
+      "title": "Confidence-Aware Routing for Large Language Model Reliability Enhancement: A Multi-Signal Approach to Pre-Generation Hallucination Mitigation",
+      "first_submitted": "2025-09-23",
+      "relation": "background",
+      "topic": "confidence-routing",
+      "relevance": "Background on confidence-based routing among local generation, retrieval, larger models and human review; this is prior work rather than an empirical study of Jev.",
+      "evidence_url": "https://arxiv.org/abs/2510.01237v1",
+      "reviewed_at": "2026-10-16T13:18:34.028663+00:00",
+      "note": "Display-only title, first-submission date and scope review from the fixed primary abstract. Retain the original source record, body hash, retrieval time and content-screened grade; no full-paper review or experimental reproduction."
+    },
+    {
+      "url": "https://arxiv.org/abs/2609.08183",
+      "title": "NeoHorse-1: Towards Recursive Self-Improvement via Agentic Post-Training with Routing Harness",
+      "first_submitted": "2026-09-08",
+      "relation": "direct",
+      "topic": "decision-model-adaptation",
+      "relevance": "Agentic post-training and routing with a separate NeoHorse-Jev-4B typed-decision adaptation in v2; keep the broader family-level benchmark results separate from the adaptation.",
+      "evidence_url": "https://arxiv.org/abs/2609.08183v2",
+      "reviewed_at": "2026-10-16T13:18:34.037338+00:00",
+      "note": "Display-only title, first-submission date and scope review from the fixed primary abstract. Retain the original source record, body hash, retrieval time and content-screened grade; no full-paper review or experimental reproduction."
     }
   ]
 }

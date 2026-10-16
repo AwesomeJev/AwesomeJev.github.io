@@ -116,6 +116,16 @@
     },
     {
       "category": "Papers",
+      "title": "LLM-as-Jev: LLMs Are Already Jev-Style Decision Models -- When and How to Fine-Tune Them",
+      "by": "Li & Wagle · 2026-10-13 · v3",
+      "date": "2026-10-13",
+      "first_submitted": "2026-10-01",
+      "url": "https://arxiv.org/abs/2610.02076v3",
+      "en": "Compares frozen Qwen decision readouts with optional KL-anchored fine-tuning and budgeted reasoning; reported gains depend on backbone size and routing workload, not disclosure of hosted Jev internals.",
+      "zh": "比较冻结 Qwen 的决策读出、带 KL 锚定的可选微调与限预算推理；所报收益依赖骨干规模和路由任务，并不揭示托管 Jev 内部实现。"
+    },
+    {
+      "category": "Papers",
       "title": "Decision Models vs. LLMs as Rubric Judges",
       "by": "Rao & Callison-Burch · 2026-10-13 · v3",
       "date": "2026-10-13",
@@ -262,6 +272,16 @@
     },
     {
       "category": "Papers",
+      "title": "Benchmarking System One decision models against trained classifiers and language models for automated decision gates",
+      "by": "Rafe & Das · 2026-10-06 · v2",
+      "date": "2026-10-06",
+      "first_submitted": "2026-09-29",
+      "url": "https://arxiv.org/abs/2610.00346v2",
+      "en": "A common-request harness compares typed decision models, generative readouts and trained classifiers; accuracy, selective coverage and out-of-scope acceptance depend on label access and task.",
+      "zh": "用共同请求框架比较类型化决策模型、生成模型读出与训练分类器；准确率、选择性覆盖率和域外接纳取决于是否有任务标签及具体任务。"
+    },
+    {
+      "category": "Papers",
       "title": "Calibrated to Whom? Persona and Language Effects on Cultural Values in JEV",
       "by": "Asseri & Asseri · 2026-10-03 · v2",
       "date": "2026-10-03",
@@ -277,6 +297,16 @@
       "url": "https://arxiv.org/abs/2609.33401v3",
       "en": "Examines reliability, group-specific confident errors, and selective automation in security decisions.",
       "zh": "研究安全决策中的可靠性、不同群体的高置信错误与选择性自动化。"
+    },
+    {
+      "category": "Papers",
+      "title": "HakemBench: A Turkish Benchmark of Typed Decisions",
+      "by": "Teke · 2026-10-01 · v1",
+      "date": "2026-10-01",
+      "first_submitted": "2026-10-01",
+      "url": "https://arxiv.org/abs/2610.02293v1",
+      "en": "Turkish typed-decision evaluation reports decision quality, Brier-based probability quality and risk–coverage alongside input probes; most labels are AI-derived, and the lab’s model used feedback from earlier test results.",
+      "zh": "土耳其语类型化决策评测同时报告决策质量、基于 Brier 的概率质量、风险—覆盖及输入探查；多数标签由 AI 产生，实验室自身模型还使用过先前测试结果的反馈。"
     },
     {
       "category": "Papers",

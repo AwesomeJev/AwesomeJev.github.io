@@ -40,6 +40,14 @@ Separate prediction quality from probability quality. Alongside accuracy or a ta
 
 For abstention or escalation, report coverage and error among accepted cases, and test whether the fallback actually corrects mistakes. Freeze model versions and prompts; measure end-to-end latency, failures, and costs separately. This is an evaluation plan, not a result reported for Jev. [SelectiveNet](https://proceedings.mlr.press/v97/geifman19a.html) · [Model versions](https://docs.typesafe.ai/models)
 
+## How should I compare decision models with trained classifiers and LLMs?
+
+The v2 decision-gate benchmark reports that a fine-tuned DeBERTa-v3-large had the highest observed accuracy on all but one labeled benchmark. That result concerns access to task labels. For your comparison, separate settings with and without task-specific training labels; record data exposure, development/test splits, output formats and failures before comparing accuracy, selective coverage or cost. [Decision-gate benchmark, v2](https://arxiv.org/abs/2610.00346v2)
+
+LLM-as-Jev v3 studies frozen Qwen readouts, optional KL-anchored fine-tuning and budgeted reasoning. To distinguish these effects, we recommend a frozen comparator with the same backbone, explicit option sets and splits, and separately recorded reasoning budgets. The reported comparisons concern two Qwen backbones and an independent framework; they do not reveal hosted Jev’s training or architecture. [LLM-as-Jev, v3](https://arxiv.org/abs/2610.02076v3)
+
+HakemBench v1 states that most Turkish reference labels are AI-derived, not human-verified, and that earlier test results influenced the lab’s own model on flagged tracks. Report label provenance, known prior test exposure and per-track metric components. Translation probes should remain separate from independent language validation. These are proposed comparison checks; this collection has not reproduced the studies. [HakemBench, v1](https://arxiv.org/abs/2610.02293v1)
+
 ## Can I reuse a confidence gate across languages or domains?
 
 Before reusing a confidence gate in a new language or domain, build a target-specific test set with explicit label definitions and annotation provenance; translated or model-generated labels are not independent human validation. Compare the unchanged gate with a threshold tuned only on separate target-domain validation data. Report accepted-case error and coverage per group, including high-confidence errors under independently checked, answer-preserving context additions.
@@ -186,6 +194,14 @@ A controlled adversarial comparison of Jev, LLM judges, and purpose-built safety
 
 Primary source: https://arxiv.org/abs/2610.17820v1
 
+## LLM-as-Jev: LLMs Are Already Jev-Style Decision Models -- When and How to Fine-Tune Them
+
+Papers · Li & Wagle · 2026-10-13 · v3
+
+Compares frozen Qwen decision readouts with optional KL-anchored fine-tuning and budgeted reasoning; reported gains depend on backbone size and routing workload, not disclosure of hosted Jev internals.
+
+Primary source: https://arxiv.org/abs/2610.02076v3
+
 ## Decision Models vs. LLMs as Rubric Judges
 
 Papers · Rao & Callison-Burch · 2026-10-13 · v3
@@ -314,6 +330,14 @@ Studies accuracy, cost, and calibration in seven political-science replication t
 
 Primary source: https://arxiv.org/abs/2610.06625v2
 
+## Benchmarking System One decision models against trained classifiers and language models for automated decision gates
+
+Papers · Rafe & Das · 2026-10-06 · v2
+
+A common-request harness compares typed decision models, generative readouts and trained classifiers; accuracy, selective coverage and out-of-scope acceptance depend on label access and task.
+
+Primary source: https://arxiv.org/abs/2610.00346v2
+
 ## Calibrated to Whom? Persona and Language Effects on Cultural Values in JEV
 
 Papers · Asseri & Asseri · 2026-10-03 · v2
@@ -329,6 +353,14 @@ Papers · Liu · 2026-10-03 · v3
 Examines reliability, group-specific confident errors, and selective automation in security decisions.
 
 Primary source: https://arxiv.org/abs/2609.33401v3
+
+## HakemBench: A Turkish Benchmark of Typed Decisions
+
+Papers · Teke · 2026-10-01 · v1
+
+Turkish typed-decision evaluation reports decision quality, Brier-based probability quality and risk–coverage alongside input probes; most labels are AI-derived, and the lab’s model used feedback from earlier test results.
+
+Primary source: https://arxiv.org/abs/2610.02293v1
 
 ## Beyond Answer Confidence: A Controlled Audit of Self-Knowledge in a Black-Box Decision Model
 
@@ -513,6 +545,14 @@ Papers · Cheng et al. · 2026-09-20 · v1
 An open typed-decision model using hidden-state readout. The abstract reports a small external comparison.
 
 Primary source: https://arxiv.org/abs/2609.23886v1
+
+## ufakzeka-karar
+
+Models · ufak AI · Apache-2.0
+
+Turkish typed-decision checkpoint with shipped temperature scaling. Its card flags test-informed training and worsening support-task calibration; benchmark results are not blind.
+
+Primary source: https://huggingface.co/ufakai/ufakzeka-karar
 
 ## Jeva-4B
 

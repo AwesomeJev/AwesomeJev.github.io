@@ -47,7 +47,7 @@ On **2026-10-16**, `jev-latest` points to `jev-1.13.0` and `jev-preview` to `jev
 
 ## Papers
 
-All 53 direct studies below are **arXiv preprints**. Dates identify the linked, reviewed version, not necessarily the first submission. Results are author-reported; this project has not reproduced their experiments. Titles that contain speed or cost claims retain the authors' wording. [Bibliography](references.bib) · [Evidence comparison](docs/survey.md)
+All 56 direct studies below are **arXiv preprints**. Dates identify the linked, reviewed version, not necessarily the first submission. Results are author-reported; this project has not reproduced their experiments. Titles that contain speed or cost claims retain the authors' wording. [Bibliography](references.bib) · [Evidence comparison](docs/survey.md)
 
 ### Evaluation and benchmarking
 
@@ -56,8 +56,10 @@ All 53 direct studies below are **arXiv preprints**. Dates identify the linked, 
 - **[Reading Right, Acting Wrong: Diagnosing Decision Failures of System One Models in Agent Loops](https://arxiv.org/abs/2610.18579v1)** — Li, Krishnan & Padman. *2026-10-13, arXiv v1*. Pairs factual probes with action choices to diagnose decision failures. [Author dashboard](https://yubol-bobo.github.io/System_one_model_evaluation/).
 - **[General Decision Models: Benchmarking and Insights Beyond Jev](https://arxiv.org/abs/2610.03935v2)** — Duan et al. *2026-10-12, arXiv v2*. Bilingual decision evaluation and reliability in multi-step systems. [Training and inference code](https://github.com/amazingljy1206/SII-Decision) · [Evaluation data](https://huggingface.co/datasets/carlosxiang/JEVal).
 - **[Specialized Decision Models vs. General-Purpose LLMs: Benchmarking Jev Across Knowledge, Reasoning, and Multilingual Tasks](https://arxiv.org/abs/2610.11978v1)** — Li et al. *2026-10-08, arXiv v1*. Knowledge, reasoning and multilingual multiple-choice evaluation of Jev; reported rankings and mathematical weaknesses apply to the selected models and benchmarks.
+- **[Benchmarking System One decision models against trained classifiers and language models for automated decision gates](https://arxiv.org/abs/2610.00346v2)** — Rafe & Das. *2026-10-06, arXiv v2; first submitted 2026-09-29*. A common-request harness compares typed decision models, generative readouts and trained classifiers; accuracy, selective coverage and out-of-scope acceptance depend on label access and task.
 - **[JEV versus LLMs: Accuracy, Cost and Calibration on Seven Political Science Replications](https://arxiv.org/abs/2610.06625v2)** — Denney & DiGiuseppe. *2026-10-06, arXiv v2*. Seven domain-specific replications; accuracy, cost, and calibration.
 - **[Calibrated to Whom? Persona and Language Effects on Cultural Values in JEV](https://arxiv.org/abs/2609.36399v2)** — Asseri & Asseri. *2026-10-03, arXiv v2*. English/Arabic persona-conditioned Jev survey audit; the effects concern simulated respondents in one model, not measurements of real populations. First submitted 2026-09-28.
+- **[HakemBench: A Turkish Benchmark of Typed Decisions](https://arxiv.org/abs/2610.02293v1)** — Teke. *2026-10-01, arXiv v1*. Turkish typed-decision evaluation reports decision quality, Brier-based probability quality and risk–coverage alongside input probes; most labels are AI-derived, and the lab’s model used feedback from earlier test results. [Benchmark code and data](https://github.com/ufakai/hakembench) · [Model implementation](https://github.com/ufakai/ufakzeka-karar) · [Checkpoint](https://huggingface.co/ufakai/ufakzeka-karar).
 - **[Evaluating and Benchmarking the System One Model Jev](https://arxiv.org/abs/2609.37647v1)** — Deußer, Sparrenberg & Sifa. *2026-09-29, arXiv v1*. Classification and decision evaluation across 37 datasets. [Code](https://github.com/AppliedMachineLearning-Lab/jev-benchmarking).
 - **[Typed Decision Models: An Early Evidence Audit and Evaluation Checklist](https://arxiv.org/abs/2609.32160v1)** — Tang & Zheng. *2026-09-26, arXiv v1*. Evidence mapping and an evaluation checklist for typed decisions.
 
@@ -97,6 +99,7 @@ All 53 direct studies below are **arXiv preprints**. Dates identify the linked, 
 
 ### Architectures, memory, and multimodality
 
+- **[LLM-as-Jev: LLMs Are Already Jev-Style Decision Models -- When and How to Fine-Tune Them](https://arxiv.org/abs/2610.02076v3)** — Li & Wagle. *2026-10-13, arXiv v3; first submitted 2026-10-01*. Compares frozen Qwen decision readouts with optional KL-anchored fine-tuning and budgeted reasoning; reported gains depend on backbone size and routing workload, not disclosure of hosted Jev internals.
 - **[Jeva: System One Models from First Principles](https://arxiv.org/abs/2610.18773v1)** — Li & Wang. *2026-10-13, arXiv v1*. Null handling, option permutation, variable candidate sets, and caching. [Architecture code](https://github.com/LiQiiiii/Jeva) · [Checkpoint](https://huggingface.co/LIQIIIII/Jeva-4B).
 - **[VideoJev: System One Model for Video Understanding and Interaction](https://arxiv.org/abs/2610.18615v1)** — Zhu et al. *2026-10-13, arXiv v1*. Structured video decisions with temporal spans and candidate scores; cached and joint inference reuse visual computation. [Project](https://mcg-nju.github.io/VideoJev/).
 - **[Releasing the Inner Jev: A Simple Recipe for Open Decision Models](https://arxiv.org/abs/2610.17205v1)** — Geuter, Cheng & Alvarez-Melis. *2026-10-12, arXiv v1*. Answer-letter readout and supervised LoRA baselines; evaluation includes model-generated labels. [Serving code](https://github.com/j-geuter/jeff-serve) · [OpenDecisions](https://huggingface.co/datasets/jgeuter/OpenDecisions).
@@ -126,6 +129,7 @@ These are independent implementations, not released TypeSafe weights. Licenses b
 
 | Model | Publisher | Declared license | Scope |
 | :--- | :--- | :--- | :--- |
+| [ufakzeka-karar](https://huggingface.co/ufakai/ufakzeka-karar) | ufak AI | Apache-2.0 | Turkish decisions with temperature scaling; test-informed benchmark results and task-specific calibration limits. |
 | [Jeva-4B](https://huggingface.co/LIQIIIII/Jeva-4B) | Jeva authors | Not declared in inspected card | Backbone, adapter and decision-head package; weights not tested here. |
 | [Laya](https://huggingface.co/convaiinnovations/laya) | Convai Innovations | Apache-2.0 | Encoder-based English, multilingual, and workflow-specific checkpoints. |
 | [Kev-4B](https://huggingface.co/jaredpalmer/kev-4b) | Jared Palmer | Apache-2.0 | Qwen3.5-4B-Base LoRA adapter and pointer head. |
@@ -204,7 +208,7 @@ Background literature and comparison methods. These works do **not** establish J
 | Composable pipelines | Khattab et al., *DSPy*. 2023. | [Paper](https://arxiv.org/abs/2310.03714) |
 | Efficient execution | Zheng et al., *SGLang*. NeurIPS, 2024. | [Paper](https://papers.nips.cc/paper_files/paper/2024/file/724be4472168f31ba1c9ac630f15dec8-Paper-Conference.pdf) · [Code](https://github.com/sgl-project/sglang) |
 
-All 61 selected papers are included in [references.bib](references.bib). See the [latest paper-selection review](docs/reviews/papers-2026-10-16.md) for verification scope and limitations.
+All 64 selected papers are included in [references.bib](references.bib). See the [latest paper-selection review](docs/reviews/papers-2026-10-16.md) for verification scope and limitations.
 
 ## Quick start
 

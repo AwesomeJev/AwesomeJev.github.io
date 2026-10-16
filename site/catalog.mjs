@@ -268,6 +268,45 @@ const translations = {
 const resources = [
   {
     "category": "Papers",
+    "title": "Benchmarking System One decision models against trained classifiers and language models for automated decision gates",
+    "by": "Rafe & Das · 2026-10-06 · v2",
+    "date": "2026-10-06",
+    "first_submitted": "2026-09-29",
+    "url": "https://arxiv.org/abs/2610.00346v2",
+    "en": "A common-request harness compares typed decision models, generative readouts and trained classifiers; accuracy, selective coverage and out-of-scope acceptance depend on label access and task.",
+    "zh": "用共同请求框架比较类型化决策模型、生成模型读出与训练分类器；准确率、选择性覆盖率和域外接纳取决于是否有任务标签及具体任务。"
+  },
+  {
+    "category": "Papers",
+    "title": "LLM-as-Jev: LLMs Are Already Jev-Style Decision Models -- When and How to Fine-Tune Them",
+    "by": "Li & Wagle · 2026-10-13 · v3",
+    "date": "2026-10-13",
+    "first_submitted": "2026-10-01",
+    "url": "https://arxiv.org/abs/2610.02076v3",
+    "en": "Compares frozen Qwen decision readouts with optional KL-anchored fine-tuning and budgeted reasoning; reported gains depend on backbone size and routing workload, not disclosure of hosted Jev internals.",
+    "zh": "比较冻结 Qwen 的决策读出、带 KL 锚定的可选微调与限预算推理；所报收益依赖骨干规模和路由任务，并不揭示托管 Jev 内部实现。"
+  },
+  {
+    "category": "Papers",
+    "title": "HakemBench: A Turkish Benchmark of Typed Decisions",
+    "by": "Teke · 2026-10-01 · v1",
+    "date": "2026-10-01",
+    "first_submitted": "2026-10-01",
+    "url": "https://arxiv.org/abs/2610.02293v1",
+    "en": "Turkish typed-decision evaluation reports decision quality, Brier-based probability quality and risk–coverage alongside input probes; most labels are AI-derived, and the lab’s model used feedback from earlier test results.",
+    "zh": "土耳其语类型化决策评测同时报告决策质量、基于 Brier 的概率质量、风险—覆盖及输入探查；多数标签由 AI 产生，实验室自身模型还使用过先前测试结果的反馈。"
+  },
+  {
+    "category": "Models",
+    "title": "ufakzeka-karar",
+    "by": "ufak AI · Apache-2.0",
+    "provenance": "modelcard",
+    "url": "https://huggingface.co/ufakai/ufakzeka-karar",
+    "en": "Turkish typed-decision checkpoint with shipped temperature scaling. Its card flags test-informed training and worsening support-task calibration; benchmark results are not blind.",
+    "zh": "土耳其语类型化决策检查点，附温度缩放参数；模型卡标注训练参考了测试结果，并报告客服任务的校准恶化，基准结果并非盲测。"
+  },
+  {
+    "category": "Papers",
     "title": "Just Ask Jev: Reinforcement Learning for Calibrated Decisions as a Zero-Shot Detector of AI Alignment Failures",
     "by": "Guo et al. · 2026-09-24 · v1",
     "date": "2026-09-24",

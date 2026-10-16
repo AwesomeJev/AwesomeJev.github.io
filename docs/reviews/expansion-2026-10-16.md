@@ -132,3 +132,11 @@ The existing JevAdvBench dataset and system-one-security-eval repository gained 
 The bilingual survey and guide now distinguish decision flips, target-selection frequency, case-level majority success and conditional routing metrics. Three fixed-version sources and 18 targeted anchors support this comparison; their results remain author-reported, and the proposed evaluation protocol is not a performed experiment. [Metric review](../../data/attack-metric-review-2026-10-16.json).
 
 **中文：** 本轮只新增JevAdvBench完整代码项目，累计753项；既有数据集、系统安全评测项目、Just Ask Jev论文与作者代码均不重复计数。固定README和部分目录已核查，未运行脚本、还原归档或重算结果。双语综述与指南区分翻转率、目标频率、案例多数成功及条件路由指标，引用三篇固定稿的定向段落，不将作者结果写成本项目复现。
+
+## Turkish checkpoint and comparison conditions
+
+One distinct ufakzeka-karar checkpoint brings the expansion to **754**. The paper and already-known implementation identify the separate Hub weight release. The fixed model card, metadata and file inventory were independently checked; the parent refetched the card with a matching hash. No weight, loader, calibration file, dataset row or prediction archive was downloaded or executed. The card declares Apache-2.0 for weights and loader while retaining upstream data terms, and explicitly flags test-informed training and worsening calibration on support questions. Its released-run comparison is not an unseen-question test. [Review and provenance](../../data/baseline-selection-review-2026-10-16.json).
+
+Three existing papers were promoted without adding raw source rows or upgrading evidence. Two known code-project links and a same-release benchmark mirror also add zero. Five display-only annotations clarify titles, first-submission dates and scope: one 2025 routing paper moves to background, while NeoHorse v2 retains its directly relevant typed-decision adaptation with the wider family results kept separate. All original ledger bytes, hashes, retrieval times and grades remain intact apart from appending the one new checkpoint row.
+
+**中文：** 本轮只新增一个独立模型检查点，累计754项；三篇论文精选提升、已知代码与基准镜像均不重复计数。模型卡、元数据及目录已核查，未下载或执行权重、加载器、校准文件和数据记录；测试反馈影响训练及客服校准的限制保留。五项展示注释修正题名、日期与范围，早期路由研究归入背景，NeoHorse的决策适配与整体家族结果分开，原台账证据不改。

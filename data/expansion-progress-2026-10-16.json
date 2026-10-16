@@ -3,23 +3,23 @@
   "baseline_commit": "3519c15d7e00686a8dbf9b1e184c68726327ab1e",
   "baseline_source_index_sha256": "8bfdd20564f2cda54bb8264c3c802f315e3e9a11b153bd85dde4325f53c841d5",
   "target_new_sources": 301,
-  "accepted_new_sources": 753,
+  "accepted_new_sources": 754,
   "remaining_to_target": 0,
   "target_count_reached": true,
   "current_index_counts": {
     "editorial_reviewed": 4,
-    "content_screened": 2364,
+    "content_screened": 2365,
     "abstract_checked": 1833,
     "metadata_only": 47,
-    "raw_records": 4262,
-    "unique_records": 4248,
+    "raw_records": 4263,
+    "unique_records": 4249,
     "duplicate_records": 14,
-    "checked_sources": 4201
+    "checked_sources": 4202
   },
   "by_category": {
     "Datasets": 101,
     "Guides and evaluations": 38,
-    "Models": 53,
+    "Models": 54,
     "Papers": 27,
     "Projects": 193,
     "Research foundations": 341
@@ -27,11 +27,11 @@
   "by_relation": {
     "adjacent": 25,
     "background": 341,
-    "direct": 387
+    "direct": 388
   },
   "by_verification_level": {
     "abstract_checked": 368,
-    "content_screened": 385
+    "content_screened": 386
   },
   "verification_note": "Evidence depth is labeled per source. Content screening and abstract checks do not establish full-paper review, peer review, endorsement, or experimental reproduction.",
   "additions": [
@@ -2301,6 +2301,18 @@
       "verification_level": "content_screened",
       "content_sha256": "52c5e2356ef7057d263fd4561abf556b885d4033d314b7f8b919e85db8e8e836",
       "retrieved_at": "2026-10-16T10:05:24+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "ufakzeka-karar — Turkish typed-decision checkpoint",
+      "url": "https://huggingface.co/ufakai/ufakzeka-karar",
+      "category": "Models",
+      "topic": "decision-model-card",
+      "description": "Turkish typed-decision checkpoint with shipped temperature scaling; its card flags test-informed training and worsening support-task calibration. Weights were not loaded or independently evaluated.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "2eb35606e2c919b4683242ddc4d1f28e0bae6e0bf844559db771c4f58368d2f5",
+      "retrieved_at": "2026-10-16T13:16:29+00:00",
       "ledger": "ecosystem-sources.jsonl"
     },
     {

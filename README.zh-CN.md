@@ -47,7 +47,7 @@ TypeSafe 的 Jev 接收状态与类型化问题，为应用代码返回决策和
 
 ## 论文
 
-下列 53 项直接研究均为 **arXiv 预印本**。日期对应已核查并链接的版本，不一定是首次提交日期。结果由作者报告，本项目没有复现实验。标题中的速度或成本主张保留作者原文。[参考文献](references.bib) · [证据比较](docs/survey.zh-CN.md)
+下列 56 项直接研究均为 **arXiv 预印本**。日期对应已核查并链接的版本，不一定是首次提交日期。结果由作者报告，本项目没有复现实验。标题中的速度或成本主张保留作者原文。[参考文献](references.bib) · [证据比较](docs/survey.zh-CN.md)
 
 ### 评测与基准
 
@@ -56,8 +56,10 @@ TypeSafe 的 Jev 接收状态与类型化问题，为应用代码返回决策和
 - **[Reading Right, Acting Wrong: Diagnosing Decision Failures of System One Models in Agent Loops](https://arxiv.org/abs/2610.18579v1)** — Li, Krishnan & Padman. *2026-10-13, arXiv v1*. 将事实探针与行动选择配对，诊断决策失败。 [作者交互报告](https://yubol-bobo.github.io/System_one_model_evaluation/)。
 - **[General Decision Models: Benchmarking and Insights Beyond Jev](https://arxiv.org/abs/2610.03935v2)** — Duan et al. *2026-10-12, arXiv v2*. 双语决策评估与多步骤系统中的可靠性。 [训练与推理代码](https://github.com/amazingljy1206/SII-Decision) · [评测数据](https://huggingface.co/datasets/carlosxiang/JEVal)。
 - **[Specialized Decision Models vs. General-Purpose LLMs: Benchmarking Jev Across Knowledge, Reasoning, and Multilingual Tasks](https://arxiv.org/abs/2610.11978v1)** — Li et al. *2026-10-08, arXiv v1*. 在知识、推理和多语言选择题中评测 Jev；报告的排名及数学弱点仅适用于所选模型与基准。
+- **[Benchmarking System One decision models against trained classifiers and language models for automated decision gates](https://arxiv.org/abs/2610.00346v2)** — Rafe & Das. *2026-10-06, arXiv v2；首次提交 2026-09-29*. 用共同请求框架比较类型化决策模型、生成模型读出与已训练分类器；准确率、选择性覆盖率和域外接纳取决于是否有任务标签及具体任务。
 - **[JEV versus LLMs: Accuracy, Cost and Calibration on Seven Political Science Replications](https://arxiv.org/abs/2610.06625v2)** — Denney & DiGiuseppe. *2026-10-06, arXiv v2*. 七项领域复现，比较准确率、成本与校准。
 - **[Calibrated to Whom? Persona and Language Effects on Cultural Values in JEV](https://arxiv.org/abs/2609.36399v2)** — Asseri & Asseri. *2026-10-03, arXiv v2*. 对 Jev 进行英语和阿拉伯语人物设定条件下的问卷审查；观察的是单一模型的模拟受访者，并非对真实人群的测量。 首次提交于 2026-09-28。
+- **[HakemBench: A Turkish Benchmark of Typed Decisions](https://arxiv.org/abs/2610.02293v1)** — Teke. *2026-10-01, arXiv v1*. 土耳其语类型化决策评测同时报告决策质量、基于 Brier 的概率质量、风险—覆盖及输入探查；多数标签由 AI 产生，实验室自身模型还使用过先前测试结果的反馈。 [基准代码与数据](https://github.com/ufakai/hakembench) · [模型实现](https://github.com/ufakai/ufakzeka-karar) · [检查点](https://huggingface.co/ufakai/ufakzeka-karar)。
 - **[Evaluating and Benchmarking the System One Model Jev](https://arxiv.org/abs/2609.37647v1)** — Deußer, Sparrenberg & Sifa. *2026-09-29, arXiv v1*. 覆盖 37 个数据集的分类与决策评测。 [代码](https://github.com/AppliedMachineLearning-Lab/jev-benchmarking).
 - **[Typed Decision Models: An Early Evidence Audit and Evaluation Checklist](https://arxiv.org/abs/2609.32160v1)** — Tang & Zheng. *2026-09-26, arXiv v1*. 类型化决策的早期证据梳理与评估清单。
 
@@ -97,6 +99,7 @@ TypeSafe 的 Jev 接收状态与类型化问题，为应用代码返回决策和
 
 ### 架构、记忆与多模态
 
+- **[LLM-as-Jev: LLMs Are Already Jev-Style Decision Models -- When and How to Fine-Tune Them](https://arxiv.org/abs/2610.02076v3)** — Li & Wagle. *2026-10-13, arXiv v3；首次提交 2026-10-01*. 比较冻结 Qwen 的决策读出、带 KL 锚定的可选微调与限预算推理；所报收益依赖骨干规模和路由任务，并不揭示托管 Jev 内部实现。
 - **[Jeva: System One Models from First Principles](https://arxiv.org/abs/2610.18773v1)** — Li & Wang. *2026-10-13, arXiv v1*. 空答案、选项排列、可变候选集与缓存机制。 [架构代码](https://github.com/LiQiiiii/Jeva) · [检查点](https://huggingface.co/LIQIIIII/Jeva-4B)。
 - **[VideoJev: System One Model for Video Understanding and Interaction](https://arxiv.org/abs/2610.18615v1)** — Zhu et al. *2026-10-13, arXiv v1*. 以时间区间和候选分数表达视频决策，通过缓存与联合推理复用视觉计算。 [项目页](https://mcg-nju.github.io/VideoJev/)。
 - **[Releasing the Inner Jev: A Simple Recipe for Open Decision Models](https://arxiv.org/abs/2610.17205v1)** — Geuter, Cheng & Alvarez-Melis. *2026-10-12, arXiv v1*. 答案字母概率读出与监督式 LoRA 基线；评测包含模型生成的标签。 [服务代码](https://github.com/j-geuter/jeff-serve) · [OpenDecisions](https://huggingface.co/datasets/jgeuter/OpenDecisions)。
@@ -126,6 +129,7 @@ TypeSafe 的 Jev 接收状态与类型化问题，为应用代码返回决策和
 
 | 模型 | 发布者 | 声明许可 | 范围 |
 | :--- | :--- | :--- | :--- |
+| [ufakzeka-karar](https://huggingface.co/ufakai/ufakzeka-karar) | ufak AI | Apache-2.0 | 土耳其语决策与温度缩放；基准结果受测试反馈影响，校准存在任务相关限制。 |
 | [Jeva-4B](https://huggingface.co/LIQIIIII/Jeva-4B) | Jeva 作者 | 所查模型卡未声明 | 骨干、适配器与决策头包；本项目未测试权重。 |
 | [Laya](https://huggingface.co/convaiinnovations/laya) | Convai Innovations | Apache-2.0 | 基于编码器的英语、多语言与工作流专用检查点。 |
 | [Kev-4B](https://huggingface.co/jaredpalmer/kev-4b) | Jared Palmer | Apache-2.0 | Qwen3.5-4B-Base LoRA 适配器与指针头。 |
@@ -204,7 +208,7 @@ TypeSafe 的四个数据集提供工作流案例、模型生成的参考标签�
 | 可组合流水线 | Khattab et al., *DSPy*. 2023. | [论文](https://arxiv.org/abs/2310.03714) |
 | 高效执行 | Zheng et al., *SGLang*. NeurIPS, 2024. | [论文](https://papers.nips.cc/paper_files/paper/2024/file/724be4472168f31ba1c9ac630f15dec8-Paper-Conference.pdf) · [代码](https://github.com/sgl-project/sglang) |
 
-61 篇精选论文均收录于 [references.bib](references.bib)。核查范围与局限见[本次论文精选记录](docs/reviews/papers-2026-10-16.md)。
+64 篇精选论文均收录于 [references.bib](references.bib)。核查范围与局限见[本次论文精选记录](docs/reviews/papers-2026-10-16.md)。
 
 ## 快速开始
 

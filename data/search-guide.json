@@ -143,6 +143,39 @@
         ]
       },
       {
+        "id": "decision-model-baselines",
+        "title": "How should I compare decision models with trained classifiers and LLMs?",
+        "paragraphs": [
+          {
+            "text": "The v2 decision-gate benchmark reports that a fine-tuned DeBERTa-v3-large had the highest observed accuracy on all but one labeled benchmark. That result concerns access to task labels. For your comparison, separate settings with and without task-specific training labels; record data exposure, development/test splits, output formats and failures before comparing accuracy, selective coverage or cost.",
+            "sources": [
+              {
+                "label": "Decision-gate benchmark, v2",
+                "url": "https://arxiv.org/abs/2610.00346v2"
+              }
+            ]
+          },
+          {
+            "text": "LLM-as-Jev v3 studies frozen Qwen readouts, optional KL-anchored fine-tuning and budgeted reasoning. To distinguish these effects, we recommend a frozen comparator with the same backbone, explicit option sets and splits, and separately recorded reasoning budgets. The reported comparisons concern two Qwen backbones and an independent framework; they do not reveal hosted Jev’s training or architecture.",
+            "sources": [
+              {
+                "label": "LLM-as-Jev, v3",
+                "url": "https://arxiv.org/abs/2610.02076v3"
+              }
+            ]
+          },
+          {
+            "text": "HakemBench v1 states that most Turkish reference labels are AI-derived, not human-verified, and that earlier test results influenced the lab’s own model on flagged tracks. Report label provenance, known prior test exposure and per-track metric components. Translation probes should remain separate from independent language validation. These are proposed comparison checks; this collection has not reproduced the studies.",
+            "sources": [
+              {
+                "label": "HakemBench, v1",
+                "url": "https://arxiv.org/abs/2610.02293v1"
+              }
+            ]
+          }
+        ]
+      },
+      {
         "id": "confidence-transfer",
         "title": "Can I reuse a confidence gate across languages or domains?",
         "paragraphs": [
@@ -498,6 +531,39 @@
               {
                 "label": "模型版本",
                 "url": "https://docs.typesafe.ai/models"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "decision-model-baselines",
+        "title": "怎样比较决策模型、已训练分类器与语言模型？",
+        "paragraphs": [
+          {
+            "text": "决策门控基准 v2 报告，在有标签基准中，微调后的 DeBERTa-v3-large 除一项外均取得最高观察准确率；这一结果以可取得任务标签为条件。实际比较时，应分开报告有无任务训练标签的设置，并记录数据接触、开发/测试划分、输出格式与失败，再比较准确率、选择性覆盖或成本。",
+            "sources": [
+              {
+                "label": "决策门控基准 v2",
+                "url": "https://arxiv.org/abs/2610.00346v2"
+              }
+            ]
+          },
+          {
+            "text": "LLM-as-Jev v3 研究冻结 Qwen 的读出、带 KL 锚定的可选微调及限预算推理。为区分这些影响，我们建议保留同骨干的冻结基线，明确选项集合和数据划分，并单独记录推理预算。所报比较针对两个 Qwen 骨干及一个独立框架，不能据此揭示托管 Jev 的训练或架构。",
+            "sources": [
+              {
+                "label": "LLM-as-Jev v3",
+                "url": "https://arxiv.org/abs/2610.02076v3"
+              }
+            ]
+          },
+          {
+            "text": "HakemBench v1 明确说明，多数土耳其语参考标签由 AI 生成、未经人工核验；实验室自身模型在被标记的任务上还受过先前测试结果的影响。应报告标签来源、既往测试集使用情况和逐任务指标分量，将翻译探查与独立的语言验证分开。这些是建议的比较检查，本资源库未复现上述研究。",
+            "sources": [
+              {
+                "label": "HakemBench v1",
+                "url": "https://arxiv.org/abs/2610.02293v1"
               }
             ]
           }

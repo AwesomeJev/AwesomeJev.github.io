@@ -1,0 +1,775 @@
+{
+  "schema_version": 1,
+  "baseline_commit": "c23b7b1975f27d939865eb84ba49027cb864f7ac",
+  "reviewed_at": "2026-10-16T13:25:13.541331+00:00",
+  "accepted_new_sources": 1,
+  "known_papers_promoted": 3,
+  "paper_review": {
+    "schema_version": 1,
+    "reviewed_at": "2026-10-16T13:17:09.095598+00:00",
+    "verdict": "accept_all_three",
+    "rejections": [],
+    "required_corrections": [],
+    "checks": [
+      {
+        "url": "https://arxiv.org/abs/2610.00346v2",
+        "metadata_authors_dates_hashes_match_primary_cache": true,
+        "catalog_bib_annotation_consistent": true,
+        "bib_key": "rafe2026decisiongates",
+        "old_abstract_matches_new_review": true
+      },
+      {
+        "url": "https://arxiv.org/abs/2610.02076v3",
+        "metadata_authors_dates_hashes_match_primary_cache": true,
+        "catalog_bib_annotation_consistent": true,
+        "bib_key": "li2026llmasjev",
+        "old_abstract_matches_new_review": false
+      },
+      {
+        "url": "https://arxiv.org/abs/2610.02293v1",
+        "metadata_authors_dates_hashes_match_primary_cache": true,
+        "catalog_bib_annotation_consistent": true,
+        "bib_key": "teke2026hakembench",
+        "old_abstract_matches_new_review": true
+      }
+    ],
+    "source_inputs": [
+      {
+        "name": "awesomejev-next3-existing-paper-promotions.json",
+        "sha256": "7d9b0c8c5a0c5e8aa5dc5568a4a37d8fd83c5eda5c97f6fd99804f81a8c852fe"
+      },
+      {
+        "name": "awesomejev-next3-existing-paper-catalog.json",
+        "sha256": "870b2bdc30f665ae51b7ce9317fb824ecf98429fb6f55d32913caf4dcb3da967"
+      },
+      {
+        "name": "awesomejev-next3-existing-paper-annotations.json",
+        "sha256": "d5ee3d57ec2ad3b32bc9765bb6ff53755ad8838354a2ada5c3d33386cfb5dd86"
+      },
+      {
+        "name": "awesomejev-next3-existing-paper-promotions.bib",
+        "sha256": "dc3ed5a7c9084aa27969831844be1a9f98e7a1def5d6a03792251b94f4d049fb"
+      }
+    ],
+    "accepted_proposal_sha256": "1ae966cc2e0364e80cfba9a2eeacb63651853ff9ede4e51f2db5206f759ae943",
+    "scope_findings": [
+      "The classifier comparison retains the role of task-label access and does not generalize its risk-control guarantee.",
+      "LLM-as-Jev retains its tested-backbone and targeted-fine-tuning scope, without claiming hosted Jev architecture or training reconstruction.",
+      "HakemBench retains model-derived labels, non-blind author-model results and test-informed training; probability quality is not equated with a universal calibration guarantee.",
+      "First submission and fixed-version dates are separate throughout. BibTeX author lists match primary metadata and visible bylines.",
+      "Display annotations do not override raw hashes, timestamps or verification grades. All three canonical identities are already present, so expansion count remains unchanged."
+    ],
+    "optional_style_note": "The first Chinese summary could use 已训练分类器 instead of 训练分类器 for smoother reading; the existing wording does not change the factual meaning.",
+    "new_http_requests": 0,
+    "test_suites_run": 0,
+    "shared_repository_modified": false
+  },
+  "accepted_paper_selection": {
+    "schema_version": 1,
+    "accepted_at": "2026-10-16T13:17:09.095598+00:00",
+    "stage": "Independently accepted for parent integration; shared files remain untouched.",
+    "papers": [
+      {
+        "canonical_url": "https://arxiv.org/abs/2610.00346",
+        "title": "Benchmarking System One decision models against trained classifiers and language models for automated decision gates",
+        "authors": [
+          "Rafe, Amir",
+          "Das, Subasish"
+        ],
+        "first_submitted": "2026-09-29",
+        "reviewed_version": "v2",
+        "reviewed_version_url": "https://arxiv.org/abs/2610.00346v2",
+        "reviewed_version_date": "2026-10-06",
+        "primary_abstract_evidence": {
+          "abstract_provider": "arxiv_primary_abstract_page",
+          "abstract_sha256": "bb4850824fa40587169257ae1be12c1154c591a5daf692ec723c820addacd5ff",
+          "abstract_page_sha256": "ec1ea7a6c9a6a46c4dd0fc117c87493367f2f855c8be382c57ce99b473b4d592",
+          "abstract_word_count": 250,
+          "retrieved_at": "2026-10-16T13:11:27.906520+00:00",
+          "retrieval_status": "success",
+          "http_status": 200,
+          "canonical_page_separately_fetched": true,
+          "visible_author_list_matches_metadata": true,
+          "full_text_reviewed": false,
+          "experiments_reproduced": false
+        },
+        "proposed_relevance": "A common-request harness compares typed decision models, generative readouts and trained classifiers; accuracy, selective coverage and out-of-scope acceptance depend on label access and task.",
+        "proposed_relevance_zh": "用共同请求框架比较类型化决策模型、生成模型读出与训练分类器；准确率、选择性覆盖率和域外接纳取决于是否有任务标签及具体任务。",
+        "limitations": [
+          "The abstract reports a particular risk-control protocol; its risk wording is not a universal deployment guarantee.",
+          "Training exposure, probability-readout format and selected datasets limit blanket model rankings. Only the fixed original abstract and metadata were checked."
+        ],
+        "limitations_zh": [
+          "摘要报告的是特定风险控制协议，不能将其风险措辞解释为通用部署保证。",
+          "训练数据接触、概率读出格式及所选数据集限制了笼统模型排名；本次仅检查固定版本原摘要与元数据。"
+        ],
+        "action": "Propose curated promotion of an existing identity; do not append a duplicate source row or overwrite prior evidence grading.",
+        "proposed_new_source_count": 0
+      },
+      {
+        "canonical_url": "https://arxiv.org/abs/2610.02076",
+        "title": "LLM-as-Jev: LLMs Are Already Jev-Style Decision Models -- When and How to Fine-Tune Them",
+        "authors": [
+          "Li, Yinheng",
+          "Wagle, Justin"
+        ],
+        "first_submitted": "2026-10-01",
+        "reviewed_version": "v3",
+        "reviewed_version_url": "https://arxiv.org/abs/2610.02076v3",
+        "reviewed_version_date": "2026-10-13",
+        "primary_abstract_evidence": {
+          "abstract_provider": "arxiv_primary_abstract_page",
+          "abstract_sha256": "efd3ecb17c1423a1fe4f2d8a952372bb5b11bd9744f96274af121ac1945b2355",
+          "abstract_page_sha256": "0687068bdcea520ff4ef3cc32972a3c40e70ad75338f653637baefbbe6fe4e91",
+          "abstract_word_count": 181,
+          "retrieved_at": "2026-10-16T13:11:27.909572+00:00",
+          "retrieval_status": "success",
+          "http_status": 200,
+          "canonical_page_separately_fetched": true,
+          "visible_author_list_matches_metadata": true,
+          "full_text_reviewed": false,
+          "experiments_reproduced": false
+        },
+        "proposed_relevance": "Compares frozen Qwen decision readouts with optional KL-anchored fine-tuning and budgeted reasoning; reported gains depend on backbone size and routing workload, not disclosure of hosted Jev internals.",
+        "proposed_relevance_zh": "比较冻结 Qwen 的决策读出、带 KL 锚定的可选微调与限预算推理；所报收益依赖骨干规模和路由任务，并不揭示托管 Jev 内部实现。",
+        "limitations": [
+          "The abstract’s comparisons concern Qwen3.5-4B and Qwen3-0.6B; broad claims about every LLM are not independently established here.",
+          "Reported text-generation preservation and reasoning gains were not reproduced; this is an independent framework rather than a reconstruction of Jev training."
+        ],
+        "limitations_zh": [
+          "摘要中的比较针对 Qwen3.5-4B 和 Qwen3-0.6B，本次不能据此确立所有 LLM 的普遍结论。",
+          "文本生成能力保留及推理收益尚未由本项目复现；这是独立框架，不是 Jev 训练方法的重建。"
+        ],
+        "action": "Propose curated promotion of an existing identity; do not append a duplicate source row or overwrite prior evidence grading.",
+        "proposed_new_source_count": 0
+      },
+      {
+        "canonical_url": "https://arxiv.org/abs/2610.02293",
+        "title": "HakemBench: A Turkish Benchmark of Typed Decisions",
+        "authors": [
+          "Teke, Sait Furkan"
+        ],
+        "first_submitted": "2026-10-01",
+        "reviewed_version": "v1",
+        "reviewed_version_url": "https://arxiv.org/abs/2610.02293v1",
+        "reviewed_version_date": "2026-10-01",
+        "primary_abstract_evidence": {
+          "abstract_provider": "arxiv_primary_abstract_page",
+          "abstract_sha256": "0c25730e17c18bc1dd3426d686567f1fa40f0daecca17b6540ea838254440e32",
+          "abstract_page_sha256": "602632b0df71edeb544392597fd6bbfc85c165bf0ae6759a4edefd5f7d2c31c7",
+          "abstract_word_count": 212,
+          "retrieved_at": "2026-10-16T13:11:27.971221+00:00",
+          "retrieval_status": "success",
+          "http_status": 200,
+          "canonical_page_separately_fetched": true,
+          "visible_author_list_matches_metadata": true,
+          "full_text_reviewed": false,
+          "experiments_reproduced": false
+        },
+        "proposed_relevance": "Turkish typed-decision evaluation reports decision quality, Brier-based probability quality and risk–coverage alongside input probes; most labels are AI-derived, and the lab’s model used feedback from earlier test results.",
+        "proposed_relevance_zh": "土耳其语类型化决策评测同时报告决策质量、基于 Brier 的概率质量、风险—覆盖及输入探查；多数标签由 AI 产生，实验室自身模型还使用过先前测试结果的反馈。",
+        "limitations": [
+          "The abstract explicitly says labels are not human-verified and the lab’s own model is not evaluated blindly; some tracks are flagged for test-informed training.",
+          "The composite combines distinct metrics; it is not a general correctness or calibration guarantee. Dataset contents, licensing details and benchmark execution were not independently checked in this pass."
+        ],
+        "limitations_zh": [
+          "摘要明确说明标签未由人工核验，自身模型不是盲测，部分任务因训练受到测试结果影响而被标记。",
+          "综合分合并不同指标，并非通用正确性或校准保证；本次未独立检查数据内容、许可细节或运行基准。"
+        ],
+        "action": "Propose curated promotion of an existing identity; do not append a duplicate source row or overwrite prior evidence grading.",
+        "proposed_new_source_count": 0
+      }
+    ],
+    "catalog_resources": [
+      {
+        "category": "Papers",
+        "title": "Benchmarking System One decision models against trained classifiers and language models for automated decision gates",
+        "by": "Rafe & Das · 2026-10-06 · v2",
+        "date": "2026-10-06",
+        "first_submitted": "2026-09-29",
+        "url": "https://arxiv.org/abs/2610.00346v2",
+        "en": "A common-request harness compares typed decision models, generative readouts and trained classifiers; accuracy, selective coverage and out-of-scope acceptance depend on label access and task.",
+        "zh": "用共同请求框架比较类型化决策模型、生成模型读出与训练分类器；准确率、选择性覆盖率和域外接纳取决于是否有任务标签及具体任务。"
+      },
+      {
+        "category": "Papers",
+        "title": "LLM-as-Jev: LLMs Are Already Jev-Style Decision Models -- When and How to Fine-Tune Them",
+        "by": "Li & Wagle · 2026-10-13 · v3",
+        "date": "2026-10-13",
+        "first_submitted": "2026-10-01",
+        "url": "https://arxiv.org/abs/2610.02076v3",
+        "en": "Compares frozen Qwen decision readouts with optional KL-anchored fine-tuning and budgeted reasoning; reported gains depend on backbone size and routing workload, not disclosure of hosted Jev internals.",
+        "zh": "比较冻结 Qwen 的决策读出、带 KL 锚定的可选微调与限预算推理；所报收益依赖骨干规模和路由任务，并不揭示托管 Jev 内部实现。"
+      },
+      {
+        "category": "Papers",
+        "title": "HakemBench: A Turkish Benchmark of Typed Decisions",
+        "by": "Teke · 2026-10-01 · v1",
+        "date": "2026-10-01",
+        "first_submitted": "2026-10-01",
+        "url": "https://arxiv.org/abs/2610.02293v1",
+        "en": "Turkish typed-decision evaluation reports decision quality, Brier-based probability quality and risk–coverage alongside input probes; most labels are AI-derived, and the lab’s model used feedback from earlier test results.",
+        "zh": "土耳其语类型化决策评测同时报告决策质量、基于 Brier 的概率质量、风险—覆盖及输入探查；多数标签由 AI 产生，实验室自身模型还使用过先前测试结果的反馈。"
+      }
+    ],
+    "display_annotations": [
+      {
+        "url": "https://arxiv.org/abs/2610.00346",
+        "title": "Benchmarking System One decision models against trained classifiers and language models for automated decision gates",
+        "first_submitted": "2026-09-29",
+        "topic": "direct-decision-research",
+        "relation": "direct",
+        "relevance": "A common-request harness compares typed decision models, generative readouts and trained classifiers; accuracy, selective coverage and out-of-scope acceptance depend on label access and task.",
+        "note": "Proposed display annotation based on the fixed original abstract and metadata. Preserve raw provider rows, their hashes and verification levels; no full-paper review or experimental reproduction.",
+        "evidence_url": "https://arxiv.org/abs/2610.00346v2",
+        "reviewed_at": "2026-10-16T13:15:58.427059+00:00"
+      },
+      {
+        "url": "https://arxiv.org/abs/2610.02076",
+        "title": "LLM-as-Jev: LLMs Are Already Jev-Style Decision Models -- When and How to Fine-Tune Them",
+        "first_submitted": "2026-10-01",
+        "topic": "direct-decision-research",
+        "relation": "direct",
+        "relevance": "Compares frozen Qwen decision readouts with optional KL-anchored fine-tuning and budgeted reasoning; reported gains depend on backbone size and routing workload, not disclosure of hosted Jev internals.",
+        "note": "Proposed display annotation based on the fixed original abstract and metadata. Preserve raw provider rows, their hashes and verification levels; no full-paper review or experimental reproduction.",
+        "evidence_url": "https://arxiv.org/abs/2610.02076v3",
+        "reviewed_at": "2026-10-16T13:15:58.427284+00:00"
+      },
+      {
+        "url": "https://arxiv.org/abs/2610.02293",
+        "title": "HakemBench: A Turkish Benchmark of Typed Decisions",
+        "first_submitted": "2026-10-01",
+        "topic": "direct-decision-research",
+        "relation": "direct",
+        "relevance": "Turkish typed-decision evaluation reports decision quality, Brier-based probability quality and risk–coverage alongside input probes; most labels are AI-derived, and the lab’s model used feedback from earlier test results.",
+        "note": "Proposed display annotation based on the fixed original abstract and metadata. Preserve raw provider rows, their hashes and verification levels; no full-paper review or experimental reproduction.",
+        "evidence_url": "https://arxiv.org/abs/2610.02293v1",
+        "reviewed_at": "2026-10-16T13:15:58.427291+00:00"
+      }
+    ],
+    "bibtex": "@misc{rafe2026decisiongates,\n  title = {{Benchmarking System One decision models against trained classifiers and language models for automated decision gates}},\n  author = {Rafe, Amir and Das, Subasish},\n  year = {2026},\n  date = {2026-10-06},\n  eprint = {2610.00346},\n  archivePrefix = {arXiv},\n  url = {https://arxiv.org/abs/2610.00346v2},\n  note = {Version 2, 2026-10-06; first posted 2026-09-29; preprint}\n}\n\n@misc{li2026llmasjev,\n  title = {{LLM-as-Jev: LLMs Are Already Jev-Style Decision Models -- When and How to Fine-Tune Them}},\n  author = {Li, Yinheng and Wagle, Justin},\n  year = {2026},\n  date = {2026-10-13},\n  eprint = {2610.02076},\n  archivePrefix = {arXiv},\n  url = {https://arxiv.org/abs/2610.02076v3},\n  note = {Version 3, 2026-10-13; first posted 2026-10-01; preprint}\n}\n\n@misc{teke2026hakembench,\n  title = {{HakemBench: A Turkish Benchmark of Typed Decisions}},\n  author = {Teke, Sait Furkan},\n  year = {2026},\n  date = {2026-10-01},\n  eprint = {2610.02293},\n  archivePrefix = {arXiv},\n  url = {https://arxiv.org/abs/2610.02293v1},\n  note = {Version 1, 2026-10-01; first posted 2026-10-01; preprint}\n}\n",
+    "new_expansion_resource_count": 0,
+    "preserve_existing_raw_rows": [
+      {
+        "url": "https://arxiv.org/abs/2610.00346",
+        "ledger": "data/ecosystem-sources.jsonl",
+        "raw_line_sha256": "a596473630e8c5aadfe5b3942bac67c9753a2d1dc60c83d8ecd7654323987c01",
+        "content_sha256": "050d7a13e36149030b34e2d61407da911bca27e00e1753bcfb728cff2eb6943c",
+        "abstract_sha256": "bb4850824fa40587169257ae1be12c1154c591a5daf692ec723c820addacd5ff",
+        "retrieved_at": "2026-10-16T06:53:48+00:00",
+        "verification_level": "content_screened"
+      },
+      {
+        "url": "https://arxiv.org/abs/2610.02076",
+        "ledger": "data/ecosystem-sources.jsonl",
+        "raw_line_sha256": "2cb19cdeab86a1c1dd5117db2255a13b3dc7ab05e67f522381d99e26b00709bd",
+        "content_sha256": "95d4426abd9ffa6bf90f54167f0bd51c7d4a398db475f1e5ea1260139b18a658",
+        "abstract_sha256": "ef9e996d83dbf3e2636415d36323458ee3b39329d24f908a2125555860ed60d7",
+        "retrieved_at": "2026-10-16T06:53:48+00:00",
+        "verification_level": "content_screened"
+      },
+      {
+        "url": "https://arxiv.org/abs/2610.02293",
+        "ledger": "data/ecosystem-sources.jsonl",
+        "raw_line_sha256": "e5989ef6cdee362ac6a33b8bfb4436558729cfc27bdf12230d62a4482b3231bd",
+        "content_sha256": "acbe5870426896a3ba864c8df8629330d3eb22f7d4eabcce3dbb1436b6d17db0",
+        "abstract_sha256": "0c25730e17c18bc1dd3426d686567f1fa40f0daecca17b6540ea838254440e32",
+        "retrieved_at": "2026-10-16T06:53:48+00:00",
+        "verification_level": "content_screened"
+      }
+    ],
+    "version_boundary_note": "LLM-as-Jev v3 abstract differs from the existing raw provider abstract. The fixed-version curated review and display annotation refer to v3; raw ledger hash, date, provider evidence and grade must remain unchanged.",
+    "review_scope": "Fixed-primary abstract/metadata caches, author lists, dates and rendering proposals only; no full-paper audit, experiment reproduction or new retrieval."
+  },
+  "parent_primary_abstract_checks": [
+    {
+      "url": "https://arxiv.org/abs/2610.00346v2",
+      "http_status": 200,
+      "abstract_sha256": "bb4850824fa40587169257ae1be12c1154c591a5daf692ec723c820addacd5ff",
+      "page_sha256": "ec1ea7a6c9a6a46c4dd0fc117c87493367f2f855c8be382c57ce99b473b4d592",
+      "hashes_match": true,
+      "authors_match": true,
+      "checked_at": "2026-10-16T13:15:39.913701+00:00",
+      "citation_date": [
+        "2026/09/29"
+      ],
+      "scope": "Fixed original abstract and citation metadata only; no whole-paper review or experiment reproduction."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.02076v3",
+      "http_status": 200,
+      "abstract_sha256": "efd3ecb17c1423a1fe4f2d8a952372bb5b11bd9744f96274af121ac1945b2355",
+      "page_sha256": "0687068bdcea520ff4ef3cc32972a3c40e70ad75338f653637baefbbe6fe4e91",
+      "hashes_match": true,
+      "authors_match": true,
+      "checked_at": "2026-10-16T13:15:39.913514+00:00",
+      "citation_date": [
+        "2026/10/01"
+      ],
+      "scope": "Fixed original abstract and citation metadata only; no whole-paper review or experiment reproduction."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.02293v1",
+      "http_status": 200,
+      "abstract_sha256": "0c25730e17c18bc1dd3426d686567f1fa40f0daecca17b6540ea838254440e32",
+      "page_sha256": "602632b0df71edeb544392597fd6bbfc85c165bf0ae6759a4edefd5f7d2c31c7",
+      "hashes_match": true,
+      "authors_match": true,
+      "checked_at": "2026-10-16T13:15:39.913421+00:00",
+      "citation_date": [
+        "2026/10/01"
+      ],
+      "scope": "Fixed original abstract and citation metadata only; no whole-paper review or experiment reproduction."
+    }
+  ],
+  "checkpoint_review": {
+    "schema_version": 1,
+    "reviewed_at": "2026-10-16T13:20:25.200496+00:00",
+    "baseline_commit": "c23b7b1975f27d939865eb84ba49027cb864f7ac",
+    "input_sha256": "425df889046696316ef45edcdcbcb09c2904bc811091b94e9fe2c95a1b62593f",
+    "accepted_sha256": "425df889046696316ef45edcdcbcb09c2904bc811091b94e9fe2c95a1b62593f",
+    "accepted_urls": [
+      "https://huggingface.co/ufakai/ufakzeka-karar"
+    ],
+    "accepted_count": 1,
+    "decision": "Accept one distinct whole checkpoint package, separate from the already-known implementation repository; no model execution or scientific validation implied.",
+    "corrections": [],
+    "identity_checks": {
+      "current_ecosystem_and_research_ledgers": true,
+      "frozen_baseline": true,
+      "case_insensitive_url_comparison": true,
+      "canonical_url_duplicate": false,
+      "body_hash_duplicate": false,
+      "known_code_repository_already_recorded": true,
+      "known_benchmark_repository_already_recorded": true,
+      "record_safe": true
+    },
+    "evidence_checks": {
+      "fixed_model_card_sha256": "2eb35606e2c919b4683242ddc4d1f28e0bae6e0bf844559db771c4f58368d2f5",
+      "resolved_revision": "94e20d3be85bf2cfc1abb56717d0807d996881dd",
+      "card_byte_count_matches": true,
+      "readable_characters": 49716,
+      "card_metadata_tree_code_readme_and_both_benchmark_readmes_hashes_match": true,
+      "fixed_primary_paper_hash_matches": true,
+      "fixed_primary_paper_links_checkpoint_and_known_projects": true,
+      "named_files_present": [
+        "model.safetensors",
+        "calibrator.json",
+        "config.json",
+        "karar.py",
+        "SHA256SUMS",
+        "LICENSE"
+      ],
+      "weight_contents_downloaded_or_validated": false
+    },
+    "scope_checks": [
+      "The card explicitly states that earlier test results shaped training in guardrail, moderation and customer-support tracks; current scores are not blind.",
+      "The temperature-scaling discussion separates earlier unseen support questions from later training on those questions. The released run’s calibration comparison is not an unseen-question test and shares texts with fitting data.",
+      "The candidate’s short description preserves reported worsening support-task calibration and does not promise calibrated correctness.",
+      "The model card and metadata declare Apache-2.0 for weights/loader; the candidate does not extend that declaration to all upstream source contents.",
+      "Known HakemBench GitHub and HF READMEs match exactly, but this is not asserted as a data-row equivalence audit; mirror distribution is zero new resources.",
+      "One complete checkpoint is counted; model components, loader, calibration file and benchmark mirrors are not split into extra resources."
+    ],
+    "known_navigation_link_fixes_approved": [
+      {
+        "url": "https://github.com/ufakai/hakembench",
+        "new_source_count": 0
+      },
+      {
+        "url": "https://github.com/ufakai/ufakzeka-karar",
+        "new_source_count": 0
+      }
+    ],
+    "verification_grade_unchanged": true,
+    "retrieved_at_unchanged": true,
+    "body_hash_unchanged": true,
+    "limits": [
+      "Model-card sections, source relationship and public file inventory only; no weights, prediction records or source code executed.",
+      "No full-paper review, model quality validation, calibration reanalysis or independent experiment reproduction."
+    ],
+    "actions": {
+      "new_network_requests": 0,
+      "model_calls": 0,
+      "tests_run": false,
+      "shared_repository_modified": false,
+      "original_candidate_modified": false
+    },
+    "privacy": "No raw source bodies, contact details, credentials or private cache paths included in this review."
+  },
+  "checkpoint_parent_check": {
+    "url": "https://huggingface.co/ufakai/ufakzeka-karar/raw/94e20d3be85bf2cfc1abb56717d0807d996881dd/README.md",
+    "http_status": 200,
+    "content_sha256": "2eb35606e2c919b4683242ddc4d1f28e0bae6e0bf844559db771c4f58368d2f5",
+    "hash_match": true,
+    "checked_at": "2026-10-16T13:19:39.528302+00:00",
+    "scope": "Fixed model-card overview, training, calibration and limitations prose read; no checkpoint, loader, dataset rows or calibration parameters downloaded or executed."
+  },
+  "companion_scope": {
+    "schema_version": 1,
+    "reviewed_at": "2026-10-16T13:18:22+00:00",
+    "baseline_commit": "c23b7b1975f27d939865eb84ba49027cb864f7ac",
+    "candidate_count": 1,
+    "accepted_pending_independent_review": [
+      "https://huggingface.co/ufakai/ufakzeka-karar"
+    ],
+    "output_sha256": "425df889046696316ef45edcdcbcb09c2904bc811091b94e9fe2c95a1b62593f",
+    "schema_errors": [],
+    "primary_paper_pages": [
+      {
+        "url": "https://arxiv.org/html/2610.00346v2",
+        "content_sha256": "c093578e7c19601c5ff81aab7a3e97a9b98e2c6ad2ca4e30748c2c49e29a6756",
+        "retrieved_at": "2026-10-16T13:15:16+00:00"
+      },
+      {
+        "url": "https://arxiv.org/html/2610.02076v3",
+        "content_sha256": "0351fd7fbcc1eb9cef14238e3ff0a04f9fb6f2fff01aaf5d7410ad24b7df6813",
+        "retrieved_at": "2026-10-16T13:15:16+00:00"
+      },
+      {
+        "url": "https://arxiv.org/html/2610.02293v1",
+        "content_sha256": "747f99e8d8f88906acd9e6a64747015dff3ee6a83aaf433605977335827e6ee6",
+        "retrieved_at": "2026-10-16T13:15:15+00:00"
+      }
+    ],
+    "known_resource_link_fixes": [
+      {
+        "paper_url": "https://arxiv.org/abs/2610.02293v1",
+        "resource_url": "https://github.com/ufakai/hakembench",
+        "label_en": "Benchmark code and public data",
+        "label_zh": "基准代码与公开数据",
+        "known_resource_link_fix": true,
+        "new_resource_count": 0,
+        "verification_level": "content_screened",
+        "primary_mapping_evidence": "https://arxiv.org/html/2610.02293v1",
+        "document_evidence": {
+          "url": "https://raw.githubusercontent.com/ufakai/hakembench/main/README.md",
+          "retrieved_url": "https://raw.githubusercontent.com/ufakai/hakembench/main/README.md",
+          "retrieved_at": "2026-10-16T13:15:57+00:00",
+          "http_status": 200,
+          "content_type": "text/plain; charset=utf-8",
+          "content_bytes": 40774,
+          "content_sha256": "13b6220379815cf28ffffc47cf577db4d8b5e4fe29e4425db76a5fe70ecb8dcc"
+        }
+      },
+      {
+        "paper_url": "https://arxiv.org/abs/2610.02293v1",
+        "resource_url": "https://github.com/ufakai/ufakzeka-karar",
+        "label_en": "Model implementation",
+        "label_zh": "模型实现代码",
+        "known_resource_link_fix": true,
+        "new_resource_count": 0,
+        "verification_level": "content_screened",
+        "primary_mapping_evidence": "https://arxiv.org/html/2610.02293v1",
+        "document_evidence": {
+          "url": "https://raw.githubusercontent.com/ufakai/ufakzeka-karar/main/README.md",
+          "retrieved_url": "https://raw.githubusercontent.com/ufakai/ufakzeka-karar/main/README.md",
+          "retrieved_at": "2026-10-16T13:15:57+00:00",
+          "http_status": 200,
+          "content_type": "text/plain; charset=utf-8",
+          "content_bytes": 9620,
+          "content_sha256": "7611a0d1eac61d2958c1cf5bd7328fdcff72fb0faebe3c3eea2beb1c2970f4de"
+        }
+      }
+    ],
+    "same_release_distribution": {
+      "url": "https://huggingface.co/datasets/ufakai/HakemBench",
+      "known_project": "https://github.com/ufakai/hakembench",
+      "new_resource_count": 0,
+      "reason": "The same named benchmark release is already represented by the author code/data project; both current READMEs have the exact same body hash. No data-byte equivalence is asserted because rows were not downloaded.",
+      "readme_sha256": "13b6220379815cf28ffffc47cf577db4d8b5e4fe29e4425db76a5fe70ecb8dcc",
+      "documents": [
+        {
+          "url": "https://huggingface.co/datasets/ufakai/HakemBench/raw/main/README.md",
+          "retrieved_url": "https://huggingface.co/datasets/ufakai/HakemBench/raw/main/README.md",
+          "retrieved_at": "2026-10-16T13:15:57+00:00",
+          "http_status": 200,
+          "content_type": "text/plain; charset=utf-8",
+          "content_bytes": 40774,
+          "content_sha256": "13b6220379815cf28ffffc47cf577db4d8b5e4fe29e4425db76a5fe70ecb8dcc"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/ufakai/hakembench/main/README.md",
+          "retrieved_url": "https://raw.githubusercontent.com/ufakai/hakembench/main/README.md",
+          "retrieved_at": "2026-10-16T13:15:57+00:00",
+          "http_status": 200,
+          "content_type": "text/plain; charset=utf-8",
+          "content_bytes": 40774,
+          "content_sha256": "13b6220379815cf28ffffc47cf577db4d8b5e4fe29e4425db76a5fe70ecb8dcc"
+        }
+      ]
+    },
+    "no_verified_author_artifact": [
+      {
+        "paper": "https://arxiv.org/html/2610.00346v2",
+        "reason": "The fixed manuscript describes released harness/materials, but no explicit public author release URL was located in its inspected text and outbound links; no repository was guessed."
+      },
+      {
+        "paper": "https://arxiv.org/html/2610.02076v3",
+        "reason": "The inspected fixed manuscript provides third-party baseline/model links, but no explicit author code/data/model URL was verified. Baselines were not relabeled as author companions."
+      }
+    ],
+    "scope": "Three fixed-version papers; author-link and availability inspection, model-card sections and public metadata/tree only. No full-paper review, code/model execution, raw prediction/data-row or archive download.",
+    "counting": "Only the distinct model checkpoint is proposed as new. Known projects, benchmark mirrors, model components and background dependencies add zero.",
+    "absence_limit": "No verified link in the inspected snapshots is not proof that no release exists elsewhere.",
+    "privacy": "No source bodies, contacts, credentials or local cache paths in candidate/review output.",
+    "shared_repository_modified": false
+  },
+  "classification_proposal": {
+    "schema_version": 1,
+    "baseline_commit": "c23b7b1975f27d939865eb84ba49027cb864f7ac",
+    "records": [
+      {
+        "annotation": {
+          "url": "https://arxiv.org/abs/2510.01237",
+          "title": "Confidence-Aware Routing for Large Language Model Reliability Enhancement: A Multi-Signal Approach to Pre-Generation Hallucination Mitigation",
+          "first_submitted": "2025-09-23",
+          "relation": "background",
+          "topic": "confidence-routing",
+          "relevance": "Background on confidence-based routing among local generation, retrieval, larger models and human review; this is prior work rather than an empirical study of Jev.",
+          "evidence_url": "https://arxiv.org/abs/2510.01237v1",
+          "reviewed_at": "2026-10-16T13:18:34.028663+00:00",
+          "note": "Display-only title, first-submission date and scope review from the fixed primary abstract. Retain the original source record, body hash, retrieval time and content-screened grade; no full-paper review or experimental reproduction."
+        },
+        "evidence": {
+          "url": "https://arxiv.org/abs/2510.01237v1",
+          "retrieved_at": "2026-10-16T13:18:34.028663+00:00",
+          "http_status": 200,
+          "page_sha256": "e6a7352b139a6d991889c6bd18481b482eb51c8c56c68bc0e628995e8618c753",
+          "abstract_sha256": "0cd52dd629f081210df4dc8a4e778342c3ac203a111d67d91a7c81bd4c06b22c",
+          "citation_date": [
+            "2025/09/23"
+          ],
+          "citation_title": "Confidence-Aware Routing for Large Language Model Reliability Enhancement: A Multi-Signal Approach to Pre-Generation Hallucination Mitigation"
+        },
+        "new_source_count": 0
+      },
+      {
+        "annotation": {
+          "url": "https://arxiv.org/abs/2609.08183",
+          "title": "NeoHorse-1: Towards Recursive Self-Improvement via Agentic Post-Training with Routing Harness",
+          "first_submitted": "2026-09-08",
+          "relation": "direct",
+          "topic": "decision-model-adaptation",
+          "relevance": "Agentic post-training and routing with a separate NeoHorse-Jev-4B typed-decision adaptation in v2; keep the broader family-level benchmark results separate from the adaptation.",
+          "evidence_url": "https://arxiv.org/abs/2609.08183v2",
+          "reviewed_at": "2026-10-16T13:18:34.037338+00:00",
+          "note": "Display-only title, first-submission date and scope review from the fixed primary abstract. Retain the original source record, body hash, retrieval time and content-screened grade; no full-paper review or experimental reproduction."
+        },
+        "evidence": {
+          "url": "https://arxiv.org/abs/2609.08183v2",
+          "retrieved_at": "2026-10-16T13:18:34.037338+00:00",
+          "http_status": 200,
+          "page_sha256": "189af170532802c0e3451cb8f2c4e762ca488683e5946fd8e6e21a45239fe9b7",
+          "abstract_sha256": "128514542f83f65dc695d6d92fb4d2a25fe686a43b73ab733e162fad03667256",
+          "citation_date": [
+            "2026/09/08"
+          ],
+          "citation_title": "NeoHorse-1: Towards Recursive Self-Improvement via Agentic Post-Training with Routing Harness"
+        },
+        "new_source_count": 0
+      }
+    ],
+    "counting": "Both identities are already in the frozen baseline. Display-only classification/scope corrections add zero resources and preserve raw source evidence.",
+    "scope": "Fixed primary abstracts and submission-date metadata only. No full-paper review or independent model validation; no source execution or shared-file mutation."
+  },
+  "classification_review": {
+    "schema_version": 1,
+    "reviewed_at": "2026-10-16T13:19:29.564620+00:00",
+    "verdict": "accept_both_display_only_annotations",
+    "required_corrections": [],
+    "proposal_sha256": "023611260a5303128c144ceba27797fa3b57b75ce44704ebcc7a8de5250c26c1",
+    "findings": [
+      {
+        "url": "https://arxiv.org/abs/2510.01237",
+        "result": "Fixed v1 abstract describes generic pre-generation confidence routing, not Jev or typed-decision empirical evaluation. Background prior-art classification and 2025-09-23 first-submission date are supported."
+      },
+      {
+        "url": "https://arxiv.org/abs/2609.08183",
+        "result": "Fixed v2 explicitly introduces NeoHorse-Jev-4B as a prefill-only structured-decision/probability adaptation. Direct relevance is supported, while its broad eleven-benchmark family results must remain separate from that adaptation.",
+        "first_submitted": "2026-09-08",
+        "v2_date": "2026-10-14"
+      }
+    ],
+    "evidence_checks": "Both cached page and abstract SHA-256 values, citation titles, first-submission dates and explicit fixed version URLs match the proposal.",
+    "raw_rows_to_preserve": {
+      "https://arxiv.org/abs/2510.01237": {
+        "raw_line_sha256": "013e3a97de5033e5505cec2bab98c2556cb2f84b2bb2b08cb5372120609fc3f2",
+        "content_sha256": "6823ea8e7066144044fbde65a89b019e3e16275260c4e93f0df74c817816a1a8",
+        "retrieved_at": "2026-10-16T01:23:09+00:00",
+        "verification_level": "content_screened"
+      },
+      "https://arxiv.org/abs/2609.08183": {
+        "raw_line_sha256": "96e7f435d33b736cf498c147f999274196bad23fdae87d85ab1d8493753d9e33",
+        "content_sha256": "4310cb02a51588a3b12bc28a04c25bc30579b2e04489397f193239969d9e0e9c",
+        "retrieved_at": "2026-10-16T01:20:22+00:00",
+        "verification_level": "content_screened"
+      }
+    },
+    "new_source_count": 0,
+    "expansion_target_count_change": 0,
+    "counting_note": "Both works are already in the frozen baseline. The prior-art relation/category changes presentation and topical counts, not unique-source or checked-source counts.",
+    "scope": {
+      "new_http_requests": 0,
+      "test_suites_run": 0,
+      "source_code_executed": false,
+      "shared_repository_modified": false,
+      "full_paper_review": false
+    }
+  },
+  "comparison_review": {
+    "schema_version": 1,
+    "reviewed_at": "2026-10-16T13:20:19.497537+00:00",
+    "verdict": "accepted_after_wording_corrections",
+    "required_corrections": [],
+    "proposal_sha256": "c2bf039e03e294c787be02c155aa123c131e71d212f11397520bd8dca7b6297d",
+    "accepted_drafts": [
+      {
+        "name": "awesomejev-baseline-comparison.en.md",
+        "sha256": "9495f938538b9a1fdb26b2e18e140bc4a2c88b25912de6c9471051c797dd3a06"
+      },
+      {
+        "name": "awesomejev-baseline-comparison.zh-CN.md",
+        "sha256": "d46cd0b56b82ac9d756aa89e1d1864339df12a2b14b0201f41fcb1381aaabdfe"
+      }
+    ],
+    "checks": [
+      "Evidence paragraphs stay within the three checked fixed-version abstracts and the source hashes/metadata match the already accepted promotion evidence.",
+      "The right-hand column is explicitly proposed comparison practice, not a description of experiments executed by this collection.",
+      "Task-specific label availability is not equated with a model having no training labels. Supervised versus zero-shot settings remain distinct.",
+      "Qwen readout, fine-tuning and budgeted reasoning are separate interventions; no universal LLM ranking or disclosure of hosted Jev internals is claimed.",
+      "HakemBench model-generated reference labels and earlier-test-informed author-model training remain visible. Translation probes are not promoted to independent cross-language validation.",
+      "Reported measures are not misdescribed as three universal composite scores, and abstract-level risk claims are not generalized to deployment."
+    ],
+    "resolved_wording_items": [
+      "Chinese no-task-label setting clarified; 已训练的分类器 wording used.",
+      "Closing now refers to reported measures rather than implying every paper reports a composite score.",
+      "Independent architecture wording and publication introduction now avoid ambiguous disclosure/candidate-status phrasing."
+    ],
+    "new_http_requests": 0,
+    "test_suites_run": 0,
+    "source_code_executed": false,
+    "shared_repository_modified": false,
+    "new_source_count": 0
+  },
+  "guide_proposal_sha256": "a1635b9b794e3841c06d6c9cf16f86095373029b66d9f3550c0fc132cf09141e",
+  "writing_review": "The comparison separates author-reported abstract findings from proposed matched checks. The public guide specifies highest observed accuracy and known test exposure; it does not claim statistically universal rankings, reproduced experiments or a deployment risk guarantee.",
+  "counting_scope": "One distinct checkpoint. Three known papers, their curated promotion, five display annotations, two existing code links and a benchmark mirror add no further identities.",
+  "privacy": "No source bodies, model weights, contacts, credentials or local cache paths are included.",
+  "final_independent_review": {
+    "schema_version": 1,
+    "reviewed_at": "2026-10-16T13:26:32+00:00",
+    "ecosystem": {
+      "old_bytes_preserved": true,
+      "new_rows": 1
+    },
+    "research": {
+      "old_bytes_preserved": true,
+      "new_rows": 0
+    },
+    "new_model_exact_accepted_fields": true,
+    "counts": {
+      "editorial_reviewed": 4,
+      "content_screened": 2365,
+      "abstract_checked": 1833,
+      "metadata_only": 47,
+      "raw_records": 4263,
+      "unique_records": 4249,
+      "duplicate_records": 14,
+      "checked_sources": 4202
+    },
+    "expansion": 754,
+    "unique_discovery_descriptions": 419,
+    "all_discoveries_have_chinese": true,
+    "bib_count": 64,
+    "static_rows": {
+      "index.html": 103,
+      "zh/index.html": 103,
+      "papers/index.html": 56,
+      "zh/papers/index.html": 56,
+      "discoveries/index.html": 754,
+      "zh/discoveries/index.html": 754
+    },
+    "new_annotation_count": 5,
+    "projection_checks": [
+      {
+        "url": "https://arxiv.org/abs/2610.00346",
+        "source_hash_preserved": true,
+        "source_grade_preserved": true,
+        "retrieval_time_preserved": true,
+        "display_title_matches": true,
+        "display_description_matches": true,
+        "display_relation_matches": true,
+        "not_counted_as_new": true
+      },
+      {
+        "url": "https://arxiv.org/abs/2610.02076",
+        "source_hash_preserved": true,
+        "source_grade_preserved": true,
+        "retrieval_time_preserved": true,
+        "display_title_matches": true,
+        "display_description_matches": true,
+        "display_relation_matches": true,
+        "not_counted_as_new": true
+      },
+      {
+        "url": "https://arxiv.org/abs/2610.02293",
+        "source_hash_preserved": true,
+        "source_grade_preserved": true,
+        "retrieval_time_preserved": true,
+        "display_title_matches": true,
+        "display_description_matches": true,
+        "display_relation_matches": true,
+        "not_counted_as_new": true
+      },
+      {
+        "url": "https://arxiv.org/abs/2510.01237",
+        "source_hash_preserved": true,
+        "source_grade_preserved": true,
+        "retrieval_time_preserved": true,
+        "display_title_matches": true,
+        "display_description_matches": true,
+        "display_relation_matches": true,
+        "not_counted_as_new": true
+      },
+      {
+        "url": "https://arxiv.org/abs/2609.08183",
+        "source_hash_preserved": true,
+        "source_grade_preserved": true,
+        "retrieval_time_preserved": true,
+        "display_title_matches": true,
+        "display_description_matches": true,
+        "display_relation_matches": true,
+        "not_counted_as_new": true
+      }
+    ],
+    "guide": {
+      "en": {
+        "sections": 13,
+        "new_paragraphs": 3
+      },
+      "zh": {
+        "sections": 13,
+        "new_paragraphs": 3
+      }
+    },
+    "baseline_commit": "c23b7b1975f27d939865eb84ba49027cb864f7ac",
+    "decision": "no_blocking_findings",
+    "scope": "Read-only current diff, preserved-ledger, count, public-schema profile and privacy review. No test suite, source/network request, model loading or external code execution.",
+    "schema_profile_matches_previously_accepted_model_record": true,
+    "final_docs_header_and_tail_counts_consistent": true,
+    "privacy_matches": {
+      "local_or_temporary_path": false,
+      "contact_email": false,
+      "credential": false,
+      "bulk_source_field": false
+    },
+    "source_boundaries": [
+      "The one new ufakzeka-karar model record exactly matches the independently accepted checkpoint candidate; no components, code mirrors or benchmark distribution are counted again.",
+      "Three papers are curated promotions of known identities. Their dates, titles and summaries are display annotations, preserving all original provider evidence and grades.",
+      "The two further taxonomy annotations preserve raw evidence: the 2025 routing paper is background, and NeoHorse family results remain separate from its v2 typed-decision adaptation.",
+      "The checkpoint card’s test-informed training and support-calibration limitations remain visible; no weight loading or independent performance validation is claimed.",
+      "The guide distinguishes task-label access, frozen readout versus adaptation/reasoning, and AI labels/test exposure. Proposed matched checks are separated from author findings and universal guarantees."
+    ],
+    "required_corrections": []
+  }
+}

@@ -935,6 +935,17 @@
       ],
       "evidence_scope": "One whole author code repository beyond the already-known dataset. Fixed-commit README and three selected directories reviewed; independent cached hash checks and parent README refetch matched. No archive restoration, source execution or experimental reproduction.",
       "accepted_at": "2026-10-16T12:58:27.812481+00:00"
+    },
+    {
+      "name": "turkish_typed_decision_checkpoint",
+      "input_sha256": "425df889046696316ef45edcdcbcb09c2904bc811091b94e9fe2c95a1b62593f",
+      "screened_records_proposed": 1,
+      "accepted_count": 1,
+      "accepted_urls": [
+        "https://huggingface.co/ufakai/ufakzeka-karar"
+      ],
+      "evidence_scope": "One whole author checkpoint separate from known code. Fixed model-card training/calibration/limitations sections and public inventory independently reviewed; parent card refetch matched. No weights, code, raw predictions or data rows loaded or executed.",
+      "accepted_at": "2026-10-16T13:22:46.235793+00:00"
     }
   ]
 }

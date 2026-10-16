@@ -1,6 +1,6 @@
 # Resource expansion — 16 October 2026
 
-**753 newly added, evidence-checked sources / target: at least 301.**
+**754 newly added, evidence-checked sources / target: at least 301.**
 
 [Main collection](../README.md) · [Website source search](https://awesomejev.github.io/#corpus) · [Machine-readable progress](../data/expansion-progress-2026-10-16.json) · [Frozen baseline](../data/expansion-baseline-2026-10-16.json) · [Prior-citation supplement](../data/expansion-baseline-supplement-2026-10-16.json)
 
@@ -8,13 +8,13 @@ The baseline is [commit 3519c15](https://github.com/reacher-z/Awesome-Jev/tree/3
 
 Only sources in the [reviewed intake](../data/expansion-intake-2026-10-16.json) count toward this expansion. This is a discovery directory with explicit screening levels. **Direct** sources concern Jev or typed decision systems; **adjacent** resources implement closely related methods; **background** papers provide research context. Listing is not an endorsement or independent reproduction. The short descriptions explain relevance, not a universal recommendation.
 
-**中文：本轮已新增 753 项有核查证据的资源，目标至少 301 项。** 已有台账、精选与引用链接、重复正文或论文题名均不重复计数，仅元数据条目不计入目标。下表区分直接相关、邻近方法与背景研究；自动内容筛查或摘要检查不等于全文评审，也不代表实验复现。
+**中文：本轮已新增 754 项有核查证据的资源，目标至少 301 项。** 已有台账、精选与引用链接、重复正文或论文题名均不重复计数，仅元数据条目不计入目标。下表区分直接相关、邻近方法与背景研究；自动内容筛查或摘要检查不等于全文评审，也不代表实验复现。
 
 | Resource type | Newly added |
 | --- | ---: |
 | Datasets | 101 |
 | Guides and evaluations | 38 |
-| Models | 53 |
+| Models | 54 |
 | Papers | 27 |
 | Projects | 193 |
 | Research foundations | 341 |
@@ -222,6 +222,7 @@ Only sources in the [reviewed intake](../data/expansion-intake-2026-10-16.json) 
 | [Technique Router (MiniLM)](https://huggingface.co/chopratejas/technique-router) | adjacent · `content_screened` | MiniLM router selecting image-compression techniques from natural-language queries, an adjacent task-specific routing example. |
 | [Tiny-Jev](https://huggingface.co/lostargon/Tiny-Jev) | direct · `content_screened` | Independent Tiny-Jev implementation documenting typed probabilities and its separation from TypeSafe's weights and code. |
 | [typed-decisions-minilm-l6-specialist](https://huggingface.co/adaptive-classifier/typed-decisions-minilm-l6-specialist) | direct · `content_screened` | Workflow-specific classifier heads over a frozen MiniLM encoder; the card explicitly identifies supervised specialist scope. |
+| [ufakzeka-karar — Turkish typed-decision checkpoint](https://huggingface.co/ufakai/ufakzeka-karar) | direct · `content_screened` | Turkish typed-decision checkpoint with shipped temperature scaling; its card flags test-informed training and worsening support-task calibration. Weights were not loaded or independently evaluated. |
 | [vistalab-system-one-12b](https://huggingface.co/UlkuTuncerKucuktas/vistalab-system-one-12b) | direct · `content_screened` | Turkish System One checkpoint using candidate-letter probabilities for finite-option questions. |
 | [W1-JEV](https://huggingface.co/WhaletechAI/W1-JEV) | direct · `content_screened` | W1 diffusion-model card documenting structured decision tasks and comparison artifacts, with publisher-reported performance. |
 | [Yway (ရွေး)](https://huggingface.co/aungthuhein-dev/yway-system1-xlmr) | direct · `content_screened` | Burmese XLM-RoBERTa decision model with Choice, Noul and Score questions and per-answer probabilities. |

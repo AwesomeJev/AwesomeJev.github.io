@@ -419,6 +419,7 @@
     "Anonymous ordinal-scale audit code, frozen indexes and documented prediction releases; original text and post-trained checkpoints are omitted, and unavailable historical data revisions can block exact reconstruction.": "匿名有序量表审查代码、冻结索引及文档所述预测发布材料；不含原始文本和后训练检查点，部分历史数据版本不可用可能阻止精确重建。",
     "Author checkpoint bundle for Jeva with backbone, adapter and decision-head files; weights were not loaded, and the inspected card specifies no model license.": "Jeva 作者检查点包，目录含骨干、适配器与决策头文件；此次未加载权重，所查模型卡未声明模型许可。",
     "Author dashboard presents paired factual-probe and action-decision diagnostics across agent tasks; probe correctness does not establish complete understanding or isolate the cause of a wrong action.": "作者交互报告展示 agent 任务中的事实探查与动作决策配对诊断；探查答对不等于完整理解，也不能单独确定错误动作的成因。",
-    "Attack-generation and offline analysis code for JevAdvBench separates recorded-response replay from fresh hosted inference; labels are mostly model-derived, and new API runs need not repeat saved answers.": "JevAdvBench 攻击生成与离线分析代码，将已记录响应的重算与新的托管推理分开；标签主要来自模型，新 API 运行不保证重现保存的答案。"
+    "Attack-generation and offline analysis code for JevAdvBench separates recorded-response replay from fresh hosted inference; labels are mostly model-derived, and new API runs need not repeat saved answers.": "JevAdvBench 攻击生成与离线分析代码，将已记录响应的重算与新的托管推理分开；标签主要来自模型，新 API 运行不保证重现保存的答案。",
+    "Turkish typed-decision checkpoint with shipped temperature scaling; its card flags test-informed training and worsening support-task calibration. Weights were not loaded or independently evaluated.": "土耳其语类型化决策检查点，附温度缩放参数；模型卡标注训练参考了测试结果，并报告客服任务的校准恶化。此次未加载或独立评测权重。"
   }
 }
