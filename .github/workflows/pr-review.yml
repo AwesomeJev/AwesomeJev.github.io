@@ -25,7 +25,7 @@ jobs:
           script: |
             const marker = '<!-- awesome-jev-automated-review -->';
             const pr = context.payload.pull_request;
-            if (!pr || !Number.isInteger(pr.number)) return;
+            if (!pr || !Number.isInteger(pr.number) || pr.state !== 'open') return;
             const coordinates = { ...context.repo, pull_number: pr.number };
             const files = [];
             let complete = false;

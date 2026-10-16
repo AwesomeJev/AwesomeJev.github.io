@@ -255,6 +255,26 @@ class Ledger:
         return cls([json.loads(line) for line in lines], lines)
 
 
+def canonical_page_observed(incoming):
+    """Require an actually screened body fetched from this canonical source."""
+    if incoming.get("verification_level") != "content_screened" or incoming.get("status") != "screened":
+        return False
+    if not re.fullmatch(r"[a-f0-9]{64}", str(incoming.get("content_sha256", ""))):
+        return False
+    source = incoming.get("canonical_url") or incoming.get("url")
+    fetched = incoming.get("retrieved_url")
+    try:
+        public_url(source)
+        public_url(fetched)
+        return index.canonical(source) == index.canonical(fetched)
+    except FetchError:
+        return False
+
+
+def has_abstract_provenance(record):
+    return any(key in record for key in ("abstract_provider", "abstract_sha256", "canonical_page_separately_fetched"))
+
+
 def merge_records(old: Ledger, incoming, max_new=None, policy=None):
     """Keep old bytes on unchanged hashes/failure; never grant editorial status."""
     rows, lines = list(old.rows), list(old.lines)
@@ -283,6 +303,13 @@ def merge_records(old: Ledger, incoming, max_new=None, policy=None):
             i = positions[key]
             prior = rows[i]
             if content_hash(new) and content_hash(new) == content_hash(prior):
+                if has_abstract_provenance(prior) and prior.get("canonical_page_separately_fetched") is not True and canonical_page_observed(new):
+                    # A substantive provenance repair, not a timestamp refresh:
+                    # retain every other field, including prior abstract evidence.
+                    repaired = {**prior, "canonical_page_separately_fetched": True}
+                    rows[i] = repaired
+                    lines[i] = json.dumps(repaired, ensure_ascii=False, sort_keys=True) + "\n"
+                    changes["changed"].append(key)
                 continue
             if LEVEL.get(new.get("verification_level"), 0) < LEVEL.get(prior.get("verification_level"), 0) and prior.get("verification_level") != "editorial_reviewed":
                 changes["preserved_after_failure"] += 1
@@ -299,6 +326,8 @@ def merge_records(old: Ledger, incoming, max_new=None, policy=None):
             for field in ("editorial_note", "manual_notes", "reviewed_by", "review_date", "curated"):
                 if field in prior:
                     merged[field] = prior[field]
+            if has_abstract_provenance(merged) and new.get("verification_level") == "content_screened":
+                merged["canonical_page_separately_fetched"] = canonical_page_observed(new)
             rows[i] = merged
             lines[i] = json.dumps(merged, ensure_ascii=False, sort_keys=True) + "\n"
             if content_hash(merged):
@@ -310,6 +339,8 @@ def merge_records(old: Ledger, incoming, max_new=None, policy=None):
             if content_hash(new) and content_hash(new) in hashes:
                 changes["duplicates"] += 1
                 continue
+            if has_abstract_provenance(new) and new.get("verification_level") == "content_screened":
+                new["canonical_page_separately_fetched"] = canonical_page_observed(new)
             positions[key] = len(rows)
             rows.append(new)
             separator = "\n" if lines and not lines[-1].endswith("\n") else ""

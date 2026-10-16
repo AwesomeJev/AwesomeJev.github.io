@@ -1,0 +1,393 @@
+{
+  "updated": "2026-10-16",
+  "en": {
+    "title": "Jev guide: typed decisions, probabilities, and evaluation",
+    "description": "A source-backed introduction to Jev, its decision primitives, confidence, evaluation methods, and independent model alternatives.",
+    "intro": "Jev is a useful case study in models that return decisions for software. This independent guide separates documented interfaces, provider claims, and empirical evaluation. It does not reproduce model experiments.",
+    "sections": [
+      {
+        "id": "what-is-jev",
+        "title": "What is Jev?",
+        "paragraphs": [
+          {
+            "text": "Jev is TypeSafe’s System One model. A request supplies state and typed questions; the response contains bounded answers and probabilities that application code can use for classification, routing, or review.",
+            "sources": [
+              {
+                "label": "TypeSafe introduction",
+                "url": "https://docs.typesafe.ai/introduction"
+              }
+            ]
+          },
+          {
+            "text": "TypeSafe describes its training as reinforcement learning for calibrated decisions, or RLCD. That description is a provider claim, not enough information to reconstruct Jev’s architecture or training procedure.",
+            "sources": [
+              {
+                "label": "TypeSafe launch article",
+                "url": "https://typesafe.ai/blog/introducing-system-one-models-and-jev"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "typed-output-and-llms",
+        "title": "How does a typed decision differ from an LLM’s structured output?",
+        "paragraphs": [
+          {
+            "text": "A typed decision interface specifies the permitted alternatives before inference. Generative LLMs can also use constrained decoding to produce structured outputs. An interface alone does not establish which model is more accurate, calibrated, or efficient.",
+            "sources": [
+              {
+                "label": "XGrammar paper",
+                "url": "https://arxiv.org/abs/2411.15100"
+              }
+            ]
+          },
+          {
+            "text": "A valid answer can still select the wrong option. Keep schema validity separate from semantic correctness, and test ambiguous instructions, adversarial inputs, and option-order changes on your own workload.",
+            "sources": [
+              {
+                "label": "Jev 1.13 limitations",
+                "url": "https://docs.typesafe.ai/model-jaggedness/jev-1.13"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "primitives",
+        "title": "What do Choice, Score, and Noul return?",
+        "paragraphs": [
+          {
+            "text": "Choice selects from caller-defined options and returns the selected option, a probability for every option, and confidence. Use it for a bounded category or action.",
+            "sources": [
+              {
+                "label": "Choice documentation",
+                "url": "https://docs.typesafe.ai/primitives/choice"
+              }
+            ]
+          },
+          {
+            "text": "Score evaluates ordered, descriptive levels. Its score is the probability-weighted mean of level indices, accompanied by the distribution and confidence; it is not an exact measurement extracted from the input.",
+            "sources": [
+              {
+                "label": "Score documentation",
+                "url": "https://docs.typesafe.ai/primitives/score"
+              }
+            ]
+          },
+          {
+            "text": "Noul returns the probability that a yes/no proposition is true. It has no separate confidence field. A value near the middle signals uncertainty, not necessarily a medium degree of the property.",
+            "sources": [
+              {
+                "label": "Noul documentation",
+                "url": "https://docs.typesafe.ai/primitives/noul"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "probability-and-confidence",
+        "title": "Is confidence the probability that an answer is correct?",
+        "paragraphs": [
+          {
+            "text": "Not automatically. TypeSafe derives confidence from the returned distribution. For Choice, four options with a highest probability of 0.70 produce confidence 0.60. Score uses a different formula. Calibration concerns observed frequencies across predictions, not a guarantee about one answer.",
+            "sources": [
+              {
+                "label": "Confidence documentation",
+                "url": "https://docs.typesafe.ai/confidence"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "evaluate-calibration",
+        "title": "How should I evaluate decisions and calibration?",
+        "paragraphs": [
+          {
+            "text": "Separate prediction quality from probability quality. Alongside accuracy or a task-appropriate error measure, inspect reliability plots and proper scoring rules such as Brier score and log loss. Evaluate on held-out data; do not tune thresholds on the final test set.",
+            "sources": [
+              {
+                "label": "Calibration research",
+                "url": "https://proceedings.mlr.press/v70/guo17a.html"
+              },
+              {
+                "label": "Proper scoring rules",
+                "url": "https://sites.stat.washington.edu/people/raftery/Research/PDF/Gneiting2007jasa.pdf"
+              }
+            ]
+          },
+          {
+            "text": "For abstention or escalation, report coverage and error among accepted cases, and test whether the fallback actually corrects mistakes. Freeze model versions and prompts; measure end-to-end latency, failures, and costs separately. This is an evaluation plan, not a result reported for Jev.",
+            "sources": [
+              {
+                "label": "SelectiveNet",
+                "url": "https://proceedings.mlr.press/v97/geifman19a.html"
+              },
+              {
+                "label": "Model versions",
+                "url": "https://docs.typesafe.ai/models"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "models-and-licenses",
+        "title": "Are the SDK and independent models released Jev weights?",
+        "paragraphs": [
+          {
+            "text": "The official SDK is a client for TypeSafe’s hosted API, not a Jev checkpoint. Independent projects such as Laya publish their own model artifacts. Similar question types or API compatibility do not establish identical architecture, behavior, or accuracy.",
+            "sources": [
+              {
+                "label": "Official Python SDK",
+                "url": "https://github.com/typesafe-ai/typesafe-sdk-python"
+              },
+              {
+                "label": "Laya model card",
+                "url": "https://huggingface.co/convaiinnovations/laya"
+              }
+            ]
+          },
+          {
+            "text": "Check each release’s model card and license separately. For example, Bespoke Nimble 9B v3 declares CC BY-NC 4.0, which restricts commercial use. Publicly downloadable artifacts should not all be labeled unrestricted open-source models.",
+            "sources": [
+              {
+                "label": "Bespoke Nimble v3 model card",
+                "url": "https://huggingface.co/bespokelabs/Bespoke-Nimble-9B-v3"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "papers-and-benchmarks",
+        "title": "Where should I look for research and benchmark evidence?",
+        "paragraphs": [
+          {
+            "text": "Start with versioned empirical papers and their available code or data. The broad Jev benchmark study is one entry point; its findings remain author-reported, rather than independently reproduced by this collection.",
+            "sources": [
+              {
+                "label": "Jev benchmark paper, v1",
+                "url": "https://arxiv.org/abs/2609.37647v1"
+              },
+              {
+                "label": "Accompanying benchmark code",
+                "url": "https://github.com/AppliedMachineLearning-Lab/jev-benchmarking"
+              }
+            ]
+          },
+          {
+            "text": "TypeSafe WorkflowEvals publishes workflows and model-generated reference labels; agreement with those references differs from human-label accuracy. The community Decision Index also contains private tests, so public rankings do not make the entire evaluation independently reproducible.",
+            "sources": [
+              {
+                "label": "WorkflowEvals",
+                "url": "https://github.com/typesafe-ai/WorkflowEvals"
+              },
+              {
+                "label": "Decision Index methodology snapshot",
+                "url": "https://huggingface.co/spaces/multimodalart/jev-decision-index/blob/5d09dd9cf226338c68fad22284c4982e6680af7d/data/methodology.json"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "zh": {
+    "title": "Jev 指南：类型化决策、概率与评测",
+    "description": "基于一手来源介绍 Jev、决策原语、置信度、评测方法和独立模型实现。",
+    "intro": "Jev 为“面向软件返回决策的模型”提供了一个研究实例。本独立指南区分文档中的接口、厂商主张与实证评估，不代表已复现模型实验。",
+    "sections": [
+      {
+        "id": "what-is-jev",
+        "title": "Jev 是什么？",
+        "paragraphs": [
+          {
+            "text": "Jev 是 TypeSafe 的 System One 模型。请求提供状态和类型化问题，响应返回边界明确的答案与概率，供应用代码完成分类、路由或复核。",
+            "sources": [
+              {
+                "label": "TypeSafe 官方介绍",
+                "url": "https://docs.typesafe.ai/introduction"
+              }
+            ]
+          },
+          {
+            "text": "TypeSafe 将其训练方法称为 Reinforcement Learning for Calibrated Decisions，简称 RLCD。这是厂商对方法的描述，并不足以重建 Jev 的架构或训练过程。",
+            "sources": [
+              {
+                "label": "TypeSafe 发布文章",
+                "url": "https://typesafe.ai/blog/introducing-system-one-models-and-jev"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "typed-output-and-llms",
+        "title": "类型化决策与 LLM 的结构化输出有什么区别？",
+        "paragraphs": [
+          {
+            "text": "类型化决策接口在推理前规定允许的候选答案。生成式 LLM 也能通过约束解码产生结构化输出。仅凭接口形式，不能判断哪个模型更准确、校准更好或效率更高。",
+            "sources": [
+              {
+                "label": "XGrammar 论文",
+                "url": "https://arxiv.org/abs/2411.15100"
+              }
+            ]
+          },
+          {
+            "text": "格式合法的答案仍可能选错。应区分 schema 合法性与语义正确性，并在自己的任务上测试模糊指令、对抗输入和选项顺序变化。",
+            "sources": [
+              {
+                "label": "Jev 1.13 已知局限",
+                "url": "https://docs.typesafe.ai/model-jaggedness/jev-1.13"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "primitives",
+        "title": "Choice、Score 和 Noul 分别返回什么？",
+        "paragraphs": [
+          {
+            "text": "Choice 从调用方定义的候选项中选择，返回所选项、所有候选项的概率及置信度，适合有限类别或动作选择。",
+            "sources": [
+              {
+                "label": "Choice 文档",
+                "url": "https://docs.typesafe.ai/primitives/choice"
+              }
+            ]
+          },
+          {
+            "text": "Score 对文字描述的有序等级进行评估，返回等级编号的概率加权均值、概率分布与置信度；它不是从输入中抽取的精确测量值。",
+            "sources": [
+              {
+                "label": "Score 文档",
+                "url": "https://docs.typesafe.ai/primitives/score"
+              }
+            ]
+          },
+          {
+            "text": "Noul 返回是非命题为真的概率，没有独立的 confidence 字段。接近中间的数值表示不确定性，不一定表示该属性处于中等程度。",
+            "sources": [
+              {
+                "label": "Noul 文档",
+                "url": "https://docs.typesafe.ai/primitives/noul"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "probability-and-confidence",
+        "title": "置信度就是答案正确的概率吗？",
+        "paragraphs": [
+          {
+            "text": "不能直接等同。TypeSafe 根据返回的分布计算置信度。例如，Choice 有四个选项，最高概率为 0.70 时，confidence 为 0.60；Score 使用不同公式。校准关注多次预测中的实际发生频率，不保证某个答案一定正确。",
+            "sources": [
+              {
+                "label": "置信度文档",
+                "url": "https://docs.typesafe.ai/confidence"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "evaluate-calibration",
+        "title": "怎样评估决策质量与概率校准？",
+        "paragraphs": [
+          {
+            "text": "分别评估预测质量与概率质量。除准确率或适合任务的误差指标外，还应查看可靠性图，以及 Brier score、log loss 等适当评分规则。使用独立测试数据，不在最终测试集上调节阈值。",
+            "sources": [
+              {
+                "label": "校准研究",
+                "url": "https://proceedings.mlr.press/v70/guo17a.html"
+              },
+              {
+                "label": "适当评分规则",
+                "url": "https://sites.stat.washington.edu/people/raftery/Research/PDF/Gneiting2007jasa.pdf"
+              }
+            ]
+          },
+          {
+            "text": "对于拒答或升级处理，应报告覆盖率和已接纳案例中的错误，并验证后备模型能否纠正错误。固定模型版本与提示词，单独测量端到端延迟、失败和成本。这是评测方案，不是本项目对 Jev 已取得的实验结果。",
+            "sources": [
+              {
+                "label": "SelectiveNet",
+                "url": "https://proceedings.mlr.press/v97/geifman19a.html"
+              },
+              {
+                "label": "模型版本",
+                "url": "https://docs.typesafe.ai/models"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "models-and-licenses",
+        "title": "官方 SDK 和独立模型就是发布的 Jev 权重吗？",
+        "paragraphs": [
+          {
+            "text": "官方 SDK 是 TypeSafe 托管 API 的客户端，并非 Jev 检查点。Laya 等独立项目发布的是各自的模型材料。问题类型相似或 API 兼容，不证明架构、行为或准确率相同。",
+            "sources": [
+              {
+                "label": "官方 Python SDK",
+                "url": "https://github.com/typesafe-ai/typesafe-sdk-python"
+              },
+              {
+                "label": "Laya 模型卡",
+                "url": "https://huggingface.co/convaiinnovations/laya"
+              }
+            ]
+          },
+          {
+            "text": "应分别检查每个版本的模型卡与许可。例如，Bespoke Nimble 9B v3 声明采用 CC BY-NC 4.0，限制商业用途。不能把所有可公开下载的模型材料都称为不受限制的开源模型。",
+            "sources": [
+              {
+                "label": "Bespoke Nimble v3 模型卡",
+                "url": "https://huggingface.co/bespokelabs/Bespoke-Nimble-9B-v3"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "papers-and-benchmarks",
+        "title": "从哪里查找研究和基准证据？",
+        "paragraphs": [
+          {
+            "text": "从固定版本的实证论文及其公开代码、数据入手。覆盖多数据集的 Jev 基准研究可作为入口，但结果仍由作者报告，并非本资源库已独立复现。",
+            "sources": [
+              {
+                "label": "Jev 基准论文 v1",
+                "url": "https://arxiv.org/abs/2609.37647v1"
+              },
+              {
+                "label": "配套评测代码",
+                "url": "https://github.com/AppliedMachineLearning-Lab/jev-benchmarking"
+              }
+            ]
+          },
+          {
+            "text": "TypeSafe WorkflowEvals 公开工作流和模型生成的参考标签；与这些参考结果一致，不等于人工标签上的准确率。社区 Decision Index 还包含私有测试，因此公开排名不代表整个评测都能独立复现。",
+            "sources": [
+              {
+                "label": "WorkflowEvals",
+                "url": "https://github.com/typesafe-ai/WorkflowEvals"
+              },
+              {
+                "label": "Decision Index 方法快照",
+                "url": "https://huggingface.co/spaces/multimodalart/jev-decision-index/blob/5d09dd9cf226338c68fad22284c4982e6680af7d/data/methodology.json"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

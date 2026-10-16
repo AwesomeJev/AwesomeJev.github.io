@@ -1,0 +1,565 @@
+# Awesome Jev
+
+Independent community project, not affiliated with TypeSafe AI.
+Canonical website: https://awesomejev.github.io/
+Curated snapshot: 2026-10-16. Findings are author-reported; no model experiments reproduced here.
+
+# Jev guide: typed decisions, probabilities, and evaluation
+
+Jev is a useful case study in models that return decisions for software. This independent guide separates documented interfaces, provider claims, and empirical evaluation. It does not reproduce model experiments.
+
+## What is Jev?
+
+Jev is TypeSafe’s System One model. A request supplies state and typed questions; the response contains bounded answers and probabilities that application code can use for classification, routing, or review. [TypeSafe introduction](https://docs.typesafe.ai/introduction)
+
+TypeSafe describes its training as reinforcement learning for calibrated decisions, or RLCD. That description is a provider claim, not enough information to reconstruct Jev’s architecture or training procedure. [TypeSafe launch article](https://typesafe.ai/blog/introducing-system-one-models-and-jev)
+
+## How does a typed decision differ from an LLM’s structured output?
+
+A typed decision interface specifies the permitted alternatives before inference. Generative LLMs can also use constrained decoding to produce structured outputs. An interface alone does not establish which model is more accurate, calibrated, or efficient. [XGrammar paper](https://arxiv.org/abs/2411.15100)
+
+A valid answer can still select the wrong option. Keep schema validity separate from semantic correctness, and test ambiguous instructions, adversarial inputs, and option-order changes on your own workload. [Jev 1.13 limitations](https://docs.typesafe.ai/model-jaggedness/jev-1.13)
+
+## What do Choice, Score, and Noul return?
+
+Choice selects from caller-defined options and returns the selected option, a probability for every option, and confidence. Use it for a bounded category or action. [Choice documentation](https://docs.typesafe.ai/primitives/choice)
+
+Score evaluates ordered, descriptive levels. Its score is the probability-weighted mean of level indices, accompanied by the distribution and confidence; it is not an exact measurement extracted from the input. [Score documentation](https://docs.typesafe.ai/primitives/score)
+
+Noul returns the probability that a yes/no proposition is true. It has no separate confidence field. A value near the middle signals uncertainty, not necessarily a medium degree of the property. [Noul documentation](https://docs.typesafe.ai/primitives/noul)
+
+## Is confidence the probability that an answer is correct?
+
+Not automatically. TypeSafe derives confidence from the returned distribution. For Choice, four options with a highest probability of 0.70 produce confidence 0.60. Score uses a different formula. Calibration concerns observed frequencies across predictions, not a guarantee about one answer. [Confidence documentation](https://docs.typesafe.ai/confidence)
+
+## How should I evaluate decisions and calibration?
+
+Separate prediction quality from probability quality. Alongside accuracy or a task-appropriate error measure, inspect reliability plots and proper scoring rules such as Brier score and log loss. Evaluate on held-out data; do not tune thresholds on the final test set. [Calibration research](https://proceedings.mlr.press/v70/guo17a.html) · [Proper scoring rules](https://sites.stat.washington.edu/people/raftery/Research/PDF/Gneiting2007jasa.pdf)
+
+For abstention or escalation, report coverage and error among accepted cases, and test whether the fallback actually corrects mistakes. Freeze model versions and prompts; measure end-to-end latency, failures, and costs separately. This is an evaluation plan, not a result reported for Jev. [SelectiveNet](https://proceedings.mlr.press/v97/geifman19a.html) · [Model versions](https://docs.typesafe.ai/models)
+
+## Are the SDK and independent models released Jev weights?
+
+The official SDK is a client for TypeSafe’s hosted API, not a Jev checkpoint. Independent projects such as Laya publish their own model artifacts. Similar question types or API compatibility do not establish identical architecture, behavior, or accuracy. [Official Python SDK](https://github.com/typesafe-ai/typesafe-sdk-python) · [Laya model card](https://huggingface.co/convaiinnovations/laya)
+
+Check each release’s model card and license separately. For example, Bespoke Nimble 9B v3 declares CC BY-NC 4.0, which restricts commercial use. Publicly downloadable artifacts should not all be labeled unrestricted open-source models. [Bespoke Nimble v3 model card](https://huggingface.co/bespokelabs/Bespoke-Nimble-9B-v3)
+
+## Where should I look for research and benchmark evidence?
+
+Start with versioned empirical papers and their available code or data. The broad Jev benchmark study is one entry point; its findings remain author-reported, rather than independently reproduced by this collection. [Jev benchmark paper, v1](https://arxiv.org/abs/2609.37647v1) · [Accompanying benchmark code](https://github.com/AppliedMachineLearning-Lab/jev-benchmarking)
+
+TypeSafe WorkflowEvals publishes workflows and model-generated reference labels; agreement with those references differs from human-label accuracy. The community Decision Index also contains private tests, so public rankings do not make the entire evaluation independently reproducible. [WorkflowEvals](https://github.com/typesafe-ai/WorkflowEvals) · [Decision Index methodology snapshot](https://huggingface.co/spaces/multimodalart/jev-decision-index/blob/5d09dd9cf226338c68fad22284c4982e6680af7d/data/methodology.json)
+
+# Curated resources
+
+## JevAgentHarness: Benchmarking, Deploying and Training Decision Models That Share Control with LLMs
+
+Papers · Zhu et al. · 2026-10-15 · v1
+
+Studies fitted confidence thresholds for sharing agent control with decision models.
+
+Primary source: https://arxiv.org/abs/2610.21412v1
+
+## System1-Arena: Which Decisions Can Be Left to System 1?
+
+Papers · Chen et al. · 2026-10-15 · v1
+
+A benchmark spanning matched requests and closed-loop tasks. Experiments have not been reproduced here.
+
+Primary source: https://arxiv.org/abs/2610.21244v1
+
+## DecisionRobust: Benchmarking Robustness for JEV Style Decision Models Across Text and Vision
+
+Papers · Lan et al. · 2026-10-13 · v1
+
+Text and vision attacks with label-validity checks and held-out evaluation models.
+
+Primary source: https://arxiv.org/abs/2610.19118v1
+
+## Jeva: System One Models from First Principles
+
+Papers · Li & Wang · 2026-10-13 · v1
+
+A decision-model architecture exploring null handling, option permutations, scaling, and caching. Its design is Jeva’s, not Jev’s disclosed internals.
+
+Primary source: https://arxiv.org/abs/2610.18773v1
+
+## Reading Right, Acting Wrong: Diagnosing Decision Failures of System One Models in Agent Loops
+
+Papers · Li, Krishnan & Padman · 2026-10-13 · v1
+
+Pairs factual probes with action choices to diagnose decision failures.
+
+Primary source: https://arxiv.org/abs/2610.18579v1
+
+## Same Attack, Different Judge
+
+Papers · Li et al. · 2026-10-13 · v1
+
+A controlled adversarial comparison of Jev, LLM judges, and purpose-built safety classifiers.
+
+Primary source: https://arxiv.org/abs/2610.17820v1
+
+## Decision Models vs. LLMs as Rubric Judges
+
+Papers · Rao & Callison-Burch · 2026-10-13 · v3
+
+Compares rubric judges and examines correlated errors that can limit cascade improvements.
+
+Primary source: https://arxiv.org/abs/2609.29769v3
+
+## General Decision Models: Benchmarking and Insights Beyond Jev
+
+Papers · Duan et al. · 2026-10-12 · v2
+
+Bilingual decision evaluation and reliability when local decisions compose into larger systems.
+
+Primary source: https://arxiv.org/abs/2610.03935v2
+
+## JEV-as-a-Judge: Accept When Confident, Escalate When Unsure
+
+Papers · Li et al. · 2026-10-09 · v5
+
+Studies confidence-based escalation from Jev to a reasoning judge, including limits under distribution shift.
+
+Primary source: https://arxiv.org/abs/2609.26550v5
+
+## MetaEncoder: Exploring the Limit of Bi-Encoders for Multimodal System One Decision Making with Natural Language Interface
+
+Papers · Cheng et al. · 2026-10-08 · v1
+
+Bi-encoder approach to multimodal decisions and retrieval through natural-language interfaces.
+
+Primary source: https://arxiv.org/abs/2610.11316v1
+
+## Type-Safe Is Not Error-Free: Typed Decision Models Follow the Option Name, Not the Definition Bound to It
+
+Papers · Sun, Xu, Shi & Yang · 2026-10-08 · v3
+
+Tests conflicts between option names and definitions despite structurally valid outputs.
+
+Primary source: https://arxiv.org/abs/2609.26758v3
+
+## JEV versus LLMs: Accuracy, Cost and Calibration on Seven Political Science Replications
+
+Papers · Denney & DiGiuseppe · 2026-10-06 · v2
+
+Studies accuracy, cost, and calibration in seven political-science replication tasks.
+
+Primary source: https://arxiv.org/abs/2610.06625v2
+
+## System One Models for Agent Security Decisions
+
+Papers · Liu · 2026-10-03 · v3
+
+Examines reliability, group-specific confident errors, and selective automation in security decisions.
+
+Primary source: https://arxiv.org/abs/2609.33401v3
+
+## AnyJev Technical Report
+
+Papers · Zhang et al. · 2026-09-30 · v1
+
+Training-free decision readout with label-prior and option-order correction.
+
+Primary source: https://arxiv.org/abs/2610.00831v1
+
+## JevSpawn: Adaptive Agentic Inference through Compositional Action Spaces
+
+Papers · Su & Huang · 2026-09-30 · v1
+
+Composes finite action fields and explores alternatives using interaction feedback.
+
+Primary source: https://arxiv.org/abs/2610.00437v1
+
+## Evaluating and Benchmarking the System One Model Jev
+
+Papers · Deußer et al. · 2026-09-29 · v1
+
+An early benchmark study of Jev. Read the task selection and evaluation setup alongside its reported results.
+
+Primary source: https://arxiv.org/abs/2609.37647v1
+
+## Chinese-Jev: Bringing System One Models to Chinese-Language Tasks
+
+Papers · Wang et al. · 2026-09-29 · v1
+
+A Chinese typed-decision model and proposed benchmark; domain-specific training calls for independent validation.
+
+Primary source: https://arxiv.org/abs/2609.36965v1
+
+## Sys1Cal-v1: A Dataset for Probability Calibration
+
+Papers · Porcedda · 2026-09-28 · v1
+
+A controlled calibration study using constructed probabilities. Interpretations of latent uncertainty remain hypotheses.
+
+Primary source: https://arxiv.org/abs/2609.35342v1
+
+## Beyond Calibration: Do Typed Decisions Obey the Probability Axioms?
+
+Papers · Li et al. · 2026-09-27 · v1
+
+Tests coherence between logically related probabilities, separately from accuracy and calibration.
+
+Primary source: https://arxiv.org/abs/2609.33209v1
+
+## Typed Decision Models: An Early Evidence Audit and Evaluation Checklist
+
+Papers · Tang & Zheng · 2026-09-26 · v1
+
+An evidence audit and a checklist for evaluating typed decision models.
+
+Primary source: https://arxiv.org/abs/2609.32160v1
+
+## JevAdvBench
+
+Papers · Hu et al. · 2026-09-25 · v1
+
+A black-box adversarial benchmark. A changed decision is not necessarily an incorrect decision.
+
+Primary source: https://arxiv.org/abs/2609.31142v1
+
+## LAVOIR: Teaching a Single-Pass Decision Encoder When and What to Ask with Amortized Value of Information
+
+Papers · Yilmaz, Tasdemir & Gozay · 2026-09-25 · v1
+
+Estimates whether asking for missing information would improve a typed decision.
+
+Primary source: https://arxiv.org/abs/2609.30706v1
+
+## From Text Decisions to Pixels
+
+Papers · Zhou et al. · 2026-09-24 · v1
+
+A Jev-style visual-choice study separating adaptation gains, candidate-readout validity, and calibration limits.
+
+Primary source: https://arxiv.org/abs/2609.29283v1
+
+## Jev-Mem: System-One-Controlled Agentic Memory
+
+Papers · Jiang et al. · 2026-09-21 · v1
+
+Studies Jev as a controller for agent memory. Reported outcomes concern the complete memory workflow.
+
+Primary source: https://arxiv.org/abs/2609.23986v1
+
+## this-that-model-1.0
+
+Papers · Cheng et al. · 2026-09-20 · v1
+
+An open typed-decision model using hidden-state readout. The abstract reports a small external comparison.
+
+Primary source: https://arxiv.org/abs/2609.23886v1
+
+## Laya
+
+Models · convaiinnovations · Apache-2.0
+
+An encoder-based decision family with English, multilingual, and workflow-specific checkpoints.
+
+Primary source: https://huggingface.co/convaiinnovations/laya
+
+## Kev-4B
+
+Models · Jared Palmer · Apache-2.0
+
+A Qwen3.5-4B-Base LoRA adapter and pointer head for decisions over documents and typed questions.
+
+Primary source: https://huggingface.co/jaredpalmer/kev-4b
+
+## Bespoke Nimble 9B v3
+
+Models · Bespoke Labs · CC BY-NC 4.0
+
+A Qwen3.5-9B LoRA adapter returning candidate probabilities. Released under a noncommercial license.
+
+Primary source: https://huggingface.co/bespokelabs/Bespoke-Nimble-9B-v3
+
+## Intern-Decision-4B
+
+Models · InternLM · Apache-2.0
+
+A decision-tuned Qwen checkpoint with a structured inference wrapper and image support.
+
+Primary source: https://huggingface.co/internlm/Intern-Decision-4B
+
+## Perplexity Decider v1.1 27B
+
+Models · Perplexity · Apache-2.0
+
+A separate decision readout and saved calibration temperature. Follow the card’s attention-mode and access notes.
+
+Primary source: https://huggingface.co/perplexity-ai/pplx-decider-v1.1-27b
+
+## GLiNER2.5-Decide
+
+Models · Fastino · Apache-2.0
+
+A 340M English classifier with runtime label sets and single-label or multi-label decisions.
+
+Primary source: https://huggingface.co/fastino/GLiNER2.5-Decide
+
+## d3
+
+Models · vLLM Semantic Router · Apache-2.0
+
+A text, image, and video decision model with Choice, Yes/No, and Score outputs.
+
+Primary source: https://huggingface.co/vllm-sr/d3
+
+## Clef
+
+Models · Cloudflare · Apache-2.0
+
+A multimodal model with a joint schema head, returning probabilities over allowed answers.
+
+Primary source: https://huggingface.co/Cloudflare/clef
+
+## TypeSafe Python SDK
+
+Tools · Python · MIT
+
+The official sync and async client for typed Jev questions and answers.
+
+Primary source: https://github.com/typesafe-ai/typesafe-sdk-python
+
+## TypeSafe JavaScript SDK
+
+Tools · TypeScript / JavaScript · MIT
+
+The official JavaScript client with answer types inferred from your questions.
+
+Primary source: https://github.com/typesafe-ai/typesafe-sdk-js
+
+## System One Adapter
+
+Tools · Python · MIT
+
+Compare LLMs through the same question interface, with probability outputs and request diagnostics.
+
+Primary source: https://github.com/typesafe-ai/system-one-adapter-python
+
+## TypeSafe Agent Skills
+
+Tools · Coding agents · MIT
+
+Official guidance for coding agents building with the System One API.
+
+Primary source: https://github.com/typesafe-ai/skills
+
+## TypeSafe Public Examples
+
+Tools · Cookbooks & demos · MIT
+
+Source code accompanying official documentation, demos, and cookbooks.
+
+Primary source: https://github.com/typesafe-ai/typesafe-public-examples
+
+## TypeSafe for n8n
+
+Tools · Workflow integration · MIT
+
+TypeSafe-maintained nodes for adding typed decisions to n8n workflows.
+
+Primary source: https://github.com/typesafe-ai/n8n-nodes-typesafe-ai
+
+## evalsafe-invoice-processing
+
+Datasets · TypeSafe · WorkflowEvals
+
+Official dataset for the invoice-processing workflow evaluation.
+
+Primary source: https://huggingface.co/datasets/typesafeAI/evalsafe-invoice-processing
+
+## evalsafe-customer-service
+
+Datasets · TypeSafe · WorkflowEvals
+
+Official dataset for the customer-service workflow evaluation.
+
+Primary source: https://huggingface.co/datasets/typesafeAI/evalsafe-customer-service
+
+## evalsafe-security-incidents
+
+Datasets · TypeSafe · WorkflowEvals
+
+Official dataset for the security-incident workflow evaluation.
+
+Primary source: https://huggingface.co/datasets/typesafeAI/evalsafe-security-incidents
+
+## evalsafe-agent-trace-observability
+
+Datasets · TypeSafe · WorkflowEvals
+
+Official evaluation dataset for the agent-trace observability workflow.
+
+Primary source: https://huggingface.co/datasets/typesafeAI/evalsafe-agent-trace-observability
+
+## Bekko System One Dataset v0
+
+Datasets · hotchpotch · Training mixture
+
+A community training mixture for System One-style decision models. Read the card for its composition and usage conditions.
+
+Primary source: https://huggingface.co/datasets/hotchpotch/bekko-system-one-dataset-v0
+
+## Bespoke Nimble 9B v3 — Decision Index runs
+
+Datasets · Bespoke Labs · Evaluation archive
+
+An archive of Decision Index evaluation runs for Bespoke Nimble 9B v3.
+
+Primary source: https://huggingface.co/datasets/bespokelabs/bespoke-nimble-9b-v3-decision-index
+
+## Jev Decision Index
+
+Evaluations · Hugging Face · community
+
+A community index of decision models and evaluations. Full rankings include private tests.
+
+Primary source: https://huggingface.co/spaces/multimodalart/jev-decision-index
+
+## Workflow Evals
+
+Evaluations · Interactive evaluation explorer
+
+Inspect four structured workflows. Scores measure agreement with model-generated references.
+
+Primary source: https://evals.typesafe.ai/
+
+## WorkflowEvals — Code
+
+Evaluations · Python · Apache-2.0
+
+The official evaluation runner, workflow definitions, scoring, and plotting tools.
+
+Primary source: https://github.com/typesafe-ai/WorkflowEvals
+
+## WorkflowEvals — Datasets
+
+Evaluations · Hugging Face · four datasets
+
+Published cases, model-generated references, and recorded runs for inspecting reproducibility.
+
+Primary source: https://huggingface.co/collections/typesafeAI/workflowevals
+
+## Introducing System One Models & Jev
+
+Guides · TypeSafe · September 15, 2026
+
+The launch article. A primary source for the provider’s design claims and their stated caveats.
+
+Primary source: https://typesafe.ai/blog/introducing-system-one-models-and-jev
+
+## Primitives: Choice, Score, Noul
+
+Guides · API concepts
+
+Choose between categorical decisions, ordered ratings, and yes/no probabilities.
+
+Primary source: https://docs.typesafe.ai/primitives
+
+## Confidence
+
+Guides · Probability & routing
+
+How confidence is derived from a distribution, and how it differs from probability.
+
+Primary source: https://docs.typesafe.ai/confidence
+
+## Jev 1.13 Jaggedness
+
+Guides · Limitations · reviewed October 2, 2026
+
+Documented limitations: numeric precision, long irrelevant context, adversarial inputs, and option-order sensitivity.
+
+Primary source: https://docs.typesafe.ai/model-jaggedness/jev-1.13
+
+## Guardrails for LLMs
+
+Guides · Official cookbook
+
+Combine narrow risk questions with application rules for passing, reviewing, or blocking content.
+
+Primary source: https://docs.typesafe.ai/cookbooks/llm_guardrails
+
+## Double-checking Citations
+
+Guides · Official cookbook
+
+Check whether a citation’s source context supports a claim.
+
+Primary source: https://docs.typesafe.ai/cookbooks/citation_check
+
+## Hierarchical Classification
+
+Guides · Official cookbook
+
+Use Choice probabilities to explore deep classification trees.
+
+Primary source: https://docs.typesafe.ai/cookbooks/hierarchical_classification
+
+## Strictly Proper Scoring Rules, Prediction, and Estimation
+
+Foundations · Gneiting & Raftery · JASA 2007 · Author PDF
+
+A foundation for evaluating and incentivizing honest probabilistic predictions.
+
+Primary source: https://sites.stat.washington.edu/people/raftery/Research/PDF/Gneiting2007jasa.pdf
+
+## On Calibration of Modern Neural Networks
+
+Foundations · Guo et al. · ICML 2017
+
+A practical reference for calibration and temperature scaling.
+
+Primary source: https://proceedings.mlr.press/v70/guo17a.html
+
+## SelectiveNet
+
+Foundations · Geifman & El-Yaniv · ICML 2019
+
+Studies prediction with a reject option and the trade-off between coverage and risk.
+
+Primary source: https://proceedings.mlr.press/v97/geifman19a.html
+
+## Language Models (Mostly) Know What They Know
+
+Foundations · Kadavath et al. · 2022
+
+An investigation of language models’ self-evaluation and uncertainty.
+
+Primary source: https://arxiv.org/abs/2207.05221
+
+## LMQL — Prompting Is Programming
+
+Foundations · Beurer-Kellner et al. · PLDI 2023
+
+A programming-language approach to constrained language-model interaction.
+
+Primary source: https://www.sri.inf.ethz.ch/publications/beurerkellner2023prompting
+
+## XGrammar
+
+Foundations · Dong et al. · 2024
+
+Efficient grammar-constrained generation: a useful comparison point for typed outputs.
+
+Primary source: https://arxiv.org/abs/2411.15100
+
+## DSPy
+
+Foundations · Khattab et al. · 2023
+
+Declarative language-model programs and pipeline optimization.
+
+Primary source: https://arxiv.org/abs/2310.03714
+
+## SGLang
+
+Foundations · Zheng et al. · NeurIPS 2024
+
+Efficient execution of structured language-model programs.
+
+Primary source: https://arxiv.org/abs/2312.07104

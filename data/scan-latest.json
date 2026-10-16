@@ -1,59 +1,26 @@
 {
-  "added_count": 8,
-  "added_urls": [
-    "https://github.com/dexmac221/doomgemma",
-    "https://github.com/jevagentharness/jevagentharness",
-    "https://github.com/ris3abh/engram",
-    "https://github.com/sumleo/rlcdalignbench",
-    "https://github.com/ufakai/hakembench",
-    "https://github.com/ufakai/ufakzeka-karar",
-    "https://github.com/victoryxl/graphdecisionbench",
-    "https://doi.org/10.18653/v1/2026.findings-acl.802"
-  ],
+  "added_count": 0,
+  "added_urls": [],
   "changed": true,
-  "changed_count": 39,
+  "changed_count": 15,
   "changed_urls": [
-    "https://arxiv.org/abs/2609.22753",
-    "https://arxiv.org/abs/2609.23136",
-    "https://arxiv.org/abs/2609.26550",
-    "https://arxiv.org/abs/2609.26758",
-    "https://arxiv.org/abs/2609.29429",
-    "https://arxiv.org/abs/2609.30706",
-    "https://arxiv.org/abs/2609.34227",
-    "https://arxiv.org/abs/2609.40241",
-    "https://arxiv.org/abs/2610.00346",
-    "https://arxiv.org/abs/2610.00831",
-    "https://arxiv.org/abs/2610.02076",
-    "https://arxiv.org/abs/2610.02293",
-    "https://arxiv.org/abs/2610.02486",
-    "https://arxiv.org/abs/2610.02586",
-    "https://arxiv.org/abs/2610.03935",
-    "https://arxiv.org/abs/2610.06354",
-    "https://arxiv.org/abs/2610.06744",
-    "https://arxiv.org/abs/2610.07716",
-    "https://arxiv.org/abs/2610.07730",
-    "https://arxiv.org/abs/2610.09683",
-    "https://arxiv.org/abs/2610.17113",
-    "https://arxiv.org/abs/2610.17205",
-    "https://arxiv.org/abs/2610.17309",
-    "https://arxiv.org/abs/2610.21412",
-    "https://arxiv.org/abs/2610.22131",
-    "https://dev.to/nandakishor_m_6cc0adfde9f/i-built-non-autoregressive-decision-models-a-year-ago-then-a-frontier-lab-called-it-a-18me",
-    "https://github.com/appitstudio/awesome-jev",
-    "https://github.com/daftai2026/awesome-jev",
-    "https://github.com/fr0zencrane/jev-spatial",
-    "https://github.com/frontierlabai/jevhub",
-    "https://github.com/hotchpotch/s1mb",
+    "https://arxiv.org/abs/1910.14599",
+    "https://github.com/afurm/typesafe-sdk-ruby",
+    "https://github.com/ainame/swift-typesafe",
+    "https://github.com/aminry/decisio",
+    "https://github.com/blaizzy/mlx-vlm",
+    "https://github.com/e-fl/typesafe-as-a-judge",
+    "https://github.com/frodi-karlsson/onesie",
+    "https://github.com/jessie-qingyu/jev-in-the-wild",
+    "https://github.com/kataras/jev",
+    "https://github.com/omnijev/awesome-jev-gallery",
+    "https://github.com/shibing624/train-jev",
+    "https://github.com/sileod/tasksource",
     "https://github.com/wh000wh000/awesome-jev-live",
-    "https://github.com/wide3751/sommelier",
-    "https://huggingface.co/datasets/tasksource/tasksource-jev-typed-decisions",
-    "https://huggingface.co/spaces/llm-semantic-router/decision-studio",
-    "https://huggingface.co/spaces/vllm-sr/decision-studio",
     "https://vllm-sr.ai/blog/decision-models",
-    "https://arxiv.org/abs/2603.12823",
-    "https://arxiv.org/abs/2609.34736"
+    "https://zenodo.org/records/7299879"
   ],
-  "completed_at": "2026-10-16T06:56:55+00:00",
+  "completed_at": "2026-10-16T09:07:14+00:00",
   "counts": {
     "abstract_checked": 1465,
     "checked_sources": 3441,
@@ -70,7 +37,7 @@
   "editorial_examples_truncated": false,
   "editorial_refresh_candidates": [],
   "editorial_review_required_count": 0,
-  "error_count": 102,
+  "error_count": 103,
   "errors": [
     {
       "code": "insufficient_content",
@@ -79,6 +46,10 @@
     {
       "code": "insufficient_content",
       "url": "https://dev.to/mapika/decider-one-forward-pass-typed-decisions-calibrated-probabilities-32c9"
+    },
+    {
+      "code": "insufficient_content",
+      "url": "https://dev.to/nandakishor_m_6cc0adfde9f/i-built-non-autoregressive-decision-models-a-year-ago-then-a-frontier-lab-called-it-a-18me"
     },
     {
       "code": "insufficient_content",
@@ -467,19 +438,15 @@
     {
       "code": "unavailable",
       "url": "https://huggingface.co/michaljach/jet"
-    },
-    {
-      "code": "unavailable",
-      "url": "https://huggingface.co/surogate/rune-26b-a4b-GGUF"
     }
   ],
   "excluded_discoveries": 161,
   "index_revision": "5d09dd9cf226338c68fad22284c4982e6680af7d",
   "network_requests": 2707,
-  "preserved_after_failure": 26,
+  "preserved_after_failure": 27,
   "privacy_rejected_records": 0,
   "schema_version": 1,
-  "started_at": "2026-10-16T06:53:46+00:00",
+  "started_at": "2026-10-16T09:04:28+00:00",
   "status": "partial",
   "verification_note": "Public document or original-abstract machine screening only; prior reviewed evidence is preserved and changed editorial sources require human review. Metadata-only records do not count as checked sources."
 }

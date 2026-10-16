@@ -125,6 +125,20 @@
       "note": "AudioJev is an independent decision-model architecture. This relation describes topical relevance and does not establish TypeSafe Jev internals or independently validate the reported experiments.",
       "evidence_url": "https://arxiv.org/abs/2610.01293v1",
       "reviewed_at": "2026-10-16T06:36:48Z"
+    },
+    {
+      "url": "https://github.com/jevagentharness/jevagentharness",
+      "title": "JevAgentHarness",
+      "note": "The project name is stated in the README banner. Automated heading extraction selected configuration/code text; this annotation corrects only the display title and preserves the retrieved provider evidence.",
+      "evidence_url": "https://github.com/jevagentharness/jevagentharness",
+      "reviewed_at": "2026-10-16T07:06:17Z"
+    },
+    {
+      "url": "https://github.com/victoryxl/graphdecisionbench",
+      "title": "GraphDecisionBench",
+      "note": "The project name is stated in the README overview image and repository context. Automated heading extraction selected code/configuration text; this annotation corrects only the display title and does not validate the reported benchmark results.",
+      "evidence_url": "https://github.com/victoryxl/graphdecisionbench",
+      "reviewed_at": "2026-10-16T07:06:17Z"
     }
   ]
 }
