@@ -1,0 +1,17 @@
+.DS_Store
+.env
+.env.*
+!.env.example
+.npmrc
+.netrc
+*.pem
+*.key
+__pycache__/
+*.pyc
+node_modules/
+.cache/
+.venv/
+tmp/
+artifacts/
+*.log
+fontawesome-pro/

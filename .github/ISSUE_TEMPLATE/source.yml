@@ -1,0 +1,59 @@
+name: Suggest a source
+description: Add a public paper, model, tool, dataset, or evaluation.
+title: "[Source] "
+body:
+  - type: input
+    id: title
+    attributes:
+      label: Source title
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: Canonical public URL
+      description: Prefer the original author, provider, repository, or publisher.
+    validations:
+      required: true
+  - type: input
+    id: date
+    attributes:
+      label: Publication date and version
+    validations:
+      required: true
+  - type: dropdown
+    id: relationship
+    attributes:
+      label: Relationship to Jev
+      options:
+        - Direct Jev or TypeSafe source
+        - Adjacent implementation or evaluation
+        - Research foundation
+    validations:
+      required: true
+  - type: dropdown
+    id: checked
+    attributes:
+      label: What did you actually check?
+      options:
+        - Metadata only
+        - Abstract
+        - Documentation or code
+        - Full paper
+        - Executed experiment
+    validations:
+      required: true
+  - type: textarea
+    id: relevance
+    attributes:
+      label: Relevance, evidence, and limitations
+      description: Explain what this source adds. Distinguish author claims from your own measurements.
+    validations:
+      required: true
+  - type: checkboxes
+    id: public
+    attributes:
+      label: Publication check
+      options:
+        - label: This submission contains only public information, with no credentials, private paths, or unlicensed assets.
+          required: true

@@ -1,0 +1,23 @@
+name: Report a correction
+description: Correct a claim, broken link, attribution, or review-level label.
+title: "[Correction] "
+body:
+  - type: textarea
+    id: location
+    attributes:
+      label: Where is the problem?
+      description: Link the page, file, or source record and identify the claim.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Proposed correction and public evidence
+      description: Include primary sources and dates or versions where available.
+    validations:
+      required: true
+  - type: textarea
+    id: impact
+    attributes:
+      label: Impact or limitations
+      description: Explain which conclusions or workflows this affects.

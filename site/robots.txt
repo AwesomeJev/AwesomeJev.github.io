@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://awesomejev.github.io/sitemap.xml

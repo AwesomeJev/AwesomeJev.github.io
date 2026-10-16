@@ -1,0 +1,154 @@
+name: Automated source review
+
+# This privileged workflow runs only the trusted base-branch script below.
+# Never add checkout, PR code execution, artifact downloads, or external fetches.
+on:
+  pull_request_target:
+    types: [opened, reopened, synchronize, edited, ready_for_review]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: source-review-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Check public-source provenance and publication hygiene
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
+        with:
+          script: |
+            const marker = '<!-- awesome-jev-automated-review -->';
+            const pr = context.payload.pull_request;
+            if (!pr || !Number.isInteger(pr.number)) return;
+            const coordinates = { ...context.repo, pull_number: pr.number };
+            const files = [];
+            let complete = false;
+            for (let page = 1; page <= 5; page++) {
+              const response = await github.rest.pulls.listFiles({ ...coordinates, per_page: 100, page });
+              files.push(...response.data);
+              if (response.data.length < 100) { complete = true; break; }
+            }
+            const notes = new Set();
+            const affected = new Set();
+            const body = String(pr.body || '').slice(0, 60000);
+            const sourceChange = files.some(f => /^(data\/|docs\/|README|references\.bib)/i.test(f.filename));
+            const checklist = [
+              ['canonical public sources', /- \[[xX]\].*canonical public sources/i],
+              ['verification level', /- \[[xX]\].*verification level/i],
+              ['dates or versions', /- \[[xX]\].*dates or versions/i],
+              ['publication hygiene', /- \[[xX]\].*credentials, private paths/i],
+            ];
+            for (const [label, pattern] of checklist) {
+              if ((sourceChange || label === 'publication hygiene') && !pattern.test(body)) {
+                notes.add(`Complete the PR checklist item: ${label}.`);
+              }
+            }
+            const secretPatterns = [
+              /gh[pousr]_[A-Za-z0-9]{30,255}/,
+              /github_pat_[A-Za-z0-9_]{40,255}/,
+              /\bhf_[A-Za-z0-9]{30,100}\b/,
+              /\bsk-(?:proj-)?[A-Za-z0-9_-]{24,255}\b/,
+              /\b(?:AKIA|ASIA)[A-Z0-9]{16}\b/,
+              /-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----/,
+              /https?:\/\/[^\s/@:]+:[^\s/@]+@[^\s/]+/,
+              /(?:\/Users\/[A-Za-z0-9_.-]+\/|\/home\/[A-Za-z0-9_.-]+\/|[A-Z]:\\Users\\[^\\\s]+\\)/,
+            ];
+            const validUrl = value => {
+              try {
+                const url = new URL(value);
+                const host = url.hostname.toLowerCase();
+                if (!['https:', 'http:'].includes(url.protocol) || url.username || url.password ||
+                    host === 'localhost' || /\.(?:local|internal)$/.test(host)) return false;
+                if ([...url.searchParams.keys()].some(key => /^(?:api_?key|access_token|token|signature)$/i.test(key))) return false;
+                if (host.includes(':')) return !/^\[(?:::1|::|::ffff:.*|f[cd].*|fe[89ab].*)\]$/.test(host);
+                if (!host.includes('.')) return false;
+                if (/^\d+\.\d+\.\d+\.\d+$/.test(host)) {
+                  const [a, b] = host.split('.').map(Number);
+                  if (a === 0 || a === 10 || a === 127 || a >= 224 ||
+                      (a === 100 && b >= 64 && b <= 127) || (a === 169 && b === 254) ||
+                      (a === 172 && b >= 16 && b <= 31) || (a === 192 && b === 168) ||
+                      (a === 198 && [18, 19].includes(b))) return false;
+                }
+                return true;
+              } catch { return false; }
+            };
+            let inspected = 0;
+            let omitted = 0;
+            let budget = 500000;
+            for (const file of files) {
+              if (secretPatterns.some(pattern => pattern.test(file.filename))) {
+                notes.add('A filename contains a possible credential or private path; its value is redacted.');
+                affected.add(file.filename);
+              }
+              if (/^\.github\/workflows\//.test(file.filename)) {
+                notes.add('Workflow changes require explicit maintainer inspection of permissions and event trust boundaries.');
+              }
+              if (/(?:^|\/)(?:\.env(?:\.(?!example$)[^/]+)?|\.npmrc|\.netrc)$|\.(?:pem|key)$/.test(file.filename)) {
+                notes.add('A private configuration or key-like filename was changed; inspect it before publication.');
+                affected.add(file.filename);
+              }
+              if (!file.patch || budget <= 0) { omitted++; continue; }
+              const allowance = Math.min(50000, budget);
+              const patch = String(file.patch).slice(0, allowance);
+              budget -= patch.length;
+              if (file.patch.length > patch.length) omitted++;
+              const added = patch.split('\n').filter(line => line.startsWith('+') && !line.startsWith('+++')).map(line => line.slice(1));
+              if (secretPatterns.some(pattern => pattern.test(added.join('\n')))) {
+                notes.add('A possible credential or personal filesystem path appears in added content. Values are deliberately not repeated here.');
+                affected.add(file.filename);
+              }
+              if (/^data\/(?:ecosystem-sources|research-sources)\.jsonl$/.test(file.filename)) {
+                for (const line of added.filter(line => line.trim())) {
+                  let record;
+                  try { record = JSON.parse(line); } catch {
+                    notes.add('Some added JSONL records could not be parsed in the available patch; full-file CI is authoritative.');
+                    continue;
+                  }
+                  if (!record || typeof record !== 'object' || Array.isArray(record)) {
+                    notes.add('Added JSONL source records must be objects.');
+                    continue;
+                  }
+                  if (!validUrl(record.canonical_url || record.url) || !record.title || !record.retrieved_at || !record.relevance || !record.verification_level) {
+                    notes.add('Added sources need a canonical public URL, title, retrieval date, relevance, and explicit verification level.');
+                    affected.add(file.filename);
+                  }
+                  if (record.verification_level !== 'metadata_only' && !/^[a-f0-9]{64}$/.test(record.abstract_sha256 || record.content_sha256 || '')) {
+                    notes.add('Content-screened or abstract-screened additions need a SHA-256 evidence hash.');
+                    affected.add(file.filename);
+                  }
+                  if (!record.screening_method && !record.checked_via) {
+                    notes.add('Added sources need a description of what was actually checked.');
+                  }
+                }
+              }
+              inspected++;
+            }
+            if (secretPatterns.some(pattern => pattern.test(body))) {
+              notes.add('The PR description contains a possible credential or personal filesystem path; inspect it without copying the value.');
+            }
+            if (!complete || omitted) notes.add('Some files or large/binary patches were outside the bounded review; maintainers and full-file CI must inspect them.');
+            const safeName = name => secretPatterns.some(pattern => pattern.test(String(name))) ? '[redacted filename]' : String(name).replace(/[`<>\r\n]/g, '').replace(/@/g, '＠').slice(0, 160);
+            const lines = [
+              marker,
+              '### Automated source review',
+              '',
+              `Deterministic checks inspected ${inspected} of ${files.length}${complete ? '' : '+'} returned file patches.`,
+              '',
+              ...(notes.size ? [...notes].slice(0, 12).map(note => `- ${note}`) : ['No deterministic issues were found in the inspected patches.']),
+            ];
+            if (affected.size) lines.push('', 'Files to inspect: ' + [...affected].slice(0, 8).map(name => '`' + safeName(name) + '`').join(', ') + '.');
+            lines.push('', 'This automated comment is not a human or scientific review, does not verify linked claims, and does not approve merging. Repository checks validate complete files. No PR code was checked out or executed by this review workflow.');
+            const comment = lines.join('\n').slice(0, 6500);
+            const reviews = await github.rest.pulls.listReviews({ ...coordinates, per_page: 100 });
+            const existing = reviews.data.find(review => review.user?.login === 'github-actions[bot]' && review.body?.includes(marker));
+            if (existing) {
+              await github.rest.pulls.updateReview({ ...coordinates, review_id: existing.id, body: comment });
+            } else {
+              await github.rest.pulls.createReview({ ...coordinates, event: 'COMMENT', body: comment });
+            }
