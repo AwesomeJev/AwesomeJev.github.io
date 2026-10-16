@@ -123,7 +123,7 @@ def main() -> None:
         destination.parent.mkdir(parents=True, exist_ok=True)
         destination.write_text(output)
         (ROOT / "data" / "source-counts.json").write_text(json.dumps({"generated_at": payload["generated_at"], "counts": payload["counts"]}, indent=2) + "\n")
-        badge = {"schemaVersion": 1, "label": "content screened", "message": f"{payload['counts']['checked_sources']:,} sources", "color": "6B7280", "labelColor": "374151"}
+        badge = {"schemaVersion": 1, "label": "source checks", "message": f"{payload['counts']['checked_sources']:,} sources", "color": "6B7280", "labelColor": "374151"}
         (destination.parent / "source-badge.json").write_text(json.dumps(badge) + "\n")
     print(json.dumps(payload["counts"], indent=2))
 

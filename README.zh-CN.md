@@ -172,6 +172,8 @@ pip install typesafe-sdk
 - [来源台账](data/) · [编辑抽样核查](data/editorial-audit.json)
 - [维护流程](docs/maintenance.md)
 
+公开来源扫描配置为每天洛杉矶时间 **09:17 和 21:17** 运行，更新通过可审查的 PR 提出；合并与网站同步仍由维护者执行。[时间安排与操作说明](docs/maintenance.md#twice-daily-source-scans)。
+
 ## 参与贡献
 
 维护者：[reacher-z](https://github.com/reacher-z)。

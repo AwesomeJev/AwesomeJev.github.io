@@ -853,7 +853,7 @@ html[lang="zh"] .hero h1 {
   font-family: var(--sans);
   font-size: clamp(32px, 4vw, 44px);
   line-height: 1.2;
-  letter-spacing: -0.035em;
+  letter-spacing: 0;
   margin: 0 0 16px;
   font-weight: 650;
 }
@@ -863,7 +863,7 @@ html[lang="zh"] .hero h1 em {
 html[lang="zh"] .section-heading h2 {
   font-size: 24px;
   line-height: 1.35;
-  letter-spacing: -0.025em;
+  letter-spacing: 0;
   font-family: var(--sans);
   font-weight: 600;
 }
@@ -872,14 +872,14 @@ html[lang="zh"] .start-copy h2 {
   line-height: 1.35;
   font-family: var(--sans);
   font-weight: 600;
-  letter-spacing: -0.025em;
+  letter-spacing: 0;
 }
 html[lang="zh"] .contribute-section h2 {
   font-size: 24px;
   font-family: var(--sans);
   font-weight: 600;
   line-height: 1.35;
-  letter-spacing: -0.025em;
+  letter-spacing: 0;
 }
 html[lang="zh"] .resource-description {
   line-height: 1.7;
@@ -1314,7 +1314,7 @@ html[lang="zh"] .resource-description {
   html[lang="zh"] .hero h1 {
     font-size: clamp(32px, 4vw, 44px);
     line-height: 1.2;
-  letter-spacing: -0.035em;
+  letter-spacing: 0;
   margin: 0 0 16px;
   font-family: var(--sans);
   font-weight: 650;
@@ -1322,7 +1322,7 @@ html[lang="zh"] .resource-description {
   html[lang="zh"] .section-heading h2 {
     font-size: 24px;
     line-height: 1.35;
-  letter-spacing: -0.025em;
+  letter-spacing: 0;
   font-family: var(--sans);
   font-weight: 600;
 }
@@ -1331,14 +1331,14 @@ html[lang="zh"] .resource-description {
     font-family: var(--sans);
   font-weight: 600;
   line-height: 1.35;
-  letter-spacing: -0.025em;
+  letter-spacing: 0;
 }
   html[lang="zh"] .contribute-section h2 {
     font-size: 24px;
     font-family: var(--sans);
   font-weight: 600;
   line-height: 1.35;
-  letter-spacing: -0.025em;
+  letter-spacing: 0;
 }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -1573,14 +1573,14 @@ html[lang="zh"] .corpus-heading h2 {
   font-family: var(--sans);
   font-weight: 600;
   line-height: 1.35;
-  letter-spacing: -0.025em;
+  letter-spacing: 0;
 }
 html[lang="zh"] .featured-copy h2 {
   font-size: 24px;
   font-family: var(--sans);
   font-weight: 600;
   line-height: 1.35;
-  letter-spacing: -0.025em;
+  letter-spacing: 0;
 }
 @media (max-width: 1000px) {
   .featured-index {
@@ -1732,14 +1732,14 @@ html[lang="zh"] .featured-copy h2 {
     font-family: var(--sans);
   font-weight: 600;
   line-height: 1.35;
-  letter-spacing: -0.025em;
+  letter-spacing: 0;
 }
   html[lang="zh"] .featured-copy h2 {
     font-size: 24px;
     font-family: var(--sans);
   font-weight: 600;
   line-height: 1.35;
-  letter-spacing: -0.025em;
+  letter-spacing: 0;
 }
 }
 

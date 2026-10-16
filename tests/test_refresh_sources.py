@@ -1,0 +1,203 @@
+"""Incremental evidence and public-network boundary regressions, no network."""
+import hashlib
+import json
+from pathlib import Path
+import tempfile
+import unittest
+from unittest.mock import Mock, patch
+
+from scripts import refresh_sources as refresh
+
+
+def row(url="https://example.org/source", body="earlier", level="content_screened", **extra):
+    return {"url": url, "title": "Fixture source", "topic": "fixture", "relation": "direct",
+            "verification_level": level, "retrieved_at": "2026-10-15T00:00:00Z",
+            "content_sha256": hashlib.sha256(body.encode()).hexdigest(),
+            "relevance": "Synthetic regression fixture.", "checked_via": "Fixture content.", **extra}
+
+
+def ledger(*rows):
+    return refresh.Ledger(list(rows), [json.dumps(r, ensure_ascii=True) + "\r\n" for r in rows])
+
+
+class IncrementalEvidenceTests(unittest.TestCase):
+    def test_unchanged_hash_preserves_exact_old_record_bytes_and_manual_fields(self):
+        prior = row(editorial_note="Manually inspected evidence", title="Corrected title")
+        old = ledger(prior)
+        new = row(retrieved_at="2026-10-16T00:00:00Z", title="Automatically extracted title")
+        result, changes = refresh.merge_records(old, [new])
+        self.assertEqual(result.lines, old.lines)
+        self.assertEqual(result.rows, old.rows)
+        self.assertFalse(changes["added"] or changes["changed"])
+
+    def test_partial_failure_keeps_prior_success_and_accepts_new_source(self):
+        old = ledger(row())
+        failed = row(level="metadata_only", status="unavailable")
+        failed.pop("content_sha256")
+        added = row("https://example.org/new", body="new evidence")
+        result, changes = refresh.merge_records(old, [failed, added])
+        self.assertEqual(result.lines[0], old.lines[0])
+        self.assertEqual(len(result.rows), 2)
+        self.assertEqual(changes["preserved_after_failure"], 1)
+
+    def test_missing_provider_results_never_remove_prior_rows(self):
+        old = ledger(row(), row("https://example.org/second", body="second"))
+        result, changes = refresh.merge_records(old, [])
+        self.assertEqual(result, old)
+        self.assertEqual(changes["added"], [])
+
+    def test_changed_editorial_source_is_preserved_pending_human_review(self):
+        old = ledger(row(level="editorial_reviewed", editorial_note="Reviewed original"))
+        fresh = row(body="new source revision")
+        result, changes = refresh.merge_records(old, [fresh])
+        self.assertEqual(result.lines, old.lines)
+        self.assertEqual(len(changes["editorial_review_required"]), 1)
+        self.assertEqual(changes["editorial_review_required"][0]["observed_content_sha256"], fresh["content_sha256"])
+
+    def test_automated_new_record_never_receives_editorial_tier(self):
+        result, _ = refresh.merge_records(ledger(), [row(level="editorial_reviewed")])
+        self.assertEqual(result.rows[0]["verification_level"], "content_screened")
+
+    def test_lower_evidence_tier_does_not_replace_fuller_prior_evidence(self):
+        old = ledger(row())
+        result, _ = refresh.merge_records(old, [row(body="abstract revision", level="abstract_checked")])
+        self.assertEqual(result.lines, old.lines)
+
+    def test_duplicate_versions_and_mirrored_content_do_not_inflate_additions(self):
+        a = row("https://arxiv.org/abs/2609.12345v1", body="paper")
+        b = row("https://arxiv.org/pdf/2609.12345v2.pdf", body="paper")
+        c = row("https://example.org/mirror", body="paper")
+        result, changes = refresh.merge_records(ledger(), [a, b, c])
+        self.assertEqual(len(result.rows), 1)
+        self.assertEqual(len(changes["added"]), 1)
+
+    def test_max_new_limits_only_additions_not_existing_rows(self):
+        old = ledger(row())
+        incoming = [row("https://example.org/a", "a"), row("https://example.org/b", "b")]
+        result, changes = refresh.merge_records(old, incoming, max_new=1)
+        self.assertEqual(result.lines[0], old.lines[0])
+        self.assertEqual(len(changes["added"]), 1)
+
+    def test_metadata_only_new_source_is_tracked_with_its_original_tier(self):
+        result, _ = refresh.merge_records(ledger(), [row(level="metadata_only", status="unavailable")])
+        self.assertEqual(result.rows[0]["verification_level"], "metadata_only")
+
+    def test_ledger_read_and_noop_preserve_crlf_bytes(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "sources.jsonl"
+            raw = ledger(row()).lines[0].encode()
+            path.write_bytes(raw)
+            loaded = refresh.Ledger.read(path)
+            result, _ = refresh.merge_records(loaded, [row(retrieved_at="later")])
+            self.assertFalse(refresh.write_if_changed(path, "".join(result.lines)))
+            self.assertEqual(path.read_bytes(), raw)
+
+    def test_pending_review_survives_fetch_failure_and_same_hash_new_snapshot_url(self):
+        old = row(level="editorial_reviewed")
+        fresh = row(body="changed", retrieved_url="https://example.org/revision-a")
+        _, change = refresh.merge_records(ledger(old), [fresh])
+        previous = {"editorial_refresh_candidates": change["editorial_review_required"]}
+        pending, changed, _ = refresh.pending_reviews(previous, [], [old])
+        self.assertEqual(pending, previous["editorial_refresh_candidates"])
+        self.assertFalse(changed)
+        observed = [dict(pending[0], retrieved_url="https://example.org/revision-b")]
+        pending2, changed2, _ = refresh.pending_reviews(previous, observed, [old])
+        self.assertEqual(pending2, pending)
+        self.assertFalse(changed2)
+
+    def test_more_than_100_pending_examples_do_not_create_repeated_changes(self):
+        old = [row(f"https://example.org/source-{i:03}", level="editorial_reviewed") for i in range(120)]
+        fresh = [dict(r, content_sha256=hashlib.sha256(b"new").hexdigest(), verification_level="content_screened") for r in old]
+        _, changes = refresh.merge_records(ledger(*old), fresh)
+        pending, _, count = refresh.pending_reviews({}, changes["editorial_review_required"], old)
+        self.assertEqual(count, 120)
+        self.assertEqual(len(pending), 100)
+        _, changed, _ = refresh.pending_reviews({"editorial_refresh_candidates": pending}, changes["editorial_review_required"], old)
+        self.assertFalse(changed)
+
+
+class PublicFetchTests(unittest.TestCase):
+    def test_invalid_protocol_private_ip_and_credential_urls_are_rejected(self):
+        credentials = "https://" + "fixture-user" + ":" + "fixture-password" + "@example.org/source"
+        for url in ["file:///fixture", "ftp://example.org/a", "http://127.0.0.1/a", "https://[::1]/a", "http://example.internal/a", "https://example.org/?token=fixture", credentials]:
+            with self.subTest(url=url.split(":", 1)[0]):
+                with self.assertRaises(refresh.FetchError):
+                    refresh.public_url(url)
+
+    def test_redirect_to_private_address_is_rejected_before_second_request(self):
+        client = refresh.PublicFetcher()
+        with patch.object(client, "_request", return_value=(302, {"location": "http://127.0.0.1/private"}, b"")) as request:
+            with self.assertRaises(refresh.FetchError):
+                client.fetch("https://example.org/source")
+            self.assertEqual(request.call_count, 1)
+
+    def test_mixed_public_private_dns_rejected_before_connection(self):
+        answers = [(2, 1, 6, "", ("93.184.216.34", 443)), (2, 1, 6, "", ("127.0.0.1", 443))]
+        with patch.object(refresh.socket, "getaddrinfo", return_value=answers), patch.object(refresh.http.client, "HTTPSConnection") as connection:
+            with self.assertRaises(refresh.FetchError):
+                refresh.PublicFetcher()._request("https://example.org/source")
+            connection.assert_not_called()
+
+    def test_connection_pins_public_ip_but_retains_tls_hostname(self):
+        response = Mock(status=200)
+        response.getheaders.return_value = [("Content-Type", "text/plain")]
+        response.read.return_value = b"public fixture"
+        connection = Mock()
+        connection.getresponse.return_value = response
+        connection.request.side_effect = lambda *a, **k: connection._create_connection(("ignored.example", 443), 18)
+        with patch.object(refresh, "public_addresses", return_value=["93.184.216.34"]), patch.object(refresh.http.client, "HTTPSConnection", return_value=connection) as https, patch.object(refresh.socket, "create_connection") as socket_connect:
+            refresh.PublicFetcher()._request("https://example.org/source")
+            self.assertEqual(https.call_args.args[:2], ("example.org", 443))
+            self.assertEqual(socket_connect.call_args.args[0], ("93.184.216.34", 443))
+
+    def test_retry_backoff_accepts_transient_failure_without_exposing_response(self):
+        client = refresh.PublicFetcher(retries=2)
+        replies = [(429, {"retry-after": "0"}, b""), (503, {}, b""), (200, {"content-type": "text/plain"}, b"ok")]
+        with patch.object(client, "_request", side_effect=replies) as request, patch.object(refresh.time, "sleep"):
+            self.assertEqual(client.fetch("https://example.org/source")[0], b"ok")
+            self.assertEqual(request.call_count, 3)
+
+    def test_body_cache_has_total_byte_budget(self):
+        client = refresh.PublicFetcher(cache_bytes=5)
+        with patch.object(client, "_request", return_value=(200, {}, b"four")):
+            client.fetch("https://example.org/a")
+            client.fetch("https://example.org/b")
+        self.assertLessEqual(client.cached_bytes, 5)
+        self.assertEqual(list(client.cache), ["https://example.org/b"])
+
+    def test_biomedical_jev_is_not_direct_ai_research(self):
+        self.assertFalse(refresh.direct_paper("Japanese encephalitis virus (JEV)", "A neural model supports clinical decisions using JEV infection probabilities."))
+        self.assertTrue(refresh.direct_paper("Jev evaluation", "TypeSafe's typed decision model is evaluated for probability calibration."))
+
+
+class RefreshRunTests(unittest.TestCase):
+    def test_all_provider_failures_return_failure_and_preserve_previous_ledger(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / "data").mkdir()
+            original = "".join(ledger(row()).lines)
+            (root / "data/ecosystem-sources.jsonl").write_bytes(original.encode())
+            (root / "data/research-sources.jsonl").write_text("")
+            (root / "data/source-counts.json").write_text(json.dumps({"counts": {"checked_sources": 1}}))
+            with patch.object(refresh, "ROOT", root), patch.object(refresh.Scan, "scan_ecosystem", return_value=[]), patch.object(refresh.Scan, "scan_research", return_value=([], [])), patch.object(refresh.subprocess, "run"):
+                code = refresh.main([])
+            report = json.loads((root / "data/scan-latest.json").read_text())
+            self.assertEqual(code, 1)
+            self.assertEqual(report["status"], "failed")
+            self.assertFalse(report["changed"])
+            self.assertEqual((root / "data/ecosystem-sources.jsonl").read_bytes(), original.encode())
+
+    def test_smoke_does_not_write_ledgers_or_report_or_build_index(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / "data").mkdir()
+            (root / "data/source-counts.json").write_text(json.dumps({"counts": {}}))
+            with patch.object(refresh, "ROOT", root), patch.object(refresh.Scan, "scan_ecosystem", return_value=[row()]), patch.object(refresh.Scan, "scan_research", return_value=([], [])), patch.object(refresh.subprocess, "run") as build:
+                self.assertEqual(refresh.main(["--smoke"]), 0)
+            build.assert_not_called()
+            self.assertFalse((root / "data/scan-latest.json").exists())
+            self.assertFalse((root / "data/ecosystem-sources.jsonl").exists())
+
+
+if __name__ == "__main__":
+    unittest.main()

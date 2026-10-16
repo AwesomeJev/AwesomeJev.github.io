@@ -172,6 +172,8 @@ The selected resources above and the larger [searchable source corpus](https://a
 - [Source ledgers](data/) · [Editorial audit sample](data/editorial-audit.json)
 - [Maintenance workflow](docs/maintenance.md)
 
+Public-source scans are scheduled for **09:17 and 21:17, America/Los_Angeles**, daily. Changes are proposed through a reviewable PR; merging and website synchronization remain maintainer actions. [Schedule and operation](docs/maintenance.md#twice-daily-source-scans).
+
 ## Contributing
 
 Maintained by [reacher-z](https://github.com/reacher-z).
