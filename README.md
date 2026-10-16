@@ -1,6 +1,6 @@
 # Awesome Jev
 
-[![Website](https://img.shields.io/badge/website-awesomejev.github.io-087E8B?style=flat-square&labelColor=0B3954)](https://awesomejev.github.io/) [![Checks](https://img.shields.io/github/actions/workflow/status/reacher-z/Awesome-Jev/ci.yml?branch=main&style=flat-square&label=checks&color=087E8B&labelColor=0B3954)](https://github.com/reacher-z/Awesome-Jev/actions/workflows/ci.yml) [![License](https://img.shields.io/badge/license-MIT-C81D25?style=flat-square&labelColor=0B3954)](LICENSE)
+[![Website](https://img.shields.io/badge/website-awesomejev.github.io-087E8B?style=flat-square&labelColor=374151)](https://awesomejev.github.io/) [![Checks](https://img.shields.io/github/actions/workflow/status/reacher-z/Awesome-Jev/ci.yml?branch=main&style=flat-square&label=checks&color=087E8B&labelColor=374151)](https://github.com/reacher-z/Awesome-Jev/actions/workflows/ci.yml) [![License](https://img.shields.io/badge/license-MIT-6B7280?style=flat-square&labelColor=374151)](LICENSE)
 
 A curated list of **Jev and typed decision model** papers, models, datasets, evaluation tools, and practical guides.
 

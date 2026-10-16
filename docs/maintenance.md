@@ -80,7 +80,7 @@ Configure Pages in the deployment repository to use GitHub Actions. The [Pages w
 
 ## Public-source and license boundaries
 
-Collect only public resources with public, unauthenticated requests. Keep private transcripts, credentials, local account configuration, machine-specific paths and raw response caches out of commits. Before publication, inspect the staged files and commit author identity; use the project's shared public identity rather than a private email address. Do not copy full copyrighted articles or abstracts into the ledger.
+Collect only public resources with public, unauthenticated requests. Keep private transcripts, credentials, local account configuration, machine-specific paths and raw response caches out of commits. Before publication, inspect the staged files and commit author identity; use the maintainer's public GitHub identity and GitHub-provided noreply address rather than a private email address. Preserve historical authorship instead of attributing every past commit to the current maintainer. Do not copy full copyrighted articles or abstracts into the ledger.
 
 Preserve the individual licenses of third-party resources. A repository license does not relicense linked papers, datasets or models. The bundled DM Sans, Instrument Serif and IBM Plex Mono fonts carry SIL Open Font License notices; the icon subset is Font Awesome **Free**, with its included license. Keep those notices and source versions with the assets. Do not add Font Awesome Pro files or proprietary font packages to this public repository.
 

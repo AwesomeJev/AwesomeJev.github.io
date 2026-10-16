@@ -2,27 +2,27 @@
   <title id="title">Awesome Jev</title>
   <desc id="desc">An independent field guide to typed decisions. Research, models, tools, and evidence.</desc>
   <rect width="1280" height="420" fill="#FFFFFF"/>
-  <path d="M56 64H1224M56 358H1224" stroke="#BFD7EA" stroke-width="2"/>
-  <g fill="#0B3954" font-family="Arial,Helvetica,sans-serif" font-size="13" letter-spacing="3">
+  <path d="M56 64H1224M56 358H1224" stroke="#D1D5DB" stroke-width="2"/>
+  <g fill="#111827" font-family="Arial,Helvetica,sans-serif" font-size="13" letter-spacing="3">
     <text x="57" y="43">THE DECISION MODEL FIELD GUIDE</text>
     <text x="1224" y="43" text-anchor="end">RESEARCH · CODE · EVIDENCE</text>
   </g>
-  <text x="50" y="214" fill="#0B3954" font-family="Georgia,Times New Roman,serif" font-size="126" letter-spacing="-6">Awesome Jev<tspan fill="#FF5A5F">.</tspan></text>
-  <text x="58" y="271" fill="#0B3954" font-family="Arial,Helvetica,sans-serif" font-size="23">Small decisions. An expanding field.</text>
-  <text x="58" y="313" fill="#0B3954" font-family="Arial,Helvetica,sans-serif" font-size="16">A considered collection of papers, models, tools, and benchmarks.</text>
+  <text x="50" y="214" fill="#111827" font-family="Georgia,Times New Roman,serif" font-size="126" letter-spacing="-6">Awesome Jev<tspan fill="#111827">.</tspan></text>
+  <text x="58" y="271" fill="#111827" font-family="Arial,Helvetica,sans-serif" font-size="23">Small decisions. An expanding field.</text>
+  <text x="58" y="313" fill="#111827" font-family="Arial,Helvetica,sans-serif" font-size="16">A considered collection of papers, models, tools, and benchmarks.</text>
   <g transform="translate(913 101)">
-    <circle cx="115" cy="111" r="105" fill="none" stroke="#BFD7EA"/>
-    <circle cx="115" cy="111" r="75" fill="none" stroke="#BFD7EA"/>
-    <path d="M17 111H82M115 111L193 45M115 111H225M115 111L193 177" fill="none" stroke="#0B3954" stroke-width="2"/>
-    <rect x="-7" y="95" width="32" height="32" rx="3" fill="#BFD7EA" stroke="#0B3954"/>
+    <circle cx="115" cy="111" r="105" fill="none" stroke="#D1D5DB"/>
+    <circle cx="115" cy="111" r="75" fill="none" stroke="#D1D5DB"/>
+    <path d="M17 111H82M115 111L193 45M115 111H225M115 111L193 177" fill="none" stroke="#9CA3AF" stroke-width="2"/>
+    <rect x="-7" y="95" width="32" height="32" rx="3" fill="#E5E7EB" stroke="#9CA3AF"/>
     <circle cx="115" cy="111" r="25" fill="#087E8B"/>
     <circle cx="115" cy="111" r="7" fill="#FFFFFF"/>
     <circle cx="197" cy="42" r="11" fill="#FF5A5F"/>
-    <circle cx="231" cy="111" r="8" fill="#0B3954"/>
-    <circle cx="197" cy="180" r="5" fill="#0B3954"/>
-    <g fill="#0B3954" font-family="monospace" font-size="12"><text x="218" y="45">p₁</text><text x="250" y="115">p₂</text><text x="217" y="185">p₃</text></g>
+    <circle cx="231" cy="111" r="8" fill="#6B7280"/>
+    <circle cx="197" cy="180" r="5" fill="#6B7280"/>
+    <g fill="#111827" font-family="monospace" font-size="12"><text x="218" y="45">p₁</text><text x="250" y="115">p₂</text><text x="217" y="185">p₃</text></g>
   </g>
-  <g fill="#0B3954" font-family="Arial,Helvetica,sans-serif" font-size="12" letter-spacing="1.6">
+  <g fill="#111827" font-family="Arial,Helvetica,sans-serif" font-size="12" letter-spacing="1.6">
     <text x="58" y="391">INDEPENDENT · OPEN SOURCE · BILINGUAL</text>
     <text x="1224" y="391" text-anchor="end">AWESOMEJEV.GITHUB.IO</text>
   </g>

@@ -2,6 +2,8 @@
 
 Thank you for helping keep this field guide useful and inspectable. English and Chinese contributions are welcome.
 
+Maintained by [reacher-z](https://github.com/reacher-z).
+
 The canonical collection is [reacher-z/Awesome-Jev](https://github.com/reacher-z/Awesome-Jev). Please open [issues](https://github.com/reacher-z/Awesome-Jev/issues) and [pull requests](https://github.com/reacher-z/Awesome-Jev/pulls) there. [AwesomeJev/AwesomeJev.github.io](https://github.com/AwesomeJev/AwesomeJev.github.io) mirrors the tested source for the [website](https://awesomejev.github.io); maintainers synchronize the two repositories when publishing.
 
 For collector refreshes, evidence tiers, bilingual updates and deployment, see the [maintenance guide](docs/maintenance.md).
@@ -46,6 +48,8 @@ python3 scripts/validate.py
 Submit only public source material and original summaries. Keep API keys, `.env` files, local caches, account configuration, private URLs, and proprietary packages outside the repository. Third-party assets must carry the appropriate license and attribution. Font Awesome Pro assets must not be committed to this public repository.
 
 ## 中文说明
+
+维护者：[reacher-z](https://github.com/reacher-z)。
 
 欢迎补充论文、模型、工具、数据与负面结果。请提供原始链接、日期或版本、与类型化决策的关系，以及实际核查的内容范围。区分官方声明、论文作者报告、自动筛查与亲自复现；不要将不同镜像或同一论文的多个版本重复计数。修改资源描述时，请同步中英文。
 
