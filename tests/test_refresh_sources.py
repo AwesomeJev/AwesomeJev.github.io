@@ -1,5 +1,7 @@
 """Incremental evidence and public-network boundary regressions, no network."""
 import hashlib
+import contextlib
+import io
 import json
 from pathlib import Path
 import tempfile
@@ -7,6 +9,7 @@ import unittest
 from unittest.mock import Mock, patch
 
 from scripts import refresh_sources as refresh
+from scripts import validate
 
 
 def row(url="https://example.org/source", body="earlier", level="content_screened", **extra):
@@ -117,6 +120,11 @@ class IncrementalEvidenceTests(unittest.TestCase):
 
 
 class PublicFetchTests(unittest.TestCase):
+    def test_discovery_excludes_inference_api_and_normalizes_acl_pdf(self):
+        with self.assertRaises(refresh.FetchError):
+            refresh.canonical_source("https://api.codiv.ai/v1/systemone")
+        self.assertEqual(refresh.canonical_source("https://aclanthology.org/2025.gem-1.63.pdf"), "https://aclanthology.org/2025.gem-1.63")
+
     def test_invalid_protocol_private_ip_and_credential_urls_are_rejected(self):
         credentials = "https://" + "fixture-user" + ":" + "fixture-password" + "@example.org/source"
         for url in ["file:///fixture", "ftp://example.org/a", "http://127.0.0.1/a", "https://[::1]/a", "http://example.internal/a", "https://example.org/?token=fixture", credentials]:
@@ -171,6 +179,19 @@ class PublicFetchTests(unittest.TestCase):
 
 
 class RefreshRunTests(unittest.TestCase):
+    def test_new_direct_paper_satisfies_the_public_ledger_schema(self):
+        scan = refresh.Scan(refresh.PublicFetcher())
+        abstract = "TypeSafe Jev is a typed decision model. " + "This synthetic fixture discusses probability calibration and model evaluation. " * 5
+        wrapper = {"data": [{"paper": {"id": "2609.12345", "title": "Jev calibration fixture", "summary": abstract, "authors": [{"name": "Fixture Author"}]}}], "retrieved_at": "2026-10-15T00:00:00Z", "retrieval_url": "https://huggingface.co/api/papers/search?q=Jev", "provider": "huggingface_papers_api", "http_status": 200}
+        with patch.object(scan, "query", side_effect=lambda topic, q, provider: (topic, q, wrapper)):
+            _, direct = scan.scan_research(smoke=True)
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "sources.jsonl"
+            path.write_text(json.dumps(direct[0]) + "\n")
+            with patch.object(validate, "ROOT", Path(tmp)), patch.object(validate, "errors", []) as errors:
+                validate.check_ledger(path)
+                self.assertEqual(errors, [])
+
     def test_all_provider_failures_return_failure_and_preserve_previous_ledger(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
@@ -179,7 +200,7 @@ class RefreshRunTests(unittest.TestCase):
             (root / "data/ecosystem-sources.jsonl").write_bytes(original.encode())
             (root / "data/research-sources.jsonl").write_text("")
             (root / "data/source-counts.json").write_text(json.dumps({"counts": {"checked_sources": 1}}))
-            with patch.object(refresh, "ROOT", root), patch.object(refresh.Scan, "scan_ecosystem", return_value=[]), patch.object(refresh.Scan, "scan_research", return_value=([], [])), patch.object(refresh.subprocess, "run"):
+            with patch.object(refresh, "ROOT", root), patch.object(refresh.Scan, "scan_ecosystem", return_value=[]), patch.object(refresh.Scan, "scan_research", return_value=([], [])), patch.object(refresh.subprocess, "run"), patch.dict(refresh.os.environ, {}, clear=True), contextlib.redirect_stdout(io.StringIO()):
                 code = refresh.main([])
             report = json.loads((root / "data/scan-latest.json").read_text())
             self.assertEqual(code, 1)
@@ -192,7 +213,7 @@ class RefreshRunTests(unittest.TestCase):
             root = Path(tmp)
             (root / "data").mkdir()
             (root / "data/source-counts.json").write_text(json.dumps({"counts": {}}))
-            with patch.object(refresh, "ROOT", root), patch.object(refresh.Scan, "scan_ecosystem", return_value=[row()]), patch.object(refresh.Scan, "scan_research", return_value=([], [])), patch.object(refresh.subprocess, "run") as build:
+            with patch.object(refresh, "ROOT", root), patch.object(refresh.Scan, "scan_ecosystem", return_value=[row()]), patch.object(refresh.Scan, "scan_research", return_value=([], [])), patch.object(refresh.subprocess, "run") as build, patch.dict(refresh.os.environ, {}, clear=True), contextlib.redirect_stdout(io.StringIO()):
                 self.assertEqual(refresh.main(["--smoke"]), 0)
             build.assert_not_called()
             self.assertFalse((root / "data/scan-latest.json").exists())

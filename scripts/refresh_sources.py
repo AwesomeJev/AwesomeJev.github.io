@@ -194,8 +194,12 @@ class PublicFetcher:
 def canonical_source(url):
     public_url(url)
     p = urllib.parse.urlsplit(url)
+    if p.hostname in ecosystem.BLOCKED_HOSTS or p.path.lower().endswith((".png", ".jpg", ".svg", ".gif", ".woff", ".woff2", ".zip", ".tar.gz", ".mp4", ".db")):
+        raise FetchError("excluded_discovery_url")
     if p.hostname in {"github.com", "www.github.com", "raw.githubusercontent.com", "huggingface.co", "hf.co"}:
         result = ecosystem.canonical(url)
+    elif p.hostname == "aclanthology.org":
+        result = index.canonical(url).removesuffix(".pdf")
     else:
         result = index.canonical(url)
     if not result:
@@ -498,7 +502,7 @@ class Scan:
                 text = title + " " + abstract
                 if not direct_paper(title, abstract) or len(abstract.split()) < 30 or not re.fullmatch(r"\d{4}\.\d{4,5}", pid):
                     continue
-                direct.append({"url": "https://arxiv.org/abs/" + pid, "title": title, "authors": [a.get("name", "") for a in paper.get("authors", []) if a.get("name")], "published_at": paper.get("publishedAt"), "topic": "direct-decision-research", "relation": "direct", "verification_level": "abstract_checked", "status": "screened", "retrieved_at": wrapper["retrieved_at"], "retrieval_url": wrapper["retrieval_url"], "abstract_provider": wrapper["provider"], "abstract_sha256": research.sha(abstract), "abstract_word_count": len(abstract.split()), "evidence_excerpt": research.evidence(abstract, ["Jev", "decision"]), "relevance": "Original abstract explicitly discusses Jev or typed decision models; findings remain author-reported.", "screening_method": "Direct Jev/typed-decision title-and-abstract rules; no full-paper review or reproduction.", "full_text_reviewed": False, "canonical_page_separately_fetched": False, "discovery_queries": [query]})
+                direct.append({"url": "https://arxiv.org/abs/" + pid, "title": title, "authors": [a.get("name", "") for a in paper.get("authors", []) if a.get("name")], "published_at": paper.get("publishedAt"), "topic": "direct-decision-research", "relation": "direct", "verification_level": "abstract_checked", "status": "screened", "retrieval_status": "success", "http_status": 200, "editorial_reviewed": False, "retrieved_at": wrapper["retrieved_at"], "retrieval_url": wrapper["retrieval_url"], "abstract_provider": wrapper["provider"], "abstract_sha256": research.sha(abstract), "abstract_word_count": len(abstract.split()), "evidence_excerpt": research.evidence(abstract, ["Jev", "decision"]), "relevance": "Original abstract explicitly discusses Jev or typed decision models; findings remain author-reported.", "screening_method": "Direct Jev/typed-decision title-and-abstract rules; no full-paper review or reproduction.", "full_text_reviewed": False, "canonical_page_separately_fetched": False, "discovery_queries": [query]})
         return records, direct
 
 
