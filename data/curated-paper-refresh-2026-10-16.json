@@ -1,0 +1,32 @@
+{
+  "added_count": 7,
+  "added_urls": [
+    "https://arxiv.org/abs/2609.29769",
+    "https://arxiv.org/abs/2610.00437",
+    "https://arxiv.org/abs/2610.06625",
+    "https://arxiv.org/abs/2610.11316",
+    "https://arxiv.org/abs/2610.17820",
+    "https://arxiv.org/abs/2610.18579",
+    "https://arxiv.org/abs/2610.19118"
+  ],
+  "checked_count": 7,
+  "completed_at": "2026-10-16T09:35:35+00:00",
+  "experimental_results_reproduced": false,
+  "kind": "targeted_curated_paper_reconciliation",
+  "metadata_only_count": 0,
+  "network_requests": 7,
+  "requested_urls": [
+    "https://arxiv.org/abs/2610.19118",
+    "https://arxiv.org/abs/2610.18579",
+    "https://arxiv.org/abs/2610.17820",
+    "https://arxiv.org/abs/2609.29769",
+    "https://arxiv.org/abs/2610.11316",
+    "https://arxiv.org/abs/2610.06625",
+    "https://arxiv.org/abs/2610.00437"
+  ],
+  "schema_version": 1,
+  "scope": "Only curated primary arXiv pages missing from both ledgers; no background discovery or full-paper review.",
+  "source_catalog": "site/papers.json",
+  "started_at": "2026-10-16T09:35:34+00:00",
+  "status": "success"
+}

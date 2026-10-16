@@ -60,6 +60,8 @@ An owner can verify the exact `https://awesomejev.github.io/` URL-prefix propert
 - Each of the six canonical HTML pages—`/`, `/zh/`, `/guide/`, `/zh/guide/`, `/papers/`, and `/zh/papers/`—was submitted once and received **Indexing requested** confirmation and the message that the URL was added to a priority crawl queue. These are confirmed requests, not confirmed index inclusion; do not submit the same pages repeatedly to try to advance their queue position.
 - The six-page `https://awesomejev.github.io/sitemap.xml` was submitted and the submission was acknowledged. Its Sitemaps report still showed **Couldn't fetch**, type **Unknown**, and **0 discovered pages** at the latest check. A separate live inspection of that exact URL succeeded: **Crawl allowed? Yes**, **Page fetch Successful**, inspected as **Google Inspection Tool smartphone**. A successful live fetch does not establish successful sitemap processing or invalidate the report's unresolved failure. Recheck processing later; no site-side defect has been established from these observations.
 
+**Follow-up confirmed on 2026-10-16:** URL Inspection for the canonical homepage `https://awesomejev.github.io/` now reports **URL is on Google** and **Page is indexed**. This is index-inclusion evidence for the homepage only, not confirmation for the other five pages, a ranking position, or an AI-answer citation. The sitemap report still showed its earlier retrieval failure when rechecked; the two observations are recorded separately.
+
 Ownership verification, an inclusive AI control, successful live tests, and queued requests do not establish indexing or appearance in an AI answer. Record subsequent processing results separately instead of replacing these observations with an assumption of success.
 
 ## Bing and IndexNow
@@ -113,3 +115,5 @@ An unrestricted public `User-agent: *` rule already permits compliant search cra
 Google 首页实时测试显示可访问、可索引；六个规范 HTML 页面 `/`、`/zh/`、`/guide/`、`/zh/guide/`、`/papers/`、`/zh/papers/` 均各提交一次，并分别收到 **Indexing requested** 确认，已加入优先抓取队列，不代表已收录。六页 sitemap 已提交并收到提交确认，但最近一次 Sitemaps 报表仍显示 **Couldn't fetch／Unknown／发现 0 页**。对同一个 sitemap URL 的独立实时测试则显示允许抓取、抓取成功，由 Google Inspection Tool smartphone 执行。实时测试成功不等于 sitemap 已处理成功，也不能覆盖报表的未解决状态；后续需复查，当前观察尚未确立本站存在需修复的缺陷。
 
 Bing 验证停在所有者的通行密钥交互步骤，尚未确认完成。IndexNow 已通过一次 POST 提交上述六个规范页面 URL，返回 **HTTP 202，密钥验证待完成**；这不代表已验证、已抓取或已收录，没有自动重试。脚本默认 dry run，不发网络请求；未来部署实质变更后，用 `--url` 选择变更页面，核对预览，再显式使用 `--submit` 发送一次通知。不要重复提交未变化页面，也不要提交外站论文链接。OpenAI 搜索使用 `OAI-SearchBot`，与用于训练的 `GPTBot` 相互独立。所有外部验证、提交和收录状态都应以实际结果记录，不能由本地文件推断。
+
+**后续确认（2026-10-16）：** Google URL 检查现已明确显示规范首页 `https://awesomejev.github.io/` 为 **URL is on Google／Page is indexed**。这一确认只适用于首页，不代表另外五页、排名或 AI 回答引用已经确认；sitemap 报表复查仍保留此前的读取失败状态，两者分开记录。

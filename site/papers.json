@@ -69,12 +69,39 @@
     },
     {
       "category": "Papers",
+      "title": "Releasing the Inner Jev: A Simple Recipe for Open Decision Models",
+      "by": "Geuter, Cheng & Alvarez-Melis · 2026-10-12 · v1",
+      "date": "2026-10-12",
+      "url": "https://arxiv.org/abs/2610.17205v1",
+      "en": "Answer-letter readout and supervised LoRA baselines; evaluation includes model-generated labels.",
+      "zh": "答案字母概率读出与监督式 LoRA 基线；评测包含模型生成的标签。"
+    },
+    {
+      "category": "Papers",
       "title": "General Decision Models: Benchmarking and Insights Beyond Jev",
       "by": "Duan et al. · 2026-10-12 · v2",
       "date": "2026-10-12",
       "url": "https://arxiv.org/abs/2610.03935v2",
       "en": "Bilingual decision evaluation and reliability when local decisions compose into larger systems.",
       "zh": "双语决策评估，以及局部决策组合成更大系统时的可靠性。"
+    },
+    {
+      "category": "Papers",
+      "title": "SanSi: A Looped Typed Decision Model for System 1.5 Thinking",
+      "by": "Gan, Lee & Kang · 2026-10-10 · v2",
+      "date": "2026-10-10",
+      "url": "https://arxiv.org/abs/2610.07730v2",
+      "en": "Looped hidden-state computation for typed decisions; additional loops trade compute for accuracy.",
+      "zh": "通过隐状态循环计算输出类型化决策；额外循环以计算成本换取准确率。"
+    },
+    {
+      "category": "Papers",
+      "title": "JevCascade: Readout Stability and Inference-Time Compute Allocation for Prefill-Only Decision Models",
+      "by": "Li & Chen · 2026-10-10 · v2",
+      "date": "2026-10-10",
+      "url": "https://arxiv.org/abs/2610.07716v2",
+      "en": "Candidate-menu interventions and confidence cascades; ranking stability does not establish probability calibration.",
+      "zh": "研究候选集合干预与置信度级联；排序稳定性并不等同概率校准。"
     },
     {
       "category": "Papers",

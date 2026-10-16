@@ -23,6 +23,115 @@ def ledger(*rows):
     return refresh.Ledger(list(rows), [json.dumps(r, ensure_ascii=True) + "\r\n" for r in rows])
 
 
+def catalog(root, papers=()):
+    path = root / "site/papers.json"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps({"papers": list(papers)}))
+    return path
+
+
+def paper(number=0, **extra):
+    return {"category": "Papers", "title": "Jev source fixture " + str(number),
+            "url": f"https://arxiv.org/abs/2609.{10000 + number}v1", **extra}
+
+
+class CuratedDiscoveryTests(unittest.TestCase):
+    def test_every_catalog_paper_is_seeded_independent_of_external_search(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            entries = [paper(i) for i in range(7)]
+            seeds = refresh.curated_paper_seeds(catalog(root, entries))
+            self.assertEqual(set(seeds), {refresh.index.canonical(p["url"]) for p in entries})
+            # A later catalog addition must need no collector code change.
+            entries.append(paper(7))
+            self.assertEqual(len(refresh.curated_paper_seeds(catalog(root, entries))), 8)
+
+    def test_versions_deduplicate_and_excluded_catalog_sources_are_not_fetched(self):
+        entries = [paper(), paper(url="https://arxiv.org/pdf/2609.10000v2.pdf"), paper(1)]
+        with tempfile.TemporaryDirectory() as tmp:
+            seeds = refresh.curated_paper_seeds(catalog(Path(tmp), entries))
+        self.assertEqual(len(seeds), 2)
+        allowed, excluded = "https://arxiv.org/abs/2609.10000", "https://arxiv.org/abs/2609.10001"
+        policy = Mock()
+        policy.exclusion.side_effect = lambda url: {"reason": "Fixture exclusion"} if url == excluded else None
+        scan = refresh.Scan(refresh.PublicFetcher(), curated_seeds=seeds, policy=policy)
+        external = {allowed: {**seeds[allowed], "discovered_from": ["https://example.org/index"]}}
+        with patch.object(scan, "discover_index", return_value=([], external)), patch.object(refresh.ecosystem, "audit", side_effect=lambda seed: (row(seed["url"]), [])) as audit, contextlib.redirect_stdout(io.StringIO()):
+            records = scan.scan_ecosystem(ledger(row(allowed)))
+        self.assertEqual(audit.call_count, 1)
+        self.assertEqual(records[0]["url"], allowed)
+        self.assertEqual(scan.curation_excluded, {excluded})
+        self.assertIn(refresh.CURATED_PAPERS_ORIGIN, audit.call_args.args[0]["discovered_from"])
+
+    def test_catalog_labels_never_replace_fetched_evidence_or_grant_review(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            seeds = refresh.curated_paper_seeds(catalog(Path(tmp), [paper(verification_level="editorial_reviewed", content_sha256="catalog-claim")]))
+        seed = next(iter(seeds.values()))
+        self.assertNotIn("verification_level", seed)
+        self.assertNotIn("content_sha256", seed)
+        raw = b"<html><title>Jev fixture</title><p>" + b"Typed decision models require careful probability calibration and reliable evaluation. " * 8 + b"</p></html>"
+        fetcher = Mock()
+        fetcher.fetch.return_value = (raw, seed["url"], "text/html")
+        scan = refresh.Scan(fetcher, curated_seeds=seeds)
+        with patch.object(scan, "discover_index", return_value=([], {})), contextlib.redirect_stdout(io.StringIO()):
+            records = scan.scan_ecosystem(ledger())
+        self.assertEqual(records[0]["verification_level"], "content_screened")
+        self.assertEqual(records[0]["content_sha256"], hashlib.sha256(raw).hexdigest())
+        fetcher.fetch.side_effect = refresh.FetchError("network_failure")
+        with patch.object(scan, "discover_index", return_value=([], {})), contextlib.redirect_stdout(io.StringIO()):
+            failed = scan.scan_ecosystem(ledger())
+        self.assertEqual(failed[0]["verification_level"], "metadata_only")
+        self.assertNotIn("content_sha256", failed[0])
+
+    def test_malformed_catalog_fails_before_network_without_echoing_input(self):
+        invalid = ["https://example.org/paper", "https://127.0.0.1/paper",
+                   "https://arxiv.org/abs/2609.10000?token=fixture-sensitive-value",
+                   "https://arxiv.org/abs/2609.10000#fragment"]
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            for url in invalid:
+                catalog(root, [paper(url=url)])
+                with self.subTest(url=url.split("?", 1)[0]), patch.object(refresh, "ROOT", root), patch.object(refresh.PublicFetcher, "fetch") as fetch, contextlib.redirect_stderr(io.StringIO()) as output:
+                    with self.assertRaises(SystemExit) as error:
+                        refresh.main([])
+                    self.assertEqual(error.exception.code, 2)
+                    self.assertIn("invalid_curated_paper_entry_1", output.getvalue())
+                    self.assertNotIn(url, output.getvalue())
+                    fetch.assert_not_called()
+            catalog(root).write_text("not JSON")
+            with self.assertRaisesRegex(ValueError, "invalid_curated_paper_catalog"):
+                refresh.curated_paper_seeds(root / "site/papers.json")
+
+
+class DiagnosticTests(unittest.TestCase):
+    def test_fixed_fetch_codes_preserved_but_arbitrary_messages_never_logged(self):
+        for message in ("http_429", "http_503", "network_failure", "dns_resolution_failed"):
+            self.assertEqual(refresh.safe_exception_code(refresh.FetchError(message)), message)
+        private_message = "upstream response contains fixture-sensitive-value"
+        fetcher = Mock()
+        fetcher.fetch.side_effect = refresh.FetchError(private_message)
+        scan = refresh.Scan(fetcher)
+        scan.query("direct", "Jev", refresh.research.PROVIDER)
+        self.assertEqual(scan.errors[0]["code"], "paper_query_failed:unclassified_fetch_error")
+        self.assertNotIn(private_message, json.dumps(scan.errors))
+        fetcher.fetch.side_effect = refresh.FetchError("http_429")
+        with patch.object(refresh.time, "sleep"):
+            scan.query("direct", "Jev", refresh.research.PROVIDER)
+        self.assertEqual(scan.errors[1]["code"], "paper_query_failed:http_429")
+
+    def test_error_totals_cover_all_issues_even_when_examples_are_truncated(self):
+        issues = [{"url": f"https://example.org/source-{i}", "code": "unavailable"} for i in range(101)]
+        issues += [{"url": "https://example.org/query", "code": "paper_query_failed:http_429"}]
+        report = refresh.error_report(issues)
+        self.assertEqual(report["error_count"], 102)
+        self.assertEqual(report["error_examples_count"], 100)
+        self.assertTrue(report["error_examples_truncated"])
+        self.assertEqual(report["error_code_counts"], {"paper_query_failed:http_429": 1, "unavailable": 101})
+        empty = refresh.error_report([])
+        self.assertFalse(empty["error_examples_truncated"])
+        self.assertEqual(empty["error_code_counts"], {})
+
+
 class IncrementalEvidenceTests(unittest.TestCase):
     def test_canonical_body_fetch_updates_only_page_provenance_not_review_scope(self):
         url = "https://arxiv.org/abs/2609.12345"
@@ -253,6 +362,7 @@ class RefreshRunTests(unittest.TestCase):
             (root / "data/ecosystem-sources.jsonl").write_bytes(original.encode())
             (root / "data/research-sources.jsonl").write_text("")
             (root / "data/source-counts.json").write_text(json.dumps({"counts": {"checked_sources": 1}}))
+            catalog(root)
             with patch.object(refresh, "ROOT", root), patch.object(refresh.Scan, "scan_ecosystem", return_value=[]), patch.object(refresh.Scan, "scan_research", return_value=([], [])), patch.object(refresh.subprocess, "run"), patch.dict(refresh.os.environ, {}, clear=True), contextlib.redirect_stdout(io.StringIO()):
                 code = refresh.main([])
             report = json.loads((root / "data/scan-latest.json").read_text())
@@ -266,6 +376,7 @@ class RefreshRunTests(unittest.TestCase):
             root = Path(tmp)
             (root / "data").mkdir()
             (root / "data/source-counts.json").write_text(json.dumps({"counts": {}}))
+            catalog(root)
             with patch.object(refresh, "ROOT", root), patch.object(refresh.Scan, "scan_ecosystem", return_value=[row()]), patch.object(refresh.Scan, "scan_research", return_value=([], [])), patch.object(refresh.subprocess, "run") as build, patch.dict(refresh.os.environ, {}, clear=True), contextlib.redirect_stdout(io.StringIO()):
                 self.assertEqual(refresh.main(["--smoke"]), 0)
             build.assert_not_called()

@@ -44,7 +44,7 @@ TypeSafe 的 Jev 接收状态与类型化问题，为应用代码返回决策和
 
 ## 论文
 
-下列 25 项直接研究均为 **arXiv 预印本**。日期对应已核查并链接的版本，不一定是首次提交日期。结果由作者报告，本项目没有复现实验。标题中的速度或成本主张保留作者原文。[参考文献](references.bib) · [证据比较](docs/survey.zh-CN.md)
+下列 28 项直接研究均为 **arXiv 预印本**。日期对应已核查并链接的版本，不一定是首次提交日期。结果由作者报告，本项目没有复现实验。标题中的速度或成本主张保留作者原文。[参考文献](references.bib) · [证据比较](docs/survey.zh-CN.md)
 
 ### 评测与基准
 
@@ -65,6 +65,7 @@ TypeSafe 的 Jev 接收状态与类型化问题，为应用代码返回决策和
 
 - **[JevAgentHarness: Benchmarking, Deploying and Training Decision Models That Share Control with LLMs](https://arxiv.org/abs/2610.21412v1)** — Zhu et al. *2026-10-15, arXiv v1*. 为各类选择拟合阈值，让决策模型与 LLM 共享 agent 控制。 [代码](https://github.com/JevAgentHarness/JevAgentHarness)。
 - **[Decision Models vs. LLMs as Rubric Judges: Cheaper, Faster, and Wrong in the Same Places](https://arxiv.org/abs/2609.29769v3)** — Rao & Callison-Burch. *2026-10-13, arXiv v3*. 评分准则评判、相关错误与级联收益的局限。
+- **[JevCascade: Readout Stability and Inference-Time Compute Allocation for Prefill-Only Decision Models](https://arxiv.org/abs/2610.07716v2)** — Li & Chen. *2026-10-10, arXiv v2*. 研究候选集合干预与置信度级联；排序稳定性并不等同概率校准。 [代码与数据](https://github.com/rlisml/jev-cascade)。
 - **[JEV-as-a-Judge: Accept When Confident, Escalate When Unsure](https://arxiv.org/abs/2609.26550v5)** — Li, Miao, Krishnan & Padman. *2026-10-09, arXiv v5*. 基于置信度从 Jev 升级到推理评判模型。
 - **[LAVOIR: Teaching a Single-Pass Decision Encoder When and What to Ask with Amortized Value of Information](https://arxiv.org/abs/2609.30706v1)** — Yilmaz, Tasdemir & Gozay. *2026-09-25, arXiv v1*. 在给出决策概率的同时估计追问缺失信息的价值。 [代码](https://github.com/moganai/lavoir)。
 
@@ -79,6 +80,8 @@ TypeSafe 的 Jev 接收状态与类型化问题，为应用代码返回决策和
 ### 架构、记忆与多模态
 
 - **[Jeva: System One Models from First Principles](https://arxiv.org/abs/2610.18773v1)** — Li & Wang. *2026-10-13, arXiv v1*. 空答案、选项排列、可变候选集与缓存机制。
+- **[Releasing the Inner Jev: A Simple Recipe for Open Decision Models](https://arxiv.org/abs/2610.17205v1)** — Geuter, Cheng & Alvarez-Melis. *2026-10-12, arXiv v1*. 答案字母概率读出与监督式 LoRA 基线；评测包含模型生成的标签。 [服务代码](https://github.com/j-geuter/jeff-serve) · [OpenDecisions](https://huggingface.co/datasets/jgeuter/OpenDecisions)。
+- **[SanSi: A Looped Typed Decision Model for System 1.5 Thinking](https://arxiv.org/abs/2610.07730v2)** — Gan, Lee & Kang. *2026-10-10, arXiv v2*. 通过隐状态循环计算决策，以额外计算成本换取准确率。 [训练与主要评测代码](https://github.com/minnesotanlp/Sansi)覆盖论文的部分实验。
 - **[MetaEncoder: Exploring the Limit of Bi-Encoders for Multimodal System One Decision Making with Natural Language Interface](https://arxiv.org/abs/2610.11316v1)** — Cheng et al. *2026-10-08, arXiv v1*. 通过自然语言接口实现多模态决策与检索的双编码器方法。 [评测代码](https://github.com/facebook/meta-encoder-eval)。
 - **[JevSpawn: Adaptive Agentic Inference through Compositional Action Spaces](https://arxiv.org/abs/2610.00437v1)** — Su & Huang. *2026-09-30, arXiv v1*. 组合有限行动字段，利用交互反馈探索候选路径。 [代码](https://github.com/Hoyant-Su/JevSpawn)。
 - **[Chinese-Jev: Bringing System One Model to Chinese-Language Tasks](https://arxiv.org/abs/2609.36965v1)** — Wang et al. *2026-09-29, arXiv v1*. 中文决策模型训练与领域评测。
@@ -161,7 +164,7 @@ TypeSafe 的四个数据集提供工作流案例、模型生成的参考标签�
 | 可组合流水线 | Khattab et al., *DSPy*. 2023. | [论文](https://arxiv.org/abs/2310.03714) |
 | 高效执行 | Zheng et al., *SGLang*. NeurIPS, 2024. | [论文](https://papers.nips.cc/paper_files/paper/2024/file/724be4472168f31ba1c9ac630f15dec8-Paper-Conference.pdf) · [代码](https://github.com/sgl-project/sglang) |
 
-33 篇精选论文均收录于 [references.bib](references.bib)。核查范围与局限见[本次论文精选记录](docs/reviews/papers-2026-10-16.md)。
+36 篇精选论文均收录于 [references.bib](references.bib)。核查范围与局限见[本次论文精选记录](docs/reviews/papers-2026-10-16.md)。
 
 ## 快速开始
 

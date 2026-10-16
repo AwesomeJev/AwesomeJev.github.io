@@ -44,7 +44,7 @@ On **2026-10-15**, `jev-latest` points to `jev-1.13.0` and `jev-preview` to `jev
 
 ## Papers
 
-All 25 direct studies below are **arXiv preprints**. Dates identify the linked, reviewed version, not necessarily the first submission. Results are author-reported; this project has not reproduced their experiments. Titles that contain speed or cost claims retain the authors' wording. [Bibliography](references.bib) · [Evidence comparison](docs/survey.md)
+All 28 direct studies below are **arXiv preprints**. Dates identify the linked, reviewed version, not necessarily the first submission. Results are author-reported; this project has not reproduced their experiments. Titles that contain speed or cost claims retain the authors' wording. [Bibliography](references.bib) · [Evidence comparison](docs/survey.md)
 
 ### Evaluation and benchmarking
 
@@ -65,6 +65,7 @@ All 25 direct studies below are **arXiv preprints**. Dates identify the linked, 
 
 - **[JevAgentHarness: Benchmarking, Deploying and Training Decision Models That Share Control with LLMs](https://arxiv.org/abs/2610.21412v1)** — Zhu et al. *2026-10-15, arXiv v1*. Per-choice thresholds for sharing agent control between decision models and LLMs. [Code](https://github.com/JevAgentHarness/JevAgentHarness).
 - **[Decision Models vs. LLMs as Rubric Judges: Cheaper, Faster, and Wrong in the Same Places](https://arxiv.org/abs/2609.29769v3)** — Rao & Callison-Burch. *2026-10-13, arXiv v3*. Rubric judging, correlated errors, and limits to cascade gains.
+- **[JevCascade: Readout Stability and Inference-Time Compute Allocation for Prefill-Only Decision Models](https://arxiv.org/abs/2610.07716v2)** — Li & Chen. *2026-10-10, arXiv v2*. Candidate-menu interventions and confidence cascades; ranking stability does not establish probability calibration. [Code and data](https://github.com/rlisml/jev-cascade).
 - **[JEV-as-a-Judge: Accept When Confident, Escalate When Unsure](https://arxiv.org/abs/2609.26550v5)** — Li, Miao, Krishnan & Padman. *2026-10-09, arXiv v5*. Confidence-gated escalation from Jev to a reasoning judge.
 - **[LAVOIR: Teaching a Single-Pass Decision Encoder When and What to Ask with Amortized Value of Information](https://arxiv.org/abs/2609.30706v1)** — Yilmaz, Tasdemir & Gozay. *2026-09-25, arXiv v1*. Estimates the value of asking for missing information alongside decision probabilities. [Code](https://github.com/moganai/lavoir).
 
@@ -79,6 +80,8 @@ All 25 direct studies below are **arXiv preprints**. Dates identify the linked, 
 ### Architectures, memory, and multimodality
 
 - **[Jeva: System One Models from First Principles](https://arxiv.org/abs/2610.18773v1)** — Li & Wang. *2026-10-13, arXiv v1*. Null handling, option permutation, variable candidate sets, and caching.
+- **[Releasing the Inner Jev: A Simple Recipe for Open Decision Models](https://arxiv.org/abs/2610.17205v1)** — Geuter, Cheng & Alvarez-Melis. *2026-10-12, arXiv v1*. Answer-letter readout and supervised LoRA baselines; evaluation includes model-generated labels. [Serving code](https://github.com/j-geuter/jeff-serve) · [OpenDecisions](https://huggingface.co/datasets/jgeuter/OpenDecisions).
+- **[SanSi: A Looped Typed Decision Model for System 1.5 Thinking](https://arxiv.org/abs/2610.07730v2)** — Gan, Lee & Kang. *2026-10-10, arXiv v2*. Looped hidden-state computation; additional loops trade compute for accuracy. [Training and main-evaluation code](https://github.com/minnesotanlp/Sansi), covering part of the paper's experiments.
 - **[MetaEncoder: Exploring the Limit of Bi-Encoders for Multimodal System One Decision Making with Natural Language Interface](https://arxiv.org/abs/2610.11316v1)** — Cheng et al. *2026-10-08, arXiv v1*. Bi-encoder approach to multimodal decisions and retrieval through natural-language interfaces. [Evaluation code](https://github.com/facebook/meta-encoder-eval).
 - **[JevSpawn: Adaptive Agentic Inference through Compositional Action Spaces](https://arxiv.org/abs/2610.00437v1)** — Su & Huang. *2026-09-30, arXiv v1*. Composes finite action fields and explores alternatives using interaction feedback. [Code](https://github.com/Hoyant-Su/JevSpawn).
 - **[Chinese-Jev: Bringing System One Model to Chinese-Language Tasks](https://arxiv.org/abs/2609.36965v1)** — Wang et al. *2026-09-29, arXiv v1*. Chinese decision-model training and domain-specific evaluation.
@@ -161,7 +164,7 @@ Background literature and comparison methods. These works do **not** establish J
 | Composable pipelines | Khattab et al., *DSPy*. 2023. | [Paper](https://arxiv.org/abs/2310.03714) |
 | Efficient execution | Zheng et al., *SGLang*. NeurIPS, 2024. | [Paper](https://papers.nips.cc/paper_files/paper/2024/file/724be4472168f31ba1c9ac630f15dec8-Paper-Conference.pdf) · [Code](https://github.com/sgl-project/sglang) |
 
-All 33 selected papers are included in [references.bib](references.bib). See the [latest paper-selection review](docs/reviews/papers-2026-10-16.md) for verification scope and limitations.
+All 36 selected papers are included in [references.bib](references.bib). See the [latest paper-selection review](docs/reviews/papers-2026-10-16.md) for verification scope and limitations.
 
 ## Quick start
 

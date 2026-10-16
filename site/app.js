@@ -6,8 +6,9 @@ let language = document.documentElement.lang.startsWith("zh") ? "zh" : "en";
 let activeFilter = "All";
 let corpusSources = [];
 let corpusCounts = {};
-let corpusLoaded = false;
+let corpusLoadState = "idle";
 let corpusLoadPromise;
+let corpusRetrying = false;
 let corpusLimit = 24;
 let copyTimer;
 const $ = (selector) => document.querySelector(selector);
@@ -258,8 +259,16 @@ function curationDisclosure(source) {
 }
 function renderCorpus() {
   if (!$("#corpus-list")) return;
-  if (!corpusLoaded) {
-    $("#corpus-status").textContent = t("corpusLoading");
+  const retryButton = $("#corpus-retry");
+  if (corpusLoadState === "loaded" && document.activeElement === retryButton) {
+    $("#corpus-search").focus();
+  }
+  $("#corpus-recovery").hidden = corpusLoadState !== "error" && !corpusRetrying;
+  retryButton.disabled = corpusLoadState === "loading";
+  if (corpusLoadState !== "loaded") {
+    $("#corpus-status").textContent = t(
+      corpusLoadState === "error" ? "corpusLoadFailed" : "corpusLoading",
+    );
     return;
   }
   $("#corpus-count").textContent = corpusSources.length
@@ -300,8 +309,13 @@ function renderCorpus() {
       `<p class="corpus-empty">${escapeHTML(t("corpusEmpty"))}</p>`;
   $("#corpus-more").hidden = filtered.length <= corpusLimit;
 }
-function loadCorpus() {
+function loadCorpus({ retry = false } = {}) {
   if (corpusLoadPromise) return corpusLoadPromise;
+  // Visibility and disclosure events must not retry a failed request.
+  if (corpusLoadState === "error" && !retry) return Promise.resolve();
+  corpusRetrying = retry;
+  corpusLoadState = "loading";
+  renderCorpus();
   corpusLoadPromise = fetch("/data/source-index.json", { cache: "no-cache" })
     .then((response) => {
       if (!response.ok) throw new Error("Source index not available");
@@ -315,15 +329,20 @@ function loadCorpus() {
       corpusSources = sources
         .map(normalizeSource)
         .filter((source) => source.title && source.url);
+      corpusLoadState = "loaded";
     })
-    .catch(() => {})
+    .catch(() => {
+      corpusLoadState = "error";
+      corpusLoadPromise = undefined;
+    })
     .finally(() => {
-      corpusLoaded = true;
+      corpusRetrying = false;
       renderCorpus();
     });
   return corpusLoadPromise;
 }
 if ($("#corpus-search")) {
+  $("#corpus-retry").addEventListener("click", () => loadCorpus({ retry: true }));
   $("#corpus-search").addEventListener("input", () => {
     corpusLimit = 24;
     renderCorpus();

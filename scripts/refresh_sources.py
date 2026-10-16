@@ -8,7 +8,7 @@ No credentials, cookies, proxy settings or downloaded code are used.
 from __future__ import annotations
 
 import argparse
-from collections import OrderedDict
+from collections import Counter, OrderedDict
 import concurrent.futures as cf
 from dataclasses import dataclass
 from datetime import datetime, timezone
@@ -45,6 +45,14 @@ LEVEL = {"metadata_only": 0, "abstract_checked": 1, "content_screened": 2, "edit
 SECRET_QUERY = re.compile(r"(?:token|api.?key|password|secret|signature|credential|authorization)", re.I)
 DIRECT_QUERIES = ["Jev TypeSafe", "typed decision model", "System One model Jev", "RLCD calibrated decisions"]
 MAX_BODY = 6_000_000
+SAFE_FETCH_ERRORS = frozenset({
+    "unsafe_url_syntax", "unsafe_url_scheme_or_credentials", "unsupported_port",
+    "non_public_host", "credential_query_rejected", "non_public_ip",
+    "dns_non_public_address", "dns_resolution_failed", "response_size_limit",
+    "network_failure", "redirect_without_location", "unsupported_binary_document",
+    "redirect_limit", "excluded_discovery_url",
+})
+CURATED_PAPERS_ORIGIN = "https://awesomejev.github.io/papers.json"
 
 
 def now():
@@ -53,6 +61,52 @@ def now():
 
 class FetchError(Exception):
     """Safe, fixed-message exception: never include response text or secrets."""
+
+
+def safe_exception_code(error):
+    """Expose only known fixed fetch codes, never arbitrary exception messages."""
+    if isinstance(error, FetchError):
+        code = str(error)
+        if code in SAFE_FETCH_ERRORS or re.fullmatch(r"http_[1-5][0-9]{2}", code):
+            return code
+        return "unclassified_fetch_error"
+    name = type(error).__name__
+    return name if name in {"ValueError", "TypeError", "KeyError", "AttributeError", "JSONDecodeError"} else "unclassified_error"
+
+
+def error_report(errors, limit=100):
+    """Count every issue before truncating the public diagnostic examples."""
+    examples = sorted(errors, key=lambda r: json.dumps(r, sort_keys=True))[:limit]
+    return {"error_count": len(errors), "errors": examples,
+            "error_code_counts": dict(sorted(Counter(item["code"] for item in errors).items())),
+            "error_examples_count": len(examples), "error_examples_truncated": len(errors) > len(examples)}
+
+
+def curated_paper_seeds(path):
+    """Read trusted catalog URLs, without trusting its descriptions as evidence."""
+    try:
+        if path.is_symlink() or path.stat().st_size > 2_000_000:
+            raise ValueError("invalid_catalog_file")
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeError, ValueError):
+        raise ValueError("invalid_curated_paper_catalog") from None
+    if not isinstance(data, dict) or not isinstance(data.get("papers"), list):
+        raise ValueError("invalid_curated_paper_catalog_schema")
+    seeds = {}
+    for position, paper in enumerate(data["papers"], 1):
+        if (not isinstance(paper, dict) or paper.get("category") != "Papers"
+                or not isinstance(paper.get("title"), str) or not paper["title"].strip()
+                or len(paper["title"]) > 500 or re.search(r"[\x00-\x1f]", paper["title"])
+                or not isinstance(paper.get("url"), str)
+                or not re.fullmatch(r"https://arxiv\.org/(?:abs|pdf)/[0-9]{4}\.[0-9]{4,5}(?:v[1-9][0-9]*)?(?:\.pdf)?", paper["url"])):
+            # Only the entry number is diagnostic; never echo malformed input.
+            raise ValueError("invalid_curated_paper_entry_" + str(position))
+        url = canonical_source(paper["url"])
+        seeds.setdefault(url, {"url": url, "title": paper["title"].strip(),
+            "topic": "research-paper", "relation": "direct", "discovery_depth": 0,
+            "relevance": "Direct paper listed in the maintained catalog; source-page screening does not imply full-paper review or reproduced findings.",
+            "discovered_from": [CURATED_PAPERS_ORIGIN]})
+    return seeds
 
 
 def public_url(url: str):
@@ -352,8 +406,10 @@ def merge_records(old: Ledger, incoming, max_new=None, policy=None):
 
 
 class Scan:
-    def __init__(self, fetcher, workers=8):
+    def __init__(self, fetcher, workers=8, curated_seeds=None, policy=None):
         self.fetcher, self.workers = fetcher, workers
+        self.curated_seeds, self.policy = curated_seeds or {}, policy
+        self.curation_excluded = set()
         self.errors, self.excluded = [], 0
         self.lock = threading.Lock()
         self.index_revision = None
@@ -379,7 +435,7 @@ class Scan:
                 raise ValueError("invalid_revision")
             self.index_revision = revision
         except (FetchError, ValueError, KeyError, TypeError) as e:
-            self.error(ecosystem.SPACE_URL, "index_discovery_failed:" + type(e).__name__)
+            self.error(ecosystem.SPACE_URL, "index_discovery_failed:" + safe_exception_code(e))
             return records, seeds
         base = ecosystem.SPACE_URL + "/raw/" + revision + "/"
         files = {}
@@ -393,7 +449,7 @@ class Scan:
                 records.append({"url": ecosystem.SPACE_URL if name == "README.md" else ecosystem.SPACE_URL + "/blob/main/" + name,
                     "title": "Jev Decision Index — " + name, "topic": "community-evaluation-index", "relation": "direct", "verification_level": "content_screened", "status": "screened", "retrieved_at": now(), "retrieved_url": resolved, "resolved_revision": revision, "content_sha256": hashlib.sha256(raw).hexdigest(), "content_bytes": len(raw), "checked_via": "Automated retrieval and structural inspection of current community index source; not editorial review.", "evidence": "Current public index document parsed for linked artifacts and evaluation provenance.", "relevance": "Community source for independent Jev-inspired implementations and evaluation.", "discovered_from": [ecosystem.SPACE_URL]})
             except (FetchError, ValueError, TypeError) as e:
-                self.error(base + name, "index_file_failed:" + type(e).__name__)
+                self.error(base + name, "index_file_failed:" + safe_exception_code(e))
 
         def add(url, topic, relation, origin, why):
             try:
@@ -432,6 +488,9 @@ class Scan:
 
     def scan_ecosystem(self, old, max_new=None, smoke=False):
         records, seeds = self.discover_index()
+        for key, seed in self.curated_seeds.items():
+            origins = set(seeds.get(key, {}).get("discovered_from", [])) | set(seed["discovered_from"])
+            seeds[key] = {**seed, "discovered_from": sorted(origins)}
         old_keys = {identity(r) for r in old.rows}
         for row in old.rows:
             key = identity(row)
@@ -446,6 +505,9 @@ class Scan:
                 batch = []
                 for key, seed in sorted(seeds.items()):
                     if key in visited or seed.get("discovery_depth", 0) > depth:
+                        continue
+                    if self.policy and self.policy.exclusion(key):
+                        self.curation_excluded.add(key)
                         continue
                     if key not in old_keys:
                         if max_new is not None and new_attempts >= max_new:
@@ -476,7 +538,7 @@ class Scan:
                                 except FetchError:
                                     self.excluded += 1
                         except (FetchError, ValueError, TypeError, KeyError) as e:
-                            self.error(seed["url"], "document_failed:" + type(e).__name__)
+                            self.error(seed["url"], "document_failed:" + safe_exception_code(e))
                         if i % 200 == 0:
                             print(json.dumps({"phase": "ecosystem", "completed": i}), flush=True)
         finally:
@@ -516,7 +578,7 @@ class Scan:
                 self.successful_queries += 1
             return topic, query, {"data": clean, "provider": provider, "retrieval_url": final, "retrieved_at": now(), "http_status": 200}
         except (FetchError, ValueError, TypeError, KeyError, AttributeError) as e:
-            self.error(url, "paper_query_failed:" + type(e).__name__)
+            self.error(url, "paper_query_failed:" + safe_exception_code(e))
             return topic, query, {"data": []}
 
     def scan_research(self, smoke=False):
@@ -587,7 +649,7 @@ def write_if_changed(path, text):
 
 
 def publish_summary(report):
-    text = "\n".join(["## Public source scan", "", "Status: **" + report["status"] + "**.", f"Added: {report['added_count']}; updated: {report['changed_count']}; editorial changes awaiting review: {report['editorial_review_required_count']}.", f"Provider/document issues: {report['error_count']}. Earlier evidence was retained on failures.", "", "Automated source screening is not scientific review or reproduction. No source instructions or downloaded code were executed.", ""])
+    text = "\n".join(["## Public source scan", "", "Status: **" + report["status"] + "**.", f"Added: {report['added_count']}; updated: {report['changed_count']}; editorial changes awaiting review: {report['editorial_review_required_count']}.", f"Provider/document issues: {report['error_count']}. Earlier evidence was retained on failures.", f"Diagnostic examples stored: {report['error_examples_count']} of {report['error_count']}; error_code_counts covers all issues.", "", "Automated source screening is not scientific review or reproduction. No source instructions or downloaded code were executed.", ""])
     if os.environ.get("GITHUB_STEP_SUMMARY"):
         with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as f:
             f.write(text)
@@ -610,8 +672,12 @@ def main(argv=None):
     paths = [ROOT / "data/ecosystem-sources.jsonl", ROOT / "data/research-sources.jsonl"]
     originals = [Ledger.read(path) for path in paths]
     policy = load_policy(ROOT / "data/source-curation.json", index.canonical)
+    try:
+        curated_seeds = curated_paper_seeds(ROOT / "site/papers.json")
+    except ValueError as error:
+        parser.error(str(error))
     fetcher = PublicFetcher()
-    scan = Scan(fetcher, args.workers)
+    scan = Scan(fetcher, args.workers, curated_seeds=curated_seeds, policy=policy)
     limit = min(args.max_new, 5) if args.smoke and args.max_new is not None else 5 if args.smoke else args.max_new
     ecosystem_rows = scan.scan_ecosystem(originals[0], limit, args.smoke)
     research_rows, direct = scan.scan_research(args.smoke)
@@ -634,8 +700,8 @@ def main(argv=None):
         counts = json.loads((ROOT / "data/source-counts.json").read_text())["counts"]
     else:
         counts = json.loads((ROOT / "data/source-counts.json").read_text())["counts"]
-    report = {"schema_version": 1, "started_at": started_at, "completed_at": now(), "status": status, "changed": changed, "dry_run": args.smoke, "added_count": len(changes["added"]), "changed_count": len(changes["changed"]), "editorial_review_required_count": pending_count, "added_urls": changes["added"][:100], "changed_urls": changes["changed"][:100], "editorial_refresh_candidates": pending, "editorial_examples_truncated": pending_count > 100, "error_count": len(scan.errors), "errors": sorted(scan.errors, key=lambda r: json.dumps(r, sort_keys=True))[:100], "counts": counts, "index_revision": scan.index_revision, "network_requests": fetcher.requests, "excluded_discoveries": scan.excluded, "preserved_after_failure": ec["preserved_after_failure"] + rc["preserved_after_failure"], "duplicate_candidates_skipped": ec["duplicates"] + rc["duplicates"], "privacy_rejected_records": ec["rejected"] + rc["rejected"], "verification_note": "Public document or original-abstract machine screening only; prior reviewed evidence is preserved and changed editorial sources require human review. Metadata-only records do not count as checked sources."}
-    report["curation_excluded_count"] = len(set(ec["curation_excluded"] + rc["curation_excluded"]))
+    report = {"schema_version": 1, "started_at": started_at, "completed_at": now(), "status": status, "changed": changed, "dry_run": args.smoke, "added_count": len(changes["added"]), "changed_count": len(changes["changed"]), "editorial_review_required_count": pending_count, "added_urls": changes["added"][:100], "changed_urls": changes["changed"][:100], "editorial_refresh_candidates": pending, "editorial_examples_truncated": pending_count > 100, **error_report(scan.errors), "counts": counts, "index_revision": scan.index_revision, "network_requests": fetcher.requests, "excluded_discoveries": scan.excluded, "preserved_after_failure": ec["preserved_after_failure"] + rc["preserved_after_failure"], "duplicate_candidates_skipped": ec["duplicates"] + rc["duplicates"], "privacy_rejected_records": ec["rejected"] + rc["rejected"], "verification_note": "Public document or original-abstract machine screening only; prior reviewed evidence is preserved and changed editorial sources require human review. Metadata-only records do not count as checked sources."}
+    report["curation_excluded_count"] = len(set(ec["curation_excluded"] + rc["curation_excluded"]) | scan.curation_excluded)
     # Report every attempt, including failures. The publisher must gate on
     # report.changed, not this report's timestamp or a raw git-diff count.
     if not args.smoke:

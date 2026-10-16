@@ -108,6 +108,14 @@ Compares rubric judges and examines correlated errors that can limit cascade imp
 
 Primary source: https://arxiv.org/abs/2609.29769v3
 
+## Releasing the Inner Jev: A Simple Recipe for Open Decision Models
+
+Papers · Geuter, Cheng & Alvarez-Melis · 2026-10-12 · v1
+
+Answer-letter readout and supervised LoRA baselines; evaluation includes model-generated labels.
+
+Primary source: https://arxiv.org/abs/2610.17205v1
+
 ## General Decision Models: Benchmarking and Insights Beyond Jev
 
 Papers · Duan et al. · 2026-10-12 · v2
@@ -115,6 +123,22 @@ Papers · Duan et al. · 2026-10-12 · v2
 Bilingual decision evaluation and reliability when local decisions compose into larger systems.
 
 Primary source: https://arxiv.org/abs/2610.03935v2
+
+## SanSi: A Looped Typed Decision Model for System 1.5 Thinking
+
+Papers · Gan, Lee & Kang · 2026-10-10 · v2
+
+Looped hidden-state computation for typed decisions; additional loops trade compute for accuracy.
+
+Primary source: https://arxiv.org/abs/2610.07730v2
+
+## JevCascade: Readout Stability and Inference-Time Compute Allocation for Prefill-Only Decision Models
+
+Papers · Li & Chen · 2026-10-10 · v2
+
+Candidate-menu interventions and confidence cascades; ranking stability does not establish probability calibration.
+
+Primary source: https://arxiv.org/abs/2610.07716v2
 
 ## JEV-as-a-Judge: Accept When Confident, Escalate When Unsure
 

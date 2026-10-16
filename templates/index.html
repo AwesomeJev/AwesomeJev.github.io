@@ -67,7 +67,7 @@
       crossorigin
     />
     <link rel="stylesheet" href="/styles.css?v=7" />
-    <script type="module" src="/app.js?v=8"></script>
+    <script type="module" src="/app.js?v=9"></script>
   </head>
   <body>
     <a class="skip-link" href="#collection" data-i18n="skip"
@@ -328,6 +328,15 @@
                 >
               </div>
               <p id="corpus-status" role="status" aria-live="polite"></p>
+              <div id="corpus-recovery" hidden>
+                <button type="button" id="corpus-retry" class="filter-button" data-i18n="corpusRetry">
+                  Retry loading
+                </button>
+                <p class="reference-links">
+                  <a href="/data/source-index.json" data-i18n="corpusJSON">Open source index (JSON)</a>
+                  <a href="https://github.com/reacher-z/Awesome-Jev/tree/main/data" target="_blank" rel="noopener noreferrer" data-i18n="corpusLedger">Browse source ledgers</a>
+                </p>
+              </div>
               <div id="corpus-list"></div>
               <button
                 type="button"
