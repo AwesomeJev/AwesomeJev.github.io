@@ -44,6 +44,12 @@ Separate schema validity, stability under content-preserving changes, and semant
 
 For citations, keep the claim and arithmetic fixed while swapping same-number passages that support a different financial role. Include equivalent valid evidence as positive controls, and measure false acceptance of mismatches and false rejection of valid support separately. Inspect paired disagreements rather than counting every changed answer as wrong. These constructed cases are diagnostic probes, not estimates of error rates in real traffic. [Same-number citation preprint, v1](https://arxiv.org/abs/2610.08675v1)
 
+## How should I test tool arguments and option-channel risks?
+
+Separate schema validity, whether cited evidence supports a proposed argument, and whether the argument follows from the request, history and schema defaults. Test correct defaults or inferred values without explicit references, alongside incorrect values paired with visible references. Reference availability is not derivation correctness. If a model writes references from the full history, hide the candidate from it and verify its output; generated references are not ground truth. [Tool-argument verification preprint, v1](https://arxiv.org/abs/2610.18497v1)
+
+Define who can alter request text, tool outputs, option names and policy definitions. Test each channel your threat model lets an attacker control, including confidence on incorrect decisions. The cited guardrail experiments concern open-weight typed-decision models, not a demonstrated compromise of hosted Jev. This is a proposed evaluation protocol, not a reproduced result. [Option-channel guardrail preprint, v1](https://arxiv.org/abs/2610.12292v1)
+
 ## Are the SDK and independent models released Jev weights?
 
 The official SDK is a client for TypeSafe’s hosted API, not a Jev checkpoint. Independent projects such as Laya publish their own model artifacts. Similar question types or API compatibility do not establish identical architecture, behavior, or accuracy. [Official Python SDK](https://github.com/typesafe-ai/typesafe-sdk-python) · [Laya model card](https://huggingface.co/convaiinnovations/laya)
@@ -122,6 +128,14 @@ Pairs factual probes with action choices to diagnose decision failures.
 
 Primary source: https://arxiv.org/abs/2610.18579v1
 
+## Judges Follow the Reference: The Derivation Gap in Verifying Tool-Call Arguments
+
+Papers · Ma et al. · 2026-10-13 · v1
+
+Tool-argument judges including Jev reject some correct derived values without visible references; model-generated references are evaluated on three benchmarks.
+
+Primary source: https://arxiv.org/abs/2610.18497v1
+
 ## Same Attack, Different Judge
 
 Papers · Li et al. · 2026-10-13 · v1
@@ -154,6 +168,14 @@ Bilingual decision evaluation and reliability when local decisions compose into 
 
 Primary source: https://arxiv.org/abs/2610.03935v2
 
+## Suggested Is Not Superseded: A Pre-Registered Evaluation of a System-One Model as a Memory-Retirement Gate
+
+Papers · Chen & Le · 2026-10-11 · v1
+
+Jev memory-retirement evaluation separates confirmed updates from suggestions; mixed LLM/human labels, shared errors and selection on a small development set constrain cascade claims.
+
+Primary source: https://arxiv.org/abs/2610.15710v1
+
 ## SanSi: A Looped Typed Decision Model for System 1.5 Thinking
 
 Papers · Gan, Lee & Kang · 2026-10-10 · v2
@@ -177,6 +199,22 @@ Papers · Li et al. · 2026-10-09 · v5
 Studies confidence-based escalation from Jev to a reasoning judge, including limits under distribution shift.
 
 Primary source: https://arxiv.org/abs/2609.26550v5
+
+## One Word Opens the Gate: The Option-Channel Attack on Typed Decision Models as Agent Guardrails
+
+Papers · Azizi, Baghaei Potraghloo & Pedram · 2026-10-08 · v1
+
+Tests option-channel attacks on seven open-weight models; reversed decisions can remain confident. The reported experiments do not test hosted Jev.
+
+Primary source: https://arxiv.org/abs/2610.12292v1
+
+## Specialized Decision Models vs. General-Purpose LLMs: Benchmarking Jev Across Knowledge, Reasoning, and Multilingual Tasks
+
+Papers · Li et al. · 2026-10-08 · v1
+
+Knowledge, reasoning and multilingual multiple-choice evaluation of Jev; reported rankings and mathematical weaknesses apply to the selected models and benchmarks.
+
+Primary source: https://arxiv.org/abs/2610.11978v1
 
 ## MetaEncoder: Exploring the Limit of Bi-Encoders for Multimodal System One Decision Making with Natural Language Interface
 
@@ -210,6 +248,14 @@ Studies accuracy, cost, and calibration in seven political-science replication t
 
 Primary source: https://arxiv.org/abs/2610.06625v2
 
+## Calibrated to Whom? Persona and Language Effects on Cultural Values in JEV
+
+Papers · Asseri & Asseri · 2026-10-03 · v2
+
+English/Arabic persona-conditioned Jev survey audit; the effects concern simulated respondents in one model, not measurements of real populations.
+
+Primary source: https://arxiv.org/abs/2609.36399v2
+
 ## System One Models for Agent Security Decisions
 
 Papers · Liu · 2026-10-03 · v3
@@ -217,6 +263,14 @@ Papers · Liu · 2026-10-03 · v3
 Examines reliability, group-specific confident errors, and selective automation in security decisions.
 
 Primary source: https://arxiv.org/abs/2609.33401v3
+
+## Beyond Answer Confidence: A Controlled Audit of Self-Knowledge in a Black-Box Decision Model
+
+Papers · Shankaranarayana, Runje & Jannink · 2026-10-01 · v1
+
+Controls information and surface cues to distinguish Jev answer confidence from self-knowledge; black-box behavior does not establish access to an internal knowledge state.
+
+Primary source: https://arxiv.org/abs/2610.01006v1
 
 ## AnyJev Technical Report
 

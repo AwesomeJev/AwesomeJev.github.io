@@ -1,6 +1,6 @@
 # Resource expansion — 16 October 2026
 
-**721 newly added, evidence-checked sources / target: at least 301.**
+**731 newly added, evidence-checked sources / target: at least 301.**
 
 [Main collection](../README.md) · [Website source search](https://awesomejev.github.io/#corpus) · [Machine-readable progress](../data/expansion-progress-2026-10-16.json) · [Frozen baseline](../data/expansion-baseline-2026-10-16.json) · [Prior-citation supplement](../data/expansion-baseline-supplement-2026-10-16.json)
 
@@ -8,15 +8,15 @@ The baseline is [commit 3519c15](https://github.com/reacher-z/Awesome-Jev/tree/3
 
 Only sources in the [reviewed intake](../data/expansion-intake-2026-10-16.json) count toward this expansion. This is a discovery directory with explicit screening levels. **Direct** sources concern Jev or typed decision systems; **adjacent** resources implement closely related methods; **background** papers provide research context. Listing is not an endorsement or independent reproduction. The short descriptions explain relevance, not a universal recommendation.
 
-**中文：本轮已新增 721 项有核查证据的资源，目标至少 301 项。** 已有台账、精选与引用链接、重复正文或论文题名均不重复计数，仅元数据条目不计入目标。下表区分直接相关、邻近方法与背景研究；自动内容筛查或摘要检查不等于全文评审，也不代表实验复现。
+**中文：本轮已新增 731 项有核查证据的资源，目标至少 301 项。** 已有台账、精选与引用链接、重复正文或论文题名均不重复计数，仅元数据条目不计入目标。下表区分直接相关、邻近方法与背景研究；自动内容筛查或摘要检查不等于全文评审，也不代表实验复现。
 
 | Resource type | Newly added |
 | --- | ---: |
-| Datasets | 100 |
+| Datasets | 101 |
 | Guides and evaluations | 36 |
 | Models | 52 |
-| Papers | 10 |
-| Projects | 182 |
+| Papers | 16 |
+| Projects | 185 |
 | Research foundations | 341 |
 
 ## Datasets
@@ -49,6 +49,7 @@ Only sources in the [reviewed intake](../data/expansion-intake-2026-10-16.json) 
 | [Decision models on Core AI, 231 public items](https://huggingface.co/datasets/mlboydaisuke/coreai-decision-models-public231) | direct · `content_screened` | Recorded Core AI model runs on a fixed public JevBench subset, with local execution and harness provenance. |
 | [Decision-Model Benchmark 2026-09-27: jev vs laya vs Julia-1-ONNX](https://huggingface.co/datasets/morrenhale/decision-benchmark-jev-laya-julia) | direct · `content_screened` | Frozen manifests and raw outputs comparing Jev, Laya and Julia on identical decision questions. |
 | [decision-models-as-guardrails](https://huggingface.co/datasets/raxITLabs/decision-models-as-guardrails) | direct · `content_screened` | Guardrail evaluation cases for harmful content, prompt attacks, denied topics, filtering, PII and grounding decisions. |
+| [DeRef tool-call argument verification sets](https://huggingface.co/datasets/lm2445/DeRef) | direct · `content_screened` | Argument-level evaluation sets with correctness/path labels and a source-relocation control; derived from existing benchmarks and model trajectories, not an independent new task population. |
 | [EdgeIntent v1](https://huggingface.co/datasets/UTSCybeR/Edge-Computing-JEV) | direct · `content_screened` | EdgeIntent benchmark pairing edge-service requests with typed intent contracts for orchestration studies. |
 | [fomc original source annotations](https://huggingface.co/datasets/social-jev/fomc) | direct · `content_screened` | Original FOMC annotation records for social-science decision studies, with missing labels explicitly retained as unlabeled. |
 | [Jev 1.13 on OpenTWBench (self-reported)](https://huggingface.co/datasets/kangjwme/jev-opentwbench-results) | direct · `content_screened` | Traditional-Chinese benchmark result archive recording option permutations and mapped predictions; question text remains in the upstream labeled datasets. |
@@ -226,13 +227,19 @@ Only sources in the [reviewed intake](../data/expansion-intake-2026-10-16.json) 
 
 | Resource | Relationship / evidence | Relevance |
 | --- | --- | --- |
+| [Beyond Answer Confidence: A Controlled Audit of Self-Knowledge in a Black-Box Decision Model](https://arxiv.org/abs/2610.01006) | direct · `abstract_checked` | Controls information and surface cues to distinguish Jev answer confidence from self-knowledge; black-box behavior does not establish access to an internal knowledge state. |
 | [Bongard: Training Machine Intuition](https://arxiv.org/abs/2609.39111) | direct · `abstract_checked` | Shared evidence encoding and candidate-probability readout, trained with representation and action-outcome feedback. Results remain author-reported. |
+| [Calibrated to Whom? Persona and Language Effects on Cultural Values in JEV](https://arxiv.org/abs/2609.36399) | direct · `abstract_checked` | English/Arabic persona-conditioned Jev survey audit; the effects concern simulated respondents in one model, not measurements of real populations. |
 | [Jev-Mobile: Jev as an Executor for Mobile GUI Agents](https://arxiv.org/abs/2609.30186) | direct · `abstract_checked` | VLM local-goal planning with Jev action selection over mobile accessibility trees; time and cost comparisons are conditioned on successful trajectories. |
 | [JEV-Star: Fast, Low-Cost StarCraft II Control with Language-Model Planning](https://arxiv.org/abs/2609.27331) | direct · `abstract_checked` | Jev action selection paired with language-model planning for StarCraft II; concurrent interface changes prevent isolating the planning effect. |
+| [Judges Follow the Reference: The Derivation Gap in Verifying Tool-Call Arguments](https://arxiv.org/abs/2610.18497) | direct · `abstract_checked` | Tool-argument judges including Jev reject some correct derived values without visible references; model-generated references are evaluated on three benchmarks. |
 | [Mnemon: Raw Records, Fast Judgments, Slow Thoughts](https://arxiv.org/abs/2609.36059) | direct · `abstract_checked` | Keeps raw memory records, separating Jev relevance judgments from LLM search planning and answer generation. Results remain author-reported. |
+| [One Word Opens the Gate: The Option-Channel Attack on Typed Decision Models as Agent Guardrails](https://arxiv.org/abs/2610.12292) | direct · `abstract_checked` | Tests option-channel attacks on seven open-weight models; reversed decisions can remain confident. The reported experiments do not test hosted Jev. |
 | [REFLEX with Jev for Efficient Selective Control in LLM Agents](https://arxiv.org/abs/2609.26532) | direct · `abstract_checked` | Confidence-gated Jev control with LLM fallback; gains depend on action alternatives and baseline routing. Results remain author-reported. |
 | [Same-Number Citation Swaps: Stress-Testing Jev as a Financial Evidence Judge](https://arxiv.org/abs/2610.08675) | direct · `abstract_checked` | Controlled same-number citation swaps test Jev source verification; detecting wrong financial roles trades off against accepting equivalent evidence. |
 | [Selective Reasoning for Typed Decision Models: When to Start, Read, and Stop](https://arxiv.org/abs/2610.19644) | direct · `abstract_checked` | Candidate-answer readout during interruptible reasoning, with gates for starting, reading and stopping; results depend on a fixed backbone and task suite. |
+| [Specialized Decision Models vs. General-Purpose LLMs: Benchmarking Jev Across Knowledge, Reasoning, and Multilingual Tasks](https://arxiv.org/abs/2610.11978) | direct · `abstract_checked` | Knowledge, reasoning and multilingual multiple-choice evaluation of Jev; reported rankings and mathematical weaknesses apply to the selected models and benchmarks. |
+| [Suggested Is Not Superseded: A Pre-Registered Evaluation of a System-One Model as a Memory-Retirement Gate](https://arxiv.org/abs/2610.15710) | direct · `abstract_checked` | Jev memory-retirement evaluation separates confirmed updates from suggestions; mixed LLM/human labels, shared errors and selection on a small development set constrain cascade claims. |
 | [Token-Efficient Multi-Agent Collaboration via System One-Guided Computational Division of Labor](https://arxiv.org/abs/2610.08155) | direct · `abstract_checked` | System One controllers coordinate bounded multi-agent decisions while LLM workers reason; reported efficiency concerns the complete collaboration framework. |
 | [Typed Decision Models on Tabular Data](https://arxiv.org/abs/2610.19536) | direct · `abstract_checked` | Typed-decision classification and verification under content-preserving table rewrites; confidence can indicate instability without establishing correctness. |
 | [VideoJev: System One Model for Video Understanding and Interaction](https://arxiv.org/abs/2610.18615) | direct · `abstract_checked` | Structured video decisions with temporal spans and candidate scores; cached and joint inference reuse visual computation. Results remain author-reported. |
@@ -261,6 +268,7 @@ Only sources in the [reviewed intake](../data/expansion-intake-2026-10-16.json) 
 | [Barneyjm/decision-circuits](https://github.com/barneyjm/decision-circuits) | direct · `content_screened` | Python library composes model probability answers into deterministic gates, with explicit abstention, escalation and per-item traces. |
 | [basi/typesafe-ai-php-client](https://github.com/basi/typesafe-ai-php-client) | direct · `content_screened` | Community PHP client for Jev-compatible System One endpoints and configurable API gateways. |
 | [Beyond Calibration: Do a Typed-Decision Model's Probabilities Obey the Probability Axioms?](https://github.com/bro789/typed-decision-coherence) | direct · `content_screened` | Recorded Jev/Qwen calls and analysis scripts for probability coherence; repeated responses share source items, and post-hoc analyses are exploratory. |
+| [beyond-answer-confidence](https://github.com/syntheme/beyond-answer-confidence) | direct · `content_screened` | Experiment and analysis code for Jev confidence and self-knowledge controls; datasets are fetched separately and retain mixed, sometimes noncommercial, licenses. |
 | [Blakeem/logit-classifier](https://github.com/blakeem/logit-classifier) | direct · `content_screened` | Local text-and-image classifier reads answer probabilities from logits under System One question contracts and exposes a separate abstention signal. |
 | [Bongard](https://github.com/agentbull/bongard) | direct · `content_screened` | Inference, supervised training and typed-decision evaluation code; full training data and later-stage objectives and recipes are absent. |
 | [cadence-trading/crypto-trading-lab](https://github.com/cadence-trading/crypto-trading-lab) | direct · `content_screened` | Simulation and backtesting platform combining Jev judgments, deterministic risk vetoes and an auditable trading journal. |
@@ -283,6 +291,7 @@ Only sources in the [reviewed intake](../data/expansion-intake-2026-10-16.json) 
 | [DarkisuSu/Jev-Claude-Router](https://github.com/darkisusu/jev-claude-router) | direct · `content_screened` | Claude integration using Jev to choose relevant skills, model configuration and reasoning effort for each prompt. |
 | [davyjones7321/jev-state-engine](https://github.com/davyjones7321/jev-state-engine) | direct · `content_screened` | LangGraph coding workflow applies deterministic validation before Jev semantic checks on changes developed in isolated Git worktrees. |
 | [dengyie/decidex](https://github.com/dengyie/decidex) | direct · `content_screened` | Decision orchestration framework for Jev-style game-playing models and other bounded classifiers. |
+| [DeRef](https://github.com/sarielma/deref_release) | direct · `content_screened` | Pipeline builds tool-argument judge inputs, generates model-based references and scores them; model outputs and result caches are not included. |
 | [DigitalIQ/tabwerk](https://github.com/digitaliq/tabwerk) | direct · `content_screened` | Browser tab-management extension using optional Jev calls for semantic questions about open tabs. |
 | [DimeDataCloud/claude-modder](https://github.com/dimedatacloud/claude-modder) | direct · `content_screened` | Claude Code session orchestrator using Jev to prioritize which sessions need user attention. |
 | [docwilde/doxa](https://github.com/docwilde/doxa) | direct · `content_screened` | Multi-agent terminal with optional Jev or SubQ decision routing and shared coordination tools. |
@@ -363,6 +372,7 @@ Only sources in the [reviewed intake](../data/expansion-intake-2026-10-16.json) 
 | [notque/vexjoy-agent](https://github.com/notque/vexjoy-agent) | direct · `content_screened` | Agent dispatcher using Jev to classify requests and check that selected workflows preserve the intended outcome. |
 | [nvr0x5/claude-deck](https://github.com/nvr0x5/claude-deck) | direct · `content_screened` | Claude Code cockpit using Jev to select subagent models and per-prompt reasoning effort. |
 | [obekt/obekt-terminal](https://github.com/obekt/obekt-terminal) | direct · `content_screened` | Experimental autonomous-trading platform using typed Jev judgments behind code-defined risk controls and a monitoring terminal. |
+| [One Word Opens the Gate](https://github.com/arminazizi98/option-channel-attack) | direct · `content_screened` | GuardBench generator and cached open-weight guardrail evaluations; not a hosted-Jev exploit demonstration, and synthetic policy labels do not establish real-world attack rates. |
 | [OpenByteInc/QuantDinger](https://github.com/openbyteinc/quantdinger) | direct · `content_screened` | Trading research platform integrating Jev judgments with strategy context, exposure and budget checks. |
 | [OutThisLife/jev-tutorial](https://github.com/outthislife/jev-tutorial) | direct · `content_screened` | Jev tutorial and examples covering workflow gates, automation integrations and real-data exercises. |
 | [PabloB07/JevMC](https://github.com/pablob07/jevmc) | direct · `content_screened` | Unofficial Java System One client with typed wrappers and a game-server chat-moderation integration. |

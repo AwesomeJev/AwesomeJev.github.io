@@ -78,3 +78,15 @@ The expansion reaches **721 distinct additions**: 370 content-screened resources
 The Chinese directory provides corresponding summaries for both additions. Four existing paper descriptions were made more specific without changing evidence hashes or verification levels. The three curated-paper promotions recorded in the [selection review](papers-2026-10-16.md) are already counted sources, adding zero to the expansion.
 
 **中文：** 本次新增两个论文配套代码仓库，累计净新增721项；同仓压缩包、胜局回放与视频不拆开凑数。两个README均独立重取并核对哈希，文件及发布清单已检查，但未下载归档内容、运行模型或游戏、复现实验。中文简介保留外部依赖、日志不完整与版本混杂等限制；三篇论文提升为精选及四条简介细化均不增加来源数。
+
+## Tools, confidence and memory intake
+
+This intake adds **10 distinct resources**: six direct preprints, three author-linked implementation repositories and one separately published annotated evaluation dataset. The expansion reaches **731 additions**: 374 content-screened resources and 357 abstract-checked papers. The full index has 4,226 unique sources, including 4,179 checked at their stated tiers and 47 metadata-only discoveries.
+
+Every new paper's fixed-version primary abstract was independently retrieved with a matching hash, and its bibliographic metadata was checked. Every new implementation README or dataset card was also independently retrieved with a matching hash; public file inventories were inspected without executing code or downloading data rows. The [intake review](../../data/expansion-tools-memory-review-2026-10-16.json) preserves the evidence and limitations.
+
+Two display-only annotations make important boundaries explicit: the option-channel study tests open-weight models, not hosted Jev, while the memory-retirement study's labels, shared errors and development-set selection constrain cascade claims. Original abstract hashes and evidence grades remain unchanged. All ten additions have corresponding Chinese descriptions. Six papers receive curated entries and citations without being counted a second time.
+
+DeRef's separate dataset adds argument correctness/path labels and a controlled source-relocation set to existing benchmark material. It is one inspectable dataset artifact, not four separate configuration discoveries or a new independent task population. The companion code does not include model outputs or result caches. The confidence-audit repository fetches datasets separately under mixed source licenses, including noncommercial conditions; the guardrail repository's generated policy cases do not establish real-world attack prevalence.
+
+**中文：** 本批净新增10项：6篇直接论文、3个作者代码仓库与1个独立发布的标注数据资源，累计731项。原始摘要及README／数据卡均有独立重取与哈希核对；未执行代码、下载模型权重或数据行、复现实验。所有新条目同步提供中文简介；六篇提升为精选不再加数，DeRef四个配置合计只算一个数据集。

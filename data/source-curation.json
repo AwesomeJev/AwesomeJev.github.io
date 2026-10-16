@@ -204,6 +204,20 @@
       "evidence_url": "https://arxiv.org/abs/2609.26532v1",
       "reviewed_at": "2026-10-16T11:10:02+00:00",
       "note": "Display-only expansion summary aligned with the existing curated entry and checked against the fixed-version primary abstract. Original ledger evidence and verification tier remain unchanged; no full-paper review or reproduction is claimed."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.12292",
+      "relevance": "Tests option-channel attacks on seven open-weight models; reversed decisions can remain confident. The reported experiments do not test hosted Jev.",
+      "evidence_url": "https://arxiv.org/abs/2610.12292v1",
+      "reviewed_at": "2026-10-16T11:27:34+00:00",
+      "note": "Display-only scope clarification from the fixed-version original abstract. Keep the distinction between open-weight models and the hosted TypeSafe service explicit in the visible summary, not only in limitations. The raw abstract evidence and verification tier are unchanged."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.15710",
+      "relevance": "Jev memory-retirement evaluation separates confirmed updates from suggestions; mixed LLM/human labels, shared errors and selection on a small development set constrain cascade claims.",
+      "evidence_url": "https://arxiv.org/abs/2610.15710v1",
+      "reviewed_at": "2026-10-16T11:27:34+00:00",
+      "note": "Display-only scope clarification from the fixed-version original abstract. Name the mixed labeling and shared-error/selection mechanisms; avoid implying that Jev already distinguishes every confirmed change correctly. The raw abstract evidence and verification tier are unchanged."
     }
   ]
 }

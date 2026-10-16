@@ -813,6 +813,36 @@
       ],
       "evidence_scope": "Two author-linked repositories: substantive README screening, independent matching-hash refetch, and public file/release inventory checks. No archive contents or model/game executions inspected. Companion archives and media counted within their repositories.",
       "accepted_at": "2026-10-16T11:13:19+00:00"
+    },
+    {
+      "name": "direct_research_tools_memory",
+      "input_sha256": "045013ac8b3759d6e702b9fea6db8483013f7532b05c5223390a0245620a541d",
+      "screened_records_proposed": 6,
+      "accepted_count": 6,
+      "accepted_urls": [
+        "https://arxiv.org/abs/2610.01006",
+        "https://arxiv.org/abs/2610.11978",
+        "https://arxiv.org/abs/2610.12292",
+        "https://arxiv.org/abs/2609.36399",
+        "https://arxiv.org/abs/2610.15710",
+        "https://arxiv.org/abs/2610.18497"
+      ],
+      "evidence_scope": "Six fixed-version primary arXiv abstracts and metadata inspected; independent parent refetch matched all six abstract hashes. Retains abstract_checked without full-paper review or reproduction.",
+      "accepted_at": "2026-10-16T11:25:42+00:00"
+    },
+    {
+      "name": "author_artifacts_tools_memory",
+      "input_sha256": "bfcbc5dc4d057f99788553f8c6b569e5499a862cbccb445e93dcff0971ebb03d",
+      "screened_records_proposed": 4,
+      "accepted_count": 4,
+      "accepted_urls": [
+        "https://github.com/syntheme/beyond-answer-confidence",
+        "https://github.com/arminazizi98/option-channel-attack",
+        "https://github.com/sarielma/deref_release",
+        "https://huggingface.co/datasets/lm2445/DeRef"
+      ],
+      "evidence_scope": "Three author-linked code repositories and one separately published annotated evaluation dataset. All primary README/card hashes independently refetched; file inventories inspected. Four dataset configurations count once; no execution or dataset-row download.",
+      "accepted_at": "2026-10-16T11:29:02+00:00"
     }
   ]
 }

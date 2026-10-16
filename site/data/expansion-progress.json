@@ -3,35 +3,35 @@
   "baseline_commit": "3519c15d7e00686a8dbf9b1e184c68726327ab1e",
   "baseline_source_index_sha256": "8bfdd20564f2cda54bb8264c3c802f315e3e9a11b153bd85dde4325f53c841d5",
   "target_new_sources": 301,
-  "accepted_new_sources": 721,
+  "accepted_new_sources": 731,
   "remaining_to_target": 0,
   "target_count_reached": true,
   "current_index_counts": {
     "editorial_reviewed": 4,
-    "content_screened": 2349,
-    "abstract_checked": 1816,
+    "content_screened": 2353,
+    "abstract_checked": 1822,
     "metadata_only": 47,
-    "raw_records": 4230,
-    "unique_records": 4216,
+    "raw_records": 4240,
+    "unique_records": 4226,
     "duplicate_records": 14,
-    "checked_sources": 4169
+    "checked_sources": 4179
   },
   "by_category": {
-    "Datasets": 100,
+    "Datasets": 101,
     "Guides and evaluations": 36,
     "Models": 52,
-    "Papers": 10,
-    "Projects": 182,
+    "Papers": 16,
+    "Projects": 185,
     "Research foundations": 341
   },
   "by_relation": {
     "adjacent": 24,
     "background": 341,
-    "direct": 356
+    "direct": 366
   },
   "by_verification_level": {
-    "abstract_checked": 351,
-    "content_screened": 370
+    "abstract_checked": 357,
+    "content_screened": 374
   },
   "verification_note": "Evidence depth is labeled per source. Content screening and abstract checks do not establish full-paper review, peer review, endorsement, or experimental reproduction.",
   "additions": [
@@ -345,6 +345,18 @@
       "verification_level": "content_screened",
       "content_sha256": "53d54a9d73c712ea513f7f1be59d5e0aa27474fcf7292306b16dd30486585a7d",
       "retrieved_at": "2026-10-16T10:05:28+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "DeRef tool-call argument verification sets",
+      "url": "https://huggingface.co/datasets/lm2445/DeRef",
+      "category": "Datasets",
+      "topic": "tool-argument-evaluation-data",
+      "description": "Argument-level evaluation sets with correctness/path labels and a source-relocation control; derived from existing benchmarks and model trajectories, not an independent new task population.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "9205ef0d7e00e754314694857f1227ee4c7206141df0fd19a6772929b1eed29c",
+      "retrieved_at": "2026-10-16T11:23:09+00:00",
       "ledger": "ecosystem-sources.jsonl"
     },
     {
@@ -2292,6 +2304,18 @@
       "ledger": "ecosystem-sources.jsonl"
     },
     {
+      "title": "Beyond Answer Confidence: A Controlled Audit of Self-Knowledge in a Black-Box Decision Model",
+      "url": "https://arxiv.org/abs/2610.01006",
+      "category": "Papers",
+      "topic": "direct-decision-research",
+      "description": "Controls information and surface cues to distinguish Jev answer confidence from self-knowledge; black-box behavior does not establish access to an internal knowledge state.",
+      "relation": "direct",
+      "verification_level": "abstract_checked",
+      "content_sha256": "abee899ad2ed5e5331283d34002c1129e09706fbf39fc8aab1aee6deac690882",
+      "retrieved_at": "2026-10-16T11:20:08+00:00",
+      "ledger": "research-sources.jsonl"
+    },
+    {
       "title": "Bongard: Training Machine Intuition",
       "url": "https://arxiv.org/abs/2609.39111",
       "category": "Papers",
@@ -2301,6 +2325,18 @@
       "verification_level": "abstract_checked",
       "content_sha256": "eb8f13a8b534af9a3b9bcf907d3948c81f5bab91e0b9f3d80c26e7fd97299c00",
       "retrieved_at": "2026-10-16T10:01:30+00:00",
+      "ledger": "research-sources.jsonl"
+    },
+    {
+      "title": "Calibrated to Whom? Persona and Language Effects on Cultural Values in JEV",
+      "url": "https://arxiv.org/abs/2609.36399",
+      "category": "Papers",
+      "topic": "direct-decision-research",
+      "description": "English/Arabic persona-conditioned Jev survey audit; the effects concern simulated respondents in one model, not measurements of real populations.",
+      "relation": "direct",
+      "verification_level": "abstract_checked",
+      "content_sha256": "252516d8d2459e2ab4eb43e7407cdf4d4e7d2c27a420ce9985e5d1395032d75d",
+      "retrieved_at": "2026-10-16T11:20:08+00:00",
       "ledger": "research-sources.jsonl"
     },
     {
@@ -2328,6 +2364,18 @@
       "ledger": "research-sources.jsonl"
     },
     {
+      "title": "Judges Follow the Reference: The Derivation Gap in Verifying Tool-Call Arguments",
+      "url": "https://arxiv.org/abs/2610.18497",
+      "category": "Papers",
+      "topic": "direct-decision-research",
+      "description": "Tool-argument judges including Jev reject some correct derived values without visible references; model-generated references are evaluated on three benchmarks.",
+      "relation": "direct",
+      "verification_level": "abstract_checked",
+      "content_sha256": "503058658264a84669534e672294ba2af62736c2ebd3ec95d08d1414d7e215a4",
+      "retrieved_at": "2026-10-16T11:20:08+00:00",
+      "ledger": "research-sources.jsonl"
+    },
+    {
       "title": "Mnemon: Raw Records, Fast Judgments, Slow Thoughts",
       "url": "https://arxiv.org/abs/2609.36059",
       "category": "Papers",
@@ -2337,6 +2385,18 @@
       "verification_level": "abstract_checked",
       "content_sha256": "3d090d44f7c2ae808bf730adb6279d42462fd250ad70f2a6c4d58ab6798abbbc",
       "retrieved_at": "2026-10-16T10:01:29+00:00",
+      "ledger": "research-sources.jsonl"
+    },
+    {
+      "title": "One Word Opens the Gate: The Option-Channel Attack on Typed Decision Models as Agent Guardrails",
+      "url": "https://arxiv.org/abs/2610.12292",
+      "category": "Papers",
+      "topic": "direct-decision-research",
+      "description": "Tests option-channel attacks on seven open-weight models; reversed decisions can remain confident. The reported experiments do not test hosted Jev.",
+      "relation": "direct",
+      "verification_level": "abstract_checked",
+      "content_sha256": "b2270f7af20a7bd8da9ca49784aa4c2145cd500c8d92f194d838ac3334755ff6",
+      "retrieved_at": "2026-10-16T11:20:08+00:00",
       "ledger": "research-sources.jsonl"
     },
     {
@@ -2373,6 +2433,30 @@
       "verification_level": "abstract_checked",
       "content_sha256": "fc2f52f0f0bd8395c70abfe3511f2fe9c16e98c0108bd378199458aff6165968",
       "retrieved_at": "2026-10-16T10:59:19+00:00",
+      "ledger": "research-sources.jsonl"
+    },
+    {
+      "title": "Specialized Decision Models vs. General-Purpose LLMs: Benchmarking Jev Across Knowledge, Reasoning, and Multilingual Tasks",
+      "url": "https://arxiv.org/abs/2610.11978",
+      "category": "Papers",
+      "topic": "direct-decision-research",
+      "description": "Knowledge, reasoning and multilingual multiple-choice evaluation of Jev; reported rankings and mathematical weaknesses apply to the selected models and benchmarks.",
+      "relation": "direct",
+      "verification_level": "abstract_checked",
+      "content_sha256": "a641b55cb05c921f04724be7efdc13c4749e88b1bd50dc932eb5b499c7e96b90",
+      "retrieved_at": "2026-10-16T11:20:08+00:00",
+      "ledger": "research-sources.jsonl"
+    },
+    {
+      "title": "Suggested Is Not Superseded: A Pre-Registered Evaluation of a System-One Model as a Memory-Retirement Gate",
+      "url": "https://arxiv.org/abs/2610.15710",
+      "category": "Papers",
+      "topic": "direct-decision-research",
+      "description": "Jev memory-retirement evaluation separates confirmed updates from suggestions; mixed LLM/human labels, shared errors and selection on a small development set constrain cascade claims.",
+      "relation": "direct",
+      "verification_level": "abstract_checked",
+      "content_sha256": "ee186f2c2b419284023f59137906108fb060f297c912b0e74766bb3f8e9272f7",
+      "retrieved_at": "2026-10-16T11:20:08+00:00",
       "ledger": "research-sources.jsonl"
     },
     {
@@ -2652,6 +2736,18 @@
       "ledger": "ecosystem-sources.jsonl"
     },
     {
+      "title": "beyond-answer-confidence",
+      "url": "https://github.com/syntheme/beyond-answer-confidence",
+      "category": "Projects",
+      "topic": "paper-reproducibility-code",
+      "description": "Experiment and analysis code for Jev confidence and self-knowledge controls; datasets are fetched separately and retain mixed, sometimes noncommercial, licenses.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "8d9862ab5e124dc384a0d9a2e501c1a9f635740aa0f53765263c4ae63bdf90cb",
+      "retrieved_at": "2026-10-16T11:22:28+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
       "title": "Blakeem/logit-classifier",
       "url": "https://github.com/blakeem/logit-classifier",
       "category": "Projects",
@@ -2913,6 +3009,18 @@
       "verification_level": "content_screened",
       "content_sha256": "e7c4af3c0517431636d5db3bf10131320ce11711b9770b6c7e9a054509467db5",
       "retrieved_at": "2026-10-16T10:05:36+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "DeRef",
+      "url": "https://github.com/sarielma/deref_release",
+      "category": "Projects",
+      "topic": "paper-reproducibility-code",
+      "description": "Pipeline builds tool-argument judge inputs, generates model-based references and scores them; model outputs and result caches are not included.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "a88ad2b7483a1422ec3261e93adcab6eee1117eee2126900e3572e747da3b004",
+      "retrieved_at": "2026-10-16T11:22:28+00:00",
       "ledger": "ecosystem-sources.jsonl"
     },
     {
@@ -3873,6 +3981,18 @@
       "verification_level": "content_screened",
       "content_sha256": "a4b828f0409516def99995e6abf493806652c452cb006a5a220a1905b700c14a",
       "retrieved_at": "2026-10-16T10:05:38+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "One Word Opens the Gate",
+      "url": "https://github.com/arminazizi98/option-channel-attack",
+      "category": "Projects",
+      "topic": "paper-reproducibility-code",
+      "description": "GuardBench generator and cached open-weight guardrail evaluations; not a hosted-Jev exploit demonstration, and synthetic policy labels do not establish real-world attack rates.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "4ffb4a18b98a5c90c8b7c34521b636fce7f2a1ecfacfeac86c3cee4b76b92805",
+      "retrieved_at": "2026-10-16T11:22:28+00:00",
       "ledger": "ecosystem-sources.jsonl"
     },
     {

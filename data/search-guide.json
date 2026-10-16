@@ -158,6 +158,30 @@
         ]
       },
       {
+        "id": "tool-arguments-and-option-channels",
+        "title": "How should I test tool arguments and option-channel risks?",
+        "paragraphs": [
+          {
+            "text": "Separate schema validity, whether cited evidence supports a proposed argument, and whether the argument follows from the request, history and schema defaults. Test correct defaults or inferred values without explicit references, alongside incorrect values paired with visible references. Reference availability is not derivation correctness. If a model writes references from the full history, hide the candidate from it and verify its output; generated references are not ground truth.",
+            "sources": [
+              {
+                "label": "Tool-argument verification preprint, v1",
+                "url": "https://arxiv.org/abs/2610.18497v1"
+              }
+            ]
+          },
+          {
+            "text": "Define who can alter request text, tool outputs, option names and policy definitions. Test each channel your threat model lets an attacker control, including confidence on incorrect decisions. The cited guardrail experiments concern open-weight typed-decision models, not a demonstrated compromise of hosted Jev. This is a proposed evaluation protocol, not a reproduced result.",
+            "sources": [
+              {
+                "label": "Option-channel guardrail preprint, v1",
+                "url": "https://arxiv.org/abs/2610.12292v1"
+              }
+            ]
+          }
+        ]
+      },
+      {
         "id": "models-and-licenses",
         "title": "Are the SDK and independent models released Jev weights?",
         "paragraphs": [
@@ -371,6 +395,30 @@
               {
                 "label": "同数值引用替换预印本 v1",
                 "url": "https://arxiv.org/abs/2610.08675v1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "tool-arguments-and-option-channels",
+        "title": "怎样测试工具参数核验与选项通道风险？",
+        "paragraphs": [
+          {
+            "text": "分别检查 schema 合法性、引用证据是否支持提议参数值，以及该值是否能由请求、历史和 schema 默认值推导出来。测试没有显式参考的正确默认值或推导值，也测试配有可见参考的错误值；参考存在不等于推导正确。若模型根据完整历史生成参考，应对参考生成器隐藏候选值，并核查输出；生成的参考不是真值。",
+            "sources": [
+              {
+                "label": "工具参数核验预印本 v1",
+                "url": "https://arxiv.org/abs/2610.18497v1"
+              }
+            ]
+          },
+          {
+            "text": "明确谁能改动请求文本、工具输出、选项名称和政策定义，分别测试威胁模型允许攻击者控制的通道，包括错误决策时的置信度。所引防护实验针对开放权重的类型化决策模型，并未证明托管 Jev 已被攻破。这是建议的评估流程，不是已复现结果。",
+            "sources": [
+              {
+                "label": "选项通道防护预印本 v1",
+                "url": "https://arxiv.org/abs/2610.12292v1"
               }
             ]
           }
