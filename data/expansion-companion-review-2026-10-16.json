@@ -1,0 +1,623 @@
+{
+  "schema_version": 1,
+  "reviewed_at": "2026-10-16T12:50:24.832929+00:00",
+  "baseline_commit": "2d3d4313042088ebcfe0363dc72b128051043ae0",
+  "accepted_new_sources": 2,
+  "accepted_input_sha256": "9283fc0031d5e08e373af24a07112520ed3383b92cc7f004b509c0f028ad286f",
+  "independent_reviews": {
+    "checkpoint": {
+      "schema_version": 1,
+      "reviewed_at": "2026-10-16T12:48:13+00:00",
+      "baseline_commit": "2d3d4313042088ebcfe0363dc72b128051043ae0",
+      "input_sha256": "1c44d8ce875c5c5d09648cd51e7e85335660b2481ac48c82ca506b0792734b6b",
+      "eligible_new_resource_count": 1,
+      "decision": "eligible_for_parent_reviewed_integration",
+      "resource_url": "https://huggingface.co/LIQIIIII/Jeva-4B",
+      "verification_level": "content_screened",
+      "scope": "Independent cached model-card, fixed-version paper-link, public Hub metadata and fixed-commit file-inventory inspection. No fresh network request, weight/tokenizer/model download, model loading or code execution.",
+      "checks": {
+        "primary_paper_links_checkpoint": true,
+        "model_card_links_existing_code_project": true,
+        "model_card_hash_matches": true,
+        "metadata_hash_matches": true,
+        "inventory_hash_matches": true,
+        "public_and_ungated_in_observed_metadata": true,
+        "card_and_inventory_revision_match": "490ba499b4c0cc26d2d0ba55429d12093f52225e",
+        "readable_characters_correct": 2698,
+        "case_insensitive_current_and_frozen_url_duplicate": false,
+        "readme_body_hash_duplicate": false,
+        "public_ledger_schema_errors": []
+      },
+      "material_distinction": "The public tree lists separate backbone tensor shards, adapter weights and a decision-head file. This is a material checkpoint package in addition to the already-known implementation repository, not a mirrored code homepage. File presence does not establish functional correctness.",
+      "known_related_resource": {
+        "url": "https://github.com/liqiiiii/jeva",
+        "verification_level": "content_screened",
+        "new_resource_count": 0
+      },
+      "counting_unit": "One checkpoint package; no separate counts for its shards, adapter, head, tokenizer or hypothetical variants.",
+      "license_boundary": "The inspected model card has no license field/section and the inspected tree has no LICENSE file. No reuse license or open-source status is inferred from public download visibility.",
+      "preserved_fields": [
+        "content_sha256",
+        "retrieved_at",
+        "retrieved_url",
+        "resolved_revision",
+        "verification_level"
+      ],
+      "required_corrections": [],
+      "evidence": [
+        {
+          "url": "https://arxiv.org/html/2610.18773v1",
+          "content_sha256": "591be7cb606befecfb5b247ef497c0c819bf83822b8c1bcae98d51690861dfc9",
+          "checked_via": "cached fixed-version paper link inspection"
+        },
+        {
+          "url": "https://huggingface.co/LIQIIIII/Jeva-4B/raw/490ba499b4c0cc26d2d0ba55429d12093f52225e/README.md",
+          "content_sha256": "04108705770dea7fe225995debbbd7727c58112a40afd53dfb1b110afd55a23f",
+          "retrieved_at": "2026-10-16T12:45:32.714336+00:00"
+        },
+        {
+          "content_sha256": "f08539bf74768988746138a2c9b5c951c7b0fe03ccec18b2137ba3eaeb9b1f58",
+          "retrieved_at": "2026-10-16T12:43:51.833078+00:00",
+          "url": "https://huggingface.co/api/models/LIQIIIII/Jeva-4B"
+        },
+        {
+          "content_sha256": "8270ec15fdcbfd644f01d615b3c47f7601f6324674d463ee88550c6458fd0dd7",
+          "retrieved_at": "2026-10-16T12:45:32.716018+00:00",
+          "url": "https://huggingface.co/api/models/LIQIIIII/Jeva-4B/tree/490ba499b4c0cc26d2d0ba55429d12093f52225e?recursive=true"
+        }
+      ],
+      "privacy": "No source text, author contacts, local cache paths, credentials or weights are included in this record.",
+      "shared_repository_modified": false
+    },
+    "dashboard": {
+      "schema_version": 1,
+      "reviewed_at": "2026-10-16T12:49:03.681705+00:00",
+      "baseline_commit": "2d3d4313042088ebcfe0363dc72b128051043ae0",
+      "input_sha256": "3e2a06a05f8f13364f4a57313463caab74201479870e7b5ff3b78bb021160067",
+      "accepted_urls": [
+        "https://yubol-bobo.github.io/System_one_model_evaluation"
+      ],
+      "excluded": [],
+      "decision": "Eligible as one whole interactive author research report, subject to parent integration; not a code release, data release, new paper, or independent replication.",
+      "identity_checks": {
+        "current_ecosystem_and_research_ledgers_checked": true,
+        "frozen_baseline_checked": true,
+        "canonical_url_duplicate": false,
+        "body_hash_duplicate": false,
+        "source_page_sha256_matches": true,
+        "readable_characters": 9215,
+        "candidate_readable_characters_match": true
+      },
+      "author_link": {
+        "paper": "https://arxiv.org/html/2610.18579v1",
+        "target": "https://yubol-bobo.github.io/System_one_model_evaluation",
+        "direct_link_present_in_fixed_paper": true,
+        "paper_html_sha256": "bcbc640d1e732ba0415a9755bce120a811a13a2ba7fba3e58a167b3a9111c2a6"
+      },
+      "substantive_report_basis": [
+        "Six diagnostic sections with domain/system controls, distinct paired-outcome, intervention, severity and calibration summaries.",
+        "The publicly referenced app reads a separate aggregate report JSON; both were read as text/data, never executed.",
+        "The observed report includes four system records beyond the fixed-paper list, so its scope is distinct from a static manuscript mirror. This is an evolving author report, not an independently validated experiment."
+      ],
+      "coverage_boundaries": {
+        "fixed_paper_v1": {
+          "fast_systems": 17,
+          "reasoning_references": 1,
+          "total_systems": 18,
+          "anchors": [
+            "https://arxiv.org/html/2610.18579v1#S1.p3.1",
+            "https://arxiv.org/html/2610.18579v1#S4.SS0.SSS0.Px1.p1.1"
+          ]
+        },
+        "observed_report": {
+          "generated_utc": "2026-10-16 12:38 UTC",
+          "system_records": 22,
+          "fast_systems": 21,
+          "reasoning_references": 1,
+          "paired_state_population": 19663,
+          "consistency_fast_systems": 18,
+          "consistency_excluded_fast_systems": {
+            "clm": "low paired decision accuracy",
+            "laya": "low paired decision accuracy",
+            "quyet-1.0-large": "low coverage"
+          },
+          "consistency_reference_excluded": true,
+          "additional_report_system_ids": [
+            "autojev-27b",
+            "kev-27b",
+            "autotrust-jev-27b",
+            "jev-1.14"
+          ]
+        },
+        "interpretation": "The report’s 22 total system records, its 18-system consistency subset and the fixed paper’s 18 total systems are different populations. Metric-specific coverage remains necessary. The candidate wisely avoids a single universal system count."
+      },
+      "additional_evidence": [
+        {
+          "url": "https://yubol-bobo.github.io/System_one_model_evaluation/assets/app.js",
+          "retrieved_url": "https://yubol-bobo.github.io/System_one_model_evaluation/assets/app.js",
+          "http_status": 200,
+          "content_sha256": "2a89ce511634eb024993e585bae892657c211994068a75c63061ccfdc02fecce",
+          "retrieved_at": "2026-10-16T12:47:37.591991+00:00",
+          "content_type": "application/javascript; charset=utf-8"
+        },
+        {
+          "url": "https://yubol-bobo.github.io/System_one_model_evaluation/data/results.json",
+          "retrieved_url": "https://yubol-bobo.github.io/System_one_model_evaluation/data/results.json",
+          "http_status": 200,
+          "content_sha256": "d364f0af57f9880cf1d5130be1aa203def6c92af18c7bb980e285b1b21e6c93c",
+          "retrieved_at": "2026-10-16T12:47:49.041313+00:00",
+          "content_type": "application/json; charset=utf-8",
+          "content_bytes": 144039
+        }
+      ],
+      "causal_boundary": "Correct answers to the measured factual probes do not show complete understanding and do not identify the cause of a wrong action. Page headings are not treated as causal proof.",
+      "required_scope_limits": [
+        "Keep relation=direct and verification_level=content_screened; do not upgrade to editorial/full-paper/experimental verification.",
+        "Count the entire dashboard once. Its app, aggregate JSON, charts, model records and illustrative example are not separate resources.",
+        "No publicly downloadable reproduction package or author repository was verified from this page. Accessible chart aggregates do not establish underlying per-example predictions or full rerunnability.",
+        "Do not replace fixed-v1 paper metadata or cohort descriptions with the mutable report’s current scope."
+      ],
+      "recommended_candidate_changes": [],
+      "actions": {
+        "new_public_gets": 2,
+        "requests_limited_to_normal_script_and_its_explicit_data_url": true,
+        "source_code_executed": false,
+        "browser_interaction": false,
+        "model_calls": false,
+        "archive_or_weights_downloaded": false,
+        "tests_run": false,
+        "shared_repository_modified": false,
+        "original_candidate_modified": false
+      },
+      "privacy": "Review stores source URLs, hashes, limited aggregate counts and original paraphrases only; no raw source bodies, contact details, credentials or cache paths."
+    }
+  },
+  "parent_primary_checks": [
+    {
+      "url": "https://huggingface.co/LIQIIIII/Jeva-4B/raw/490ba499b4c0cc26d2d0ba55429d12093f52225e/README.md",
+      "http_status": 200,
+      "content_sha256": "04108705770dea7fe225995debbbd7727c58112a40afd53dfb1b110afd55a23f",
+      "hash_match": true,
+      "checked_at": "2026-10-16T12:47:37.463433+00:00",
+      "scope": "Fixed-revision model-card text only; no checkpoint or model code loaded."
+    },
+    {
+      "url": "https://yubol-bobo.github.io/System_one_model_evaluation/",
+      "http_status": 200,
+      "content_sha256": "e3a51c32cd3aafadd488d2bfe257027e4b649975d515359da0b14fb5556e9529",
+      "hash_match": true,
+      "checked_at": "2026-10-16T12:47:06.932808+00:00",
+      "scope": "Static HTML prose only; scripts and interactive calculations were not executed."
+    }
+  ],
+  "known_resource_link_fixes": {
+    "count": 13,
+    "new_resources": 0,
+    "calibration_and_architecture": [
+      {
+        "paper_id": "2609.35342v1",
+        "paper_url": "https://arxiv.org/abs/2609.35342v1",
+        "url": "https://github.com/little-g-ai/Sys1Cal-v1",
+        "label_en": "Code and synthetic benchmark",
+        "label_zh": "代码与合成基准",
+        "source_url": "https://arxiv.org/html/2609.35342v1",
+        "source_evidence": {
+          "url": "https://arxiv.org/html/2609.35342v1",
+          "content_sha256": "e5c62b1902d20ce85cb8613690b69568cd87043b199a7ebd634f8f3b173cc311",
+          "retrieved_at": "2026-10-16T12:42:23.726532+00:00"
+        },
+        "known_resource_link_fix": true,
+        "new_resource_count": 0,
+        "scope_note": "Synthetic constructed probabilities; not independently labeled natural tasks."
+      },
+      {
+        "paper_id": "2609.33209v1",
+        "paper_url": "https://arxiv.org/abs/2609.33209v1",
+        "url": "https://github.com/bro789/typed-decision-coherence",
+        "label_en": "Code and recorded calls",
+        "label_zh": "代码与调用记录",
+        "source_url": "https://arxiv.org/html/2609.33209v1",
+        "source_evidence": {
+          "url": "https://arxiv.org/html/2609.33209v1",
+          "content_sha256": "461fd904d07fecca4aa566e208e6b436b4b526d22aeab9bfc569698440ea4b4c",
+          "retrieved_at": "2026-10-16T12:42:23.742456+00:00"
+        },
+        "known_resource_link_fix": true,
+        "new_resource_count": 0,
+        "scope_note": "README documents recomputing from saved request/response logs; no replay was executed."
+      },
+      {
+        "paper_id": "2610.18773v1",
+        "paper_url": "https://arxiv.org/abs/2610.18773v1",
+        "url": "https://github.com/LiQiiiii/Jeva",
+        "label_en": "Architecture code",
+        "label_zh": "架构代码",
+        "source_url": "https://arxiv.org/html/2610.18773v1",
+        "source_evidence": {
+          "url": "https://arxiv.org/html/2610.18773v1",
+          "content_sha256": "591be7cb606befecfb5b247ef497c0c819bf83822b8c1bcae98d51690861dfc9",
+          "retrieved_at": "2026-10-16T12:42:58.958998+00:00"
+        },
+        "known_resource_link_fix": true,
+        "new_resource_count": 0,
+        "scope_note": "This author project is distinct from the unrelated chemany/jeva repository."
+      },
+      {
+        "paper_id": "2609.36965v1",
+        "paper_url": "https://arxiv.org/abs/2609.36965v1",
+        "url": "https://github.com/gulucaptain/Chinese-Jev",
+        "label_en": "Training pipeline",
+        "label_zh": "训练流水线",
+        "source_url": "https://gulucaptain.github.io/Chinese-Jev/",
+        "source_evidence": {
+          "url": "https://gulucaptain.github.io/Chinese-Jev/",
+          "content_sha256": "d9b61687e182644f8dac00945eb796143811e438b95312b3d2c97aa0fc78f95d",
+          "retrieved_at": "2026-10-16T12:45:33.125898+00:00"
+        },
+        "known_resource_link_fix": true,
+        "new_resource_count": 0,
+        "scope_note": "Trained Chinese-Jev weights are still planned for release in the inspected project page."
+      },
+      {
+        "paper_id": "2609.36965v1",
+        "paper_url": "https://arxiv.org/abs/2609.36965v1",
+        "url": "https://huggingface.co/datasets/bbldCVer-hf/CJ-Bench",
+        "label_en": "CJ-Bench",
+        "label_zh": "CJ-Bench 评测集",
+        "source_url": "https://gulucaptain.github.io/Chinese-Jev/",
+        "source_evidence": {
+          "url": "https://gulucaptain.github.io/Chinese-Jev/",
+          "content_sha256": "d9b61687e182644f8dac00945eb796143811e438b95312b3d2c97aa0fc78f95d",
+          "retrieved_at": "2026-10-16T12:45:33.125898+00:00"
+        },
+        "known_resource_link_fix": true,
+        "new_resource_count": 0,
+        "scope_note": "Decision counts are not necessarily independent source records."
+      },
+      {
+        "paper_id": "2609.36965v1",
+        "paper_url": "https://arxiv.org/abs/2609.36965v1",
+        "url": "https://huggingface.co/datasets/bbldCVer-hf/CJ-Dataset",
+        "label_en": "CJ-Dataset",
+        "label_zh": "CJ-Dataset 训练集",
+        "source_url": "https://gulucaptain.github.io/Chinese-Jev/",
+        "source_evidence": {
+          "url": "https://gulucaptain.github.io/Chinese-Jev/",
+          "content_sha256": "d9b61687e182644f8dac00945eb796143811e438b95312b3d2c97aa0fc78f95d",
+          "retrieved_at": "2026-10-16T12:45:33.125898+00:00"
+        },
+        "known_resource_link_fix": true,
+        "new_resource_count": 0,
+        "scope_note": "Existing dataset, not a new resource in this navigation pass."
+      },
+      {
+        "paper_id": "2609.23986v1",
+        "paper_url": "https://arxiv.org/abs/2609.23986v1",
+        "url": "https://github.com/libingzheren/Jev-Mem",
+        "label_en": "Code",
+        "label_zh": "代码",
+        "source_url": "https://arxiv.org/html/2609.23986v1",
+        "source_evidence": {
+          "url": "https://arxiv.org/html/2609.23986v1",
+          "content_sha256": "4d240762c73a7af441e680e507296d66e6c7ab64f4345ff988f9e75e480e8e0c",
+          "retrieved_at": "2026-10-16T12:42:58.732178+00:00"
+        },
+        "known_resource_link_fix": true,
+        "new_resource_count": 0,
+        "scope_note": ""
+      },
+      {
+        "paper_id": "2609.23886v1",
+        "paper_url": "https://arxiv.org/abs/2609.23886v1",
+        "url": "https://huggingface.co/flock-io/this-that-model-1.0",
+        "label_en": "Model",
+        "label_zh": "模型",
+        "source_url": "https://arxiv.org/html/2609.23886v1",
+        "source_evidence": {
+          "url": "https://arxiv.org/html/2609.23886v1",
+          "content_sha256": "b8bc91156494fd69798c4b43829826ef68f22039c856747a2c7dc7330ecd4dba",
+          "retrieved_at": "2026-10-16T12:42:59.056347+00:00"
+        },
+        "known_resource_link_fix": true,
+        "new_resource_count": 0,
+        "scope_note": "The paper availability section identifies this model; NanoJev is a baseline, not the author release."
+      },
+      {
+        "paper_id": "2609.23886v1",
+        "paper_url": "https://arxiv.org/abs/2609.23886v1",
+        "url": "https://github.com/FLock-io/this-that-model",
+        "label_en": "Inference code",
+        "label_zh": "推理代码",
+        "source_url": "https://arxiv.org/html/2609.23886v1",
+        "source_evidence": {
+          "url": "https://arxiv.org/html/2609.23886v1",
+          "content_sha256": "b8bc91156494fd69798c4b43829826ef68f22039c856747a2c7dc7330ecd4dba",
+          "retrieved_at": "2026-10-16T12:42:59.056347+00:00"
+        },
+        "known_resource_link_fix": true,
+        "new_resource_count": 0,
+        "scope_note": ""
+      },
+      {
+        "paper_id": "2609.23886v1",
+        "paper_url": "https://arxiv.org/abs/2609.23886v1",
+        "url": "https://huggingface.co/datasets/limberc/this-that-spatial-bench",
+        "label_en": "Spatial benchmark",
+        "label_zh": "空间推理基准",
+        "source_url": "https://arxiv.org/html/2609.23886v1",
+        "source_evidence": {
+          "url": "https://arxiv.org/html/2609.23886v1",
+          "content_sha256": "b8bc91156494fd69798c4b43829826ef68f22039c856747a2c7dc7330ecd4dba",
+          "retrieved_at": "2026-10-16T12:42:59.056347+00:00"
+        },
+        "known_resource_link_fix": true,
+        "new_resource_count": 0,
+        "scope_note": "The paper distinguishes this released benchmark from its unreleased internal suite."
+      }
+    ],
+    "evaluation": [
+      {
+        "kind": "known_resource_link_fix",
+        "paper_url": "https://arxiv.org/abs/2610.21244v1",
+        "resource_url": "https://github.com/TianyuCodings/S1-Arena",
+        "suggested_label": "Code",
+        "known_ledger_url": "https://github.com/tianyucodings/s1-arena",
+        "verification_level": "content_screened",
+        "new_resource_count": 0,
+        "fresh_primary_document_url": "https://raw.githubusercontent.com/TianyuCodings/S1-Arena/main/README.md",
+        "fresh_document_sha256": "45ff92bc9b2344c32ca365ccaae59dc2f18620f9004792e075639ce421f78c82",
+        "retrieved_at": "2026-10-16T12:44:10+00:00",
+        "scope": "Matched-request benchmark harness and closed-loop environment workflows; external datasets and hosted-model access remain dependencies."
+      },
+      {
+        "kind": "known_resource_link_fix",
+        "paper_url": "https://arxiv.org/abs/2610.21244v1",
+        "resource_url": "https://huggingface.co/datasets/C-Tianyu/S1-Arena",
+        "suggested_label": "Public requests",
+        "known_ledger_url": "https://huggingface.co/datasets/C-Tianyu/S1-Arena",
+        "verification_level": "content_screened",
+        "new_resource_count": 0,
+        "fresh_primary_document_url": "https://huggingface.co/datasets/C-Tianyu/S1-Arena/raw/main/README.md",
+        "fresh_document_sha256": "63ef01e7ee391bfd0bb4c37a378ad097eb0104ff35bd6ef378eb7d879c6db4bf",
+        "retrieved_at": "2026-10-16T12:44:10+00:00",
+        "scope": "Public redistribution-compatible request subset; restricted sources require local rebuilding or separate access, so this is not the full source collection."
+      },
+      {
+        "kind": "known_resource_link_fix",
+        "paper_url": "https://arxiv.org/abs/2610.03935v2",
+        "resource_url": "https://huggingface.co/datasets/carlosxiang/JEVal",
+        "suggested_label": "Evaluation data",
+        "known_ledger_url": "https://huggingface.co/datasets/carlosxiang/JEVal",
+        "verification_level": "content_screened",
+        "new_resource_count": 0,
+        "fresh_primary_document_url": "https://huggingface.co/datasets/carlosxiang/JEVal/raw/main/README.md",
+        "fresh_document_sha256": "818ff20edee14db5836ab39c856ebe828daf1ae89ed55c83019df6729715c09c",
+        "retrieved_at": "2026-10-16T12:44:10+00:00",
+        "scope": "Merged evaluation inputs and labels, not per-request model prediction logs; upstream source licensing remains separate."
+      }
+    ]
+  },
+  "navigation_only": {
+    "project_url": "https://yubol-bobo.github.io/jev-as-a-judge/",
+    "repository_url": "https://github.com/yubol-bobo/jev-as-a-judge",
+    "verification_chain": [
+      "https://huggingface.co/papers/2609.26550",
+      "https://yubol-bobo.github.io/jev-as-a-judge/",
+      "https://github.com/yubol-bobo/jev-as-a-judge"
+    ],
+    "observed_scope": "The HF paper page links the author project, which links the repository. The repository README describes a static website with HTML, manuscript PDF, figure assets and sitemap. No independently verified analysis/data supplement was found in the displayed inventory.",
+    "identity_match_in_current_ledgers_or_frozen_baseline": false,
+    "counting_decision": "Navigation only; do not count website and site-source repository as research-code/data artifacts or as separate additions."
+  },
+  "unverified_supplements": [
+    {
+      "paper_url": "https://arxiv.org/html/2609.26532v1",
+      "classification": "no_author_artifact_entry_found_in_inspected_html",
+      "summary": "No author repository/data URL or actionable availability passage was found in the inspected fixed-v1 HTML. No broader search was performed for this paper.",
+      "primary_html_sha256": "9b4077dfdb330d51a639b9f4a4f07df804bd8579727bd11c0a50318843d72b1c",
+      "retrieved_at": "2026-10-16T12:43:21.897680+00:00"
+    },
+    {
+      "paper_url": "https://arxiv.org/html/2609.26550v5",
+      "classification": "described_package_no_verified_public_supplement_entry",
+      "summary": "Appendix Q describes an offline supplementary package with retained outputs and scripts, with exclusions and some retained-only summaries. The inspected paper has no actionable author-package URL. A linked author project exists, but its repository README and inventory identify a static manuscript/chart site, not the described analysis package.",
+      "primary_html_sha256": "e054dae9268010034f1dac992eb2f2a6bf0fd790d7fd05d190b6bda90b1f72cf",
+      "retrieved_at": "2026-10-16T12:43:23.571289+00:00"
+    },
+    {
+      "paper_url": "https://arxiv.org/html/2609.29769v3",
+      "classification": "described_release_no_verified_public_supplement_entry",
+      "summary": "Appendix M describes judge runners, verdict records, panel samples and analysis workflows. The inspected HTML and one exact-title code/reproduction search did not yield a verified public author release entry. This does not prove the package is absent everywhere.",
+      "primary_html_sha256": "9f0a6116711a107f58875076c3a0c4392be2b4c05c7c0a704f84b58e4f581777",
+      "retrieved_at": "2026-10-16T12:43:24.691771+00:00"
+    }
+  ],
+  "scope": "Author-companion availability and artifact documentation review. Website/script/model shards, duplicate releases and static manuscript mirrors are not additional resources. No source code or model was executed; no experiments were reproduced.",
+  "absence_limit": "An unverified link in this bounded search does not establish global unavailability.",
+  "final_independent_review": {
+    "ecosystem": {
+      "old_bytes_preserved": true,
+      "new_rows": 2
+    },
+    "research": {
+      "old_bytes_preserved": true,
+      "new_rows": 0
+    },
+    "new2_exact_candidate_fields": {
+      "https://huggingface.co/LIQIIIII/Jeva-4B": true,
+      "https://yubol-bobo.github.io/System_one_model_evaluation": true
+    },
+    "new2_scope_grade": [
+      {
+        "url": "https://huggingface.co/LIQIIIII/Jeva-4B",
+        "verification_level": "content_screened",
+        "editorial_reviewed": false,
+        "full_text_reviewed": false,
+        "content_sha256": "04108705770dea7fe225995debbbd7727c58112a40afd53dfb1b110afd55a23f",
+        "retrieved_at": "2026-10-16T12:45:32.714336+00:00"
+      },
+      {
+        "url": "https://yubol-bobo.github.io/System_one_model_evaluation",
+        "verification_level": "content_screened",
+        "editorial_reviewed": false,
+        "full_text_reviewed": false,
+        "content_sha256": "e3a51c32cd3aafadd488d2bfe257027e4b649975d515359da0b14fb5556e9529",
+        "retrieved_at": "2026-10-16T12:44:10+00:00"
+      }
+    ],
+    "counts": {
+      "editorial_reviewed": 4,
+      "content_screened": 2363,
+      "abstract_checked": 1833,
+      "metadata_only": 47,
+      "raw_records": 4261,
+      "unique_records": 4247,
+      "duplicate_records": 14,
+      "checked_sources": 4200
+    },
+    "expansion": 752,
+    "unique_descriptions": 417,
+    "all_expansion_descriptions_have_zh": true,
+    "bib_count": 60,
+    "bib_unchanged": true,
+    "static_rows": {
+      "index.html": 97,
+      "zh/index.html": 97,
+      "papers/index.html": 52,
+      "zh/papers/index.html": 52,
+      "discoveries/index.html": 752,
+      "zh/discoveries/index.html": 752
+    },
+    "privacy_matches": {
+      "temporary_or_personal_path": false,
+      "contact_email": false,
+      "credential": false,
+      "bulk_source_field": false
+    },
+    "schema_version": 1,
+    "reviewed_at": "2026-10-16T12:51:59+00:00",
+    "decision": "no_blocking_findings",
+    "scope": "Read-only pending-diff, preserved-ledger, public-schema profile, bilingual content and privacy review. No test suite, network request, model loading or source-code execution was performed.",
+    "content_boundaries": [
+      "Jeva is one checkpoint package with undeclared model license; no weight validation or open-source license is inferred.",
+      "The dashboard is one mutable author report, not a verified code/data release. Its 22-system report, consistency subset and fixed-paper cohort remain distinct in the review record.",
+      "Thirteen known-resource links and one extra manuscript-site navigation link add zero source identities; checkpoint and dashboard promotions do not duplicate their two intake counts.",
+      "This-that author releases are separated from the NanoJev baseline; Chinese-Jev links identify the pipeline and data, not released trained weights.",
+      "The new reproduction section distinguishes summary regeneration, per-example metric recomputation, fresh inference and retraining. No route is claimed to have been executed."
+    ],
+    "required_corrections": []
+  },
+  "known_links_independent_review": {
+    "schema_version": 1,
+    "reviewed_at": "2026-10-16T12:49:58+00:00",
+    "input_sha256": "b3997cfc57a0773c61a6e36605bb9ee9705b0f237e1bec9b331da14cb4b0384a",
+    "decision": "no_blocking_findings",
+    "link_fixes_checked": 10,
+    "new_resource_count": 0,
+    "scope": "Cached primary paper/project-page mapping and current-ledger identity check only; no new network requests, test execution, code or model execution.",
+    "all_source_hashes_match": true,
+    "all_resources_already_content_screened": true,
+    "mapping_note": "Six URLs are linked in the inspected HTML. Sys1Cal and the three this-that URLs are explicitly printed in primary manuscript text; those are not claimed to be clickable HTML anchors.",
+    "boundaries": {
+      "this_that": "The availability section identifies flock-io/this-that-model-1.0, FLock-io/this-that-model and limberc/this-that-spatial-bench as the author releases. NanoJev is a comparator and source of an earlier recorded cohort; the internal evaluation suite is not released.",
+      "chinese_jev": "The inspected project page links the training pipeline, CJ-Bench and CJ-Dataset, and explicitly marks all four trained-weight variants as planned or coming soon. None of the navigation fixes claims released Chinese-Jev weights.",
+      "sys1cal": "Synthetic probabilities are fixed by construction; this is not new independent natural-task labeling.",
+      "jeva": "The LiQiiiii author implementation is distinct from the unrelated chemany repository.",
+      "coherence": "The recorded-call wording describes the release; no request replay or metric recomputation was performed."
+    },
+    "records": [
+      {
+        "paper_url": "https://arxiv.org/abs/2609.35342v1",
+        "resource_url": "https://github.com/little-g-ai/Sys1Cal-v1",
+        "evidence_url": "https://arxiv.org/html/2609.35342v1",
+        "evidence_sha256": "e5c62b1902d20ce85cb8613690b69568cd87043b199a7ebd634f8f3b173cc311",
+        "verification_level": "content_screened",
+        "known_resource_link_fix": true,
+        "new_resource_count": 0
+      },
+      {
+        "paper_url": "https://arxiv.org/abs/2609.33209v1",
+        "resource_url": "https://github.com/bro789/typed-decision-coherence",
+        "evidence_url": "https://arxiv.org/html/2609.33209v1",
+        "evidence_sha256": "461fd904d07fecca4aa566e208e6b436b4b526d22aeab9bfc569698440ea4b4c",
+        "verification_level": "content_screened",
+        "known_resource_link_fix": true,
+        "new_resource_count": 0
+      },
+      {
+        "paper_url": "https://arxiv.org/abs/2610.18773v1",
+        "resource_url": "https://github.com/LiQiiiii/Jeva",
+        "evidence_url": "https://arxiv.org/html/2610.18773v1",
+        "evidence_sha256": "591be7cb606befecfb5b247ef497c0c819bf83822b8c1bcae98d51690861dfc9",
+        "verification_level": "content_screened",
+        "known_resource_link_fix": true,
+        "new_resource_count": 0
+      },
+      {
+        "paper_url": "https://arxiv.org/abs/2609.36965v1",
+        "resource_url": "https://github.com/gulucaptain/Chinese-Jev",
+        "evidence_url": "https://gulucaptain.github.io/Chinese-Jev/",
+        "evidence_sha256": "d9b61687e182644f8dac00945eb796143811e438b95312b3d2c97aa0fc78f95d",
+        "verification_level": "content_screened",
+        "known_resource_link_fix": true,
+        "new_resource_count": 0
+      },
+      {
+        "paper_url": "https://arxiv.org/abs/2609.36965v1",
+        "resource_url": "https://huggingface.co/datasets/bbldCVer-hf/CJ-Bench",
+        "evidence_url": "https://gulucaptain.github.io/Chinese-Jev/",
+        "evidence_sha256": "d9b61687e182644f8dac00945eb796143811e438b95312b3d2c97aa0fc78f95d",
+        "verification_level": "content_screened",
+        "known_resource_link_fix": true,
+        "new_resource_count": 0
+      },
+      {
+        "paper_url": "https://arxiv.org/abs/2609.36965v1",
+        "resource_url": "https://huggingface.co/datasets/bbldCVer-hf/CJ-Dataset",
+        "evidence_url": "https://gulucaptain.github.io/Chinese-Jev/",
+        "evidence_sha256": "d9b61687e182644f8dac00945eb796143811e438b95312b3d2c97aa0fc78f95d",
+        "verification_level": "content_screened",
+        "known_resource_link_fix": true,
+        "new_resource_count": 0
+      },
+      {
+        "paper_url": "https://arxiv.org/abs/2609.23986v1",
+        "resource_url": "https://github.com/libingzheren/Jev-Mem",
+        "evidence_url": "https://arxiv.org/html/2609.23986v1",
+        "evidence_sha256": "4d240762c73a7af441e680e507296d66e6c7ab64f4345ff988f9e75e480e8e0c",
+        "verification_level": "content_screened",
+        "known_resource_link_fix": true,
+        "new_resource_count": 0
+      },
+      {
+        "paper_url": "https://arxiv.org/abs/2609.23886v1",
+        "resource_url": "https://huggingface.co/flock-io/this-that-model-1.0",
+        "evidence_url": "https://arxiv.org/html/2609.23886v1",
+        "evidence_sha256": "b8bc91156494fd69798c4b43829826ef68f22039c856747a2c7dc7330ecd4dba",
+        "verification_level": "content_screened",
+        "known_resource_link_fix": true,
+        "new_resource_count": 0
+      },
+      {
+        "paper_url": "https://arxiv.org/abs/2609.23886v1",
+        "resource_url": "https://github.com/FLock-io/this-that-model",
+        "evidence_url": "https://arxiv.org/html/2609.23886v1",
+        "evidence_sha256": "b8bc91156494fd69798c4b43829826ef68f22039c856747a2c7dc7330ecd4dba",
+        "verification_level": "content_screened",
+        "known_resource_link_fix": true,
+        "new_resource_count": 0
+      },
+      {
+        "paper_url": "https://arxiv.org/abs/2609.23886v1",
+        "resource_url": "https://huggingface.co/datasets/limberc/this-that-spatial-bench",
+        "evidence_url": "https://arxiv.org/html/2609.23886v1",
+        "evidence_sha256": "b8bc91156494fd69798c4b43829826ef68f22039c856747a2c7dc7330ecd4dba",
+        "verification_level": "content_screened",
+        "known_resource_link_fix": true,
+        "new_resource_count": 0
+      }
+    ],
+    "required_corrections": [],
+    "shared_repository_modified": false
+  }
+}

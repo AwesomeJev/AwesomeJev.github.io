@@ -1,6 +1,6 @@
 # Resource expansion — 16 October 2026
 
-**750 newly added, evidence-checked sources / target: at least 301.**
+**752 newly added, evidence-checked sources / target: at least 301.**
 
 [Main collection](../README.md) · [Website source search](https://awesomejev.github.io/#corpus) · [Machine-readable progress](../data/expansion-progress-2026-10-16.json) · [Frozen baseline](../data/expansion-baseline-2026-10-16.json) · [Prior-citation supplement](../data/expansion-baseline-supplement-2026-10-16.json)
 
@@ -8,13 +8,13 @@ The baseline is [commit 3519c15](https://github.com/reacher-z/Awesome-Jev/tree/3
 
 Only sources in the [reviewed intake](../data/expansion-intake-2026-10-16.json) count toward this expansion. This is a discovery directory with explicit screening levels. **Direct** sources concern Jev or typed decision systems; **adjacent** resources implement closely related methods; **background** papers provide research context. Listing is not an endorsement or independent reproduction. The short descriptions explain relevance, not a universal recommendation.
 
-**中文：本轮已新增 750 项有核查证据的资源，目标至少 301 项。** 已有台账、精选与引用链接、重复正文或论文题名均不重复计数，仅元数据条目不计入目标。下表区分直接相关、邻近方法与背景研究；自动内容筛查或摘要检查不等于全文评审，也不代表实验复现。
+**中文：本轮已新增 752 项有核查证据的资源，目标至少 301 项。** 已有台账、精选与引用链接、重复正文或论文题名均不重复计数，仅元数据条目不计入目标。下表区分直接相关、邻近方法与背景研究；自动内容筛查或摘要检查不等于全文评审，也不代表实验复现。
 
 | Resource type | Newly added |
 | --- | ---: |
 | Datasets | 101 |
-| Guides and evaluations | 37 |
-| Models | 52 |
+| Guides and evaluations | 38 |
+| Models | 53 |
 | Papers | 27 |
 | Projects | 192 |
 | Research foundations | 341 |
@@ -152,6 +152,7 @@ Only sources in the [reviewed intake](../data/expansion-intake-2026-10-16.json) 
 | [Line-by-line search](https://docs.typesafe.ai/cookbooks/semantic_find) | direct · `content_screened` | Official semantic-finding example with decision questions over candidate text. |
 | [Parallel questions](https://docs.typesafe.ai/cookbooks/parallel_questions) | direct · `content_screened` | Official example of sharing input state across multiple parallel decision questions. |
 | [Re-ranking](https://docs.typesafe.ai/cookbooks/rerank_typesafe) | direct · `content_screened` | Official reranking workflow using bounded evaluation questions. |
+| [Reading Right, Acting Wrong — author evaluation dashboard](https://yubol-bobo.github.io/System_one_model_evaluation) | direct · `content_screened` | Author dashboard presents paired factual-probe and action-decision diagnostics across agent tasks; probe correctness does not establish complete understanding or isolate the cause of a wrong action. |
 | [SDE cascade](https://docs.typesafe.ai/cookbooks/sde_cascade) | direct · `content_screened` | Official structured-data-extraction cascade that checks inexpensive model output with Jev before escalating to a reasoning model. |
 | [Self-consistency: choices](https://docs.typesafe.ai/cookbooks/consistency_choice_cookbook) | direct · `content_screened` | Official procedure for inspecting consistency of categorical Choice decisions. |
 | [Self-consistency: nouls](https://docs.typesafe.ai/cookbooks/consistency_noul_cookbook) | direct · `content_screened` | Official procedure for inspecting consistency of Noul yes/no decisions. |
@@ -186,6 +187,7 @@ Only sources in the [reviewed intake](../data/expansion-intake-2026-10-16.json) 
 | [exu-qwen3.5-2b-typed-decisions](https://huggingface.co/Ruivalim/exu-qwen3.5-2b-typed-decisions) | direct · `content_screened` | Exu decision head for agent and workflow traces, with option scoring and fitted-temperature probabilities. |
 | [Granite-20B-FunctionCalling](https://huggingface.co/ibm-granite/granite-20b-functioncalling) | adjacent · `content_screened` | Granite function-calling checkpoint covering nested, chained and parallel tool calls as a generative comparison baseline. |
 | [jeb-typed-decisions](https://huggingface.co/IJyad/jeb-typed-decisions) | direct · `content_screened` | Arabic operational-workflow decision checkpoint covering tickets, invoices, alerts and agent traces. |
+| [Jeva-4B — author checkpoint package](https://huggingface.co/LIQIIIII/Jeva-4B) | direct · `content_screened` | Author checkpoint bundle for Jeva with backbone, adapter and decision-head files; weights were not loaded, and the inspected card specifies no model license. |
 | [JevEmbed-KaLM-Embedding-V2.5](https://huggingface.co/HIT-TMG/JevEmbed-KaLM-Embedding-V2.5) | direct · `content_screened` | JevEmbed embedding checkpoint with documented Choice, Score and Noul scoring over its training corpus. |
 | [jevons-lfm25-1.2b-systemone](https://huggingface.co/gopalanj/jevons-lfm25-1.2b-systemone) | direct · `content_screened` | Jevons seed adapter for option-token scoring, with typed outputs assembled by the serving implementation. |
 | [JudgeLM Model Card](https://huggingface.co/BAAI/JudgeLM-33B-v1.0) | adjacent · `content_screened` | Vicuna-based JudgeLM checkpoint for evaluating open-ended answer pairs; useful as a generative judge comparison. |

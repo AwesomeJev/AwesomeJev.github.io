@@ -112,3 +112,13 @@ The [review](../../data/expansion-ordinal-visual-review-2026-10-16.json) retains
 The next bounded reference pass inspected 138 citations from these three fixed-version manuscripts and found no additional uncollected direct papers: two relevant papers and four non-paper direct references were already known, while the remaining citations were background. No ordinary background was added to fill a numerical quota. This is a statement about that inspected reference set, not a claim that no other relevant work exists.
 
 **中文：** 本批净新增5项（3篇论文、2个完整代码项目），累计750项；精选提升、适配器、分片和镜像不重复计数。论文原始摘要独立重取通过；代码资料按原缓存正文和目录哈希复核，不把HTTP403的新取失败写成成功，也不更新原抓取时间。后续检查三篇论文的138条引用，没有找到未收录的直接论文，未扩收普通背景凑数。
+
+## Author companions and reproduction scope
+
+Two distinct resources bring this expansion to **752**: the Jeva-4B author checkpoint package and the Reading Right, Acting Wrong diagnostic dashboard. The former is separate material from its already-known code repository; shards, adapters and heads count once. The latter contains a substantive evolving report, not just the paper abstract. The current 22-system report, its 18-system consistency subset and the fixed paper’s 18-system cohort must not be conflated.
+
+Independent checks reviewed original model-card/report text, author links and public file metadata; the parent refetched both primary documents with matching hashes. No weights were loaded, source scripts executed or reported experiments reproduced. The checkpoint card declares no model license, and report aggregates do not establish a complete downloadable reproduction package. [Evidence record](../../data/expansion-companion-review-2026-10-16.json).
+
+Thirteen links to already-known companion resources were added to eight paper entries; these add zero resources. A further author paper-site link is navigation only, not a verified analysis supplement. The bilingual [reproduction-scope review](reproducibility-2026-10-16.md) explains what different material releases can support without claiming that any route was executed.
+
+**中文：** 本轮新增Jeva检查点包和作者诊断报告两项，累计752项新增来源。模型分片与网页资产不拆分计数；检查点许可未声明，看板的22系统、分析子集18系统与固定论文18系统保持区分。八篇论文补齐13个既有配套资源链接，另加一个仅用于导航的作者论文站，均不增加来源计数。双语复现说明区分可重算范围与实际执行状态；本轮未运行来源代码、加载模型或复现实验。

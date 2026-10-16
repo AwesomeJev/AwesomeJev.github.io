@@ -3,23 +3,23 @@
   "baseline_commit": "3519c15d7e00686a8dbf9b1e184c68726327ab1e",
   "baseline_source_index_sha256": "8bfdd20564f2cda54bb8264c3c802f315e3e9a11b153bd85dde4325f53c841d5",
   "target_new_sources": 301,
-  "accepted_new_sources": 750,
+  "accepted_new_sources": 752,
   "remaining_to_target": 0,
   "target_count_reached": true,
   "current_index_counts": {
     "editorial_reviewed": 4,
-    "content_screened": 2361,
+    "content_screened": 2363,
     "abstract_checked": 1833,
     "metadata_only": 47,
-    "raw_records": 4259,
-    "unique_records": 4245,
+    "raw_records": 4261,
+    "unique_records": 4247,
     "duplicate_records": 14,
-    "checked_sources": 4198
+    "checked_sources": 4200
   },
   "by_category": {
     "Datasets": 101,
-    "Guides and evaluations": 37,
-    "Models": 52,
+    "Guides and evaluations": 38,
+    "Models": 53,
     "Papers": 27,
     "Projects": 192,
     "Research foundations": 341
@@ -27,11 +27,11 @@
   "by_relation": {
     "adjacent": 25,
     "background": 341,
-    "direct": 384
+    "direct": 386
   },
   "by_verification_level": {
     "abstract_checked": 368,
-    "content_screened": 382
+    "content_screened": 384
   },
   "verification_note": "Evidence depth is labeled per source. Content screening and abstract checks do not establish full-paper review, peer review, endorsement, or experimental reproduction.",
   "additions": [
@@ -1524,6 +1524,18 @@
       "ledger": "ecosystem-sources.jsonl"
     },
     {
+      "title": "Reading Right, Acting Wrong — author evaluation dashboard",
+      "url": "https://yubol-bobo.github.io/System_one_model_evaluation",
+      "category": "Guides and evaluations",
+      "topic": "paper-evaluation-dashboard",
+      "description": "Author dashboard presents paired factual-probe and action-decision diagnostics across agent tasks; probe correctness does not establish complete understanding or isolate the cause of a wrong action.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "e3a51c32cd3aafadd488d2bfe257027e4b649975d515359da0b14fb5556e9529",
+      "retrieved_at": "2026-10-16T12:44:10+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
       "title": "SDE cascade",
       "url": "https://docs.typesafe.ai/cookbooks/sde_cascade",
       "category": "Guides and evaluations",
@@ -1869,6 +1881,18 @@
       "verification_level": "content_screened",
       "content_sha256": "bdabfdccb0b41e11b1b9cbff7a7cff733affbe55fc9f68d149910c69fa7fac73",
       "retrieved_at": "2026-10-16T10:05:23+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "Jeva-4B — author checkpoint package",
+      "url": "https://huggingface.co/LIQIIIII/Jeva-4B",
+      "category": "Models",
+      "topic": "decision-model-card",
+      "description": "Author checkpoint bundle for Jeva with backbone, adapter and decision-head files; weights were not loaded, and the inspected card specifies no model license.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "04108705770dea7fe225995debbbd7727c58112a40afd53dfb1b110afd55a23f",
+      "retrieved_at": "2026-10-16T12:45:32.714336+00:00",
       "ledger": "ecosystem-sources.jsonl"
     },
     {

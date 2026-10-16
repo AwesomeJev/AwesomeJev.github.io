@@ -70,6 +70,16 @@ Start with versioned empirical papers and their available code or data. The broa
 
 TypeSafe WorkflowEvals publishes workflows and model-generated reference labels; agreement with those references differs from human-label accuracy. The community Decision Index also contains private tests, so public rankings do not make the entire evaluation independently reproducible. [WorkflowEvals](https://github.com/typesafe-ai/WorkflowEvals) · [Decision Index methodology snapshot](https://huggingface.co/spaces/multimodalart/jev-decision-index/blob/5d09dd9cf226338c68fad22284c4982e6680af7d/data/methodology.json)
 
+## What can I reproduce from a public research artifact?
+
+Name what you want to reproduce: tables or plots from scored summaries, metrics from released per-example answers, fresh predictions, or a trained checkpoint. Map each output to its required inputs, versions and hashes. Report whether materials were only inspected, commands were executed, or outputs were matched; these are different claims.
+
+Visual Jev’s pinned reproduction guide describes regenerating specified tables and two plots from scored JSON without a GPU. Other figures need omitted per-example predictions and intervention analyses. Fresh predictions require upstream corpora, backbone weights and a GPU; source images are not redistributed. [Visual Jev reproduction guide, pinned commit](https://github.com/guanxuyu-sv/Visual-Jev/blob/a392eaedfa41adae348f9767b55c0f54b3a13b57/REPRODUCE.md)
+
+The observed ordinal-scale artifact documents metric recomputation from released answers. Fresh inference is separate: source text, weights and post-trained checkpoints are omitted, and missing historical data revisions can prevent a reconstruction matching recorded hashes. Its opaque file revision is not an immutable Git commit. Preserve mismatches rather than silently substituting current data. [Ordinal-scale study, v2](https://arxiv.org/abs/2609.38827v2) · [Observed anonymous README, opaque file revision](https://anonymous.4open.science/api/repo/jev_ordinal_scale_bia/file/README.md?v=3ed72968)
+
+The radiology paper’s v1 availability statement says analysis scripts and aggregate results are being prepared for release. Third-party dataset links do not supply those missing author outputs. Our checks concern documentation and selected file inventories; we have not executed these reproduction routes or independently reproduced their results. [Radiology availability statement, v1](https://arxiv.org/html/2609.27607v1#Sx1.p1)
+
 # Curated resources
 
 ## JevAgentHarness: Benchmarking, Deploying and Training Decision Models That Share Control with LLMs
@@ -488,6 +498,14 @@ An open typed-decision model using hidden-state readout. The abstract reports a 
 
 Primary source: https://arxiv.org/abs/2609.23886v1
 
+## Jeva-4B
+
+Models · Jeva authors · license not declared
+
+Author checkpoint with backbone, adapter and decision-head files. The inspected card declares no model license; weights have not been loaded or tested by this project.
+
+Primary source: https://huggingface.co/LIQIIIII/Jeva-4B
+
 ## Laya
 
 Models · convaiinnovations · Apache-2.0
@@ -647,6 +665,14 @@ Datasets · Bespoke Labs · Evaluation archive
 An archive of Decision Index evaluation runs for Bespoke Nimble 9B v3.
 
 Primary source: https://huggingface.co/datasets/bespokelabs/bespoke-nimble-9b-v3-decision-index
+
+## Reading Right, Acting Wrong — diagnostic dashboard
+
+Evaluations · Li, Krishnan & Padman · author report
+
+Interactive factual-probe and action-decision diagnostics. The current report covers 22 systems, distinct from the fixed paper’s 18; it is not a verified code or data release.
+
+Primary source: https://yubol-bobo.github.io/System_one_model_evaluation/
 
 ## Jev Decision Index
 

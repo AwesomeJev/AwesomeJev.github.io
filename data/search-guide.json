@@ -272,6 +272,47 @@
             ]
           }
         ]
+      },
+      {
+        "id": "reproduction-boundaries",
+        "title": "What can I reproduce from a public research artifact?",
+        "paragraphs": [
+          {
+            "text": "Name what you want to reproduce: tables or plots from scored summaries, metrics from released per-example answers, fresh predictions, or a trained checkpoint. Map each output to its required inputs, versions and hashes. Report whether materials were only inspected, commands were executed, or outputs were matched; these are different claims.",
+            "sources": []
+          },
+          {
+            "text": "Visual Jev’s pinned reproduction guide describes regenerating specified tables and two plots from scored JSON without a GPU. Other figures need omitted per-example predictions and intervention analyses. Fresh predictions require upstream corpora, backbone weights and a GPU; source images are not redistributed.",
+            "sources": [
+              {
+                "label": "Visual Jev reproduction guide, pinned commit",
+                "url": "https://github.com/guanxuyu-sv/Visual-Jev/blob/a392eaedfa41adae348f9767b55c0f54b3a13b57/REPRODUCE.md"
+              }
+            ]
+          },
+          {
+            "text": "The observed ordinal-scale artifact documents metric recomputation from released answers. Fresh inference is separate: source text, weights and post-trained checkpoints are omitted, and missing historical data revisions can prevent a reconstruction matching recorded hashes. Its opaque file revision is not an immutable Git commit. Preserve mismatches rather than silently substituting current data.",
+            "sources": [
+              {
+                "label": "Ordinal-scale study, v2",
+                "url": "https://arxiv.org/abs/2609.38827v2"
+              },
+              {
+                "label": "Observed anonymous README, opaque file revision",
+                "url": "https://anonymous.4open.science/api/repo/jev_ordinal_scale_bia/file/README.md?v=3ed72968"
+              }
+            ]
+          },
+          {
+            "text": "The radiology paper’s v1 availability statement says analysis scripts and aggregate results are being prepared for release. Third-party dataset links do not supply those missing author outputs. Our checks concern documentation and selected file inventories; we have not executed these reproduction routes or independently reproduced their results.",
+            "sources": [
+              {
+                "label": "Radiology availability statement, v1",
+                "url": "https://arxiv.org/html/2609.27607v1#Sx1.p1"
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -543,6 +584,47 @@
               {
                 "label": "Decision Index 方法快照",
                 "url": "https://huggingface.co/spaces/multimodalart/jev-decision-index/blob/5d09dd9cf226338c68fad22284c4982e6680af7d/data/methodology.json"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "reproduction-boundaries",
+        "title": "公开研究材料能支持哪一种复现？",
+        "paragraphs": [
+          {
+            "text": "先明确要复现什么：由已评分汇总重建表图、由已发布逐样本答案重算指标、生成新预测，还是训练出检查点。将每项输出对应到所需输入、版本和哈希。分别报告只检查了材料、执行了命令，还是输出已经匹配；这些不是同一种主张。",
+            "sources": []
+          },
+          {
+            "text": "Visual Jev 固定提交的复现指南说明，可用评分 JSON 在无 GPU 时重建指定表格与两幅图；其他图还需未附带的逐样本预测和干预分析。新推理需要上游语料、骨干权重和 GPU，项目不再分发源图像。",
+            "sources": [
+              {
+                "label": "Visual Jev 复现指南，固定提交",
+                "url": "https://github.com/guanxuyu-sv/Visual-Jev/blob/a392eaedfa41adae348f9767b55c0f54b3a13b57/REPRODUCE.md"
+              }
+            ]
+          },
+          {
+            "text": "所查有序量表资产说明如何从已发布答案重算指标。新推理是另一个流程：源文本、权重和后训练检查点未分发，缺失的历史数据版本可能使重建输入无法匹配记录的哈希。其文件修订标识不透明，并非不可变 Git 提交。应保留不匹配记录，不静默换用当前数据。",
+            "sources": [
+              {
+                "label": "有序量表研究 v2",
+                "url": "https://arxiv.org/abs/2609.38827v2"
+              },
+              {
+                "label": "所查匿名 README，文件修订标识不透明",
+                "url": "https://anonymous.4open.science/api/repo/jev_ordinal_scale_bia/file/README.md?v=3ed72968"
+              }
+            ]
+          },
+          {
+            "text": "放射学论文 v1 的可用性声明说，分析脚本与汇总结果仍在准备发布。第三方数据链接不能替代这些缺失的作者输出。本项目核查限于文档与部分文件目录，未执行上述复现流程，也未独立复现其结果。",
+            "sources": [
+              {
+                "label": "放射学论文材料声明 v1",
+                "url": "https://arxiv.org/html/2609.27607v1#Sx1.p1"
               }
             ]
           }

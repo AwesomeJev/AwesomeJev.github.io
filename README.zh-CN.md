@@ -51,10 +51,10 @@ TypeSafe 的 Jev 接收状态与类型化问题，为应用代码返回决策和
 
 ### 评测与基准
 
-- **[System1-Arena: Which Decisions Can Be Left to System 1?](https://arxiv.org/abs/2610.21244v1)** — Chen et al. *2026-10-15, arXiv v1*. 以匹配请求与闭环任务比较决策模型和推理模型。
+- **[System1-Arena: Which Decisions Can Be Left to System 1?](https://arxiv.org/abs/2610.21244v1)** — Chen et al. *2026-10-15, arXiv v1*. 以匹配请求与闭环任务比较决策模型和推理模型。 [代码](https://github.com/TianyuCodings/S1-Arena) · [公开请求子集](https://huggingface.co/datasets/C-Tianyu/S1-Arena)。
 - **[Typed Decision Models on Tabular Data](https://arxiv.org/abs/2610.19536v1)** — Zhang, Ye & Zha. *2026-10-14, arXiv v1*. 在三类表格任务中检验保持内容不变的改写对分类与验证的影响；置信度可提示不稳定，但不证明正确性。 专用研究代码尚未核验。
-- **[Reading Right, Acting Wrong: Diagnosing Decision Failures of System One Models in Agent Loops](https://arxiv.org/abs/2610.18579v1)** — Li, Krishnan & Padman. *2026-10-13, arXiv v1*. 将事实探针与行动选择配对，诊断决策失败。
-- **[General Decision Models: Benchmarking and Insights Beyond Jev](https://arxiv.org/abs/2610.03935v2)** — Duan et al. *2026-10-12, arXiv v2*. 双语决策评估与多步骤系统中的可靠性。 [训练与推理代码](https://github.com/amazingljy1206/SII-Decision)。
+- **[Reading Right, Acting Wrong: Diagnosing Decision Failures of System One Models in Agent Loops](https://arxiv.org/abs/2610.18579v1)** — Li, Krishnan & Padman. *2026-10-13, arXiv v1*. 将事实探针与行动选择配对，诊断决策失败。 [作者交互报告](https://yubol-bobo.github.io/System_one_model_evaluation/)。
+- **[General Decision Models: Benchmarking and Insights Beyond Jev](https://arxiv.org/abs/2610.03935v2)** — Duan et al. *2026-10-12, arXiv v2*. 双语决策评估与多步骤系统中的可靠性。 [训练与推理代码](https://github.com/amazingljy1206/SII-Decision) · [评测数据](https://huggingface.co/datasets/carlosxiang/JEVal)。
 - **[Specialized Decision Models vs. General-Purpose LLMs: Benchmarking Jev Across Knowledge, Reasoning, and Multilingual Tasks](https://arxiv.org/abs/2610.11978v1)** — Li et al. *2026-10-08, arXiv v1*. 在知识、推理和多语言选择题中评测 Jev；报告的排名及数学弱点仅适用于所选模型与基准。
 - **[JEV versus LLMs: Accuracy, Cost and Calibration on Seven Political Science Replications](https://arxiv.org/abs/2610.06625v2)** — Denney & DiGiuseppe. *2026-10-06, arXiv v2*. 七项领域复现，比较准确率、成本与校准。
 - **[Calibrated to Whom? Persona and Language Effects on Cultural Values in JEV](https://arxiv.org/abs/2609.36399v2)** — Asseri & Asseri. *2026-10-03, arXiv v2*. 对 Jev 进行英语和阿拉伯语人物设定条件下的问卷审查；观察的是单一模型的模拟受访者，并非对真实人群的测量。 首次提交于 2026-09-28。
@@ -66,8 +66,8 @@ TypeSafe 的 Jev 接收状态与类型化问题，为应用代码返回决策和
 - **[More Choices, Fewer Decisions: Ordinal-Scale Bias in JEV-like Direct-Decision Models](https://arxiv.org/abs/2609.38827v2)** — Gao et al. *2026-10-14, arXiv v2；首次提交 2026-09-30*. 审查所选决策模型对有序标签的使用不足；细化量表会加重压缩，准确率、最终标签利用率和平均候选概率仍是不同测量。 [匿名代码材料](https://anonymous.4open.science/r/jev_ordinal_scale_bia/)。
 - **[Beyond Answer Confidence: A Controlled Audit of Self-Knowledge in a Black-Box Decision Model](https://arxiv.org/abs/2610.01006v1)** — Shankaranarayana, Runje & Jannink. *2026-10-01, arXiv v1*. 通过控制信息与表面线索，区分 Jev 的答案置信度与是否知道答案的自评；黑盒表现并不证明能读取内部知识状态。 [代码](https://github.com/syntheme/beyond-answer-confidence)。
 - **[AnyJev Technical Report](https://arxiv.org/abs/2610.00831v1)** — Zhang et al. *2026-09-30, arXiv v1*. 无需训练的概率读出，修正标签先验与选项顺序偏差。 [代码](https://github.com/nokia-applied-research/AnyJev)。
-- **[Jev thinks “I don’t know”, but doesn’t say it: Introducing Sys1Cal-v1 Dataset for Probability Calibration](https://arxiv.org/abs/2609.35342v1)** — Porcedda. *2026-09-28, arXiv v1*. 以构造概率目标进行受控校准测试。
-- **[Beyond Calibration: Do a Typed-Decision Model’s Probabilities Obey the Probability Axioms?](https://arxiv.org/abs/2609.33209v1)** — Li, He & Li. *2026-09-27, arXiv v1*. 检验逻辑相关问题之间的概率一致性。
+- **[Jev thinks “I don’t know”, but doesn’t say it: Introducing Sys1Cal-v1 Dataset for Probability Calibration](https://arxiv.org/abs/2609.35342v1)** — Porcedda. *2026-09-28, arXiv v1*. 以构造概率目标进行受控校准测试。 [代码与合成基准](https://github.com/little-g-ai/Sys1Cal-v1)。
+- **[Beyond Calibration: Do a Typed-Decision Model’s Probabilities Obey the Probability Axioms?](https://arxiv.org/abs/2609.33209v1)** — Li, He & Li. *2026-09-27, arXiv v1*. 检验逻辑相关问题之间的概率一致性。 [代码与调用记录](https://github.com/bro789/typed-decision-coherence)。
 
 ### 评判与选择性自动化
 
@@ -77,7 +77,7 @@ TypeSafe 的 Jev 接收状态与类型化问题，为应用代码返回决策和
 - **[Judges Follow the Reference: The Derivation Gap in Verifying Tool-Call Arguments](https://arxiv.org/abs/2610.18497v1)** — Ma et al. *2026-10-13, arXiv v1*. 包括 Jev 在内的工具参数评判模型，在缺少可见参考时会拒绝部分正确推导值；模型生成的参考在三个基准上接受评测。 [代码](https://github.com/sarielma/deref_release) · [评测数据](https://huggingface.co/datasets/lm2445/DeRef)；不包含模型输出。
 - **[Suggested Is Not Superseded: A Pre-Registered Evaluation of a System-One Model as a Memory-Retirement Gate](https://arxiv.org/abs/2610.15710v1)** — Chen & Le. *2026-10-11, arXiv v1*. Jev 旧记忆停用评测区分已确认更新与变化暗示；LLM／人工混合标注、共享错误及小型开发集上的选择限制了级联收益主张。
 - **[JevCascade: Readout Stability and Inference-Time Compute Allocation for Prefill-Only Decision Models](https://arxiv.org/abs/2610.07716v2)** — Li & Chen. *2026-10-10, arXiv v2*. 研究候选集合干预与置信度级联；排序稳定性并不等同概率校准。 [代码与数据](https://github.com/rlisml/jev-cascade)。
-- **[JEV-as-a-Judge: Accept When Confident, Escalate When Unsure](https://arxiv.org/abs/2609.26550v5)** — Li, Miao, Krishnan & Padman. *2026-10-09, arXiv v5*. 基于置信度从 Jev 升级到推理评判模型。
+- **[JEV-as-a-Judge: Accept When Confident, Escalate When Unsure](https://arxiv.org/abs/2609.26550v5)** — Li, Miao, Krishnan & Padman. *2026-10-09, arXiv v5*. 基于置信度从 Jev 升级到推理评判模型。[项目页](https://yubol-bobo.github.io/jev-as-a-judge/)。
 - **[JEV as a Judge for Agent Trace Security: An Empirical Comparison with Generative LLM Judges](https://arxiv.org/abs/2609.34862v1)** — Wang & Gao. *2026-09-28, arXiv v1*. 比较 Jev 与生成式评判模型对历史 agent 轨迹的风险分类；排名因数据集而异，成功调用耗时和有效判断成本需结合覆盖率解读。
 - **[LAVOIR: Teaching a Single-Pass Decision Encoder When and What to Ask with Amortized Value of Information](https://arxiv.org/abs/2609.30706v1)** — Yilmaz, Tasdemir & Gozay. *2026-09-25, arXiv v1*. 在给出决策概率的同时估计追问缺失信息的价值。 [代码](https://github.com/moganai/lavoir)。
 - **[REFLEX with Jev for Efficient Selective Control in LLM Agents](https://arxiv.org/abs/2609.26532v1)** — Wu & Lim. *2026-09-22, arXiv v1*. 以置信度控制 Jev 与 LLM 回退；收益取决于候选动作与基线路由。
@@ -96,19 +96,19 @@ TypeSafe 的 Jev 接收状态与类型化问题，为应用代码返回决策和
 
 ### 架构、记忆与多模态
 
-- **[Jeva: System One Models from First Principles](https://arxiv.org/abs/2610.18773v1)** — Li & Wang. *2026-10-13, arXiv v1*. 空答案、选项排列、可变候选集与缓存机制。
+- **[Jeva: System One Models from First Principles](https://arxiv.org/abs/2610.18773v1)** — Li & Wang. *2026-10-13, arXiv v1*. 空答案、选项排列、可变候选集与缓存机制。 [架构代码](https://github.com/LiQiiiii/Jeva) · [检查点](https://huggingface.co/LIQIIIII/Jeva-4B)。
 - **[VideoJev: System One Model for Video Understanding and Interaction](https://arxiv.org/abs/2610.18615v1)** — Zhu et al. *2026-10-13, arXiv v1*. 以时间区间和候选分数表达视频决策，通过缓存与联合推理复用视觉计算。 [项目页](https://mcg-nju.github.io/VideoJev/)。
 - **[Releasing the Inner Jev: A Simple Recipe for Open Decision Models](https://arxiv.org/abs/2610.17205v1)** — Geuter, Cheng & Alvarez-Melis. *2026-10-12, arXiv v1*. 答案字母概率读出与监督式 LoRA 基线；评测包含模型生成的标签。 [服务代码](https://github.com/j-geuter/jeff-serve) · [OpenDecisions](https://huggingface.co/datasets/jgeuter/OpenDecisions)。
 - **[SanSi: A Looped Typed Decision Model for System 1.5 Thinking](https://arxiv.org/abs/2610.07730v2)** — Gan, Lee & Kang. *2026-10-10, arXiv v2*. 通过隐状态循环计算决策，以额外计算成本换取准确率。 [训练与主要评测代码](https://github.com/minnesotanlp/Sansi)覆盖论文的部分实验。
 - **[MetaEncoder: Exploring the Limit of Bi-Encoders for Multimodal System One Decision Making with Natural Language Interface](https://arxiv.org/abs/2610.11316v1)** — Cheng et al. *2026-10-08, arXiv v1*. 通过自然语言接口实现多模态决策与检索的双编码器方法。 [评测代码](https://github.com/facebook/meta-encoder-eval)。
 - **[JevSpawn: Adaptive Agentic Inference through Compositional Action Spaces](https://arxiv.org/abs/2610.00437v1)** — Su & Huang. *2026-09-30, arXiv v1*. 组合有限行动字段，利用交互反馈探索候选路径。 [代码](https://github.com/Hoyant-Su/JevSpawn)。
 - **[Bongard: Training Machine Intuition](https://arxiv.org/abs/2609.39111v1)** — Ding, Jin & Ji. *2026-09-30, arXiv v1*. 共享证据编码与候选概率读出，结合表征学习和行动结果反馈训练。 [模型权重](https://huggingface.co/AgentBull/bongard-mini)。
-- **[Chinese-Jev: Bringing System One Model to Chinese-Language Tasks](https://arxiv.org/abs/2609.36965v1)** — Wang et al. *2026-09-29, arXiv v1*. 中文决策模型训练与领域评测。
+- **[Chinese-Jev: Bringing System One Model to Chinese-Language Tasks](https://arxiv.org/abs/2609.36965v1)** — Wang et al. *2026-09-29, arXiv v1*. 中文决策模型训练与领域评测。 [训练流水线](https://github.com/gulucaptain/Chinese-Jev) · [CJ-Bench 评测集](https://huggingface.co/datasets/bbldCVer-hf/CJ-Bench) · [CJ-Dataset 训练集](https://huggingface.co/datasets/bbldCVer-hf/CJ-Dataset)。
 - **[Mnemon: Raw Records, Fast Judgments, Slow Thoughts](https://arxiv.org/abs/2609.36059v1)** — Wang. *2026-09-28, arXiv v1*. 保留原始记忆记录，将 Jev 相关性判断与 LLM 检索规划、回答生成分开。 [代码与运行记录](https://github.com/Grivn/mnemon-memory-agent)。
 - **[From Text Decisions to Pixels: An Study of Jev-Style Visual Choice Model](https://arxiv.org/abs/2609.29283v1)** — Zhou, Yang & Zhao. *2026-09-24, arXiv v1*. 视觉选择模型，分别考察适配与校准。
 - **[Visual Jev: Accurate and Efficient Decisions from Shared Visual Context](https://arxiv.org/abs/2609.25845v1)** — Yu & Yao. *2026-09-22, arXiv v1*. 独立的视觉决策架构以语言模型头读出，让批处理问题共享图像上下文；预热后的摊销加速伴随更高峰值内存，准确率收益集中于训练覆盖的任务家族。 [代码与复现范围](https://github.com/guanxuyu-sv/Visual-Jev)。
-- **[Jev-Mem: System-One-Controlled Agentic Memory for Efficient AI Agents](https://arxiv.org/abs/2609.23986v1)** — Jiang, Li & Li. *2026-09-21, arXiv v1*. 以决策模型控制 agent 记忆构建与检索。
-- **[this-that-model-1.0: A typed decision model that decides in 30 ms, for a millionth of a cent](https://arxiv.org/abs/2609.23886v1)** — Cheng, Dai & Sun. *2026-09-20, arXiv v1*. 采用隐藏状态概率读出的类型化决策架构。
+- **[Jev-Mem: System-One-Controlled Agentic Memory for Efficient AI Agents](https://arxiv.org/abs/2609.23986v1)** — Jiang, Li & Li. *2026-09-21, arXiv v1*. 以决策模型控制 agent 记忆构建与检索。 [代码](https://github.com/libingzheren/Jev-Mem)。
+- **[this-that-model-1.0: A typed decision model that decides in 30 ms, for a millionth of a cent](https://arxiv.org/abs/2609.23886v1)** — Cheng, Dai & Sun. *2026-09-20, arXiv v1*. 采用隐藏状态概率读出的类型化决策架构。 [模型](https://huggingface.co/flock-io/this-that-model-1.0) · [推理代码](https://github.com/FLock-io/this-that-model) · [空间推理基准](https://huggingface.co/datasets/limberc/this-that-spatial-bench)。
 
 ### 应用与领域研究
 
@@ -125,6 +125,7 @@ TypeSafe 的 Jev 接收状态与类型化问题，为应用代码返回决策和
 
 | 模型 | 发布者 | 声明许可 | 范围 |
 | :--- | :--- | :--- | :--- |
+| [Jeva-4B](https://huggingface.co/LIQIIIII/Jeva-4B) | Jeva 作者 | 所查模型卡未声明 | 骨干、适配器与决策头包；本项目未测试权重。 |
 | [Laya](https://huggingface.co/convaiinnovations/laya) | Convai Innovations | Apache-2.0 | 基于编码器的英语、多语言与工作流专用检查点。 |
 | [Kev-4B](https://huggingface.co/jaredpalmer/kev-4b) | Jared Palmer | Apache-2.0 | Qwen3.5-4B-Base LoRA 适配器与指针头。 |
 | [Bespoke Nimble 9B v3](https://huggingface.co/bespokelabs/Bespoke-Nimble-9B-v3) | Bespoke Labs | **CC BY-NC 4.0** | Qwen3.5-9B 适配器；非商业用途许可。 |
@@ -136,6 +137,7 @@ TypeSafe 的 Jev 接收状态与类型化问题，为应用代码返回决策和
 
 ## 基准与评测工具
 
+- **[Reading Right, Acting Wrong — 诊断看板](https://yubol-bobo.github.io/System_one_model_evaluation/)** — 作者报告将事实探查与动作决策配对；当前覆盖22个系统，与固定论文的18个不同，本次未验证代码或数据发布。
 - **[Artificial Analysis Decision Index](https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index)** — 第三方能力、校准、成本与延迟评测。[方法说明](https://artificialanalysis.ai/methodology/decision-index)列出任务过滤规则与私有知识子集；完整测试集不能公开复现。
 - **[Entagl 工作流评测](https://www.entagl.com/blog/typesafe-jev-benchmark-ai-decision-models)** — 2026年9月23日发布的作者标注决策与客户工作流重放；私有案例和任务特定阈值限制公开复现及泛化。
 

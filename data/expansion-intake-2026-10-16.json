@@ -912,6 +912,18 @@
       ],
       "evidence_scope": "Two whole code projects. Original public README, reproduction document and selected directory snapshots reviewed with cached-hash checks; no execution, weights, source data or prediction downloads.",
       "accepted_at": "2026-10-16T12:29:48+00:00"
+    },
+    {
+      "name": "author_checkpoint_and_diagnostic_report",
+      "input_sha256": "9283fc0031d5e08e373af24a07112520ed3383b92cc7f004b509c0f028ad286f",
+      "screened_records_proposed": 2,
+      "accepted_count": 2,
+      "accepted_urls": [
+        "https://huggingface.co/LIQIIIII/Jeva-4B",
+        "https://yubol-bobo.github.io/System_one_model_evaluation"
+      ],
+      "evidence_scope": "One author checkpoint package and one substantive author diagnostic report. Model card, inventories and report scope inspected with independent review; parent refetched both primary documents with matching hashes. No checkpoint loading, script execution or experimental reproduction.",
+      "accepted_at": "2026-10-16T12:49:33.139271+00:00"
     }
   ]
 }

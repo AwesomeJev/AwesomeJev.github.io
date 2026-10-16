@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "baseline_commit": "2d3d4313042088ebcfe0363dc72b128051043ae0",
+  "scope": "Targeted documentation and availability review for the bilingual survey and public guide; no new resource identity, full-paper review or experimental reproduction.",
+  "independent_review": {
+    "schema_version": 1,
+    "reviewed_at": "2026-10-16T12:41:22.514100+00:00",
+    "proposal_sha256": "0c966d1f5e7df5a7f4593676ea7841518ed6bb36a2dc6d58b1693624cc08e4e2",
+    "verdict": "acceptable_no_substantive_changes_required",
+    "blocking_findings": [],
+    "checked": [
+      "EN/ZH drafts preserve the four distinct stages: scored-summary table/figure regeneration, per-example metric recomputation, fresh inference and retraining.",
+      "Visual Jev examples match fixed-commit README/REPRODUCE: released scored summaries support named tables and two plots; other figures need omitted predictions/interventions, while new predictions need external images/corpora, weights and GPU compute.",
+      "Ordinal artifact accurately describes its documented answer-replay route, missing upstream text/weights/post-trained checkpoints and potentially unavailable historical dataset revisions; its opaque revision is not presented as a Git commit.",
+      "Radiology v1 explicitly marks analysis scripts and aggregate results unreleased; third-party datasets are not substituted for those missing author artifacts. Its linked HTML fragment exists and contains the availability statement.",
+      "All four recorded primary-evidence hashes match existing cached bodies. No additional retrieval, code execution or experiment was needed.",
+      "Chinese examples retain the same limits as English; neither language claims completed reproduction or broad clinical applicability."
+    ],
+    "integration_note": "Use this as an expansion or replacement of section 5 item 6, as the proposal recommends. If placed elsewhere, remove the location-dependent opening sentence; this is a placement choice, not an evidence defect.",
+    "scope": {
+      "new_http_requests": 0,
+      "test_runs": 0,
+      "source_code_executed": false,
+      "shared_repository_modified": false,
+      "resource_additions": 0
+    }
+  },
+  "primary_evidence": [
+    {
+      "url": "https://raw.githubusercontent.com/guanxuyu-sv/Visual-Jev/a392eaedfa41adae348f9767b55c0f54b3a13b57/README.md",
+      "content_sha256": "25d66790bc28cf10f3bf2af532771cfbf9e16d4aecd8f693a9cc46ff4c96983a",
+      "retrieved_at": "2026-10-16T12:21:32.279565+00:00",
+      "cached_hash_matches": true
+    },
+    {
+      "url": "https://raw.githubusercontent.com/guanxuyu-sv/Visual-Jev/a392eaedfa41adae348f9767b55c0f54b3a13b57/REPRODUCE.md",
+      "content_sha256": "e728b4bb4eb969650936daddccedf4c48cdbdfcac7a210b103be6eb11277681d",
+      "retrieved_at": "2026-10-16T12:21:32.132920+00:00",
+      "cached_hash_matches": true
+    },
+    {
+      "url": "https://anonymous.4open.science/api/repo/jev_ordinal_scale_bia/file/README.md?v=3ed72968",
+      "content_sha256": "d56870df6300d1ea9c1a303712a7c12dec59e140880e057ef00e9ff1c46b37bc",
+      "retrieved_at": "2026-10-16T12:22:44.534032+00:00",
+      "cached_hash_matches": true
+    },
+    {
+      "url": "https://arxiv.org/html/2609.27607v1",
+      "content_sha256": "5a8e6c0f75f9e6fbe076803f90691a90aaeb542b903c98a5481b80fa33fdb6c8",
+      "retrieved_at": "2026-10-16T12:20:26.756469+00:00",
+      "cached_hash_matches": true
+    }
+  ],
+  "published_sections": [
+    "docs/survey.md#reproduction-boundaries",
+    "docs/survey.zh-CN.md",
+    "https://awesomejev.github.io/guide/#reproduction-boundaries",
+    "https://awesomejev.github.io/zh/guide/#reproduction-boundaries"
+  ],
+  "guide_proposal_sha256": "12c242e89fa090fd3a07ae91299515b42132c0d266a8844c9e6699393f22bd86",
+  "counting": {
+    "new_resources": 0,
+    "verification_grades_changed": false
+  },
+  "boundaries": [
+    "The first paragraph and the instruction to preserve mismatches are recommended reporting practice, not a reported experiment.",
+    "The ordinal paper is fixed at v2, but the artifact service exposes only an opaque file revision; the proposal does not claim that README URL is an immutable Git snapshot.",
+    "References identify already inspected public documentation. No new network requests were made."
+  ],
+  "privacy": "Public source URLs, original retrieval times and document hashes only; source bodies and local cache locations are omitted."
+}

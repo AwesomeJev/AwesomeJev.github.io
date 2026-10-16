@@ -75,7 +75,7 @@ For a policy that abstains, **coverage** is the fraction of cases accepted; **se
 3. **Separate development from testing.** Select prompts, calibrators, and routing thresholds on development data. Preserve a held-out test set; group related examples to prevent leakage. Repeat a sample to measure response variability.
 4. **Measure decisions and probabilities.** Report task-appropriate accuracy or F1, Brier score, log loss, calibration plots, and risk–coverage curves with uncertainty intervals. Break results down by language, label frequency, and task difficulty.
 5. **Test the surrounding system.** Separate batch throughput, successful-call latency and success-conditioned workflow cost. State every denominator and exclusion; retain attempts, retries, completion/validity rates, all-attempt spend and fallback accuracy, alongside region, concurrency, cache state and price date. Evaluate attacks and input perturbations separately.
-6. **Publish the trail.** Release permitted inputs, versioned templates, raw responses, manifests, and analysis scripts. Distinguish recomputing published numbers from issuing new model requests. Repeat after version changes before reusing thresholds.
+6. **Publish the trail.** State whether you regenerate tables or figures from scored summaries, recompute metrics from released per-example answers, obtain fresh predictions, or retrain a checkpoint. Release permitted inputs, versioned templates, raw responses, manifests and analysis scripts. Repeat after version changes before reusing thresholds.
 
 ### Efficiency denominators
 
@@ -88,5 +88,19 @@ These fixed-version studies use different accounting scopes. The table compares 
 | **Jev-Mobile, v1 — Efficiency conditional on successful trajectories** | Time and mean all-model API cost average only successful episodes. Executor cost is instead a sum over that successful cohort; success rate uses all evaluated tasks. Successful-episode wall time includes planning, execution, device interaction, waits and retries; executor time isolates action-model APIs. Failed episodes are outside those efficiency summaries, and systems may succeed on different tasks. [time accounting](https://arxiv.org/html/2609.30186v1#S5.SS2.p1) · [cost accounting](https://arxiv.org/html/2609.30186v1#S5.SS2.p2) · [Table 1](https://arxiv.org/html/2609.30186v1#S6.T1) · [limitations](https://arxiv.org/html/2609.30186v1#S8.p1) | Task/episode ID, terminal success, attempted/successful counts, stage times, all model-role charges, waits/retries and task budget; retain successful IDs to support matched comparisons. |
 
 For deployment budgeting, separately report total model charges across all attempted episodes divided by the number of successful episodes; report it as undefined when there are no successes. This proposed measure includes failed-episode spend and differs from Jev-Mobile’s successful-cohort average. Always retain success/coverage rates beside conditional efficiency.
+
+### Reproduction boundaries
+
+These operations cover different pipeline stages. The examples below describe documented availability in the inspected snapshots; we did not execute the procedures or exhaustively audit the artifacts.
+
+- Map that target to required inputs and their versions/hashes. Distinguish files present from files merely documented, upstream restricted material, and missing artifacts. Use a body hash plus retrieval time where a provider revision is not an immutable commit.
+- List dependencies separately: analysis environment; source data and reconstruction rules; model/adapter versions or hosted-service access; compute and charges. Preserve failed hash checks and missing inputs instead of silently replacing them with current data.
+- Report the actual outcome: documented only, inputs inspected, command executed, or outputs matched. For executed work, retain commands, environment, output hashes and deviations; partial table regeneration is not a reproduced inference or training run.
+
+| Example | Documented analysis route | What remains separate |
+| --- | --- | --- |
+| [Visual Jev](https://github.com/guanxuyu-sv/Visual-Jev/blob/a392eaedfa41adae348f9767b55c0f54b3a13b57/REPRODUCE.md) | Committed scored JSON supports specified tables and two result plots without a GPU. | Other figures need omitted per-example predictions and intervention analyses. Fresh predictions need upstream corpora, backbone weights and a GPU; source images are not redistributed. |
+| [Ordinal-scale artifact](https://anonymous.4open.science/api/repo/jev_ordinal_scale_bia/file/README.md?v=3ed72968) | The described analysis route recomputes metrics from released per-example answers, not new model calls. | Source text, weights and post-trained checkpoints are omitted. Missing historical revisions can prevent reconstruction of inputs matching the recorded hashes; hosted results may change. The provider file revision is opaque, not a verified immutable commit. |
+| [Radiology report judging, v1](https://arxiv.org/html/2609.27607v1#Sx1.p1) | The fixed-v1 availability statement says analysis scripts and aggregates are being prepared for release. | Third-party dataset links and question details do not supply those missing author outputs. The inspected version does not establish an available analysis-replay route. |
 
 The most useful next evidence would isolate model, interface, and workflow effects while tracking deployment shift. That requires matched comparisons and inspectable records, especially for new modalities and releases. The collection’s 60 research bibliography entries are maintained in [references.bib](../references.bib).

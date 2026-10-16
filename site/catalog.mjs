@@ -267,6 +267,23 @@ const translations = {
 // Descriptions are editorial summaries. Paper findings remain author-reported.
 const resources = [
   {
+    "category": "Models",
+    "title": "Jeva-4B",
+    "by": "Jeva authors · license not declared",
+    "provenance": "modelcard",
+    "url": "https://huggingface.co/LIQIIIII/Jeva-4B",
+    "en": "Author checkpoint with backbone, adapter and decision-head files. The inspected card declares no model license; weights have not been loaded or tested by this project.",
+    "zh": "作者发布的检查点包，含骨干、适配器和决策头文件；所查模型卡未声明模型许可，本项目未加载或测试权重。"
+  },
+  {
+    "category": "Evaluations",
+    "title": "Reading Right, Acting Wrong — diagnostic dashboard",
+    "by": "Li, Krishnan & Padman · author report",
+    "url": "https://yubol-bobo.github.io/System_one_model_evaluation/",
+    "en": "Interactive factual-probe and action-decision diagnostics. The current report covers 22 systems, distinct from the fixed paper’s 18; it is not a verified code or data release.",
+    "zh": "交互式事实探查与动作决策诊断；当前报告覆盖22个系统，与固定论文的18个不同，不是经过核验的代码或数据发布。"
+  },
+  {
     "category": "Papers",
     "title": "Can Jev Judge Radiology Reports? Evaluating a System One Model for Clinical Factuality",
     "by": "Huang et al. · 2026-09-23 · v1",
