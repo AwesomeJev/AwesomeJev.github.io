@@ -74,6 +74,8 @@ IndexNow is an optional change-notification protocol. It requires a valid key an
 
 **Observed project status, 2026-10-16:** Bing Webmaster Tools verification is blocked at the owner's passkey interaction and is not confirmed. IndexNow received one POST containing the six canonical page URLs: `/`, `/zh/`, `/guide/`, `/zh/guide/`, `/papers/`, and `/zh/papers/`. The response was **HTTP 202: key validation pending**. This confirms receipt pending key validation, not completed verification, crawling, or indexing. No automatic retry was made.
 
+**Later release receipt, 2026-10-16:** after publishing `67edcc3`, one additional POST notified IndexNow of the four changed HTML pages (`/`, `/zh/`, `/papers/`, `/zh/papers/`). It returned **HTTP 200**, confirming successful receipt. This supersedes the earlier pending-validation status for this later notification, but does not prove indexing or Bing Webmaster Tools account verification. The two unchanged guide pages were not resubmitted.
+
 For future content changes, [scripts/submit_indexnow.py](../scripts/submit_indexnow.py) defaults to a local dry run with no network requests:
 
 ```sh
@@ -117,3 +119,5 @@ Google 首页实时测试显示可访问、可索引；六个规范 HTML 页面 
 Bing 验证停在所有者的通行密钥交互步骤，尚未确认完成。IndexNow 已通过一次 POST 提交上述六个规范页面 URL，返回 **HTTP 202，密钥验证待完成**；这不代表已验证、已抓取或已收录，没有自动重试。脚本默认 dry run，不发网络请求；未来部署实质变更后，用 `--url` 选择变更页面，核对预览，再显式使用 `--submit` 发送一次通知。不要重复提交未变化页面，也不要提交外站论文链接。OpenAI 搜索使用 `OAI-SearchBot`，与用于训练的 `GPTBot` 相互独立。所有外部验证、提交和收录状态都应以实际结果记录，不能由本地文件推断。
 
 **后续确认（2026-10-16）：** Google URL 检查现已明确显示规范首页 `https://awesomejev.github.io/` 为 **URL is on Google／Page is indexed**。这一确认只适用于首页，不代表另外五页、排名或 AI 回答引用已经确认；sitemap 报表复查仍保留此前的读取失败状态，两者分开记录。
+
+**后续通知（2026-10-16）：** 发布 `67edcc3` 后，仅将四个实际改变的 HTML 页面（`/`、`/zh/`、`/papers/`、`/zh/papers/`）通过一次 IndexNow POST 通知，返回 **HTTP 200**，确认已接收。未改变的两篇指南没有重复提交；这一回执仍不代表已收录或 Bing 站长账号验证完成。
