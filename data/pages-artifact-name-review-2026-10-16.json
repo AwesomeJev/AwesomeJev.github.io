@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "reviewed_at": "2026-10-16T13:34:34+00:00",
+  "decision": "supported_by_pinned_official_actions",
+  "proposed_name": "github-pages-${{ github.run_id }}-${{ github.run_attempt }}",
+  "changes": [
+    {
+      "action": "actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b",
+      "input": "name"
+    },
+    {
+      "action": "actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346",
+      "input": "artifact_name"
+    }
+  ],
+  "primary_evidence": [
+    {
+      "url": "https://raw.githubusercontent.com/actions/upload-pages-artifact/7b1f4a764d45c48632c6b24a0339c27f5614fb0b/action.yml",
+      "supports": "The name input exists and is passed directly to the underlying upload-artifact step."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/actions/deploy-pages/368f82528645a54fb793d4d04e342629a3f51346/action.yml",
+      "supports": "The artifact_name input exists with the default github-pages."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/actions/deploy-pages/368f82528645a54fb793d4d04e342629a3f51346/src/internal/api-client.js",
+      "supports": "Deployment lists current-run artifacts, filters exact artifact-name matches, and errors when zero or multiple matches remain."
+    },
+    {
+      "url": "https://docs.github.com/en/actions/reference/workflows-and-actions/contexts#github-context",
+      "supports": "run_id persists across reruns, while run_attempt increments for each rerun."
+    },
+    {
+      "url": "https://docs.github.com/en/actions/reference/workflows-and-actions/contexts#context-availability",
+      "supports": "The github context is available in jobs.<job_id>.steps.with."
+    }
+  ],
+  "reasoning": "For this single job, a rerun repeats upload and deployment with the same incremented attempt number. Both steps agree on a new name and do not match artifacts from earlier attempts.",
+  "limits": [
+    "This addresses same-run retry name collisions; it does not guarantee immediate artifact metadata visibility or repair the original zero-artifact response.",
+    "If upload and deployment are later split into separately rerun jobs, preserve the upload name through a job output rather than recomputing a possibly newer attempt number in a deployment-only rerun."
+  ],
+  "unchanged": [
+    "Permissions",
+    "Pinned action revisions",
+    "Pages environment",
+    "Branch/repository gate",
+    "Validation steps",
+    "Retention policy",
+    "Site content"
+  ],
+  "actions_taken": "Read official public action source/docs and produced a local proposal only. No shared workflow edit, deployment call, permission change or external source execution."
+}
