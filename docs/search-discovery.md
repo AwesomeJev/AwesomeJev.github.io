@@ -1,6 +1,8 @@
 # Search discovery and AI-search readiness
 
-Guidance checked against official documentation on **2026-10-16**. These changes make content easier to discover and inspect; they do not guarantee crawling, indexing, rankings, or citations in an AI answer. Search visibility and account-level settings must be checked separately from a successful deployment.
+Guidance checked against official documentation on **2026-10-17**. These changes make content easier to discover and inspect; they do not guarantee crawling, indexing, rankings, or citations in an AI answer. Search visibility and account-level settings must be checked separately from a successful deployment.
+
+The generated sitemap currently contains **18 canonical HTML pages**, with English/Chinese pairs for the collection, guide, papers, models, discoveries, topic directory and three research notes. The [model directory](https://awesomejev.github.io/models/) and [topic directory](https://awesomejev.github.io/topics/) give focused entry points alongside the full collection. Submission receipts and historical route counts are recorded below.
 
 ## Authoring and building the public pages
 
@@ -20,6 +22,7 @@ The first command generates the public files. `--check` makes no changes and fai
 | Homepage layout | [templates/index.html](../templates/index.html) |
 | Shared resource-row rendering | [site/resource-view.mjs](../site/resource-view.mjs) |
 | English and Chinese guide text and citations | [data/search-guide.json](../data/search-guide.json) |
+| Bilingual research topics and review scope | [data/research-topics.json](../data/research-topics.json) |
 | Bibliography | [references.bib](../references.bib) |
 | Page generation, metadata, and sitemap rules | [scripts/build_site.mjs](../scripts/build_site.mjs) |
 
@@ -216,3 +219,11 @@ A read-only Search Console check before this release still showed the old sitema
 **Model-card and alias release, 2026-10-17 UTC:** `6f6bcb6` added four model repositories with commit-verified documentation, reaching 130 curated resources and 781 reviewed expansion sources; the 66 direct papers and 75 bibliography entries are unchanged. A regression prevents Span-02's former Hub account from creating a second identity after card changes. The 118-test suite, both repository checks and Pages deployment passed; all 28 live targets matched the release. Browser filtering confirmed 15 curated model entries, publisher-card labels, Lychee's noncommercial declaration and Span-02's canonical link. One IndexNow POST for only the six changed home, guide and discovery pages returned **HTTP 200**. Unchanged paper/topic pages and the sitemap were not resubmitted. No search-account action or new indexing result is claimed.
 
 **模型卡与别名更新（2026-10-17 UTC）：** `6f6bcb6` 新增四个模型仓库，文档均核对固定提交，累计130项精选与781项扩展；66篇直接论文和75条书目不变。回归测试防止Span-02旧账号在文档改变后形成第二个身份。118项测试、双仓检查、部署及28项线上核对通过；浏览器确认15项精选模型、发布者模型卡标记、Lychee非商业许可与Span新地址。仅对六个改变的首页、指南及扩展目录页面发送一次IndexNow通知，返回 **HTTP 200**；论文、专题和sitemap未变，未重复提交。本轮未操作搜索账号，不新增收录主张。
+
+## Independent model directory
+
+The English `/models/` and Chinese `/zh/models/` pages render all curated model entries directly as HTML, using the same titles, descriptions and evidence labels as the homepage. Each page has its own canonical URL, reciprocal language links and an ItemList matching the visible cards. The new `/models.json` export preserves the curated model records. Homepage, README and document navigation link to the directory; it is included in the existing sitemap URL. This adds two reading routes, not two research sources.
+
+The introduction distinguishes publisher releases from hosted Jev, declared licenses from inferred rights, and model comparisons from rankings assembled under unmatched conditions. Tests check the export against the catalog and both language pages against the homepage, as well as the expanded sitemap and crawler rules. The project makes no new claim about external indexing from these local checks.
+
+**中文：** 新增中英文模型目录，直接输出全部精选模型的HTML正文，标题、简介与来源标签和首页一致，并提供JSON导出、规范网址、双语对应与匹配可见条目的结构化列表。首页、README、文档导航和现有sitemap均包含入口。两条新页面不增加研究来源计数；许可与发布范围仍以已查发布者材料为依据，不能由页面检查推断搜索引擎已经收录。

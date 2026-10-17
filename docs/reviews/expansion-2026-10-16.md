@@ -182,3 +182,9 @@ Four distinct model repositories bring the expansion to **781 sources** and the 
 Amos separates zero-shot and benchmark-train-prior settings. KnowLine discloses public-score checkpoint selection, related task/source exposure and approximate self-run calibration comparisons. Lychee declares CC BY-NC 4.0; an Apache-2.0 base does not replace that model license. Span-02 documents a dedicated engine, optional reasoning and separate index/default settings. These descriptions are publisher evidence, not reproduced performance. Sibling sizes, release variants and component files were not counted separately.
 
 **中文：** 四个模型仓库使扩展达到781项、精选达到130项，模型卡均与固定Hub提交的字节一致。Span-02迁移且文档改变，旧新地址只算一个来源，并以回归测试保护扫描身份匹配。保留Amos先验拟合条件、KnowLine公开评测选点与来源重叠、Lychee非商业许可、Span专用引擎与推理配置区别；没有执行模型或拆分尺寸、版本、组件来增加计数。
+
+## Browser and search runtimes — 17 October 2026 UTC
+
+Four whole implementation repositories bring the expansion to **785 sources** and the main collection to **134 curated resources**. Source README hashes match the existing scan proposal. Browser output parity, synthetic form coverage, training-set overlap, unfinished modalities, calibration inputs and cache memory tradeoffs are retained in the summaries. Model mirrors, bundle variants, demos and the embedded SearchJev PDF are not separate additions. The mJev display title is protected from an unrelated example heading. [Evidence and scope](../../data/runtime-search-review-2026-10-17.json).
+
+**中文：** 四个完整实现仓库使扩展达到785项、精选达到134项，README哈希与扫描一致。保留移植一致性与泛化的区别、合成表单范围、训练重叠、未完成模态、校准输入和缓存显存取舍；镜像、不同大小的包、演示及内嵌PDF不拆分计数。另修正mJev由代码示例标题引起的展示风险，未执行项目代码或下载模型数据。

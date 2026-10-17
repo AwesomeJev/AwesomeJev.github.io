@@ -4,7 +4,7 @@
 
 A curated list of **Jev and typed decision model** papers, models, datasets, evaluation tools, and practical guides.
 
-**[Main repository](https://github.com/reacher-z/Awesome-Jev)** · [Website](https://awesomejev.github.io/) · [Papers](https://awesomejev.github.io/papers/) · [Research guide](https://awesomejev.github.io/guide/) · [New resources](https://awesomejev.github.io/discoveries/) · [Research topics](https://awesomejev.github.io/topics/) · [中文](README.zh-CN.md) · [Survey](docs/survey.md) · [BibTeX](references.bib) · [Contribute](CONTRIBUTING.md)
+**[Main repository](https://github.com/reacher-z/Awesome-Jev)** · [Website](https://awesomejev.github.io/) · [Papers](https://awesomejev.github.io/papers/) · [Research guide](https://awesomejev.github.io/guide/) · [New resources](https://awesomejev.github.io/discoveries/) · [Model directory](https://awesomejev.github.io/models/) · [Research topics](https://awesomejev.github.io/topics/) · [中文](README.zh-CN.md) · [Survey](docs/survey.md) · [BibTeX](references.bib) · [Contribute](CONTRIBUTING.md)
 
 Independent community project; not affiliated with TypeSafe AI. Last curated: **2026-10-17**. The website is published from [AwesomeJev.github.io](https://github.com/AwesomeJev/AwesomeJev.github.io).
 
@@ -192,6 +192,10 @@ The four TypeSafe datasets contain workflow cases, model-generated references, a
 
 | Project | Maintainer | Purpose |
 | :--- | :--- | :--- |
+| [cua-s1.js](https://github.com/ai-ecoverse/cua-s1.js) | ai-ecoverse | Browser ports of Cua form and next-action models; output-parity checks do not establish generalization, and the small form model can confidently skip unfamiliar fields. |
+| [jev-omni.js](https://github.com/ai-ecoverse/jev-omni.js) | ai-ecoverse | Work-in-progress WebGPU port for Jev-Omni text and image decisions; audio/video are unfinished, model downloads are large, and reported parity is limited to selected fixtures and hardware. |
+| [SearchJev training pipeline](https://github.com/evoscientist/searchjev) | EvoScientist | Search-agent decision training with soft-label and Brier losses, reliability weights and per-question-type temperature fitting; the documented pipeline and split controls were not reproduced. |
+| [mJev](https://github.com/somarkai/mjev) | SoMarkAI | Shared-context candidate scoring with HF/vLLM routes; normalized option probabilities are not calibrated confidence, and the reported cache speedup trades higher memory in one controlled video setup. |
 | [FRIDA-Decisions](https://github.com/ai-forever/frida-decisions) | SberAI | Packed Russian–English encoder runtime for typed questions and ranking; state truncation, Russian instruction suffixes and margin-versus-probability semantics remain explicit. |
 | [OpenThai-SystemOne](https://github.com/iapp-technology/openthai-systemone) | iapp-technology | Thai/English text decision-model training and serving pipeline with a slot readout; the documented recipe does not establish independently validated calibration or interface equivalence. |
 | [Quyet runtime](https://github.com/ncchinh/quyet) | ncchinh | Runtime for Quyet decision models with checkpoint-dependent English/Vietnamese coverage; it documents ten-option limits and state truncation, without evaluated adversarial robustness. |

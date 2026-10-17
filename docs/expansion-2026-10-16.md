@@ -1,6 +1,6 @@
 # Resource expansion — 16 October 2026
 
-**781 newly added, evidence-checked sources / target: at least 301.**
+**785 newly added, evidence-checked sources / target: at least 301.**
 
 [Main collection](../README.md) · [Website source search](https://awesomejev.github.io/#corpus) · [Machine-readable progress](../data/expansion-progress-2026-10-16.json) · [Frozen baseline](../data/expansion-baseline-2026-10-16.json) · [Prior-citation supplement](../data/expansion-baseline-supplement-2026-10-16.json)
 
@@ -8,7 +8,7 @@ The baseline is [commit 3519c15](https://github.com/reacher-z/Awesome-Jev/tree/3
 
 Only sources in the [reviewed intake](../data/expansion-intake-2026-10-16.json) count toward this expansion. This is a discovery directory with explicit screening levels. **Direct** sources concern Jev or typed decision systems; **adjacent** resources implement closely related methods; **background** papers provide research context. Listing is not an endorsement or independent reproduction. The short descriptions explain relevance, not a universal recommendation.
 
-**中文：本轮已新增 781 项有核查证据的资源，目标至少 301 项。** 已有台账、精选与引用链接、重复正文或论文题名均不重复计数，仅元数据条目不计入目标。下表区分直接相关、邻近方法与背景研究；自动内容筛查或摘要检查不等于全文评审，也不代表实验复现。
+**中文：本轮已新增 785 项有核查证据的资源，目标至少 301 项。** 已有台账、精选与引用链接、重复正文或论文题名均不重复计数，仅元数据条目不计入目标。下表区分直接相关、邻近方法与背景研究；自动内容筛查或摘要检查不等于全文评审，也不代表实验复现。
 
 | Resource type | Newly added |
 | --- | ---: |
@@ -16,7 +16,7 @@ Only sources in the [reviewed intake](../data/expansion-intake-2026-10-16.json) 
 | Guides and evaluations | 38 |
 | Models | 59 |
 | Papers | 31 |
-| Projects | 211 |
+| Projects | 215 |
 | Research foundations | 341 |
 
 ## Datasets
@@ -312,6 +312,7 @@ Only sources in the [reviewed intake](../data/expansion-intake-2026-10-16.json) 
 | [corolin/vibrato](https://github.com/corolin/vibrato) | direct · `content_screened` | Independent emotion decision model turns message context into structured affect estimates and categorical probability outputs. |
 | [CR0ZER/NHL-Predictor](https://github.com/cr0zer/nhl-predictor) | direct · `content_screened` | NHL prediction experiment combining structured statistics with LLM/Jev interpretation of news and simulated wagers. |
 | [Crosstalk](https://github.com/chaddacus/crosstalk-lab) | direct · `content_screened` | Candidate-wording diagnostic workbench with sealed test handling; published demonstrations use a lexical mock and synthetic queries, not measured Jev behavior. |
+| [cua-s1.js](https://github.com/ai-ecoverse/cua-s1.js) | direct · `content_screened` | Browser ports of Cua form and next-action models; output-parity checks do not establish generalization, and the small form model can confidently skip unfamiliar fields. |
 | [CyanSalt/decision-pony](https://github.com/cyansalt/decision-pony) | direct · `content_screened` | Compatibility layer translating between conversational model protocols and typed decision API formats. |
 | [cyber-security-dev-dep-mitake-com-tw/jef](https://github.com/cyber-security-dev-dep-mitake-com-tw/jef) | direct · `content_screened` | Independent System One engine with documented temperature scaling, conformal prediction and composition of decision gates. |
 | [daraujo85/jev-claude-engine](https://github.com/daraujo85/jev-claude-engine) | direct · `content_screened` | Coding-agent integration providing Jev decision hooks, reusable skills and execution telemetry. |
@@ -366,6 +367,7 @@ Only sources in the [reviewed intake](../data/expansion-intake-2026-10-16.json) 
 | [Jev-AR routing implementation](https://github.com/atmaneayoubdev/jev-ar) | direct · `content_screened` | Arabic intent-routing implementation built on Laya; synthetic training lacks native-speaker validation and confidence calibrated on built-in routes may not transfer to custom lists. |
 | [Jev-Benchmark — contract inference records and analysis](https://github.com/zf-utokyo/jev-benchmark) | direct · `content_screened` | ContractNLI scoring and sanitized prediction records for the initial comparison; raw API bodies and the full revised-paper follow-up are outside the documented release scope. |
 | [jev-measured](https://github.com/wallerchen/jev-measured) | direct · `content_screened` | API measurement notebook and runner documenting response shapes, routes and corrected baselines; small fixtures and network-dependent timings do not establish a general model ranking. |
+| [jev-omni.js](https://github.com/ai-ecoverse/jev-omni.js) | direct · `content_screened` | Work-in-progress WebGPU port for Jev-Omni text and image decisions; audio/video are unfinished, model downloads are large, and reported parity is limited to selected fixtures and hardware. |
 | [Jev-Sinhala Capability, Primitive Consistency & Benchmark Census Probe](https://github.com/azri-muhsin/jev-sinhala-review) | direct · `content_screened` | Sinhala and Singlish evaluation using established benchmark labels, with script changes, question-language controls, option permutations and cross-primitive consistency tests. |
 | [JEV-Star](https://github.com/sc2musa/jev_star) | direct · `content_screened` | StarCraft II controllers and selected comparison artifacts; full original logs are excluded, version changes confound planning-effect claims, and live runs need game/model services. |
 | [jev-xray](https://github.com/aishwary-dongre/jev-xray) | direct · `content_screened` | Input-ablation tool measuring changes in typed decision probabilities; useful for testing distracting context without treating attribution as a causal explanation. |
@@ -400,6 +402,7 @@ Only sources in the [reviewed intake](../data/expansion-intake-2026-10-16.json) 
 | [mgd34msu/goodvibes-jev](https://github.com/mgd34msu/goodvibes-jev) | direct · `content_screened` | In-progress agent-platform rebuild with an implemented shared judgment transport; broader autonomous-decision goals remain under development. |
 | [milhous/turnhelm](https://github.com/milhous/turnhelm) | direct · `content_screened` | Local-first CLI using Jev or Laya to select a coding model and reasoning effort. |
 | [Mindbreaker81/system-one-bench-public](https://github.com/mindbreaker81/system-one-bench-public) | direct · `content_screened` | Public benchmark release comparing typed models on respiratory-domain triage, literature classification and manipulated messages. |
+| [mJev](https://github.com/somarkai/mjev) | direct · `content_screened` | Shared-context candidate scoring with HF/vLLM routes; normalized option probabilities are not calibrated confidence, and the reported cache speedup trades higher memory in one controlled video setup. |
 | [MohibShaikh/jev-skillbench](https://github.com/mohibshaikh/jev-skillbench) | direct · `content_screened` | Malicious agent-skill detection benchmark using Jev with a verification-and-escalation cascade. |
 | [monotykamary/reflex](https://github.com/monotykamary/reflex) | direct · `content_screened` | Multi-agent desktop control interface using a System One router to direct requests among coding agents. |
 | [mrz1836/go-discern](https://github.com/mrz1836/go-discern) | direct · `content_screened` | Typed Go decision layer covering TypeSafe Jev and Cloudflare Clef APIs. |
@@ -439,6 +442,7 @@ Only sources in the [reviewed intake](../data/expansion-intake-2026-10-16.json) 
 | [schalkneethling/jev-3000](https://github.com/schalkneethling/jev-3000) | direct · `content_screened` | Interactive workbench comparing typed requests across Jev and other decision providers, including image inputs. |
 | [Scientific Decision Evaluation — author code and prepared-case artifacts](https://github.com/bydeng01/scientific-decision-eval) | direct · `content_screened` | Scientific Choice runners and saved-result checks; current expanded development cases differ from the paper snapshot, and repeated prepared cases do not establish generalization. |
 | [sdogantekin/jev-orchestrator](https://github.com/sdogantekin/jev-orchestrator) | direct · `content_screened` | Simulation-only payment-routing laboratory comparing Jev decisions with deterministic rules; no real payment execution. |
+| [SearchJev training pipeline](https://github.com/evoscientist/searchjev) | direct · `content_screened` | Search-agent decision training with soft-label and Brier losses, reliability weights and per-question-type temperature fitting; the documented pipeline and split controls were not reproduced. |
 | [Selective Reasoning for Typed Decision Models](https://github.com/binzheng-joey/selective-reasoning) | direct · `content_screened` | Candidate-readout policies and saved-measurement recomputation; fresh inference still needs external weights, benchmark data and feature caches. |
 | [seominpapa/siteeye](https://github.com/seominpapa/siteeye) | direct · `content_screened` | Construction-site research prototype combining vision detections with Jev near-miss judgments; safety effectiveness is not established here. |
 | [SergeyBazhmin/krasivo-jev](https://github.com/sergeybazhmin/krasivo-jev) | direct · `content_screened` | Dataset conversion, training and evaluation tools for single-pass multiple-choice decision models. |

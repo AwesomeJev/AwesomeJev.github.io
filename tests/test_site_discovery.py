@@ -17,8 +17,7 @@ import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = "https://awesomejev.github.io"
-ROUTES = ("/", "/zh/", "/guide/", "/zh/guide/", "/papers/", "/zh/papers/", "/discoveries/", "/zh/discoveries/")
-PAIRS = (("/", "/zh/"), ("/guide/", "/zh/guide/"), ("/papers/", "/zh/papers/"), ("/discoveries/", "/zh/discoveries/"))
+PAIRS = (("/", "/zh/"), ("/guide/", "/zh/guide/"), ("/papers/", "/zh/papers/"), ("/models/", "/zh/models/"), ("/discoveries/", "/zh/discoveries/"))
 TOPIC_SLUGS = ("option-label-bias", "audiojev", "graph-decision-benchmarks")
 PAIRS += (("/topics/", "/zh/topics/"),) + tuple((f"/topics/{slug}/", f"/zh/topics/{slug}/") for slug in TOPIC_SLUGS)
 ROUTES = tuple(route for pair in PAIRS for route in pair)
@@ -307,10 +306,12 @@ class SiteDiscoveryTests(unittest.TestCase):
                 self.assertEqual(len(ids), len(set(ids)), "Generated HTML must not duplicate interaction IDs")
 
     def test_item_lists_match_visible_link_titles_order_and_counts(self):
-        for route in ("/", "/zh/", "/papers/", "/zh/papers/", "/discoveries/", "/zh/discoveries/"):
+        for route in ("/", "/zh/", "/papers/", "/zh/papers/", "/models/", "/zh/models/", "/discoveries/", "/zh/discoveries/"):
             with self.subTest(route=route):
                 page = self.pages[route]
-                if "discoveries" not in route:
+                if "models" in route:
+                    self.assertGreater(len(page.cards), 0)
+                elif "discoveries" not in route:
                     self.assertGreaterEqual(len(page.cards), 20)
                 item_lists = [item for block in page.structured for item in objects(block) if has_type(item, "ItemList")]
                 self.assertEqual(len(item_lists), 1)
@@ -323,6 +324,30 @@ class SiteDiscoveryTests(unittest.TestCase):
                     self.assertEqual(item["position"], number)
                     self.assertEqual(item["url"], card["url"])
                     self.assertEqual(words(item["name"]), card["name"])
+
+    def test_model_directory_preserves_the_collection_and_export_in_both_languages(self):
+        exported = json.loads((ROOT / "site/models.json").read_text())
+        self.assertEqual(exported["url"], BASE + "/models/")
+        self.assertTrue(exported["scope"])
+        models = exported["models"]
+        expected = json.loads(subprocess.check_output(
+            [shutil.which("node"), "--input-type=module", "-e",
+             "import {resources} from './site/catalog.mjs'; process.stdout.write(JSON.stringify(resources.filter(row => row.category === 'Models')));"],
+            cwd=ROOT, text=True))
+        self.assertEqual(models, expected)
+        model_urls = {row["url"] for row in expected}
+        self.assertTrue(all(row["category"] == "Models" for row in models))
+        for language, prefix in (("en", "/"), ("zh", "/zh/")):
+            with self.subTest(language=language):
+                page = self.pages[prefix + "models/"]
+                home_models = [card for card in self.pages[prefix].cards if card["url"] in model_urls]
+                self.assertEqual(page.cards, home_models)
+                self.assertEqual([card["url"] for card in page.cards], [row["url"] for row in models])
+                self.assertEqual([card["description"] for card in page.cards], [words(row[language]) for row in models])
+                self.assertTrue(all(not card["hidden"] for card in page.cards))
+                self.assertIn(prefix + "models/", self.pages[prefix].links)
+                self.assertIn(prefix + "models/", self.pages[prefix + "guide/"].links)
+                self.assertIn("/models.json", page.links)
 
     def test_new_source_directory_preserves_every_accepted_resource_and_evidence_label(self):
         report = json.loads((ROOT / "data/expansion-progress-2026-10-16.json").read_text())

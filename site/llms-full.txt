@@ -760,6 +760,38 @@ A multimodal model with a joint schema head, returning probabilities over allowe
 
 Primary source: https://huggingface.co/Cloudflare/clef
 
+## cua-s1.js
+
+Tools · ai-ecoverse · browser port · MIT
+
+Browser ports of Cua form and next-action models; output-parity checks do not establish generalization, and the small form model can confidently skip unfamiliar fields.
+
+Primary source: https://github.com/ai-ecoverse/cua-s1.js
+
+## jev-omni.js
+
+Tools · ai-ecoverse · WebGPU port · Apache-2.0
+
+Work-in-progress WebGPU port for Jev-Omni text and image decisions; audio/video are unfinished, model downloads are large, and reported parity is limited to selected fixtures and hardware.
+
+Primary source: https://github.com/ai-ecoverse/jev-omni.js
+
+## SearchJev training pipeline
+
+Tools · EvoScientist · training code · Apache-2.0
+
+Search-agent decision training with soft-label and Brier losses, reliability weights and per-question-type temperature fitting; the documented pipeline and split controls were not reproduced.
+
+Primary source: https://github.com/evoscientist/searchjev
+
+## mJev
+
+Tools · SoMarkAI · multimodal runtime · Apache-2.0
+
+Shared-context candidate scoring with HF/vLLM routes; normalized option probabilities are not calibrated confidence, and the reported cache speedup trades higher memory in one controlled video setup.
+
+Primary source: https://github.com/somarkai/mjev
+
 ## FRIDA-Decisions
 
 Tools · SberAI · independent runtime · MIT code

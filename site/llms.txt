@@ -6,6 +6,7 @@
 
 - [Resource collection](https://awesomejev.github.io/): curated primary sources and verification labels.
 - [Research guide](https://awesomejev.github.io/guide/): source-backed answers about Jev, typed decisions, probabilities and evaluation.
+- [Decision model directory](https://awesomejev.github.io/models/): independent releases, declared licenses and model-card evidence.
 - [Research topics](https://awesomejev.github.io/topics/): focused, source-backed notes with direct answers and evaluation limits.
 - [Papers](https://awesomejev.github.io/papers/): versioned preprints; findings remain author-reported.
 - [New resources](https://awesomejev.github.io/discoveries/): new direct resources, related work and background research with evidence labels.
@@ -15,6 +16,7 @@
 
 - [Guide and curated resources in Markdown](https://awesomejev.github.io/llms-full.txt)
 - [Paper metadata](https://awesomejev.github.io/papers.json)
+- [Model metadata](https://awesomejev.github.io/models.json)
 - [Expansion report](https://awesomejev.github.io/data/expansion-progress.json)
 - [BibTeX](https://awesomejev.github.io/references.bib)
 - [Repository](https://github.com/reacher-z/Awesome-Jev)

@@ -312,6 +312,13 @@
       "note": "Fixed-v3 abstract review plus the public repository overview. Fourteen configurations are not fourteen independent model families. The repository exposes aggregate tables but says per-query and per-trajectory outputs are omitted. Original provider fields and evidence grades are preserved.",
       "evidence_url": "https://arxiv.org/abs/2610.06354v3",
       "reviewed_at": "2026-10-17T03:38:33.813019+00:00"
+    },
+    {
+      "url": "https://github.com/somarkai/mjev",
+      "title": "mJev",
+      "note": "The README HTML h1 names mJev. A code-example Markdown heading is not the project title. This display annotation preserves future provider snapshots without validating model behavior.",
+      "evidence_url": "https://github.com/somarkai/mjev",
+      "reviewed_at": "2026-10-17T04:09:31.259136+00:00"
     }
   ]
 }

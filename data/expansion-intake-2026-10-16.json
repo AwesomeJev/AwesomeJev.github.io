@@ -1023,6 +1023,20 @@
       ],
       "accepted_at": "2026-10-17T04:02:09.433301+00:00",
       "evidence_scope": "Four distinct model repositories, one representative per reviewed family. Cards are pinned to verified Hub commits; model size/release siblings, component files and the Span-02 old account are not added separately."
+    },
+    {
+      "name": "browser_runtime_and_search_training",
+      "input_sha256": "d37c679bb31c4ad0f96a0591733f22d784d363c7ba809522c3a3645dcff12ab9",
+      "screened_records_proposed": 4,
+      "accepted_count": 4,
+      "accepted_urls": [
+        "https://github.com/ai-ecoverse/cua-s1.js",
+        "https://github.com/ai-ecoverse/jev-omni.js",
+        "https://github.com/evoscientist/searchjev",
+        "https://github.com/somarkai/mjev"
+      ],
+      "accepted_at": "2026-10-17T04:09:31.259136+00:00",
+      "evidence_scope": "Four whole implementation repositories; README source hashes match the scan. Model mirrors, bundle variants, demo pages, embedded PDF and component files are not separate additions."
     }
   ]
 }

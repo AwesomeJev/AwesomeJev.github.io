@@ -3,35 +3,35 @@
   "baseline_commit": "3519c15d7e00686a8dbf9b1e184c68726327ab1e",
   "baseline_source_index_sha256": "8bfdd20564f2cda54bb8264c3c802f315e3e9a11b153bd85dde4325f53c841d5",
   "target_new_sources": 301,
-  "accepted_new_sources": 781,
+  "accepted_new_sources": 785,
   "remaining_to_target": 0,
   "target_count_reached": true,
   "current_index_counts": {
     "editorial_reviewed": 4,
-    "content_screened": 2388,
+    "content_screened": 2392,
     "abstract_checked": 1837,
     "metadata_only": 47,
-    "raw_records": 4290,
-    "unique_records": 4276,
+    "raw_records": 4294,
+    "unique_records": 4280,
     "duplicate_records": 14,
-    "checked_sources": 4229
+    "checked_sources": 4233
   },
   "by_category": {
     "Datasets": 101,
     "Guides and evaluations": 38,
     "Models": 59,
     "Papers": 31,
-    "Projects": 211,
+    "Projects": 215,
     "Research foundations": 341
   },
   "by_relation": {
     "adjacent": 25,
     "background": 341,
-    "direct": 415
+    "direct": 419
   },
   "by_verification_level": {
     "abstract_checked": 372,
-    "content_screened": 409
+    "content_screened": 413
   },
   "verification_note": "Evidence depth is labeled per source. Content screening and abstract checks do not establish full-paper review, peer review, endorsement, or experimental reproduction.",
   "additions": [
@@ -3264,6 +3264,18 @@
       "ledger": "ecosystem-sources.jsonl"
     },
     {
+      "title": "cua-s1.js",
+      "url": "https://github.com/ai-ecoverse/cua-s1.js",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "Browser ports of Cua form and next-action models; output-parity checks do not establish generalization, and the small form model can confidently skip unfamiliar fields.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "bbad7fd9054851c54a79c6d411c270849dd65bd4f07d7b4ffc329e04fbacb5dc",
+      "retrieved_at": "2026-10-17T04:07:28.423670+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
       "title": "CyanSalt/decision-pony",
       "url": "https://github.com/cyansalt/decision-pony",
       "category": "Projects",
@@ -3912,6 +3924,18 @@
       "ledger": "ecosystem-sources.jsonl"
     },
     {
+      "title": "jev-omni.js",
+      "url": "https://github.com/ai-ecoverse/jev-omni.js",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "Work-in-progress WebGPU port for Jev-Omni text and image decisions; audio/video are unfinished, model downloads are large, and reported parity is limited to selected fixtures and hardware.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "2aa7153695c5c34f5f368c9ea120dce597cda13e78f4e223ceb97be38d04cb7b",
+      "retrieved_at": "2026-10-17T04:07:28.368669+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
       "title": "Jev-Sinhala Capability, Primitive Consistency & Benchmark Census Probe",
       "url": "https://github.com/azri-muhsin/jev-sinhala-review",
       "category": "Projects",
@@ -4317,6 +4341,18 @@
       "verification_level": "content_screened",
       "content_sha256": "fd53f940bd5d0f065c7729bf0119f651ca8c0b31919dac1b50a815bb0170e970",
       "retrieved_at": "2026-10-16T10:05:38+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "mJev",
+      "url": "https://github.com/somarkai/mjev",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "Shared-context candidate scoring with HF/vLLM routes; normalized option probabilities are not calibrated confidence, and the reported cache speedup trades higher memory in one controlled video setup.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "838879b94848ab7681d2ed79725f337bb71e270d9f4530a6280503caf2f83e12",
+      "retrieved_at": "2026-10-17T04:07:28.366260+00:00",
       "ledger": "ecosystem-sources.jsonl"
     },
     {
@@ -4785,6 +4821,18 @@
       "verification_level": "content_screened",
       "content_sha256": "f49ebc1a2e578dc64dd986b18e53c0ec0f07cabe2e9c9cddcbfcfb2443a35c86",
       "retrieved_at": "2026-10-16T10:05:38+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "SearchJev training pipeline",
+      "url": "https://github.com/evoscientist/searchjev",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "Search-agent decision training with soft-label and Brier losses, reliability weights and per-question-type temperature fitting; the documented pipeline and split controls were not reproduced.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "454ac47d54dafc724c65b62872144fbf32ff5b7853a6f8fec4d8742727743ad8",
+      "retrieved_at": "2026-10-17T04:07:28.383657+00:00",
       "ledger": "ecosystem-sources.jsonl"
     },
     {

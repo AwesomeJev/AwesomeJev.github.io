@@ -267,6 +267,38 @@ const translations = {
 // Descriptions are editorial summaries. Paper findings remain author-reported.
 const resources = [
   {
+    "category": "Tools",
+    "title": "cua-s1.js",
+    "by": "ai-ecoverse · browser port · MIT",
+    "url": "https://github.com/ai-ecoverse/cua-s1.js",
+    "en": "Browser ports of Cua form and next-action models; output-parity checks do not establish generalization, and the small form model can confidently skip unfamiliar fields.",
+    "zh": "Cua 表单与下一步动作模型的浏览器移植；输出一致性检查不证明泛化，小型表单模型可能高置信度跳过陌生字段。"
+  },
+  {
+    "category": "Tools",
+    "title": "jev-omni.js",
+    "by": "ai-ecoverse · WebGPU port · Apache-2.0",
+    "url": "https://github.com/ai-ecoverse/jev-omni.js",
+    "en": "Work-in-progress WebGPU port for Jev-Omni text and image decisions; audio/video are unfinished, model downloads are large, and reported parity is limited to selected fixtures and hardware.",
+    "zh": "开发中的 Jev-Omni 文本与图像决策 WebGPU 移植；音视频未完成、模型下载体积较大，一致性结果仅覆盖指定样本与硬件。"
+  },
+  {
+    "category": "Tools",
+    "title": "SearchJev training pipeline",
+    "by": "EvoScientist · training code · Apache-2.0",
+    "url": "https://github.com/evoscientist/searchjev",
+    "en": "Search-agent decision training with soft-label and Brier losses, reliability weights and per-question-type temperature fitting; the documented pipeline and split controls were not reproduced.",
+    "zh": "面向搜索 agent 决策的训练流程，包含软标签与 Brier 损失、可靠性权重及按问题类型拟合温度；文档中的流程与切分控制尚未复现。"
+  },
+  {
+    "category": "Tools",
+    "title": "mJev",
+    "by": "SoMarkAI · multimodal runtime · Apache-2.0",
+    "url": "https://github.com/somarkai/mjev",
+    "en": "Shared-context candidate scoring with HF/vLLM routes; normalized option probabilities are not calibrated confidence, and the reported cache speedup trades higher memory in one controlled video setup.",
+    "zh": "通过 HF/vLLM 路径进行共享上下文候选评分；选项归一化概率不是已校准置信度，所报缓存加速在一个受控视频设置中需要更多显存。"
+  },
+  {
     "category": "Models",
     "title": "Amos 1 large",
     "by": "mukaddamzaid · Apache-2.0",
