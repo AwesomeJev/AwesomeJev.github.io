@@ -178,3 +178,7 @@ The single-job workflow now supplies the same `github-pages-${{ github.run_id }}
 **Retry verification, 2026-10-17 UTC:** the [same Pages run](https://github.com/AwesomeJev/AwesomeJev.github.io/actions/runs/38909381634) for `55fec92` succeeded on attempts 1 and 2. The observed artifact names ended in `-1` and `-2`, respectively. This deliberate rerun verifies separation of retry uploads; no site-content change or extra IndexNow notification was involved.
 
 **重试验证（2026-10-17 UTC）：** 同一部署运行的两次尝试均成功，文件名称分别以 `-1`、`-2` 结尾，实际验证了重试上传的名称隔离。该验证没有改变网站内容，也没有再次提交搜索通知。
+
+**Read-only Search Console follow-up, 2026-10-17 UTC:** the Sitemaps report still displayed `/sitemap.xml` as **Unknown / Couldn't fetch / 0 discovered pages**. This check did not submit a sitemap or request indexing. The earlier homepage-indexing confirmation remains a separate historical observation; no new index inclusion is claimed from a successful site deployment.
+
+**只读复查（2026-10-17 UTC）：** sitemap 报表仍为 **Unknown／Couldn't fetch／发现0页**。本次没有重新提交 sitemap 或申请索引；之前的首页收录确认仍单独保留，网站成功部署不等于新增页面已被收录。

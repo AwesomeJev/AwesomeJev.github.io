@@ -32,7 +32,7 @@ function provenance(resource) {
       ? "preprint"
       : resource.category === "Foundations"
         ? "background"
-        : "official")
+        : "community")
   );
 }
 export function renderResource(resource, language, translations) {

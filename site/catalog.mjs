@@ -1007,6 +1007,7 @@ const resources = [
     zh: "比较评分准则评判模型，考察相关错误如何限制级联系统的收益。",
   },
   {
+    provenance: "official",
     category: "Tools",
     title: "TypeSafe Python SDK",
     by: "Python · MIT",
@@ -1015,6 +1016,7 @@ const resources = [
     zh: "官方 Python 同步与异步客户端，支持类型化问题和答案。",
   },
   {
+    provenance: "official",
     category: "Tools",
     title: "TypeSafe JavaScript SDK",
     by: "TypeScript / JavaScript · MIT",
@@ -1023,6 +1025,7 @@ const resources = [
     zh: "官方 JavaScript 客户端，可根据问题推导答案类型。",
   },
   {
+    provenance: "official",
     category: "Tools",
     title: "System One Adapter",
     by: "Python · MIT",
@@ -1031,6 +1034,7 @@ const resources = [
     zh: "用相同问题接口比较 LLM，支持概率输出与请求诊断。",
   },
   {
+    provenance: "official",
     category: "Tools",
     title: "TypeSafe Agent Skills",
     by: "Coding agents · MIT",
@@ -1039,6 +1043,7 @@ const resources = [
     zh: "帮助编码 agent 使用 System One API 的官方技能。",
   },
   {
+    provenance: "official",
     category: "Tools",
     title: "TypeSafe Public Examples",
     by: "Cookbooks & demos · MIT",
@@ -1047,6 +1052,7 @@ const resources = [
     zh: "官方文档、演示与实践教程配套源代码。",
   },
   {
+    provenance: "official",
     category: "Tools",
     title: "TypeSafe for n8n",
     by: "Workflow integration · MIT",
@@ -1055,6 +1061,7 @@ const resources = [
     zh: "由 TypeSafe 维护的 n8n 节点，用于将类型化决策加入工作流。",
   },
   {
+    provenance: "official",
     category: "Guides",
     title: "Introducing System One Models & Jev",
     by: "TypeSafe · September 15, 2026",
@@ -1063,6 +1070,7 @@ const resources = [
     zh: "发布文章：了解厂商设计主张及其限定条件的一手来源。",
   },
   {
+    provenance: "official",
     category: "Guides",
     title: "Primitives: Choice, Score, Noul",
     by: "API concepts",
@@ -1071,6 +1079,7 @@ const resources = [
     zh: "了解闭集选择、有序评分与是非概率三类决策原语。",
   },
   {
+    provenance: "official",
     category: "Guides",
     title: "Confidence",
     by: "Probability & routing",
@@ -1079,6 +1088,7 @@ const resources = [
     zh: "解释置信度的计算方式，以及它与概率的区别。",
   },
   {
+    provenance: "official",
     category: "Guides",
     title: "Jev 1.13 Jaggedness",
     by: "Limitations · reviewed October 2, 2026",
@@ -1087,6 +1097,7 @@ const resources = [
     zh: "已知局限：数值精度、无关长上下文、对抗输入与选项顺序敏感性。",
   },
   {
+    provenance: "official",
     category: "Guides",
     title: "Guardrails for LLMs",
     by: "Official cookbook",
@@ -1095,6 +1106,7 @@ const resources = [
     zh: "用多个风险问题配合应用规则，对内容放行、复核或拦截。",
   },
   {
+    provenance: "official",
     category: "Guides",
     title: "Double-checking Citations",
     by: "Official cookbook",
@@ -1103,6 +1115,7 @@ const resources = [
     zh: "检查引文的来源上下文是否支持相关主张。",
   },
   {
+    provenance: "official",
     category: "Guides",
     title: "Hierarchical Classification",
     by: "Official cookbook",
@@ -1120,6 +1133,7 @@ const resources = [
     zh: "决策模型与评测的社区索引；完整排名包含私有测试。",
   },
   {
+    provenance: "official",
     category: "Evaluations",
     title: "Workflow Evals",
     by: "Interactive evaluation explorer",
@@ -1128,6 +1142,7 @@ const resources = [
     zh: "查看四类结构化工作流。分数衡量与模型生成参考结果的一致性。",
   },
   {
+    provenance: "official",
     category: "Evaluations",
     title: "WorkflowEvals — Code",
     by: "Python · Apache-2.0",

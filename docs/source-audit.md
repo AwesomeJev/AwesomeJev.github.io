@@ -73,3 +73,9 @@ Exact hashes identify the retrieved bytes, not the truth of claims. Mutable page
 The current reviewed Space commit is `0ddf6758073eb77ae449a3541f57286d7f39d93f`. Its metadata and the four public documents match the scan’s pending hashes. The edition label remains 0.3.2; the scoreboard contains 173 engine records and the full-score file 174 records including the reference. The reference is a Jev 1.14 lab run dated 14 October, while the frozen request payloads still name Jev 1.13. The methodology’s older `generated_utc` value is not used as the review timestamp.
 
 The 0.2/0.5/0.3 public/same-skills/new-domains weights and scoring-rule objects are unchanged. Private evaluations remain unavailable for complete independent reconstruction. This was a metadata, structure and changed-field review, not execution of the evaluator or validation of its model scores. Previous hashes and source metadata remain in the [refresh record](../data/scan-review-2026-10-17.json).
+
+## Publisher badges
+
+Publisher badges on the curated cards describe attribution, separately from source-verification tiers. TypeSafe’s own entries explicitly carry the Official badge. Other tools, guides and evaluations default to Community resource unless a more specific reviewed label is supplied; models retain their model-card labels. This does not certify code behavior or reproduce a reported result.
+
+**中文：** 精选卡片的发布者标记与证据核查等级分开。TypeSafe自身资源明确标记为“官方资源”；其他工具、指南与评测默认采用“社区资源”，或使用另行核查的更具体标记。该标记不证明代码行为或实验结果已被验证。
