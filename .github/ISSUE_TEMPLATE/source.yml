@@ -23,6 +23,21 @@ body:
     validations:
       required: true
   - type: dropdown
+    id: type
+    attributes:
+      label: Resource type
+      description: The website category that fits best.
+      options:
+        - Paper
+        - Model
+        - Tool
+        - Dataset
+        - Guide
+        - Evaluation
+        - Foundation
+    validations:
+      required: true
+  - type: dropdown
     id: relationship
     attributes:
       label: Relationship to Jev
