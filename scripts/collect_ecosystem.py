@@ -380,7 +380,9 @@ def main():
     kept = [r for r in results.values() if eligible(r)]
     checked = [r for r in kept if r["verification_level"] != "metadata_only"]
     summary = {"generated_at": NOW(), "index_revision": revision, "index_edition": index["suite"]["label"], "public_panel": index["suite"]["panel"], "records": len(kept), "verification_levels": dict(Counter(r["verification_level"] for r in kept)), "statuses": dict(Counter(r["status"] for r in kept)), "relations": dict(Counter(r["relation"] for r in kept)), "distinct_checked_content_hashes": len({r["content_sha256"] for r in checked}), "excluded_scope": len(results)-len(kept), "discovered_not_screened": len([u for u in seeds if u not in results]), "method": "One-hop public primary-artifact discovery. Full retrieved text screened automatically; editorial_reviewed is reserved for manually inspected index sources. Dependency implementation pages require explicit Jev/TypeSafe/typed-decision content. metadata_only and excluded-scope records are excluded from content-checked totals. No experiment reproduced."}
-    out.with_suffix(".summary.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
+    # Report this run on stdout only. Scans and reviewed additions change the
+    # ledger afterwards, so a committed copy would go stale; current counts are
+    # generated and checked by build_source_index.py (data/source-counts.json).
     print(json.dumps(summary, ensure_ascii=False), flush=True)
 
 
