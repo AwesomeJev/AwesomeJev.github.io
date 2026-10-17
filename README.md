@@ -195,21 +195,22 @@ These are independent implementations, not released TypeSafe weights. Licenses b
 
 ## Benchmarks and evaluation tools
 
-- **[Browser decision-vision benchmark](https://github.com/ai-ecoverse/decision-vision-bench)** — Mixed visual/text comparison of browser decision models using native formats; ambiguous GUI labels, shared hardware and different browsers limit broad ranking and latency claims.
-- **[English Jev RAG Benchmark](https://github.com/emretheus/jev-rag-benchmark)** — English RAG study separates frozen-pool reranking from frozen-context answer generation; gating analyses are exploratory, and free-tier gateway pacing is not isolated model latency.
-- **[Decision models as guardrails](https://github.com/raxitlabs/decision-models-as-guardrails)** — Common policy benchmark compares decision models and managed guardrails with fixed scoring; an unpublished test slice prevents exact full-board reproduction from the public clone.
-- **[113-class complaint benchmark](https://github.com/earino/zero-shot-complaint-benchmark)** — recorded-output comparison of zero-shot, retrieval and trained classifiers; offline analysis is separate from fresh model runs.
-- **[Chinese RAG reranking benchmark](https://github.com/vicfei/jev-rag-zh-benchmark)** — 100-query, single-run comparison using a pinned proxy model and fixed candidate pools; not a universal reranker ranking.
-- **[JevAdvBench code](https://github.com/JevAdvBench/JevAdvBench)** — attack generation, recorded-response analysis and fresh API evaluation, with identical-input reruns as a control. Code is declared MIT; data CC BY-NC 4.0. Most labels are model-derived; no analyses were executed here.
-- **[Reading Right, Acting Wrong — diagnostic dashboard](https://yubol-bobo.github.io/System_one_model_evaluation/)** — author report pairing factual probes with action decisions. Its current 22-system coverage differs from the fixed paper’s 18; no code or data release was verified.
-- **[Artificial Analysis Decision Index](https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index)** — third-party capability, calibration, cost and latency evaluation. [Methodology](https://artificialanalysis.ai/methodology/decision-index) specifies task filtering and a private knowledge subset; the complete suite is not publicly reproducible.
-- **[Entagl workflow evaluation](https://www.entagl.com/blog/typesafe-jev-benchmark-ai-decision-models)** — author-run labeled decisions and customer-workflow replays, published 23 September 2026. Private cases and workload-specific thresholds constrain reproduction and generalization.
-
-- **[Jev Decision Index](https://huggingface.co/spaces/multimodalart/jev-decision-index)** — community index of models and comparative evaluations. [Methodology](https://multimodalart-jev-decision-index.static.hf.space/methodology.html) · [News](https://multimodalart-jev-decision-index.static.hf.space/news.html) · [Source](https://huggingface.co/spaces/multimodalart/jev-decision-index/tree/main). The full score includes private tests; the public leaderboard is not a complete reproducibility package.
-- **[TypeSafe WorkflowEvals](https://github.com/typesafe-ai/WorkflowEvals)** — official workflow definitions, runner, recorded results, and scoring. [Interactive results](https://evals.typesafe.ai/) · [Dataset collection](https://huggingface.co/collections/typesafeAI/workflowevals). Its reference is model consensus, not independently established human ground truth.
-- **[jev-benchmarking](https://github.com/AppliedMachineLearning-Lab/jev-benchmarking)** — code accompanying Deußer et al.'s 37-dataset study. [Paper](https://arxiv.org/abs/2609.37647v1).
-- **[PavelRavvich / jev-bench](https://github.com/PavelRavvich/jev-bench)** — classification, raw predictions, calibration, latency, cost, and cascades. Check sampling and confidence definitions before comparing results.
-- **[AY Automate benchmark](https://www.ayautomate.com/blog/jev-vs-llm-benchmark)** — routing and injection-detection experiments with linked code and raw calls; reported by the benchmark author.
+| Resource | What it covers | Caveat |
+| :--- | :--- | :--- |
+| [Browser decision-vision benchmark](https://github.com/ai-ecoverse/decision-vision-bench) | Mixed visual/text comparison of browser decision models using native formats. | Ambiguous GUI labels, shared hardware and different browsers limit broad ranking and latency claims. |
+| [English Jev RAG Benchmark](https://github.com/emretheus/jev-rag-benchmark) | English RAG study separates frozen-pool reranking from frozen-context answer generation. | Gating analyses are exploratory, and free-tier gateway pacing is not isolated model latency. |
+| [Decision models as guardrails](https://github.com/raxitlabs/decision-models-as-guardrails) | Common policy benchmark compares decision models and managed guardrails with fixed scoring. | An unpublished test slice prevents exact full-board reproduction from the public clone. |
+| [113-class complaint benchmark](https://github.com/earino/zero-shot-complaint-benchmark) | Recorded-output comparison of zero-shot, retrieval and trained classifiers. | Offline analysis is separate from fresh model runs. |
+| [Chinese RAG reranking benchmark](https://github.com/vicfei/jev-rag-zh-benchmark) | 100-query, single-run comparison using a pinned proxy model and fixed candidate pools. | Not a universal reranker ranking. |
+| [JevAdvBench code](https://github.com/JevAdvBench/JevAdvBench) | Attack generation, recorded-response analysis and fresh API evaluation, with identical-input reruns as a control. | Code is declared MIT; data CC BY-NC 4.0. Most labels are model-derived; no analyses were executed here. |
+| [Reading Right, Acting Wrong — diagnostic dashboard](https://yubol-bobo.github.io/System_one_model_evaluation/) | Author report pairing factual probes with action decisions. | Its current 22-system coverage differs from the fixed paper’s 18; no code or data release was verified. |
+| [Artificial Analysis Decision Index](https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index) | Third-party capability, calibration, cost and latency evaluation. | [Methodology](https://artificialanalysis.ai/methodology/decision-index) specifies task filtering and a private knowledge subset; the complete suite is not publicly reproducible. |
+| [Entagl workflow evaluation](https://www.entagl.com/blog/typesafe-jev-benchmark-ai-decision-models) | Author-run labeled decisions and customer-workflow replays, published 23 September 2026. | Private cases and workload-specific thresholds constrain reproduction and generalization. |
+| [Jev Decision Index](https://huggingface.co/spaces/multimodalart/jev-decision-index)<br>[Methodology](https://multimodalart-jev-decision-index.static.hf.space/methodology.html) · [News](https://multimodalart-jev-decision-index.static.hf.space/news.html) · [Source](https://huggingface.co/spaces/multimodalart/jev-decision-index/tree/main) | Community index of models and comparative evaluations. | The full score includes private tests; the public leaderboard is not a complete reproducibility package. |
+| [TypeSafe WorkflowEvals](https://github.com/typesafe-ai/WorkflowEvals)<br>[Interactive results](https://evals.typesafe.ai/) · [Dataset collection](https://huggingface.co/collections/typesafeAI/workflowevals) | Official workflow definitions, runner, recorded results, and scoring. | Its reference is model consensus, not independently established human ground truth. |
+| [jev-benchmarking](https://github.com/AppliedMachineLearning-Lab/jev-benchmarking)<br>[Paper](https://arxiv.org/abs/2609.37647v1) | Code accompanying Deußer et al.'s 37-dataset study. | — |
+| [PavelRavvich / jev-bench](https://github.com/PavelRavvich/jev-bench) | Classification, raw predictions, calibration, latency, cost, and cascades. | Check sampling and confidence definitions before comparing results. |
+| [AY Automate benchmark](https://www.ayautomate.com/blog/jev-vs-llm-benchmark) | Routing and injection-detection experiments with linked code and raw calls. | Reported by the benchmark author. |
 
 For a comparison, record the model version, dataset split, probability interface, reasoning settings, access route, latency distribution, and failure handling. See the [evaluation protocol](docs/survey.md).
 
@@ -251,17 +252,17 @@ The four TypeSafe datasets contain workflow cases, model-generated references, a
 
 Implementation recipes and community research. Validate thresholds on held-out examples from your own workload.
 
-- [Community survey on Jev](https://github.com/evan-py-chen/jev-survey) — prior research, adaptation costs and evidence limits; manuscript v0.5, also included in the bibliography.
-
-- [SDE cascade](https://docs.typesafe.ai/cookbooks/sde_cascade) — check inexpensive structured extraction with per-field Jev questions before escalation; the walkthrough uses cached and illustrative outputs.
-- [Structure recovery](https://docs.typesafe.ai/cookbooks/autoformat) — use continuation and block-type decisions to recover Markdown structure without rewriting the input text.
-
-- [Confidence-gated routing](https://docs.typesafe.ai/patterns/confidence-routing) — route uncertain cases to another system or a person.
-- [Composite scoring](https://docs.typesafe.ai/patterns/composite-scoring) — combine separate judgments with weights controlled by code.
-- [LLM guardrails](https://docs.typesafe.ai/cookbooks/llm_guardrails) · [Citation checking](https://docs.typesafe.ai/cookbooks/citation_check) — inspect generated content against stated criteria and sources.
-- [RAG passage classification](https://docs.typesafe.ai/cookbooks/classifying_rag_passages) — filter retrieved context.
-- [Hierarchical classification](https://docs.typesafe.ai/cookbooks/hierarchical_classification) — navigate large label trees.
-- [Pre-parsed value extraction](https://docs.typesafe.ai/cookbooks/pre_parsed_value_extraction_cookbook) · [Date extraction](https://docs.typesafe.ai/cookbooks/date_extraction_cookbook) — choose bounded candidates; normalize and calculate in code.
+| Guide | Publisher | Topic |
+| :--- | :--- | :--- |
+| [Community survey on Jev](https://github.com/evan-py-chen/jev-survey) | Chen&nbsp;et&nbsp;al. | Prior research, adaptation costs and evidence limits; manuscript v0.5, also included in the bibliography. |
+| [SDE cascade](https://docs.typesafe.ai/cookbooks/sde_cascade) | TypeSafe | Check inexpensive structured extraction with per-field Jev questions before escalation; the walkthrough uses cached and illustrative outputs. |
+| [Structure recovery](https://docs.typesafe.ai/cookbooks/autoformat) | TypeSafe | Use continuation and block-type decisions to recover Markdown structure without rewriting the input text. |
+| [Confidence-gated routing](https://docs.typesafe.ai/patterns/confidence-routing) | TypeSafe | Route uncertain cases to another system or a person. |
+| [Composite scoring](https://docs.typesafe.ai/patterns/composite-scoring) | TypeSafe | Combine separate judgments with weights controlled by code. |
+| [LLM guardrails](https://docs.typesafe.ai/cookbooks/llm_guardrails) · [Citation checking](https://docs.typesafe.ai/cookbooks/citation_check) | TypeSafe | Inspect generated content against stated criteria and sources. |
+| [RAG passage classification](https://docs.typesafe.ai/cookbooks/classifying_rag_passages) | TypeSafe | Filter retrieved context. |
+| [Hierarchical classification](https://docs.typesafe.ai/cookbooks/hierarchical_classification) | TypeSafe | Navigate large label trees. |
+| [Pre-parsed value extraction](https://docs.typesafe.ai/cookbooks/pre_parsed_value_extraction_cookbook) · [Date extraction](https://docs.typesafe.ai/cookbooks/date_extraction_cookbook) | TypeSafe | Choose bounded candidates; normalize and calculate in code. |
 
 ## Foundations and related research
 

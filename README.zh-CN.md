@@ -195,21 +195,22 @@ TypeSafe 的 Jev 接收状态与类型化问题，为应用代码返回决策和
 
 ## 基准与评测工具
 
-- **[Browser decision-vision benchmark](https://github.com/ai-ecoverse/decision-vision-bench)** — 以各模型原生格式比较浏览器视觉／文本决策；GUI 标签歧义、共享硬件及不同浏览器限制了通用排名和时延结论。
-- **[English Jev RAG Benchmark](https://github.com/emretheus/jev-rag-benchmark)** — 英文 RAG 研究区分固定候选池重排与固定上下文回答生成；门控分析属探索性，免费通道限速下的时延不等于模型推理耗时。
-- **[Decision models as guardrails](https://github.com/raxitlabs/decision-models-as-guardrails)** — 用固定评分规则比较决策模型与托管护栏的共同策略基准；未发布的测试切片使公开克隆无法精确复现完整榜单。
-- **[113 类投诉分类基准](https://github.com/earino/zero-shot-complaint-benchmark)** — 使用已记录输出比较零样本、检索和已训练分类器，分析重算与重新运行模型分开。
-- **[中文 RAG 重排基准](https://github.com/vicfei/jev-rag-zh-benchmark)** — 使用固定代理模型与候选池的 100 条查询单次评测，不代表通用重排器排名。
-- **[JevAdvBench 代码](https://github.com/JevAdvBench/JevAdvBench)** — 攻击生成、已记录响应分析和新 API 评测，以相同输入重跑为对照。声明代码采用 MIT、数据采用 CC BY-NC 4.0；多数标签来自模型，本项目未运行分析。
-- **[Reading Right, Acting Wrong — 诊断看板](https://yubol-bobo.github.io/System_one_model_evaluation/)** — 作者报告将事实探查与动作决策配对；当前覆盖22个系统，与固定论文的18个不同，本次未验证代码或数据发布。
-- **[Artificial Analysis Decision Index](https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index)** — 第三方能力、校准、成本与延迟评测。[方法说明](https://artificialanalysis.ai/methodology/decision-index)列出任务过滤规则与私有知识子集；完整测试集不能公开复现。
-- **[Entagl 工作流评测](https://www.entagl.com/blog/typesafe-jev-benchmark-ai-decision-models)** — 2026年9月23日发布的作者标注决策与客户工作流重放；私有案例和任务特定阈值限制公开复现及泛化。
-
-- **[Jev Decision Index](https://huggingface.co/spaces/multimodalart/jev-decision-index)** — 决策模型与比较评测的社区索引。[方法](https://multimodalart-jev-decision-index.static.hf.space/methodology.html) · [动态](https://multimodalart-jev-decision-index.static.hf.space/news.html) · [源文件](https://huggingface.co/spaces/multimodalart/jev-decision-index/tree/main)。完整分数包含私有测试，公开榜单不等于完整可复现材料。
-- **[TypeSafe WorkflowEvals](https://github.com/typesafe-ai/WorkflowEvals)** — 官方工作流定义、运行器、已记录结果与评分代码。[交互结果](https://evals.typesafe.ai/) · [数据集合集](https://huggingface.co/collections/typesafeAI/workflowevals)。参考答案采用模型共识，并非独立建立的人工金标准。
-- **[jev-benchmarking](https://github.com/AppliedMachineLearning-Lab/jev-benchmarking)** — Deußer 等人 37 数据集研究的配套代码。[论文](https://arxiv.org/abs/2609.37647v1)。
-- **[PavelRavvich / jev-bench](https://github.com/PavelRavvich/jev-bench)** — 分类、原始预测、校准、延迟、成本与级联分析；比较前需核对采样和置信度定义。
-- **[AY Automate benchmark](https://www.ayautomate.com/blog/jev-vs-llm-benchmark)** — 路由与注入检测实验，附代码和原始调用；结果由评测作者报告。
+| 资源 | 内容 | 局限 |
+| :--- | :--- | :--- |
+| [Browser decision-vision benchmark](https://github.com/ai-ecoverse/decision-vision-bench) | 以各模型原生格式比较浏览器视觉／文本决策。 | GUI 标签歧义、共享硬件及不同浏览器限制了通用排名和时延结论。 |
+| [English Jev RAG Benchmark](https://github.com/emretheus/jev-rag-benchmark) | 英文 RAG 研究区分固定候选池重排与固定上下文回答生成。 | 门控分析属探索性，免费通道限速下的时延不等于模型推理耗时。 |
+| [Decision models as guardrails](https://github.com/raxitlabs/decision-models-as-guardrails) | 用固定评分规则比较决策模型与托管护栏的共同策略基准。 | 未发布的测试切片使公开克隆无法精确复现完整榜单。 |
+| [113 类投诉分类基准](https://github.com/earino/zero-shot-complaint-benchmark) | 使用已记录输出比较零样本、检索和已训练分类器。 | 分析重算与重新运行模型分开。 |
+| [中文 RAG 重排基准](https://github.com/vicfei/jev-rag-zh-benchmark) | 使用固定代理模型与候选池的 100 条查询单次评测。 | 不代表通用重排器排名。 |
+| [JevAdvBench 代码](https://github.com/JevAdvBench/JevAdvBench) | 攻击生成、已记录响应分析和新 API 评测，以相同输入重跑为对照。 | 声明代码采用 MIT、数据采用 CC BY-NC 4.0；多数标签来自模型，本项目未运行分析。 |
+| [Reading Right, Acting Wrong — 诊断看板](https://yubol-bobo.github.io/System_one_model_evaluation/) | 作者报告将事实探查与动作决策配对。 | 当前覆盖22个系统，与固定论文的18个不同，本次未验证代码或数据发布。 |
+| [Artificial Analysis Decision Index](https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index) | 第三方能力、校准、成本与延迟评测。 | [方法说明](https://artificialanalysis.ai/methodology/decision-index)列出任务过滤规则与私有知识子集；完整测试集不能公开复现。 |
+| [Entagl 工作流评测](https://www.entagl.com/blog/typesafe-jev-benchmark-ai-decision-models) | 2026年9月23日发布的作者标注决策与客户工作流重放。 | 私有案例和任务特定阈值限制公开复现及泛化。 |
+| [Jev Decision Index](https://huggingface.co/spaces/multimodalart/jev-decision-index)<br>[方法](https://multimodalart-jev-decision-index.static.hf.space/methodology.html) · [动态](https://multimodalart-jev-decision-index.static.hf.space/news.html) · [源文件](https://huggingface.co/spaces/multimodalart/jev-decision-index/tree/main) | 决策模型与比较评测的社区索引。 | 完整分数包含私有测试，公开榜单不等于完整可复现材料。 |
+| [TypeSafe WorkflowEvals](https://github.com/typesafe-ai/WorkflowEvals)<br>[交互结果](https://evals.typesafe.ai/) · [数据集合集](https://huggingface.co/collections/typesafeAI/workflowevals) | 官方工作流定义、运行器、已记录结果与评分代码。 | 参考答案采用模型共识，并非独立建立的人工金标准。 |
+| [jev-benchmarking](https://github.com/AppliedMachineLearning-Lab/jev-benchmarking)<br>[论文](https://arxiv.org/abs/2609.37647v1) | Deußer 等人 37 数据集研究的配套代码。 | — |
+| [PavelRavvich / jev-bench](https://github.com/PavelRavvich/jev-bench) | 分类、原始预测、校准、延迟、成本与级联分析。 | 比较前需核对采样和置信度定义。 |
+| [AY Automate benchmark](https://www.ayautomate.com/blog/jev-vs-llm-benchmark) | 路由与注入检测实验，附代码和原始调用。 | 结果由评测作者报告。 |
 
 比较时记录模型版本、数据划分、概率接口、推理设置、访问路径、延迟分布及失败处理方式。参见[评估协议](docs/survey.zh-CN.md)。
 
@@ -249,19 +250,19 @@ TypeSafe 的四个数据集提供工作流案例、模型生成的参考标签�
 
 ## 实践指南
 
-- [Jev 社区综述](https://github.com/evan-py-chen/jev-survey) — 前期研究、适配成本与证据边界；手稿 v0.5，已收入书目。
+实现教程与社区研究；TypeSafe 教程由厂商编写。应使用自身任务的独立测试样例验证阈值。
 
-以下是厂商编写的实践教程；应使用自身任务的独立测试样例验证阈值。
-
-- [SDE 级联](https://docs.typesafe.ai/cookbooks/sde_cascade) — 用逐字段 Jev 问题核查低成本结构化抽取，再决定是否升级；教程使用缓存与示意输出。
-- [结构恢复](https://docs.typesafe.ai/cookbooks/autoformat) — 用续行与块类型判断恢复 Markdown 结构，不重写输入措辞。
-
-- [置信度路由](https://docs.typesafe.ai/patterns/confidence-routing) — 将不确定案例转交其他系统或人工。
-- [组合评分](https://docs.typesafe.ai/patterns/composite-scoring) — 在代码中按权重组合独立判断。
-- [LLM 护栏](https://docs.typesafe.ai/cookbooks/llm_guardrails) · [引用核查](https://docs.typesafe.ai/cookbooks/citation_check) — 对照标准与来源检查生成内容。
-- [RAG 段落分类](https://docs.typesafe.ai/cookbooks/classifying_rag_passages) — 筛选检索上下文。
-- [层级分类](https://docs.typesafe.ai/cookbooks/hierarchical_classification) — 遍历大型标签树。
-- [预解析值选择](https://docs.typesafe.ai/cookbooks/pre_parsed_value_extraction_cookbook) · [日期抽取](https://docs.typesafe.ai/cookbooks/date_extraction_cookbook) — 选择有限候选值，在代码中完成规范化与计算。
+| 指南 | 发布者 | 主题 |
+| :--- | :--- | :--- |
+| [Jev 社区综述](https://github.com/evan-py-chen/jev-survey) | Chen 等 | 前期研究、适配成本与证据边界；手稿 v0.5，已收入书目。 |
+| [SDE 级联](https://docs.typesafe.ai/cookbooks/sde_cascade) | TypeSafe | 用逐字段 Jev 问题核查低成本结构化抽取，再决定是否升级；教程使用缓存与示意输出。 |
+| [结构恢复](https://docs.typesafe.ai/cookbooks/autoformat) | TypeSafe | 用续行与块类型判断恢复 Markdown 结构，不重写输入措辞。 |
+| [置信度路由](https://docs.typesafe.ai/patterns/confidence-routing) | TypeSafe | 将不确定案例转交其他系统或人工。 |
+| [组合评分](https://docs.typesafe.ai/patterns/composite-scoring) | TypeSafe | 在代码中按权重组合独立判断。 |
+| [LLM 护栏](https://docs.typesafe.ai/cookbooks/llm_guardrails) · [引用核查](https://docs.typesafe.ai/cookbooks/citation_check) | TypeSafe | 对照标准与来源检查生成内容。 |
+| [RAG 段落分类](https://docs.typesafe.ai/cookbooks/classifying_rag_passages) | TypeSafe | 筛选检索上下文。 |
+| [层级分类](https://docs.typesafe.ai/cookbooks/hierarchical_classification) | TypeSafe | 遍历大型标签树。 |
+| [预解析值选择](https://docs.typesafe.ai/cookbooks/pre_parsed_value_extraction_cookbook) · [日期抽取](https://docs.typesafe.ai/cookbooks/date_extraction_cookbook) | TypeSafe | 选择有限候选值，在代码中完成规范化与计算。 |
 
 ## 基础与相关研究
 
