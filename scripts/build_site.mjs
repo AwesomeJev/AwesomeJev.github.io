@@ -125,6 +125,7 @@ function home(language) {
   values.TOPICS_LABEL = language==='zh'?'研究专题':'Research topics';
   values.MODELS_URL = route(language,'models');
   values.MODELS_LABEL = language==='zh'?'模型目录':'Model directory';
+  values.CONTENT_DATE = contentDate;
   values.COLLECTION_STATS = `<dl class="collection-stats">${[[resources.length,language==='zh'?'精选资源':'curated resources',route(language)+'#collection'],[papers.length,language==='zh'?'论文':'papers',route(language,'papers')],[models.length,language==='zh'?'模型':'models',route(language,'models')],[expansion.accepted_new_sources,language==='zh'?'扩展来源':'reviewed additions',route(language,'discoveries')]].map(([number,label,url])=>`<div><dt><a href="${url}">${label}</a></dt><dd>${number}</dd></div>`).join('')}</dl>`;
   values.APP_MODULE_URL = esc(assetURLs['app.js']);
   values.STYLESHEET_URL = esc(assetURLs['styles.css']);

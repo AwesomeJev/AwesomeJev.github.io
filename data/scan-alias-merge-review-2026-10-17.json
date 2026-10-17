@@ -18,5 +18,34 @@
     "changed_records": 0,
     "scope": "One deliberately synthetic changed observation passed into the real ledger merge; no network requests or source modifications."
   },
-  "runtime_verification": "Pending a fresh workflow run after publication."
+  "runtime_verification": {
+    "run": "https://github.com/reacher-z/Awesome-Jev/actions/runs/39014659959",
+    "fix_commit": "3fd618791dee911f93cf99dc82f02717a6fab9ae",
+    "observed_at": "2026-10-17T07:50:46.894149+00:00",
+    "scan_job": "success",
+    "scan_data_validation": "success",
+    "artifact_packaging": "success",
+    "restored_data_validation": "success",
+    "publish_job": "failure",
+    "failure_reason": "Pending-evidence continuity gate preserved the existing PR: 43 identities absent, 4 lower evidence-tier labels, 3 unresolved editorial candidates. No automation branch update occurred.",
+    "scan_status": "partial",
+    "proposed_new_records": 263,
+    "changed_records": 175,
+    "editorial_candidates": 1,
+    "network_requests": 3751,
+    "reported_errors": 167,
+    "six_artifact_file_hashes_verified": true,
+    "accepted_source_change_count": 0
+  },
+  "pending_reconciliation": {
+    "open_pr": "https://github.com/reacher-z/Awesome-Jev/pull/4",
+    "retained_pr_head": "bd0c9de6abd50644dfe803074aadf6d38340049a",
+    "scope": "Read-only comparison of the previous PR with the validated scan artifact. This is diagnosis, not acceptance of pending records or permission to remove the guard.",
+    "observations": [
+      "Forty missing identities are paper proposals not present in this scan; the older PR retains their evidence.",
+      "Three missing identities and three unresolved editorial candidates use different Decision Index blob revisions. Scanner identity normalizes those paths; the publisher continuity comparison currently does not.",
+      "The four reported lower tiers correspond to domain papers accepted on main from fixed original arXiv abstracts. Their protected evidence remains abstract_checked; no automatic grade upgrade was made."
+    ],
+    "next_step": "Reconcile missing proposals and maintainer-accepted version changes explicitly before updating the open scan PR; do not blindly rerun or discard old evidence."
+  }
 }
