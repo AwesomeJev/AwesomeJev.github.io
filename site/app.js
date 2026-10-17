@@ -1,5 +1,5 @@
 import { resources, translations } from "./catalog.mjs";
-import { englishLang, renderResource } from "./resource-view.mjs";
+import { englishLang, renderResource, hasCode } from "./resource-view.mjs";
 
 document.documentElement.classList.add("js");
 let language = document.documentElement.lang.startsWith("zh") ? "zh" : "en";
@@ -50,11 +50,24 @@ const safeURL = (value) => {
 function t(key) {
   return translations[language][key] ?? translations.en[key] ?? key;
 }
+// "Papers with code" narrows only categories whose entries carry an `artifacts` record.
+// Elsewhere it is cleared and disabled, so it cannot empty a list of tools or models.
+const artifactCategories = new Set(
+  resources.filter((resource) => resource.artifacts).map((resource) => resource.category),
+);
 function renderResources() {
   const query = $("#resource-search").value.trim().toLocaleLowerCase();
+  const codeFilter = $("#code-filter");
+  codeFilter.disabled =
+    activeFilter === "All"
+      ? artifactCategories.size === 0
+      : !artifactCategories.has(activeFilter);
+  if (codeFilter.disabled) codeFilter.checked = false;
+  const codeOnly = codeFilter.checked;
   const filtered = resources.filter(
     (resource) =>
       (activeFilter === "All" || resource.category === activeFilter) &&
+      (!codeOnly || hasCode(resource)) &&
       `${resource.title} ${resource.by} ${resource.en} ${resource.zh} ${resource.category}`
         .toLocaleLowerCase()
         .includes(query),
@@ -128,6 +141,7 @@ document.querySelectorAll("[data-filter-link]").forEach((link) =>
   }),
 );
 $("#resource-search").addEventListener("input", renderResources);
+$("#code-filter").addEventListener("change", renderResources);
 document
   .querySelectorAll("form[role=search]")
   .forEach((form) =>
@@ -135,6 +149,7 @@ document
   );
 $("#reset-filters").addEventListener("click", () => {
   $("#resource-search").value = "";
+  $("#code-filter").checked = false;
   selectFilter("All");
   $("#resource-search").focus();
 });
