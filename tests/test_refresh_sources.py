@@ -166,6 +166,41 @@ class DiagnosticTests(unittest.TestCase):
 
 
 class IncrementalEvidenceTests(unittest.TestCase):
+    def test_same_ledger_alias_cannot_bypass_stronger_editorial_record(self):
+        current = "https://huggingface.co/spaces/multimodalart/jev-decision-index"
+        legacy = "https://huggingface.co/spaces/multimodalart/jev-reproductions-tracker"
+        reviewed = row(current, body="reviewed", level="editorial_reviewed", status="screened")
+        shadow = row(legacy, body="historical", status="screened")
+        for order in ((reviewed, shadow), (shadow, reviewed)):
+            with self.subTest(first=order[0]["url"]):
+                old = ledger(*order)
+                result, changes = refresh.merge_records(old, [row(current, body="new", status="screened")])
+                self.assertEqual(result.lines, old.lines)
+                self.assertEqual(changes["changed"], [])
+                self.assertEqual(changes["added"], [])
+                self.assertEqual(len(changes["editorial_review_required"]), 1)
+                self.assertEqual(changes["editorial_review_required"][0]["old_content_sha256"], reviewed["content_sha256"])
+
+    def test_same_ledger_alias_refresh_preserves_unique_historical_urls(self):
+        current = "https://huggingface.co/respanai/span-02"
+        legacy = "https://huggingface.co/lihe07/span-02"
+        current_row = row(current, body="current", status="screened")
+        legacy_row = row(legacy, body="legacy", status="screened")
+        for order in ((current_row, legacy_row), (legacy_row, current_row)):
+            with self.subTest(first=order[0]["url"]):
+                old = ledger(*order)
+                observation = row(legacy, body="changed", status="screened", canonical_url=current)
+                result, changes = refresh.merge_records(old, [observation])
+                urls = [r.get("canonical_url", r["url"]) for r in result.rows]
+                self.assertEqual(len(set(urls)), 2)
+                self.assertEqual(set(urls), {current, legacy})
+                position = next(i for i, r in enumerate(old.rows) if r["url"] == legacy)
+                self.assertEqual(result.lines[position], old.lines[position])
+                updated = next(r for r in result.rows if r["url"] == current)
+                self.assertEqual(updated["content_sha256"], observation["content_sha256"])
+                self.assertEqual(changes["changed"], [current])
+                self.assertEqual(changes["added"], [])
+
     def test_cross_ledger_primary_page_cannot_be_added_or_promoted_again(self):
         prior = primary_abstract()
         originals = (ledger(), ledger(prior))

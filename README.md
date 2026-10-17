@@ -10,6 +10,16 @@ Independent community project; not affiliated with TypeSafe AI. Last curated: **
 
 The [new-resource directory](https://awesomejev.github.io/discoveries/) adds hundreds of projects, datasets, model cards, guides and research papers, with explicit screening levels and relationship labels. [Review the expansion and counting method](docs/expansion-2026-10-16.md); abstract checks are not full-paper reviews.
 
+## Start here
+
+| Your task | Start with | What you get |
+| :--- | :--- | :--- |
+| Understand the research | [Papers](https://awesomejev.github.io/papers/) · [Survey](docs/survey.md) | Versioned studies, contributions and evidence limits. |
+| Compare models | [Model directory](https://awesomejev.github.io/models/) | Publisher, declared license and documented scope. |
+| Build an integration | [SDKs and tools](#sdks-and-integrations) · [Quick start](#quick-start) | Implementation entry points and a minimal API example. |
+| Investigate a question | [Research topics](https://awesomejev.github.io/topics/) · [Guide](https://awesomejev.github.io/guide/) | Source-backed explanations and evaluation protocols. |
+| Explore more sources | [New resources](https://awesomejev.github.io/discoveries/) | Broader projects, datasets and background research with screening labels. |
+
 ## Contents
 
 - [Overview and official resources](#overview-and-official-resources)

@@ -6,7 +6,7 @@ import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { resolve, dirname } from 'node:path';
 import { resources, translations } from '../site/catalog.mjs';
-import { renderResource, escapeHTML as esc } from '../site/resource-view.mjs';
+import { renderResource, renderModelRow, escapeHTML as esc } from '../site/resource-view.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const origin = 'https://awesomejev.github.io';
@@ -43,7 +43,7 @@ const discoveryTranslations = discoveryLocalization.translations;
 const template = await readFile(resolve(root, 'templates/index.html'), 'utf8');
 // Stable URLs for unchanged bytes; changed data cannot reuse an older browser cache entry.
 const assetURLs = Object.fromEntries(await Promise.all(
-  ['app.js', 'catalog.mjs', 'resource-view.mjs', 'styles.css'].map(async name => {
+  ['app.js', 'catalog.mjs', 'resource-view.mjs', 'styles.css', 'model-directory.js'].map(async name => {
     const bytes = await readFile(resolve(root, 'site', name));
     const digest = createHash('sha256').update(bytes).digest('hex').slice(0, 12);
     return [name, `/${name}?v=${digest}`];
@@ -55,6 +55,9 @@ const importMap = {imports: {
 }};
 const papers = resources.filter(row => row.category === 'Papers');
 const models = resources.filter(row => row.category === 'Models');
+for (const model of models) {
+  if (!model.publisher || !model.license || model.provenance !== 'modelcard') throw new Error('Model comparison requires reviewed publisher, license and model-card evidence.');
+}
 const categoryOrder = ['Papers','Models','Datasets','Projects','Tools','Evaluations','Guides and evaluations','Guides','Research foundations','Foundations'];
 const relationLabels = {direct:['Directly related','直接相关'],adjacent:['Related field','邻近领域'],background:['Research background','研究背景']};
 const evidenceLabels = {editorial_reviewed:['Editorially reviewed','编辑复核'],content_screened:['Content screened','正文筛查'],abstract_checked:['Abstract checked','摘要检查']};
@@ -122,6 +125,7 @@ function home(language) {
   values.TOPICS_LABEL = language==='zh'?'研究专题':'Research topics';
   values.MODELS_URL = route(language,'models');
   values.MODELS_LABEL = language==='zh'?'模型目录':'Model directory';
+  values.COLLECTION_STATS = `<dl class="collection-stats">${[[resources.length,language==='zh'?'精选资源':'curated resources',route(language)+'#collection'],[papers.length,language==='zh'?'论文':'papers',route(language,'papers')],[models.length,language==='zh'?'模型':'models',route(language,'models')],[expansion.accepted_new_sources,language==='zh'?'扩展来源':'reviewed additions',route(language,'discoveries')]].map(([number,label,url])=>`<div><dt><a href="${url}">${label}</a></dt><dd>${number}</dd></div>`).join('')}</dl>`;
   values.APP_MODULE_URL = esc(assetURLs['app.js']);
   values.STYLESHEET_URL = esc(assetURLs['styles.css']);
   for (const [key,value] of Object.entries(values)) html=html.replaceAll(`{{${key}}}`,value);
@@ -134,6 +138,7 @@ function home(language) {
     .replace(/(data-language="(en|zh)")/g,(_,attr,code)=>`${attr} aria-current="${code===language?'page':'false'}"`)
     .replace(/href="\/guide\/" data-document="survey"/,`href="${route(language,'guide')}" data-document="survey"`);
   if(language==='zh')html=html.replace('href="https://github.com/reacher-z/Awesome-Jev/blob/main/README.md" data-document="readme"','href="https://github.com/reacher-z/Awesome-Jev/blob/main/README.zh-CN.md" data-document="readme"');
+  html=html.replace(/<button\b([^>]*data-filter="([^"]+)"[^>]*)>([\s\S]*?)<\/button>/g,(_,attrs,category,label)=>`<button${attrs}>${label}<span class="filter-count" aria-hidden="true">${category==='All'?resources.length:resources.filter(row=>row.category===category).length}</span></button>`);
   return html;
 }
 function shell(language, section, title, description, body, list, article) {
@@ -153,7 +158,7 @@ ${schemaTag(pageSchema(language,section,title,description,list,article))}
 <header class="masthead"><a class="wordmark" href="${route(language)}"><span class="brand-mark" aria-hidden="true">aj</span>AwesomeJev.</a>
 <nav class="main-nav" aria-label="${isZh?'主导航':'Main navigation'}"><a href="${route(language)}">${isZh?'资源索引':'Resources'}</a><a href="${route(language,'papers')}">${isZh?'论文':'Papers'}</a><a href="${route(language,'models')}">${isZh?'模型':'Models'}</a><a href="${route(language,'topics')}">${isZh?'研究专题':'Topics'}</a><a href="${route(language,'discoveries')}">${isZh?'新增资源':'New resources'}</a><a href="${route(language,'guide')}">${isZh?'研究指南':'Research guide'}</a><a href="${repo}">GitHub</a></nav>
 <div class="language-switch"><a href="${route('en',section)}" lang="en" hreflang="en" aria-current="${isZh?'false':'page'}">EN</a><span>/</span><a href="${route('zh',section)}" lang="zh-CN" hreflang="zh-CN" aria-current="${isZh?'page':'false'}">中文</a></div></header>
-<main id="main" class="document-main"><nav class="breadcrumbs" aria-label="${isZh?'当前位置':'Breadcrumb'}"><a href="${route(language)}">Awesome Jev</a><span aria-hidden="true"> / </span>${section.startsWith('topics/')?`<a href="${route(language,'topics')}">${isZh?'研究专题':'Research topics'}</a><span aria-hidden="true"> / </span>`:''}<span>${esc(title)}</span></nav>
+<main id="main" class="document-main${section==='models'?' model-directory':''}"><nav class="breadcrumbs" aria-label="${isZh?'当前位置':'Breadcrumb'}"><a href="${route(language)}">Awesome Jev</a><span aria-hidden="true"> / </span>${section.startsWith('topics/')?`<a href="${route(language,'topics')}">${isZh?'研究专题':'Research topics'}</a><span aria-hidden="true"> / </span>`:''}<span>${esc(section==='models'?(isZh?'模型目录':'Model directory'):title)}</span></nav>
 <h1>${esc(title)}</h1><p class="document-deck">${esc(description)}</p>${body}</main>
 <footer class="document-footer"><p>${isZh?'独立社区项目，与 TypeSafe AI 无隶属关系。':'Independent community project. Not affiliated with TypeSafe AI.'}</p><p><a href="${repo}">GitHub</a> · <a href="/references.bib">BibTeX</a> · <a href="${repo}/blob/main/LICENSE">MIT</a> · <a href="https://github.com/reacher-z">reacher-z</a></p></footer>
 </div></body></html>\n`;
@@ -187,9 +192,9 @@ function papersPage(language) {
 }
 function modelsPage(language) {
   const isZh=language==='zh';
-  const title=isZh?'Jev 替代方案与 System One 决策模型目录':'Jev alternatives and System One decision models';
-  const description=isZh?'浏览独立决策模型的发布者模型卡、声明许可、推理方式与证据限制。涵盖 Laya、Kev、Decider、Amos、KnowLine 等。':'Browse independent decision models, publisher cards, declared licenses, inference approaches and evidence limits, including Laya, Kev, Decider, Amos and KnowLine.';
-  const body=`<p class="document-date">${models.length} ${isZh?'项精选模型':'selected models'} · ${isZh?'最近整理':'Last curated'} <time datetime="${contentDate}">${contentDate}</time> · <a href="/models.json">${isZh?'下载模型目录 JSON':'Download model directory JSON'}</a></p><div class="prose"><section><h2>${isZh?'怎样阅读这份目录':'How to read this directory'}</h2><p>${isZh?'这些模型由独立发布者提供，并非 TypeSafe 发布的 Jev 权重。替代方案表示可供比较的研究与实现方向，不保证行为、准确率或接口完全等价。托管 Jev 的版本与能力应另查官方说明。':'These releases come from independent publishers, not TypeSafe’s Jev weights. An alternative is a candidate for comparison, not a guarantee of equivalent behavior, accuracy or interface support. Check the official documentation separately for hosted Jev versions and capabilities.'} <a href="https://docs.typesafe.ai/models">${isZh?'TypeSafe 模型说明':'TypeSafe model documentation'}</a></p><p>${isZh?'每项保留发布者、模型卡入口及简短的适用范围说明。声明许可不能从基础模型直接推断：代码、适配器、合并权重与数据可能适用不同条款。开放下载与商业使用许可也不是一回事；具体条件以对应发布者的材料为准。':'Each entry keeps its publisher, model-card link and a short scope note. Do not infer a release’s license from its base model: code, adapters, merged weights and data can have different terms. Availability for download and permission for commercial use are different questions; consult the publisher’s materials.'} <a href="${route(language,'guide')}#models-and-licenses">${isZh?'模型与许可指南':'Models and licenses guide'}</a></p><p>${isZh?'本目录不按未经统一复测的得分排名。比较时应对齐候选集、输入模态、标签来源、推理预算、硬件和评测切分，并区分公共测试、自行评测与含私有测试的完整榜单。条目说明来自已查材料，不代表本项目加载了模型或复现了结果。':'This directory does not rank releases by scores that we have not evaluated under common conditions. Match candidate sets, modalities, label sources, reasoning budgets, hardware and evaluation splits. Keep public tests, publisher-run evaluations and private-inclusive boards separate. The notes describe inspected documentation, not model execution or reproduced results.'} <a href="${route(language,'guide')}#decision-model-baselines">${isZh?'比较条件':'Comparison conditions'}</a></p></section></div><div class="resource-list">${models.map(row=>renderResource(row,language,translations)).join('\n')}</div><p><a href="${route(language)}#collection">${isZh?'继续查找运行库、训练工具与数据集':'Find runtimes, training tools and datasets'} →</a></p>`;
+  const title=isZh?'Jev 替代方案：决策模型':'Jev alternatives: decision models';
+  const description=isZh?'按发布者、声明许可和适用范围比较独立 System One 模型，每项链接原始模型卡。':'Compare independent System One models by publisher, declared license and documented capability, with direct model-card links.';
+  const body=`<p class="document-date">${models.length} ${isZh?'项精选模型':'selected models'} · ${isZh?'最近整理':'Last curated'} <time datetime="${contentDate}">${contentDate}</time> · <a href="/models.json">${isZh?'下载模型目录 JSON':'Download model directory JSON'}</a></p><details class="verification-legend"><summary>${isZh?'比较条件与许可说明':'Comparison and license notes'}</summary><div class="prose"><section><p>${isZh?'这些模型由独立发布者提供，并非 TypeSafe 发布的 Jev 权重。替代方案表示可供比较的研究与实现方向，不保证行为、准确率或接口完全等价。托管 Jev 的版本与能力应另查官方说明。':'These releases come from independent publishers, not TypeSafe’s Jev weights. An alternative is a candidate for comparison, not a guarantee of equivalent behavior, accuracy or interface support. Check the official documentation separately for hosted Jev versions and capabilities.'} <a href="https://docs.typesafe.ai/models">${isZh?'TypeSafe 模型说明':'TypeSafe model documentation'}</a></p><p>${isZh?'每项保留发布者、模型卡入口及简短的适用范围说明。声明许可不能从基础模型直接推断：代码、适配器、合并权重与数据可能适用不同条款。开放下载与商业使用许可也不是一回事；具体条件以对应发布者的材料为准。':'Each entry keeps its publisher, model-card link and a short scope note. Do not infer a release’s license from its base model: code, adapters, merged weights and data can have different terms. Availability for download and permission for commercial use are different questions; consult the publisher’s materials.'} <a href="${route(language,'guide')}#models-and-licenses">${isZh?'模型与许可指南':'Models and licenses guide'}</a></p><p>${isZh?'本目录不按未经统一复测的得分排名。比较时应对齐候选集、输入模态、标签来源、推理预算、硬件和评测切分，并区分公共测试、自行评测与含私有测试的完整榜单。条目说明来自已查材料，不代表本项目加载了模型或复现了结果。':'This directory does not rank releases by scores that we have not evaluated under common conditions. Match candidate sets, modalities, label sources, reasoning budgets, hardware and evaluation splits. Keep public tests, publisher-run evaluations and private-inclusive boards separate. The notes describe inspected documentation, not model execution or reproduced results.'} <a href="${route(language,'guide')}#decision-model-baselines">${isZh?'比较条件':'Comparison conditions'}</a></p></section></div></details><div class="model-controls" data-model-controls hidden><label class="model-search"><span>${isZh?'搜索模型':'Search models'}</span><input id="model-search" type="search" placeholder="${isZh?'名称、发布者或能力':'Name, publisher or capability'}" autocomplete="off" /></label><label><span>${isZh?'声明许可':'Declared license'}</span><select id="model-license"><option value="">${isZh?'全部许可':'All licenses'}</option><option value="apache">Apache-2.0</option><option value="noncommercial">CC BY-NC 4.0</option><option value="research">Qwen Research</option><option value="undeclared">${isZh?'未声明':'Not declared'}</option><option value="other">${isZh?'其他／参见模型卡':'Other / see card'}</option></select></label><button id="model-reset" type="button">${isZh?'重置':'Reset'}</button></div><div class="model-list-meta"><p id="model-result-count" role="status" aria-live="polite">${models.length} / ${models.length} ${isZh?'项模型':'models'}</p><p>${isZh?'来源：发布者模型卡 · 未统一复测':'Source: publisher model cards · no common rerun'}</p></div><table class="model-table"><caption class="sr-only">${isZh?'模型、发布者、声明许可与适用范围':'Models, publishers, declared licenses and scope'}</caption><thead><tr><th scope="col">${isZh?'模型／发布者':'Model / publisher'}</th><th scope="col">${isZh?'声明许可':'Declared license'}</th><th scope="col">${isZh?'范围与证据':'Scope and evidence'}</th></tr></thead><tbody>${models.map(row=>renderModelRow(row,language)).join('\n')}</tbody></table><p id="model-empty" hidden>${isZh?'没有匹配项，请修改搜索或重置筛选。':'No matching models. Change the search or reset the filters.'}</p><script type="module" src="${assetURLs['model-directory.js']}"></script><p><a href="${route(language)}#collection">${isZh?'继续查找运行库、训练工具与数据集':'Find runtimes, training tools and datasets'} →</a></p>`;
   return shell(language,'models',title,description,body,models);
 }
 function discoveriesPage(language) {

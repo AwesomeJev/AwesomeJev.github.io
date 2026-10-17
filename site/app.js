@@ -81,8 +81,8 @@ function setLanguage(next) {
   document.documentElement.lang = language === "zh" ? "zh" : "en";
   document.title =
     language === "zh"
-      ? "Awesome Jev — 论文、模型与工具"
-      : "Awesome Jev — Papers, models and tools";
+      ? "Awesome Jev — System One 模型与研究"
+      : "Awesome Jev — System One Models & Research";
   for (const selector of [
     'meta[name="description"]',
     'meta[property="og:description"]',
@@ -122,6 +122,8 @@ function setLanguage(next) {
       icon(categoryIcons[button.dataset.filter]) +
       "<span>" +
       escapeHTML(t("filter" + button.dataset.filter)) +
+      "</span><span class=\"filter-count\" aria-hidden=\"true\">" +
+      (button.dataset.filter === "All" ? resources.length : resources.filter(row => row.category === button.dataset.filter).length) +
       "</span>";
   });
   const repository =

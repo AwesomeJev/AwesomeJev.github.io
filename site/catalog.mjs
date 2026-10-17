@@ -299,6 +299,8 @@ const resources = [
     "zh": "通过 HF/vLLM 路径进行共享上下文候选评分；选项归一化概率不是已校准置信度，所报缓存加速在一个受控视频设置中需要更多显存。"
   },
   {
+    "publisher": "mukaddamzaid",
+    "license": "Apache-2.0",
     "category": "Models",
     "title": "Amos 1 large",
     "by": "mukaddamzaid · Apache-2.0",
@@ -308,6 +310,8 @@ const resources = [
     "provenance": "modelcard"
   },
   {
+    "publisher": "PelaAI",
+    "license": "Apache-2.0 weights; MIT server",
     "category": "Models",
     "title": "KnowLine-35B-A3B-Gen1",
     "by": "PelaAI · Apache-2.0 weights; MIT server",
@@ -317,6 +321,8 @@ const resources = [
     "provenance": "modelcard"
   },
   {
+    "publisher": "LycheeAI",
+    "license": "CC BY-NC 4.0",
     "category": "Models",
     "title": "Lychee-27B",
     "by": "LycheeAI · CC BY-NC 4.0",
@@ -326,6 +332,8 @@ const resources = [
     "provenance": "modelcard"
   },
   {
+    "publisher": "Respan",
+    "license": "Apache-2.0",
     "category": "Models",
     "title": "Span-02",
     "by": "Respan · Apache-2.0",
@@ -405,6 +413,8 @@ const resources = [
     "zh": "通过按候选身份对齐的选项重排训练学习音频条件概率；顺序稳定性与概率符合实际正确率仍是不同性质。"
   },
   {
+    "publisher": "shlv",
+    "license": "Qwen Research",
     "category": "Models",
     "title": "AudioJev checkpoint",
     "by": "shlv · Qwen2.5-Omni-3B derivative · Qwen Research",
@@ -570,6 +580,8 @@ const resources = [
     "zh": "土耳其语类型化决策评测同时报告决策质量、基于 Brier 的概率质量、风险—覆盖及输入探查；多数标签由 AI 产生，实验室自身模型还使用过先前测试结果的反馈。"
   },
   {
+    "publisher": "ufak AI",
+    "license": "Apache-2.0",
     "category": "Models",
     "title": "ufakzeka-karar",
     "by": "ufak AI · Apache-2.0",
@@ -597,6 +609,8 @@ const resources = [
     "zh": "提供已记录响应分析与新的 API 评测，以相同输入重跑作为对照。多数标签来自模型；本项目未运行这些分析。"
   },
   {
+    "publisher": "Jeva authors",
+    "license": "Not declared",
     "category": "Models",
     "title": "Jeva-4B",
     "by": "Jeva authors · license not declared",
@@ -1090,6 +1104,8 @@ const resources = [
     zh: "涵盖匹配请求与闭环任务的基准；本项目尚未复现其实验。",
   },
   {
+    "publisher": "convaiinnovations",
+    "license": "Apache-2.0",
     category: "Models",
     title: "Laya",
     by: "convaiinnovations · Apache-2.0",
@@ -1099,6 +1115,8 @@ const resources = [
     zh: "基于编码器的决策模型家族，包含英语、多语言与工作流专用检查点。",
   },
   {
+    "publisher": "Jared Palmer",
+    "license": "Apache-2.0",
     category: "Models",
     title: "Kev-4B",
     by: "Jared Palmer · Apache-2.0",
@@ -1108,6 +1126,8 @@ const resources = [
     zh: "基于 Qwen3.5-4B-Base 的 LoRA 适配器与指针头，面向文档与类型化问题的决策。",
   },
   {
+    "publisher": "Bespoke Labs",
+    "license": "CC BY-NC 4.0",
     category: "Models",
     title: "Bespoke Nimble 9B v3",
     by: "Bespoke Labs · CC BY-NC 4.0",
@@ -1117,6 +1137,8 @@ const resources = [
     zh: "返回候选项概率的 Qwen3.5-9B LoRA 适配器；采用非商业用途许可。",
   },
   {
+    "publisher": "InternLM",
+    "license": "Apache-2.0",
     category: "Models",
     title: "Intern-Decision-4B",
     by: "InternLM · Apache-2.0",
@@ -1126,6 +1148,8 @@ const resources = [
     zh: "经过决策微调的 Qwen 检查点，提供结构化推理封装并支持图片输入。",
   },
   {
+    "publisher": "Perplexity",
+    "license": "Apache-2.0",
     category: "Models",
     title: "Perplexity Decider v1.1 27B",
     by: "Perplexity · Apache-2.0",
@@ -1135,6 +1159,8 @@ const resources = [
     zh: "采用独立决策读出与已保存的校准温度；需注意模型卡中的注意力模式及访问说明。",
   },
   {
+    "publisher": "Fastino",
+    "license": "Apache-2.0",
     category: "Models",
     title: "GLiNER2.5-Decide",
     by: "Fastino · Apache-2.0",
@@ -1144,6 +1170,8 @@ const resources = [
     zh: "340M 英语分类模型，支持调用时指定标签集合，以及单标签和多标签决策。",
   },
   {
+    "publisher": "vLLM Semantic Router",
+    "license": "Apache-2.0",
     category: "Models",
     title: "d3",
     by: "vLLM Semantic Router · Apache-2.0",
@@ -1153,6 +1181,8 @@ const resources = [
     zh: "支持文本、图片与视频的决策模型，提供 Choice、Yes/No 与 Score 输出。",
   },
   {
+    "publisher": "Cloudflare",
+    "license": "Apache-2.0",
     category: "Models",
     title: "Clef",
     by: "Cloudflare · Apache-2.0",

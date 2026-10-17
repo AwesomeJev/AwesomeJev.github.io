@@ -5,6 +5,8 @@
   "scope": "Independent publisher releases and model-card summaries. Declared licenses and reported capabilities are not independently reproduced results or a universal ranking.",
   "models": [
     {
+      "publisher": "mukaddamzaid",
+      "license": "Apache-2.0",
       "category": "Models",
       "title": "Amos 1 large",
       "by": "mukaddamzaid · Apache-2.0",
@@ -14,6 +16,8 @@
       "provenance": "modelcard"
     },
     {
+      "publisher": "PelaAI",
+      "license": "Apache-2.0 weights; MIT server",
       "category": "Models",
       "title": "KnowLine-35B-A3B-Gen1",
       "by": "PelaAI · Apache-2.0 weights; MIT server",
@@ -23,6 +27,8 @@
       "provenance": "modelcard"
     },
     {
+      "publisher": "LycheeAI",
+      "license": "CC BY-NC 4.0",
       "category": "Models",
       "title": "Lychee-27B",
       "by": "LycheeAI · CC BY-NC 4.0",
@@ -32,6 +38,8 @@
       "provenance": "modelcard"
     },
     {
+      "publisher": "Respan",
+      "license": "Apache-2.0",
       "category": "Models",
       "title": "Span-02",
       "by": "Respan · Apache-2.0",
@@ -41,6 +49,8 @@
       "provenance": "modelcard"
     },
     {
+      "publisher": "shlv",
+      "license": "Qwen Research",
       "category": "Models",
       "title": "AudioJev checkpoint",
       "by": "shlv · Qwen2.5-Omni-3B derivative · Qwen Research",
@@ -50,6 +60,8 @@
       "provenance": "modelcard"
     },
     {
+      "publisher": "ufak AI",
+      "license": "Apache-2.0",
       "category": "Models",
       "title": "ufakzeka-karar",
       "by": "ufak AI · Apache-2.0",
@@ -59,6 +71,8 @@
       "zh": "土耳其语类型化决策检查点，附温度缩放参数；模型卡标注训练参考了测试结果，并报告客服任务的校准恶化，基准结果并非盲测。"
     },
     {
+      "publisher": "Jeva authors",
+      "license": "Not declared",
       "category": "Models",
       "title": "Jeva-4B",
       "by": "Jeva authors · license not declared",
@@ -68,6 +82,8 @@
       "zh": "作者发布的检查点包，含骨干、适配器和决策头文件；所查模型卡未声明模型许可，本项目未加载或测试权重。"
     },
     {
+      "publisher": "convaiinnovations",
+      "license": "Apache-2.0",
       "category": "Models",
       "title": "Laya",
       "by": "convaiinnovations · Apache-2.0",
@@ -77,6 +93,8 @@
       "zh": "基于编码器的决策模型家族，包含英语、多语言与工作流专用检查点。"
     },
     {
+      "publisher": "Jared Palmer",
+      "license": "Apache-2.0",
       "category": "Models",
       "title": "Kev-4B",
       "by": "Jared Palmer · Apache-2.0",
@@ -86,6 +104,8 @@
       "zh": "基于 Qwen3.5-4B-Base 的 LoRA 适配器与指针头，面向文档与类型化问题的决策。"
     },
     {
+      "publisher": "Bespoke Labs",
+      "license": "CC BY-NC 4.0",
       "category": "Models",
       "title": "Bespoke Nimble 9B v3",
       "by": "Bespoke Labs · CC BY-NC 4.0",
@@ -95,6 +115,8 @@
       "zh": "返回候选项概率的 Qwen3.5-9B LoRA 适配器；采用非商业用途许可。"
     },
     {
+      "publisher": "InternLM",
+      "license": "Apache-2.0",
       "category": "Models",
       "title": "Intern-Decision-4B",
       "by": "InternLM · Apache-2.0",
@@ -104,6 +126,8 @@
       "zh": "经过决策微调的 Qwen 检查点，提供结构化推理封装并支持图片输入。"
     },
     {
+      "publisher": "Perplexity",
+      "license": "Apache-2.0",
       "category": "Models",
       "title": "Perplexity Decider v1.1 27B",
       "by": "Perplexity · Apache-2.0",
@@ -113,6 +137,8 @@
       "zh": "采用独立决策读出与已保存的校准温度；需注意模型卡中的注意力模式及访问说明。"
     },
     {
+      "publisher": "Fastino",
+      "license": "Apache-2.0",
       "category": "Models",
       "title": "GLiNER2.5-Decide",
       "by": "Fastino · Apache-2.0",
@@ -122,6 +148,8 @@
       "zh": "340M 英语分类模型，支持调用时指定标签集合，以及单标签和多标签决策。"
     },
     {
+      "publisher": "vLLM Semantic Router",
+      "license": "Apache-2.0",
       "category": "Models",
       "title": "d3",
       "by": "vLLM Semantic Router · Apache-2.0",
@@ -131,6 +159,8 @@
       "zh": "支持文本、图片与视频的决策模型，提供 Choice、Yes/No 与 Score 输出。"
     },
     {
+      "publisher": "Cloudflare",
+      "license": "Apache-2.0",
       "category": "Models",
       "title": "Clef",
       "by": "Cloudflare · Apache-2.0",

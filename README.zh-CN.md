@@ -10,6 +10,16 @@
 
 [新增资源目录](https://awesomejev.github.io/zh/discoveries/)补充了数百项项目、数据集、模型卡、指南和研究论文，并标明核查等级与相关性。[扩展审阅与计数方法](docs/expansion-2026-10-16.md)可供复查；摘要检查不等于全文评审。
 
+## 从这里开始
+
+| 你的任务 | 入口 | 能找到什么 |
+| :--- | :--- | :--- |
+| 理解研究进展 | [论文](https://awesomejev.github.io/zh/papers/) · [综述](docs/survey.zh-CN.md) | 固定版本的研究、贡献与证据局限。 |
+| 比较模型 | [模型目录](https://awesomejev.github.io/zh/models/) | 发布者、声明许可与文档中的适用范围。 |
+| 开发集成 | [SDK与工具](#sdk-与集成) · [快速开始](#快速开始) | 实现入口与最小API示例。 |
+| 深入一个问题 | [研究专题](https://awesomejev.github.io/zh/topics/) · [指南](https://awesomejev.github.io/zh/guide/) | 带原始引用的解释与评估流程。 |
+| 探索更多来源 | [新增资源](https://awesomejev.github.io/zh/discoveries/) | 标明核查等级的项目、数据集与背景研究。 |
+
 ## 目录
 
 - [概览与官方资源](#概览与官方资源)

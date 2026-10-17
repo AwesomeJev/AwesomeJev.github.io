@@ -222,8 +222,22 @@ A read-only Search Console check before this release still showed the old sitema
 
 ## Independent model directory
 
-The English `/models/` and Chinese `/zh/models/` pages render all curated model entries directly as HTML, using the same titles, descriptions and evidence labels as the homepage. Each page has its own canonical URL, reciprocal language links and an ItemList matching the visible cards. The new `/models.json` export preserves the curated model records. Homepage, README and document navigation link to the directory; it is included in the existing sitemap URL. This adds two reading routes, not two research sources.
+The English `/models/` and Chinese `/zh/models/` pages render all curated model entries directly as an HTML comparison table, using the same titles, summaries and publisher-card evidence as the homepage. Each page has its own canonical URL, reciprocal language links and an ItemList matching the visible rows. The `/models.json` export preserves the curated records, including explicit publisher and declared-license fields. Homepage, README and document navigation link to the directory; it is included in the existing sitemap URL. This adds two reading routes, not two research sources.
 
 The introduction distinguishes publisher releases from hosted Jev, declared licenses from inferred rights, and model comparisons from rankings assembled under unmatched conditions. Tests check the export against the catalog and both language pages against the homepage, as well as the expanded sitemap and crawler rules. The project makes no new claim about external indexing from these local checks.
 
-**中文：** 新增中英文模型目录，直接输出全部精选模型的HTML正文，标题、简介与来源标签和首页一致，并提供JSON导出、规范网址、双语对应与匹配可见条目的结构化列表。首页、README、文档导航和现有sitemap均包含入口。两条新页面不增加研究来源计数；许可与发布范围仍以已查发布者材料为依据，不能由页面检查推断搜索引擎已经收录。
+**中文：** 中英文模型目录直接输出全部精选模型的HTML比较表，标题、简介和发布者模型卡证据与首页一致，JSON导出保留发布者和声明许可。规范网址、双语对应与结构化列表匹配可见条目，首页、README、文档导航和sitemap均包含入口。两条页面不增加研究来源计数；许可与发布范围仍以已查材料为依据，不能由页面检查推断搜索引擎已经收录。
+
+### Comparison and navigation refinement
+
+The model table groups each release's name and publisher, declared license, and documented scope into three columns. Search and license filters progressively enhance the already-rendered table; without JavaScript every model remains readable. The comparison notes use native expandable HTML. On narrow screens rows stack without removing the full scope text. Both homepages show generated category counts and collection totals; these totals represent different subsets and must not be added together. README task paths connect research, model comparison, integrations and detailed topics. The homepage script now preserves the same title as the static HTML.
+
+Browser checks exercised search plus license filtering, zero results, reset and both languages. A 390-pixel mobile check found no horizontal overflow. Source counts remain **134 curated entries, 66 direct papers, 15 curated models and 785 reviewed expansion sources**. These interface changes add no new source records or performance claims.
+
+### Source scan alias repair
+
+The [manual scan](https://github.com/reacher-z/Awesome-Jev/actions/runs/39006523362) finished discovery but failed repository validation before packaging or PR publication. It proposed 263 records and 166 changes; those proposals are not accepted source additions. A weaker legacy Decision Index record had been selected instead of the earlier editorial record because both shared one logical identity. Updating its stored URL then created an exact duplicate.
+
+The merge now chooses the strongest protected owner, prefers canonical spelling for a tie and preserves historical URL fields when multiple aliases remain in one ledger. Two regression cases failed before the repair and pass afterward; an offline replay on the real ledger preserves all existing bytes and queues the synthetic change for review. The [repair record](../data/scan-alias-merge-review-2026-10-17.json) separates these checks from the subsequent real workflow result. No validation gate was removed and the six-file publication allowlist is unchanged.
+
+**中文：** 手动扫描完成发现后，因同一来源的旧新地址处理错误而在校验阶段停止，尚未打包或更新PR。现按证据强度与规范地址选择更新对象，并保留历史记录网址；两项回归与真实台账的离线合并检查通过。没有移除校验或扩大自动发布范围，运行恢复情况另行记录。模型比较表、筛选、分类计数与README任务入口提升了可读性，未改变研究来源计数。

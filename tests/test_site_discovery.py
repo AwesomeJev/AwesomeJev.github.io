@@ -24,7 +24,7 @@ ROUTES = tuple(route for pair in PAIRS for route in pair)
 BUILD_INPUTS = (
     "scripts/build_site.mjs", "templates/index.html", "data/search-guide.json", "data/research-topics.json",
     "data/expansion-progress-2026-10-16.json", "data/discovery-translations.zh-CN.json", "references.bib",
-    "site/app.js", "site/catalog.mjs", "site/resource-view.mjs", "site/styles.css",
+    "site/app.js", "site/model-directory.js", "site/catalog.mjs", "site/resource-view.mjs", "site/styles.css",
 )
 
 
@@ -71,6 +71,7 @@ class CrawlPage(HTMLParser):
         self._card = None
         self._card_title = False
         self._card_description = False
+        self._model_row = False
         self._style = False
         self.feed(source)
 
@@ -103,7 +104,9 @@ class CrawlPage(HTMLParser):
             self._style = True
         elif tag == "h1":
             self._h1 = []
-        elif tag == "article" and "resource-row" in classes:
+        elif (tag == "article" and "resource-row" in classes) or (tag == "tr" and "model-row" in classes):
+            self._model_row = tag == "tr"
+            self._card_title = self._model_row
             self._card = {"url": "", "name": [], "text": [], "description": [], "hidden": "hidden" in attrs or attrs.get("aria-hidden") == "true",
                           "category": attrs.get("data-category", ""), "relation": attrs.get("data-relation", ""),
                           "verification_level": attrs.get("data-verification-level", "")}
@@ -111,7 +114,7 @@ class CrawlPage(HTMLParser):
             self._card_title = True
         elif tag == "a" and self._card is not None and self._card_title:
             self._card["url"] = attrs.get("href", "")
-        elif tag == "p" and self._card is not None and "resource-description" in classes:
+        elif self._card is not None and ((tag == "p" and "resource-description" in classes) or (tag == "td" and "model-scope" in classes)):
             self._card_description = True
 
     def handle_endtag(self, tag):
@@ -128,16 +131,17 @@ class CrawlPage(HTMLParser):
         elif tag == "h1" and self._h1 is not None:
             self.headings.append(words("".join(self._h1)))
             self._h1 = None
-        elif tag == "h3":
+        elif tag == "h3" or (tag == "a" and self._model_row):
             self._card_title = False
-        elif tag == "p":
+        elif tag in {"p", "td"}:
             self._card_description = False
-        elif tag == "article" and self._card is not None:
+        elif (tag == "article" or (tag == "tr" and self._model_row)) and self._card is not None:
             self._card["name"] = words("".join(self._card["name"]))
             self._card["text"] = words(" ".join(self._card["text"]))
             self._card["description"] = words("".join(self._card["description"]))
             self.cards.append(self._card)
             self._card = None
+            self._model_row = False
 
     def handle_data(self, value):
         if self._script is not None:
@@ -341,9 +345,15 @@ class SiteDiscoveryTests(unittest.TestCase):
             with self.subTest(language=language):
                 page = self.pages[prefix + "models/"]
                 home_models = [card for card in self.pages[prefix].cards if card["url"] in model_urls]
-                self.assertEqual(page.cards, home_models)
+                for compact, home in zip(page.cards, home_models):
+                    self.assertEqual({key:compact[key] for key in ("name", "url", "description")},
+                                     {key:home[key] for key in ("name", "url", "description")})
                 self.assertEqual([card["url"] for card in page.cards], [row["url"] for row in models])
                 self.assertEqual([card["description"] for card in page.cards], [words(row[language]) for row in models])
+                for card, model in zip(page.cards, models):
+                    self.assertIn(model["publisher"], card["text"])
+                    if model["license"] not in {"Not declared", "Apache-2.0 weights; MIT server"}:
+                        self.assertIn(model["license"], card["text"])
                 self.assertTrue(all(not card["hidden"] for card in page.cards))
                 self.assertIn(prefix + "models/", self.pages[prefix].links)
                 self.assertIn(prefix + "models/", self.pages[prefix + "guide/"].links)

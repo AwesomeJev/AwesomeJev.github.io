@@ -378,7 +378,16 @@ def primary_review_candidate(prior, incoming):
 def merge_records(old: Ledger, incoming, max_new=None, policy=None):
     """Keep old bytes on unchanged hashes/failure; never grant editorial status."""
     rows, lines = list(old.rows), list(old.lines)
-    positions = {identity(row): i for i, row in enumerate(rows)}
+    positions, strengths, aliases = {}, {}, {}
+    for i, row in enumerate(rows):
+        key = identity(row)
+        aliases[key] = aliases.get(key, 0) + 1
+        # Historical aliases can share one logical source. Prefer protected
+        # evidence, then the canonical spelling; ledger order is not authority.
+        strength = (pinned_primary_abstract(row), LEVEL.get(row.get("verification_level"), 0),
+                    row.get("canonical_url", row.get("url")) == key)
+        if key not in positions or strength > strengths[key]:
+            positions[key], strengths[key] = i, strength
     hashes = {content_hash(row) for row in rows if content_hash(row)}
     changes = {"added": [], "changed": [], "editorial_review_required": [], "duplicates": 0, "preserved_after_failure": 0, "rejected": 0, "curation_excluded": []}
     candidates, pinned_observations = {}, {}
@@ -444,6 +453,14 @@ def merge_records(old: Ledger, incoming, max_new=None, policy=None):
             # Retain fields the machine collector does not own, including any
             # manually supplied notes; preserve explicit editorial annotations.
             merged = {**prior, **new}
+            if aliases.get(key, 0) > 1:
+                # Refresh one owner without turning another retained alias
+                # into an exact duplicate of its stored URL identity.
+                for field in ("url", "canonical_url"):
+                    if field in prior:
+                        merged[field] = prior[field]
+                    else:
+                        merged.pop(field, None)
             for field in ("editorial_note", "manual_notes", "reviewed_by", "review_date", "curated"):
                 if field in prior:
                     merged[field] = prior[field]

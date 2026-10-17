@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "reviewed_at": "2026-10-17T07:42:06.516341+00:00",
+  "baseline_commit": "017f526533ed2ede77204d81ca56cf89abe66a19",
+  "failed_run": "https://github.com/reacher-z/Awesome-Jev/actions/runs/39006523362",
+  "failure": "The collector finished, but repository validation rejected an exact duplicate URL in the ecosystem ledger. Packaging and publication were skipped; the accepted main ledgers and existing PR were not changed.",
+  "cause": "The merge owner map kept the last row for a logical identity. A legacy Decision Index alias followed the canonical editorial record, so the weaker row received the refresh and its URL became a duplicate of the canonical row.",
+  "repair": "Choose a merge owner by pinned-primary protection, evidence tier and canonical spelling, independent of historical row order. For identities with multiple retained rows, preserve the selected owner’s stored URL fields. Historical shadow rows remain unchanged.",
+  "regressions": [
+    "Changed alias observations cannot bypass stronger editorial evidence in either row order.",
+    "Equal-tier alias observations update the canonical owner without creating exact duplicate stored URLs or changing the legacy row."
+  ],
+  "offline_real_ledger_check": {
+    "raw_records": 2450,
+    "all_prior_bytes_preserved": true,
+    "queued_editorial_change": 1,
+    "new_records": 0,
+    "changed_records": 0,
+    "scope": "One deliberately synthetic changed observation passed into the real ledger merge; no network requests or source modifications."
+  },
+  "runtime_verification": "Pending a fresh workflow run after publication."
+}
