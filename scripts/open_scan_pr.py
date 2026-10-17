@@ -45,6 +45,8 @@ ALLOWED = (
     "data/source-counts.json",
     "site/data/source-index.json",
     "site/data/source-badge.json",
+    # A scan prunes exclusion-screen rows for sources it accepts.
+    "data/ecosystem-sources.excluded.jsonl",
 )
 LEDGERS = ALLOWED[:2]
 REPORT = "data/scan-latest.json"

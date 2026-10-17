@@ -881,6 +881,17 @@ def write_if_changed(path, text):
     return True
 
 
+def prune_promoted_exclusions(excluded: Ledger, accepted_rows) -> tuple[Ledger, list[str]]:
+    """Drop exclusion-screen rows for sources that a later screen accepted.
+
+    Keeping both would record two opposite decisions about one source.
+    """
+    accepted = {identity(row) for row in accepted_rows}
+    kept = [(row, line) for row, line in zip(excluded.rows, excluded.lines) if identity(row) not in accepted]
+    pruned = sorted({identity(row) for row in excluded.rows} & accepted)
+    return Ledger([row for row, _ in kept], [line for _, line in kept]), pruned
+
+
 def publish_summary(report):
     text = "\n".join(["## Public source scan", "", "Status: **" + report["status"] + "**.", f"Added: {report['added_count']}; updated: {report['changed_count']}; source changes awaiting review: {report['editorial_review_required_count']}.", f"Provider/document issues: {report['error_count']}. Earlier evidence was retained on failures.", f"Diagnostic examples stored: {report['error_examples_count']} of {report['error_count']}; error_code_counts covers all issues.", "", "Automated source screening is not scientific review or reproduction. No source instructions or downloaded code were executed.", ""])
     if os.environ.get("GITHUB_STEP_SUMMARY"):
@@ -929,9 +940,13 @@ def main(argv=None):
     status = "failed" if not successful_content else "partial" if scan.errors else "success"
     if status == "failed":
         changed = False
+    excluded_path = ROOT / "data/ecosystem-sources.excluded.jsonl"
+    excluded, promoted = prune_promoted_exclusions(Ledger.read(excluded_path), merged_ecosystem.rows + merged_research.rows)
     if not args.smoke:
         for path, ledger in zip(paths, (merged_ecosystem, merged_research)):
             write_if_changed(path, "".join(ledger.lines))
+        if promoted:
+            write_if_changed(excluded_path, "".join(excluded.lines))
         subprocess.run([sys.executable, str(ROOT / "scripts/build_source_index.py")], cwd=ROOT, check=True)
         counts = json.loads((ROOT / "data/source-counts.json").read_text(encoding="utf-8"))["counts"]
     else:

@@ -265,6 +265,25 @@ def check_ledger(path: Path, policy=None) -> list[dict]:
     return result
 
 
+def ledger_key(row: dict) -> str | None:
+    url = row.get("canonical_url", row.get("url"))
+    if not isinstance(url, str) or not public_url(url):
+        return None
+    key = source_index.canonical(url)
+    # GitHub owner/repository names are case-insensitive, as in the scanner's identity.
+    return key.lower() if urlsplit(key).hostname == "github.com" else key
+
+
+def check_ledger_overlap(accepted: dict[Path, list[dict]], excluded: dict[Path, list[dict]]) -> None:
+    """A source is either accepted or excluded by the screen, never both."""
+    accepted_keys = {key for rows in accepted.values() for key in map(ledger_key, rows) if key}
+    for path, rows in excluded.items():
+        for row in rows:
+            key = ledger_key(row)
+            if key in accepted_keys:
+                fail(str(path.relative_to(ROOT)), f"excluded record is also in an accepted ledger: {key}")
+
+
 def check_index(expected_raw_records: int) -> None:
     index_path = ROOT / "site/data/source-index.json"
     count_path = ROOT / "data/source-counts.json"
@@ -382,6 +401,7 @@ def main() -> int:
         fail("data/source-curation.json", str(exc))
         policy = None
     ledgers = []
+    accepted, excluded = {}, {}
     for path in all_files:
         relative = path.relative_to(ROOT)
         if any(pattern.search(str(relative)) for pattern in LEAK_PATTERNS.values()):
@@ -404,8 +424,12 @@ def main() -> int:
             rows = check_ledger(path, policy)
             if ".excluded." not in path.name:
                 ledgers.extend(rows)
+                accepted[path] = rows
+            else:
+                excluded[path] = rows
     if not ledgers:
         fail("data", "no source ledger records")
+    check_ledger_overlap(accepted, excluded)
     node = shutil.which("node")
     if not node:
         fail("JavaScript", "Node.js is required for syntax validation")

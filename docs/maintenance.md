@@ -35,7 +35,7 @@ Canonical paper identities are shared across both ledgers, while a curated versi
 
 Fixed-version primary-abstract records retain their original evidence, dates and `abstract_checked` grade. The scanner also observes the current public arXiv version; a changed abstract or newly observed version becomes a review candidate instead of silently replacing the pinned record. A new version with an unchanged abstract still remains distinguishable. Repeated identical observations preserve the pending record, and later fetch failures do not erase it. These items use the existing `editorial_refresh_candidates` report field for compatibility; that field does not grant an editorial-review grade.
 
-The PR publisher checks this version continuity too: a pending v3 cannot be replaced by an unknown-version or v2 candidate from a later scan. Accepting a pending revision requires both its version and evidence hash to match the retained record. Publication stays limited to the six-file data allowlist, with read-only collection and write publication in separate jobs. The validation of this continuity check is recorded in the [scan review](reviews/scan-2026-10-16.md#pinned-version-continuity-2026-10-16).
+The PR publisher checks this version continuity too: a pending v3 cannot be replaced by an unknown-version or v2 candidate from a later scan. Accepting a pending revision requires both its version and evidence hash to match the retained record. Publication stays limited to the seven-file data allowlist, with read-only collection and write publication in separate jobs. When a scan accepts a source that the ecosystem screen had excluded, it removes that source's row from the exclusion ledger, so a source is never in both. The validation of this continuity check is recorded in the [scan review](reviews/scan-2026-10-16.md#pinned-version-continuity-2026-10-16).
 
 The scan report records `error_code_counts` across **all** issues before limiting `errors` to 100 examples. `error_count`, `error_examples_count`, and `error_examples_truncated` distinguish the total from the displayed sample. Fetch diagnostics retain only fixed, allowlisted codes such as `http_429` or `network_failure`; arbitrary exception messages and response bodies are not published. These fields describe observed failures, not an inferred provider outage or cause.
 
@@ -157,7 +157,7 @@ Preserve the individual licenses of third-party resources. A repository license 
 
 两份台账共享规范论文身份，但实际抓取保留精选链接中的固定版本。已在研究台账中的论文不会因生态或学术发现路径再次出现而重复报新增；已有历史重复行不静默删除。固定版本的原始摘要保留原证据、日期和摘要检查等级，同时观察当前公开版本；新版本或摘要变化进入待审记录，不直接混入旧版本字段。即使摘要未变，新版本也可进入待审；重复观察不重写待审时间，抓取失败不清除未解决记录。为兼容现有流程，这些条目沿用 `editorial_refresh_candidates` 字段，但不代表授予编辑审阅等级。
 
-扫描 job 只读且不接收发布 token。独立发布 job 先检查允许更新的文件，再仅在最后发布步骤注入 token。远程网页、README 和模型卡中的内容一律作为不可信数据处理，不执行其代码或指令，不使用其推荐安装命令；仅请求公开来源，拒绝携带凭据的 URL 与私有网络地址。
+扫描 job 只读且不接收发布 token。独立发布 job 先检查允许更新的文件，再仅在最后发布步骤注入 token。扫描接受此前被生态筛查排除的来源时，会从排除台账中删除该行，同一来源不会同时被接受和排除。远程网页、README 和模型卡中的内容一律作为不可信数据处理，不执行其代码或指令，不使用其推荐安装命令；仅请求公开来源，拒绝携带凭据的 URL 与私有网络地址。
 
 内容未变时保留原有证据和抓取时间，避免仅更新时间戳的 PR。抓取失败或重试耗尽时保留既有成功记录并报告失败，不能把失败伪装为新的成功核查。自动扫描不授予 `editorial_reviewed`；已有编辑审阅的来源发生变化时，应区分旧已审版本与待复核的新内容。
 
