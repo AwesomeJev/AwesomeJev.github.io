@@ -784,5 +784,68 @@ class RefreshRunTests(unittest.TestCase):
             self.assertFalse((root / "data/ecosystem-sources.jsonl").exists())
 
 
+class RetryAfterTests(unittest.TestCase):
+    """Fetchers wait for the server's Retry-After, in seconds or as an HTTP-date, within a budget."""
+
+    def fetch(self, *replies):
+        client = refresh.PublicFetcher(retries=2)
+        sleeps = []
+        replies = list(replies) + [replies[-1]] * 3
+        with patch.object(client, "_request", side_effect=replies) as request, patch.object(refresh.time, "sleep", side_effect=sleeps.append):
+            try:
+                result = client.fetch("https://example.org/source")[0]
+            except refresh.FetchError as error:
+                result = str(error)
+        return result, sleeps, request.call_count
+
+    def http_date(self, seconds):
+        import email.utils
+        from datetime import timedelta
+        return email.utils.format_datetime(refresh.datetime.now(refresh.timezone.utc) + timedelta(seconds=seconds), usegmt=True)
+
+    def test_retry_after_value_is_parsed_as_seconds_or_http_date(self):
+        current = refresh.datetime(2026, 10, 16, 9, 9, tzinfo=refresh.timezone.utc)
+        cases = {"60": 60, " 7 ": 7, "0": 0, "Fri, 16 Oct 2026 09:10:00 GMT": 60, "Friday, 16-Oct-26 09:10:00 GMT": 60,
+                 "Thu, 15 Oct 2026 09:10:00 GMT": 0, "9" * 20: float("inf"), "": None, "-1": None, "1.5": None, "soon": None}
+        for value, expected in cases.items():
+            with self.subTest(value=value):
+                self.assertEqual(refresh.research.retry_after_seconds(value, current), expected)
+        self.assertIsNone(refresh.research.retry_after_seconds(None, current))
+
+    def test_requested_delay_within_budget_is_honoured(self):
+        limited = (429, {"retry-after": "60"}, b"")
+        self.assertEqual(self.fetch(limited), ("http_429", [60, 60], 3))
+        self.assertEqual(self.fetch(limited, (200, {"content-type": "text/plain"}, b"ok")), (b"ok", [60], 2))
+        result, sleeps, requests = self.fetch((503, {"retry-after": self.http_date(30)}, b""))
+        self.assertEqual((result, requests), ("http_503", 3))
+        self.assertEqual(len(sleeps), 2)
+        self.assertTrue(all(28 <= delay <= 30 for delay in sleeps), sleeps)
+        # Without a usable header the bounded exponential backoff is unchanged.
+        self.assertEqual(self.fetch((429, {"retry-after": "soon"}, b"")), ("http_429", [1, 2], 3))
+
+    def test_delay_beyond_budget_stops_without_another_request(self):
+        for value in ("120", self.http_date(3600)):
+            with self.subTest(value=value):
+                self.assertEqual(self.fetch((429, {"retry-after": value}, b"")), ("retry_after_exceeded", [], 1))
+        self.assertEqual(refresh.safe_exception_code(refresh.FetchError("retry_after_exceeded")), "retry_after_exceeded")
+
+    def test_research_collector_uses_the_same_retry_after_rules(self):
+        import urllib.error
+        collect = refresh.research
+        for value, expected_sleeps, expected_calls, expected_error in (
+                ("45", [45, 45, 45], 4, "HTTP Error 429: Too Many Requests"),
+                ("120", [], 1, "retry_after_exceeded")):
+            with self.subTest(value=value), tempfile.TemporaryDirectory() as tmp:
+                collector = collect.Collector(Path(tmp) / "cache", workers=1)
+                error = urllib.error.HTTPError(collect.API, 429, "Too Many Requests", {"Retry-After": value}, None)
+                sleeps = []
+                # Advance the pacing clock so only Retry-After waits are recorded.
+                with patch.object(collect.urllib.request, "urlopen", side_effect=error) as urlopen, patch.object(collect.time, "sleep", side_effect=sleeps.append), patch.object(collect.time, "monotonic", side_effect=range(0, 1000, 10)):
+                    _, _, result = collector.fetch("direct", "Jev")
+                self.assertEqual(sleeps, expected_sleeps)
+                self.assertEqual(urlopen.call_count, expected_calls)
+                self.assertEqual((result["retrieval_status"], result["error"]), ("failed", expected_error))
+
+
 if __name__ == "__main__":
     unittest.main()

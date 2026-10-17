@@ -51,7 +51,7 @@ SAFE_FETCH_ERRORS = frozenset({
     "non_public_host", "credential_query_rejected", "non_public_ip",
     "dns_non_public_address", "dns_resolution_failed", "response_size_limit",
     "network_failure", "redirect_without_location", "unsupported_binary_document",
-    "redirect_limit", "excluded_discovery_url",
+    "redirect_limit", "excluded_discovery_url", "retry_after_exceeded",
     "invalid_arxiv_abstract_page", "arxiv_version_mismatch",
 })
 CURATED_PAPERS_ORIGIN = "https://awesomejev.github.io/papers.json"
@@ -230,9 +230,11 @@ class PublicFetcher:
                 if status == 429 or 500 <= status < 600:
                     if attempt == self.retries:
                         raise FetchError("http_" + str(status))
-                    retry = headers.get("retry-after", "")
-                    delay = min(float(retry), 8) if retry.isdigit() else min(2 ** attempt, 8)
-                    time.sleep(delay)
+                    delay = research.retry_after_seconds(headers.get("retry-after"))
+                    if delay is not None and delay > research.MAX_RETRY_AFTER_SECONDS:
+                        # Never send a request the server has asked us not to send.
+                        raise FetchError("retry_after_exceeded")
+                    time.sleep(min(2 ** attempt, 8) if delay is None else delay)
                     continue
                 break
             if status in {301, 302, 303, 307, 308}:

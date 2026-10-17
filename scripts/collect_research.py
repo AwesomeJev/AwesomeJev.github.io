@@ -24,6 +24,7 @@ from __future__ import annotations
 import argparse
 import concurrent.futures
 import datetime as dt
+import email.utils
 import hashlib
 import http.client
 import json
@@ -44,6 +45,9 @@ PROVIDER = "huggingface_papers_api"
 API = "https://huggingface.co/api/papers/search"
 OPENALEX_API = "https://api.openalex.org/works"
 USER_AGENT = "Awesome-Jev-Research-Corpus/1.0 (public scholarly metadata collection)"
+# Longest Retry-After delay the fetchers wait for; a longer requested delay
+# ends the query at once instead of retrying before the server allows it.
+MAX_RETRY_AFTER_SECONDS = 60
 
 # Queries discover candidates. Separate rules determine inclusion, irrespective
 # of which search returned a paper. Queries are intentionally scoped to the
@@ -160,6 +164,20 @@ DIRECT = re.compile(r"\bjev\b|system one models?", re.I)
 
 def now() -> str:
     return dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
+
+
+def retry_after_seconds(value, current=None):
+    """Seconds requested by Retry-After (delta-seconds or HTTP-date), or None if absent/invalid."""
+    value = (value or "").strip()
+    if re.fullmatch(r"[0-9]+", value):
+        return int(value) if len(value) <= 9 else float("inf")
+    try:
+        when = email.utils.parsedate_to_datetime(value)
+    except (TypeError, ValueError, IndexError):
+        return None
+    if when.tzinfo is None:  # RFC 9110 HTTP-dates are always GMT.
+        when = when.replace(tzinfo=dt.timezone.utc)
+    return max(0.0, (when - (current or dt.datetime.now(dt.timezone.utc))).total_seconds())
 
 
 def normalize_title(title: str) -> str:
@@ -288,9 +306,13 @@ class Collector:
                 error_code = "http_%d" % exc.code if isinstance(exc, urllib.error.HTTPError) else type(exc).__name__
                 if isinstance(exc, urllib.error.HTTPError) and exc.code not in (429, 500, 502, 503, 504):
                     break
-                retry_after = (getattr(exc, "headers", None) or {}).get("Retry-After", "")
-                delay = float(retry_after) if retry_after.isdigit() else 2 ** (attempt + 1)
-                time.sleep(min(delay, 30))
+                delay = retry_after_seconds((getattr(exc, "headers", None) or {}).get("Retry-After"))
+                if delay is not None and delay > MAX_RETRY_AFTER_SECONDS:
+                    last_error, error_code = "retry_after_exceeded", "retry_after_exceeded"
+                    break
+                if attempt == 3:
+                    break  # No wait after the final attempt.
+                time.sleep(min(2 ** (attempt + 1), 30) if delay is None else delay)
             else:
                 cached.write_text(json.dumps(wrapper, ensure_ascii=False), encoding="utf-8", newline="\n")
                 return topic, query, wrapper
