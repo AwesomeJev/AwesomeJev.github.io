@@ -54,6 +54,8 @@ Before reusing a confidence gate in a new language or domain, build a target-spe
 
 The social-science audit reports task-dependent confidence failures using benchmark labels; JevOut’s human checks cover only sampled successful perturbations. Neither abstract establishes multilingual transfer. Language-specific label checks and threshold-transfer comparisons are our proposed protocol, not reproduced findings or population-wide guarantees. [Social-science annotation audit, v2](https://arxiv.org/abs/2609.24574v2) · [JevOut, v2](https://arxiv.org/abs/2609.30243v2)
 
+Implementation documentation supplies additional transfer limits. FRIDA-Decisions recommends short Russian–English states and uses Russian instruction suffixes. Jev-AR reports synthetic Arabic training without native-speaker validation and says confidence fitted to its built-in routes is approximate on custom lists. These are documented operating conditions, not evidence that a confidence gate transfers; we did not run either implementation. [FRIDA-Decisions limits](https://github.com/ai-forever/frida-decisions) · [Jev-AR limitations](https://github.com/atmaneayoubdev/jev-ar)
+
 ## How should I test decisions over tables and cited evidence?
 
 Separate schema validity, stability under content-preserving changes, and semantic correctness against reference labels. For tables, pair original inputs with alternative layouts or row/column reorderings only when meaning is preserved. Keep values, relationships and arithmetic fixed, then compare choices and probability distributions. A stable answer can still be wrong; low confidence alone does not identify an error. [Tabular decision preprint, v1](https://arxiv.org/abs/2610.19536v1)
@@ -650,6 +652,46 @@ A multimodal model with a joint schema head, returning probabilities over allowe
 
 Primary source: https://huggingface.co/Cloudflare/clef
 
+## FRIDA-Decisions
+
+Tools · SberAI · independent runtime · MIT code
+
+Packed Russian–English encoder runtime for typed questions and ranking; state truncation, Russian instruction suffixes and margin-versus-probability semantics remain explicit.
+
+Primary source: https://github.com/ai-forever/frida-decisions
+
+## OpenThai-SystemOne
+
+Tools · iapp-technology · Thai/English pipeline
+
+Thai/English text decision-model training and serving pipeline with a slot readout; the documented recipe does not establish independently validated calibration or interface equivalence.
+
+Primary source: https://github.com/iapp-technology/openthai-systemone
+
+## Quyet runtime
+
+Tools · ncchinh · runtime · Apache-2.0
+
+Runtime for Quyet decision models with checkpoint-dependent English/Vietnamese coverage; it documents ten-option limits and state truncation, without evaluated adversarial robustness.
+
+Primary source: https://github.com/ncchinh/quyet
+
+## JevLang
+
+Tools · timmikeladze · policy and replay
+
+TypeScript/Python policy layer separates typed model answers from routing and action dispatch, with documented journals and replay; a trace does not establish truthful inputs or calibrated thresholds.
+
+Primary source: https://github.com/timmikeladze/jevlang
+
+## sysone decision-learning library
+
+Tools · sgaseretto · decision learning
+
+Training, calibration and interpretation tools for several text, image and protein backends; documented compatibility checks and small experiments do not validate every backend or workload.
+
+Primary source: https://github.com/sgaseretto/sysonelib
+
 ## protoc-gen-jev
 
 Tools · Buf · experimental generator · MIT
@@ -753,6 +795,30 @@ Datasets · Bespoke Labs · Evaluation archive
 An archive of Decision Index evaluation runs for Bespoke Nimble 9B v3.
 
 Primary source: https://huggingface.co/datasets/bespokelabs/bespoke-nimble-9b-v3-decision-index
+
+## Browser decision-vision benchmark
+
+Evaluations · ai-ecoverse · browser comparison
+
+Mixed visual/text comparison of browser decision models using native formats; ambiguous GUI labels, shared hardware and different browsers limit broad ranking and latency claims.
+
+Primary source: https://github.com/ai-ecoverse/decision-vision-bench
+
+## English Jev RAG Benchmark
+
+Evaluations · emretheus · RAG evaluation
+
+English RAG study separates frozen-pool reranking from frozen-context answer generation; gating analyses are exploratory, and free-tier gateway pacing is not isolated model latency.
+
+Primary source: https://github.com/emretheus/jev-rag-benchmark
+
+## Decision models as guardrails
+
+Evaluations · raxIT Labs · partial public split
+
+Common policy benchmark compares decision models and managed guardrails with fixed scoring; an unpublished test slice prevents exact full-board reproduction from the public clone.
+
+Primary source: https://github.com/raxitlabs/decision-models-as-guardrails
 
 ## 113-class complaint classification benchmark
 

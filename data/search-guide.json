@@ -195,6 +195,19 @@
                 "url": "https://arxiv.org/abs/2609.30243v2"
               }
             ]
+          },
+          {
+            "text": "Implementation documentation supplies additional transfer limits. FRIDA-Decisions recommends short Russian–English states and uses Russian instruction suffixes. Jev-AR reports synthetic Arabic training without native-speaker validation and says confidence fitted to its built-in routes is approximate on custom lists. These are documented operating conditions, not evidence that a confidence gate transfers; we did not run either implementation.",
+            "sources": [
+              {
+                "label": "FRIDA-Decisions limits",
+                "url": "https://github.com/ai-forever/frida-decisions"
+              },
+              {
+                "label": "Jev-AR limitations",
+                "url": "https://github.com/atmaneayoubdev/jev-ar"
+              }
+            ]
           }
         ]
       },
@@ -587,6 +600,19 @@
               {
                 "label": "JevOut v2",
                 "url": "https://arxiv.org/abs/2609.30243v2"
+              }
+            ]
+          },
+          {
+            "text": "实现文档还给出了迁移限制。FRIDA-Decisions 建议使用较短的俄英状态，并使用俄语指令后缀；Jev-AR 说明其合成阿拉伯语训练数据未经母语者验证，按内置路由拟合的置信度在自定义列表上只能近似使用。这些是文档中的适用条件，不是门控可以迁移的证据；本项目未运行这两个实现。",
+            "sources": [
+              {
+                "label": "FRIDA-Decisions 的限制",
+                "url": "https://github.com/ai-forever/frida-decisions"
+              },
+              {
+                "label": "Jev-AR 的限制",
+                "url": "https://github.com/atmaneayoubdev/jev-ar"
               }
             ]
           }

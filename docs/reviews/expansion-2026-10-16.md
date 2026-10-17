@@ -150,3 +150,15 @@ The automatic [scan PR](https://github.com/reacher-z/Awesome-Jev/pull/4) remains
 The four existing Decision Index documents were separately refreshed to commit `0ddf675`. The edition is still 0.3.2, but its reference now names Jev 1.14 while frozen inputs retain 1.13. Public/private weights and scoring rules remain unchanged. The Hub’s old tracker name redirects to this same Space; canonicalizing that alias prevents a content update from creating an extra counted source. Raw historical alias evidence remains in the ledger. These document refreshes, three paper promotions and the alias correction add zero expansion identities.
 
 **中文：** 本轮从自动扫描中单独核查并接受六个完整项目，累计760项；说明文件哈希全部匹配，但没有执行源码或重放实验。自动PR仍待继续审阅，323条提议不能直接当作已接受成果。四份Decision Index文档更新至新提交，区分1.14参考运行与1.13冻结输入；旧Space名称按官方跳转合并，不因正文变化虚增来源。原证据仍保留，文档刷新和论文精选提升均不重复计数。
+
+## Multilingual runtimes and evaluation tools — 17 October 2026 (UTC)
+
+Twelve documentation-backed projects bring the expansion to **772**. All fresh README hashes match the retained scheduled-scan observations, and no canonical URL or body hash duplicates were found in the current/frozen collection. Linked weights, size variants, example notebooks, data mirrors and component files are not additional sources. [Review record](../../data/multilingual-tools-review-2026-10-17.json).
+
+The language implementations have different operating limits: FRIDA describes Russian–English inputs and Russian suffixes; OpenThai documents a Thai/English training pipeline; Quyet varies by checkpoint and caps option counts; Jev-AR reports synthetic Arabic data without native-speaker validation, approximate confidence on custom routes, and gated noncommercial weights. No gated access was requested or model downloaded.
+
+Evaluation scope is equally important. CITY-Jev identifies its content as preliminary with partial human review and evaluates decisions rather than complete agents. The browser comparison uses native request formats, ambiguous GUI labels and nonidentical browser/timing environments. English RAG gating is exploratory, while the guardrail benchmark withholds part of its test set. The measurement project separates response-shape fixtures from accuracy data and records corrected baselines. The game-training project separates a selected seed, retention checks and later joint training. We did not execute any of these workflows or inspect raw predictions, customer data or model weights.
+
+Eight projects were selected for the main catalog; all twelve have parallel Chinese discovery descriptions. The guide adds two documentation-based language-transfer examples without asserting that confidence thresholds transfer. The remaining scan proposal stays open for further review.
+
+**中文：** 本轮十二个项目使扩展资源达到772项，说明文件哈希均与扫描一致，镜像、权重变体和组件文件不拆分计数。多语言实现的语言／长度／选项限制、阿拉伯语标签未由母语者验证、社区评测的初步状态、不同浏览器与计时环境、探索性门控和未公开测试切片均保留。八项进入精选，十二项都有中文简介；未执行代码、调用模型或检查原始数据，剩余候选继续待审。

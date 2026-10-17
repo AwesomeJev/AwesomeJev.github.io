@@ -267,6 +267,70 @@ const translations = {
 // Descriptions are editorial summaries. Paper findings remain author-reported.
 const resources = [
   {
+    "category": "Tools",
+    "title": "FRIDA-Decisions",
+    "by": "SberAI · independent runtime · MIT code",
+    "url": "https://github.com/ai-forever/frida-decisions",
+    "en": "Packed Russian–English encoder runtime for typed questions and ranking; state truncation, Russian instruction suffixes and margin-versus-probability semantics remain explicit.",
+    "zh": "面向类型化问题与排序的俄英双语编码器运行库；需注意状态截断、俄语指令后缀，以及边际分数与归一化概率的区别。"
+  },
+  {
+    "category": "Tools",
+    "title": "OpenThai-SystemOne",
+    "by": "iapp-technology · Thai/English pipeline",
+    "url": "https://github.com/iapp-technology/openthai-systemone",
+    "en": "Thai/English text decision-model training and serving pipeline with a slot readout; the documented recipe does not establish independently validated calibration or interface equivalence.",
+    "zh": "采用槽位读出的泰英文本决策模型训练与服务流程；文档中的配方不代表校准或接口等价性已获独立验证。"
+  },
+  {
+    "category": "Tools",
+    "title": "Quyet runtime",
+    "by": "ncchinh · runtime · Apache-2.0",
+    "url": "https://github.com/ncchinh/quyet",
+    "en": "Runtime for Quyet decision models with checkpoint-dependent English/Vietnamese coverage; it documents ten-option limits and state truncation, without evaluated adversarial robustness.",
+    "zh": "Quyet 决策模型运行库，英越语言覆盖依检查点而异；文档说明最多十个选项及状态截断，尚未确立对抗鲁棒性。"
+  },
+  {
+    "category": "Evaluations",
+    "title": "Browser decision-vision benchmark",
+    "by": "ai-ecoverse · browser comparison",
+    "url": "https://github.com/ai-ecoverse/decision-vision-bench",
+    "en": "Mixed visual/text comparison of browser decision models using native formats; ambiguous GUI labels, shared hardware and different browsers limit broad ranking and latency claims.",
+    "zh": "以各模型原生格式比较浏览器视觉／文本决策；GUI 标签歧义、共享硬件及不同浏览器限制了通用排名和时延结论。"
+  },
+  {
+    "category": "Evaluations",
+    "title": "English Jev RAG Benchmark",
+    "by": "emretheus · RAG evaluation",
+    "url": "https://github.com/emretheus/jev-rag-benchmark",
+    "en": "English RAG study separates frozen-pool reranking from frozen-context answer generation; gating analyses are exploratory, and free-tier gateway pacing is not isolated model latency.",
+    "zh": "英文 RAG 研究区分固定候选池重排与固定上下文回答生成；门控分析属探索性，免费通道限速下的时延不等于模型推理耗时。"
+  },
+  {
+    "category": "Tools",
+    "title": "JevLang",
+    "by": "timmikeladze · policy and replay",
+    "url": "https://github.com/timmikeladze/jevlang",
+    "en": "TypeScript/Python policy layer separates typed model answers from routing and action dispatch, with documented journals and replay; a trace does not establish truthful inputs or calibrated thresholds.",
+    "zh": "TypeScript／Python 策略层将类型化模型答案与路由、动作分发分开，提供日志与重放说明；可追溯记录不证明输入真实或阈值已校准。"
+  },
+  {
+    "category": "Tools",
+    "title": "sysone decision-learning library",
+    "by": "sgaseretto · decision learning",
+    "url": "https://github.com/sgaseretto/sysonelib",
+    "en": "Training, calibration and interpretation tools for several text, image and protein backends; documented compatibility checks and small experiments do not validate every backend or workload.",
+    "zh": "提供多种文本、图像及蛋白质后端的训练、校准和解释工具；文档中的兼容检查与小实验不代表所有后端和任务已获验证。"
+  },
+  {
+    "category": "Evaluations",
+    "title": "Decision models as guardrails",
+    "by": "raxIT Labs · partial public split",
+    "url": "https://github.com/raxitlabs/decision-models-as-guardrails",
+    "en": "Common policy benchmark compares decision models and managed guardrails with fixed scoring; an unpublished test slice prevents exact full-board reproduction from the public clone.",
+    "zh": "用固定评分规则比较决策模型与托管护栏的共同策略基准；未发布的测试切片使公开克隆无法精确复现完整榜单。"
+  },
+  {
     "category": "Papers",
     "title": "Jev-Mobile: Jev as an Executor for Mobile GUI Agents",
     "by": "Zhang · 2026-09-24 · v1",

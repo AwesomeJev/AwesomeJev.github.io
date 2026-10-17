@@ -145,6 +145,9 @@ TypeSafe 的 Jev 接收状态与类型化问题，为应用代码返回决策和
 
 ## 基准与评测工具
 
+- **[Browser decision-vision benchmark](https://github.com/ai-ecoverse/decision-vision-bench)** — 以各模型原生格式比较浏览器视觉／文本决策；GUI 标签歧义、共享硬件及不同浏览器限制了通用排名和时延结论。
+- **[English Jev RAG Benchmark](https://github.com/emretheus/jev-rag-benchmark)** — 英文 RAG 研究区分固定候选池重排与固定上下文回答生成；门控分析属探索性，免费通道限速下的时延不等于模型推理耗时。
+- **[Decision models as guardrails](https://github.com/raxitlabs/decision-models-as-guardrails)** — 用固定评分规则比较决策模型与托管护栏的共同策略基准；未发布的测试切片使公开克隆无法精确复现完整榜单。
 - **[113 类投诉分类基准](https://github.com/earino/zero-shot-complaint-benchmark)** — 使用已记录输出比较零样本、检索和已训练分类器，分析重算与重新运行模型分开。
 - **[中文 RAG 重排基准](https://github.com/vicfei/jev-rag-zh-benchmark)** — 使用固定代理模型与候选池的 100 条查询单次评测，不代表通用重排器排名。
 - **[JevAdvBench 代码](https://github.com/JevAdvBench/JevAdvBench)** — 攻击生成、已记录响应分析和新 API 评测，以相同输入重跑为对照。声明代码采用 MIT、数据采用 CC BY-NC 4.0；多数标签来自模型，本项目未运行分析。
@@ -177,6 +180,11 @@ TypeSafe 的四个数据集提供工作流案例、模型生成的参考标签�
 
 | 项目 | 维护方 | 用途 |
 | :--- | :--- | :--- |
+| [FRIDA-Decisions](https://github.com/ai-forever/frida-decisions) | SberAI | 面向类型化问题与排序的俄英双语编码器运行库；需注意状态截断、俄语指令后缀，以及边际分数与归一化概率的区别。 |
+| [OpenThai-SystemOne](https://github.com/iapp-technology/openthai-systemone) | iapp-technology | 采用槽位读出的泰英文本决策模型训练与服务流程；文档中的配方不代表校准或接口等价性已获独立验证。 |
+| [Quyet runtime](https://github.com/ncchinh/quyet) | ncchinh | Quyet 决策模型运行库，英越语言覆盖依检查点而异；文档说明最多十个选项及状态截断，尚未确立对抗鲁棒性。 |
+| [JevLang](https://github.com/timmikeladze/jevlang) | timmikeladze | TypeScript／Python 策略层将类型化模型答案与路由、动作分发分开，提供日志与重放说明；可追溯记录不证明输入真实或阈值已校准。 |
+| [sysone decision-learning library](https://github.com/sgaseretto/sysonelib) | sgaseretto | 提供多种文本、图像及蛋白质后端的训练、校准和解释工具；文档中的兼容检查与小实验不代表所有后端和任务已获验证。 |
 | [Protobuf 客户端生成器](https://github.com/bufbuild/protoc-gen-jev) | Buf | 生成 Go、TypeScript 和 Python 类型化客户端；生成器与运行库需匹配版本。 |
 | [Python SDK](https://github.com/typesafe-ai/typesafe-sdk-python) | TypeSafe | 官方 Python 同步与异步客户端。 |
 | [JavaScript / TypeScript SDK](https://github.com/typesafe-ai/typesafe-sdk-js) | TypeSafe | 官方客户端，支持答案类型推导。 |

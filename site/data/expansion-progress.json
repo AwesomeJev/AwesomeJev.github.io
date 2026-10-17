@@ -3,35 +3,35 @@
   "baseline_commit": "3519c15d7e00686a8dbf9b1e184c68726327ab1e",
   "baseline_source_index_sha256": "8bfdd20564f2cda54bb8264c3c802f315e3e9a11b153bd85dde4325f53c841d5",
   "target_new_sources": 301,
-  "accepted_new_sources": 760,
+  "accepted_new_sources": 772,
   "remaining_to_target": 0,
   "target_count_reached": true,
   "current_index_counts": {
     "editorial_reviewed": 4,
-    "content_screened": 2371,
+    "content_screened": 2383,
     "abstract_checked": 1833,
     "metadata_only": 47,
-    "raw_records": 4269,
-    "unique_records": 4255,
+    "raw_records": 4281,
+    "unique_records": 4267,
     "duplicate_records": 14,
-    "checked_sources": 4208
+    "checked_sources": 4220
   },
   "by_category": {
     "Datasets": 101,
     "Guides and evaluations": 38,
     "Models": 54,
     "Papers": 27,
-    "Projects": 199,
+    "Projects": 211,
     "Research foundations": 341
   },
   "by_relation": {
     "adjacent": 25,
     "background": 341,
-    "direct": 394
+    "direct": 406
   },
   "by_verification_level": {
     "abstract_checked": 368,
-    "content_screened": 392
+    "content_screened": 404
   },
   "verification_note": "Evidence depth is labeled per source. Content screening and abstract checks do not establish full-paper review, peer review, endorsement, or experimental reproduction.",
   "additions": [
@@ -2964,6 +2964,18 @@
       "ledger": "ecosystem-sources.jsonl"
     },
     {
+      "title": "Browser decision-vision benchmark",
+      "url": "https://github.com/ai-ecoverse/decision-vision-bench",
+      "category": "Projects",
+      "topic": "evaluation-harness",
+      "description": "Mixed visual/text comparison of browser decision models using native formats; ambiguous GUI labels, shared hardware and different browsers limit broad ranking and latency claims.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "1aa192e05161dc9a1fefeffb7d37ebe101d3c2b24dfc6d1e6a7f0d20b7d55f06",
+      "retrieved_at": "2026-10-17T02:51:57.594365+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
       "title": "cadence-trading/crypto-trading-lab",
       "url": "https://github.com/cadence-trading/crypto-trading-lab",
       "category": "Projects",
@@ -3084,6 +3096,18 @@
       "ledger": "ecosystem-sources.jsonl"
     },
     {
+      "title": "CITY-Jev",
+      "url": "https://github.com/jiaqisjtu/canitrustu-jev",
+      "category": "Projects",
+      "topic": "evaluation-harness",
+      "description": "Preliminary perturbation evaluation of adapted candidate-selection tasks; correct-or-abstain scores, versioned cohorts and incomplete human review must remain distinct from end-to-end agent success.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "1efd91840bbeae8e74d9bf20c08a582745fadf54242953173641cb054878cc82",
+      "retrieved_at": "2026-10-17T02:51:57.629031+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
       "title": "CMaintz/classifier-bench",
       "url": "https://github.com/cmaintz/classifier-bench",
       "category": "Projects",
@@ -3189,6 +3213,18 @@
       "verification_level": "content_screened",
       "content_sha256": "aa3c6c9d38a68c6bea9e56686cbdc24901fd1836ba987977082e190f22dc63c5",
       "retrieved_at": "2026-10-16T10:37:09+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "Decision models as guardrails",
+      "url": "https://github.com/raxitlabs/decision-models-as-guardrails",
+      "category": "Projects",
+      "topic": "evaluation-harness",
+      "description": "Common policy benchmark compares decision models and managed guardrails with fixed scoring; an unpublished test slice prevents exact full-board reproduction from the public clone.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "6c37a5d507f086b0262825bedb82adc18ae2875806a8afbd818693b79e98b43d",
+      "retrieved_at": "2026-10-17T02:51:57.828974+00:00",
       "ledger": "ecosystem-sources.jsonl"
     },
     {
@@ -3324,6 +3360,18 @@
       "ledger": "ecosystem-sources.jsonl"
     },
     {
+      "title": "English Jev RAG Benchmark",
+      "url": "https://github.com/emretheus/jev-rag-benchmark",
+      "category": "Projects",
+      "topic": "evaluation-harness",
+      "description": "English RAG study separates frozen-pool reranking from frozen-context answer generation; gating analyses are exploratory, and free-tier gateway pacing is not isolated model latency.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "019324a11d262886d160b3321566a152d31da5bb0edcdf6f097579f6d1398908",
+      "retrieved_at": "2026-10-17T02:51:57.556475+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
       "title": "exoticknight/dsh-system1",
       "url": "https://github.com/exoticknight/dsh-system1",
       "category": "Projects",
@@ -3393,6 +3441,18 @@
       "verification_level": "content_screened",
       "content_sha256": "7fc934720066c07f18316349f0ff1360a7fcc0cb66c0909233c3e94e2a3f14d1",
       "retrieved_at": "2026-10-16T10:05:39+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "FRIDA-Decisions",
+      "url": "https://github.com/ai-forever/frida-decisions",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "Packed Russian–English encoder runtime for typed questions and ranking; state truncation, Russian instruction suffixes and margin-versus-probability semantics remain explicit.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "f736f879cfe610b16e835a5520cbac226d8ae82c9cfbf9284d75839527eba6b5",
+      "retrieved_at": "2026-10-17T02:51:57.389251+00:00",
       "ledger": "ecosystem-sources.jsonl"
     },
     {
@@ -3588,6 +3648,18 @@
       "ledger": "ecosystem-sources.jsonl"
     },
     {
+      "title": "Interaction-trained decision-model experiments",
+      "url": "https://github.com/rodlaf/decision-model-rl",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "OpenJev policy-training experiments in Overcooked and RWARE document seed-specific checkpoint selection, sequential retention and alternating-task training; current recipes do not reproduce the full historical learning curve.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "0ce4d3e37ea917c1906d0c1b79726aed2ab980505f3968d836b494fc69424d56",
+      "retrieved_at": "2026-10-17T02:51:57.807168+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
       "title": "IoTone/jevracket",
       "url": "https://github.com/iotone/jevracket",
       "category": "Projects",
@@ -3696,6 +3768,18 @@
       "ledger": "ecosystem-sources.jsonl"
     },
     {
+      "title": "Jev-AR routing implementation",
+      "url": "https://github.com/atmaneayoubdev/jev-ar",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "Arabic intent-routing implementation built on Laya; synthetic training lacks native-speaker validation and confidence calibrated on built-in routes may not transfer to custom lists.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "6b70c9e185e319324edf131c6ca66dc87600ff85d31285cddd74c477161ae8e3",
+      "retrieved_at": "2026-10-17T02:51:57.365863+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
       "title": "Jev-Benchmark — contract inference records and analysis",
       "url": "https://github.com/zf-utokyo/jev-benchmark",
       "category": "Projects",
@@ -3705,6 +3789,18 @@
       "verification_level": "content_screened",
       "content_sha256": "b6941cbdf02a8922e12a58bfc853b1be2c8f2182148e28d7290c275961770f64",
       "retrieved_at": "2026-10-16T11:57:24.072123+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "jev-measured",
+      "url": "https://github.com/wallerchen/jev-measured",
+      "category": "Projects",
+      "topic": "evaluation-harness",
+      "description": "API measurement notebook and runner documenting response shapes, routes and corrected baselines; small fixtures and network-dependent timings do not establish a general model ranking.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "b107d15738d83af27b413bef5d9558b6df1a8906de1b8d0f86ce93e236e5d8ae",
+      "retrieved_at": "2026-10-17T02:51:57.598582+00:00",
       "ledger": "ecosystem-sources.jsonl"
     },
     {
@@ -3753,6 +3849,18 @@
       "verification_level": "content_screened",
       "content_sha256": "9dd2b331797756acd01229ca3aaed939a91518912410f49e6bdb7cb288548469",
       "retrieved_at": "2026-10-16T12:54:12.571910+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "JevLang",
+      "url": "https://github.com/timmikeladze/jevlang",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "TypeScript/Python policy layer separates typed model answers from routing and action dispatch, with documented journals and replay; a trace does not establish truthful inputs or calibrated thresholds.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "6829b1e070a62610ae1103151cabb301fa918d03fd921b59bfb3d18ecf064a35",
+      "retrieved_at": "2026-10-17T02:51:57.699069+00:00",
       "ledger": "ecosystem-sources.jsonl"
     },
     {
@@ -4272,6 +4380,18 @@
       "ledger": "ecosystem-sources.jsonl"
     },
     {
+      "title": "OpenThai-SystemOne",
+      "url": "https://github.com/iapp-technology/openthai-systemone",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "Thai/English text decision-model training and serving pipeline with a slot readout; the documented recipe does not establish independently validated calibration or interface equivalence.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "241cd0a2d6e11e999e2baf0c7b88d559f6a5831fa04d6c3e0b28b2b2d35f4491",
+      "retrieved_at": "2026-10-17T02:51:57.379469+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
       "title": "Ordinal-scale utilization — anonymous review artifact",
       "url": "https://anonymous.4open.science/r/jev_ordinal_scale_bia",
       "category": "Projects",
@@ -4389,6 +4509,18 @@
       "verification_level": "content_screened",
       "content_sha256": "bd2017d019d6f7ccb205de2013425adf42b3e7b0179b72bd19cec9c813351ca8",
       "retrieved_at": "2026-10-16T10:05:38+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "Quyet runtime",
+      "url": "https://github.com/ncchinh/quyet",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "Runtime for Quyet decision models with checkpoint-dependent English/Vietnamese coverage; it documents ten-option limits and state truncation, without evaluated adversarial robustness.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "dce73db902f3696cd78da718fb674baf4fe34e54ab3ff04b7431b3cd9d2baf31",
+      "retrieved_at": "2026-10-17T02:51:57.383605+00:00",
       "ledger": "ecosystem-sources.jsonl"
     },
     {
@@ -4725,6 +4857,18 @@
       "verification_level": "content_screened",
       "content_sha256": "ddaf0646689ca54533acd7b20b5c9f5399d93c2d288eef2a55c430e90a27ab54",
       "retrieved_at": "2026-10-16T10:39:11+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "sysone decision-learning library",
+      "url": "https://github.com/sgaseretto/sysonelib",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "Training, calibration and interpretation tools for several text, image and protein backends; documented compatibility checks and small experiments do not validate every backend or workload.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "d4e6e42b7e5affa2ec73e965cab4f66facf87e80d52eaf60d604c74ddade5ec4",
+      "retrieved_at": "2026-10-17T02:51:57.748436+00:00",
       "ledger": "ecosystem-sources.jsonl"
     },
     {

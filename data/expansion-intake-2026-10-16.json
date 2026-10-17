@@ -962,6 +962,28 @@
       ],
       "evidence_scope": "Six whole documentation-backed projects manually selected from PR4 after fresh README hash matches. No code execution, customer data, prediction archive or model-weight access. Remaining scan candidates are pending, not accepted through this batch.",
       "accepted_at": "2026-10-17T02:18:06.859164+00:00"
+    },
+    {
+      "name": "multilingual_runtime_and_evaluation_projects",
+      "input_sha256": "eec121fdaa2219f925d6af0cb754162df3f10dba5ea4d71545d99ab9924e2fd9",
+      "screened_records_proposed": 12,
+      "accepted_count": 12,
+      "accepted_urls": [
+        "https://github.com/ai-forever/frida-decisions",
+        "https://github.com/iapp-technology/openthai-systemone",
+        "https://github.com/ncchinh/quyet",
+        "https://github.com/atmaneayoubdev/jev-ar",
+        "https://github.com/ai-ecoverse/decision-vision-bench",
+        "https://github.com/jiaqisjtu/canitrustu-jev",
+        "https://github.com/emretheus/jev-rag-benchmark",
+        "https://github.com/wallerchen/jev-measured",
+        "https://github.com/timmikeladze/jevlang",
+        "https://github.com/sgaseretto/sysonelib",
+        "https://github.com/rodlaf/decision-model-rl",
+        "https://github.com/raxitlabs/decision-models-as-guardrails"
+      ],
+      "evidence_scope": "Twelve whole projects reviewed through public README overview and selected limitation/validation sections; all fresh hashes matched the scan. No source code, model inference or experiment was run; model weights and raw data were not downloaded. Other scan candidates remain pending.",
+      "accepted_at": "2026-10-17T02:57:44.874265+00:00"
     }
   ]
 }

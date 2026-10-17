@@ -145,6 +145,9 @@ These are independent implementations, not released TypeSafe weights. Licenses b
 
 ## Benchmarks and evaluation tools
 
+- **[Browser decision-vision benchmark](https://github.com/ai-ecoverse/decision-vision-bench)** — Mixed visual/text comparison of browser decision models using native formats; ambiguous GUI labels, shared hardware and different browsers limit broad ranking and latency claims.
+- **[English Jev RAG Benchmark](https://github.com/emretheus/jev-rag-benchmark)** — English RAG study separates frozen-pool reranking from frozen-context answer generation; gating analyses are exploratory, and free-tier gateway pacing is not isolated model latency.
+- **[Decision models as guardrails](https://github.com/raxitlabs/decision-models-as-guardrails)** — Common policy benchmark compares decision models and managed guardrails with fixed scoring; an unpublished test slice prevents exact full-board reproduction from the public clone.
 - **[113-class complaint benchmark](https://github.com/earino/zero-shot-complaint-benchmark)** — recorded-output comparison of zero-shot, retrieval and trained classifiers; offline analysis is separate from fresh model runs.
 - **[Chinese RAG reranking benchmark](https://github.com/vicfei/jev-rag-zh-benchmark)** — 100-query, single-run comparison using a pinned proxy model and fixed candidate pools; not a universal reranker ranking.
 - **[JevAdvBench code](https://github.com/JevAdvBench/JevAdvBench)** — attack generation, recorded-response analysis and fresh API evaluation, with identical-input reruns as a control. Code is declared MIT; data CC BY-NC 4.0. Most labels are model-derived; no analyses were executed here.
@@ -177,6 +180,11 @@ The four TypeSafe datasets contain workflow cases, model-generated references, a
 
 | Project | Maintainer | Purpose |
 | :--- | :--- | :--- |
+| [FRIDA-Decisions](https://github.com/ai-forever/frida-decisions) | SberAI | Packed Russian–English encoder runtime for typed questions and ranking; state truncation, Russian instruction suffixes and margin-versus-probability semantics remain explicit. |
+| [OpenThai-SystemOne](https://github.com/iapp-technology/openthai-systemone) | iapp-technology | Thai/English text decision-model training and serving pipeline with a slot readout; the documented recipe does not establish independently validated calibration or interface equivalence. |
+| [Quyet runtime](https://github.com/ncchinh/quyet) | ncchinh | Runtime for Quyet decision models with checkpoint-dependent English/Vietnamese coverage; it documents ten-option limits and state truncation, without evaluated adversarial robustness. |
+| [JevLang](https://github.com/timmikeladze/jevlang) | timmikeladze | TypeScript/Python policy layer separates typed model answers from routing and action dispatch, with documented journals and replay; a trace does not establish truthful inputs or calibrated thresholds. |
+| [sysone decision-learning library](https://github.com/sgaseretto/sysonelib) | sgaseretto | Training, calibration and interpretation tools for several text, image and protein backends; documented compatibility checks and small experiments do not validate every backend or workload. |
 | [Protobuf client generator](https://github.com/bufbuild/protoc-gen-jev) | Buf | Experimental typed clients for Go, TypeScript and Python; match generator and runtime versions. |
 | [Python SDK](https://github.com/typesafe-ai/typesafe-sdk-python) | TypeSafe | Official sync and async Python client. |
 | [JavaScript / TypeScript SDK](https://github.com/typesafe-ai/typesafe-sdk-js) | TypeSafe | Official client with inferred answer types. |
