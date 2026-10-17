@@ -35,6 +35,7 @@ TEXT_SUFFIXES = {".md", ".py", ".js", ".mjs", ".json", ".jsonl", ".yml", ".yaml"
 LEVELS = {"metadata_only", "abstract_checked", "content_screened", "editorial_reviewed"}
 CHECKED = LEVELS - {"metadata_only"}
 HASH = re.compile(r"^[0-9a-f]{64}$")
+HTML_ENTITY = re.compile(r"&(?:amp|lt|gt|quot|apos|#\d+|#x[0-9a-f]+);", re.I)
 LEAK_PATTERNS = {
     "personal filesystem path": re.compile(r"(?:/Users/[A-Za-z0-9_.-]+/|/home/[A-Za-z0-9_.-]+/|[A-Z]:\\Users\\[^\\\s]+\\)"),
     "GitHub credential": re.compile(r"(?:gh[pousr]_[A-Za-z0-9]{30,255}|github_pat_[A-Za-z0-9_]{40,255})"),
@@ -225,6 +226,9 @@ def check_ledger(path: Path, policy=None) -> list[dict]:
         for key in ("retrieval_url", "retrieved_url"):
             if row.get(key) and not public_url(row[key]):
                 fail(location, f"invalid public {key}")
+        for key in ("url", "canonical_url", "retrieval_url", "retrieved_url"):
+            if isinstance(row.get(key), str) and HTML_ENTITY.search(row[key]):
+                fail(location, f"{key} contains an HTML entity; store the unescaped URL")
         for key in ("abstract_sha256", "content_sha256"):
             if row.get(key) and (not isinstance(row[key], str) or not HASH.fullmatch(row[key])):
                 fail(location, f"invalid {key}")

@@ -36,6 +36,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 from collections import Counter, defaultdict
+from html import unescape
 from pathlib import Path
 
 
@@ -321,11 +322,12 @@ def convert_openalex(works: list[dict]) -> list[dict]:
         abstract = " ".join(positions[p] for p in sorted(positions))
         primary = work.get("primary_location") or {}
         locations = work.get("locations") or []
-        urls = [loc.get("landing_page_url") or "" for loc in [primary] + locations]
+        # OpenAlex sometimes returns HTML-escaped URLs ("?&amp;verb=...").
+        urls = [unescape(loc.get("landing_page_url") or "") for loc in [primary] + locations]
         arxiv_ids = [m.group(1) for url in urls if (m := re.search(r"arxiv\.org/(?:abs|pdf)/(\d{4}\.\d{4,5}|[a-z.-]+/\d{7})", url, re.I))]
         arxiv_id = arxiv_ids[0] if arxiv_ids else None
-        doi = work.get("doi")
-        canonical = "https://arxiv.org/abs/" + arxiv_id if arxiv_id else doi or primary.get("landing_page_url") or work["id"]
+        doi = unescape(work["doi"]) if work.get("doi") else None
+        canonical = "https://arxiv.org/abs/" + arxiv_id if arxiv_id else doi or urls[0] or work["id"]
         record_id = "arxiv:" + arxiv_id if arxiv_id else ("doi:" + doi.removeprefix("https://doi.org/") if doi else "openalex:" + work["id"].rsplit("/", 1)[-1])
         output.append({"paper": {
             "id": arxiv_id or record_id,

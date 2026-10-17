@@ -14,6 +14,7 @@ from unittest.mock import patch
 import urllib.parse
 
 from scripts import collect_research as collect
+from scripts import build_source_index, validate
 
 ROOT = Path(__file__).resolve().parents[1]
 LEDGER = '{"id": "arxiv:2609.00001", "title": "Existing accepted record"}\n'
@@ -283,6 +284,52 @@ class BuildRecordsTitleKeyTests(unittest.TestCase):
         self.assertEqual([r["id"] for r in records], ["arxiv:2401.00005"])
         self.assertEqual(records[0]["discovery_queries"], ["calibration", "temperature scaling"])
         self.assertEqual(audit["counts"]["deduplicated_appearances"], 1)
+
+
+class OpenAlexEntityTests(unittest.TestCase):
+    DTIC = "http://oai.dtic.mil/oai/oai?&amp;verb=getRecord&amp;metadataPrefix=html&amp;identifier=ADA110209"
+
+    def convert(self, **work):
+        location = {"landing_page_url": work.pop("landing_page_url", None)}
+        [item] = collect.convert_openalex([{"id": "https://openalex.org/W262684963", "title": "Fixture",
+                                            "primary_location": location, "locations": [location], **work}])
+        return item["paper"]
+
+    def test_landing_page_url_is_unescaped_and_keeps_its_parameters(self):
+        paper = self.convert(landing_page_url=self.DTIC)
+        self.assertEqual(paper["_canonical_url"], "http://oai.dtic.mil/oai/oai?&verb=getRecord&metadataPrefix=html&identifier=ADA110209")
+        self.assertEqual(paper["_record_id"], "openalex:W262684963")
+        self.assertEqual(build_source_index.canonical(paper["_canonical_url"]),
+                         "https://oai.dtic.mil/oai/oai?identifier=ADA110209&metadataPrefix=html&verb=getRecord")
+
+    def test_doi_is_unescaped(self):
+        paper = self.convert(doi="https://doi.org/10.1002/(SICI)1097-0258(19990315)18:5&lt;525::AID-SIM60&gt;3.0.CO;2-H",
+                             landing_page_url=self.DTIC)
+        self.assertEqual(paper["_canonical_url"], "https://doi.org/10.1002/(SICI)1097-0258(19990315)18:5<525::AID-SIM60>3.0.CO;2-H")
+        self.assertEqual(paper["_record_id"], "doi:10.1002/(SICI)1097-0258(19990315)18:5<525::AID-SIM60>3.0.CO;2-H")
+
+    def test_escaped_arxiv_landing_page_still_yields_the_arxiv_id(self):
+        paper = self.convert(landing_page_url="https://arxiv.org/abs/2401.00006?context=cs&amp;v=1")
+        self.assertEqual(paper["_record_id"], "arxiv:2401.00006")
+
+    def test_validator_rejects_html_entities_in_url_fields(self):
+        def entity_errors(**fields):
+            row = {"title": "Fixture", "topic": "fixture", "relation": "background", "verification_level": "metadata_only",
+                   "retrieved_at": "2026-10-17T00:00:00Z", "relevance": "Synthetic regression fixture.", **fields}
+            with tempfile.TemporaryDirectory(prefix="awesome-jev-test-") as directory, \
+                    patch.object(validate, "errors", []) as errors, patch.object(validate, "ROOT", Path(directory)):
+                path = Path(directory) / "sources.jsonl"
+                path.write_text(json.dumps(row) + "\n")
+                validate.check_ledger(path)
+                return [error for error in errors if "HTML entity" in error]
+
+        clean = "https://example.org/oai?verb=getRecord&identifier=A1"
+        self.assertEqual(entity_errors(canonical_url=clean, retrieval_url=clean, retrieved_url=clean), [])
+        for key in ("url", "canonical_url", "retrieval_url", "retrieved_url"):
+            for entity in ("&amp;", "&#38;", "&#x26;", "&quot;"):
+                with self.subTest(key=key, entity=entity):
+                    fields = {"canonical_url": clean, key: clean.replace("&", entity)}
+                    self.assertEqual(len(entity_errors(**fields)), 1)
 
 
 if __name__ == "__main__":
