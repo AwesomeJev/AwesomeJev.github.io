@@ -1,6 +1,6 @@
 # Resource expansion — 16 October 2026
 
-**754 newly added, evidence-checked sources / target: at least 301.**
+**760 newly added, evidence-checked sources / target: at least 301.**
 
 [Main collection](../README.md) · [Website source search](https://awesomejev.github.io/#corpus) · [Machine-readable progress](../data/expansion-progress-2026-10-16.json) · [Frozen baseline](../data/expansion-baseline-2026-10-16.json) · [Prior-citation supplement](../data/expansion-baseline-supplement-2026-10-16.json)
 
@@ -8,7 +8,7 @@ The baseline is [commit 3519c15](https://github.com/reacher-z/Awesome-Jev/tree/3
 
 Only sources in the [reviewed intake](../data/expansion-intake-2026-10-16.json) count toward this expansion. This is a discovery directory with explicit screening levels. **Direct** sources concern Jev or typed decision systems; **adjacent** resources implement closely related methods; **background** papers provide research context. Listing is not an endorsement or independent reproduction. The short descriptions explain relevance, not a universal recommendation.
 
-**中文：本轮已新增 754 项有核查证据的资源，目标至少 301 项。** 已有台账、精选与引用链接、重复正文或论文题名均不重复计数，仅元数据条目不计入目标。下表区分直接相关、邻近方法与背景研究；自动内容筛查或摘要检查不等于全文评审，也不代表实验复现。
+**中文：本轮已新增 760 项有核查证据的资源，目标至少 301 项。** 已有台账、精选与引用链接、重复正文或论文题名均不重复计数，仅元数据条目不计入目标。下表区分直接相关、邻近方法与背景研究；自动内容筛查或摘要检查不等于全文评审，也不代表实验复现。
 
 | Resource type | Newly added |
 | --- | ---: |
@@ -16,7 +16,7 @@ Only sources in the [reviewed intake](../data/expansion-intake-2026-10-16.json) 
 | Guides and evaluations | 38 |
 | Models | 54 |
 | Papers | 27 |
-| Projects | 193 |
+| Projects | 199 |
 | Research foundations | 341 |
 
 ## Datasets
@@ -265,6 +265,7 @@ Only sources in the [reviewed intake](../data/expansion-intake-2026-10-16.json) 
 | --- | --- | --- |
 | [0xjgv/system-one-router](https://github.com/0xjgv/system-one-router) | direct · `content_screened` | Claude Code and Codex routing helper uses decision models to choose execution models and reasoning effort, with provider fallbacks. |
 | [0xLeonhack/tellagent](https://github.com/0xleonhack/tellagent) | direct · `content_screened` | Market-research pipeline combining deterministic indicators, Jev gates and evidence-constrained language-model analysis. |
+| [A Survey on Jev: Prior Research, Adaptation Costs, and Evidence of System One Models](https://github.com/evan-py-chen/jev-survey) | direct · `content_screened` | Community survey manuscript on typed-decision prior work, adaptation costs and evidence limits; source and PDF represent one document package, not an independent empirical replication. |
 | [aatifahmad123/jev-llm-routing](https://github.com/aatifahmad123/jev-llm-routing) | direct · `content_screened` | RAG chatbot using Jev to route questions by complexity between local and hosted language models. |
 | [acbcore-labs/s1-core](https://github.com/acbcore-labs/s1-core) | direct · `content_screened` | Python decision-model harness with typed question specifications, calibration gates, parallel requests and replayable decision logs. |
 | [acquiredintelligence/attend](https://github.com/acquiredintelligence/attend) | direct · `content_screened` | Event-stream coordinator uses Jev judgments to choose whether agent notifications should interrupt, queue, remain passive or be suppressed. |
@@ -346,6 +347,7 @@ Only sources in the [reviewed intake](../data/expansion-intake-2026-10-16.json) 
 | [jackthony/IA-local](https://github.com/jackthony/ia-local) | direct · `content_screened` | Local-agent laboratory evaluating decision routing and refund policies with labeled cases, calibration and human escalation. |
 | [jasonduncan/semantic-operators](https://github.com/jasonduncan/semantic-operators) | direct · `content_screened` | Provider-neutral Python, CLI and MCP abstractions for typed questions, answer probabilities and uncertainty handling. |
 | [jerichosiahaya/naluri](https://github.com/jerichosiahaya/naluri) | direct · `content_screened` | XLM-RoBERTa-based multilingual decision model exposes yes/no, choice and ordinal questions, with fine-tuning and evaluation guidance. |
+| [Jev RAG Chinese Benchmark](https://github.com/vicfei/jev-rag-zh-benchmark) | direct · `content_screened` | Chinese reranking benchmark using fixed candidate pools and a pinned proxy-served Jev version; its 100-query single-run results and concurrent latency are workload-specific. |
 | [Jev-Benchmark — contract inference records and analysis](https://github.com/zf-utokyo/jev-benchmark) | direct · `content_screened` | ContractNLI scoring and sanitized prediction records for the initial comparison; raw API bodies and the full revised-paper follow-up are outside the documented release scope. |
 | [Jev-Sinhala Capability, Primitive Consistency & Benchmark Census Probe](https://github.com/azri-muhsin/jev-sinhala-review) | direct · `content_screened` | Sinhala and Singlish evaluation using established benchmark labels, with script changes, question-language controls, option permutations and cross-primitive consistency tests. |
 | [JEV-Star](https://github.com/sc2musa/jev_star) | direct · `content_screened` | StarCraft II controllers and selected comparison artifacts; full original logs are excluded, version changes confound planning-effect claims, and live runs need game/model services. |
@@ -402,6 +404,7 @@ Only sources in the [reviewed intake](../data/expansion-intake-2026-10-16.json) 
 | [Parcha-ai/agentrun](https://github.com/parcha-ai/agentrun) | direct · `content_screened` | Workflow language connects Jev judgments, application tools and delegated agents through explicit adapters, with offline fixtures and live-provider integration. |
 | [patkusch/assay](https://github.com/patkusch/assay) | direct · `content_screened` | Independent local System One implementation for bounded decision questions and confidence-aware outputs. |
 | [ppweni/typesafe_rs](https://github.com/ppweni/typesafe_rs) | direct · `content_screened` | Asynchronous Rust client supports TypeSafe text, image and Box questions, with typed response handling and configurable transport behavior. |
+| [protoc-gen-jev](https://github.com/bufbuild/protoc-gen-jev) | direct · `content_screened` | Protobuf clients for Jev in Go, TypeScript and Python; the generator is experimental and its release should match the runtimes. |
 | [pyck-ai/jev-cli](https://github.com/pyck-ai/jev-cli) | direct · `content_screened` | Command-line and MCP tools exposing hosted Jev typed judgments through OpenRouter. |
 | [raj8525/universal-jev](https://github.com/raj8525/universal-jev) | direct · `content_screened` | Coding-agent runtime combining bounded Jev browser actions with a higher-level browser-agent fallback. |
 | [raullenchai/Rapid-MLX](https://github.com/raullenchai/rapid-mlx) | direct · `content_screened` | Apple Silicon inference server includes MLX-based System One serving for Laya and other decision-model backbones. |
@@ -444,16 +447,19 @@ Only sources in the [reviewed intake](../data/expansion-intake-2026-10-16.json) 
 | [thusinh1969/BrighTO_Router](https://github.com/thusinh1969/brighto_router) | direct · `content_screened` | Rust gateway combining model load balancing, fallback routing and System One-compatible provider endpoints. |
 | [tnromy/evaluating-system-one-models-for-indonesian-regional-languages](https://github.com/tnromy/evaluating-system-one-models-for-indonesian-regional-languages) | direct · `content_screened` | Preregistered evaluation of typed models and classifier baselines on sentiment and emotion in Indonesian regional languages. |
 | [trungnt13/claude-system1](https://github.com/trungnt13/claude-system1) | direct · `content_screened` | Claude Code plugin using Jev or OpenAI decision APIs to choose reasoning effort. |
+| [Typed decisions, not chat — a shadow decision layer for a live CRM](https://github.com/alonsuare/typed-decisions-shadow-layer) | direct · `content_screened` | Shadow-mode typed routing demo with Jev and local structured-JSON backends; fixtures are synthetic and the small traffic comparison is author-reported. |
 | [unbraind/pm-jev](https://github.com/unbraind/pm-jev) | direct · `content_screened` | Local-first task-item decision tool with an optional hosted TypeSafe provider. |
 | [vilinski/jev](https://github.com/vilinski/jev) | direct · `content_screened` | Command-line adapter sends a common typed-question format to TypeSafe, Cloudflare, local Ollama and token-log-probability backends. |
 | [Viperwow/jeff](https://github.com/viperwow/jeff) | direct · `content_screened` | Unified typed-decision API fronting Jev-compatible model providers. |
 | [Visual Jev — shared-image decision implementation](https://github.com/guanxuyu-sv/visual-jev) | direct · `content_screened` | Shared-image decision code and scored outputs; source images and raw per-example predictions are omitted, while fresh predictions require upstream datasets, model weights and compute. |
+| [Weiche: a small local decision model for LLM auto-routing](https://github.com/fstandhartinger/weiche) | direct · `content_screened` | ModernBERT routing research with trait and model-tier success heads, training and ONNX export tools; results concern specified data, hardware and model tiers. |
 | [wingedsheep/argentum-engine](https://github.com/wingedsheep/argentum-engine) | direct · `content_screened` | Game-rules platform with a development-mode Jev opponent choosing legal actions from engine-provided options. |
 | [xingqiux/jev-playground](https://github.com/xingqiux/jev-playground) | direct · `content_screened` | Unofficial local Jev testing interface for typed questions, including documented experimental vision support. |
 | [Xm-Coding/jev-pr-classifier](https://github.com/xm-coding/jev-pr-classifier) | direct · `content_screened` | Pull-request classifier using Jev to assign code changes to configured categories. |
 | [xpressabhi/jev-browser](https://github.com/xpressabhi/jev-browser) | direct · `content_screened` | Browser-agent component separating Jev action decisions from the browser harness that executes them. |
 | [XYenon/ajevt-browser](https://github.com/xyenon/ajevt-browser) | direct · `content_screened` | Bounded Jev browser tool integrating action selection with coding-agent and MCP interfaces. |
 | [yuan-phd/jevmark](https://github.com/yuan-phd/jevmark) | direct · `content_screened` | Independent Qwen/LoRA training project compares supervised learning with RLCD using decision-probability and calibration evaluations. |
+| [Zero-shot classifiers, retrieved examples and trained models on a 113-class complaint taxonomy](https://github.com/earino/zero-shot-complaint-benchmark) | direct · `content_screened` | Code and recorded-output analysis for a 113-class complaint benchmark comparing zero-shot, retrieval and trained classifiers; replayed analysis is separate from fresh model runs. |
 | [ZeroTang05/Situation-Puzzle](https://github.com/zerotang05/situation-puzzle) | direct · `content_screened` | Situation-puzzle game using Jev for yes/no judgments, hints and assessment of proposed explanations. |
 | [zhairy/dsh-agent-swarm](https://github.com/zhairy/dsh-agent-swarm) | direct · `content_screened` | Multi-agent harness plugin combining shared Jev judgment tools with task planning, evidence checks and provider fallback. |
 

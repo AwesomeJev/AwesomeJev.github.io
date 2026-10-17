@@ -67,3 +67,9 @@ Exact hashes identify the retrieved bytes, not the truth of claims. Mutable page
 我们进一步阅读了 60 条分层样本的摘要或关键正文段落，没有宣称逐篇精读全部论文，也没有运行实验。抽查发现并修复了 URL 文档 ID 被误删造成的错误去重；通用标题、结果档案分类及上游数据数量矛盾均已记录。来源的存在不等于其准确率、校准、隐私或安全承诺得到验证。
 
 采集只访问公开资源，不使用推理密钥，不上传私人对话，不发布完整抓取正文。公开作者和项目名称作为来源归属保留；外部项目自身的数据处理行为仍需单独审查。
+
+## Decision Index refresh — 17 October 2026 (UTC)
+
+The current reviewed Space commit is `0ddf6758073eb77ae449a3541f57286d7f39d93f`. Its metadata and the four public documents match the scan’s pending hashes. The edition label remains 0.3.2; the scoreboard contains 173 engine records and the full-score file 174 records including the reference. The reference is a Jev 1.14 lab run dated 14 October, while the frozen request payloads still name Jev 1.13. The methodology’s older `generated_utc` value is not used as the review timestamp.
+
+The 0.2/0.5/0.3 public/same-skills/new-domains weights and scoring-rule objects are unchanged. Private evaluations remain unavailable for complete independent reconstruction. This was a metadata, structure and changed-field review, not execution of the evaluator or validation of its model scores. Previous hashes and source metadata remain in the [refresh record](../data/scan-review-2026-10-17.json).

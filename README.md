@@ -6,7 +6,7 @@ A curated list of **Jev and typed decision model** papers, models, datasets, eva
 
 **[Main repository](https://github.com/reacher-z/Awesome-Jev)** · [Website](https://awesomejev.github.io/) · [Papers](https://awesomejev.github.io/papers/) · [Research guide](https://awesomejev.github.io/guide/) · [New resources](https://awesomejev.github.io/discoveries/) · [中文](README.zh-CN.md) · [Survey](docs/survey.md) · [BibTeX](references.bib) · [Contribute](CONTRIBUTING.md)
 
-Independent community project; not affiliated with TypeSafe AI. Last curated: **2026-10-16**. The website is published from [AwesomeJev.github.io](https://github.com/AwesomeJev/AwesomeJev.github.io).
+Independent community project; not affiliated with TypeSafe AI. Last curated: **2026-10-17**. The website is published from [AwesomeJev.github.io](https://github.com/AwesomeJev/AwesomeJev.github.io).
 
 The [new-resource directory](https://awesomejev.github.io/discoveries/) adds hundreds of projects, datasets, model cards, guides and research papers, with explicit screening levels and relationship labels. [Review the expansion and counting method](docs/expansion-2026-10-16.md); abstract checks are not full-paper reviews.
 
@@ -43,11 +43,11 @@ TypeSafe's Jev accepts a state and typed questions, returning decisions and prob
 - [Confidence](https://docs.typesafe.ai/confidence) · [Jev 1.13 limitations](https://docs.typesafe.ai/model-jaggedness/jev-1.13).
 - [Experimental images](https://docs.typesafe.ai/images) · [Box](https://docs.typesafe.ai/primitives/box) — opt-in capabilities; Box requires Jev 1.14.
 
-On **2026-10-16**, `jev-latest` points to `jev-1.13.0` and `jev-preview` to `jev-1.14.0`. Pin the version for evaluation. See the [survey](docs/survey.md) for the conceptual distinctions and evaluation protocol.
+On **2026-10-17**, `jev-latest` points to `jev-1.13.0` and `jev-preview` to `jev-1.14.0`. Pin the version for evaluation. See the [survey](docs/survey.md) for the conceptual distinctions and evaluation protocol.
 
 ## Papers
 
-All 56 direct studies below are **arXiv preprints**. Dates identify the linked, reviewed version, not necessarily the first submission. Results are author-reported; this project has not reproduced their experiments. Titles that contain speed or cost claims retain the authors' wording. [Bibliography](references.bib) · [Evidence comparison](docs/survey.md)
+All 59 direct studies below are **arXiv preprints**. Dates identify the linked, reviewed version, not necessarily the first submission. Results are author-reported; this project has not reproduced their experiments. Titles that contain speed or cost claims retain the authors' wording. [Bibliography](references.bib) · [Evidence comparison](docs/survey.md)
 
 ### Evaluation and benchmarking
 
@@ -119,9 +119,12 @@ All 56 direct studies below are **arXiv preprints**. Dates identify the linked, 
 - **[Jev for Scientific Decisions: Evaluating Semantic Choices and Their Consequences](https://arxiv.org/abs/2609.24965v3)** — Deng, Fan, Zhang & Xie. *2026-10-15, arXiv v3; first submitted 2026-09-21*. In ten prepared scientific cases, the authors separate semantic selections, computed quantities and final labels; comparison-model errors can be hidden by unchanged final labels. [Code and release scope](https://github.com/bydeng01/scientific-decision-eval).
 - **[Same Scores, Different Decisions: Evaluating JEV and Language Models for Legal Document Understanding](https://arxiv.org/abs/2609.27678v2)** — Zhang et al. *2026-10-10, arXiv v2; first submitted 2026-09-23*. ContractNLI request variations can change which answers are wrong while aggregate accuracy stays unchanged; stable answers may preserve errors. This benchmark does not validate real legal deployment. [Initial comparison package](https://github.com/ZF-Utokyo/Jev-Benchmark).
 - **[Jev in Medicine: A Benchmark Evaluation](https://arxiv.org/abs/2609.34024v4)** — Madrid-García & Merino-Barbancho. *2026-10-10, arXiv v4; first submitted 2026-09-27*. Preliminary medical-benchmark evaluation of Jev 1.13 reports task-dependent accuracy, calibration and weak unanswerable-question detection; it does not establish clinical deployment validity. [Author supplement](https://zenodo.org/records/23008156).
+- **[Token-Efficient Multi-Agent Collaboration via System One-Guided Computational Division of Labor](https://arxiv.org/abs/2610.08155v1)** — Zhou et al. *2026-10-06, arXiv v1*. Separates bounded multi-agent coordination from LLM reasoning through a controller–reader loop; reported GPT-4o-token and end-to-end latency reductions concern complete framework comparisons on seven benchmarks.
+- **[Jev-Mobile: Jev as an Executor for Mobile GUI Agents](https://arxiv.org/abs/2609.30186v1)** — Zhang. *2026-09-24, arXiv v1*. Uses VLM local-goal planning with Jev action selection over Android accessibility-tree candidates; reported time and API-cost savings are conditional on successful trajectories and the tested controller configurations.
 - **[Evaluating Decision Models for Text Annotation in Computational Social Science](https://arxiv.org/abs/2609.24574v2)** — Ibrahim & Zaki. *2026-09-23, arXiv v2; first submitted 2026-09-21*. Evaluates zero-shot social-science annotation and confidence-routed LLM cascades; lower costs coexist with task-dependent errors and overconfidence, so confidence cannot substitute for label validation. [Code and recorded calls](https://github.com/hazemibrahim97/decision-models-css).
 - **[KITE: Scaling Jev Population Experiments with Sparse Flagship Calibration](https://arxiv.org/abs/2609.27535v1)** — Li. *2026-09-23, arXiv v1*. Jev state tables and sparse flagship-model anchors support population simulations with shared human–model discrepancy estimates; larger simulations do not add human evidence or establish prospective intervention effects. [Code and aggregates](https://github.com/HengyuLi-Ozaki-lab/kite_population_simulator).
 - **[Can Jev Judge Radiology Reports? Evaluating a System One Model for Clinical Factuality](https://arxiv.org/abs/2609.27607v1)** — Huang et al. *2026-09-23, arXiv v1*. Jev checks support between generated and reference radiology reports in both directions; expert agreement depends on report size and error definitions and does not establish prospective clinical effectiveness.
+- **[JEV-Star: Fast, Low-Cost StarCraft II Control with Language-Model Planning](https://arxiv.org/abs/2609.27331v1)** — Ma, Zhao, Zeng & Zhao. *2026-09-23, arXiv v1*. Combines Jev action selection with persistent language-model planning for StarCraft II; limited full-game evidence and simultaneous interface changes prevent isolating the planning contribution. [Code and selected comparison artifacts](https://github.com/sc2musa/jev_star).
 
 ## Models
 
@@ -142,6 +145,8 @@ These are independent implementations, not released TypeSafe weights. Licenses b
 
 ## Benchmarks and evaluation tools
 
+- **[113-class complaint benchmark](https://github.com/earino/zero-shot-complaint-benchmark)** — recorded-output comparison of zero-shot, retrieval and trained classifiers; offline analysis is separate from fresh model runs.
+- **[Chinese RAG reranking benchmark](https://github.com/vicfei/jev-rag-zh-benchmark)** — 100-query, single-run comparison using a pinned proxy model and fixed candidate pools; not a universal reranker ranking.
 - **[JevAdvBench code](https://github.com/JevAdvBench/JevAdvBench)** — attack generation, recorded-response analysis and fresh API evaluation, with identical-input reruns as a control. Code is declared MIT; data CC BY-NC 4.0. Most labels are model-derived; no analyses were executed here.
 - **[Reading Right, Acting Wrong — diagnostic dashboard](https://yubol-bobo.github.io/System_one_model_evaluation/)** — author report pairing factual probes with action decisions. Its current 22-system coverage differs from the fixed paper’s 18; no code or data release was verified.
 - **[Artificial Analysis Decision Index](https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index)** — third-party capability, calibration, cost and latency evaluation. [Methodology](https://artificialanalysis.ai/methodology/decision-index) specifies task filtering and a private knowledge subset; the complete suite is not publicly reproducible.
@@ -172,6 +177,7 @@ The four TypeSafe datasets contain workflow cases, model-generated references, a
 
 | Project | Maintainer | Purpose |
 | :--- | :--- | :--- |
+| [Protobuf client generator](https://github.com/bufbuild/protoc-gen-jev) | Buf | Experimental typed clients for Go, TypeScript and Python; match generator and runtime versions. |
 | [Python SDK](https://github.com/typesafe-ai/typesafe-sdk-python) | TypeSafe | Official sync and async Python client. |
 | [JavaScript / TypeScript SDK](https://github.com/typesafe-ai/typesafe-sdk-js) | TypeSafe | Official client with inferred answer types. |
 | [System One Adapter](https://github.com/typesafe-ai/system-one-adapter-python) | TypeSafe | Evaluate LLM baselines through a comparable typed-question interface. |
@@ -181,7 +187,9 @@ The four TypeSafe datasets contain workflow cases, model-generated references, a
 
 ## Practical guides
 
-Provider-authored recipes; validate thresholds on held-out examples from your own workload.
+Implementation recipes and community research. Validate thresholds on held-out examples from your own workload.
+
+- [Community survey on Jev](https://github.com/evan-py-chen/jev-survey) — prior research, adaptation costs and evidence limits; manuscript v0.5, also included in the bibliography.
 
 - [SDE cascade](https://docs.typesafe.ai/cookbooks/sde_cascade) — check inexpensive structured extraction with per-field Jev questions before escalation; the walkthrough uses cached and illustrative outputs.
 - [Structure recovery](https://docs.typesafe.ai/cookbooks/autoformat) — use continuation and block-type decisions to recover Markdown structure without rewriting the input text.
@@ -208,7 +216,7 @@ Background literature and comparison methods. These works do **not** establish J
 | Composable pipelines | Khattab et al., *DSPy*. 2023. | [Paper](https://arxiv.org/abs/2310.03714) |
 | Efficient execution | Zheng et al., *SGLang*. NeurIPS, 2024. | [Paper](https://papers.nips.cc/paper_files/paper/2024/file/724be4472168f31ba1c9ac630f15dec8-Paper-Conference.pdf) · [Code](https://github.com/sgl-project/sglang) |
 
-All 64 selected papers are included in [references.bib](references.bib). See the [latest paper-selection review](docs/reviews/papers-2026-10-16.md) for verification scope and limitations.
+The selected papers and community survey are included in [references.bib](references.bib) (68 entries). See the [latest paper-selection review](docs/reviews/papers-2026-10-16.md) for verification scope and limitations.
 
 ## Quick start
 

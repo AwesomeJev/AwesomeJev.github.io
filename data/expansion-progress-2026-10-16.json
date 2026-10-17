@@ -3,35 +3,35 @@
   "baseline_commit": "3519c15d7e00686a8dbf9b1e184c68726327ab1e",
   "baseline_source_index_sha256": "8bfdd20564f2cda54bb8264c3c802f315e3e9a11b153bd85dde4325f53c841d5",
   "target_new_sources": 301,
-  "accepted_new_sources": 754,
+  "accepted_new_sources": 760,
   "remaining_to_target": 0,
   "target_count_reached": true,
   "current_index_counts": {
     "editorial_reviewed": 4,
-    "content_screened": 2365,
+    "content_screened": 2371,
     "abstract_checked": 1833,
     "metadata_only": 47,
-    "raw_records": 4263,
-    "unique_records": 4249,
+    "raw_records": 4269,
+    "unique_records": 4255,
     "duplicate_records": 14,
-    "checked_sources": 4202
+    "checked_sources": 4208
   },
   "by_category": {
     "Datasets": 101,
     "Guides and evaluations": 38,
     "Models": 54,
     "Papers": 27,
-    "Projects": 193,
+    "Projects": 199,
     "Research foundations": 341
   },
   "by_relation": {
     "adjacent": 25,
     "background": 341,
-    "direct": 388
+    "direct": 394
   },
   "by_verification_level": {
     "abstract_checked": 368,
-    "content_screened": 386
+    "content_screened": 392
   },
   "verification_note": "Evidence depth is labeled per source. Content screening and abstract checks do not establish full-paper review, peer review, endorsement, or experimental reproduction.",
   "additions": [
@@ -2700,6 +2700,18 @@
       "ledger": "ecosystem-sources.jsonl"
     },
     {
+      "title": "A Survey on Jev: Prior Research, Adaptation Costs, and Evidence of System One Models",
+      "url": "https://github.com/evan-py-chen/jev-survey",
+      "category": "Projects",
+      "topic": "survey-repository",
+      "description": "Community survey manuscript on typed-decision prior work, adaptation costs and evidence limits; source and PDF represent one document package, not an independent empirical replication.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "7d9a2a9a91d550fe2d79bdb5593ea6b877518b3d7fe315341d40f15ca47f3b12",
+      "retrieved_at": "2026-10-17T02:10:27.077663+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
       "title": "aatifahmad123/jev-llm-routing",
       "url": "https://github.com/aatifahmad123/jev-llm-routing",
       "category": "Projects",
@@ -3672,6 +3684,18 @@
       "ledger": "ecosystem-sources.jsonl"
     },
     {
+      "title": "Jev RAG Chinese Benchmark",
+      "url": "https://github.com/vicfei/jev-rag-zh-benchmark",
+      "category": "Projects",
+      "topic": "evaluation-harness",
+      "description": "Chinese reranking benchmark using fixed candidate pools and a pinned proxy-served Jev version; its 100-query single-run results and concurrent latency are workload-specific.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "540c89325155a04dd79f546e102e7d650183b064bc0148aa78557ed0f722927d",
+      "retrieved_at": "2026-10-17T02:10:27.062513+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
       "title": "Jev-Benchmark — contract inference records and analysis",
       "url": "https://github.com/zf-utokyo/jev-benchmark",
       "category": "Projects",
@@ -4344,6 +4368,18 @@
       "ledger": "ecosystem-sources.jsonl"
     },
     {
+      "title": "protoc-gen-jev",
+      "url": "https://github.com/bufbuild/protoc-gen-jev",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "Protobuf clients for Jev in Go, TypeScript and Python; the generator is experimental and its release should match the runtimes.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "db0092911e57f73c8be89d3ae1e46a917ac042fc2bb3ecf8a03ee761c0b52765",
+      "retrieved_at": "2026-10-17T02:10:26.852478+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
       "title": "pyck-ai/jev-cli",
       "url": "https://github.com/pyck-ai/jev-cli",
       "category": "Projects",
@@ -4848,6 +4884,18 @@
       "ledger": "ecosystem-sources.jsonl"
     },
     {
+      "title": "Typed decisions, not chat — a shadow decision layer for a live CRM",
+      "url": "https://github.com/alonsuare/typed-decisions-shadow-layer",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "Shadow-mode typed routing demo with Jev and local structured-JSON backends; fixtures are synthetic and the small traffic comparison is author-reported.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "cc00091b71a1fd80b9e953790a5fb226478499aa354518b1bcac14fe67de8302",
+      "retrieved_at": "2026-10-17T02:10:26.872032+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
       "title": "unbraind/pm-jev",
       "url": "https://github.com/unbraind/pm-jev",
       "category": "Projects",
@@ -4893,6 +4941,18 @@
       "verification_level": "content_screened",
       "content_sha256": "25d66790bc28cf10f3bf2af532771cfbf9e16d4aecd8f693a9cc46ff4c96983a",
       "retrieved_at": "2026-10-16T12:21:32.279565+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "Weiche: a small local decision model for LLM auto-routing",
+      "url": "https://github.com/fstandhartinger/weiche",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "ModernBERT routing research with trait and model-tier success heads, training and ONNX export tools; results concern specified data, hardware and model tiers.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "7ff94acea2e4d4455509faf2da991e52a278cb37abfed6595cfa02df57949f0a",
+      "retrieved_at": "2026-10-17T02:10:26.879218+00:00",
       "ledger": "ecosystem-sources.jsonl"
     },
     {
@@ -4965,6 +5025,18 @@
       "verification_level": "content_screened",
       "content_sha256": "58535c3cd6e1e6f2c5445ecb2f33f54be6bc620830d6be753bcfda65dc2150e3",
       "retrieved_at": "2026-10-16T10:37:11+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "Zero-shot classifiers, retrieved examples and trained models on a 113-class complaint taxonomy",
+      "url": "https://github.com/earino/zero-shot-complaint-benchmark",
+      "category": "Projects",
+      "topic": "evaluation-harness",
+      "description": "Code and recorded-output analysis for a 113-class complaint benchmark comparing zero-shot, retrieval and trained classifiers; replayed analysis is separate from fresh model runs.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "ab9804113452716972339750448b3f2f83f8f140cad89720aeb74d35792878a0",
+      "retrieved_at": "2026-10-17T02:10:27.038347+00:00",
       "ledger": "ecosystem-sources.jsonl"
     },
     {

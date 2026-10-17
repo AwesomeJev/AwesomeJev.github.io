@@ -1,6 +1,6 @@
 # Jev 与类型化决策模型
 
-**研究综述 · 证据快照：2026 年 10 月 16 日**
+**研究综述 · 证据快照：2026 年 10 月 17 日（UTC）**
 
 [English](survey.md) · [简体中文](survey.zh-CN.md) · [资源索引](../README.zh-CN.md) · [BibTeX](../references.bib)
 
@@ -29,7 +29,7 @@ TypeSafe 于 **2026 年 9 月 15 日**发布 Jev，并介绍了模型架构、�
 
 官方 **WorkflowEvals** 目前已公开[工作流代码](https://github.com/typesafe-ai/WorkflowEvals)和[数据集合](https://huggingface.co/collections/typesafeAI/workflowevals)。其参考答案采用模型共识，因此与参考答案一致，衡量的是对该参考程序的符合程度；人工标签上的准确率是另一个命题。公开产物使检查成为可能，但“可以取得”本身并不验证实验结论。[评估设计](https://typesafe.ai/blog/introducing-system-one-models-and-jev)
 
-社区维护的 [**Jev Decision Index**](https://huggingface.co/spaces/multimodalart/jev-decision-index) 是发现基准与受 Jev 启发的独立实现的重要入口，这些实现并非 TypeSafe 权重。本次检查固定于提交 `5d09dd9` 的 **0.3.2** 版；它将公开测试与未发布的私有测试合并，因此仅凭公开材料无法独立重算完整排名。[固定版本的方法说明](https://huggingface.co/spaces/multimodalart/jev-decision-index/blob/5d09dd9cf226338c68fad22284c4982e6680af7d/data/methodology.json)
+社区维护的 [**Jev Decision Index**](https://huggingface.co/spaces/multimodalart/jev-decision-index) 是发现基准与受 Jev 启发的独立实现的重要入口，这些实现并非 TypeSafe 权重。本次检查固定于提交 `0ddf675` 的 **0.3.2** 版；它将公开测试与未发布的私有测试合并，因此仅凭公开材料无法独立重算完整排名。当前参考是10月14日的 Jev 1.14 实验运行，冻结请求文件仍标为 Jev 1.13；实际运行版本应与归档请求名称分开记录。[固定版本的方法说明](https://huggingface.co/spaces/multimodalart/jev-decision-index/blob/0ddf6758073eb77ae449a3541f57286d7f39d93f/data/methodology.json)
 
 下面六篇均按 **arXiv 预印本**收录。日期区分首次发布与所读版本；发现均由论文作者报告。证据审计论文用于梳理文献，不计作额外一次实证复现。
 
@@ -127,4 +127,4 @@ confidence = (p_max − 1/n) / (1 − 1/n)
 | [有序量表资产](https://anonymous.4open.science/api/repo/jev_ordinal_scale_bia/file/README.md?v=3ed72968) | 文档中的分析流程从已发布逐样本答案重算指标，并不产生新的模型调用。 | 未分发源文本、权重和后训练检查点；历史版本缺失可能导致无法重建与记录哈希一致的输入，托管结果也可能变化。服务文件修订标识不透明，不能当作已验证的不可变提交。 |
 | [放射学报告评判，v1](https://arxiv.org/html/2609.27607v1#Sx1.p1) | 固定 v1 的可用性声明说，分析脚本与汇总结果仍在准备发布。 | 第三方数据链接和题目细节不能替代缺失的作者输出；所查版本不能证明已有可运行的分析重算路径。 |
 
-下一步更有价值的证据，应能分离模型、接口与工作流各自的影响，同时追踪部署分布变化。这需要匹配的比较实验和可检查记录，尤其是针对新模态与新版本。资源库的 64 条研究书目维护于 [references.bib](../references.bib)。
+下一步更有价值的证据，应能分离模型、接口与工作流各自的影响，同时追踪部署分布变化。这需要匹配的比较实验和可检查记录，尤其是针对新模态与新版本。资源库的 68 条研究书目维护于 [references.bib](../references.bib)。

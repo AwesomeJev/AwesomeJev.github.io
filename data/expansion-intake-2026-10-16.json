@@ -946,6 +946,22 @@
       ],
       "evidence_scope": "One whole author checkpoint separate from known code. Fixed model-card training/calibration/limitations sections and public inventory independently reviewed; parent card refetch matched. No weights, code, raw predictions or data rows loaded or executed.",
       "accepted_at": "2026-10-16T13:22:46.235793+00:00"
+    },
+    {
+      "name": "scheduled_scan_selected_implementations",
+      "input_sha256": "e141ccca4afa8643f943b2c7c97ed6092331e8880e2b1fc0565bc7dd355f20c6",
+      "screened_records_proposed": 6,
+      "accepted_count": 6,
+      "accepted_urls": [
+        "https://github.com/bufbuild/protoc-gen-jev",
+        "https://github.com/alonsuare/typed-decisions-shadow-layer",
+        "https://github.com/fstandhartinger/weiche",
+        "https://github.com/earino/zero-shot-complaint-benchmark",
+        "https://github.com/vicfei/jev-rag-zh-benchmark",
+        "https://github.com/evan-py-chen/jev-survey"
+      ],
+      "evidence_scope": "Six whole documentation-backed projects manually selected from PR4 after fresh README hash matches. No code execution, customer data, prediction archive or model-weight access. Remaining scan candidates are pending, not accepted through this batch.",
+      "accepted_at": "2026-10-17T02:18:06.859164+00:00"
     }
   ]
 }

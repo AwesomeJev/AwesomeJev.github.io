@@ -30,6 +30,11 @@ def canonical(url: str) -> str:
     if host == "huggingface.co" and path.startswith("/papers/"):
         host, path = "arxiv.org", "/abs/" + path.split("/")[-1]
         path = re.sub(r"v\d+$", "", path)
+    # The Hub redirects this renamed Space; stale snapshot hashes do not make it
+    # a second resource when the current README changes.
+    legacy_tracker = "/spaces/multimodalart/jev-reproductions-tracker"
+    if host == "huggingface.co" and (path == legacy_tracker or path.startswith(legacy_tracker + "/")):
+        path = "/spaces/multimodalart/jev-decision-index" + path[len(legacy_tracker):]
     if host == "github.com":
         path = re.sub(r"/blob/[^/]+/(?:README(?:\.[a-zA-Z-]+)?(?:\.md|\.rst|\.txt)?)$", "", path, flags=re.I)
         path = path.removesuffix(".git")

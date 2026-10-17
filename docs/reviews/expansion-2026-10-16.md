@@ -140,3 +140,13 @@ One distinct ufakzeka-karar checkpoint brings the expansion to **754**. The pape
 Three existing papers were promoted without adding raw source rows or upgrading evidence. Two known code-project links and a same-release benchmark mirror also add zero. Five display-only annotations clarify titles, first-submission dates and scope: one 2025 routing paper moves to background, while NeoHorse v2 retains its directly relevant typed-decision adaptation with the wider family results kept separate. All original ledger bytes, hashes, retrieval times and grades remain intact apart from appending the one new checkpoint row.
 
 **中文：** 本轮只新增一个独立模型检查点，累计754项；三篇论文精选提升、已知代码与基准镜像均不重复计数。模型卡、元数据及目录已核查，未下载或执行权重、加载器、校准文件和数据记录；测试反馈影响训练及客服校准的限制保留。五项展示注释修正题名、日期与范围，早期路由研究归入背景，NeoHorse的决策适配与整体家族结果分开，原台账证据不改。
+
+## Selected scheduled-scan sources — 17 October 2026 (UTC)
+
+Six whole projects bring the reviewed expansion to **760**: a Protobuf client generator, a shadow-routing example, Weiche routing research, complaint-classification analysis, Chinese RAG reranking evaluation and a community survey package. Their public READMEs were freshly fetched and all six hashes matched the scheduled scan. Descriptions distinguish experimental interfaces, synthetic fixtures, author-reported measurements, saved-output analysis and fresh execution. No source code was executed and no paid model API was called. Complaint/customer records, model weights and prediction archives were not downloaded.
+
+The automatic [scan PR](https://github.com/reacher-z/Awesome-Jev/pull/4) remains open. It reported 323 new records and a partial scan, including provider failures; this release accepts only the six individually inspected projects. The remaining candidates are not automatically added to this reviewed expansion. [Selection and scope](../../data/scan-review-2026-10-17.json).
+
+The four existing Decision Index documents were separately refreshed to commit `0ddf675`. The edition is still 0.3.2, but its reference now names Jev 1.14 while frozen inputs retain 1.13. Public/private weights and scoring rules remain unchanged. The Hub’s old tracker name redirects to this same Space; canonicalizing that alias prevents a content update from creating an extra counted source. Raw historical alias evidence remains in the ledger. These document refreshes, three paper promotions and the alias correction add zero expansion identities.
+
+**中文：** 本轮从自动扫描中单独核查并接受六个完整项目，累计760项；说明文件哈希全部匹配，但没有执行源码或重放实验。自动PR仍待继续审阅，323条提议不能直接当作已接受成果。四份Decision Index文档更新至新提交，区分1.14参考运行与1.13冻结输入；旧Space名称按官方跳转合并，不因正文变化虚增来源。原证据仍保留，文档刷新和论文精选提升均不重复计数。

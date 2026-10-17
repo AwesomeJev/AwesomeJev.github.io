@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-16",
+  "updated": "2026-10-17",
   "en": {
     "title": "Jev guide: typed decisions, probabilities, and evaluation",
     "description": "A source-backed introduction to Jev, its decision primitives, confidence, evaluation methods, and independent model alternatives.",
@@ -337,7 +337,7 @@
             ]
           },
           {
-            "text": "TypeSafe WorkflowEvals publishes workflows and model-generated reference labels; agreement with those references differs from human-label accuracy. The community Decision Index also contains private tests, so public rankings do not make the entire evaluation independently reproducible.",
+            "text": "TypeSafe WorkflowEvals publishes workflows and model-generated reference labels; agreement with those references differs from human-label accuracy. The community Decision Index also contains private tests, so public rankings do not make the entire evaluation independently reproducible. The reviewed 0.3.2 snapshot uses a Jev 1.14 lab reference, while its frozen request payloads still name Jev 1.13. Record the model that produced a result separately from the model named in archived inputs.",
             "sources": [
               {
                 "label": "WorkflowEvals",
@@ -345,7 +345,7 @@
               },
               {
                 "label": "Decision Index methodology snapshot",
-                "url": "https://huggingface.co/spaces/multimodalart/jev-decision-index/blob/5d09dd9cf226338c68fad22284c4982e6680af7d/data/methodology.json"
+                "url": "https://huggingface.co/spaces/multimodalart/jev-decision-index/blob/0ddf6758073eb77ae449a3541f57286d7f39d93f/data/methodology.json"
               }
             ]
           }
@@ -731,7 +731,7 @@
             ]
           },
           {
-            "text": "TypeSafe WorkflowEvals 公开工作流和模型生成的参考标签；与这些参考结果一致，不等于人工标签上的准确率。社区 Decision Index 还包含私有测试，因此公开排名不代表整个评测都能独立复现。",
+            "text": "TypeSafe WorkflowEvals 公开工作流和模型生成的参考标签；与这些参考结果一致，不等于人工标签上的准确率。社区 Decision Index 还包含私有测试，因此公开排名不代表整个评测都能独立复现。 所查 0.3.2 快照使用 Jev 1.14 实验运行作参考，而冻结请求文件仍标为 Jev 1.13。应分别记录实际生成结果的模型与归档输入中的模型名称。",
             "sources": [
               {
                 "label": "WorkflowEvals",
@@ -739,7 +739,7 @@
               },
               {
                 "label": "Decision Index 方法快照",
-                "url": "https://huggingface.co/spaces/multimodalart/jev-decision-index/blob/5d09dd9cf226338c68fad22284c4982e6680af7d/data/methodology.json"
+                "url": "https://huggingface.co/spaces/multimodalart/jev-decision-index/blob/0ddf6758073eb77ae449a3541f57286d7f39d93f/data/methodology.json"
               }
             ]
           }

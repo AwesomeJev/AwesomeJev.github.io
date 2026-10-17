@@ -1,6 +1,6 @@
 # Jev and typed decision models
 
-**A compact research survey · Evidence snapshot: 16 October 2026**
+**A compact research survey · Evidence snapshot: 17 October 2026 (UTC)**
 
 [English](survey.md) · [简体中文](survey.zh-CN.md) · [Resource index](../README.md) · [BibTeX](../references.bib)
 
@@ -29,7 +29,7 @@ Different sources answer different questions:
 
 Official **WorkflowEvals** now has public [workflow code](https://github.com/typesafe-ai/WorkflowEvals) and a [dataset collection](https://huggingface.co/collections/typesafeAI/workflowevals). Its references use model consensus, so agreement with them measures agreement with that reference procedure. Human-label accuracy is a different claim. Public artifacts make inspection possible; availability alone does not certify a result. [Evaluation design](https://typesafe.ai/blog/introducing-system-one-models-and-jev)
 
-The community [**Jev Decision Index**](https://huggingface.co/spaces/multimodalart/jev-decision-index) is a central discovery resource for benchmarks and independent Jev-inspired implementations, not TypeSafe weights. Edition **0.3.2**, inspected at commit `5d09dd9`, combines public and unreleased private tests. Its full ranking therefore cannot be independently recomputed from public material alone. [Versioned methodology](https://huggingface.co/spaces/multimodalart/jev-decision-index/blob/5d09dd9cf226338c68fad22284c4982e6680af7d/data/methodology.json)
+The community [**Jev Decision Index**](https://huggingface.co/spaces/multimodalart/jev-decision-index) is a central discovery resource for benchmarks and independent Jev-inspired implementations, not TypeSafe weights. Edition **0.3.2**, inspected at commit `0ddf675`, combines public and unreleased private tests. The current reference is a Jev 1.14 lab run dated 14 October; the frozen request files still name Jev 1.13. Its full ranking therefore cannot be independently recomputed from public material alone, and model-run provenance must be kept separate from archived request labels. [Versioned methodology](https://huggingface.co/spaces/multimodalart/jev-decision-index/blob/0ddf6758073eb77ae449a3541f57286d7f39d93f/data/methodology.json)
 
 The six selected works below are **arXiv preprints**. Dates distinguish first publication from the version reviewed. Findings are author-reported; the audit paper maps evidence rather than adding another empirical replication.
 
@@ -127,4 +127,4 @@ These operations cover different pipeline stages. The examples below describe do
 | [Ordinal-scale artifact](https://anonymous.4open.science/api/repo/jev_ordinal_scale_bia/file/README.md?v=3ed72968) | The described analysis route recomputes metrics from released per-example answers, not new model calls. | Source text, weights and post-trained checkpoints are omitted. Missing historical revisions can prevent reconstruction of inputs matching the recorded hashes; hosted results may change. The provider file revision is opaque, not a verified immutable commit. |
 | [Radiology report judging, v1](https://arxiv.org/html/2609.27607v1#Sx1.p1) | The fixed-v1 availability statement says analysis scripts and aggregates are being prepared for release. | Third-party dataset links and question details do not supply those missing author outputs. The inspected version does not establish an available analysis-replay route. |
 
-The most useful next evidence would isolate model, interface, and workflow effects while tracking deployment shift. That requires matched comparisons and inspectable records, especially for new modalities and releases. The collection’s 64 research bibliography entries are maintained in [references.bib](../references.bib).
+The most useful next evidence would isolate model, interface, and workflow effects while tracking deployment shift. That requires matched comparisons and inspectable records, especially for new modalities and releases. The collection’s 68 research bibliography entries are maintained in [references.bib](../references.bib).

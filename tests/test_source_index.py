@@ -34,6 +34,35 @@ def build_fixture(sources):
 
 
 class SourceIdentityTests(unittest.TestCase):
+    def test_renamed_tracker_stays_one_source_after_content_changes(self):
+        current = "https://huggingface.co/spaces/multimodalart/jev-decision-index"
+        legacy = "https://huggingface.co/spaces/multimodalart/jev-reproductions-tracker"
+        distinct = legacy + "-fixture"
+        rows = [
+            {"url": legacy, "title": "Old tracker snapshot", "content_sha256": "a" * 64,
+             "verification_level": "content_screened"},
+            {"url": current, "title": "Current tracker snapshot", "content_sha256": "b" * 64,
+             "verification_level": "editorial_reviewed"},
+            {"url": distinct, "title": "Unrelated synthetic project", "content_sha256": "c" * 64,
+             "verification_level": "content_screened"},
+        ]
+        with tempfile.TemporaryDirectory(prefix="awesome-jev-test-") as directory:
+            root = Path(directory)
+            (root / "data").mkdir()
+            (root / "data/ecosystem-sources.jsonl").write_text(
+                "".join(json.dumps({**row, "relation": "direct",
+                                    "retrieved_at": "2026-10-16T00:00:00+00:00",
+                                    "relevance": "Synthetic identity regression."}) + "\n"
+                        for row in rows), encoding="utf-8")
+            with patch.object(index, "ROOT", root):
+                payload = index.build()
+        self.assertEqual(payload["counts"]["unique_records"], 2)
+        self.assertEqual(payload["counts"]["duplicate_records"], 1)
+        sources = {row["url"]: row for row in payload["sources"]}
+        self.assertEqual(set(sources), {current, distinct})
+        self.assertEqual(sources[current]["content_sha256"], "b" * 64)
+        self.assertEqual(sources[current]["verification_level"], "editorial_reviewed")
+
     def test_hub_experiment_code_is_a_project_not_model_weights(self):
         code = {"url":"https://huggingface.co/example/experiment-code", "source_type":"hf_repository", "topic":"implementation-repository", "relation":"direct"}
         self.assertEqual(index.category(code), "Projects")

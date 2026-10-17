@@ -268,6 +268,68 @@ const translations = {
 const resources = [
   {
     "category": "Papers",
+    "title": "Jev-Mobile: Jev as an Executor for Mobile GUI Agents",
+    "by": "Zhang · 2026-09-24 · v1",
+    "date": "2026-09-24",
+    "first_submitted": "2026-09-24",
+    "url": "https://arxiv.org/abs/2609.30186v1",
+    "en": "Uses VLM local-goal planning with Jev action selection over Android accessibility-tree candidates; reported time and API-cost savings are conditional on successful trajectories and the tested controller configurations.",
+    "zh": "用 VLM 规划局部目标，再由 Jev 从 Android 无障碍树候选中选动作；报告的时延和 API 成本节省仅针对成功轨迹及所测控制器配置。"
+  },
+  {
+    "category": "Papers",
+    "title": "JEV-Star: Fast, Low-Cost StarCraft II Control with Language-Model Planning",
+    "by": "Ma, Zhao, Zeng & Zhao · 2026-09-23 · v1",
+    "date": "2026-09-23",
+    "first_submitted": "2026-09-23",
+    "url": "https://arxiv.org/abs/2609.27331v1",
+    "en": "Combines Jev action selection with persistent language-model planning for StarCraft II; limited full-game evidence and simultaneous interface changes prevent isolating the planning contribution.",
+    "zh": "在星际争霸 II 中结合 Jev 动作选择与持续的语言模型规划；完整对局证据有限，同时发生的接口变化使规划贡献无法单独归因。"
+  },
+  {
+    "category": "Papers",
+    "title": "Token-Efficient Multi-Agent Collaboration via System One-Guided Computational Division of Labor",
+    "by": "Zhou et al. · 2026-10-06 · v1",
+    "date": "2026-10-06",
+    "first_submitted": "2026-10-06",
+    "url": "https://arxiv.org/abs/2610.08155v1",
+    "en": "Separates bounded multi-agent coordination from LLM reasoning through a controller–reader loop; reported GPT-4o-token and end-to-end latency reductions concern complete framework comparisons on seven benchmarks.",
+    "zh": "通过控制器—读取器循环分离多智能体的有界协调与 LLM 推理；报告的 GPT-4o token 用量和端到端时延下降来自七个基准上的完整框架比较。"
+  },
+  {
+    "category": "Tools",
+    "title": "protoc-gen-jev",
+    "by": "Buf · experimental generator · MIT",
+    "url": "https://github.com/bufbuild/protoc-gen-jev",
+    "en": "Generates typed Go, TypeScript and Python clients from annotated Protobuf schemas. Generator and runtime releases must be matched; backend behavior was not tested here.",
+    "zh": "从带注释的 Protobuf 定义生成 Go、TypeScript 和 Python 类型化客户端；生成器与运行库需匹配版本，本项目未测试后端行为。"
+  },
+  {
+    "category": "Evaluations",
+    "title": "113-class complaint classification benchmark",
+    "by": "Ariño de la Rubia · recorded-output analysis",
+    "url": "https://github.com/earino/zero-shot-complaint-benchmark",
+    "en": "Compares zero-shot, retrieval and trained classifiers using released predictions. Numeral tracing and analysis replay differ from retraining or new model calls.",
+    "zh": "使用发布的预测比较零样本、检索及已训练分类器；数字溯源与分析重算不同于重新训练或调用模型。"
+  },
+  {
+    "category": "Evaluations",
+    "title": "Jev RAG Chinese Benchmark",
+    "by": "Community evaluation · 100 queries · single run",
+    "url": "https://github.com/vicfei/jev-rag-zh-benchmark",
+    "en": "Chinese reranking comparison with fixed candidate pools and a pinned OpenRouter-served Jev version. Small single-run results and concurrent latency remain workload-specific.",
+    "zh": "使用固定候选池和固定 OpenRouter 服务版本的 Jev 进行中文重排比较；小规模单次运行结果及并发时延限于该工作负载。"
+  },
+  {
+    "category": "Guides",
+    "title": "A Survey on Jev: Prior Research, Adaptation Costs, and Evidence of System One Models",
+    "by": "Chen et al. · community survey v0.5",
+    "url": "https://github.com/evan-py-chen/jev-survey",
+    "en": "Survey manuscript connecting routing, label-probability readout and adaptation costs. The README abstract was inspected; this listing is not a full-manuscript review or empirical replication.",
+    "zh": "综述手稿联系路由、标签概率读出与适配成本；本次检查了 README 摘要，收录不代表全文审阅或实证复现。"
+  },
+  {
+    "category": "Papers",
     "title": "Benchmarking System One decision models against trained classifiers and language models for automated decision gates",
     "by": "Rafe & Das · 2026-10-06 · v2",
     "date": "2026-10-06",

@@ -420,6 +420,12 @@
     "Author checkpoint bundle for Jeva with backbone, adapter and decision-head files; weights were not loaded, and the inspected card specifies no model license.": "Jeva 作者检查点包，目录含骨干、适配器与决策头文件；此次未加载权重，所查模型卡未声明模型许可。",
     "Author dashboard presents paired factual-probe and action-decision diagnostics across agent tasks; probe correctness does not establish complete understanding or isolate the cause of a wrong action.": "作者交互报告展示 agent 任务中的事实探查与动作决策配对诊断；探查答对不等于完整理解，也不能单独确定错误动作的成因。",
     "Attack-generation and offline analysis code for JevAdvBench separates recorded-response replay from fresh hosted inference; labels are mostly model-derived, and new API runs need not repeat saved answers.": "JevAdvBench 攻击生成与离线分析代码，将已记录响应的重算与新的托管推理分开；标签主要来自模型，新 API 运行不保证重现保存的答案。",
-    "Turkish typed-decision checkpoint with shipped temperature scaling; its card flags test-informed training and worsening support-task calibration. Weights were not loaded or independently evaluated.": "土耳其语类型化决策检查点，附温度缩放参数；模型卡标注训练参考了测试结果，并报告客服任务的校准恶化。此次未加载或独立评测权重。"
+    "Turkish typed-decision checkpoint with shipped temperature scaling; its card flags test-informed training and worsening support-task calibration. Weights were not loaded or independently evaluated.": "土耳其语类型化决策检查点，附温度缩放参数；模型卡标注训练参考了测试结果，并报告客服任务的校准恶化。此次未加载或独立评测权重。",
+    "Protobuf clients for Jev in Go, TypeScript and Python; the generator is experimental and its release should match the runtimes.": "为 Jev 生成 Go、TypeScript 和 Python 的 Protobuf 客户端；生成器仍属实验性，需与运行库版本匹配。",
+    "Shadow-mode typed routing demo with Jev and local structured-JSON backends; fixtures are synthetic and the small traffic comparison is author-reported.": "影子模式类型化路由示例，支持 Jev 和本地结构化 JSON 后端；示例数据为合成数据，小规模流量对比由作者报告。",
+    "ModernBERT routing research with trait and model-tier success heads, training and ONNX export tools; results concern specified data, hardware and model tiers.": "基于 ModernBERT 的路由研究，提供属性与模型层级成功率预测头、训练和 ONNX 导出工具；结果限于所列数据、硬件与模型层级。",
+    "Code and recorded-output analysis for a 113-class complaint benchmark comparing zero-shot, retrieval and trained classifiers; replayed analysis is separate from fresh model runs.": "113 类投诉基准的代码与已记录输出分析，比较零样本、检索和已训练分类器；分析重算与重新运行模型是不同流程。",
+    "Chinese reranking benchmark using fixed candidate pools and a pinned proxy-served Jev version; its 100-query single-run results and concurrent latency are workload-specific.": "中文重排基准，使用固定候选池与固定代理服务版本的 Jev；100 条查询的单次运行结果和并发时延仅适用于该工作负载。",
+    "Community survey manuscript on typed-decision prior work, adaptation costs and evidence limits; source and PDF represent one document package, not an independent empirical replication.": "社区综述手稿梳理类型化决策的前期研究、适配成本及证据边界；源码与 PDF 属于同一文档包，不是独立实证复现。"
   }
 }

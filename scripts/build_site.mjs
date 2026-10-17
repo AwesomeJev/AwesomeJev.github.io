@@ -11,7 +11,7 @@ import { renderResource, escapeHTML as esc } from '../site/resource-view.mjs';
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const origin = 'https://awesomejev.github.io';
 const repo = 'https://github.com/reacher-z/Awesome-Jev';
-const contentDate = '2026-10-16'; // Update only when curated page content changes.
+const contentDate = '2026-10-17'; // Update only when curated page content changes.
 const guide = JSON.parse(await readFile(resolve(root, 'data/search-guide.json'), 'utf8'));
 const expansion = JSON.parse(await readFile(resolve(root, 'data/expansion-progress-2026-10-16.json'), 'utf8'));
 const discoveryLocalization = JSON.parse(await readFile(resolve(root, 'data/discovery-translations.zh-CN.json'), 'utf8'));

@@ -2,7 +2,7 @@
 
 Independent community project, not affiliated with TypeSafe AI.
 Canonical website: https://awesomejev.github.io/
-Curated snapshot: 2026-10-16. Findings are author-reported; no model experiments reproduced here.
+Curated snapshot: 2026-10-17. Findings are author-reported; no model experiments reproduced here.
 
 # Jev guide: typed decisions, probabilities, and evaluation
 
@@ -84,7 +84,7 @@ Check each release’s model card and license separately. For example, Bespoke N
 
 Start with versioned empirical papers and their available code or data. The broad Jev benchmark study is one entry point; its findings remain author-reported, rather than independently reproduced by this collection. [Jev benchmark paper, v1](https://arxiv.org/abs/2609.37647v1) · [Accompanying benchmark code](https://github.com/AppliedMachineLearning-Lab/jev-benchmarking)
 
-TypeSafe WorkflowEvals publishes workflows and model-generated reference labels; agreement with those references differs from human-label accuracy. The community Decision Index also contains private tests, so public rankings do not make the entire evaluation independently reproducible. [WorkflowEvals](https://github.com/typesafe-ai/WorkflowEvals) · [Decision Index methodology snapshot](https://huggingface.co/spaces/multimodalart/jev-decision-index/blob/5d09dd9cf226338c68fad22284c4982e6680af7d/data/methodology.json)
+TypeSafe WorkflowEvals publishes workflows and model-generated reference labels; agreement with those references differs from human-label accuracy. The community Decision Index also contains private tests, so public rankings do not make the entire evaluation independently reproducible. The reviewed 0.3.2 snapshot uses a Jev 1.14 lab reference, while its frozen request payloads still name Jev 1.13. Record the model that produced a result separately from the model named in archived inputs. [WorkflowEvals](https://github.com/typesafe-ai/WorkflowEvals) · [Decision Index methodology snapshot](https://huggingface.co/spaces/multimodalart/jev-decision-index/blob/0ddf6758073eb77ae449a3541f57286d7f39d93f/data/methodology.json)
 
 ## What can I reproduce from a public research artifact?
 
@@ -322,6 +322,14 @@ Same-number citation swaps probe financial-evidence verification; rejecting wron
 
 Primary source: https://arxiv.org/abs/2610.08675v1
 
+## Token-Efficient Multi-Agent Collaboration via System One-Guided Computational Division of Labor
+
+Papers · Zhou et al. · 2026-10-06 · v1
+
+Separates bounded multi-agent coordination from LLM reasoning through a controller–reader loop; reported GPT-4o-token and end-to-end latency reductions concern complete framework comparisons on seven benchmarks.
+
+Primary source: https://arxiv.org/abs/2610.08155v1
+
 ## JEV versus LLMs: Accuracy, Cost and Calibration on Seven Political Science Replications
 
 Papers · Denney & DiGiuseppe · 2026-10-06 · v2
@@ -466,6 +474,14 @@ Estimates whether asking for missing information would improve a typed decision.
 
 Primary source: https://arxiv.org/abs/2609.30706v1
 
+## Jev-Mobile: Jev as an Executor for Mobile GUI Agents
+
+Papers · Zhang · 2026-09-24 · v1
+
+Uses VLM local-goal planning with Jev action selection over Android accessibility-tree candidates; reported time and API-cost savings are conditional on successful trajectories and the tested controller configurations.
+
+Primary source: https://arxiv.org/abs/2609.30186v1
+
 ## Just Ask Jev: Reinforcement Learning for Calibrated Decisions as a Zero-Shot Detector of AI Alignment Failures
 
 Papers · Guo et al. · 2026-09-24 · v1
@@ -505,6 +521,14 @@ Papers · Li · 2026-09-23 · v1
 Jev state tables and sparse flagship-model anchors support population simulations with shared human–model discrepancy estimates; larger simulations do not add human evidence or establish prospective intervention effects.
 
 Primary source: https://arxiv.org/abs/2609.27535v1
+
+## JEV-Star: Fast, Low-Cost StarCraft II Control with Language-Model Planning
+
+Papers · Ma, Zhao, Zeng & Zhao · 2026-09-23 · v1
+
+Combines Jev action selection with persistent language-model planning for StarCraft II; limited full-game evidence and simultaneous interface changes prevent isolating the planning contribution.
+
+Primary source: https://arxiv.org/abs/2609.27331v1
 
 ## Evaluating Decision Models for Text Annotation in Computational Social Science
 
@@ -626,6 +650,14 @@ A multimodal model with a joint schema head, returning probabilities over allowe
 
 Primary source: https://huggingface.co/Cloudflare/clef
 
+## protoc-gen-jev
+
+Tools · Buf · experimental generator · MIT
+
+Generates typed Go, TypeScript and Python clients from annotated Protobuf schemas. Generator and runtime releases must be matched; backend behavior was not tested here.
+
+Primary source: https://github.com/bufbuild/protoc-gen-jev
+
 ## TypeSafe Python SDK
 
 Tools · Python · MIT
@@ -722,6 +754,22 @@ An archive of Decision Index evaluation runs for Bespoke Nimble 9B v3.
 
 Primary source: https://huggingface.co/datasets/bespokelabs/bespoke-nimble-9b-v3-decision-index
 
+## 113-class complaint classification benchmark
+
+Evaluations · Ariño de la Rubia · recorded-output analysis
+
+Compares zero-shot, retrieval and trained classifiers using released predictions. Numeral tracing and analysis replay differ from retraining or new model calls.
+
+Primary source: https://github.com/earino/zero-shot-complaint-benchmark
+
+## Jev RAG Chinese Benchmark
+
+Evaluations · Community evaluation · 100 queries · single run
+
+Chinese reranking comparison with fixed candidate pools and a pinned OpenRouter-served Jev version. Small single-run results and concurrent latency remain workload-specific.
+
+Primary source: https://github.com/vicfei/jev-rag-zh-benchmark
+
 ## JevAdvBench analysis and evaluation code
 
 Evaluations · MIT code · CC BY-NC 4.0 data
@@ -785,6 +833,14 @@ Evaluations · Entagl Research · 2026-09-23
 Author-run labeled decisions and workflow replays. Private customer cases limit public reproducibility.
 
 Primary source: https://www.entagl.com/blog/typesafe-jev-benchmark-ai-decision-models
+
+## A Survey on Jev: Prior Research, Adaptation Costs, and Evidence of System One Models
+
+Guides · Chen et al. · community survey v0.5
+
+Survey manuscript connecting routing, label-probability readout and adaptation costs. The README abstract was inspected; this listing is not a full-manuscript review or empirical replication.
+
+Primary source: https://github.com/evan-py-chen/jev-survey
 
 ## Introducing System One Models & Jev
 

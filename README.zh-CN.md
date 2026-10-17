@@ -6,7 +6,7 @@
 
 **[主仓库](https://github.com/reacher-z/Awesome-Jev)** · [网站](https://awesomejev.github.io/zh/) · [论文目录](https://awesomejev.github.io/zh/papers/) · [研究指南](https://awesomejev.github.io/zh/guide/) · [新增资源](https://awesomejev.github.io/zh/discoveries/) · [English](README.md) · [综述](docs/survey.zh-CN.md) · [BibTeX](references.bib) · [参与贡献](CONTRIBUTING.md)
 
-独立社区项目，与 TypeSafe AI 无隶属关系。最近整理：**2026-10-16**。网站从 [AwesomeJev.github.io](https://github.com/AwesomeJev/AwesomeJev.github.io) 仓库发布。
+独立社区项目，与 TypeSafe AI 无隶属关系。最近整理：**2026-10-17**。网站从 [AwesomeJev.github.io](https://github.com/AwesomeJev/AwesomeJev.github.io) 仓库发布。
 
 [新增资源目录](https://awesomejev.github.io/zh/discoveries/)补充了数百项项目、数据集、模型卡、指南和研究论文，并标明核查等级与相关性。[扩展审阅与计数方法](docs/expansion-2026-10-16.md)可供复查；摘要检查不等于全文评审。
 
@@ -43,11 +43,11 @@ TypeSafe 的 Jev 接收状态与类型化问题，为应用代码返回决策和
 - [置信度说明](https://docs.typesafe.ai/confidence) · [Jev 1.13 已知局限](https://docs.typesafe.ai/model-jaggedness/jev-1.13)。
 - [实验性图片输入](https://docs.typesafe.ai/images) · [Box](https://docs.typesafe.ai/primitives/box) — 需显式开启；Box 要求 Jev 1.14。
 
-截至 **2026-10-16**，`jev-latest` 指向 `jev-1.13.0`，`jev-preview` 指向 `jev-1.14.0`。评测时应固定版本。概念区别与评估协议见[综述](docs/survey.zh-CN.md)。
+截至 **2026-10-17**，`jev-latest` 指向 `jev-1.13.0`，`jev-preview` 指向 `jev-1.14.0`。评测时应固定版本。概念区别与评估协议见[综述](docs/survey.zh-CN.md)。
 
 ## 论文
 
-下列 56 项直接研究均为 **arXiv 预印本**。日期对应已核查并链接的版本，不一定是首次提交日期。结果由作者报告，本项目没有复现实验。标题中的速度或成本主张保留作者原文。[参考文献](references.bib) · [证据比较](docs/survey.zh-CN.md)
+下列 59 项直接研究均为 **arXiv 预印本**。日期对应已核查并链接的版本，不一定是首次提交日期。结果由作者报告，本项目没有复现实验。标题中的速度或成本主张保留作者原文。[参考文献](references.bib) · [证据比较](docs/survey.zh-CN.md)
 
 ### 评测与基准
 
@@ -119,9 +119,12 @@ TypeSafe 的 Jev 接收状态与类型化问题，为应用代码返回决策和
 - **[Jev for Scientific Decisions: Evaluating Semantic Choices and Their Consequences](https://arxiv.org/abs/2609.24965v3)** — Deng, Fan, Zhang & Xie. *2026-10-15, arXiv v3；首次提交 2026-09-21*. 作者在十个预设科学案例中分别评估语义选择、计算得到的数值与最终标签；对比模型的错误可能被不变的最终标签掩盖。 [代码与发布范围](https://github.com/bydeng01/scientific-decision-eval)。
 - **[Same Scores, Different Decisions: Evaluating JEV and Language Models for Legal Document Understanding](https://arxiv.org/abs/2609.27678v2)** — Zhang et al. *2026-10-10, arXiv v2；首次提交 2026-09-23*. ContractNLI 请求变化可能改变具体错误答案，而总体准确率保持不变；稳定答案也可能保留错误。该基准不能验证真实法律场景的部署有效性。 [初始比较材料](https://github.com/ZF-Utokyo/Jev-Benchmark)。
 - **[Jev in Medicine: A Benchmark Evaluation](https://arxiv.org/abs/2609.34024v4)** — Madrid-García & Merino-Barbancho. *2026-10-10, arXiv v4；首次提交 2026-09-27*. Jev 1.13 的初步医学基准评测报告了随任务变化的准确率、校准表现及较弱的不可回答问题识别能力；这不能证明临床部署有效性。 [作者补充材料](https://zenodo.org/records/23008156)。
+- **[Token-Efficient Multi-Agent Collaboration via System One-Guided Computational Division of Labor](https://arxiv.org/abs/2610.08155v1)** — Zhou et al. *2026-10-06, arXiv v1*. 通过控制器—读取器循环分离多智能体的有界协调与 LLM 推理；报告的 GPT-4o token 用量和端到端时延下降来自七个基准上的完整框架比较。
+- **[Jev-Mobile: Jev as an Executor for Mobile GUI Agents](https://arxiv.org/abs/2609.30186v1)** — Zhang. *2026-09-24, arXiv v1*. 用 VLM 规划局部目标，再由 Jev 从 Android 无障碍树候选中选动作；报告的时延和 API 成本节省仅针对成功轨迹及所测控制器配置。
 - **[Evaluating Decision Models for Text Annotation in Computational Social Science](https://arxiv.org/abs/2609.24574v2)** — Ibrahim & Zaki. *2026-09-23, arXiv v2；首次提交 2026-09-21*. 评估零样本社会科学标注与按置信度分流的 LLM 级联；低成本仍伴随任务相关误差和过度自信，置信度不能替代标签验证。 [代码与调用记录](https://github.com/hazemibrahim97/decision-models-css)。
 - **[KITE: Scaling Jev Population Experiments with Sparse Flagship Calibration](https://arxiv.org/abs/2609.27535v1)** — Li. *2026-09-23, arXiv v1*. Jev 状态表与少量强模型锚点支持纳入共享人—模型差异估计的群体模拟；扩大模拟规模不会增加人类证据，也不能确立前瞻性干预效果。 [代码与汇总记录](https://github.com/HengyuLi-Ozaki-lab/kite_population_simulator)。
 - **[Can Jev Judge Radiology Reports? Evaluating a System One Model for Clinical Factuality](https://arxiv.org/abs/2609.27607v1)** — Huang et al. *2026-09-23, arXiv v1*. Jev 双向检查生成与参考放射学报告之间的陈述支持关系；与专家的一致性受报告长度和错误定义影响，并不证明前瞻性临床效果。
+- **[JEV-Star: Fast, Low-Cost StarCraft II Control with Language-Model Planning](https://arxiv.org/abs/2609.27331v1)** — Ma, Zhao, Zeng & Zhao. *2026-09-23, arXiv v1*. 在星际争霸 II 中结合 Jev 动作选择与持续的语言模型规划；完整对局证据有限，同时发生的接口变化使规划贡献无法单独归因。 [代码与部分比较材料](https://github.com/sc2musa/jev_star)。
 
 ## 模型
 
@@ -142,6 +145,8 @@ TypeSafe 的 Jev 接收状态与类型化问题，为应用代码返回决策和
 
 ## 基准与评测工具
 
+- **[113 类投诉分类基准](https://github.com/earino/zero-shot-complaint-benchmark)** — 使用已记录输出比较零样本、检索和已训练分类器，分析重算与重新运行模型分开。
+- **[中文 RAG 重排基准](https://github.com/vicfei/jev-rag-zh-benchmark)** — 使用固定代理模型与候选池的 100 条查询单次评测，不代表通用重排器排名。
 - **[JevAdvBench 代码](https://github.com/JevAdvBench/JevAdvBench)** — 攻击生成、已记录响应分析和新 API 评测，以相同输入重跑为对照。声明代码采用 MIT、数据采用 CC BY-NC 4.0；多数标签来自模型，本项目未运行分析。
 - **[Reading Right, Acting Wrong — 诊断看板](https://yubol-bobo.github.io/System_one_model_evaluation/)** — 作者报告将事实探查与动作决策配对；当前覆盖22个系统，与固定论文的18个不同，本次未验证代码或数据发布。
 - **[Artificial Analysis Decision Index](https://artificialanalysis.ai/evaluations/artificial-analysis-decision-index)** — 第三方能力、校准、成本与延迟评测。[方法说明](https://artificialanalysis.ai/methodology/decision-index)列出任务过滤规则与私有知识子集；完整测试集不能公开复现。
@@ -172,6 +177,7 @@ TypeSafe 的四个数据集提供工作流案例、模型生成的参考标签�
 
 | 项目 | 维护方 | 用途 |
 | :--- | :--- | :--- |
+| [Protobuf 客户端生成器](https://github.com/bufbuild/protoc-gen-jev) | Buf | 生成 Go、TypeScript 和 Python 类型化客户端；生成器与运行库需匹配版本。 |
 | [Python SDK](https://github.com/typesafe-ai/typesafe-sdk-python) | TypeSafe | 官方 Python 同步与异步客户端。 |
 | [JavaScript / TypeScript SDK](https://github.com/typesafe-ai/typesafe-sdk-js) | TypeSafe | 官方客户端，支持答案类型推导。 |
 | [System One Adapter](https://github.com/typesafe-ai/system-one-adapter-python) | TypeSafe | 用可比较的类型化问题接口评估 LLM 基线。 |
@@ -180,6 +186,8 @@ TypeSafe 的四个数据集提供工作流案例、模型生成的参考标签�
 | [n8n nodes](https://github.com/typesafe-ai/n8n-nodes-typesafe-ai) | TypeSafe | n8n 工作流节点。 |
 
 ## 实践指南
+
+- [Jev 社区综述](https://github.com/evan-py-chen/jev-survey) — 前期研究、适配成本与证据边界；手稿 v0.5，已收入书目。
 
 以下是厂商编写的实践教程；应使用自身任务的独立测试样例验证阈值。
 
@@ -208,7 +216,7 @@ TypeSafe 的四个数据集提供工作流案例、模型生成的参考标签�
 | 可组合流水线 | Khattab et al., *DSPy*. 2023. | [论文](https://arxiv.org/abs/2310.03714) |
 | 高效执行 | Zheng et al., *SGLang*. NeurIPS, 2024. | [论文](https://papers.nips.cc/paper_files/paper/2024/file/724be4472168f31ba1c9ac630f15dec8-Paper-Conference.pdf) · [代码](https://github.com/sgl-project/sglang) |
 
-64 篇精选论文均收录于 [references.bib](references.bib)。核查范围与局限见[本次论文精选记录](docs/reviews/papers-2026-10-16.md)。
+精选论文与社区综述共 68 条书目信息收录于 [references.bib](references.bib)。核查范围与局限见[本次论文精选记录](docs/reviews/papers-2026-10-16.md)。
 
 ## 快速开始
 

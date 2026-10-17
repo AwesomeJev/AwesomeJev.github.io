@@ -1,7 +1,7 @@
 {
   "title": "Awesome Jev research papers",
   "url": "https://awesomejev.github.io/papers/",
-  "updated": "2026-10-16",
+  "updated": "2026-10-17",
   "scope": "Curated direct preprints; findings remain author-reported. No experimental reproduction implied.",
   "papers": [
     {
@@ -263,6 +263,16 @@
     },
     {
       "category": "Papers",
+      "title": "Token-Efficient Multi-Agent Collaboration via System One-Guided Computational Division of Labor",
+      "by": "Zhou et al. · 2026-10-06 · v1",
+      "date": "2026-10-06",
+      "first_submitted": "2026-10-06",
+      "url": "https://arxiv.org/abs/2610.08155v1",
+      "en": "Separates bounded multi-agent coordination from LLM reasoning through a controller–reader loop; reported GPT-4o-token and end-to-end latency reductions concern complete framework comparisons on seven benchmarks.",
+      "zh": "通过控制器—读取器循环分离多智能体的有界协调与 LLM 推理；报告的 GPT-4o token 用量和端到端时延下降来自七个基准上的完整框架比较。"
+    },
+    {
+      "category": "Papers",
       "title": "JEV versus LLMs: Accuracy, Cost and Calibration on Seven Political Science Replications",
       "by": "Denney & DiGiuseppe · 2026-10-06 · v2",
       "date": "2026-10-06",
@@ -427,6 +437,16 @@
     },
     {
       "category": "Papers",
+      "title": "Jev-Mobile: Jev as an Executor for Mobile GUI Agents",
+      "by": "Zhang · 2026-09-24 · v1",
+      "date": "2026-09-24",
+      "first_submitted": "2026-09-24",
+      "url": "https://arxiv.org/abs/2609.30186v1",
+      "en": "Uses VLM local-goal planning with Jev action selection over Android accessibility-tree candidates; reported time and API-cost savings are conditional on successful trajectories and the tested controller configurations.",
+      "zh": "用 VLM 规划局部目标，再由 Jev 从 Android 无障碍树候选中选动作；报告的时延和 API 成本节省仅针对成功轨迹及所测控制器配置。"
+    },
+    {
+      "category": "Papers",
       "title": "Just Ask Jev: Reinforcement Learning for Calibrated Decisions as a Zero-Shot Detector of AI Alignment Failures",
       "by": "Guo et al. · 2026-09-24 · v1",
       "date": "2026-09-24",
@@ -472,6 +492,16 @@
       "url": "https://arxiv.org/abs/2609.27535v1",
       "en": "Jev state tables and sparse flagship-model anchors support population simulations with shared human–model discrepancy estimates; larger simulations do not add human evidence or establish prospective intervention effects.",
       "zh": "Jev 状态表与少量强模型锚点支持纳入共享人—模型差异估计的群体模拟；扩大模拟规模不会增加人类证据，也不能确立前瞻性干预效果。"
+    },
+    {
+      "category": "Papers",
+      "title": "JEV-Star: Fast, Low-Cost StarCraft II Control with Language-Model Planning",
+      "by": "Ma, Zhao, Zeng & Zhao · 2026-09-23 · v1",
+      "date": "2026-09-23",
+      "first_submitted": "2026-09-23",
+      "url": "https://arxiv.org/abs/2609.27331v1",
+      "en": "Combines Jev action selection with persistent language-model planning for StarCraft II; limited full-game evidence and simultaneous interface changes prevent isolating the planning contribution.",
+      "zh": "在星际争霸 II 中结合 Jev 动作选择与持续的语言模型规划；完整对局证据有限，同时发生的接口变化使规划贡献无法单独归因。"
     },
     {
       "category": "Papers",

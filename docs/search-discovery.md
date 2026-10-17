@@ -174,3 +174,7 @@ The original [deployment run](https://github.com/AwesomeJev/AwesomeJev.github.io
 The single-job workflow now supplies the same `github-pages-${{ github.run_id }}-${{ github.run_attempt }}` value to the upload action’s `name` and the deployment action’s `artifact_name`. The run identifier remains stable on a retry while the attempt increases, so the deployment step selects only that attempt’s upload. This addresses the observed naming collision; it does not guarantee immediate artifact metadata visibility. If upload and deployment are later split into separately retried jobs, pass the upload’s chosen name through a job output. [Pinned action inputs and context evidence](../data/pages-artifact-name-review-2026-10-16.json).
 
 **中文：** 原部署先因未找到已上传文件失败，同一运行重试又上传了同名文件，随后因匹配到两份而失败；新建运行已成功部署同一提交。现将上传与部署的文件名统一包含运行编号和重试次数，避免旧尝试的文件重名。此改动处理重名问题，不承诺消除平台元数据延迟；若以后拆分上传和部署作业，应传递实际上传名称。
+
+**Retry verification, 2026-10-17 UTC:** the [same Pages run](https://github.com/AwesomeJev/AwesomeJev.github.io/actions/runs/38909381634) for `55fec92` succeeded on attempts 1 and 2. The observed artifact names ended in `-1` and `-2`, respectively. This deliberate rerun verifies separation of retry uploads; no site-content change or extra IndexNow notification was involved.
+
+**重试验证（2026-10-17 UTC）：** 同一部署运行的两次尝试均成功，文件名称分别以 `-1`、`-2` 结尾，实际验证了重试上传的名称隔离。该验证没有改变网站内容，也没有再次提交搜索通知。
