@@ -174,3 +174,11 @@ One complete AudioJev checkpoint repository was accepted from its inspected publ
 Four distinct papers were accepted from fixed-v1 arXiv abstract pages, bringing the expansion to **777 sources**. Candidate identities came from the open scan proposal; the acceptance uses fresh, version-protected primary evidence. No old ledger rows were altered, no companion links were counted, and remaining scan records are still pending. English and Chinese descriptions retain medical, hardware, event-model and language-transfer limitations. [Review record](../../data/domain-transfer-review-2026-10-17.json).
 
 **中文：** 四篇固定v1原始摘要使扩展达到777项；采用新抓取并固定版本的证据，不改写旧台账，不计入配套链接，扫描其余候选仍待审。中英文简介均保留医学、硬件、事件模型及语言迁移限制。
+
+## Four model-card releases — 17 October 2026 UTC
+
+Four distinct model repositories bring the expansion to **781 sources** and the main catalog to **130 curated resources**. All inspected card bytes match explicit Hub commits; three match the earlier scan, while Span-02 has changed and moved from `lihe07` to `respanai`. The old and new addresses are one identity, including in subsequent scanner matching. A regression test distinguishes the real alias from a similarly prefixed model. [Pinned evidence and review limits](../../data/model-card-review-2026-10-17.json).
+
+Amos separates zero-shot and benchmark-train-prior settings. KnowLine discloses public-score checkpoint selection, related task/source exposure and approximate self-run calibration comparisons. Lychee declares CC BY-NC 4.0; an Apache-2.0 base does not replace that model license. Span-02 documents a dedicated engine, optional reasoning and separate index/default settings. These descriptions are publisher evidence, not reproduced performance. Sibling sizes, release variants and component files were not counted separately.
+
+**中文：** 四个模型仓库使扩展达到781项、精选达到130项，模型卡均与固定Hub提交的字节一致。Span-02迁移且文档改变，旧新地址只算一个来源，并以回归测试保护扫描身份匹配。保留Amos先验拟合条件、KnowLine公开评测选点与来源重叠、Lychee非商业许可、Span专用引擎与推理配置区别；没有执行模型或拆分尺寸、版本、组件来增加计数。

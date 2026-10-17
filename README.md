@@ -139,6 +139,10 @@ These are independent implementations, not released TypeSafe weights. Licenses b
 
 | Model | Publisher | Declared license | Scope |
 | :--- | :--- | :--- | :--- |
+| [Amos 1 large](https://huggingface.co/mukaddamzaid/amos-1-large) | mukaddamzaid | Apache-2.0 | English typed decisions with image inputs; distinguish zero-shot results from train-split prior fitting, and public-only Decision Index results from the full evaluation. |
+| [KnowLine-35B-A3B-Gen1](https://huggingface.co/PelaAI/KnowLine-35B-A3B-Gen1) | PelaAI | Apache-2.0 weights; MIT server | English/Chinese MoE decision checkpoint; public-suite checkpoint selection, disclosed task/source overlap and self-run calibration ranges constrain comparisons with independent held-out evaluations. |
+| [Lychee-27B](https://huggingface.co/LycheeAI/Lychee-27B) | LycheeAI | **CC BY-NC 4.0** | Noncommercial Qwen-derived typed-decision model with publisher-reported public-suite results; requests exceeding context or GPU-memory limits are documented as rejected rather than truncated. |
+| [Span-02](https://huggingface.co/respanai/span-02) | Respan | Apache-2.0 | Multimodal decision model with a dedicated Blackwell Rust/CUDA runtime and optional reasoning; distinguish default serving from deterministic index settings and output-specific confidence semantics. |
 | [AudioJev](https://huggingface.co/shlv/AudioJev) | shlv | Qwen Research | One released AudioJev training seed with a Qwen Research license; original-order scores disclose audio-source overlap and are distinct from the paper’s three-seed averages. |
 | [ufakzeka-karar](https://huggingface.co/ufakai/ufakzeka-karar) | ufak AI | Apache-2.0 | Turkish decisions with temperature scaling; test-informed benchmark results and task-specific calibration limits. |
 | [Jeva-4B](https://huggingface.co/LIQIIIII/Jeva-4B) | Jeva authors | Not declared in inspected card | Backbone, adapter and decision-head package; weights not tested here. |

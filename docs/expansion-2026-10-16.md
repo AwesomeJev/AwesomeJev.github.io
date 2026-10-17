@@ -1,6 +1,6 @@
 # Resource expansion — 16 October 2026
 
-**777 newly added, evidence-checked sources / target: at least 301.**
+**781 newly added, evidence-checked sources / target: at least 301.**
 
 [Main collection](../README.md) · [Website source search](https://awesomejev.github.io/#corpus) · [Machine-readable progress](../data/expansion-progress-2026-10-16.json) · [Frozen baseline](../data/expansion-baseline-2026-10-16.json) · [Prior-citation supplement](../data/expansion-baseline-supplement-2026-10-16.json)
 
@@ -8,13 +8,13 @@ The baseline is [commit 3519c15](https://github.com/reacher-z/Awesome-Jev/tree/3
 
 Only sources in the [reviewed intake](../data/expansion-intake-2026-10-16.json) count toward this expansion. This is a discovery directory with explicit screening levels. **Direct** sources concern Jev or typed decision systems; **adjacent** resources implement closely related methods; **background** papers provide research context. Listing is not an endorsement or independent reproduction. The short descriptions explain relevance, not a universal recommendation.
 
-**中文：本轮已新增 777 项有核查证据的资源，目标至少 301 项。** 已有台账、精选与引用链接、重复正文或论文题名均不重复计数，仅元数据条目不计入目标。下表区分直接相关、邻近方法与背景研究；自动内容筛查或摘要检查不等于全文评审，也不代表实验复现。
+**中文：本轮已新增 781 项有核查证据的资源，目标至少 301 项。** 已有台账、精选与引用链接、重复正文或论文题名均不重复计数，仅元数据条目不计入目标。下表区分直接相关、邻近方法与背景研究；自动内容筛查或摘要检查不等于全文评审，也不代表实验复现。
 
 | Resource type | Newly added |
 | --- | ---: |
 | Datasets | 101 |
 | Guides and evaluations | 38 |
-| Models | 55 |
+| Models | 59 |
 | Papers | 31 |
 | Projects | 211 |
 | Research foundations | 341 |
@@ -175,6 +175,7 @@ Only sources in the [reviewed intake](../data/expansion-intake-2026-10-16.json) 
 | [A decision model that learned to cook and cooperate](https://huggingface.co/rodneyslafuente/decision-model-rl-overcooked) | direct · `content_screened` | Overcooked cooperative-game decision policy, with discrete native-action scoring and shared-policy evaluation artifacts. |
 | [aimeigaoshou/agent-jev](https://huggingface.co/aimeigaoshou/agent-jev) | direct · `content_screened` | AgentJev model card documenting a compact state-to-distribution decision interface without free-text decoding. |
 | [allenai/truthfulqa-truth-judge-llama2-7B](https://huggingface.co/allenai/truthfulqa-truth-judge-llama2-7B) | adjacent · `content_screened` | Open TruthfulQA truthfulness judge checkpoint, relevant to comparing model-derived evaluation labels. |
+| [Amos 1 large](https://huggingface.co/mukaddamzaid/amos-1-large) | direct · `content_screened` | English typed decisions with image inputs; distinguish zero-shot results from train-split prior fitting, and public-only Decision Index results from the full evaluation. |
 | [Archai JEV Nesso 4B Ita (System One Decision Engine)](https://huggingface.co/nickprock/archai-jev-nesso-4b-ita) | direct · `content_screened` | Italian candidate-token decision checkpoint covering moderation and intent-routing tasks; capabilities remain publisher claims. |
 | [AudioJev checkpoint](https://huggingface.co/shlv/AudioJev) | direct · `content_screened` | One released AudioJev training seed with a Qwen Research license; original-order scores disclose audio-source overlap and are distinct from the paper’s three-seed averages. |
 | [bit-jev-2b-distilled](https://huggingface.co/jinghao1632/bit-jev-2b-distilled) | direct · `content_screened` | Bit-Jev distilled model card with bilingual typed-question interfaces and local runtime instructions. |
@@ -194,11 +195,13 @@ Only sources in the [reviewed intake](../data/expansion-intake-2026-10-16.json) 
 | [JudgeLM Model Card](https://huggingface.co/BAAI/JudgeLM-33B-v1.0) | adjacent · `content_screened` | Vicuna-based JudgeLM checkpoint for evaluating open-ended answer pairs; useful as a generative judge comparison. |
 | [katanemo/Arch-Router-1.5B](https://huggingface.co/katanemo/Arch-Router-1.5B) | adjacent · `content_screened` | Arch-Router checkpoint addressing preference-aware LLM routing rather than general answer generation. |
 | [kenning-xl-v0.6 (experimental)](https://huggingface.co/systemonedev/kenning-xl-v0.6) | direct · `content_screened` | Experimental Kenning decoder variant using constrained answer-token readout behind the System One interface. |
+| [KnowLine-35B-A3B-Gen1](https://huggingface.co/PelaAI/KnowLine-35B-A3B-Gen1) | direct · `content_screened` | English/Chinese MoE decision checkpoint; public-suite checkpoint selection, disclosed task/source overlap and self-run calibration ranges constrain comparisons with independent held-out evaluations. |
 | [Laya typed-decisions, fine-tuned on browser decisions](https://huggingface.co/AIMultiple/laya-typed-decisions-browser-ft) | direct · `content_screened` | Browser-agent fine-tuning experiment for Laya, including reported negative results and reproducibility details. |
 | [LFM2.5-Encoder-350-Prompt-Router](https://huggingface.co/LiquidAI/LFM2.5-Encoder-350M-Prompt-Router) | adjacent · `content_screened` | Encoder-based prompt router that scores user-defined routing lanes in one pass, an adjacent routing baseline. |
 | [LightJev 0.6B — Typed Decisions v0.2](https://huggingface.co/rongxinzy/LightJev-0.6B-typed-decisions) | direct · `content_screened` | LightJev candidate-scoring checkpoint for finite-answer English workflow questions, with intended-use boundaries. |
 | [llm-jp-4.1-33b-systemone-experimental](https://huggingface.co/shunmoridev/llm-jp-4.1-33b-systemone-experimental) | direct · `content_screened` | Experimental Japanese LLM-jp candidate-token scorer; the card explicitly disclaims demonstrated general Jev-equivalent quality. |
 | [local-system-one-student](https://huggingface.co/Mannedood/local-system-one-student) | direct · `content_screened` | Distilled encoder for one fixed coding-agent action schema; the card explicitly limits claims of Jev equivalence. |
+| [Lychee-27B](https://huggingface.co/LycheeAI/Lychee-27B) | direct · `content_screened` | Noncommercial Qwen-derived typed-decision model with publisher-reported public-suite results; requests exceeding context or GPU-memory limits are documented as rejected rather than truncated. |
 | [MD-Judge for Salad-Bench](https://huggingface.co/OpenSafetyLab/MD-Judge-v0.1) | adjacent · `content_screened` | MD-Judge safety classifier for question-answer pairs, offering an adjacent guardrail and evaluator baseline. |
 | [mJev-Qwen3-VL-4B-RLCD](https://huggingface.co/SoMarkAI/mJev-Qwen3-VL-4B-RLCD) | direct · `content_screened` | Multimodal mJev candidate-selection checkpoint with visual context, probability outputs and documented runtime. |
 | [Modality Router (Merged) - Smart Output Modality Selection](https://huggingface.co/vllm-sr/mmbert32k-modality-router-merged) | adjacent · `content_screened` | ModernBERT modality router choosing output modalities for vLLM Semantic Router, an adjacent request-routing artifact. |
@@ -216,6 +219,7 @@ Only sources in the [reviewed intake](../data/expansion-intake-2026-10-16.json) 
 | [s1-llm-auto-router](https://huggingface.co/system1models/s1-llm-auto-router) | direct · `content_screened` | CPU request classifier predicting routing signals such as task category, difficulty and stakes for an LLM router. |
 | [Schema-conditioned candidate scorer (DeBERTa-v3-large)](https://huggingface.co/mobarmg/jev-schema-scorer-deberta-v3-large) | direct · `content_screened` | Schema-conditioned DeBERTa scalar scorer with deterministic grouping into Choice, Noul and Score answers. |
 | [SourceHat RLCD: typed decisions with Qwen3.5-9B](https://huggingface.co/SourceHat-Labs/RLCD-Qwen3.5-9B-Gated-Decision) | direct · `content_screened` | Gated decision-head study distinguishing commitment, alternatives and abstention over supplied choices. |
+| [Span-02](https://huggingface.co/respanai/span-02) | direct · `content_screened` | Multimodal decision model with a dedicated Blackwell Rust/CUDA runtime and optional reasoning; distinguish default serving from deterministic index settings and output-specific confidence semantics. |
 | [StartLux-Decision-v1.1-27B-Instant](https://huggingface.co/startlux-models/StartLux-Decision-v1.1-27B-Instant) | direct · `content_screened` | Multimodal StartLux decision checkpoint with typed questions, bounded image inputs and candidate probabilities. |
 | [System One (distilled)](https://huggingface.co/shreyanbr/system-one-distilled) | direct · `content_screened` | Distilled DeBERTa model using teacher-generated supervision for typed routing, classification and gating questions. |
 | [System-One QLoRA](https://huggingface.co/yocoms/system1-qlora) | direct · `content_screened` | QLoRA single-pass decision-scorer experiment with held-out calibration reporting and explicit independent-project scope. |

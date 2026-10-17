@@ -267,6 +267,42 @@ const translations = {
 // Descriptions are editorial summaries. Paper findings remain author-reported.
 const resources = [
   {
+    "category": "Models",
+    "title": "Amos 1 large",
+    "by": "mukaddamzaid · Apache-2.0",
+    "url": "https://huggingface.co/mukaddamzaid/amos-1-large",
+    "en": "English typed decisions with image inputs; distinguish zero-shot results from train-split prior fitting, and public-only Decision Index results from the full evaluation.",
+    "zh": "支持图像输入的英文类型化决策模型；应区分零样本结果与按训练切分拟合先验的结果，以及 Decision Index 公共部分与完整评测。",
+    "provenance": "modelcard"
+  },
+  {
+    "category": "Models",
+    "title": "KnowLine-35B-A3B-Gen1",
+    "by": "PelaAI · Apache-2.0 weights; MIT server",
+    "url": "https://huggingface.co/PelaAI/KnowLine-35B-A3B-Gen1",
+    "en": "English/Chinese MoE decision checkpoint; public-suite checkpoint selection, disclosed task/source overlap and self-run calibration ranges constrain comparisons with independent held-out evaluations.",
+    "zh": "英中文 MoE 决策检查点；公开评测选点、披露的任务／来源重叠与自行计算的校准区间，限制了它与独立留出评测的比较。",
+    "provenance": "modelcard"
+  },
+  {
+    "category": "Models",
+    "title": "Lychee-27B",
+    "by": "LycheeAI · CC BY-NC 4.0",
+    "url": "https://huggingface.co/LycheeAI/Lychee-27B",
+    "en": "Noncommercial Qwen-derived typed-decision model with publisher-reported public-suite results; requests exceeding context or GPU-memory limits are documented as rejected rather than truncated.",
+    "zh": "按非商业许可发布的 Qwen 派生决策模型，公共评测结果由发布者报告；文档说明超出上下文或显存限制时拒绝请求，而非截断。",
+    "provenance": "modelcard"
+  },
+  {
+    "category": "Models",
+    "title": "Span-02",
+    "by": "Respan · Apache-2.0",
+    "url": "https://huggingface.co/respanai/span-02",
+    "en": "Multimodal decision model with a dedicated Blackwell Rust/CUDA runtime and optional reasoning; distinguish default serving from deterministic index settings and output-specific confidence semantics.",
+    "zh": "使用专用 Blackwell Rust/CUDA 运行库、可选择生成推理的多模态决策模型；需区分默认服务与确定性榜单配置，以及不同输出类型的置信度语义。",
+    "provenance": "modelcard"
+  },
+  {
     "category": "Papers",
     "title": "OmniMed-Jev: Calibrating LVLM Confidence for Trustworthy Medical Multimodal Decisions via System One",
     "by": "Tang & Chen · 2026-09-30 · v1",

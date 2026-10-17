@@ -3,23 +3,23 @@
   "baseline_commit": "3519c15d7e00686a8dbf9b1e184c68726327ab1e",
   "baseline_source_index_sha256": "8bfdd20564f2cda54bb8264c3c802f315e3e9a11b153bd85dde4325f53c841d5",
   "target_new_sources": 301,
-  "accepted_new_sources": 777,
+  "accepted_new_sources": 781,
   "remaining_to_target": 0,
   "target_count_reached": true,
   "current_index_counts": {
     "editorial_reviewed": 4,
-    "content_screened": 2384,
+    "content_screened": 2388,
     "abstract_checked": 1837,
     "metadata_only": 47,
-    "raw_records": 4286,
-    "unique_records": 4272,
+    "raw_records": 4290,
+    "unique_records": 4276,
     "duplicate_records": 14,
-    "checked_sources": 4225
+    "checked_sources": 4229
   },
   "by_category": {
     "Datasets": 101,
     "Guides and evaluations": 38,
-    "Models": 55,
+    "Models": 59,
     "Papers": 31,
     "Projects": 211,
     "Research foundations": 341
@@ -27,11 +27,11 @@
   "by_relation": {
     "adjacent": 25,
     "background": 341,
-    "direct": 411
+    "direct": 415
   },
   "by_verification_level": {
     "abstract_checked": 372,
-    "content_screened": 405
+    "content_screened": 409
   },
   "verification_note": "Evidence depth is labeled per source. Content screening and abstract checks do not establish full-paper review, peer review, endorsement, or experimental reproduction.",
   "additions": [
@@ -1740,6 +1740,18 @@
       "ledger": "ecosystem-sources.jsonl"
     },
     {
+      "title": "Amos 1 large",
+      "url": "https://huggingface.co/mukaddamzaid/amos-1-large",
+      "category": "Models",
+      "topic": "decision-model-card",
+      "description": "English typed decisions with image inputs; distinguish zero-shot results from train-split prior fitting, and public-only Decision Index results from the full evaluation.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "9c30ade20b9587638146429eac6be9df592d56dc5dce61729488ce4b41272046",
+      "retrieved_at": "2026-10-17T03:59:58.303113+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
       "title": "Archai JEV Nesso 4B Ita (System One Decision Engine)",
       "url": "https://huggingface.co/nickprock/archai-jev-nesso-4b-ita",
       "category": "Models",
@@ -1968,6 +1980,18 @@
       "ledger": "ecosystem-sources.jsonl"
     },
     {
+      "title": "KnowLine-35B-A3B-Gen1",
+      "url": "https://huggingface.co/PelaAI/KnowLine-35B-A3B-Gen1",
+      "category": "Models",
+      "topic": "decision-model-card",
+      "description": "English/Chinese MoE decision checkpoint; public-suite checkpoint selection, disclosed task/source overlap and self-run calibration ranges constrain comparisons with independent held-out evaluations.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "c8d14ef006a35abcd4bd473984a03b14f63e2e2cfbc2531f195e752ec3938080",
+      "retrieved_at": "2026-10-17T03:59:58.304780+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
       "title": "Laya typed-decisions, fine-tuned on browser decisions",
       "url": "https://huggingface.co/AIMultiple/laya-typed-decisions-browser-ft",
       "category": "Models",
@@ -2025,6 +2049,18 @@
       "verification_level": "content_screened",
       "content_sha256": "188f6854f477fddf9c83a15063610cbddf802648b33faf709c541d93ce9eb8df",
       "retrieved_at": "2026-10-16T10:05:24+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "Lychee-27B",
+      "url": "https://huggingface.co/LycheeAI/Lychee-27B",
+      "category": "Models",
+      "topic": "decision-model-card",
+      "description": "Noncommercial Qwen-derived typed-decision model with publisher-reported public-suite results; requests exceeding context or GPU-memory limits are documented as rejected rather than truncated.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "37d30f76f8995ab1b788fa0bdbe7ba5afe752a16280fe0f67519db640d56b720",
+      "retrieved_at": "2026-10-17T03:59:58.319873+00:00",
       "ledger": "ecosystem-sources.jsonl"
     },
     {
@@ -2229,6 +2265,18 @@
       "verification_level": "content_screened",
       "content_sha256": "08c4c7ebc4f838a33e22a09f54e33167b72c5cc2693b43490e320d5874f96dfc",
       "retrieved_at": "2026-10-16T10:05:24+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "Span-02",
+      "url": "https://huggingface.co/respanai/span-02",
+      "category": "Models",
+      "topic": "decision-model-card",
+      "description": "Multimodal decision model with a dedicated Blackwell Rust/CUDA runtime and optional reasoning; distinguish default serving from deterministic index settings and output-specific confidence semantics.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "1ce09eb7d55793207d6229ff245201082da6fe31cff317e0d25a50418f9c10e0",
+      "retrieved_at": "2026-10-17T03:59:58.322022+00:00",
       "ledger": "ecosystem-sources.jsonl"
     },
     {

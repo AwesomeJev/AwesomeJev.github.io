@@ -356,6 +356,19 @@
                 "url": "https://huggingface.co/bespokelabs/Bespoke-Nimble-9B-v3"
               }
             ]
+          },
+          {
+            "text": "API shape does not determine the inference path. Span-02 documents its own runtime and optional generated reasoning, with index settings that differ from normal serving. Lychee documents rejection rather than truncation for oversized requests. Record engine, hardware, reasoning mode, confidence definition and input limits with a comparison; these are publisher descriptions, not deployments tested by this collection.",
+            "sources": [
+              {
+                "label": "Span-02 runtime and index settings",
+                "url": "https://huggingface.co/respanai/span-02/raw/63cbdd774391f1b7d9bc3829179efe996d0191ce/README.md"
+              },
+              {
+                "label": "Lychee model-card limits",
+                "url": "https://huggingface.co/LycheeAI/Lychee-27B/raw/f3f95d18a3b1ef3c483c2a5d7e8e5272a2af31e2/README.md"
+              }
+            ]
           }
         ]
       },
@@ -386,6 +399,19 @@
               {
                 "label": "Decision Index methodology snapshot",
                 "url": "https://huggingface.co/spaces/multimodalart/jev-decision-index/blob/0ddf6758073eb77ae449a3541f57286d7f39d93f/data/methodology.json"
+              }
+            ]
+          },
+          {
+            "text": "Model cards may describe different evaluation conditions within one table. KnowLine discloses checkpoint selection using public-suite scores and task/source overlap in training. Amos separates zero-shot results from a setting that fits question priors on the benchmark’s train split. Keep those conditions separate, and do not treat publisher-run public results as the private-inclusive Decision Index score or as our reproduction.",
+            "sources": [
+              {
+                "label": "KnowLine selection and disclosures",
+                "url": "https://huggingface.co/PelaAI/KnowLine-35B-A3B-Gen1/raw/e800968d38761c190476da5c69c6a5087a3c9b29/README.md"
+              },
+              {
+                "label": "Amos evaluation conditions",
+                "url": "https://huggingface.co/mukaddamzaid/amos-1-large/raw/d67e051c763dc88a1e3662a5003c1e1ea5ffaa74/README.md"
               }
             ]
           }
@@ -799,6 +825,19 @@
                 "url": "https://huggingface.co/bespokelabs/Bespoke-Nimble-9B-v3"
               }
             ]
+          },
+          {
+            "text": "API 形状不能决定实际推理路径。Span-02 文档包含专用运行库和可选生成推理，榜单配置也不同于普通服务；Lychee 说明超大请求会被拒绝，而非截断。比较时应记录引擎、硬件、推理模式、置信度定义和输入限制；这些是发布者说明，不是本项目已测试的部署。",
+            "sources": [
+              {
+                "label": "Span-02 运行库与榜单配置",
+                "url": "https://huggingface.co/respanai/span-02/raw/63cbdd774391f1b7d9bc3829179efe996d0191ce/README.md"
+              },
+              {
+                "label": "Lychee 模型卡限制",
+                "url": "https://huggingface.co/LycheeAI/Lychee-27B/raw/f3f95d18a3b1ef3c483c2a5d7e8e5272a2af31e2/README.md"
+              }
+            ]
           }
         ]
       },
@@ -829,6 +868,19 @@
               {
                 "label": "Decision Index 方法快照",
                 "url": "https://huggingface.co/spaces/multimodalart/jev-decision-index/blob/0ddf6758073eb77ae449a3541f57286d7f39d93f/data/methodology.json"
+              }
+            ]
+          },
+          {
+            "text": "同一张模型卡表格可能包含不同评测条件。KnowLine 披露按公开评测得分选择检查点，以及训练中的任务／来源重叠；Amos 区分零样本结果与按基准训练切分拟合问题先验的设置。应保留这些区别，不能将发布者自行运行的公共结果当作含私有测试的 Decision Index 完整得分，也不能当作本项目复现。",
+            "sources": [
+              {
+                "label": "KnowLine 选点与披露",
+                "url": "https://huggingface.co/PelaAI/KnowLine-35B-A3B-Gen1/raw/e800968d38761c190476da5c69c6a5087a3c9b29/README.md"
+              },
+              {
+                "label": "Amos 评测条件",
+                "url": "https://huggingface.co/mukaddamzaid/amos-1-large/raw/d67e051c763dc88a1e3662a5003c1e1ea5ffaa74/README.md"
               }
             ]
           }

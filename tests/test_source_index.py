@@ -34,6 +34,24 @@ def build_fixture(sources):
 
 
 class SourceIdentityTests(unittest.TestCase):
+    def test_renamed_model_is_one_source_in_index_and_scan(self):
+        from scripts.refresh_sources import identity
+        legacy = "https://huggingface.co/lihe07/span-02"
+        current = "https://huggingface.co/respanai/span-02"
+        distinct = legacy + "0"
+        # Different titles and no shared content hash: identity must survive a
+        # later card revision without merging a similarly named model.
+        payload = build_fixture([(legacy, "Old model card"),
+                                 (current, "Current model card"),
+                                 (distinct, "Unrelated model")])
+        self.assertEqual(payload["counts"]["unique_records"], 2)
+        self.assertEqual(payload["counts"]["duplicate_records"], 1)
+        self.assertEqual({row["url"] for row in payload["sources"]}, {current, distinct})
+        self.assertEqual(identity({"url": legacy}), identity({"url": current}))
+        self.assertNotEqual(identity({"url": distinct}), identity({"url": current}))
+        self.assertEqual(index.canonical(legacy + "/raw/fixture/README.md"),
+                         current + "/raw/fixture/README.md")
+
     def test_renamed_tracker_stays_one_source_after_content_changes(self):
         current = "https://huggingface.co/spaces/multimodalart/jev-decision-index"
         legacy = "https://huggingface.co/spaces/multimodalart/jev-reproductions-tracker"

@@ -88,11 +88,15 @@ The official SDK is a client for TypeSafe’s hosted API, not a Jev checkpoint. 
 
 Check each release’s model card and license separately. For example, Bespoke Nimble 9B v3 declares CC BY-NC 4.0, which restricts commercial use. Publicly downloadable artifacts should not all be labeled unrestricted open-source models. [Bespoke Nimble v3 model card](https://huggingface.co/bespokelabs/Bespoke-Nimble-9B-v3)
 
+API shape does not determine the inference path. Span-02 documents its own runtime and optional generated reasoning, with index settings that differ from normal serving. Lychee documents rejection rather than truncation for oversized requests. Record engine, hardware, reasoning mode, confidence definition and input limits with a comparison; these are publisher descriptions, not deployments tested by this collection. [Span-02 runtime and index settings](https://huggingface.co/respanai/span-02/raw/63cbdd774391f1b7d9bc3829179efe996d0191ce/README.md) · [Lychee model-card limits](https://huggingface.co/LycheeAI/Lychee-27B/raw/f3f95d18a3b1ef3c483c2a5d7e8e5272a2af31e2/README.md)
+
 ## Where should I look for research and benchmark evidence?
 
 Start with versioned empirical papers and their available code or data. The broad Jev benchmark study is one entry point; its findings remain author-reported, rather than independently reproduced by this collection. [Jev benchmark paper, v1](https://arxiv.org/abs/2609.37647v1) · [Accompanying benchmark code](https://github.com/AppliedMachineLearning-Lab/jev-benchmarking)
 
 TypeSafe WorkflowEvals publishes workflows and model-generated reference labels; agreement with those references differs from human-label accuracy. The community Decision Index also contains private tests, so public rankings do not make the entire evaluation independently reproducible. The reviewed 0.3.2 snapshot uses a Jev 1.14 lab reference, while its frozen request payloads still name Jev 1.13. Record the model that produced a result separately from the model named in archived inputs. [WorkflowEvals](https://github.com/typesafe-ai/WorkflowEvals) · [Decision Index methodology snapshot](https://huggingface.co/spaces/multimodalart/jev-decision-index/blob/0ddf6758073eb77ae449a3541f57286d7f39d93f/data/methodology.json)
+
+Model cards may describe different evaluation conditions within one table. KnowLine discloses checkpoint selection using public-suite scores and task/source overlap in training. Amos separates zero-shot results from a setting that fits question priors on the benchmark’s train split. Keep those conditions separate, and do not treat publisher-run public results as the private-inclusive Decision Index score or as our reproduction. [KnowLine selection and disclosures](https://huggingface.co/PelaAI/KnowLine-35B-A3B-Gen1/raw/e800968d38761c190476da5c69c6a5087a3c9b29/README.md) · [Amos evaluation conditions](https://huggingface.co/mukaddamzaid/amos-1-large/raw/d67e051c763dc88a1e3662a5003c1e1ea5ffaa74/README.md)
 
 ## What can I reproduce from a public research artifact?
 
@@ -635,6 +639,38 @@ Papers · Cheng et al. · 2026-09-20 · v1
 An open typed-decision model using hidden-state readout. The abstract reports a small external comparison.
 
 Primary source: https://arxiv.org/abs/2609.23886v1
+
+## Amos 1 large
+
+Models · mukaddamzaid · Apache-2.0
+
+English typed decisions with image inputs; distinguish zero-shot results from train-split prior fitting, and public-only Decision Index results from the full evaluation.
+
+Primary source: https://huggingface.co/mukaddamzaid/amos-1-large
+
+## KnowLine-35B-A3B-Gen1
+
+Models · PelaAI · Apache-2.0 weights; MIT server
+
+English/Chinese MoE decision checkpoint; public-suite checkpoint selection, disclosed task/source overlap and self-run calibration ranges constrain comparisons with independent held-out evaluations.
+
+Primary source: https://huggingface.co/PelaAI/KnowLine-35B-A3B-Gen1
+
+## Lychee-27B
+
+Models · LycheeAI · CC BY-NC 4.0
+
+Noncommercial Qwen-derived typed-decision model with publisher-reported public-suite results; requests exceeding context or GPU-memory limits are documented as rejected rather than truncated.
+
+Primary source: https://huggingface.co/LycheeAI/Lychee-27B
+
+## Span-02
+
+Models · Respan · Apache-2.0
+
+Multimodal decision model with a dedicated Blackwell Rust/CUDA runtime and optional reasoning; distinguish default serving from deterministic index settings and output-specific confidence semantics.
+
+Primary source: https://huggingface.co/respanai/span-02
 
 ## AudioJev checkpoint
 
