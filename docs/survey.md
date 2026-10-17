@@ -123,9 +123,10 @@ For deployment budgeting, separately report total model charges across all attem
 
 ### Reproduction boundaries
 
-These operations cover different pipeline stages. The examples below describe documented availability in the inspected snapshots; we did not execute the procedures or exhaustively audit the artifacts.
+The four operations named in step 6 of the protocol above cover different pipeline stages. The examples below describe documented availability in the inspected snapshots; we did not execute the procedures or exhaustively audit the artifacts.
 
-- Map that target to required inputs and their versions/hashes. Distinguish files present from files merely documented, upstream restricted material, and missing artifacts. Use a body hash plus retrieval time where a provider revision is not an immutable commit.
+- Name the target: a specific table or figure regenerated from scored summaries, metrics recomputed from released per-example answers, fresh predictions, or a retrained checkpoint.
+- Map the target to required inputs and their versions/hashes. Distinguish files present from files merely documented, upstream restricted material, and missing artifacts. Use a body hash plus retrieval time where a provider revision is not an immutable commit.
 - List dependencies separately: analysis environment; source data and reconstruction rules; model/adapter versions or hosted-service access; compute and charges. Preserve failed hash checks and missing inputs instead of silently replacing them with current data.
 - Report the actual outcome: documented only, inputs inspected, command executed, or outputs matched. For executed work, retain commands, environment, output hashes and deviations; partial table regeneration is not a reproduced inference or training run.
 
