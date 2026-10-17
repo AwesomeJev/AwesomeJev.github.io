@@ -82,7 +82,7 @@ def build() -> dict:
     for name in ("ecosystem-sources.jsonl", "research-sources.jsonl"):
         source = ROOT / "data" / name
         if source.exists():
-            for line in source.read_text().split("\n"):
+            for line in source.read_text(encoding="utf-8").split("\n"):
                 if line.strip():
                     row = json.loads(line)
                     row["ledger"] = name
@@ -169,7 +169,7 @@ def main() -> None:
         for name, text in files.items():
             destination = ROOT / name
             destination.parent.mkdir(parents=True, exist_ok=True)
-            destination.write_text(text, encoding="utf-8")
+            destination.write_text(text, encoding="utf-8", newline="\n")
     print(json.dumps(payload["counts"], indent=2))
 
 

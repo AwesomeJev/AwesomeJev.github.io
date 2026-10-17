@@ -145,20 +145,20 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true")
     args = parser.parse_args()
-    baseline = supplemented_baseline(BASELINE.read_bytes(), json.loads(SUPPLEMENT.read_text()))
-    intake = json.loads(INTAKE.read_text())
+    baseline = supplemented_baseline(BASELINE.read_bytes(), json.loads(SUPPLEMENT.read_text(encoding="utf-8")))
+    intake = json.loads(INTAKE.read_text(encoding="utf-8"))
     if intake.get("baseline_commit") != baseline["baseline_commit"]:
         raise SystemExit("Expansion intake does not match the frozen baseline.")
     approved_urls = [url for batch in intake["batches"] for url in batch["accepted_urls"]]
-    current = json.loads((ROOT / "site/data/source-index.json").read_text())
+    current = json.loads((ROOT / "site/data/source-index.json").read_text(encoding="utf-8"))
     report = assess(baseline, current, approved_urls)
     outputs = {REPORT: json.dumps(report, ensure_ascii=False, indent=2) + "\n", DIRECTORY: directory(report)}
     for path, text in outputs.items():
         if args.check:
-            if not path.exists() or path.read_text() != text:
+            if not path.exists() or path.read_text(encoding="utf-8") != text:
                 raise SystemExit("Expansion report differs from the current index; rebuild during the next reviewed expansion release.")
         else:
-            path.write_text(text)
+            path.write_text(text, encoding="utf-8", newline="\n")
     print(json.dumps({key: report[key] for key in ("accepted_new_sources", "target_new_sources", "remaining_to_target", "by_category")}, ensure_ascii=False))
 
 

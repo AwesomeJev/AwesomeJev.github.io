@@ -874,7 +874,7 @@ def write_if_changed(path, text):
         return False
     path.parent.mkdir(parents=True, exist_ok=True)
     temp = path.with_suffix(path.suffix + ".refresh-tmp")
-    temp.write_text(text, encoding="utf-8")
+    temp.write_text(text, encoding="utf-8", newline="\n")
     temp.replace(path)
     return True
 
@@ -920,7 +920,7 @@ def main(argv=None):
     merged_research, rc = merge_records(originals[1], research_input, remaining, policy=policy)
     changes = {k: ec[k] + rc[k] for k in ("added", "changed", "editorial_review_required")}
     report_path = ROOT / "data/scan-latest.json"
-    previous = json.loads(report_path.read_text()) if report_path.exists() else {}
+    previous = json.loads(report_path.read_text(encoding="utf-8")) if report_path.exists() else {}
     pending, pending_changed, pending_count = pending_reviews(previous, changes["editorial_review_required"], merged_ecosystem.rows + merged_research.rows)
     changed = bool(changes["added"] or changes["changed"] or pending_changed)
     successful_content = sum(r.get("verification_level") != "metadata_only" for r in ecosystem_rows) + scan.successful_queries
@@ -931,9 +931,9 @@ def main(argv=None):
         for path, ledger in zip(paths, (merged_ecosystem, merged_research)):
             write_if_changed(path, "".join(ledger.lines))
         subprocess.run([sys.executable, str(ROOT / "scripts/build_source_index.py")], cwd=ROOT, check=True)
-        counts = json.loads((ROOT / "data/source-counts.json").read_text())["counts"]
+        counts = json.loads((ROOT / "data/source-counts.json").read_text(encoding="utf-8"))["counts"]
     else:
-        counts = json.loads((ROOT / "data/source-counts.json").read_text())["counts"]
+        counts = json.loads((ROOT / "data/source-counts.json").read_text(encoding="utf-8"))["counts"]
     report = {"schema_version": 1, "started_at": started_at, "completed_at": now(), "status": status, "changed": changed, "dry_run": args.smoke, "added_count": len(changes["added"]), "changed_count": len(changes["changed"]), "editorial_review_required_count": pending_count, "added_urls": changes["added"][:100], "changed_urls": changes["changed"][:100], "editorial_refresh_candidates": pending, "editorial_examples_truncated": pending_count > 100, **error_report(scan.errors), "counts": counts, "index_revision": scan.index_revision, "network_requests": fetcher.requests, "excluded_discoveries": scan.excluded, "preserved_after_failure": ec["preserved_after_failure"] + rc["preserved_after_failure"], "duplicate_candidates_skipped": ec["duplicates"] + rc["duplicates"], "privacy_rejected_records": ec["rejected"] + rc["rejected"], "verification_note": "Public document or original-abstract machine screening only. Pinned primary abstracts and editorial records are preserved; their source changes require maintainer review. Metadata-only records do not count as checked sources."}
     report["curation_excluded_count"] = len(set(ec["curation_excluded"] + rc["curation_excluded"]) | scan.curation_excluded)
     # Report every attempt, including failures. The publisher must gate on

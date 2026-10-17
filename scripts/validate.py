@@ -196,7 +196,7 @@ def check_json(path: Path, text: str) -> None:
 def check_ledger(path: Path, policy=None) -> list[dict]:
     result: list[dict] = []
     urls: set[str] = set()
-    for number, line in enumerate(path.read_text().split("\n"), 1):
+    for number, line in enumerate(path.read_text(encoding="utf-8").split("\n"), 1):
         if not line.strip():
             continue
         location = f"{path.relative_to(ROOT)}:{number}"
@@ -272,8 +272,8 @@ def check_index(expected_raw_records: int) -> None:
         fail("source index", "run python3 scripts/build_source_index.py")
         return
     try:
-        payload = json.loads(index_path.read_text())
-        snapshot = json.loads(count_path.read_text())
+        payload = json.loads(index_path.read_text(encoding="utf-8"))
+        snapshot = json.loads(count_path.read_text(encoding="utf-8"))
         rows, counts = payload["sources"], payload["counts"]
         if counts["raw_records"] != expected_raw_records:
             fail("source index", "not all nonexcluded source ledger records are accounted for")

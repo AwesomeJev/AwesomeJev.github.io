@@ -133,7 +133,7 @@ def write_summary(text: str) -> None:
 def bundle(directory: Path, identity: dict) -> None:
     if directory.exists():
         raise ScanError("Bundle directory must be new.")
-    report = json.loads((ROOT / "data/scan-latest.json").read_text())
+    report = json.loads((ROOT / "data/scan-latest.json").read_text(encoding="utf-8"))
     if not isinstance(report.get("changed"), bool) or report.get("status") not in {"success", "partial", "failed"}:
         raise ScanError("Invalid scan report.")
     if report["status"] == "failed":
@@ -161,7 +161,7 @@ def bundle(directory: Path, identity: dict) -> None:
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_bytes(data)
         manifest["files"][name] = {"sha256": digest(data), "bytes": len(data)}
-    (directory / "manifest.json").write_text(json.dumps(manifest, sort_keys=True) + "\n")
+    (directory / "manifest.json").write_text(json.dumps(manifest, sort_keys=True) + "\n", encoding="utf-8", newline="\n")
 
 
 def load_bundle(directory: Path, identity: dict) -> tuple[dict, dict[str, bytes]]:

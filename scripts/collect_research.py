@@ -246,7 +246,7 @@ class Collector:
             if cached.exists():
                 with self.gate:
                     self.cached_queries += 1
-                return topic, query, json.loads(cached.read_text())
+                return topic, query, json.loads(cached.read_text(encoding="utf-8"))
             failure = {"query": query, "url": url, "retrieval_status": "not_in_cache"}
             with self.gate:
                 self.failures.append(failure)
@@ -292,7 +292,7 @@ class Collector:
                 delay = float(retry_after) if retry_after.isdigit() else 2 ** (attempt + 1)
                 time.sleep(min(delay, 30))
             else:
-                cached.write_text(json.dumps(wrapper, ensure_ascii=False))
+                cached.write_text(json.dumps(wrapper, ensure_ascii=False), encoding="utf-8", newline="\n")
                 return topic, query, wrapper
         failure = {"query": query, "url": url, "retrieval_status": "failed", "error_code": error_code, "error": last_error}
         with self.gate:
@@ -464,7 +464,7 @@ def main() -> None:
         sys.exit(f"Research collection stopped: no records qualified ({len(collector.failures)} failed queries), "
                  f"so {args.output} was not changed.")
     args.output.parent.mkdir(parents=True, exist_ok=True)
-    args.output.write_text("".join(json.dumps(r, ensure_ascii=False, sort_keys=True) + "\n" for r in records))
+    args.output.write_text("".join(json.dumps(r, ensure_ascii=False, sort_keys=True) + "\n" for r in records), encoding="utf-8", newline="\n")
     audit.update({
         "emitted_records": len(records),
         "requested_target": args.target,
