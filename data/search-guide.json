@@ -217,6 +217,15 @@
                 "url": "https://github.com/atmaneayoubdev/jev-ar"
               }
             ]
+          },
+          {
+            "text": "The Indonesian regional-language study supplies a concrete separation: expected calibration error did not increase while error-ranking ability degraded. Its translation comparison uses human Indonesian translations; classifier comparisons depend on label budgets, and cascades on the chosen fallback and routing fraction. Evaluate those factors separately before transferring a threshold. The preregistration and release claims remain author-reported here; no prediction files were audited.",
+            "sources": [
+              {
+                "label": "Indonesian regional-language transfer study, v1",
+                "url": "https://arxiv.org/abs/2610.14112v1"
+              }
+            ]
           }
         ]
       },
@@ -418,6 +427,15 @@
               {
                 "label": "Radiology availability statement, v1",
                 "url": "https://arxiv.org/html/2609.27607v1#Sx1.p1"
+              }
+            ]
+          },
+          {
+            "text": "For control loops, a replay of isolated model latency does not establish deadline attainment. The network-control SoK separates request queues, execution times, action feasibility and responsibility for service checks; its examples use one bounded event model. Our proposed deployment check records arrival patterns and the complete path from request to verified outcome, alongside misses and infeasible actions. It does not substitute a synthetic replay for production evidence.",
+            "sources": [
+              {
+                "label": "Semantic decision engines in network control, v1",
+                "url": "https://arxiv.org/abs/2610.06425v1"
               }
             ]
           }
@@ -642,6 +660,15 @@
                 "url": "https://github.com/atmaneayoubdev/jev-ar"
               }
             ]
+          },
+          {
+            "text": "印尼地方语言研究给出一个具体区别：预期校准误差未增加，但错误排序能力变差。翻译比较使用人类印尼语翻译，分类器比较受标签预算影响，级联则取决于后备模型和分流比例。迁移阈值前应分别评估这些因素。预注册与材料发布仍属作者报告，本项目没有审计逐项预测。",
+            "sources": [
+              {
+                "label": "印尼地方语言迁移研究 v1",
+                "url": "https://arxiv.org/abs/2610.14112v1"
+              }
+            ]
           }
         ]
       },
@@ -843,6 +870,15 @@
               {
                 "label": "放射学论文材料声明 v1",
                 "url": "https://arxiv.org/html/2609.27607v1#Sx1.p1"
+              }
+            ]
+          },
+          {
+            "text": "对控制环而言，重放单次模型延迟不能证明期限达成。网络控制综述区分请求排队、执行时间、动作可行性与服务核查责任；其例子采用一个有界事件模型。我们建议部署核查记录到达模式，以及从请求到结果验证的完整路径，同时保留超期与不可行动作。合成重放不能替代生产证据。",
+            "sources": [
+              {
+                "label": "网络控制中的语义决策引擎 v1",
+                "url": "https://arxiv.org/abs/2610.06425v1"
               }
             ]
           }

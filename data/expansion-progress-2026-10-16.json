@@ -3,34 +3,34 @@
   "baseline_commit": "3519c15d7e00686a8dbf9b1e184c68726327ab1e",
   "baseline_source_index_sha256": "8bfdd20564f2cda54bb8264c3c802f315e3e9a11b153bd85dde4325f53c841d5",
   "target_new_sources": 301,
-  "accepted_new_sources": 773,
+  "accepted_new_sources": 777,
   "remaining_to_target": 0,
   "target_count_reached": true,
   "current_index_counts": {
     "editorial_reviewed": 4,
     "content_screened": 2384,
-    "abstract_checked": 1833,
+    "abstract_checked": 1837,
     "metadata_only": 47,
-    "raw_records": 4282,
-    "unique_records": 4268,
+    "raw_records": 4286,
+    "unique_records": 4272,
     "duplicate_records": 14,
-    "checked_sources": 4221
+    "checked_sources": 4225
   },
   "by_category": {
     "Datasets": 101,
     "Guides and evaluations": 38,
     "Models": 55,
-    "Papers": 27,
+    "Papers": 31,
     "Projects": 211,
     "Research foundations": 341
   },
   "by_relation": {
     "adjacent": 25,
     "background": 341,
-    "direct": 407
+    "direct": 411
   },
   "by_verification_level": {
-    "abstract_checked": 368,
+    "abstract_checked": 372,
     "content_screened": 405
   },
   "verification_note": "Evidence depth is labeled per source. Content screening and abstract checks do not establish full-paper review, peer review, endorsement, or experimental reproduction.",
@@ -2364,6 +2364,18 @@
       "ledger": "ecosystem-sources.jsonl"
     },
     {
+      "title": "Batched Speech Decisions Without Decoding: Single-Token Supervision Lets a Frozen LLM Hear Beyond the Transcript",
+      "url": "https://arxiv.org/abs/2610.02638",
+      "category": "Papers",
+      "topic": "direct-decision-research",
+      "description": "DuplexJev connects ASR hidden states to a frozen LLM for batched answer-token readout; connector-specific speech tasks and eight-GPU timing do not establish single-device or live-agent latency.",
+      "relation": "direct",
+      "verification_level": "abstract_checked",
+      "content_sha256": "3cfed103d03dca367b01c9ef390fa5ab7faf7c32ed665e213a80598651eb7ad4",
+      "retrieved_at": "2026-10-17T03:51:46.180658+00:00",
+      "ledger": "research-sources.jsonl"
+    },
+    {
       "title": "Beyond Answer Confidence: A Controlled Audit of Self-Knowledge in a Black-Box Decision Model",
       "url": "https://arxiv.org/abs/2610.01006",
       "category": "Papers",
@@ -2421,6 +2433,18 @@
       "verification_level": "abstract_checked",
       "content_sha256": "898b72728a465d950ea191589cd6c4aebd1858bc658315ccf6cb7255a62a0d40",
       "retrieved_at": "2026-10-16T11:40:20+00:00",
+      "ledger": "research-sources.jsonl"
+    },
+    {
+      "title": "Does System One Transfer? Calibrated Typed-Decision Models, Label Budgets, and Translation for Indonesian Regional Languages",
+      "url": "https://arxiv.org/abs/2610.14112",
+      "category": "Papers",
+      "topic": "direct-decision-research",
+      "description": "Tests Jev and multilingual Laya on Indonesian regional-language tasks; stable expected calibration error can coexist with worse error ranking, while human translation, label budgets and cascade choices change comparisons.",
+      "relation": "direct",
+      "verification_level": "abstract_checked",
+      "content_sha256": "3e342feaa81c1a6fd83db29afc8d9781bffe681a200401203d1a816f63db41f6",
+      "retrieved_at": "2026-10-17T03:51:46.354839+00:00",
       "ledger": "research-sources.jsonl"
     },
     {
@@ -2556,6 +2580,18 @@
       "ledger": "research-sources.jsonl"
     },
     {
+      "title": "OmniMed-Jev: Calibrating LVLM Confidence for Trustworthy Medical Multimodal Decisions via System One",
+      "url": "https://arxiv.org/abs/2610.00381",
+      "category": "Papers",
+      "topic": "direct-decision-research",
+      "description": "Medical candidate-conditioned decisions are compared with a matched generative baseline; calibration gains do not isolate interface effects from training differences or establish clinical readiness.",
+      "relation": "direct",
+      "verification_level": "abstract_checked",
+      "content_sha256": "db3f31ecc4900f74780fdb27ff421fa894c8d277920a8eb2017a71b47411736f",
+      "retrieved_at": "2026-10-17T03:51:46.167475+00:00",
+      "ledger": "research-sources.jsonl"
+    },
+    {
       "title": "One Word Opens the Gate: The Option-Channel Attack on Typed Decision Models as Agent Guardrails",
       "url": "https://arxiv.org/abs/2610.12292",
       "category": "Papers",
@@ -2613,6 +2649,18 @@
       "verification_level": "abstract_checked",
       "content_sha256": "fc2f52f0f0bd8395c70abfe3511f2fe9c16e98c0108bd378199458aff6165968",
       "retrieved_at": "2026-10-16T10:59:19+00:00",
+      "ledger": "research-sources.jsonl"
+    },
+    {
+      "title": "SoK: Semantic Decision Engines in Network Control Loops",
+      "url": "https://arxiv.org/abs/2610.06425",
+      "category": "Papers",
+      "topic": "direct-decision-research",
+      "description": "Surveys semantic engines in network control loops; separates valid decisions, action feasibility, service checks and deadline attainment, with bounded event-model tests rather than production validation.",
+      "relation": "direct",
+      "verification_level": "abstract_checked",
+      "content_sha256": "187305f6cde7ecafbc3612bae9bd8d3dcc62e9bb7b0fa55a724e766ffae345a0",
+      "retrieved_at": "2026-10-17T03:51:46.230173+00:00",
       "ledger": "research-sources.jsonl"
     },
     {

@@ -109,7 +109,7 @@ const translations = {
     contentDefinition:
       "A public README, model card, or page passed automated relevance and substance checks. An arXiv landing page is an abstract, not a full-paper review.",
     abstractDefinition:
-      "An abstract was screened through Hugging Face Papers or reconstructed from OpenAlex metadata. Retrieval of the original publisher page is not implied.",
+      "An abstract was checked on a versioned arXiv page, through Hugging Face Papers, or from OpenAlex metadata. Inspect the provider record: this tier is not full-paper review.",
     metadataDefinition:
       "A source was discovered, but its content check did not pass. These entries are excluded from the checked-source total.",
     sourceCount: (n) =>
@@ -239,7 +239,7 @@ const translations = {
     contentDefinition:
       "公开 README、模型卡或网页通过自动相关性与实质内容检查。arXiv 简介页仍只是摘要，不代表阅读全文。",
     abstractDefinition:
-      "通过 Hugging Face Papers 获取摘要，或从 OpenAlex 元数据重建摘要并筛查；不表示已获取原始出版商页面。",
+      "核查固定版本 arXiv 页的原始摘要、Hugging Face Papers 摘要，或 OpenAlex 重建摘要。具体途径见来源记录；此等级不代表全文评审。",
     metadataDefinition:
       "发现了来源，但内容检查未通过；这些条目不计入已核查来源总数。",
     sourceCount: (n) => `${n.toLocaleString("zh-CN")} 项来源`,
@@ -266,6 +266,46 @@ const translations = {
 
 // Descriptions are editorial summaries. Paper findings remain author-reported.
 const resources = [
+  {
+    "category": "Papers",
+    "title": "OmniMed-Jev: Calibrating LVLM Confidence for Trustworthy Medical Multimodal Decisions via System One",
+    "by": "Tang & Chen · 2026-09-30 · v1",
+    "date": "2026-09-30",
+    "first_submitted": "2026-09-30",
+    "url": "https://arxiv.org/abs/2610.00381v1",
+    "en": "Medical candidate-conditioned decisions are compared with a matched generative baseline; calibration gains do not isolate interface effects from training differences or establish clinical readiness.",
+    "zh": "将医学候选条件决策与匹配的生成式基线比较；校准收益未分离接口与训练差异的影响，也不能证明临床部署成熟度。"
+  },
+  {
+    "category": "Papers",
+    "title": "Batched Speech Decisions Without Decoding: Single-Token Supervision Lets a Frozen LLM Hear Beyond the Transcript",
+    "by": "Jin et al. · 2026-10-02 · v1",
+    "date": "2026-10-02",
+    "first_submitted": "2026-10-02",
+    "url": "https://arxiv.org/abs/2610.02638v1",
+    "en": "DuplexJev connects ASR hidden states to a frozen LLM for batched answer-token readout; connector-specific speech tasks and eight-GPU timing do not establish single-device or live-agent latency.",
+    "zh": "DuplexJev 将 ASR 隐藏状态接入冻结 LLM，通过答案 token 读出批量决策；连接器相关的语音任务结果与八 GPU 计时，不能证明单设备或实时 agent 延迟。"
+  },
+  {
+    "category": "Papers",
+    "title": "SoK: Semantic Decision Engines in Network Control Loops",
+    "by": "Li et al. · 2026-10-05 · v1",
+    "date": "2026-10-05",
+    "first_submitted": "2026-10-05",
+    "url": "https://arxiv.org/abs/2610.06425v1",
+    "en": "Surveys semantic engines in network control loops; separates valid decisions, action feasibility, service checks and deadline attainment, with bounded event-model tests rather than production validation.",
+    "zh": "综述网络控制环中的语义引擎，区分决策格式有效、动作可行、服务核查与期限达成；验证来自有界事件模型测试，而非生产部署。"
+  },
+  {
+    "category": "Papers",
+    "title": "Does System One Transfer? Calibrated Typed-Decision Models, Label Budgets, and Translation for Indonesian Regional Languages",
+    "by": "Fadli et al. · 2026-10-09 · v1",
+    "date": "2026-10-09",
+    "first_submitted": "2026-10-09",
+    "url": "https://arxiv.org/abs/2610.14112v1",
+    "en": "Tests Jev and multilingual Laya on Indonesian regional-language tasks; stable expected calibration error can coexist with worse error ranking, while human translation, label budgets and cascade choices change comparisons.",
+    "zh": "在印尼地方语言任务中测试 Jev 与多语言 Laya；预期校准误差稳定仍可伴随错误排序变差，人类翻译、标签预算与级联选择会改变比较条件。"
+  },
   {
     "category": "Papers",
     "title": "Labels Override Definitions in Jev-Style Typed Decision Models",

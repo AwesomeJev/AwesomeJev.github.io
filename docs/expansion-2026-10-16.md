@@ -1,6 +1,6 @@
 # Resource expansion — 16 October 2026
 
-**773 newly added, evidence-checked sources / target: at least 301.**
+**777 newly added, evidence-checked sources / target: at least 301.**
 
 [Main collection](../README.md) · [Website source search](https://awesomejev.github.io/#corpus) · [Machine-readable progress](../data/expansion-progress-2026-10-16.json) · [Frozen baseline](../data/expansion-baseline-2026-10-16.json) · [Prior-citation supplement](../data/expansion-baseline-supplement-2026-10-16.json)
 
@@ -8,14 +8,14 @@ The baseline is [commit 3519c15](https://github.com/reacher-z/Awesome-Jev/tree/3
 
 Only sources in the [reviewed intake](../data/expansion-intake-2026-10-16.json) count toward this expansion. This is a discovery directory with explicit screening levels. **Direct** sources concern Jev or typed decision systems; **adjacent** resources implement closely related methods; **background** papers provide research context. Listing is not an endorsement or independent reproduction. The short descriptions explain relevance, not a universal recommendation.
 
-**中文：本轮已新增 773 项有核查证据的资源，目标至少 301 项。** 已有台账、精选与引用链接、重复正文或论文题名均不重复计数，仅元数据条目不计入目标。下表区分直接相关、邻近方法与背景研究；自动内容筛查或摘要检查不等于全文评审，也不代表实验复现。
+**中文：本轮已新增 777 项有核查证据的资源，目标至少 301 项。** 已有台账、精选与引用链接、重复正文或论文题名均不重复计数，仅元数据条目不计入目标。下表区分直接相关、邻近方法与背景研究；自动内容筛查或摘要检查不等于全文评审，也不代表实验复现。
 
 | Resource type | Newly added |
 | --- | ---: |
 | Datasets | 101 |
 | Guides and evaluations | 38 |
 | Models | 55 |
-| Papers | 27 |
+| Papers | 31 |
 | Projects | 211 |
 | Research foundations | 341 |
 
@@ -232,11 +232,13 @@ Only sources in the [reviewed intake](../data/expansion-intake-2026-10-16.json) 
 
 | Resource | Relationship / evidence | Relevance |
 | --- | --- | --- |
+| [Batched Speech Decisions Without Decoding: Single-Token Supervision Lets a Frozen LLM Hear Beyond the Transcript](https://arxiv.org/abs/2610.02638) | direct · `abstract_checked` | DuplexJev connects ASR hidden states to a frozen LLM for batched answer-token readout; connector-specific speech tasks and eight-GPU timing do not establish single-device or live-agent latency. |
 | [Beyond Answer Confidence: A Controlled Audit of Self-Knowledge in a Black-Box Decision Model](https://arxiv.org/abs/2610.01006) | direct · `abstract_checked` | Controls information and surface cues to distinguish Jev answer confidence from self-knowledge; black-box behavior does not establish access to an internal knowledge state. |
 | [Bongard: Training Machine Intuition](https://arxiv.org/abs/2609.39111) | direct · `abstract_checked` | Shared evidence encoding and candidate-probability readout, trained with representation and action-outcome feedback. Results remain author-reported. |
 | [Calibrated to Whom? Persona and Language Effects on Cultural Values in JEV](https://arxiv.org/abs/2609.36399) | direct · `abstract_checked` | English/Arabic persona-conditioned Jev survey audit; the effects concern simulated respondents in one model, not measurements of real populations. |
 | [Can Jev Judge Radiology Reports? Evaluating a System One Model for Clinical Factuality](https://arxiv.org/abs/2609.27607) | direct · `abstract_checked` | Checks statement support in both directions between generated and reference radiology reports; agreement depends on report size and error scope, and a specialized comparator remains stronger on clinically significant errors. |
 | [Decision Hijacking: Prompt Injection Attacks on Jev's Typed Probabilistic Decisions](https://arxiv.org/abs/2609.28613) | direct · `abstract_checked` | Jev injection audit separates probability shifts from attacker-target selections; adaptive attacks are checked on fresh validation calls over reconstructed InjecAgent cases. |
+| [Does System One Transfer? Calibrated Typed-Decision Models, Label Budgets, and Translation for Indonesian Regional Languages](https://arxiv.org/abs/2610.14112) | direct · `abstract_checked` | Tests Jev and multilingual Laya on Indonesian regional-language tasks; stable expected calibration error can coexist with worse error ranking, while human translation, label budgets and cascade choices change comparisons. |
 | [Evaluating Decision Models for Text Annotation in Computational Social Science](https://arxiv.org/abs/2609.24574) | direct · `abstract_checked` | Evaluates decision models and confidence-routed LLM cascades on selected zero-shot social-science annotation tasks; lower cost coexists with task-dependent errors and overconfidence. |
 | [JEV as a Judge for Agent Trace Security: An Empirical Comparison with Generative LLM Judges](https://arxiv.org/abs/2609.34862) | direct · `abstract_checked` | Retrospective agent-trace risk classification compares Jev with generative judges across four collections; rankings vary by dataset, and latency/cost summarize successful or valid calls. |
 | [Jev for Scientific Decisions: Evaluating Semantic Choices and Their Consequences](https://arxiv.org/abs/2609.24965) | direct · `abstract_checked` | A small scientific-workflow study separates semantic Choices, computed quantities and final labels; selection errors in comparison models can change intermediate counts without changing the final label. |
@@ -248,11 +250,13 @@ Only sources in the [reviewed intake](../data/expansion-intake-2026-10-16.json) 
 | [KITE: Scaling Jev Population Experiments with Sparse Flagship Calibration](https://arxiv.org/abs/2609.27535) | direct · `abstract_checked` | Combines Jev state tables, sparse flagship-model anchors and human–model discrepancy estimates; scaling a simulated population does not increase the underlying human evidence. |
 | [Mnemon: Raw Records, Fast Judgments, Slow Thoughts](https://arxiv.org/abs/2609.36059) | direct · `abstract_checked` | Keeps raw memory records, separating Jev relevance judgments from LLM search planning and answer generation. Results remain author-reported. |
 | [More Choices, Fewer Decisions: Ordinal-Scale Bias in JEV-like Direct-Decision Models](https://arxiv.org/abs/2609.38827) | direct · `abstract_checked` | Studies underuse of ordinal labels in direct-decision models; finer scales intensify compression, while better accuracy or shuffled option order does not necessarily restore scale utilization. |
+| [OmniMed-Jev: Calibrating LVLM Confidence for Trustworthy Medical Multimodal Decisions via System One](https://arxiv.org/abs/2610.00381) | direct · `abstract_checked` | Medical candidate-conditioned decisions are compared with a matched generative baseline; calibration gains do not isolate interface effects from training differences or establish clinical readiness. |
 | [One Word Opens the Gate: The Option-Channel Attack on Typed Decision Models as Agent Guardrails](https://arxiv.org/abs/2610.12292) | direct · `abstract_checked` | Tests option-channel attacks on seven open-weight models; reversed decisions can remain confident. The reported experiments do not test hosted Jev. |
 | [REFLEX with Jev for Efficient Selective Control in LLM Agents](https://arxiv.org/abs/2609.26532) | direct · `abstract_checked` | Confidence-gated Jev control with LLM fallback; gains depend on action alternatives and baseline routing. Results remain author-reported. |
 | [Same Scores, Different Decisions: Evaluating JEV and Language Models for Legal Document Understanding](https://arxiv.org/abs/2609.27678) | direct · `abstract_checked` | Repeated ContractNLI evaluations show that opposing corrections and regressions can leave aggregate accuracy unchanged; consistent answers may remain wrong, while majority-vote gains are small and uncertain. |
 | [Same-Number Citation Swaps: Stress-Testing Jev as a Financial Evidence Judge](https://arxiv.org/abs/2610.08675) | direct · `abstract_checked` | Controlled same-number citation swaps test Jev source verification; detecting wrong financial roles trades off against accepting equivalent evidence. |
 | [Selective Reasoning for Typed Decision Models: When to Start, Read, and Stop](https://arxiv.org/abs/2610.19644) | direct · `abstract_checked` | Candidate-answer readout during interruptible reasoning, with gates for starting, reading and stopping; results depend on a fixed backbone and task suite. |
+| [SoK: Semantic Decision Engines in Network Control Loops](https://arxiv.org/abs/2610.06425) | direct · `abstract_checked` | Surveys semantic engines in network control loops; separates valid decisions, action feasibility, service checks and deadline attainment, with bounded event-model tests rather than production validation. |
 | [Specialized Decision Models vs. General-Purpose LLMs: Benchmarking Jev Across Knowledge, Reasoning, and Multilingual Tasks](https://arxiv.org/abs/2610.11978) | direct · `abstract_checked` | Knowledge, reasoning and multilingual multiple-choice evaluation of Jev; reported rankings and mathematical weaknesses apply to the selected models and benchmarks. |
 | [Suggested Is Not Superseded: A Pre-Registered Evaluation of a System-One Model as a Memory-Retirement Gate](https://arxiv.org/abs/2610.15710) | direct · `abstract_checked` | Jev memory-retirement evaluation separates confirmed updates from suggestions; mixed LLM/human labels, shared errors and selection on a small development set constrain cascade claims. |
 | [Token-Efficient Multi-Agent Collaboration via System One-Guided Computational Division of Labor](https://arxiv.org/abs/2610.08155) | direct · `abstract_checked` | System One controllers coordinate bounded multi-agent decisions while LLM workers reason; reported efficiency concerns the complete collaboration framework. |

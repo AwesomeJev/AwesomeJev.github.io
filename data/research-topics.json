@@ -17,16 +17,30 @@
             "title": "Which studies answer which question?",
             "text": "Sun and colleagues test conflicts between option names and definitions. Azizi and colleagues’ Labels Override Definitions examines how open implementations render those fields, including interventions that hold weights fixed. Their later One Word Opens the Gate evaluates attacker-controlled option channels in guardrail settings. These are distinct papers with different experimental questions; sharing a failure theme does not make their results interchangeable.",
             "sources": [
-              {"label": "Type-Safe Is Not Error-Free, v3", "url": "https://arxiv.org/abs/2609.26758v3"},
-              {"label": "Labels Override Definitions, v1", "url": "https://arxiv.org/abs/2610.02586v1"},
-              {"label": "One Word Opens the Gate, v1", "url": "https://arxiv.org/abs/2610.12292v1"}
+              {
+                "label": "Type-Safe Is Not Error-Free, v3",
+                "url": "https://arxiv.org/abs/2609.26758v3"
+              },
+              {
+                "label": "Labels Override Definitions, v1",
+                "url": "https://arxiv.org/abs/2610.02586v1"
+              },
+              {
+                "label": "One Word Opens the Gate, v1",
+                "url": "https://arxiv.org/abs/2610.12292v1"
+              }
             ]
           },
           {
             "id": "rendering",
             "title": "Why inspect the rendered request?",
             "text": "The fixed-weight rendering intervention in Labels Override Definitions provides evidence about the tested interface implementation. That is a narrower claim than saying every constrained decision head has the same defect. Before comparing systems, identify whether the option key, label and definition all reach the model, and whether the adapter rewrites or drops any of them.",
-            "sources": [{"label": "Rendering intervention: original abstract", "url": "https://arxiv.org/abs/2610.02586v1"}]
+            "sources": [
+              {
+                "label": "Rendering intervention: original abstract",
+                "url": "https://arxiv.org/abs/2610.02586v1"
+              }
+            ]
           },
           {
             "id": "diagnostic",
@@ -38,7 +52,12 @@
             "id": "limits",
             "title": "What would remain unproven?",
             "text": "An adapter fix on one open implementation is not a universal injection defense. The guardrail study concerns open-weight models and does not demonstrate a compromise of hosted Jev. Keep the attacker’s permitted input channels explicit, and distinguish a changed distribution, a wrong choice and a downstream action. The diagnostic above is a proposed protocol, not a reproduced finding.",
-            "sources": [{"label": "Guardrail study and tested scope", "url": "https://arxiv.org/abs/2610.12292v1"}]
+            "sources": [
+              {
+                "label": "Guardrail study and tested scope",
+                "url": "https://arxiv.org/abs/2610.12292v1"
+              }
+            ]
           }
         ]
       },
@@ -53,16 +72,30 @@
             "title": "三篇研究分别回答什么？",
             "text": "Sun 等研究选项名称与定义冲突时的行为。Azizi 等的 Labels Override Definitions 检查开放实现如何渲染这些字段，包括固定权重的干预。他们后来的 One Word Opens the Gate 则在防护场景中评估由攻击者控制的选项通道。这是实验问题不同的三篇论文；讨论相近失效现象，不意味着结果可以互换。",
             "sources": [
-              {"label": "Type-Safe Is Not Error-Free v3", "url": "https://arxiv.org/abs/2609.26758v3"},
-              {"label": "Labels Override Definitions v1", "url": "https://arxiv.org/abs/2610.02586v1"},
-              {"label": "One Word Opens the Gate v1", "url": "https://arxiv.org/abs/2610.12292v1"}
+              {
+                "label": "Type-Safe Is Not Error-Free v3",
+                "url": "https://arxiv.org/abs/2609.26758v3"
+              },
+              {
+                "label": "Labels Override Definitions v1",
+                "url": "https://arxiv.org/abs/2610.02586v1"
+              },
+              {
+                "label": "One Word Opens the Gate v1",
+                "url": "https://arxiv.org/abs/2610.12292v1"
+              }
             ]
           },
           {
             "id": "rendering",
             "title": "为什么要检查实际渲染请求？",
             "text": "Labels Override Definitions 的固定权重渲染干预，为所测接口实现提供了机制证据。它比“所有受约束决策头都有同样缺陷”的主张窄得多。比较系统前，先确认选项键、标签和定义是否都进入模型，以及适配层是否改写或遗漏了字段。",
-            "sources": [{"label": "渲染干预的原始摘要", "url": "https://arxiv.org/abs/2610.02586v1"}]
+            "sources": [
+              {
+                "label": "渲染干预的原始摘要",
+                "url": "https://arxiv.org/abs/2610.02586v1"
+              }
+            ]
           },
           {
             "id": "diagnostic",
@@ -74,7 +107,12 @@
             "id": "limits",
             "title": "哪些结论仍不能成立？",
             "text": "一个开放实现中的适配层修复不等于通用注入防御。防护论文测试开放权重模型，未证明托管 Jev 已被攻破。应明确攻击者能控制哪些输入通道，并区分分布变化、错误选择与下游动作。上述诊断是建议流程，不是本项目复现的发现。",
-            "sources": [{"label": "防护论文及测试范围", "url": "https://arxiv.org/abs/2610.12292v1"}]
+            "sources": [
+              {
+                "label": "防护论文及测试范围",
+                "url": "https://arxiv.org/abs/2610.12292v1"
+              }
+            ]
           }
         ]
       }
@@ -95,15 +133,41 @@
             "title": "What does the model return?",
             "text": "The paper describes training paired candidate orders and aligning their distributions by candidate identity. Inference scores the supplied candidates without an order ensemble. The separate inference library exposes Choice and Noul requests, plus an experimental Score interface, and can share an audio encoding across questions. This is a closed set: your application still has to supply appropriate alternatives and a fallback when needed.",
             "sources": [
-              {"label": "AudioJev paper, v1", "url": "https://arxiv.org/abs/2610.01293v1"},
-              {"label": "Inference-library documentation", "url": "https://github.com/SihanLv/AudioJev-Inference"}
+              {
+                "label": "AudioJev paper, v1",
+                "url": "https://arxiv.org/abs/2610.01293v1"
+              },
+              {
+                "label": "Inference-library documentation",
+                "url": "https://github.com/SihanLv/AudioJev-Inference"
+              }
+            ]
+          },
+          {
+            "id": "duplexjev-comparison",
+            "title": "How does DuplexJev differ?",
+            "text": "DuplexJev connects ASR-encoder states to a frozen language model, whereas AudioJev describes a shared full-parameter model with an option-order objective. The speech paper reports different connector configurations and timing on an eight-GPU node. These are different training and serving arrangements, not a matched speed comparison. For a useful comparison, hold audio tasks, candidate sets, batching and hardware fixed, and separate audio encoding, question scoring and end-to-end latency.",
+            "sources": [
+              {
+                "label": "DuplexJev, v1",
+                "url": "https://arxiv.org/abs/2610.02638v1"
+              },
+              {
+                "label": "AudioJev, v1",
+                "url": "https://arxiv.org/abs/2610.01293v1"
+              }
             ]
           },
           {
             "id": "checkpoint",
             "title": "Which results belong to the released checkpoint?",
             "text": "Keep the paper’s three-seed averages separate from the model card’s single-seed, original-order results. The card also discloses audio-source overlap in part of the hidden MMAU evaluation. Neither a hidden evaluation split nor a fixed final checkpoint automatically establishes independence from all fitting or development sources.",
-            "sources": [{"label": "Checkpoint and evaluation scope", "url": "https://huggingface.co/shlv/AudioJev"}]
+            "sources": [
+              {
+                "label": "Checkpoint and evaluation scope",
+                "url": "https://huggingface.co/shlv/AudioJev"
+              }
+            ]
           },
           {
             "id": "evaluation",
@@ -116,8 +180,14 @@
             "title": "What is available, and under which terms?",
             "text": "The library is presented as Apache-2.0 code; the checkpoint declares the separate Qwen Research license. Review the model’s own terms before use. The release does not establish open-ended generation, visual performance or live turn-taking readiness. Follow the linked runtime documentation for hardware and deployment requirements; a documented command is not a verified deployment by this project.",
             "sources": [
-              {"label": "Model card and license declaration", "url": "https://huggingface.co/shlv/AudioJev"},
-              {"label": "Runtime and deployment entry point", "url": "https://github.com/SihanLv/AudioJev-Inference"}
+              {
+                "label": "Model card and license declaration",
+                "url": "https://huggingface.co/shlv/AudioJev"
+              },
+              {
+                "label": "Runtime and deployment entry point",
+                "url": "https://github.com/SihanLv/AudioJev-Inference"
+              }
             ]
           }
         ]
@@ -133,15 +203,41 @@
             "title": "模型返回什么？",
             "text": "论文在训练中配对不同候选顺序，并按候选身份对齐分布；推理时直接对给定候选评分，不进行多顺序集成。独立推理库提供 Choice、Noul 和实验性的 Score 接口，多问题可共享一次音频编码。这仍是封闭候选集，应用需要提供合适选项，并按需明确后备选项。",
             "sources": [
-              {"label": "AudioJev 论文 v1", "url": "https://arxiv.org/abs/2610.01293v1"},
-              {"label": "推理库文档", "url": "https://github.com/SihanLv/AudioJev-Inference"}
+              {
+                "label": "AudioJev 论文 v1",
+                "url": "https://arxiv.org/abs/2610.01293v1"
+              },
+              {
+                "label": "推理库文档",
+                "url": "https://github.com/SihanLv/AudioJev-Inference"
+              }
+            ]
+          },
+          {
+            "id": "duplexjev-comparison",
+            "title": "与 DuplexJev 有什么区别？",
+            "text": "DuplexJev 将 ASR 编码器状态接入冻结语言模型；AudioJev 则描述带选项顺序目标的共享全参数模型。语音论文报告不同连接器配置，以及八 GPU 节点上的计时。两者训练与服务安排不同，不能直接组成公平速度比较。有效比较应固定音频任务、候选集、批处理与硬件，并区分音频编码、问题评分和端到端延迟。",
+            "sources": [
+              {
+                "label": "DuplexJev, v1",
+                "url": "https://arxiv.org/abs/2610.02638v1"
+              },
+              {
+                "label": "AudioJev, v1",
+                "url": "https://arxiv.org/abs/2610.01293v1"
+              }
             ]
           },
           {
             "id": "checkpoint",
             "title": "哪些结果属于发布检查点？",
             "text": "论文三种子均值，应与模型卡的单种子、原始顺序结果分开。模型卡还披露部分隐藏 MMAU 评测的音频来源重叠。测试答案隐藏，或固定选择最终检查点，都不能自动证明其与全部拟合、开发来源独立。",
-            "sources": [{"label": "检查点与评测范围", "url": "https://huggingface.co/shlv/AudioJev"}]
+            "sources": [
+              {
+                "label": "检查点与评测范围",
+                "url": "https://huggingface.co/shlv/AudioJev"
+              }
+            ]
           },
           {
             "id": "evaluation",
@@ -154,8 +250,14 @@
             "title": "发布了什么，适用什么许可？",
             "text": "代码库声明 Apache-2.0，而检查点声明独立的 Qwen Research 许可，使用前应阅读模型自己的条款。当前发布不能证明开放式生成、视觉性能或实时轮次切换的部署成熟度。硬件与部署要求见运行库文档；列出命令不代表本项目已经验证部署。",
             "sources": [
-              {"label": "模型卡与许可声明", "url": "https://huggingface.co/shlv/AudioJev"},
-              {"label": "运行库与部署入口", "url": "https://github.com/SihanLv/AudioJev-Inference"}
+              {
+                "label": "模型卡与许可声明",
+                "url": "https://huggingface.co/shlv/AudioJev"
+              },
+              {
+                "label": "运行库与部署入口",
+                "url": "https://github.com/SihanLv/AudioJev-Inference"
+              }
             ]
           }
         ]
@@ -176,13 +278,23 @@
             "id": "tasks",
             "title": "What are the three evaluation questions?",
             "text": "The benchmark separates structural graph queries, the use of graph-plus-text information, and decisions that construct a solution over multiple steps. These comparisons diagnose different behavior. Fourteen model-interface configurations appear across the experiments; that count should not be relabeled as fourteen independent models or as identical coverage of every task.",
-            "sources": [{"label": "GraphDecisionBench paper, v3", "url": "https://arxiv.org/abs/2610.06354v3"}]
+            "sources": [
+              {
+                "label": "GraphDecisionBench paper, v3",
+                "url": "https://arxiv.org/abs/2610.06354v3"
+              }
+            ]
           },
           {
             "id": "comparison",
             "title": "What must be matched before comparing scores?",
             "text": "The repository treats each task and input condition separately and documents unsupported interfaces. Its structural probes use small supplied graphs and constructed answer quotas, which do not represent natural label frequencies in the source networks. When assessing a comparison, inspect the task predicate, candidate set, scoring rule and adapter before drawing a broader capability conclusion.",
-            "sources": [{"label": "Task contracts and input conditions", "url": "https://github.com/VictorYXL/GraphDecisionBench"}]
+            "sources": [
+              {
+                "label": "Task contracts and input conditions",
+                "url": "https://github.com/VictorYXL/GraphDecisionBench"
+              }
+            ]
           },
           {
             "id": "controls",
@@ -195,8 +307,14 @@
             "title": "Which version and artifacts are covered?",
             "text": "The paper was first submitted on October 5, 2026; this note uses v3 dated October 12. The repository offers code and aggregate tables but states that per-query and per-trajectory outputs are not distributed. Regenerating a chart from summaries would therefore be a different operation from checking individual predictions or rerunning the models. No such operation was performed here.",
             "sources": [
-              {"label": "Versioned paper and submission history", "url": "https://arxiv.org/abs/2610.06354v3"},
-              {"label": "Public release scope", "url": "https://github.com/VictorYXL/GraphDecisionBench"}
+              {
+                "label": "Versioned paper and submission history",
+                "url": "https://arxiv.org/abs/2610.06354v3"
+              },
+              {
+                "label": "Public release scope",
+                "url": "https://github.com/VictorYXL/GraphDecisionBench"
+              }
             ]
           }
         ]
@@ -211,13 +329,23 @@
             "id": "tasks",
             "title": "三类评测分别问什么？",
             "text": "基准区分结构图查询、图文信息利用，以及多步构造解的决策。这些比较诊断不同的行为。实验覆盖十四种模型—接口配置，不能把它改称十四个独立模型，也不能据此认为每项任务的覆盖完全相同。",
-            "sources": [{"label": "GraphDecisionBench 论文 v3", "url": "https://arxiv.org/abs/2610.06354v3"}]
+            "sources": [
+              {
+                "label": "GraphDecisionBench 论文 v3",
+                "url": "https://arxiv.org/abs/2610.06354v3"
+              }
+            ]
           },
           {
             "id": "comparison",
             "title": "比较得分前需要对齐什么？",
             "text": "仓库按任务与输入条件分别报告，并标明不支持的接口。结构探针使用输入中给定的小图和人工构造的答案配额，不代表源网络中的自然标签频率。判断比较是否成立前，应先检查任务谓词、候选集、评分规则与适配层，再讨论更广泛的能力。",
-            "sources": [{"label": "任务约定与输入条件", "url": "https://github.com/VictorYXL/GraphDecisionBench"}]
+            "sources": [
+              {
+                "label": "任务约定与输入条件",
+                "url": "https://github.com/VictorYXL/GraphDecisionBench"
+              }
+            ]
           },
           {
             "id": "controls",
@@ -230,8 +358,14 @@
             "title": "覆盖哪个版本和哪些材料？",
             "text": "论文首次提交于2026年10月5日，本页使用10月12日的 v3。仓库提供代码和汇总表，但说明未分发逐查询与逐轨迹输出。因此，由汇总重绘图表、检查逐项预测与重新调用模型，是不同操作；本项目尚未执行这些操作。",
             "sources": [
-              {"label": "固定版本论文与提交历史", "url": "https://arxiv.org/abs/2610.06354v3"},
-              {"label": "公开材料范围", "url": "https://github.com/VictorYXL/GraphDecisionBench"}
+              {
+                "label": "固定版本论文与提交历史",
+                "url": "https://arxiv.org/abs/2610.06354v3"
+              },
+              {
+                "label": "公开材料范围",
+                "url": "https://github.com/VictorYXL/GraphDecisionBench"
+              }
             ]
           }
         ]

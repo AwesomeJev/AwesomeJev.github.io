@@ -168,3 +168,9 @@ Eight projects were selected for the main catalog; all twelve have parallel Chin
 One complete AudioJev checkpoint repository was accepted from its inspected public model card, bringing the expansion to **773 sources**. Three associated paper selections were already in the frozen baseline and add zero source counts; the inference-code navigation link is not an accepted ledger addition. The model card identifies a single seed and Qwen Research license, discloses audio-source overlap and distinguishes order stability from correctness calibration. No weights or audio were downloaded. [Evidence and preserved provider records](../../data/label-graph-audio-review-2026-10-17.json).
 
 **中文：** 新增一个已查模型卡的完整AudioJev检查点，累计773项扩展来源；三篇精选论文均为既有来源，推理代码链接只作导航，均不重复计数。保留单种子、许可、音频来源重叠及顺序稳定与正确率校准的区别，未下载权重或音频。
+
+## Four primary domain and transfer studies — 17 October 2026 UTC
+
+Four distinct papers were accepted from fixed-v1 arXiv abstract pages, bringing the expansion to **777 sources**. Candidate identities came from the open scan proposal; the acceptance uses fresh, version-protected primary evidence. No old ledger rows were altered, no companion links were counted, and remaining scan records are still pending. English and Chinese descriptions retain medical, hardware, event-model and language-transfer limitations. [Review record](../../data/domain-transfer-review-2026-10-17.json).
+
+**中文：** 四篇固定v1原始摘要使扩展达到777项；采用新抓取并固定版本的证据，不改写旧台账，不计入配套链接，扫描其余候选仍待审。中英文简介均保留医学、硬件、事件模型及语言迁移限制。

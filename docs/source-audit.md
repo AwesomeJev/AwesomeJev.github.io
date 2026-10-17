@@ -17,6 +17,10 @@ At the initial snapshot, the collection contained **3,400 distinct source docume
 
 The input ledgers contain 3,408 records. Canonical URL and exact content-hash checks remove eight duplicates. The raw research ledger contains 897 Hugging Face abstract records and 527 OpenAlex abstract records before merging. Full downloaded source texts and reconstructed full abstracts are not published in these ledgers; they retain provenance, hashes, concise evidence and relevance notes.
 
+Subsequent additions also include original abstracts read directly from fixed-version arXiv pages. These retain `abstract_checked`, with `abstract_provider: arxiv_primary_abstract_page`, a matching `reviewed_version_url`, separate page and abstract hashes, and explicit review scope. They are not full-paper reviews. Provider records distinguish direct arXiv retrieval from mirrored or reconstructed abstracts; the historical counts above are unchanged. See the [domain and transfer study review](../data/domain-transfer-review-2026-10-17.json) for examples.
+
+**中文：** 后续来源也包含直接核查固定版本 arXiv 页面得到的原始摘要，仍标为 `abstract_checked`，记录来源类型、版本链接以及页面和摘要各自的哈希。具体途径可区分原始页面、镜像摘要与重建摘要，均不代表全文评审；上表保留初始快照计数。
+
 ## How sources entered the collection
 
 The [Jev Decision Index](https://huggingface.co/spaces/multimodalart/jev-decision-index) is fixed at commit `5d09dd9cf226338c68fad22284c4982e6680af7d`. Its model metadata, news and methodology lead to model cards, evaluation sources and repositories. One substantial discovery path is:

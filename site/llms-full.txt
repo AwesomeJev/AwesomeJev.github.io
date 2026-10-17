@@ -58,6 +58,8 @@ The social-science audit reports task-dependent confidence failures using benchm
 
 Implementation documentation supplies additional transfer limits. FRIDA-Decisions recommends short Russian–English states and uses Russian instruction suffixes. Jev-AR reports synthetic Arabic training without native-speaker validation and says confidence fitted to its built-in routes is approximate on custom lists. These are documented operating conditions, not evidence that a confidence gate transfers; we did not run either implementation. [FRIDA-Decisions limits](https://github.com/ai-forever/frida-decisions) · [Jev-AR limitations](https://github.com/atmaneayoubdev/jev-ar)
 
+The Indonesian regional-language study supplies a concrete separation: expected calibration error did not increase while error-ranking ability degraded. Its translation comparison uses human Indonesian translations; classifier comparisons depend on label budgets, and cascades on the chosen fallback and routing fraction. Evaluate those factors separately before transferring a threshold. The preregistration and release claims remain author-reported here; no prediction files were audited. [Indonesian regional-language transfer study, v1](https://arxiv.org/abs/2610.14112v1)
+
 ## How should I test decisions over tables and cited evidence?
 
 Separate schema validity, stability under content-preserving changes, and semantic correctness against reference labels. For tables, pair original inputs with alternative layouts or row/column reorderings only when meaning is preserved. Keep values, relationships and arithmetic fixed, then compare choices and probability distributions. A stable answer can still be wrong; low confidence alone does not identify an error. [Tabular decision preprint, v1](https://arxiv.org/abs/2610.19536v1)
@@ -101,6 +103,8 @@ Visual Jev’s pinned reproduction guide describes regenerating specified tables
 The observed ordinal-scale artifact documents metric recomputation from released answers. Fresh inference is separate: source text, weights and post-trained checkpoints are omitted, and missing historical data revisions can prevent a reconstruction matching recorded hashes. Its opaque file revision is not an immutable Git commit. Preserve mismatches rather than silently substituting current data. [Ordinal-scale study, v2](https://arxiv.org/abs/2609.38827v2) · [Observed anonymous README, opaque file revision](https://anonymous.4open.science/api/repo/jev_ordinal_scale_bia/file/README.md?v=3ed72968)
 
 The radiology paper’s v1 availability statement says analysis scripts and aggregate results are being prepared for release. Third-party dataset links do not supply those missing author outputs. Our checks concern documentation and selected file inventories; we have not executed these reproduction routes or independently reproduced their results. [Radiology availability statement, v1](https://arxiv.org/html/2609.27607v1#Sx1.p1)
+
+For control loops, a replay of isolated model latency does not establish deadline attainment. The network-control SoK separates request queues, execution times, action feasibility and responsibility for service checks; its examples use one bounded event model. Our proposed deployment check records arrival patterns and the complete path from request to verified outcome, alongside misses and infeasible actions. It does not substitute a synthetic replay for production evidence. [Semantic decision engines in network control, v1](https://arxiv.org/abs/2610.06425v1)
 
 # Curated resources
 
@@ -280,6 +284,14 @@ ContractNLI request variations can change which answers are wrong while aggregat
 
 Primary source: https://arxiv.org/abs/2609.27678v2
 
+## Does System One Transfer? Calibrated Typed-Decision Models, Label Budgets, and Translation for Indonesian Regional Languages
+
+Papers · Fadli et al. · 2026-10-09 · v1
+
+Tests Jev and multilingual Laya on Indonesian regional-language tasks; stable expected calibration error can coexist with worse error ranking, while human translation, label budgets and cascade choices change comparisons.
+
+Primary source: https://arxiv.org/abs/2610.14112v1
+
 ## JEV-as-a-Judge: Accept When Confident, Escalate When Unsure
 
 Papers · Li et al. · 2026-10-09 · v5
@@ -360,6 +372,14 @@ A common-request harness compares typed decision models, generative readouts and
 
 Primary source: https://arxiv.org/abs/2610.00346v2
 
+## SoK: Semantic Decision Engines in Network Control Loops
+
+Papers · Li et al. · 2026-10-05 · v1
+
+Surveys semantic engines in network control loops; separates valid decisions, action feasibility, service checks and deadline attainment, with bounded event-model tests rather than production validation.
+
+Primary source: https://arxiv.org/abs/2610.06425v1
+
 ## Calibrated to Whom? Persona and Language Effects on Cultural Values in JEV
 
 Papers · Asseri & Asseri · 2026-10-03 · v2
@@ -375,6 +395,14 @@ Papers · Liu · 2026-10-03 · v3
 Examines reliability, group-specific confident errors, and selective automation in security decisions.
 
 Primary source: https://arxiv.org/abs/2609.33401v3
+
+## Batched Speech Decisions Without Decoding: Single-Token Supervision Lets a Frozen LLM Hear Beyond the Transcript
+
+Papers · Jin et al. · 2026-10-02 · v1
+
+DuplexJev connects ASR hidden states to a frozen LLM for batched answer-token readout; connector-specific speech tasks and eight-GPU timing do not establish single-device or live-agent latency.
+
+Primary source: https://arxiv.org/abs/2610.02638v1
 
 ## Labels Override Definitions in Jev-Style Typed Decision Models
 
@@ -423,6 +451,14 @@ Papers · Su & Huang · 2026-09-30 · v1
 Composes finite action fields and explores alternatives using interaction feedback.
 
 Primary source: https://arxiv.org/abs/2610.00437v1
+
+## OmniMed-Jev: Calibrating LVLM Confidence for Trustworthy Medical Multimodal Decisions via System One
+
+Papers · Tang & Chen · 2026-09-30 · v1
+
+Medical candidate-conditioned decisions are compared with a matched generative baseline; calibration gains do not isolate interface effects from training differences or establish clinical readiness.
+
+Primary source: https://arxiv.org/abs/2610.00381v1
 
 ## Bongard: Training Machine Intuition
 
@@ -1119,6 +1155,10 @@ Based on the fixed-v1 abstract, public model card and inference-library overview
 ### What does the model return?
 
 The paper describes training paired candidate orders and aligning their distributions by candidate identity. Inference scores the supplied candidates without an order ensemble. The separate inference library exposes Choice and Noul requests, plus an experimental Score interface, and can share an audio encoding across questions. This is a closed set: your application still has to supply appropriate alternatives and a fallback when needed. [AudioJev paper, v1](https://arxiv.org/abs/2610.01293v1) · [Inference-library documentation](https://github.com/SihanLv/AudioJev-Inference)
+
+### How does DuplexJev differ?
+
+DuplexJev connects ASR-encoder states to a frozen language model, whereas AudioJev describes a shared full-parameter model with an option-order objective. The speech paper reports different connector configurations and timing on an eight-GPU node. These are different training and serving arrangements, not a matched speed comparison. For a useful comparison, hold audio tasks, candidate sets, batching and hardware fixed, and separate audio encoding, question scoring and end-to-end latency. [DuplexJev, v1](https://arxiv.org/abs/2610.02638v1) · [AudioJev, v1](https://arxiv.org/abs/2610.01293v1)
 
 ### Which results belong to the released checkpoint?
 

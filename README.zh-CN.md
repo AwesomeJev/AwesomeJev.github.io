@@ -47,7 +47,7 @@ TypeSafe 的 Jev 接收状态与类型化问题，为应用代码返回决策和
 
 ## 论文
 
-下列 62 项直接研究均为 **arXiv 预印本**。日期对应已核查并链接的版本，不一定是首次提交日期。结果由作者报告，本项目没有复现实验。标题中的速度或成本主张保留作者原文。[参考文献](references.bib) · [证据比较](docs/survey.zh-CN.md)
+下列 66 项直接研究均为 **arXiv 预印本**。日期对应已核查并链接的版本，不一定是首次提交日期。结果由作者报告，本项目没有复现实验。标题中的速度或成本主张保留作者原文。[参考文献](references.bib) · [证据比较](docs/survey.zh-CN.md)
 
 ### 评测与基准
 
@@ -56,9 +56,11 @@ TypeSafe 的 Jev 接收状态与类型化问题，为应用代码返回决策和
 - **[Reading Right, Acting Wrong: Diagnosing Decision Failures of System One Models in Agent Loops](https://arxiv.org/abs/2610.18579v1)** — Li, Krishnan & Padman. *2026-10-13, arXiv v1*. 将事实探针与行动选择配对，诊断决策失败。 [作者交互报告](https://yubol-bobo.github.io/System_one_model_evaluation/)。
 - **[General Decision Models: Benchmarking and Insights Beyond Jev](https://arxiv.org/abs/2610.03935v2)** — Duan et al. *2026-10-12, arXiv v2*. 双语决策评估与多步骤系统中的可靠性。 [训练与推理代码](https://github.com/amazingljy1206/SII-Decision) · [评测数据](https://huggingface.co/datasets/carlosxiang/JEVal)。
 - **[GraphDecisionBench: Benchmarking System One Models on Graph Tasks](https://arxiv.org/abs/2610.06354v3)** — Yang, Zhang & Zhao. *2026-10-12, arXiv v3；首次提交 2026-10-05*. 比较十四种模型—接口配置的图决策；局部邻接识别、图文证据利用与序列构造解的质量是不同能力。 [代码与汇总结果](https://github.com/VictorYXL/GraphDecisionBench)。
+- **[Does System One Transfer? Calibrated Typed-Decision Models, Label Budgets, and Translation for Indonesian Regional Languages](https://arxiv.org/abs/2610.14112v1)** — Fadli et al. *2026-10-09, arXiv v1*. 在印尼地方语言任务中测试 Jev 与多语言 Laya；预期校准误差稳定仍可伴随错误排序变差，人类翻译、标签预算与级联选择会改变比较条件。 [作者链接的研究材料](https://github.com/tnromy/evaluating-system-one-models-for-indonesian-regional-languages)。
 - **[Specialized Decision Models vs. General-Purpose LLMs: Benchmarking Jev Across Knowledge, Reasoning, and Multilingual Tasks](https://arxiv.org/abs/2610.11978v1)** — Li et al. *2026-10-08, arXiv v1*. 在知识、推理和多语言选择题中评测 Jev；报告的排名及数学弱点仅适用于所选模型与基准。
 - **[Benchmarking System One decision models against trained classifiers and language models for automated decision gates](https://arxiv.org/abs/2610.00346v2)** — Rafe & Das. *2026-10-06, arXiv v2；首次提交 2026-09-29*. 用共同请求框架比较类型化决策模型、生成模型读出与已训练分类器；准确率、选择性覆盖率和域外接纳取决于是否有任务标签及具体任务。
 - **[JEV versus LLMs: Accuracy, Cost and Calibration on Seven Political Science Replications](https://arxiv.org/abs/2610.06625v2)** — Denney & DiGiuseppe. *2026-10-06, arXiv v2*. 七项领域复现，比较准确率、成本与校准。
+- **[SoK: Semantic Decision Engines in Network Control Loops](https://arxiv.org/abs/2610.06425v1)** — Li et al. *2026-10-05, arXiv v1*. 综述网络控制环中的语义引擎，区分决策格式有效、动作可行、服务核查与期限达成；验证来自有界事件模型测试，而非生产部署。
 - **[Calibrated to Whom? Persona and Language Effects on Cultural Values in JEV](https://arxiv.org/abs/2609.36399v2)** — Asseri & Asseri. *2026-10-03, arXiv v2*. 对 Jev 进行英语和阿拉伯语人物设定条件下的问卷审查；观察的是单一模型的模拟受访者，并非对真实人群的测量。 首次提交于 2026-09-28。
 - **[HakemBench: A Turkish Benchmark of Typed Decisions](https://arxiv.org/abs/2610.02293v1)** — Teke. *2026-10-01, arXiv v1*. 土耳其语类型化决策评测同时报告决策质量、基于 Brier 的概率质量、风险—覆盖及输入探查；多数标签由 AI 产生，实验室自身模型还使用过先前测试结果的反馈。 [基准代码与数据](https://github.com/ufakai/hakembench) · [模型实现](https://github.com/ufakai/ufakzeka-karar) · [检查点](https://huggingface.co/ufakai/ufakzeka-karar)。
 - **[Evaluating and Benchmarking the System One Model Jev](https://arxiv.org/abs/2609.37647v1)** — Deußer, Sparrenberg & Sifa. *2026-09-29, arXiv v1*. 覆盖 37 个数据集的分类与决策评测。 [代码](https://github.com/AppliedMachineLearning-Lab/jev-benchmarking).
@@ -107,6 +109,7 @@ TypeSafe 的 Jev 接收状态与类型化问题，为应用代码返回决策和
 - **[Releasing the Inner Jev: A Simple Recipe for Open Decision Models](https://arxiv.org/abs/2610.17205v1)** — Geuter, Cheng & Alvarez-Melis. *2026-10-12, arXiv v1*. 答案字母概率读出与监督式 LoRA 基线；评测包含模型生成的标签。 [服务代码](https://github.com/j-geuter/jeff-serve) · [OpenDecisions](https://huggingface.co/datasets/jgeuter/OpenDecisions)。
 - **[SanSi: A Looped Typed Decision Model for System 1.5 Thinking](https://arxiv.org/abs/2610.07730v2)** — Gan, Lee & Kang. *2026-10-10, arXiv v2*. 通过隐状态循环计算决策，以额外计算成本换取准确率。 [训练与主要评测代码](https://github.com/minnesotanlp/Sansi)覆盖论文的部分实验。
 - **[MetaEncoder: Exploring the Limit of Bi-Encoders for Multimodal System One Decision Making with Natural Language Interface](https://arxiv.org/abs/2610.11316v1)** — Cheng et al. *2026-10-08, arXiv v1*. 通过自然语言接口实现多模态决策与检索的双编码器方法。 [评测代码](https://github.com/facebook/meta-encoder-eval)。
+- **[Batched Speech Decisions Without Decoding: Single-Token Supervision Lets a Frozen LLM Hear Beyond the Transcript](https://arxiv.org/abs/2610.02638v1)** — Jin et al. *2026-10-02, arXiv v1*. DuplexJev 将 ASR 隐藏状态接入冻结 LLM，通过答案 token 读出批量决策；连接器相关的语音任务结果与八 GPU 计时，不能证明单设备或实时 agent 延迟。 [作者链接的实现](https://github.com/adventists-ai/duplexjev)。
 - **[AudioJev: Direct Audio Decisions with Order-Calibrated Probabilities](https://arxiv.org/abs/2610.01293v1)** — Lv et al. *2026-10-01, arXiv v1*. 通过按候选身份对齐的选项重排训练学习音频条件概率；顺序稳定性与概率符合实际正确率仍是不同性质。 [推理库](https://github.com/SihanLv/AudioJev-Inference) · [发布检查点](https://huggingface.co/shlv/AudioJev)。
 - **[JevSpawn: Adaptive Agentic Inference through Compositional Action Spaces](https://arxiv.org/abs/2610.00437v1)** — Su & Huang. *2026-09-30, arXiv v1*. 组合有限行动字段，利用交互反馈探索候选路径。 [代码](https://github.com/Hoyant-Su/JevSpawn)。
 - **[Bongard: Training Machine Intuition](https://arxiv.org/abs/2609.39111v1)** — Ding, Jin & Ji. *2026-09-30, arXiv v1*. 共享证据编码与候选概率读出，结合表征学习和行动结果反馈训练。 [模型权重](https://huggingface.co/AgentBull/bongard-mini)。
@@ -123,6 +126,7 @@ TypeSafe 的 Jev 接收状态与类型化问题，为应用代码返回决策和
 - **[Same Scores, Different Decisions: Evaluating JEV and Language Models for Legal Document Understanding](https://arxiv.org/abs/2609.27678v2)** — Zhang et al. *2026-10-10, arXiv v2；首次提交 2026-09-23*. ContractNLI 请求变化可能改变具体错误答案，而总体准确率保持不变；稳定答案也可能保留错误。该基准不能验证真实法律场景的部署有效性。 [初始比较材料](https://github.com/ZF-Utokyo/Jev-Benchmark)。
 - **[Jev in Medicine: A Benchmark Evaluation](https://arxiv.org/abs/2609.34024v4)** — Madrid-García & Merino-Barbancho. *2026-10-10, arXiv v4；首次提交 2026-09-27*. Jev 1.13 的初步医学基准评测报告了随任务变化的准确率、校准表现及较弱的不可回答问题识别能力；这不能证明临床部署有效性。 [作者补充材料](https://zenodo.org/records/23008156)。
 - **[Token-Efficient Multi-Agent Collaboration via System One-Guided Computational Division of Labor](https://arxiv.org/abs/2610.08155v1)** — Zhou et al. *2026-10-06, arXiv v1*. 通过控制器—读取器循环分离多智能体的有界协调与 LLM 推理；报告的 GPT-4o token 用量和端到端时延下降来自七个基准上的完整框架比较。
+- **[OmniMed-Jev: Calibrating LVLM Confidence for Trustworthy Medical Multimodal Decisions via System One](https://arxiv.org/abs/2610.00381v1)** — Tang & Chen. *2026-09-30, arXiv v1*. 将医学候选条件决策与匹配的生成式基线比较；校准收益未分离接口与训练差异的影响，也不能证明临床部署成熟度。 [作者链接的代码](https://github.com/lytang63/omnimed-jev)。
 - **[Jev-Mobile: Jev as an Executor for Mobile GUI Agents](https://arxiv.org/abs/2609.30186v1)** — Zhang. *2026-09-24, arXiv v1*. 用 VLM 规划局部目标，再由 Jev 从 Android 无障碍树候选中选动作；报告的时延和 API 成本节省仅针对成功轨迹及所测控制器配置。
 - **[Evaluating Decision Models for Text Annotation in Computational Social Science](https://arxiv.org/abs/2609.24574v2)** — Ibrahim & Zaki. *2026-09-23, arXiv v2；首次提交 2026-09-21*. 评估零样本社会科学标注与按置信度分流的 LLM 级联；低成本仍伴随任务相关误差和过度自信，置信度不能替代标签验证。 [代码与调用记录](https://github.com/hazemibrahim97/decision-models-css)。
 - **[KITE: Scaling Jev Population Experiments with Sparse Flagship Calibration](https://arxiv.org/abs/2609.27535v1)** — Li. *2026-09-23, arXiv v1*. Jev 状态表与少量强模型锚点支持纳入共享人—模型差异估计的群体模拟；扩大模拟规模不会增加人类证据，也不能确立前瞻性干预效果。 [代码与汇总记录](https://github.com/HengyuLi-Ozaki-lab/kite_population_simulator)。
@@ -228,7 +232,7 @@ TypeSafe 的四个数据集提供工作流案例、模型生成的参考标签�
 | 可组合流水线 | Khattab et al., *DSPy*. 2023. | [论文](https://arxiv.org/abs/2310.03714) |
 | 高效执行 | Zheng et al., *SGLang*. NeurIPS, 2024. | [论文](https://papers.nips.cc/paper_files/paper/2024/file/724be4472168f31ba1c9ac630f15dec8-Paper-Conference.pdf) · [代码](https://github.com/sgl-project/sglang) |
 
-精选论文与社区综述共 71 条书目信息收录于 [references.bib](references.bib)。核查范围与局限见[本次论文精选记录](docs/reviews/papers-2026-10-16.md)。
+精选论文与社区综述共 75 条书目信息收录于 [references.bib](references.bib)。核查范围与局限见[本次论文精选记录](docs/reviews/papers-2026-10-16.md)。
 
 ## 快速开始
 

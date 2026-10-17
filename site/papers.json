@@ -210,6 +210,16 @@
     },
     {
       "category": "Papers",
+      "title": "Does System One Transfer? Calibrated Typed-Decision Models, Label Budgets, and Translation for Indonesian Regional Languages",
+      "by": "Fadli et al. · 2026-10-09 · v1",
+      "date": "2026-10-09",
+      "first_submitted": "2026-10-09",
+      "url": "https://arxiv.org/abs/2610.14112v1",
+      "en": "Tests Jev and multilingual Laya on Indonesian regional-language tasks; stable expected calibration error can coexist with worse error ranking, while human translation, label budgets and cascade choices change comparisons.",
+      "zh": "在印尼地方语言任务中测试 Jev 与多语言 Laya；预期校准误差稳定仍可伴随错误排序变差，人类翻译、标签预算与级联选择会改变比较条件。"
+    },
+    {
+      "category": "Papers",
       "title": "JEV-as-a-Judge: Accept When Confident, Escalate When Unsure",
       "by": "Li et al. · 2026-10-09 · v5",
       "date": "2026-10-09",
@@ -302,6 +312,16 @@
     },
     {
       "category": "Papers",
+      "title": "SoK: Semantic Decision Engines in Network Control Loops",
+      "by": "Li et al. · 2026-10-05 · v1",
+      "date": "2026-10-05",
+      "first_submitted": "2026-10-05",
+      "url": "https://arxiv.org/abs/2610.06425v1",
+      "en": "Surveys semantic engines in network control loops; separates valid decisions, action feasibility, service checks and deadline attainment, with bounded event-model tests rather than production validation.",
+      "zh": "综述网络控制环中的语义引擎，区分决策格式有效、动作可行、服务核查与期限达成；验证来自有界事件模型测试，而非生产部署。"
+    },
+    {
+      "category": "Papers",
       "title": "Calibrated to Whom? Persona and Language Effects on Cultural Values in JEV",
       "by": "Asseri & Asseri · 2026-10-03 · v2",
       "date": "2026-10-03",
@@ -317,6 +337,16 @@
       "url": "https://arxiv.org/abs/2609.33401v3",
       "en": "Examines reliability, group-specific confident errors, and selective automation in security decisions.",
       "zh": "研究安全决策中的可靠性、不同群体的高置信错误与选择性自动化。"
+    },
+    {
+      "category": "Papers",
+      "title": "Batched Speech Decisions Without Decoding: Single-Token Supervision Lets a Frozen LLM Hear Beyond the Transcript",
+      "by": "Jin et al. · 2026-10-02 · v1",
+      "date": "2026-10-02",
+      "first_submitted": "2026-10-02",
+      "url": "https://arxiv.org/abs/2610.02638v1",
+      "en": "DuplexJev connects ASR hidden states to a frozen LLM for batched answer-token readout; connector-specific speech tasks and eight-GPU timing do not establish single-device or live-agent latency.",
+      "zh": "DuplexJev 将 ASR 隐藏状态接入冻结 LLM，通过答案 token 读出批量决策；连接器相关的语音任务结果与八 GPU 计时，不能证明单设备或实时 agent 延迟。"
     },
     {
       "category": "Papers",
@@ -374,6 +404,16 @@
       "url": "https://arxiv.org/abs/2610.00437v1",
       "en": "Composes finite action fields and explores alternatives using interaction feedback.",
       "zh": "组合有限行动字段，利用交互反馈探索候选路径。"
+    },
+    {
+      "category": "Papers",
+      "title": "OmniMed-Jev: Calibrating LVLM Confidence for Trustworthy Medical Multimodal Decisions via System One",
+      "by": "Tang & Chen · 2026-09-30 · v1",
+      "date": "2026-09-30",
+      "first_submitted": "2026-09-30",
+      "url": "https://arxiv.org/abs/2610.00381v1",
+      "en": "Medical candidate-conditioned decisions are compared with a matched generative baseline; calibration gains do not isolate interface effects from training differences or establish clinical readiness.",
+      "zh": "将医学候选条件决策与匹配的生成式基线比较；校准收益未分离接口与训练差异的影响，也不能证明临床部署成熟度。"
     },
     {
       "category": "Papers",
