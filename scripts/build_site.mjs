@@ -13,6 +13,26 @@ const origin = 'https://awesomejev.github.io';
 const repo = 'https://github.com/reacher-z/Awesome-Jev';
 const contentDate = '2026-10-17'; // Update only when curated page content changes.
 const guide = JSON.parse(await readFile(resolve(root, 'data/search-guide.json'), 'utf8'));
+const topicData = JSON.parse(await readFile(resolve(root, 'data/research-topics.json'), 'utf8'));
+if (topicData.schema_version !== 1 || !Array.isArray(topicData.topics)) throw new Error('Invalid research topics.');
+const topics = topicData.topics;
+if (new Set(topics.map(topic=>topic.slug)).size !== topics.length) throw new Error('Duplicate topic route.');
+for (const topic of topics) {
+  if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(topic.slug) || !/^\d{4}-\d{2}-\d{2}$/.test(topic.published) || !/^\d{4}-\d{2}-\d{2}$/.test(topic.updated) || topic.published>topic.updated) throw new Error('Invalid topic identity or dates.');
+  for (const language of ['en','zh']) {
+    const doc=topic[language];
+    if (!doc || ['title','description','answer','scope'].some(key=>typeof doc[key]!=='string' || !doc[key].trim()) || !Array.isArray(doc.sections) || !doc.sections.length || !guide[language].sections.some(section=>section.id===topic.guide_section)) throw new Error('Incomplete bilingual research topic.');
+    if (new Set(doc.sections.map(section=>section.id)).size!==doc.sections.length) throw new Error('Duplicate topic section.');
+    for (const section of doc.sections) {
+      if (!/^[a-z0-9-]+$/.test(section.id) || !section.title || !section.text || !Array.isArray(section.sources)) throw new Error('Invalid topic section.');
+      for (const source of section.sources) {
+        const url=new URL(source.url);
+        if (url.protocol!=='https:' || url.username || url.password || !source.label) throw new Error('Invalid topic citation.');
+      }
+    }
+  }
+  if (JSON.stringify(topic.en.sections.map(s=>s.id))!==JSON.stringify(topic.zh.sections.map(s=>s.id))) throw new Error('Topic translations must preserve sections.');
+}
 const expansion = JSON.parse(await readFile(resolve(root, 'data/expansion-progress-2026-10-16.json'), 'utf8'));
 const discoveryLocalization = JSON.parse(await readFile(resolve(root, 'data/discovery-translations.zh-CN.json'), 'utf8'));
 if (discoveryLocalization.schema_version !== 1 || discoveryLocalization.language !== 'zh-CN' ||
@@ -66,13 +86,18 @@ const identity = [
   {'@type':'Organization','@id':origin+'/#organization',name:'AwesomeJev',url:origin+'/',sameAs:[repo,'https://github.com/AwesomeJev'],description:'Independent community research collection; not affiliated with TypeSafe AI.'},
   {'@type':'WebSite','@id':origin+'/#website',name:'AwesomeJev',alternateName:'Awesome Jev',url:origin+'/',inLanguage:['en','zh-CN'],publisher:{'@id':origin+'/#organization'}}
 ];
-function pageSchema(language, section, title, description, list) {
+function pageSchema(language, section, title, description, list, article) {
   const url = origin + route(language, section);
   const page = {'@type':list ? 'CollectionPage' : 'WebPage','@id':url+'#page',url,name:title,description,inLanguage:language==='zh'?'zh-CN':'en',isPartOf:{'@id':origin+'/#website'}};
   if (list) page.mainEntity = {'@type':'ItemList',numberOfItems:list.length,itemListElement:list.map((row, i)=>({'@type':'ListItem',position:i+1,name:row.title,url:row.url}))};
-  else page.mainEntity = {'@type':'Article',headline:title,inLanguage:page.inLanguage,dateModified:guide.updated,author:{'@id':origin+'/#organization'},publisher:{'@id':origin+'/#organization'},mainEntityOfPage:{'@id':page['@id']},citation:[...new Set(guide[language].sections.flatMap(s=>s.paragraphs.flatMap(p=>p.sources.map(source=>source.url))))]};
+  else page.mainEntity = {'@type':'Article',headline:title,inLanguage:page.inLanguage,dateModified:article?.updated || guide.updated,...(article?{datePublished:article.published}:{}),author:{'@id':origin+'/#organization'},publisher:{'@id':origin+'/#organization'},mainEntityOfPage:{'@id':page['@id']},citation:article?.citations || [...new Set(guide[language].sections.flatMap(s=>s.paragraphs.flatMap(p=>p.sources.map(source=>source.url))))]};
   const graph = [...identity, page];
-  if (section) graph.push({'@type':'BreadcrumbList',itemListElement:[{'@type':'ListItem',position:1,name:'Awesome Jev',item:origin+route(language)},{'@type':'ListItem',position:2,name:title,item:url}]});
+  if (section) {
+    const crumbs=[{'@type':'ListItem',position:1,name:'Awesome Jev',item:origin+route(language)}];
+    if (section.startsWith('topics/')) crumbs.push({'@type':'ListItem',position:2,name:language==='zh'?'研究专题':'Research topics',item:origin+route(language,'topics')});
+    crumbs.push({'@type':'ListItem',position:crumbs.length+1,name:title,item:url});
+    graph.push({'@type':'BreadcrumbList',itemListElement:crumbs});
+  }
   return {'@context':'https://schema.org','@graph':graph};
 }
 function alternates(section) {
@@ -87,11 +112,13 @@ function localizeHTML(html, language) {
   return html;
 }
 function home(language) {
-  const title = language === 'zh' ? 'Awesome Jev — 论文、模型与工具' : 'Awesome Jev — Papers, models and tools';
+  const title = language === 'zh' ? 'Awesome Jev — System One 模型与研究' : 'Awesome Jev — System One Models & Research';
   const description = t(language,'metaDescription');
   let html = template.replace('<html lang="en">',`<html lang="${language==='zh'?'zh-CN':'en'}">`);
   const values = {TITLE:esc(title),CANONICAL:origin+route(language),STRUCTURED_DATA:schemaTag(pageSchema(language,'',title,description,resources)),PAPERS_URL:route(language,'papers'),PAPERS_LABEL:language==='zh'?'论文目录':'Research papers',DISCOVERIES_URL:route(language,'discoveries'),DISCOVERIES_LABEL:language==='zh'?'新增资源':'New resources',RESOURCE_ROWS:resources.map(row=>renderResource(row,language,translations)).join('\n'),RESOURCE_COUNT:esc(t(language,'resourceCount')(resources.length,resources.length)),NOSCRIPT_NOTE:language==='zh'?'所有精选资源已列在本页。启用 JavaScript 后可使用搜索与筛选；也可浏览独立论文目录。':'All curated resources are listed on this page. Enable JavaScript to search and filter, or browse the dedicated papers directory.'};
   values.IMPORT_MAP = `<script type="importmap">${json(importMap)}</script>`;
+  values.TOPICS_URL = route(language,'topics');
+  values.TOPICS_LABEL = language==='zh'?'研究专题':'Research topics';
   values.APP_MODULE_URL = esc(assetURLs['app.js']);
   values.STYLESHEET_URL = esc(assetURLs['styles.css']);
   for (const [key,value] of Object.entries(values)) html=html.replaceAll(`{{${key}}}`,value);
@@ -106,7 +133,7 @@ function home(language) {
   if(language==='zh')html=html.replace('href="https://github.com/reacher-z/Awesome-Jev/blob/main/README.md" data-document="readme"','href="https://github.com/reacher-z/Awesome-Jev/blob/main/README.zh-CN.md" data-document="readme"');
   return html;
 }
-function shell(language, section, title, description, body, list) {
+function shell(language, section, title, description, body, list, article) {
   const isZh=language==='zh', pageURL=origin+route(language,section);
   return `<!doctype html>
 <html lang="${isZh?'zh-CN':'en'}"><head>
@@ -114,31 +141,46 @@ function shell(language, section, title, description, body, list) {
 <title>${esc(title)} | Awesome Jev</title><meta name="description" content="${esc(description)}" />
 <meta name="robots" content="index,follow,max-image-preview:large" /><link rel="canonical" href="${pageURL}" />
 ${alternates(section)}
-<meta property="og:type" content="${section==='guide'?'article':'website'}" /><meta property="og:site_name" content="AwesomeJev" />
+<meta property="og:type" content="${section==='guide'||article?'article':'website'}" /><meta property="og:site_name" content="AwesomeJev" />
 <meta property="og:title" content="${esc(title)}" /><meta property="og:description" content="${esc(description)}" /><meta property="og:url" content="${pageURL}" />
 <meta property="og:locale" content="${isZh?'zh_CN':'en_US'}" /><meta property="og:image" content="${origin}/assets/social.png" /><meta name="twitter:card" content="summary_large_image" />
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" /><link rel="stylesheet" href="${assetURLs['styles.css']}" />
-${schemaTag(pageSchema(language,section,title,description,list))}
+${schemaTag(pageSchema(language,section,title,description,list,article))}
 </head><body><a class="skip-link" href="#main">${isZh?'跳转到正文':'Skip to content'}</a><div class="page-shell">
 <header class="masthead"><a class="wordmark" href="${route(language)}"><span class="brand-mark" aria-hidden="true">aj</span>AwesomeJev.</a>
-<nav class="main-nav" aria-label="${isZh?'主导航':'Main navigation'}"><a href="${route(language)}">${isZh?'资源索引':'Resources'}</a><a href="${route(language,'papers')}">${isZh?'论文':'Papers'}</a><a href="${route(language,'discoveries')}">${isZh?'新增资源':'New resources'}</a><a href="${route(language,'guide')}">${isZh?'研究指南':'Research guide'}</a><a href="${repo}">GitHub</a></nav>
+<nav class="main-nav" aria-label="${isZh?'主导航':'Main navigation'}"><a href="${route(language)}">${isZh?'资源索引':'Resources'}</a><a href="${route(language,'papers')}">${isZh?'论文':'Papers'}</a><a href="${route(language,'topics')}">${isZh?'研究专题':'Topics'}</a><a href="${route(language,'discoveries')}">${isZh?'新增资源':'New resources'}</a><a href="${route(language,'guide')}">${isZh?'研究指南':'Research guide'}</a><a href="${repo}">GitHub</a></nav>
 <div class="language-switch"><a href="${route('en',section)}" lang="en" hreflang="en" aria-current="${isZh?'false':'page'}">EN</a><span>/</span><a href="${route('zh',section)}" lang="zh-CN" hreflang="zh-CN" aria-current="${isZh?'page':'false'}">中文</a></div></header>
-<main id="main" class="document-main"><nav class="breadcrumbs" aria-label="${isZh?'当前位置':'Breadcrumb'}"><a href="${route(language)}">Awesome Jev</a><span aria-hidden="true"> / </span><span>${esc(title)}</span></nav>
+<main id="main" class="document-main"><nav class="breadcrumbs" aria-label="${isZh?'当前位置':'Breadcrumb'}"><a href="${route(language)}">Awesome Jev</a><span aria-hidden="true"> / </span>${section.startsWith('topics/')?`<a href="${route(language,'topics')}">${isZh?'研究专题':'Research topics'}</a><span aria-hidden="true"> / </span>`:''}<span>${esc(title)}</span></nav>
 <h1>${esc(title)}</h1><p class="document-deck">${esc(description)}</p>${body}</main>
 <footer class="document-footer"><p>${isZh?'独立社区项目，与 TypeSafe AI 无隶属关系。':'Independent community project. Not affiliated with TypeSafe AI.'}</p><p><a href="${repo}">GitHub</a> · <a href="/references.bib">BibTeX</a> · <a href="${repo}/blob/main/LICENSE">MIT</a> · <a href="https://github.com/reacher-z">reacher-z</a></p></footer>
 </div></body></html>\n`;
+}
+function topicLinks(language) {
+  return `<nav class="document-toc" aria-label="${language==='zh'?'研究专题':'Research topics'}"><ul>${topics.map(topic=>`<li><a href="${route(language,'topics/'+topic.slug)}">${esc(topic[language].title)}</a></li>`).join('')}</ul></nav>`;
+}
+function topicsPage(language) {
+  const isZh=language==='zh', title=isZh?'Jev 决策模型研究专题':'Jev decision model research topics';
+  const description=isZh?'聚焦选项标签偏置、音频决策与图任务评测，连接原始研究、实践诊断与证据局限。':'Focused notes on option-label bias, audio decisions and graph evaluation, connecting primary research with practical diagnostics and evidence limits.';
+  const body=`<p>${isZh?'每个专题提供简明回答、原始引用、建议检查与核查范围。作者报告的结果与本项目提出的评估流程分别标明。':'Each note gives a direct answer, primary references, proposed checks and review scope. Author-reported findings are distinguished from evaluation procedures proposed by this project.'}</p><div class="prose">${topics.map(topic=>`<section><h2><a href="${route(language,'topics/'+topic.slug)}">${esc(topic[language].title)}</a></h2><p>${esc(topic[language].description)}</p></section>`).join('')}</div>`;
+  return shell(language,'topics',title,description,body,topics.map(topic=>({title:topic[language].title,url:origin+route(language,'topics/'+topic.slug)})));
+}
+function topicPage(language, topic) {
+  const doc=topic[language], isZh=language==='zh';
+  const citations=[...new Set(doc.sections.flatMap(section=>section.sources.map(source=>source.url)))];
+  const body=`<p class="document-date">${isZh?'AwesomeJev 整理 · 更新':'By AwesomeJev · Updated'} <time datetime="${topic.updated}">${topic.updated}</time></p><div class="prose"><p><strong>${isZh?'简明回答：':'Short answer: '}</strong>${esc(doc.answer)}</p><p>${esc(doc.scope)}</p></div><nav class="document-toc" aria-label="${isZh?'本页目录':'On this page'}"><ol>${doc.sections.map(section=>`<li><a href="#${section.id}">${esc(section.title)}</a></li>`).join('')}</ol></nav><div class="prose">${doc.sections.map(section=>`<section id="${section.id}"><h2>${esc(section.title)}</h2><p>${esc(section.text)}${section.sources.length?' <span class="source-links">'+section.sources.map(source=>`<a href="${esc(source.url)}" rel="noopener noreferrer">${esc(source.label)}</a>`).join(' · ')+'</span>':''}</p></section>`).join('')}</div><p><a href="${route(language,'guide')}#${topic.guide_section}">${isZh?'相关评估指南':'Related evaluation guide'} →</a> · <a href="${route(language,'papers')}">${isZh?'全部精选论文':'All selected papers'}</a></p><h2>${isZh?'继续阅读':'Continue reading'}</h2>${topicLinks(language)}`;
+  return shell(language,'topics/'+topic.slug,doc.title,doc.description,body,undefined,{published:topic.published,updated:topic.updated,citations});
 }
 function guidePage(language) {
   const doc=guide[language], isZh=language==='zh';
   const toc=`<nav class="document-toc" aria-label="${isZh?'本页目录':'On this page'}"><ol>${doc.sections.map(s=>`<li><a href="#${esc(s.id)}">${esc(s.title)}</a></li>`).join('')}</ol></nav>`;
   const body=`<p class="document-date">${isZh?'更新':'Updated'} <time datetime="${guide.updated}">${guide.updated}</time> · <a href="${repo}/blob/main/docs/${isZh?'survey.zh-CN.md':'survey.md'}">${isZh?'完整研究综述':'Full research survey'}</a></p><p>${esc(doc.intro)}</p>${toc}<div class="prose">${doc.sections.map(s=>`<section id="${esc(s.id)}"><h2>${esc(s.title)}</h2>${s.paragraphs.map(p=>`<p>${esc(p.text)}${p.sources.length?' <span class="source-links">'+p.sources.map(source=>`<a href="${esc(source.url)}" rel="noopener noreferrer">${esc(source.label)}</a>`).join(' · ')+'</span>':''}</p>`).join('')}</section>`).join('')}</div><p><a href="${route(language,'papers')}">${isZh?'继续阅读：精选论文与版本':'Continue reading: selected papers and versions'} →</a></p>`;
-  return shell(language,'guide',doc.title,doc.description,body);
+  return shell(language,'guide',doc.title,doc.description,body+topicLinks(language));
 }
 function papersPage(language) {
   const isZh=language==='zh', title=isZh?'Jev 与类型化决策模型论文':'Jev and typed decision model papers';
   const description=isZh?'按版本日期整理的精选论文：评测、校准、路由、鲁棒性与模型架构，附原文和引用。':'Selected papers on evaluation, calibration, routing, robustness and decision-model architectures, with versioned primary sources and citations.';
   const body=`<p>${isZh?'本目录收录直接相关的预印本。日期对应所列版本；简介基于论文与摘要核查，不代表实验已复现。基础文献与模型、工具另见首页。':'This directory selects directly relevant preprints. Dates identify the linked versions; summaries draw on paper and abstract checks, without claiming experimental reproduction. Foundations, models and tools are listed on the homepage.'}</p><p class="document-date">${isZh?'最近整理':'Last curated'} <time datetime="${contentDate}">${contentDate}</time> · ${papers.length} ${isZh?'篇论文':'papers'} · <a href="/references.bib">BibTeX</a> · <a href="/papers.json">JSON</a></p><p><a href="${route(language,'guide')}">${isZh?'先读研究指南：接口、概率与评测':'Start with the research guide: interfaces, probabilities and evaluation'} →</a></p><div class="resource-list">${papers.map(row=>renderResource(row,language,translations)).join('\n')}</div>`;
-  return shell(language,'papers',title,description,body,papers);
+  return shell(language,'papers',title,description,topicLinks(language)+body,papers);
 }
 function discoveriesPage(language) {
   const isZh=language==='zh', labelIndex=isZh?1:0;
@@ -160,13 +202,18 @@ for (const language of ['en','zh']) {
   outputs.set(`site${route(language,'guide')}index.html`,guidePage(language));
   outputs.set(`site${route(language,'papers')}index.html`,papersPage(language));
   outputs.set(`site${route(language,'discoveries')}index.html`,discoveriesPage(language));
+  outputs.set(`site${route(language,'topics')}index.html`,topicsPage(language));
+  for (const topic of topics) outputs.set(`site${route(language,'topics/'+topic.slug)}index.html`,topicPage(language,topic));
 }
-outputs.set('site/sitemap.xml',`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${['','guide','papers','discoveries'].flatMap(section=>['en','zh'].map(language=>`  <url><loc>${origin+route(language,section)}</loc><lastmod>${section==='guide'?guide.updated:section==='discoveries'?discoveryDate:contentDate}</lastmod>${['en','zh'].map(other=>`<xhtml:link rel="alternate" hreflang="${other==='zh'?'zh-CN':'en'}" href="${origin+route(other,section)}" />`).join('')}</url>`)).join('\n')}\n</urlset>\n`);
+const sections=['','guide','papers','discoveries','topics',...topics.map(topic=>'topics/'+topic.slug)];
+const sectionDate=section=>section==='guide'?guide.updated:section==='discoveries'?discoveryDate:section.startsWith('topics/')?topics.find(topic=>'topics/'+topic.slug===section).updated:contentDate;
+outputs.set('site/sitemap.xml',`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${sections.flatMap(section=>['en','zh'].map(language=>`  <url><loc>${origin+route(language,section)}</loc><lastmod>${sectionDate(section)}</lastmod>${['en','zh'].map(other=>`<xhtml:link rel="alternate" hreflang="${other==='zh'?'zh-CN':'en'}" href="${origin+route(other,section)}" />`).join('')}</url>`)).join('\n')}\n</urlset>\n`);
 outputs.set('site/data/expansion-progress.json',JSON.stringify(expansion,null,2)+'\n');
 outputs.set('site/references.bib',await readFile(resolve(root,'references.bib'),'utf8'));
 outputs.set('site/papers.json',JSON.stringify({title:'Awesome Jev research papers',url:origin+'/papers/',updated:contentDate,scope:'Curated direct preprints; findings remain author-reported. No experimental reproduction implied.',papers},null,2)+'\n');
-outputs.set('site/llms.txt',`# Awesome Jev\n\n> Independent, bilingual collection of Jev and typed decision model research, models, datasets and tools. Not affiliated with TypeSafe AI.\n\n## Main pages\n\n- [Resource collection](${origin}/): curated primary sources and verification labels.\n- [Research guide](${origin}/guide/): source-backed answers about Jev, typed decisions, probabilities and evaluation.\n- [Papers](${origin}/papers/): versioned preprints; findings remain author-reported.\n- [New resources](${origin}/discoveries/): new direct resources, related work and background research with evidence labels.\n- [中文](${origin}/zh/): Chinese collection and guide.\n\n## Source formats\n\n- [Guide and curated resources in Markdown](${origin}/llms-full.txt)\n- [Paper metadata](${origin}/papers.json)\n- [Expansion report](${origin}/data/expansion-progress.json)\n- [BibTeX](${origin}/references.bib)\n- [Repository](${repo})\n- [Verification methodology](${repo}/blob/main/docs/source-audit.md)\n\nThis optional file is a reading aid, not an indexing or ranking mechanism. Respect source versions and distinguish vendor claims, preprint findings, and independently reproduced evidence.\n`);
+outputs.set('site/llms.txt',`# Awesome Jev\n\n> Independent, bilingual collection of Jev and typed decision model research, models, datasets and tools. Not affiliated with TypeSafe AI.\n\n## Main pages\n\n- [Resource collection](${origin}/): curated primary sources and verification labels.\n- [Research guide](${origin}/guide/): source-backed answers about Jev, typed decisions, probabilities and evaluation.\n- [Research topics](${origin}/topics/): focused, source-backed notes with direct answers and evaluation limits.\n- [Papers](${origin}/papers/): versioned preprints; findings remain author-reported.\n- [New resources](${origin}/discoveries/): new direct resources, related work and background research with evidence labels.\n- [中文](${origin}/zh/): Chinese collection and guide.\n\n## Source formats\n\n- [Guide and curated resources in Markdown](${origin}/llms-full.txt)\n- [Paper metadata](${origin}/papers.json)\n- [Expansion report](${origin}/data/expansion-progress.json)\n- [BibTeX](${origin}/references.bib)\n- [Repository](${repo})\n- [Verification methodology](${repo}/blob/main/docs/source-audit.md)\n\nThis optional file is a reading aid, not an indexing or ranking mechanism. Respect source versions and distinguish vendor claims, preprint findings, and independently reproduced evidence.\n`);
 outputs.set('site/llms-full.txt',`# Awesome Jev\n\nIndependent community project, not affiliated with TypeSafe AI.\nCanonical website: ${origin}/\nCurated snapshot: ${contentDate}. Findings are author-reported; no model experiments reproduced here.\n\n# ${guide.en.title}\n\n${guide.en.intro}\n\n${guide.en.sections.map(s=>`## ${s.title}\n\n${s.paragraphs.map(p=>(p.text+' '+p.sources.map(source=>`[${source.label}](${source.url})`).join(' · ')).trimEnd()).join('\n\n')}`).join('\n\n')}\n\n# Curated resources\n\n${resources.map(row=>`## ${row.title}\n\n${row.category} · ${row.by}\n\n${row.en}\n\nPrimary source: ${row.url}`).join('\n\n')}\n`);
+outputs.set('site/llms-full.txt', outputs.get('site/llms-full.txt') + '\n# Research topics\n\n' + topics.map(topic=>`## ${topic.en.title}\n\nCanonical page: ${origin+route('en','topics/'+topic.slug)}\nUpdated: ${topic.updated}\n\n${topic.en.answer}\n\n${topic.en.scope}\n\n${topic.en.sections.map(section=>`### ${section.title}\n\n${section.text} ${section.sources.map(source=>`[${source.label}](${source.url})`).join(' · ')}`.trimEnd()).join('\n\n')}`).join('\n\n') + '\n');
 const check=process.argv.includes('--check');
 let stale=0;
 for (const [name,content] of outputs) {

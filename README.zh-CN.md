@@ -4,7 +4,7 @@
 
 围绕 **Jev 与类型化决策模型**，整理研究论文、模型、数据集、评测工具与实践指南。
 
-**[主仓库](https://github.com/reacher-z/Awesome-Jev)** · [网站](https://awesomejev.github.io/zh/) · [论文目录](https://awesomejev.github.io/zh/papers/) · [研究指南](https://awesomejev.github.io/zh/guide/) · [新增资源](https://awesomejev.github.io/zh/discoveries/) · [English](README.md) · [综述](docs/survey.zh-CN.md) · [BibTeX](references.bib) · [参与贡献](CONTRIBUTING.md)
+**[主仓库](https://github.com/reacher-z/Awesome-Jev)** · [网站](https://awesomejev.github.io/zh/) · [论文目录](https://awesomejev.github.io/zh/papers/) · [研究指南](https://awesomejev.github.io/zh/guide/) · [新增资源](https://awesomejev.github.io/zh/discoveries/) · [研究专题](https://awesomejev.github.io/zh/topics/) · [English](README.md) · [综述](docs/survey.zh-CN.md) · [BibTeX](references.bib) · [参与贡献](CONTRIBUTING.md)
 
 独立社区项目，与 TypeSafe AI 无隶属关系。最近整理：**2026-10-17**。网站从 [AwesomeJev.github.io](https://github.com/AwesomeJev/AwesomeJev.github.io) 仓库发布。
 

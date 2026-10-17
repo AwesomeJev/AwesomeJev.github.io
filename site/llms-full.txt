@@ -1079,3 +1079,80 @@ Foundations · Zheng et al. · NeurIPS 2024
 Efficient execution of structured language-model programs.
 
 Primary source: https://arxiv.org/abs/2312.07104
+
+# Research topics
+
+## Option-label bias in Jev-style decision models
+
+Canonical page: https://awesomejev.github.io/topics/option-label-bias/
+Updated: 2026-10-17
+
+A valid typed answer can follow an option’s familiar name instead of its assigned definition. The observed failure and its cause are separate questions: evidence from inspected open implementations should not be treated as an explanation of hosted Jev’s internals.
+
+Independent research note based on versioned abstracts and the collection’s scoped reviews. Findings are author-reported; no attack or model experiment was run here.
+
+### Which studies answer which question?
+
+Sun and colleagues test conflicts between option names and definitions. Azizi and colleagues’ Labels Override Definitions examines how open implementations render those fields, including interventions that hold weights fixed. Their later One Word Opens the Gate evaluates attacker-controlled option channels in guardrail settings. These are distinct papers with different experimental questions; sharing a failure theme does not make their results interchangeable. [Type-Safe Is Not Error-Free, v3](https://arxiv.org/abs/2609.26758v3) · [Labels Override Definitions, v1](https://arxiv.org/abs/2610.02586v1) · [One Word Opens the Gate, v1](https://arxiv.org/abs/2610.12292v1)
+
+### Why inspect the rendered request?
+
+The fixed-weight rendering intervention in Labels Override Definitions provides evidence about the tested interface implementation. That is a narrower claim than saying every constrained decision head has the same defect. Before comparing systems, identify whether the option key, label and definition all reach the model, and whether the adapter rewrites or drops any of them. [Rendering intervention: original abstract](https://arxiv.org/abs/2610.02586v1)
+
+### A diagnostic to use in your own evaluation
+
+Our suggested comparison fixes the state, task rule, model version and scoring rule. Prepare equivalent requests with informative labels, neutral identifiers and definition-only options where the interface permits them. Add a separate conflicting-label condition, with expected answers checked before querying. Compare answer changes, errors and confidence on errors; preserve the actual rendered inputs. Use a held-out set to test any proposed repair.
+
+### What would remain unproven?
+
+An adapter fix on one open implementation is not a universal injection defense. The guardrail study concerns open-weight models and does not demonstrate a compromise of hosted Jev. Keep the attacker’s permitted input channels explicit, and distinguish a changed distribution, a wrong choice and a downstream action. The diagnostic above is a proposed protocol, not a reproduced finding. [Guardrail study and tested scope](https://arxiv.org/abs/2610.12292v1)
+
+## AudioJev: audio decisions, order calibration and release limits
+
+Canonical page: https://awesomejev.github.io/topics/audiojev/
+Updated: 2026-10-17
+
+AudioJev is an independent audio decision model that scores supplied alternatives from a waveform and question. Its order-calibration objective addresses sensitivity to candidate order; it does not establish that a returned probability equals the empirical chance of being correct.
+
+Based on the fixed-v1 abstract, public model card and inference-library overview. No weights, audio or inference code were executed or downloaded.
+
+### What does the model return?
+
+The paper describes training paired candidate orders and aligning their distributions by candidate identity. Inference scores the supplied candidates without an order ensemble. The separate inference library exposes Choice and Noul requests, plus an experimental Score interface, and can share an audio encoding across questions. This is a closed set: your application still has to supply appropriate alternatives and a fallback when needed. [AudioJev paper, v1](https://arxiv.org/abs/2610.01293v1) · [Inference-library documentation](https://github.com/SihanLv/AudioJev-Inference)
+
+### Which results belong to the released checkpoint?
+
+Keep the paper’s three-seed averages separate from the model card’s single-seed, original-order results. The card also discloses audio-source overlap in part of the hidden MMAU evaluation. Neither a hidden evaluation split nor a fixed final checkpoint automatically establishes independence from all fitting or development sources. [Checkpoint and evaluation scope](https://huggingface.co/shlv/AudioJev)
+
+### How should I evaluate it?
+
+For your own test, define a task-specific answer set and verify labels independently. Compare unchanged audio under meaning-preserving candidate permutations, align the returned probabilities by candidate identity, and measure both accuracy and order sensitivity. Assess correctness calibration separately, on held-out labeled examples. If a downstream action depends on a threshold, report the accepted fraction and error rate together. These are proposed checks, not results produced by this collection.
+
+### What is available, and under which terms?
+
+The library is presented as Apache-2.0 code; the checkpoint declares the separate Qwen Research license. Review the model’s own terms before use. The release does not establish open-ended generation, visual performance or live turn-taking readiness. Follow the linked runtime documentation for hardware and deployment requirements; a documented command is not a verified deployment by this project. [Model card and license declaration](https://huggingface.co/shlv/AudioJev) · [Runtime and deployment entry point](https://github.com/SihanLv/AudioJev-Inference)
+
+## GraphDecisionBench: evaluating Jev on graph decisions
+
+Canonical page: https://awesomejev.github.io/topics/graph-decision-benchmarks/
+Updated: 2026-10-17
+
+GraphDecisionBench evaluates different graph capabilities rather than producing one universal model ranking. Correctly recognizing an edge does not establish structural reasoning, and completing a feasible construction does not establish a high-quality solution.
+
+This note uses the v3 abstract and the repository’s overview and availability statements. It is not a full-paper review or benchmark reproduction.
+
+### What are the three evaluation questions?
+
+The benchmark separates structural graph queries, the use of graph-plus-text information, and decisions that construct a solution over multiple steps. These comparisons diagnose different behavior. Fourteen model-interface configurations appear across the experiments; that count should not be relabeled as fourteen independent models or as identical coverage of every task. [GraphDecisionBench paper, v3](https://arxiv.org/abs/2610.06354v3)
+
+### What must be matched before comparing scores?
+
+The repository treats each task and input condition separately and documents unsupported interfaces. Its structural probes use small supplied graphs and constructed answer quotas, which do not represent natural label frequencies in the source networks. When assessing a comparison, inspect the task predicate, candidate set, scoring rule and adapter before drawing a broader capability conclusion. [Task contracts and input conditions](https://github.com/VictorYXL/GraphDecisionBench)
+
+### A useful control for sequential decisions
+
+Our suggested evaluation compares a model-driven selector with the proposal rule alone, using the same candidate generator, constraints and stopping conditions. Measure feasibility and final objective quality separately. Preserve unsuccessful trajectories and their costs. If a heuristic narrows the choices, any improvement may reflect both the proposals and the selector; an identical proposal-only control helps separate their contributions.
+
+### Which version and artifacts are covered?
+
+The paper was first submitted on October 5, 2026; this note uses v3 dated October 12. The repository offers code and aggregate tables but states that per-query and per-trajectory outputs are not distributed. Regenerating a chart from summaries would therefore be a different operation from checking individual predictions or rerunning the models. No such operation was performed here. [Versioned paper and submission history](https://arxiv.org/abs/2610.06354v3) · [Public release scope](https://github.com/VictorYXL/GraphDecisionBench)

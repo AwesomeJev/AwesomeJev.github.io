@@ -6,6 +6,7 @@
 
 - [Resource collection](https://awesomejev.github.io/): curated primary sources and verification labels.
 - [Research guide](https://awesomejev.github.io/guide/): source-backed answers about Jev, typed decisions, probabilities and evaluation.
+- [Research topics](https://awesomejev.github.io/topics/): focused, source-backed notes with direct answers and evaluation limits.
 - [Papers](https://awesomejev.github.io/papers/): versioned preprints; findings remain author-reported.
 - [New resources](https://awesomejev.github.io/discoveries/): new direct resources, related work and background research with evidence labels.
 - [中文](https://awesomejev.github.io/zh/): Chinese collection and guide.

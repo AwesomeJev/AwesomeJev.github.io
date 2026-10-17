@@ -4,7 +4,7 @@
 
 A curated list of **Jev and typed decision model** papers, models, datasets, evaluation tools, and practical guides.
 
-**[Main repository](https://github.com/reacher-z/Awesome-Jev)** · [Website](https://awesomejev.github.io/) · [Papers](https://awesomejev.github.io/papers/) · [Research guide](https://awesomejev.github.io/guide/) · [New resources](https://awesomejev.github.io/discoveries/) · [中文](README.zh-CN.md) · [Survey](docs/survey.md) · [BibTeX](references.bib) · [Contribute](CONTRIBUTING.md)
+**[Main repository](https://github.com/reacher-z/Awesome-Jev)** · [Website](https://awesomejev.github.io/) · [Papers](https://awesomejev.github.io/papers/) · [Research guide](https://awesomejev.github.io/guide/) · [New resources](https://awesomejev.github.io/discoveries/) · [Research topics](https://awesomejev.github.io/topics/) · [中文](README.zh-CN.md) · [Survey](docs/survey.md) · [BibTeX](references.bib) · [Contribute](CONTRIBUTING.md)
 
 Independent community project; not affiliated with TypeSafe AI. Last curated: **2026-10-17**. The website is published from [AwesomeJev.github.io](https://github.com/AwesomeJev/AwesomeJev.github.io).
 

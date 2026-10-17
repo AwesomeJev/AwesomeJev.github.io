@@ -19,8 +19,11 @@ ROOT = Path(__file__).resolve().parents[1]
 BASE = "https://awesomejev.github.io"
 ROUTES = ("/", "/zh/", "/guide/", "/zh/guide/", "/papers/", "/zh/papers/", "/discoveries/", "/zh/discoveries/")
 PAIRS = (("/", "/zh/"), ("/guide/", "/zh/guide/"), ("/papers/", "/zh/papers/"), ("/discoveries/", "/zh/discoveries/"))
+TOPIC_SLUGS = ("option-label-bias", "audiojev", "graph-decision-benchmarks")
+PAIRS += (("/topics/", "/zh/topics/"),) + tuple((f"/topics/{slug}/", f"/zh/topics/{slug}/") for slug in TOPIC_SLUGS)
+ROUTES = tuple(route for pair in PAIRS for route in pair)
 BUILD_INPUTS = (
-    "scripts/build_site.mjs", "templates/index.html", "data/search-guide.json",
+    "scripts/build_site.mjs", "templates/index.html", "data/search-guide.json", "data/research-topics.json",
     "data/expansion-progress-2026-10-16.json", "data/discovery-translations.zh-CN.json", "references.bib",
     "site/app.js", "site/catalog.mjs", "site/resource-view.mjs", "site/styles.css",
 )
@@ -291,7 +294,7 @@ class SiteDiscoveryTests(unittest.TestCase):
         self.assertEqual(len(set(observed)), len(ROUTES))
 
     def test_chinese_routes_contain_translated_body_text_before_scripts_run(self):
-        for route in ("/zh/", "/zh/guide/", "/zh/papers/", "/zh/discoveries/"):
+        for route in (route for route in ROUTES if route.startswith("/zh/")):
             with self.subTest(route=route):
                 self.assertGreater(len(re.findall(r"[\u4e00-\u9fff]", "".join(self.pages[route].body_text))), 30)
 
@@ -389,7 +392,7 @@ class SiteDiscoveryTests(unittest.TestCase):
         self.assertEqual(published, original)
 
     def test_guide_article_headline_matches_visible_page_heading(self):
-        for route in ("/guide/", "/zh/guide/"):
+        for route in ("/guide/", "/zh/guide/") + tuple(route for route in ROUTES if any(f"/topics/{slug}/" in route for slug in TOPIC_SLUGS)):
             with self.subTest(route=route):
                 page = self.pages[route]
                 articles = [item for block in page.structured for item in objects(block) if has_type(item, "Article")]
@@ -399,6 +402,41 @@ class SiteDiscoveryTests(unittest.TestCase):
                 self.assertTrue(citations, "The research guide must expose its source citations")
                 self.assertTrue(set(citations).issubset(page.links), "Structured citations must also be visible page links")
                 self.assertTrue(all(urlsplit(url).scheme in {"http", "https"} and urlsplit(url).netloc for url in citations))
+
+    def test_topic_answers_and_evidence_are_visible_without_javascript(self):
+        topics = json.loads((ROOT / "data/research-topics.json").read_text())["topics"]
+        self.assertEqual({topic["slug"] for topic in topics}, set(TOPIC_SLUGS))
+        for topic in topics:
+            for language, prefix in (("en", "/"), ("zh", "/zh/")):
+                route = prefix + "topics/" + topic["slug"] + "/"
+                with self.subTest(route=route):
+                    page = self.pages[route]
+                    visible = words(" ".join(page.body_text))
+                    self.assertIn(words(topic[language]["answer"]), visible)
+                    self.assertIn(words(topic[language]["scope"]), visible)
+                    for section in topic[language]["sections"]:
+                        self.assertIn(words(section["text"]), visible)
+                        self.assertIn(section["id"], page.ids)
+                    article = next(item for block in page.structured for item in objects(block) if has_type(item, "Article"))
+                    self.assertEqual(article["datePublished"], topic["published"])
+                    self.assertEqual(article["dateModified"], topic["updated"])
+                    self.assertIn(BASE + prefix + "topics/", [item.get("item") for block in page.structured for item in objects(block) if has_type(item, "ListItem")])
+
+    def test_every_topic_is_reachable_through_ordinary_internal_links(self):
+        for prefix in ("/", "/zh/"):
+            index = prefix + "topics/"
+            self.assertIn(index, self.pages[prefix].links)
+            for slug in TOPIC_SLUGS:
+                route = index + slug + "/"
+                for source in (index, prefix + "papers/", prefix + "guide/"):
+                    self.assertIn(route, self.pages[source].links)
+                self.assertIn(index, self.pages[route].links)
+            structured = [item for block in self.pages[index].structured for item in objects(block) if has_type(item, "ItemList")]
+            self.assertEqual(len(structured), 1)
+            self.assertEqual(structured[0]["numberOfItems"], len(TOPIC_SLUGS))
+            for item in structured[0]["itemListElement"]:
+                self.assertIn(urlsplit(item["url"]).path, self.pages[index].links)
+                self.assertIn(words(item["name"]), words(" ".join(self.pages[index].body_text)))
 
     def test_search_and_answer_engine_crawlers_are_not_blocked(self):
         robots_text = (ROOT / "site/robots.txt").read_text()

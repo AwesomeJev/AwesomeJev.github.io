@@ -5,12 +5,12 @@ const translations = {
     navIndex: "Resources",
     navStart: "Get started",
     metaDescription:
-      "Papers, models, datasets, and tools for Jev and typed decision models.",
+      "Explore Jev and System One decision models through research papers, benchmarks, models and tools, with primary sources and English–Chinese guides.",
     heroEyebrow: "AN INDEPENDENT FIELD GUIDE",
     heroLine1: "Awesome Jev",
     heroLine2: "by design.",
     heroDescription:
-      "Papers, models, datasets, and tools for typed decisions.",
+      "Research, models and tools for Jev and System One decision models.",
     explore: "Explore the collection",
     figureTitle: "FROM CONTEXT TO CHOICE",
     figureInput: "“I was charged twice.<br>Could you help?”",
@@ -139,12 +139,12 @@ const translations = {
     navIndex: "资源索引",
     navStart: "开始使用",
     metaDescription:
-      "汇集 Jev 与类型化决策模型相关的论文、模型、数据集和工具。",
+      "探索 Jev 与 System One 决策模型的论文、基准、模型和工具，提供原始来源、中英文研究指南与证据局限。",
     heroEyebrow: "一份独立的研究与实践指南",
     heroLine1: "Awesome Jev",
     heroLine2: "始于设计。",
     heroDescription:
-      "类型化决策相关的论文、模型、数据集和工具。",
+      "Jev 与 System One 决策模型的论文、模型和工具。",
     explore: "探索精选资源",
     figureTitle: "从上下文到决策",
     figureInput: "“我被重复扣费了，<br>可以帮忙处理吗？”",
