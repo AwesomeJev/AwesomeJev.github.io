@@ -1,6 +1,6 @@
 # Resource expansion — 16 October 2026
 
-**772 newly added, evidence-checked sources / target: at least 301.**
+**773 newly added, evidence-checked sources / target: at least 301.**
 
 [Main collection](../README.md) · [Website source search](https://awesomejev.github.io/#corpus) · [Machine-readable progress](../data/expansion-progress-2026-10-16.json) · [Frozen baseline](../data/expansion-baseline-2026-10-16.json) · [Prior-citation supplement](../data/expansion-baseline-supplement-2026-10-16.json)
 
@@ -8,13 +8,13 @@ The baseline is [commit 3519c15](https://github.com/reacher-z/Awesome-Jev/tree/3
 
 Only sources in the [reviewed intake](../data/expansion-intake-2026-10-16.json) count toward this expansion. This is a discovery directory with explicit screening levels. **Direct** sources concern Jev or typed decision systems; **adjacent** resources implement closely related methods; **background** papers provide research context. Listing is not an endorsement or independent reproduction. The short descriptions explain relevance, not a universal recommendation.
 
-**中文：本轮已新增 772 项有核查证据的资源，目标至少 301 项。** 已有台账、精选与引用链接、重复正文或论文题名均不重复计数，仅元数据条目不计入目标。下表区分直接相关、邻近方法与背景研究；自动内容筛查或摘要检查不等于全文评审，也不代表实验复现。
+**中文：本轮已新增 773 项有核查证据的资源，目标至少 301 项。** 已有台账、精选与引用链接、重复正文或论文题名均不重复计数，仅元数据条目不计入目标。下表区分直接相关、邻近方法与背景研究；自动内容筛查或摘要检查不等于全文评审，也不代表实验复现。
 
 | Resource type | Newly added |
 | --- | ---: |
 | Datasets | 101 |
 | Guides and evaluations | 38 |
-| Models | 54 |
+| Models | 55 |
 | Papers | 27 |
 | Projects | 211 |
 | Research foundations | 341 |
@@ -176,6 +176,7 @@ Only sources in the [reviewed intake](../data/expansion-intake-2026-10-16.json) 
 | [aimeigaoshou/agent-jev](https://huggingface.co/aimeigaoshou/agent-jev) | direct · `content_screened` | AgentJev model card documenting a compact state-to-distribution decision interface without free-text decoding. |
 | [allenai/truthfulqa-truth-judge-llama2-7B](https://huggingface.co/allenai/truthfulqa-truth-judge-llama2-7B) | adjacent · `content_screened` | Open TruthfulQA truthfulness judge checkpoint, relevant to comparing model-derived evaluation labels. |
 | [Archai JEV Nesso 4B Ita (System One Decision Engine)](https://huggingface.co/nickprock/archai-jev-nesso-4b-ita) | direct · `content_screened` | Italian candidate-token decision checkpoint covering moderation and intent-routing tasks; capabilities remain publisher claims. |
+| [AudioJev checkpoint](https://huggingface.co/shlv/AudioJev) | direct · `content_screened` | One released AudioJev training seed with a Qwen Research license; original-order scores disclose audio-source overlap and are distinct from the paper’s three-seed averages. |
 | [bit-jev-2b-distilled](https://huggingface.co/jinghao1632/bit-jev-2b-distilled) | direct · `content_screened` | Bit-Jev distilled model card with bilingual typed-question interfaces and local runtime instructions. |
 | [Bonsai-JEV](https://huggingface.co/dakebakery/Bonsai-JEV) | direct · `content_screened` | Bonsai-based image-capable decision model documenting soft-label distillation and a decision head. |
 | [Cached causal typed scorer (arm B, Jev-like reproduction)](https://huggingface.co/abidlabs/jev-typed-decisions-causal-0.6b) | direct · `content_screened` | LoRA checkpoint reproducing the cached causal scoring arm of a public typed-decision experiment. |

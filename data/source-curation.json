@@ -121,10 +121,12 @@
       "url": "https://arxiv.org/abs/2610.01293",
       "topic": "direct-decision-research",
       "relation": "direct",
-      "relevance": "A direct typed-audio-decision study mapping waveforms, questions, and supplied alternatives to candidate probabilities, with option-order calibration.",
-      "note": "AudioJev is an independent decision-model architecture. This relation describes topical relevance and does not establish TypeSafe Jev internals or independently validate the reported experiments.",
+      "relevance": "Learns audio-conditioned candidate probabilities with aligned option-permutation training; order stability and empirical correctness calibration remain different properties.",
+      "note": "Fixed-v1 abstract and released model card inspected. The paper summarizes three training seeds; the model card reports one released seed in original option order and discloses audio-source overlap. No model or audio was downloaded. Original provider fields and evidence grades are preserved.",
       "evidence_url": "https://arxiv.org/abs/2610.01293v1",
-      "reviewed_at": "2026-10-16T06:36:48Z"
+      "reviewed_at": "2026-10-17T03:38:33.813019+00:00",
+      "title": "AudioJev: Direct Audio Decisions with Order-Calibrated Probabilities",
+      "first_submitted": "2026-10-01"
     },
     {
       "url": "https://github.com/jevagentharness/jevagentharness",
@@ -288,6 +290,28 @@
       "evidence_url": "https://arxiv.org/abs/2609.08183v2",
       "reviewed_at": "2026-10-16T13:18:34.037338+00:00",
       "note": "Display-only title, first-submission date and scope review from the fixed primary abstract. Retain the original source record, body hash, retrieval time and content-screened grade; no full-paper review or experimental reproduction."
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.02586",
+      "title": "Labels Override Definitions in Jev-Style Typed Decision Models",
+      "first_submitted": "2026-10-01",
+      "topic": "direct-decision-research",
+      "relation": "direct",
+      "relevance": "Studies option-label bias in open-weight decision models; prompt-rendering changes with fixed weights implicate the label/definition interface, without testing hosted Jev.",
+      "note": "Fixed-v1 abstract review only. The reported intervention concerns inspected open implementations; it is not a causal audit of hosted Jev or proof that all option-channel attacks are removed. Original provider fields and evidence grades are preserved.",
+      "evidence_url": "https://arxiv.org/abs/2610.02586v1",
+      "reviewed_at": "2026-10-17T03:38:33.813019+00:00"
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.06354",
+      "title": "GraphDecisionBench: Benchmarking System One Models on Graph Tasks",
+      "first_submitted": "2026-10-05",
+      "topic": "direct-decision-research",
+      "relation": "direct",
+      "relevance": "Compares graph decisions across fourteen model-interface configurations; local adjacency, graph-text evidence use and sequential solution quality are separate capabilities.",
+      "note": "Fixed-v3 abstract review plus the public repository overview. Fourteen configurations are not fourteen independent model families. The repository exposes aggregate tables but says per-query and per-trajectory outputs are omitted. Original provider fields and evidence grades are preserved.",
+      "evidence_url": "https://arxiv.org/abs/2610.06354v3",
+      "reviewed_at": "2026-10-17T03:38:33.813019+00:00"
     }
   ]
 }

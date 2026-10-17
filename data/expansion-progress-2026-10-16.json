@@ -3,23 +3,23 @@
   "baseline_commit": "3519c15d7e00686a8dbf9b1e184c68726327ab1e",
   "baseline_source_index_sha256": "8bfdd20564f2cda54bb8264c3c802f315e3e9a11b153bd85dde4325f53c841d5",
   "target_new_sources": 301,
-  "accepted_new_sources": 772,
+  "accepted_new_sources": 773,
   "remaining_to_target": 0,
   "target_count_reached": true,
   "current_index_counts": {
     "editorial_reviewed": 4,
-    "content_screened": 2383,
+    "content_screened": 2384,
     "abstract_checked": 1833,
     "metadata_only": 47,
-    "raw_records": 4281,
-    "unique_records": 4267,
+    "raw_records": 4282,
+    "unique_records": 4268,
     "duplicate_records": 14,
-    "checked_sources": 4220
+    "checked_sources": 4221
   },
   "by_category": {
     "Datasets": 101,
     "Guides and evaluations": 38,
-    "Models": 54,
+    "Models": 55,
     "Papers": 27,
     "Projects": 211,
     "Research foundations": 341
@@ -27,11 +27,11 @@
   "by_relation": {
     "adjacent": 25,
     "background": 341,
-    "direct": 406
+    "direct": 407
   },
   "by_verification_level": {
     "abstract_checked": 368,
-    "content_screened": 404
+    "content_screened": 405
   },
   "verification_note": "Evidence depth is labeled per source. Content screening and abstract checks do not establish full-paper review, peer review, endorsement, or experimental reproduction.",
   "additions": [
@@ -1749,6 +1749,18 @@
       "verification_level": "content_screened",
       "content_sha256": "428b7bb08a0c39417ab29922bb7703c9742d79ff831ae0d996f3c87d51209258",
       "retrieved_at": "2026-10-16T10:05:29+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "AudioJev checkpoint",
+      "url": "https://huggingface.co/shlv/AudioJev",
+      "category": "Models",
+      "topic": "model-card",
+      "description": "One released AudioJev training seed with a Qwen Research license; original-order scores disclose audio-source overlap and are distinct from the paper’s three-seed averages.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "69e2a1cd0eccf1620f036779e0ef87e33e028b8c6f3a2b484e281425483a444a",
+      "retrieved_at": "2026-10-17T03:35:59.068352+00:00",
       "ledger": "ecosystem-sources.jsonl"
     },
     {

@@ -144,6 +144,16 @@
     },
     {
       "category": "Papers",
+      "title": "GraphDecisionBench: Benchmarking System One Models on Graph Tasks",
+      "by": "Yang, Zhang & Zhao · 2026-10-12 · v3",
+      "date": "2026-10-12",
+      "first_submitted": "2026-10-05",
+      "url": "https://arxiv.org/abs/2610.06354v3",
+      "en": "Compares graph decisions across fourteen model-interface configurations; local adjacency, graph-text evidence use and sequential solution quality are separate capabilities.",
+      "zh": "比较十四种模型—接口配置的图决策；局部邻接识别、图文证据利用与序列构造解的质量是不同能力。"
+    },
+    {
+      "category": "Papers",
       "title": "General Decision Models: Benchmarking and Insights Beyond Jev",
       "by": "Duan et al. · 2026-10-12 · v2",
       "date": "2026-10-12",
@@ -310,6 +320,16 @@
     },
     {
       "category": "Papers",
+      "title": "Labels Override Definitions in Jev-Style Typed Decision Models",
+      "by": "Azizi, Baghaei Potraghloo & Pedram · 2026-10-01 · v1",
+      "date": "2026-10-01",
+      "first_submitted": "2026-10-01",
+      "url": "https://arxiv.org/abs/2610.02586v1",
+      "en": "Studies option-label bias in open-weight decision models; prompt-rendering changes with fixed weights implicate the label/definition interface, without testing hosted Jev.",
+      "zh": "研究开放权重决策模型的选项标签偏置；固定权重后改变提示渲染，指向标签／定义接口的影响，未测试托管 Jev。"
+    },
+    {
+      "category": "Papers",
       "title": "HakemBench: A Turkish Benchmark of Typed Decisions",
       "by": "Teke · 2026-10-01 · v1",
       "date": "2026-10-01",
@@ -317,6 +337,16 @@
       "url": "https://arxiv.org/abs/2610.02293v1",
       "en": "Turkish typed-decision evaluation reports decision quality, Brier-based probability quality and risk–coverage alongside input probes; most labels are AI-derived, and the lab’s model used feedback from earlier test results.",
       "zh": "土耳其语类型化决策评测同时报告决策质量、基于 Brier 的概率质量、风险—覆盖及输入探查；多数标签由 AI 产生，实验室自身模型还使用过先前测试结果的反馈。"
+    },
+    {
+      "category": "Papers",
+      "title": "AudioJev: Direct Audio Decisions with Order-Calibrated Probabilities",
+      "by": "Lv et al. · 2026-10-01 · v1",
+      "date": "2026-10-01",
+      "first_submitted": "2026-10-01",
+      "url": "https://arxiv.org/abs/2610.01293v1",
+      "en": "Learns audio-conditioned candidate probabilities with aligned option-permutation training; order stability and empirical correctness calibration remain different properties.",
+      "zh": "通过按候选身份对齐的选项重排训练学习音频条件概率；顺序稳定性与概率符合实际正确率仍是不同性质。"
     },
     {
       "category": "Papers",

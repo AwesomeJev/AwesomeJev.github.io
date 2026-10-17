@@ -162,3 +162,9 @@ Evaluation scope is equally important. CITY-Jev identifies its content as prelim
 Eight projects were selected for the main catalog; all twelve have parallel Chinese discovery descriptions. The guide adds two documentation-based language-transfer examples without asserting that confidence thresholds transfer. The remaining scan proposal stays open for further review.
 
 **中文：** 本轮十二个项目使扩展资源达到772项，说明文件哈希均与扫描一致，镜像、权重变体和组件文件不拆分计数。多语言实现的语言／长度／选项限制、阿拉伯语标签未由母语者验证、社区评测的初步状态、不同浏览器与计时环境、探索性门控和未公开测试切片均保留。八项进入精选，十二项都有中文简介；未执行代码、调用模型或检查原始数据，剩余候选继续待审。
+
+## Audio checkpoint follow-up — 17 October 2026 UTC
+
+One complete AudioJev checkpoint repository was accepted from its inspected public model card, bringing the expansion to **773 sources**. Three associated paper selections were already in the frozen baseline and add zero source counts; the inference-code navigation link is not an accepted ledger addition. The model card identifies a single seed and Qwen Research license, discloses audio-source overlap and distinguishes order stability from correctness calibration. No weights or audio were downloaded. [Evidence and preserved provider records](../../data/label-graph-audio-review-2026-10-17.json).
+
+**中文：** 新增一个已查模型卡的完整AudioJev检查点，累计773项扩展来源；三篇精选论文均为既有来源，推理代码链接只作导航，均不重复计数。保留单种子、许可、音频来源重叠及顺序稳定与正确率校准的区别，未下载权重或音频。

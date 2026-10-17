@@ -438,6 +438,7 @@
     "TypeScript/Python policy layer separates typed model answers from routing and action dispatch, with documented journals and replay; a trace does not establish truthful inputs or calibrated thresholds.": "TypeScript／Python 策略层将类型化模型答案与路由、动作分发分开，提供日志与重放说明；可追溯记录不证明输入真实或阈值已校准。",
     "Training, calibration and interpretation tools for several text, image and protein backends; documented compatibility checks and small experiments do not validate every backend or workload.": "提供多种文本、图像及蛋白质后端的训练、校准和解释工具；文档中的兼容检查与小实验不代表所有后端和任务已获验证。",
     "OpenJev policy-training experiments in Overcooked and RWARE document seed-specific checkpoint selection, sequential retention and alternating-task training; current recipes do not reproduce the full historical learning curve.": "在 Overcooked 与 RWARE 中训练 OpenJev 策略，记录特定种子的检查点选择、顺序训练保留性和交替任务训练；当前配方不等于复现完整历史学习曲线。",
-    "Common policy benchmark compares decision models and managed guardrails with fixed scoring; an unpublished test slice prevents exact full-board reproduction from the public clone.": "用固定评分规则比较决策模型与托管护栏的共同策略基准；未发布的测试切片使公开克隆无法精确复现完整榜单。"
+    "Common policy benchmark compares decision models and managed guardrails with fixed scoring; an unpublished test slice prevents exact full-board reproduction from the public clone.": "用固定评分规则比较决策模型与托管护栏的共同策略基准；未发布的测试切片使公开克隆无法精确复现完整榜单。",
+    "One released AudioJev training seed with a Qwen Research license; original-order scores disclose audio-source overlap and are distinct from the paper’s three-seed averages.": "按 Qwen Research 许可发布的单训练种子 AudioJev 检查点；原始选项顺序得分披露了音频来源重叠，与论文三种子均值不同。"
   }
 }

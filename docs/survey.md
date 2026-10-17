@@ -58,6 +58,14 @@ Here `n` is the number of options. It is not the selected option’s probability
 
 For a policy that abstains, **coverage** is the fraction of cases accepted; **selective risk** is the average loss on those cases. Plotting risk against coverage exposes the tradeoff hidden by one threshold. A fallback must also correct the first model’s mistakes: confidence ranking alone cannot guarantee a good cascade. The reject-option literature supplies the relevant framework. [SelectiveNet](https://proceedings.mlr.press/v97/geifman19a.html)
 
+Three recent studies sharpen different parts of this distinction. These are interpretations of the inspected abstracts, not reproduced experiments.
+
+| Study | Distinction to retain |
+| --- | --- |
+| [Labels Override Definitions, v1](https://arxiv.org/abs/2610.02586v1) | Changing prompt rendering with fixed weights probes an interface mechanism; label sensitivity alone does not identify a decision-head limitation. |
+| [GraphDecisionBench, v3](https://arxiv.org/abs/2610.06354v3) | Recognizing local edges, combining graph and text evidence, and constructing a high-quality solution require separate measurements. |
+| [AudioJev, v1](https://arxiv.org/abs/2610.01293v1) | Stability under option permutations is different from agreement between probabilities and observed correctness. |
+
 ## 4. Connections worth studying
 
 **Probabilistic prediction.** Proper scoring rules evaluate whole predictive distributions, providing a foundation for Brier score and log loss. Calibration work shows why a highly accurate network still needs probability evaluation; language-model self-evaluation adds a relevant comparator. None establishes Jev’s training objective. [Gneiting & Raftery](https://doi.org/10.1198/016214506000001437) · [Guo et al.](https://proceedings.mlr.press/v70/guo17a.html) · [Kadavath et al.](https://arxiv.org/abs/2207.05221)
@@ -127,4 +135,4 @@ These operations cover different pipeline stages. The examples below describe do
 | [Ordinal-scale artifact](https://anonymous.4open.science/api/repo/jev_ordinal_scale_bia/file/README.md?v=3ed72968) | The described analysis route recomputes metrics from released per-example answers, not new model calls. | Source text, weights and post-trained checkpoints are omitted. Missing historical revisions can prevent reconstruction of inputs matching the recorded hashes; hosted results may change. The provider file revision is opaque, not a verified immutable commit. |
 | [Radiology report judging, v1](https://arxiv.org/html/2609.27607v1#Sx1.p1) | The fixed-v1 availability statement says analysis scripts and aggregates are being prepared for release. | Third-party dataset links and question details do not supply those missing author outputs. The inspected version does not establish an available analysis-replay route. |
 
-The most useful next evidence would isolate model, interface, and workflow effects while tracking deployment shift. That requires matched comparisons and inspectable records, especially for new modalities and releases. The collection’s 68 research bibliography entries are maintained in [references.bib](../references.bib).
+The most useful next evidence would isolate model, interface, and workflow effects while tracking deployment shift. That requires matched comparisons and inspectable records, especially for new modalities and releases. The collection’s 71 research bibliography entries are maintained in [references.bib](../references.bib).

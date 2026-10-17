@@ -40,6 +40,8 @@ Separate prediction quality from probability quality. Alongside accuracy or a ta
 
 For abstention or escalation, report coverage and error among accepted cases, and test whether the fallback actually corrects mistakes. Freeze model versions and prompts; measure end-to-end latency, failures, and costs separately. This is an evaluation plan, not a result reported for Jev. [SelectiveNet](https://proceedings.mlr.press/v97/geifman19a.html) · [Model versions](https://docs.typesafe.ai/models)
 
+AudioJev uses order calibration to mean probability stability under equivalent candidate permutations. Align candidates by meaning before comparing reordered distributions, then assess accuracy and correctness calibration separately. Its released model card describes one seed, reports original-order scores and discloses audio-source overlap; those results should not be substituted for the paper’s three-seed averages. [AudioJev release scope](https://huggingface.co/shlv/AudioJev)
+
 ## How should I compare decision models with trained classifiers and LLMs?
 
 The v2 decision-gate benchmark reports that a fine-tuned DeBERTa-v3-large had the highest observed accuracy on all but one labeled benchmark. That result concerns access to task labels. For your comparison, separate settings with and without task-specific training labels; record data exposure, development/test splits, output formats and failures before comparing accuracy, selective coverage or cost. [Decision-gate benchmark, v2](https://arxiv.org/abs/2610.00346v2)
@@ -67,6 +69,8 @@ For citations, keep the claim and arithmetic fixed while swapping same-number pa
 Separate schema validity, whether cited evidence supports a proposed argument, and whether the argument follows from the request, history and schema defaults. Test correct defaults or inferred values without explicit references, alongside incorrect values paired with visible references. Reference availability is not derivation correctness. If a model writes references from the full history, hide the candidate from it and verify its output; generated references are not ground truth. [Tool-argument verification preprint, v1](https://arxiv.org/abs/2610.18497v1)
 
 Define who can alter request text, tool outputs, option names and policy definitions. Test each channel your threat model lets an attacker control, including confidence on incorrect decisions. The cited guardrail experiments concern open-weight typed-decision models, not a demonstrated compromise of hosted Jev. This is a proposed evaluation protocol, not a reproduced result. [Option-channel guardrail preprint, v1](https://arxiv.org/abs/2610.12292v1)
+
+Separate evidence of label sensitivity from its mechanism. In the open implementations studied by Labels Override Definitions, changing label/definition rendering while holding weights fixed changed the bias. For a system you can inspect, record the rendered request and compare conflicting labels with definition-only or neutral-label variants. This is a proposed diagnostic; it neither identifies hosted Jev’s internal mechanism nor establishes a universal defense. [Labels Override Definitions, v1](https://arxiv.org/abs/2610.02586v1)
 
 ## What does an attack success rate measure?
 
@@ -220,6 +224,14 @@ Answer-letter readout and supervised LoRA baselines; evaluation includes model-g
 
 Primary source: https://arxiv.org/abs/2610.17205v1
 
+## GraphDecisionBench: Benchmarking System One Models on Graph Tasks
+
+Papers · Yang, Zhang & Zhao · 2026-10-12 · v3
+
+Compares graph decisions across fourteen model-interface configurations; local adjacency, graph-text evidence use and sequential solution quality are separate capabilities.
+
+Primary source: https://arxiv.org/abs/2610.06354v3
+
 ## General Decision Models: Benchmarking and Insights Beyond Jev
 
 Papers · Duan et al. · 2026-10-12 · v2
@@ -364,6 +376,14 @@ Examines reliability, group-specific confident errors, and selective automation 
 
 Primary source: https://arxiv.org/abs/2609.33401v3
 
+## Labels Override Definitions in Jev-Style Typed Decision Models
+
+Papers · Azizi, Baghaei Potraghloo & Pedram · 2026-10-01 · v1
+
+Studies option-label bias in open-weight decision models; prompt-rendering changes with fixed weights implicate the label/definition interface, without testing hosted Jev.
+
+Primary source: https://arxiv.org/abs/2610.02586v1
+
 ## HakemBench: A Turkish Benchmark of Typed Decisions
 
 Papers · Teke · 2026-10-01 · v1
@@ -371,6 +391,14 @@ Papers · Teke · 2026-10-01 · v1
 Turkish typed-decision evaluation reports decision quality, Brier-based probability quality and risk–coverage alongside input probes; most labels are AI-derived, and the lab’s model used feedback from earlier test results.
 
 Primary source: https://arxiv.org/abs/2610.02293v1
+
+## AudioJev: Direct Audio Decisions with Order-Calibrated Probabilities
+
+Papers · Lv et al. · 2026-10-01 · v1
+
+Learns audio-conditioned candidate probabilities with aligned option-permutation training; order stability and empirical correctness calibration remain different properties.
+
+Primary source: https://arxiv.org/abs/2610.01293v1
 
 ## Beyond Answer Confidence: A Controlled Audit of Self-Knowledge in a Black-Box Decision Model
 
@@ -571,6 +599,14 @@ Papers · Cheng et al. · 2026-09-20 · v1
 An open typed-decision model using hidden-state readout. The abstract reports a small external comparison.
 
 Primary source: https://arxiv.org/abs/2609.23886v1
+
+## AudioJev checkpoint
+
+Models · shlv · Qwen2.5-Omni-3B derivative · Qwen Research
+
+One released AudioJev training seed with a Qwen Research license; original-order scores disclose audio-source overlap and are distinct from the paper’s three-seed averages.
+
+Primary source: https://huggingface.co/shlv/AudioJev
 
 ## ufakzeka-karar
 

@@ -984,6 +984,17 @@
       ],
       "evidence_scope": "Twelve whole projects reviewed through public README overview and selected limitation/validation sections; all fresh hashes matched the scan. No source code, model inference or experiment was run; model weights and raw data were not downloaded. Other scan candidates remain pending.",
       "accepted_at": "2026-10-17T02:57:44.874265+00:00"
+    },
+    {
+      "name": "audio_decision_checkpoint",
+      "input_sha256": "0089dbb5c2f031f57858ae60d8e2aa22ba36419db480d0cdd3a7bf80c045afd0",
+      "screened_records_proposed": 1,
+      "accepted_count": 1,
+      "accepted_urls": [
+        "https://huggingface.co/shlv/AudioJev"
+      ],
+      "accepted_at": "2026-10-17T03:38:33.813019+00:00",
+      "evidence_scope": "One new complete checkpoint repository, inspected through its public model card. Three already-known papers are curated separately with zero new-source credit. No model files or data were downloaded."
     }
   ]
 }

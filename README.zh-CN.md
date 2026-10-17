@@ -47,7 +47,7 @@ TypeSafe 的 Jev 接收状态与类型化问题，为应用代码返回决策和
 
 ## 论文
 
-下列 59 项直接研究均为 **arXiv 预印本**。日期对应已核查并链接的版本，不一定是首次提交日期。结果由作者报告，本项目没有复现实验。标题中的速度或成本主张保留作者原文。[参考文献](references.bib) · [证据比较](docs/survey.zh-CN.md)
+下列 62 项直接研究均为 **arXiv 预印本**。日期对应已核查并链接的版本，不一定是首次提交日期。结果由作者报告，本项目没有复现实验。标题中的速度或成本主张保留作者原文。[参考文献](references.bib) · [证据比较](docs/survey.zh-CN.md)
 
 ### 评测与基准
 
@@ -55,6 +55,7 @@ TypeSafe 的 Jev 接收状态与类型化问题，为应用代码返回决策和
 - **[Typed Decision Models on Tabular Data](https://arxiv.org/abs/2610.19536v1)** — Zhang, Ye & Zha. *2026-10-14, arXiv v1*. 在三类表格任务中检验保持内容不变的改写对分类与验证的影响；置信度可提示不稳定，但不证明正确性。 专用研究代码尚未核验。
 - **[Reading Right, Acting Wrong: Diagnosing Decision Failures of System One Models in Agent Loops](https://arxiv.org/abs/2610.18579v1)** — Li, Krishnan & Padman. *2026-10-13, arXiv v1*. 将事实探针与行动选择配对，诊断决策失败。 [作者交互报告](https://yubol-bobo.github.io/System_one_model_evaluation/)。
 - **[General Decision Models: Benchmarking and Insights Beyond Jev](https://arxiv.org/abs/2610.03935v2)** — Duan et al. *2026-10-12, arXiv v2*. 双语决策评估与多步骤系统中的可靠性。 [训练与推理代码](https://github.com/amazingljy1206/SII-Decision) · [评测数据](https://huggingface.co/datasets/carlosxiang/JEVal)。
+- **[GraphDecisionBench: Benchmarking System One Models on Graph Tasks](https://arxiv.org/abs/2610.06354v3)** — Yang, Zhang & Zhao. *2026-10-12, arXiv v3；首次提交 2026-10-05*. 比较十四种模型—接口配置的图决策；局部邻接识别、图文证据利用与序列构造解的质量是不同能力。 [代码与汇总结果](https://github.com/VictorYXL/GraphDecisionBench)。
 - **[Specialized Decision Models vs. General-Purpose LLMs: Benchmarking Jev Across Knowledge, Reasoning, and Multilingual Tasks](https://arxiv.org/abs/2610.11978v1)** — Li et al. *2026-10-08, arXiv v1*. 在知识、推理和多语言选择题中评测 Jev；报告的排名及数学弱点仅适用于所选模型与基准。
 - **[Benchmarking System One decision models against trained classifiers and language models for automated decision gates](https://arxiv.org/abs/2610.00346v2)** — Rafe & Das. *2026-10-06, arXiv v2；首次提交 2026-09-29*. 用共同请求框架比较类型化决策模型、生成模型读出与已训练分类器；准确率、选择性覆盖率和域外接纳取决于是否有任务标签及具体任务。
 - **[JEV versus LLMs: Accuracy, Cost and Calibration on Seven Political Science Replications](https://arxiv.org/abs/2610.06625v2)** — Denney & DiGiuseppe. *2026-10-06, arXiv v2*. 七项领域复现，比较准确率、成本与校准。
@@ -93,6 +94,7 @@ TypeSafe 的 Jev 接收状态与类型化问题，为应用代码返回决策和
 - **[JevOut: Natural Context Can Flip Decision Models](https://arxiv.org/abs/2609.30243v2)** — Xu et al. *2026-10-08, arXiv v2；首次提交 2026-09-24*. 在四种决策系统中围绕不变的题目和选项优化上下文补充；结果针对原本答对的决策，人工有效性检查仅覆盖成功攻击的抽样子集。 [代码](https://github.com/xzx34/JevOut)。
 - **[Same-Number Citation Swaps: Stress-Testing Jev as a Financial Evidence Judge](https://arxiv.org/abs/2610.08675v1)** — Xu et al. *2026-10-06, arXiv v1*. 以同数值引用替换检验金融证据验证；在构造测试中，识别财务项目错配与接受等价证据之间存在权衡。 不构成总体金融判断准确率估计。
 - **[Evaluating System One Models for Agent Security Decisions: Reliability, Calibration, and Selective Automation](https://arxiv.org/abs/2609.33401v3)** — Liu. *2026-10-03, arXiv v3*. 考察非对称风险下的高置信安全错误与选择性自动化。 [代码与已保存结果分析](https://github.com/yxsec/system-one-security-eval)。
+- **[Labels Override Definitions in Jev-Style Typed Decision Models](https://arxiv.org/abs/2610.02586v1)** — Azizi, Baghaei Potraghloo & Pedram. *2026-10-01, arXiv v1*. 研究开放权重决策模型的选项标签偏置；固定权重后改变提示渲染，指向标签／定义接口的影响，未测试托管 Jev。
 - **[JevAdvBench: A Benchmark and Black-Box Attacks for Reinforcement Learning for Calibrated Decisions Models](https://arxiv.org/abs/2609.31142v1)** — Hu et al. *2026-09-25, arXiv v1*. 将对抗输入变化与干净输入、重复调用的自然波动对照。 [代码](https://github.com/JevAdvBench/JevAdvBench) · [基准数据](https://huggingface.co/datasets/Hangtao/JevAdvBench)。
 - **[Just Ask Jev: Reinforcement Learning for Calibrated Decisions as a Zero-Shot Detector of AI Alignment Failures](https://arxiv.org/abs/2609.29429v1)** — Guo et al. *2026-09-24, arXiv v1*. 评测 Jev 对 AI 对齐失效的检测，分别改变提问与输入上下文；参考标签主要来自基准评分器，上下文收益常依赖编码标签的字段。 [代码与数据](https://github.com/sumleo/RLCDAlignBench)。
 - **[Decision Hijacking: Prompt Injection Attacks on Jev's Typed Probabilistic Decisions](https://arxiv.org/abs/2609.28613v1)** — Wu & Lim. *2026-09-23, arXiv v1*. 在重构的 InjecAgent 案例中审查 Jev 提示注入，区分概率偏移与攻击目标选择；优化结果通过新调用验证，结论限于该基准设置。
@@ -105,6 +107,7 @@ TypeSafe 的 Jev 接收状态与类型化问题，为应用代码返回决策和
 - **[Releasing the Inner Jev: A Simple Recipe for Open Decision Models](https://arxiv.org/abs/2610.17205v1)** — Geuter, Cheng & Alvarez-Melis. *2026-10-12, arXiv v1*. 答案字母概率读出与监督式 LoRA 基线；评测包含模型生成的标签。 [服务代码](https://github.com/j-geuter/jeff-serve) · [OpenDecisions](https://huggingface.co/datasets/jgeuter/OpenDecisions)。
 - **[SanSi: A Looped Typed Decision Model for System 1.5 Thinking](https://arxiv.org/abs/2610.07730v2)** — Gan, Lee & Kang. *2026-10-10, arXiv v2*. 通过隐状态循环计算决策，以额外计算成本换取准确率。 [训练与主要评测代码](https://github.com/minnesotanlp/Sansi)覆盖论文的部分实验。
 - **[MetaEncoder: Exploring the Limit of Bi-Encoders for Multimodal System One Decision Making with Natural Language Interface](https://arxiv.org/abs/2610.11316v1)** — Cheng et al. *2026-10-08, arXiv v1*. 通过自然语言接口实现多模态决策与检索的双编码器方法。 [评测代码](https://github.com/facebook/meta-encoder-eval)。
+- **[AudioJev: Direct Audio Decisions with Order-Calibrated Probabilities](https://arxiv.org/abs/2610.01293v1)** — Lv et al. *2026-10-01, arXiv v1*. 通过按候选身份对齐的选项重排训练学习音频条件概率；顺序稳定性与概率符合实际正确率仍是不同性质。 [推理库](https://github.com/SihanLv/AudioJev-Inference) · [发布检查点](https://huggingface.co/shlv/AudioJev)。
 - **[JevSpawn: Adaptive Agentic Inference through Compositional Action Spaces](https://arxiv.org/abs/2610.00437v1)** — Su & Huang. *2026-09-30, arXiv v1*. 组合有限行动字段，利用交互反馈探索候选路径。 [代码](https://github.com/Hoyant-Su/JevSpawn)。
 - **[Bongard: Training Machine Intuition](https://arxiv.org/abs/2609.39111v1)** — Ding, Jin & Ji. *2026-09-30, arXiv v1*. 共享证据编码与候选概率读出，结合表征学习和行动结果反馈训练。 [模型权重](https://huggingface.co/AgentBull/bongard-mini)。
 - **[Chinese-Jev: Bringing System One Model to Chinese-Language Tasks](https://arxiv.org/abs/2609.36965v1)** — Wang et al. *2026-09-29, arXiv v1*. 中文决策模型训练与领域评测。 [训练流水线](https://github.com/gulucaptain/Chinese-Jev) · [CJ-Bench 评测集](https://huggingface.co/datasets/bbldCVer-hf/CJ-Bench) · [CJ-Dataset 训练集](https://huggingface.co/datasets/bbldCVer-hf/CJ-Dataset)。
@@ -132,6 +135,7 @@ TypeSafe 的 Jev 接收状态与类型化问题，为应用代码返回决策和
 
 | 模型 | 发布者 | 声明许可 | 范围 |
 | :--- | :--- | :--- | :--- |
+| [AudioJev](https://huggingface.co/shlv/AudioJev) | shlv | Qwen Research | 按 Qwen Research 许可发布的单训练种子 AudioJev 检查点；原始选项顺序得分披露了音频来源重叠，与论文三种子均值不同。 |
 | [ufakzeka-karar](https://huggingface.co/ufakai/ufakzeka-karar) | ufak AI | Apache-2.0 | 土耳其语决策与温度缩放；基准结果受测试反馈影响，校准存在任务相关限制。 |
 | [Jeva-4B](https://huggingface.co/LIQIIIII/Jeva-4B) | Jeva 作者 | 所查模型卡未声明 | 骨干、适配器与决策头包；本项目未测试权重。 |
 | [Laya](https://huggingface.co/convaiinnovations/laya) | Convai Innovations | Apache-2.0 | 基于编码器的英语、多语言与工作流专用检查点。 |
@@ -224,7 +228,7 @@ TypeSafe 的四个数据集提供工作流案例、模型生成的参考标签�
 | 可组合流水线 | Khattab et al., *DSPy*. 2023. | [论文](https://arxiv.org/abs/2310.03714) |
 | 高效执行 | Zheng et al., *SGLang*. NeurIPS, 2024. | [论文](https://papers.nips.cc/paper_files/paper/2024/file/724be4472168f31ba1c9ac630f15dec8-Paper-Conference.pdf) · [代码](https://github.com/sgl-project/sglang) |
 
-精选论文与社区综述共 68 条书目信息收录于 [references.bib](references.bib)。核查范围与局限见[本次论文精选记录](docs/reviews/papers-2026-10-16.md)。
+精选论文与社区综述共 71 条书目信息收录于 [references.bib](references.bib)。核查范围与局限见[本次论文精选记录](docs/reviews/papers-2026-10-16.md)。
 
 ## 快速开始
 

@@ -139,6 +139,15 @@
                 "url": "https://docs.typesafe.ai/models"
               }
             ]
+          },
+          {
+            "text": "AudioJev uses order calibration to mean probability stability under equivalent candidate permutations. Align candidates by meaning before comparing reordered distributions, then assess accuracy and correctness calibration separately. Its released model card describes one seed, reports original-order scores and discloses audio-source overlap; those results should not be substituted for the paper’s three-seed averages.",
+            "sources": [
+              {
+                "label": "AudioJev release scope",
+                "url": "https://huggingface.co/shlv/AudioJev"
+              }
+            ]
           }
         ]
       },
@@ -254,6 +263,15 @@
               {
                 "label": "Option-channel guardrail preprint, v1",
                 "url": "https://arxiv.org/abs/2610.12292v1"
+              }
+            ]
+          },
+          {
+            "text": "Separate evidence of label sensitivity from its mechanism. In the open implementations studied by Labels Override Definitions, changing label/definition rendering while holding weights fixed changed the bias. For a system you can inspect, record the rendered request and compare conflicting labels with definition-only or neutral-label variants. This is a proposed diagnostic; it neither identifies hosted Jev’s internal mechanism nor establishes a universal defense.",
+            "sources": [
+              {
+                "label": "Labels Override Definitions, v1",
+                "url": "https://arxiv.org/abs/2610.02586v1"
               }
             ]
           }
@@ -546,6 +564,15 @@
                 "url": "https://docs.typesafe.ai/models"
               }
             ]
+          },
+          {
+            "text": "AudioJev 将顺序校准定义为等价候选重排下的概率稳定性。比较重排分布前，按候选含义对齐，再分别评估准确率与概率是否符合实际正确率。发布模型卡描述的是一个种子、原始顺序得分，并披露音频来源重叠；这些结果不能替代论文三种子平均值。",
+            "sources": [
+              {
+                "label": "AudioJev 发布范围",
+                "url": "https://huggingface.co/shlv/AudioJev"
+              }
+            ]
           }
         ]
       },
@@ -661,6 +688,15 @@
               {
                 "label": "选项通道防护预印本 v1",
                 "url": "https://arxiv.org/abs/2610.12292v1"
+              }
+            ]
+          },
+          {
+            "text": "区分标签敏感性的现象与成因。Labels Override Definitions 在所查开放实现中固定权重，改变标签／定义渲染后，偏置也随之改变。对可检查的系统，应记录实际渲染请求，并比较冲突标签、只含定义与中性标签变体。这是建议的诊断，既不能据此确定托管 Jev 的内部机制，也不构成通用防御。",
+            "sources": [
+              {
+                "label": "Labels Override Definitions v1",
+                "url": "https://arxiv.org/abs/2610.02586v1"
               }
             ]
           }

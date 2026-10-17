@@ -65,7 +65,7 @@ const translations = {
     contributeDescription:
       "Found a thoughtful paper, a useful tool, or a result worth reproducing? Help make the collection better.",
     contributeLink: "Contribute on GitHub",
-    independent: "Independent project. Not affiliated with TypeSafe AI.",
+    affiliation: "Independent project. Not affiliated with TypeSafe AI.",
     lastCurated: "Last curated · October 16, 2026",
     backTop: "Back to top",
     sourceLink: "Website source",
@@ -197,7 +197,7 @@ const translations = {
     contributeDescription:
       "发现了值得读的论文、实用的工具，或值得复现的结果？欢迎一起完善这份资源库。",
     contributeLink: "在 GitHub 上参与贡献",
-    independent: "独立社区项目，与 TypeSafe AI 无隶属关系。",
+    affiliation: "独立社区项目，与 TypeSafe AI 无隶属关系。",
     lastCurated: "最近整理 · 2026 年 10 月 16 日",
     backTop: "返回顶部",
     sourceLink: "网站源码",
@@ -266,6 +266,45 @@ const translations = {
 
 // Descriptions are editorial summaries. Paper findings remain author-reported.
 const resources = [
+  {
+    "category": "Papers",
+    "title": "Labels Override Definitions in Jev-Style Typed Decision Models",
+    "by": "Azizi, Baghaei Potraghloo & Pedram · 2026-10-01 · v1",
+    "date": "2026-10-01",
+    "first_submitted": "2026-10-01",
+    "url": "https://arxiv.org/abs/2610.02586v1",
+    "en": "Studies option-label bias in open-weight decision models; prompt-rendering changes with fixed weights implicate the label/definition interface, without testing hosted Jev.",
+    "zh": "研究开放权重决策模型的选项标签偏置；固定权重后改变提示渲染，指向标签／定义接口的影响，未测试托管 Jev。"
+  },
+  {
+    "category": "Papers",
+    "title": "GraphDecisionBench: Benchmarking System One Models on Graph Tasks",
+    "by": "Yang, Zhang & Zhao · 2026-10-12 · v3",
+    "date": "2026-10-12",
+    "first_submitted": "2026-10-05",
+    "url": "https://arxiv.org/abs/2610.06354v3",
+    "en": "Compares graph decisions across fourteen model-interface configurations; local adjacency, graph-text evidence use and sequential solution quality are separate capabilities.",
+    "zh": "比较十四种模型—接口配置的图决策；局部邻接识别、图文证据利用与序列构造解的质量是不同能力。"
+  },
+  {
+    "category": "Papers",
+    "title": "AudioJev: Direct Audio Decisions with Order-Calibrated Probabilities",
+    "by": "Lv et al. · 2026-10-01 · v1",
+    "date": "2026-10-01",
+    "first_submitted": "2026-10-01",
+    "url": "https://arxiv.org/abs/2610.01293v1",
+    "en": "Learns audio-conditioned candidate probabilities with aligned option-permutation training; order stability and empirical correctness calibration remain different properties.",
+    "zh": "通过按候选身份对齐的选项重排训练学习音频条件概率；顺序稳定性与概率符合实际正确率仍是不同性质。"
+  },
+  {
+    "category": "Models",
+    "title": "AudioJev checkpoint",
+    "by": "shlv · Qwen2.5-Omni-3B derivative · Qwen Research",
+    "url": "https://huggingface.co/shlv/AudioJev",
+    "en": "One released AudioJev training seed with a Qwen Research license; original-order scores disclose audio-source overlap and are distinct from the paper’s three-seed averages.",
+    "zh": "按 Qwen Research 许可发布的单训练种子 AudioJev 检查点；原始选项顺序得分披露了音频来源重叠，与论文三种子均值不同。",
+    "provenance": "modelcard"
+  },
   {
     "category": "Tools",
     "title": "FRIDA-Decisions",
