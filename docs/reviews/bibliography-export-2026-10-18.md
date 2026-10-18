@@ -19,3 +19,9 @@ Browser checks also verified the native theme selector, empty-result disabling, 
 **中文：** 论文目录支持按可见结果及其排序导出BibTeX，保留引用键、完整作者、原始格式与固定版本。实际保存的八条v2论文引用已逐条对照源书目；缺项或版本不匹配会拒绝导出。桌面首条论文上移164px，手机改用原生主题下拉框，阅读说明和全目录趋势仍可展开查看。筛选和导出不向外部文献服务发送查询，资源计数与证据等级不变。
 
 The final narrow-layout checks also cover English at 320 px: sort, reset and copy-link controls remain within the page gutters without overlap. The Chinese theme selector correctly restores the same eight robustness/code results on the English desktop layout. Reading notes explicitly distinguish the full-collection activity chart from the filtered citation export.
+
+## Deployed verification
+
+Release `92f2e3d8763afe7592f57d9577bfee5126e70c2d` passed [main repository checks](https://github.com/reacher-z/Awesome-Jev/actions/runs/39107491050), [website checks](https://github.com/AwesomeJev/AwesomeJev.github.io/actions/runs/39107495088) and [Pages deployment](https://github.com/AwesomeJev/AwesomeJev.github.io/actions/runs/39107495049). All 40 live targets matched committed bytes, including the new bibliography module and the exact versioned bibliography URL requested by the export control. The live filtered view shows eight papers and Download BibTeX (8).
+
+One IndexNow POST for the two substantively changed paper-directory routes returned HTTP 200. Other routes only received the updated stylesheet reference and were not resubmitted. No Google indexing request was repeated, and no source, paper or evidence counts changed.
