@@ -14,7 +14,7 @@ On 18 October 2026 UTC, Google Search Console reported `https://awesomejev.githu
 
 ## Shareable directory views
 
-The paper, model and tool directories preserve their filters in a `#view?…` fragment. Papers retain the query, theme, code-availability filter and sort order; models retain the query and declared-license filter; tools retain the query, purpose and publisher filter. **Copy view link** produces a bookmarkable link to the current view. Refreshing, returning with browser history and switching between the paired English/Chinese routes restore the state. Both languages search the same bilingual metadata so a translated description can still be found after a language switch.
+The paper, model and tool directories preserve their filters in a `#view?…` fragment. Papers retain the query, theme, code-availability filter and sort order; models retain the query and declared-license filter; tools retain the query, purpose and publisher filter. The copy-link control produces a bookmarkable link to the current view. Refreshing, returning with browser history and switching between the paired English/Chinese routes restore the state. Both languages search the same bilingual metadata so a translated description can still be found after a language switch.
 
 This is a client-side view of an existing directory, not a new indexable page. Canonical URLs, sitemap entries and the full static tables remain unchanged. The fragment is not an HTTP query, and changing filters requires no server request. Page navigation still loads static pages and scripts. The feature uses no local-storage persistence or analytics. Copied links omit unrelated query parameters. Clipboard failure has visible feedback, unsupported filter values fall back to defaults, and resetting removes the view fragment. Ordinary section anchors are preserved in language links when no filtered view is active.
 
@@ -25,6 +25,16 @@ The shared module is resolved through a content-hashed import map on the six dir
 **View-sharing release receipt, 2026-10-18 UTC:** `8746bf6` passed both repository checks and Pages deployment. The 433-test suite passed and all 34 live page, metadata and module targets matched the commit. Browser checks verified compound paper filters, cross-language Chinese search, refresh/history restoration, model-license links, clipboard feedback and mobile layout. One IndexNow POST notified only the four substantively changed paper/model directory pages and returned **HTTP 200**. The unchanged sitemap was not resubmitted, and no Google or Bing account action was performed. This receipt adds no indexing or AI-citation claim.
 
 **筛选分享发布回执（2026-10-18 UTC）：** `8746bf6` 双仓检查与部署成功，433项测试及34项线上文件核对通过。浏览器验证了组合筛选、跨语言中文搜索、刷新／历史恢复、模型许可链接、复制反馈和手机布局。仅对中英文论文、模型目录四页发送一次IndexNow通知，返回HTTP 200；sitemap未变，未重复提交，也未操作Google或Bing账号。此回执不代表新增收录或AI引用。
+
+## Filtered citations and compact paper browsing
+
+The paper directory can download BibTeX for the visible rows, in their current display order. Citation keys, authors, nested title braces, Unicode text and reviewed-version URLs are copied from the maintained bibliography. The full bibliography remains available as a normal link and includes background/survey entries beyond the paper table. An unmatched exact version or malformed source stops the filtered export instead of producing a partial file.
+
+Export loads only the same-origin bibliography after the user clicks, using a content hash in its URL with neither credentials nor a referrer. It makes no calls to paper providers or a citation service. Search terms are absent from the request and filename. A saved-file link remains available after preparation; empty results disable export, and failures offer retry/reload and the full bibliography. The chosen rows are captured at click time, so a later filter change does not alter an in-progress download.
+
+The page combines detailed reading notes and publication activity in a native disclosure, keeps its full static table, and avoids a second visible list heading. Narrow screens use a native theme selector synchronized with the desktop buttons and shareable view state. These interface changes do not add sources, raise evidence grades or change the reviewed paper dates.
+
+**中文：** 论文目录可按当前可见结果及其顺序导出BibTeX，保留原始引用键、作者、版本链接和格式；完整书目仍可直接打开。版本不匹配或源文件异常时不会生成缺项文件。导出只读取本站书目，查询词不进入请求或文件名，空结果禁用按钮。手机端主题下拉框与桌面筛选、分享链接保持同步；阅读说明与趋势图可展开查看，静态论文内容和证据等级不变。
 
 ## Developer tool directory
 

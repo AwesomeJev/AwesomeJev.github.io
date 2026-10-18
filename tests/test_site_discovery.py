@@ -24,7 +24,7 @@ ROUTES = tuple(route for pair in PAIRS for route in pair)
 BUILD_INPUTS = (
     "scripts/build_site.mjs", "templates/index.html", "data/search-guide.json", "data/research-topics.json",
     "data/expansion-progress-2026-10-16.json", "data/discovery-translations.zh-CN.json", "references.bib",
-    "site/app.js", "site/directory-view.mjs", "site/model-directory.js", "site/paper-directory.js", "site/tool-directory.js", "site/catalog.mjs", "site/resource-view.mjs", "site/styles.css",
+    "site/app.js", "site/directory-view.mjs", "site/bibliography.mjs", "site/model-directory.js", "site/paper-directory.js", "site/tool-directory.js", "site/catalog.mjs", "site/resource-view.mjs", "site/styles.css",
 )
 # The build also draws the papers-per-week chart and rewrites its region in both READMEs.
 BUILD_INPUTS += ("scripts/paper_activity.mjs", "README.md", "README.zh-CN.md")
