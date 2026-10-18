@@ -139,3 +139,10 @@ export function renderModelRow(resource, language) {
  const search=[resource.title,resource.publisher,resource.by,resource.en,resource.zh,resource.license,licenseZh].join(' ');
  return `<tr class="model-row" data-license-group="${group}" data-search="${escapeHTML(search)}"><th scope="row"><a href="${escapeHTML(resource.url)}" target="_blank" rel="noopener noreferrer"${englishLang(resource.title, language)}>${escapeHTML(resource.title)} ${icon('external')}</a><span class="model-publisher">${escapeHTML(resource.publisher)}</span></th><td class="model-license" data-label="${zh?'声明许可':'Declared license'}">${escapeHTML(license)}</td><td class="model-scope" data-label="${zh?'范围与证据':'Scope and evidence'}">${escapeHTML(resource[language])}</td></tr>`;
 }
+
+export function renderToolRow(resource, language, translations, tasks) {
+ const t=key=>translations[language][key] ?? translations.en[key] ?? key;
+ const purpose=resource.tool_tasks.map(id=>tasks.find(task=>task.id===id));
+ const search=[resource.title,resource.by,resource.en,resource.zh,...purpose.flatMap(task=>[task.en,task.zh])].join(' ');
+ return `<tr class="tool-row" data-tasks="${resource.tool_tasks.join(' ')}" data-publisher="${resource.provenance==='official'?'official':'community'}" data-search="${escapeHTML(search)}"><th scope="row"><a href="${escapeHTML(resource.url)}" target="_blank" rel="noopener noreferrer"${englishLang(resource.title,language)}>${escapeHTML(resource.title)} ${icon('external')}</a><span class="tool-meta">${escapeHTML(localizedMetadata(resource.by,language))} · ${renderEvidence(resource,t)}</span></th><td class="tool-purpose" data-label="${language==='zh'?'用途':'Purpose'}">${purpose.map(task=>`<span>${escapeHTML(task[language])}</span>`).join('')}</td><td class="tool-scope">${escapeHTML(resource[language])}</td></tr>`;
+}

@@ -2503,3 +2503,18 @@ html:lang(zh) h1, html:lang(zh) h2, html:lang(zh) h3 {
     overflow-wrap: anywhere;
   }
 }
+
+/* Tool comparisons preserve full scope notes and distinct project counts. */
+.tool-controls[hidden], .tool-row[hidden] { display: none; }
+.tool-directory .model-controls { margin: 10px 0 12px; }
+.tool-controls { margin-top: 18px; }
+.tool-controls .filter-button { display: inline-flex; gap: 6px; }
+.tool-meta { display: block; font-size: 12px; font-weight: 400; color: var(--muted); margin-top: 4px; }
+.tool-purpose span { display: block; }
+.tool-table thead th:first-child { width: 30%; }
+.tool-table thead th:nth-child(2) { width: 19%; }
+@media (max-width: 760px) {
+  .tool-purpose::before { content: attr(data-label) ' · '; color: var(--muted); font-size: 12px; }
+  .tool-purpose span { display: inline; }
+  .tool-purpose span + span::before { content: ' / '; }
+}

@@ -282,12 +282,37 @@ const translations = {
 // Descriptions are editorial summaries. Paper findings remain author-reported.
 // `artifacts` repeats a paper's README Artifacts links by kind (code, data, model, demo, page);
 // a link to code and data is listed under both, and `unverified` names a kind the README could not verify.
+// Tool purposes describe reviewed project scope; multi-purpose projects occur once.
+const toolTasks = [
+  {
+    "id": "integration",
+    "en": "API integration",
+    "zh": "API 接入"
+  },
+  {
+    "id": "workflow",
+    "en": "Workflow control",
+    "zh": "工作流控制"
+  },
+  {
+    "id": "runtime",
+    "en": "Inference runtimes",
+    "zh": "推理运行时"
+  },
+  {
+    "id": "training",
+    "en": "Training & evaluation",
+    "zh": "训练与评测"
+  }
+];
+
 const resources = [
   {
     "category": "Tools",
     "title": "Abide",
     "by": "coldteadotai · rule checks · MIT",
     "url": "https://github.com/coldteadotai/abide",
+    "tool_tasks": ["workflow"],
     "en": "Jev checks edits and turns against compiled project rules and requests repairs; missing credentials or network let edits pass unchecked, and replay findings depend on the chosen rubric.",
     "zh": "用 Jev 按编译后的项目规则检查编辑和轮次，并请求修复；缺少凭据或网络时会放行未检查编辑，回放结果也取决于规则设计。"
   },
@@ -296,6 +321,7 @@ const resources = [
     "title": "jev-fabric",
     "by": "fabric-runtime · process orchestration · MIT",
     "url": "https://github.com/fabric-runtime/jev-fabric",
+    "tool_tasks": ["workflow"],
     "en": "Native process orchestration with bounded logs, deadlines and explicit typed decisions; commands run with caller privileges, exit status needs outcome checks, and selected policy proofs do not verify the whole runtime.",
     "zh": "原生进程编排，提供有界日志、截止时间与显式类型化决策；命令使用调用者权限，退出状态仍需结果核验，部分策略证明不等于整个运行时已验证。"
   },
@@ -304,6 +330,7 @@ const resources = [
     "title": "atoma",
     "by": "atoma-run · agent workflows · AGPL-3.0-only",
     "url": "https://github.com/atoma-run/atoma",
+    "tool_tasks": ["workflow"],
     "en": "Multi-agent planning, execution and evidence review with Jev routing; shared agent/skill learning can expose document-derived material across organizations, and tenant isolation is not independently audited.",
     "zh": "结合 Jev 路由的多 agent 规划、执行与证据审查；共享 agent／技能学习可能使文档衍生内容跨组织可读，租户隔离尚未经过独立审计。"
   },
@@ -312,6 +339,7 @@ const resources = [
     "title": "circuit",
     "by": "Barneyjm · training code · Apache-2.0",
     "url": "https://github.com/Barneyjm/circuit",
+    "tool_tasks": ["training", "runtime"],
     "en": "LoRA and pointer-head training, evaluation and serving for text, image and audio decisions; publisher tests cover selected task sets and do not establish universal calibration or option-order invariance.",
     "zh": "面向文本、图像与音频决策的 LoRA、指针头训练、评测和服务工具；发布者测试只覆盖选定任务集，不能证明普遍校准或选项顺序不变性。"
   },
@@ -320,6 +348,7 @@ const resources = [
     "title": "cua-s1.js",
     "by": "ai-ecoverse · browser port · MIT",
     "url": "https://github.com/ai-ecoverse/cua-s1.js",
+    "tool_tasks": ["runtime"],
     "en": "Browser ports of Cua form and next-action models; output-parity checks do not establish generalization, and the small form model can confidently skip unfamiliar fields.",
     "zh": "Cua 表单与下一步动作模型的浏览器移植；输出一致性检查不证明泛化，小型表单模型可能高置信度跳过陌生字段。"
   },
@@ -328,6 +357,7 @@ const resources = [
     "title": "jev-omni.js",
     "by": "ai-ecoverse · WebGPU port · Apache-2.0",
     "url": "https://github.com/ai-ecoverse/jev-omni.js",
+    "tool_tasks": ["runtime"],
     "en": "Work-in-progress WebGPU port for Jev-Omni text and image decisions; audio/video are unfinished, model downloads are large, and reported parity is limited to selected fixtures and hardware.",
     "zh": "开发中的 Jev-Omni 文本与图像决策 WebGPU 移植；音视频未完成、模型下载体积较大，一致性结果仅覆盖指定样本与硬件。"
   },
@@ -336,6 +366,7 @@ const resources = [
     "title": "SearchJev training pipeline",
     "by": "EvoScientist · training code · Apache-2.0",
     "url": "https://github.com/EvoScientist/SearchJev",
+    "tool_tasks": ["training"],
     "en": "Search-agent decision training with soft-label and Brier losses, reliability weights and per-question-type temperature fitting; the documented pipeline and split controls were not reproduced.",
     "zh": "面向搜索 agent 决策的训练流程，包含软标签与 Brier 损失、可靠性权重及按问题类型拟合温度；文档中的流程与切分控制尚未复现。"
   },
@@ -344,6 +375,7 @@ const resources = [
     "title": "mJev",
     "by": "SoMarkAI · multimodal runtime · Apache-2.0",
     "url": "https://github.com/SoMarkAI/mJev",
+    "tool_tasks": ["runtime"],
     "en": "Shared-context candidate scoring with HF/vLLM routes; normalized option probabilities are not calibrated confidence, and the reported cache speedup trades higher memory in one controlled video setup.",
     "zh": "通过 HF/vLLM 路径进行共享上下文候选评分；选项归一化概率不是已校准置信度，所报缓存加速在一个受控视频设置中需要更多显存。"
   },
@@ -629,6 +661,7 @@ const resources = [
     "title": "FRIDA-Decisions",
     "by": "SberAI · independent runtime · MIT code",
     "url": "https://github.com/ai-forever/FRIDA-Decisions",
+    "tool_tasks": ["runtime"],
     "en": "Packed Russian–English encoder runtime for typed questions and ranking; state truncation, Russian instruction suffixes and margin-versus-probability semantics remain explicit.",
     "zh": "面向类型化问题与排序的俄英双语编码器运行库；需注意状态截断、俄语指令后缀，以及边际分数与归一化概率的区别。"
   },
@@ -637,6 +670,7 @@ const resources = [
     "title": "OpenThai-SystemOne",
     "by": "iapp-technology · Thai/English pipeline",
     "url": "https://github.com/iapp-technology/openthai-systemone",
+    "tool_tasks": ["training", "runtime"],
     "en": "Thai/English text decision-model training and serving pipeline with a slot readout; the documented recipe does not establish independently validated calibration or interface equivalence.",
     "zh": "采用槽位读出的泰英文本决策模型训练与服务流程；文档中的配方不代表校准或接口等价性已获独立验证。"
   },
@@ -645,6 +679,7 @@ const resources = [
     "title": "Quyet runtime",
     "by": "ncchinh · runtime · Apache-2.0",
     "url": "https://github.com/ncchinh/quyet",
+    "tool_tasks": ["runtime"],
     "en": "Runtime for Quyet decision models with checkpoint-dependent English/Vietnamese coverage; it documents ten-option limits and state truncation, without evaluated adversarial robustness.",
     "zh": "Quyet 决策模型运行库，英越语言覆盖依检查点而异；文档说明最多十个选项及状态截断，尚未确立对抗鲁棒性。"
   },
@@ -669,6 +704,7 @@ const resources = [
     "title": "JevLang",
     "by": "TimMikeladze · policy and replay",
     "url": "https://github.com/TimMikeladze/JevLang",
+    "tool_tasks": ["workflow"],
     "en": "TypeScript/Python policy layer separates typed model answers from routing and action dispatch, with documented journals and replay; a trace does not establish truthful inputs or calibrated thresholds.",
     "zh": "TypeScript／Python 策略层将类型化模型答案与路由、动作分发分开，提供日志与重放说明；可追溯记录不证明输入真实或阈值已校准。"
   },
@@ -677,6 +713,7 @@ const resources = [
     "title": "sysone decision-learning library",
     "by": "sgaseretto · decision learning",
     "url": "https://github.com/sgaseretto/sysonelib",
+    "tool_tasks": ["training"],
     "en": "Training, calibration and interpretation tools for several text, image and protein backends; documented compatibility checks and small experiments do not validate every backend or workload.",
     "zh": "提供多种文本、图像及蛋白质后端的训练、校准和解释工具；文档中的兼容检查与小实验不代表所有后端和任务已获验证。"
   },
@@ -727,6 +764,7 @@ const resources = [
     "title": "protoc-gen-jev",
     "by": "Buf · experimental generator · MIT",
     "url": "https://github.com/bufbuild/protoc-gen-jev",
+    "tool_tasks": ["integration"],
     "en": "Generates typed Go, TypeScript and Python clients from annotated Protobuf schemas. Generator and runtime releases must be matched; backend behavior was not tested here.",
     "zh": "从带注释的 Protobuf 定义生成 Go、TypeScript 和 Python 类型化客户端；生成器与运行库需匹配版本，本项目未测试后端行为。"
   },
@@ -1618,6 +1656,7 @@ const resources = [
     title: "TypeSafe Python SDK",
     by: "Python · MIT",
     url: "https://github.com/typesafe-ai/typesafe-sdk-python",
+    "tool_tasks": ["integration"],
     en: "The official sync and async client for typed Jev questions and answers.",
     zh: "官方 Python 同步与异步客户端，支持类型化问题和答案。",
   },
@@ -1627,6 +1666,7 @@ const resources = [
     title: "TypeSafe JavaScript SDK",
     by: "TypeScript / JavaScript · MIT",
     url: "https://github.com/typesafe-ai/typesafe-sdk-js",
+    "tool_tasks": ["integration"],
     en: "The official JavaScript client with answer types inferred from your questions.",
     zh: "官方 JavaScript 客户端，可根据问题推导答案类型。",
   },
@@ -1636,6 +1676,7 @@ const resources = [
     title: "System One Adapter",
     by: "Python · MIT",
     url: "https://github.com/typesafe-ai/system-one-adapter-python",
+    "tool_tasks": ["training"],
     en: "Compare LLMs through the same question interface, with probability outputs and request diagnostics.",
     zh: "用相同问题接口比较 LLM，支持概率输出与请求诊断。",
   },
@@ -1645,6 +1686,7 @@ const resources = [
     title: "TypeSafe Agent Skills",
     by: "Coding agents · MIT",
     url: "https://github.com/typesafe-ai/skills",
+    "tool_tasks": ["integration"],
     en: "Official guidance for coding agents building with the System One API.",
     zh: "帮助编码 agent 使用 System One API 的官方技能。",
   },
@@ -1654,6 +1696,7 @@ const resources = [
     title: "TypeSafe Public Examples",
     by: "Cookbooks & demos · MIT",
     url: "https://github.com/typesafe-ai/typesafe-public-examples",
+    "tool_tasks": ["integration", "workflow"],
     en: "Source code accompanying official documentation, demos, and cookbooks.",
     zh: "官方文档、演示与实践教程配套源代码。",
   },
@@ -1663,6 +1706,7 @@ const resources = [
     title: "TypeSafe for n8n",
     by: "Workflow integration · MIT",
     url: "https://github.com/typesafe-ai/n8n-nodes-typesafe-ai",
+    "tool_tasks": ["workflow"],
     en: "TypeSafe-maintained nodes for adding typed decisions to n8n workflows.",
     zh: "由 TypeSafe 维护的 n8n 节点，用于将类型化决策加入工作流。",
   },
@@ -1969,4 +2013,4 @@ const paperThemes = [
   { id: "applications", en: "Applications and domain studies", zh: "应用与领域研究", short: { en: "Applications", zh: "应用" } },
 ];
 
-export { resources, translations, paperThemes };
+export { resources, translations, paperThemes, toolTasks };

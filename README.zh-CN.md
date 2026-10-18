@@ -4,9 +4,9 @@
 
 围绕 **Jev 与类型化决策模型**，整理研究论文、模型、数据集、评测工具与实践指南。
 
-**[主仓库](https://github.com/reacher-z/Awesome-Jev)** · [网站](https://awesomejev.github.io/zh/) · [论文目录](https://awesomejev.github.io/zh/papers/) · [研究指南](https://awesomejev.github.io/zh/guide/) · [新增资源](https://awesomejev.github.io/zh/discoveries/) · [模型目录](https://awesomejev.github.io/zh/models/) · [研究专题](https://awesomejev.github.io/zh/topics/) · [English](README.md) · [综述](docs/survey.zh-CN.md) · [BibTeX](references.bib) · [参与贡献](CONTRIBUTING.md)
+**[主仓库](https://github.com/reacher-z/Awesome-Jev)** · [网站](https://awesomejev.github.io/zh/) · [论文目录](https://awesomejev.github.io/zh/papers/) · [研究指南](https://awesomejev.github.io/zh/guide/) · [新增资源](https://awesomejev.github.io/zh/discoveries/) · [模型目录](https://awesomejev.github.io/zh/models/) · [工具目录](https://awesomejev.github.io/zh/tools/) · [研究专题](https://awesomejev.github.io/zh/topics/) · [English](README.md) · [综述](docs/survey.zh-CN.md) · [BibTeX](references.bib) · [参与贡献](CONTRIBUTING.md)
 
-独立社区项目，与 TypeSafe AI 无隶属关系。最近整理：**2026-10-17**。网站从 [AwesomeJev.github.io](https://github.com/AwesomeJev/AwesomeJev.github.io) 仓库发布。
+独立社区项目，与 TypeSafe AI 无隶属关系。最近整理：**2026-10-18**。网站从 [AwesomeJev.github.io](https://github.com/AwesomeJev/AwesomeJev.github.io) 仓库发布。
 
 [新增资源目录](https://awesomejev.github.io/zh/discoveries/)补充了数百项项目、数据集、模型卡、指南和研究论文，并标明核查等级与相关性。[扩展审阅与计数方法](docs/expansion-2026-10-16.md)可供复查；摘要检查不等于全文评审。
 
@@ -16,7 +16,7 @@
 | :--- | :--- | :--- |
 | 理解研究进展 | [论文](https://awesomejev.github.io/zh/papers/) · [综述](docs/survey.zh-CN.md) | 固定版本的研究、贡献与证据局限。 |
 | 比较模型 | [模型目录](https://awesomejev.github.io/zh/models/) | 发布者、声明许可与文档中的适用范围。 |
-| 开发集成 | [SDK与工具](#sdk-与集成) · [快速开始](#快速开始) | 实现入口与最小API示例。 |
+| 开发集成 | [工具目录](https://awesomejev.github.io/zh/tools/) · [快速开始](#快速开始) | 实现入口与最小API示例。 |
 | 深入一个问题 | [研究专题](https://awesomejev.github.io/zh/topics/) · [指南](https://awesomejev.github.io/zh/guide/) | 带原始引用的解释与评估流程。 |
 | 探索更多来源 | [新增资源](https://awesomejev.github.io/zh/discoveries/) | 标明核查等级的项目、数据集与背景研究。 |
 

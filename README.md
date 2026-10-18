@@ -4,9 +4,9 @@
 
 A curated list of **Jev and typed decision model** papers, models, datasets, evaluation tools, and practical guides.
 
-**[Main repository](https://github.com/reacher-z/Awesome-Jev)** · [Website](https://awesomejev.github.io/) · [Papers](https://awesomejev.github.io/papers/) · [Research guide](https://awesomejev.github.io/guide/) · [New resources](https://awesomejev.github.io/discoveries/) · [Model directory](https://awesomejev.github.io/models/) · [Research topics](https://awesomejev.github.io/topics/) · [中文](README.zh-CN.md) · [Survey](docs/survey.md) · [BibTeX](references.bib) · [Contribute](CONTRIBUTING.md)
+**[Main repository](https://github.com/reacher-z/Awesome-Jev)** · [Website](https://awesomejev.github.io/) · [Papers](https://awesomejev.github.io/papers/) · [Research guide](https://awesomejev.github.io/guide/) · [New resources](https://awesomejev.github.io/discoveries/) · [Model directory](https://awesomejev.github.io/models/) · [Tool directory](https://awesomejev.github.io/tools/) · [Research topics](https://awesomejev.github.io/topics/) · [中文](README.zh-CN.md) · [Survey](docs/survey.md) · [BibTeX](references.bib) · [Contribute](CONTRIBUTING.md)
 
-Independent community project; not affiliated with TypeSafe AI. Last curated: **2026-10-17**. The website is published from [AwesomeJev.github.io](https://github.com/AwesomeJev/AwesomeJev.github.io).
+Independent community project; not affiliated with TypeSafe AI. Last curated: **2026-10-18**. The website is published from [AwesomeJev.github.io](https://github.com/AwesomeJev/AwesomeJev.github.io).
 
 The [new-resource directory](https://awesomejev.github.io/discoveries/) adds hundreds of projects, datasets, model cards, guides and research papers, with explicit screening levels and relationship labels. [Review the expansion and counting method](docs/expansion-2026-10-16.md); abstract checks are not full-paper reviews.
 
@@ -16,7 +16,7 @@ The [new-resource directory](https://awesomejev.github.io/discoveries/) adds hun
 | :--- | :--- | :--- |
 | Understand the research | [Papers](https://awesomejev.github.io/papers/) · [Survey](docs/survey.md) | Versioned studies, contributions and evidence limits. |
 | Compare models | [Model directory](https://awesomejev.github.io/models/) | Publisher, declared license and documented scope. |
-| Build an integration | [SDKs and tools](#sdks-and-integrations) · [Quick start](#quick-start) | Implementation entry points and a minimal API example. |
+| Build an integration | [Tool directory](https://awesomejev.github.io/tools/) · [Quick start](#quick-start) | Implementation entry points and a minimal API example. |
 | Investigate a question | [Research topics](https://awesomejev.github.io/topics/) · [Guide](https://awesomejev.github.io/guide/) | Source-backed explanations and evaluation protocols. |
 | Explore more sources | [New resources](https://awesomejev.github.io/discoveries/) | Broader projects, datasets and background research with screening labels. |
 

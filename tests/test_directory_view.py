@@ -86,7 +86,7 @@ assert.equal(anchored.copies.length,0);
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
 
     def test_bilingual_directories_use_identical_search_text(self):
-        for section in ("papers", "models"):
+        for section in ("papers", "models", "tools"):
             with self.subTest(section=section):
                 english = SearchRows((ROOT / f"site/{section}/index.html").read_text()).rows
                 chinese = SearchRows((ROOT / f"site/zh/{section}/index.html").read_text()).rows
