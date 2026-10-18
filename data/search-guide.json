@@ -217,6 +217,19 @@
                 "url": "https://arxiv.org/abs/2610.02293v1"
               }
             ]
+          },
+          {
+            "text": "Question grouping is part of the inference protocol. Perplexity Decider v1.2 lets questions within a request attend to one another; its fast path isolates separate requests. The card reports that grouping related attributes can help while grouping competing retrieval candidates can hurt. By contrast, tasksource-decider-nano describes tree attention that isolates options while sharing the state. Record the grouping rule alongside scores; a multi-question API does not imply independent answers.",
+            "sources": [
+              {
+                "label": "Perplexity v1.2: question grouping",
+                "url": "https://huggingface.co/perplexity-ai/pplx-decider-v1.2/raw/225c913ddc8761a8264f04f64548e1f97e443eb3/README.md"
+              },
+              {
+                "label": "tasksource: tree attention",
+                "url": "https://huggingface.co/tasksource/tasksource-decider-nano/raw/46e88e08cc1a3122a348ce134f18865e93f8e1c8/README.md"
+              }
+            ]
           }
         ]
       },
@@ -444,6 +457,19 @@
               {
                 "label": "Lychee model-card limits",
                 "url": "https://huggingface.co/LycheeAI/Lychee-27B/raw/f3f95d18a3b1ef3c483c2a5d7e8e5272a2af31e2/README.md"
+              }
+            ]
+          },
+          {
+            "text": "Input support and calibration can differ by modality within one checkpoint. Liquid d1-omni-600M accepts images or audio per request, limits speech to 30 seconds, and caps text at 896 tokens for image requests. Its fitted temperatures apply to text, not images or audio. The release uses custom inference code and the LFM Open License v1.0; inspect that license separately from the base model or other d1 releases.",
+            "sources": [
+              {
+                "label": "Liquid d1-omni-600M: limits and calibration",
+                "url": "https://huggingface.co/LiquidAI/d1-omni-600M/raw/02b55d7076f15129e59ab3f94783f32c4b088674/README.md"
+              },
+              {
+                "label": "LFM Open License v1.0",
+                "url": "https://huggingface.co/LiquidAI/d1-omni-600M/raw/02b55d7076f15129e59ab3f94783f32c4b088674/LICENSE"
               }
             ]
           }
@@ -763,6 +789,19 @@
                 "url": "https://arxiv.org/abs/2610.02293v1"
               }
             ]
+          },
+          {
+            "text": "问题分组属于推理协议。Perplexity Decider v1.2 允许同一请求中的问题相互关注，而快速路径会隔离不同请求；模型卡报告，将相关属性放在一起可能有帮助，将相互竞争的检索候选放在一起则可能降低表现。相对地，tasksource-decider-nano 描述了共享状态但隔离选项的树形注意力。报告分数时应同时记录分组规则，多问题 API 不代表答案相互独立。",
+            "sources": [
+              {
+                "label": "Perplexity v1.2：问题分组",
+                "url": "https://huggingface.co/perplexity-ai/pplx-decider-v1.2/raw/225c913ddc8761a8264f04f64548e1f97e443eb3/README.md"
+              },
+              {
+                "label": "tasksource：树形注意力",
+                "url": "https://huggingface.co/tasksource/tasksource-decider-nano/raw/46e88e08cc1a3122a348ce134f18865e93f8e1c8/README.md"
+              }
+            ]
           }
         ]
       },
@@ -990,6 +1029,19 @@
               {
                 "label": "Lychee 模型卡限制",
                 "url": "https://huggingface.co/LycheeAI/Lychee-27B/raw/f3f95d18a3b1ef3c483c2a5d7e8e5272a2af31e2/README.md"
+              }
+            ]
+          },
+          {
+            "text": "同一检查点的输入支持与校准方法也可能因模态而异。Liquid d1-omni-600M 的单次请求只能选择图像或音频；语音限 30 秒，图像请求中的文本限 896 个 token。拟合温度仅用于文本，不用于图像或音频。该版本使用自定义推理代码与 LFM Open License v1.0，应单独检查许可，不能从基础模型或其他 d1 版本推断。",
+            "sources": [
+              {
+                "label": "Liquid d1-omni-600M：限制与校准",
+                "url": "https://huggingface.co/LiquidAI/d1-omni-600M/raw/02b55d7076f15129e59ab3f94783f32c4b088674/README.md"
+              },
+              {
+                "label": "LFM Open License v1.0",
+                "url": "https://huggingface.co/LiquidAI/d1-omni-600M/raw/02b55d7076f15129e59ab3f94783f32c4b088674/LICENSE"
               }
             ]
           }

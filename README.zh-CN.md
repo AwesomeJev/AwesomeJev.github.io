@@ -220,6 +220,12 @@ TypeSafe 的 Jev 接收状态与类型化问题，为应用代码返回决策和
 
 | 模型 | 发布者 | 声明许可 | 范围 |
 | :--- | :--- | :--- | :--- |
+| [OneJev1.5-27B](https://huggingface.co/OmniJev/OneJev1.5-27B) | OmniJev | Apache-2.0 | 面向文本、图像和视频决策的 27B 全量微调模型，通过 qev 提供服务。训练包含公开基准的训练切分；所报分数覆盖公共评测，Jev 对照数字来自已发表结果，并非同条件的多模态重测。 |
+| [d1-omni-600M](https://huggingface.co/LiquidAI/d1-omni-600M) | Liquid AI | LFM Open License v1.0 | 587M 编码器，支持文本配合图像或最长 30 秒的英语语音，单次请求不能同时使用两种媒体。仅文本使用拟合温度；图像请求的文本上限为 896 个 token，需使用自定义代码并遵循 LFM Open License。 |
+| [Torchcast Decision 27B](https://huggingface.co/torchcast-ai/torchcast-decision-27b) | Torchcast AI | **CC BY-NC 4.0** | 合并 LoRA 权重的决策模型，附 CUDA 服务包；权重限非商业用途，服务代码为 Apache-2.0。文本评测使用 Decision Index 0.2.1 且参与检查点选择；长状态或超过 26 个选项会改变推理路径。 |
+| [tasksource-decider-nano](https://huggingface.co/tasksource/tasksource-decider-nano) | tasksource | Apache-2.0 | 150M 联合交叉编码器，通过树形注意力共享状态，输出 choice／noul。超过 8,192 个 token 的配对会被拒绝；训练包含公开基准的训练切分，所报速度和公共评测分数使用文档所述 A10 配置。 |
+| [Saracura PT-BR 4B](https://huggingface.co/felhen-ai/saracura-ptbr-4b) | Felhen | Apache-2.0 | 面向巴西葡萄牙语的 Kev 适配器和指针头。同源测试及人工标注集上的两折校准不能证明通用葡语能力；私有邮件微调结果属于未发布模型。比较时需使用文档所述 2,048-token 状态设置。 |
+| [Perplexity Decider v1.2 27B](https://huggingface.co/perplexity-ai/pplx-decider-v1.2) | Perplexity | Apache-2.0 | 27B 文本／图像模型，联合读取多个问题，问题间可相互影响。公开评测训练数据的使用与问题分组会影响比较。10 月 18 日匿名元数据与权重 HEAD 请求可访问，但模型卡仍写着需私有访问权限。 |
 | [Amos 1 large](https://huggingface.co/mukaddamzaid/amos-1-large) | mukaddamzaid | Apache-2.0 | 支持图像输入的英文类型化决策模型；应区分零样本结果与按训练切分拟合先验的结果，以及 Decision Index 公共部分与完整评测。 |
 | [KnowLine-35B-A3B-Gen1](https://huggingface.co/PelaAI/KnowLine-35B-A3B-Gen1) | PelaAI | Apache-2.0 weights; MIT server | 英中文 MoE 决策检查点；公开评测选点、披露的任务／来源重叠与自行计算的校准区间，限制了它与独立留出评测的比较。 |
 | [Lychee-27B](https://huggingface.co/LycheeAI/Lychee-27B) | LycheeAI | **CC BY-NC 4.0** | 按非商业许可发布的 Qwen 派生决策模型，公共评测结果由发布者报告；文档说明超出上下文或显存限制时拒绝请求，而非截断。 |
@@ -231,7 +237,6 @@ TypeSafe 的 Jev 接收状态与类型化问题，为应用代码返回决策和
 | [Kev-4B](https://huggingface.co/jaredpalmer/kev-4b) | Jared Palmer | Apache-2.0 | Qwen3.5-4B-Base LoRA 适配器与指针头。 |
 | [Bespoke Nimble 9B v3](https://huggingface.co/bespokelabs/Bespoke-Nimble-9B-v3) | Bespoke Labs | **CC BY-NC 4.0** | Qwen3.5-9B 适配器；非商业用途许可。 |
 | [Intern-Decision-4B](https://huggingface.co/internlm/Intern-Decision-4B) | InternLM | Apache-2.0 | 经过决策微调的 Qwen 检查点，支持图片输入。 |
-| [Perplexity Decider v1.1 27B](https://huggingface.co/perplexity-ai/pplx-decider-v1.1-27b) | Perplexity | Apache-2.0 | 独立决策读出；需查看注意力模式与访问说明。 |
 | [GLiNER2.5-Decide](https://huggingface.co/fastino/GLiNER2.5-Decide) | Fastino | Apache-2.0 | 支持调用时指定标签集合的英语分类器，可输出多标签。 |
 | [d3](https://huggingface.co/vllm-sr/d3) | vLLM Semantic Router | Apache-2.0 | 文本、图片与视频决策。 |
 | [Clef](https://huggingface.co/Cloudflare/clef) | Cloudflare | Apache-2.0 | 采用联合 schema 预测头的多模态决策模型。 |

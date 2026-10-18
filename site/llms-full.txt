@@ -58,6 +58,8 @@ LLM-as-Jev v3 studies frozen Qwen readouts, optional KL-anchored fine-tuning and
 
 HakemBench v1 states that most Turkish reference labels are AI-derived, not human-verified, and that earlier test results influenced the lab’s own model on flagged tracks. Report label provenance, known prior test exposure and per-track metric components. Translation probes should remain separate from independent language validation. These are proposed comparison checks; this collection has not reproduced the studies. [HakemBench, v1](https://arxiv.org/abs/2610.02293v1)
 
+Question grouping is part of the inference protocol. Perplexity Decider v1.2 lets questions within a request attend to one another; its fast path isolates separate requests. The card reports that grouping related attributes can help while grouping competing retrieval candidates can hurt. By contrast, tasksource-decider-nano describes tree attention that isolates options while sharing the state. Record the grouping rule alongside scores; a multi-question API does not imply independent answers. [Perplexity v1.2: question grouping](https://huggingface.co/perplexity-ai/pplx-decider-v1.2/raw/225c913ddc8761a8264f04f64548e1f97e443eb3/README.md) · [tasksource: tree attention](https://huggingface.co/tasksource/tasksource-decider-nano/raw/46e88e08cc1a3122a348ce134f18865e93f8e1c8/README.md)
+
 ## Can I reuse a confidence gate across languages or domains?
 
 Before reusing a confidence gate in a new language or domain, build a target-specific test set with explicit label definitions and annotation provenance; translated or model-generated labels are not independent human validation. Compare the unchanged gate with a threshold tuned only on separate target-domain validation data. Report accepted-case error and coverage per group, including high-confidence errors under independently checked, answer-preserving context additions.
@@ -105,6 +107,8 @@ The official SDK is a client for TypeSafe’s hosted API, not a Jev checkpoint. 
 Check each release’s model card and license separately. For example, Bespoke Nimble 9B v3 declares CC BY-NC 4.0, which restricts commercial use. Publicly downloadable artifacts should not all be labeled unrestricted open-source models. [Bespoke Nimble v3 model card](https://huggingface.co/bespokelabs/Bespoke-Nimble-9B-v3)
 
 API shape does not determine the inference path. Span-02 documents its own runtime and optional generated reasoning, with index settings that differ from normal serving. Lychee documents rejection rather than truncation for oversized requests. Record engine, hardware, reasoning mode, confidence definition and input limits with a comparison; these are publisher descriptions, not deployments tested by this collection. [Span-02 runtime and index settings](https://huggingface.co/respanai/span-02/raw/63cbdd774391f1b7d9bc3829179efe996d0191ce/README.md) · [Lychee model-card limits](https://huggingface.co/LycheeAI/Lychee-27B/raw/f3f95d18a3b1ef3c483c2a5d7e8e5272a2af31e2/README.md)
+
+Input support and calibration can differ by modality within one checkpoint. Liquid d1-omni-600M accepts images or audio per request, limits speech to 30 seconds, and caps text at 896 tokens for image requests. Its fitted temperatures apply to text, not images or audio. The release uses custom inference code and the LFM Open License v1.0; inspect that license separately from the base model or other d1 releases. [Liquid d1-omni-600M: limits and calibration](https://huggingface.co/LiquidAI/d1-omni-600M/raw/02b55d7076f15129e59ab3f94783f32c4b088674/README.md) · [LFM Open License v1.0](https://huggingface.co/LiquidAI/d1-omni-600M/raw/02b55d7076f15129e59ab3f94783f32c4b088674/LICENSE)
 
 ## Where should I look for research and benchmark evidence?
 
@@ -888,6 +892,54 @@ An open typed-decision model using hidden-state readout. The abstract reports a 
 
 Primary source: https://arxiv.org/abs/2609.23886v1
 
+## OneJev1.5-27B
+
+Models · OmniJev · Apache-2.0
+
+27B full fine-tune for text, image and video decisions, served through qev. Training includes public benchmark training splits; reported scores cover the public suite, and Jev comparison numbers are imported rather than a matched multimodal rerun.
+
+Primary source: https://huggingface.co/OmniJev/OneJev1.5-27B
+
+## d1-omni-600M
+
+Models · Liquid AI · LFM Open License v1.0
+
+587M encoder for text with images or up to 30 seconds of English speech; one request cannot mix both media. Only text uses fitted temperatures. Image requests cap text at 896 tokens; custom code and the LFM Open License apply.
+
+Primary source: https://huggingface.co/LiquidAI/d1-omni-600M
+
+## Torchcast Decision 27B
+
+Models · Torchcast AI · CC BY-NC 4.0
+
+Merged LoRA decision model with a CUDA serving package; weights are noncommercial, serving code Apache-2.0. Text-only, checkpoint-selected results use Decision Index 0.2.1; long states and more than 26 options change the inference path.
+
+Primary source: https://huggingface.co/torchcast-ai/torchcast-decision-27b
+
+## tasksource-decider-nano
+
+Models · tasksource · Apache-2.0
+
+150M joint cross-encoder with shared-state tree attention and choice/noul outputs. Rejects pairs above 8,192 tokens; training includes public benchmark training splits. Reported speed and public-suite scores use the documented A10 setup.
+
+Primary source: https://huggingface.co/tasksource/tasksource-decider-nano
+
+## Saracura PT-BR 4B
+
+Models · Felhen · Apache-2.0
+
+Brazilian Portuguese Kev adapter and pointer head. Source-matched tests and two-fold human-set calibration do not establish general Portuguese performance; private email-tuned results belong to an unreleased model. Use the documented 2,048-token state setting for comparisons.
+
+Primary source: https://huggingface.co/felhen-ai/saracura-ptbr-4b
+
+## Perplexity Decider v1.2 27B
+
+Models · Perplexity · Apache-2.0
+
+27B text/image model with joint question readouts: questions can affect one another. Public-suite training exposure and grouping affect comparisons. Anonymous Hub metadata and a weight HEAD were accessible on 18 Oct; the card still instructs private access.
+
+Primary source: https://huggingface.co/perplexity-ai/pplx-decider-v1.2
+
 ## Amos 1 large
 
 Models · mukaddamzaid · Apache-2.0
@@ -975,14 +1027,6 @@ Models · InternLM · Apache-2.0
 A decision-tuned Qwen checkpoint with a structured inference wrapper and image support.
 
 Primary source: https://huggingface.co/internlm/Intern-Decision-4B
-
-## Perplexity Decider v1.1 27B
-
-Models · Perplexity · Apache-2.0
-
-A separate decision readout and saved calibration temperature. Follow the card’s attention-mode and access notes.
-
-Primary source: https://huggingface.co/perplexity-ai/pplx-decider-v1.1-27b
 
 ## GLiNER2.5-Decide
 

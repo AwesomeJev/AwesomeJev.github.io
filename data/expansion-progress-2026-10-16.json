@@ -8,13 +8,13 @@
   "target_count_reached": true,
   "current_index_counts": {
     "editorial_reviewed": 4,
-    "content_screened": 2396,
+    "content_screened": 2397,
     "abstract_checked": 1860,
     "metadata_only": 47,
-    "raw_records": 4321,
-    "unique_records": 4307,
+    "raw_records": 4322,
+    "unique_records": 4308,
     "duplicate_records": 14,
-    "checked_sources": 4260
+    "checked_sources": 4261
   },
   "by_category": {
     "Datasets": 101,
@@ -9691,6 +9691,10 @@
     },
     {
       "url": "https://arxiv.org/abs/2610.21614",
+      "reason": "not_in_reviewed_intake"
+    },
+    {
+      "url": "https://huggingface.co/perplexity-ai/pplx-decider-v1.2",
       "reason": "not_in_reviewed_intake"
     }
   ]
