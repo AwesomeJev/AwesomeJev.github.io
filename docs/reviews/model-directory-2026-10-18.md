@@ -57,3 +57,11 @@ The frozen baseline and all previous accepted ledger bytes remain intact. Public
 ## Validation
 
 All 457 repository tests passed. Generated-output, link/provenance, publication-hygiene and expansion checks agree on 20 models, 182 curated resources, 95 papers and 801 reviewed expansion sources. Existing accepted ledger bytes and frozen baseline files are preserved. Browser checks confirmed the custom-license filter returns Liquid d1, the noncommercial filter returns three models, filters survive the English/Chinese switch, and Chinese search finds Saracura. At 390 px, the Chinese directory has no horizontal overflow and the complete model note remains readable.
+
+## Publication and discovery receipts
+
+Commit `04bc15a0010f6073432d5f9592d90d23889f2c5c` passed [main repository checks](https://github.com/reacher-z/Awesome-Jev/actions/runs/39112062389), [website repository checks](https://github.com/AwesomeJev/AwesomeJev.github.io/actions/runs/39112064665) and [Pages deployment](https://github.com/AwesomeJev/AwesomeJev.github.io/actions/runs/39112064666). Both repositories remain public. All 40 live targets matched that commit, including 20-model JSON, bilingual static model pages, source annotations and the updated guide. The live browser shows 20 models and the v1.2 Perplexity link.
+
+One IndexNow submission for the six changed home, model-directory and guide pages (English/Chinese pairs) returned HTTP 200. The unchanged paper, topic and discovery pages were not resubmitted.
+
+Google Search Console reported `https://awesomejev.github.io/models/` as **not indexed: URL is unknown to Google**. After the new release, one indexing request passed its live check and received **Indexing requested**, confirming admission to a priority crawl queue. The page still showed the earlier unindexed status after dismissal. This is a submission receipt, not proof of indexing, ranking or AI retrieval. The already-requested paper and guide pages were not submitted again. Console screenshots and account state remain outside the repository.
