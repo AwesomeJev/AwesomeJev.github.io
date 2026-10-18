@@ -22,6 +22,12 @@ Publication now compares HTML-unescaped URL identities and normalizes only the D
 
 The old PR and the validated latest artifact pass this check with the current main snapshots and existing reviewed exclusions. Negative regressions continue to reject genuine evidence loss. The six-file publication allowlist, ref concurrency checks, bot ownership checks and no-automatic-merge behavior are unchanged. This offline reconciliation does not claim that any pending proposal has been accepted or that the subsequent workflow has succeeded; its observed result is recorded separately.
 
+The first verification [run 39096728520](https://github.com/reacher-z/Awesome-Jev/actions/runs/39096728520) then reached publication with **0 downgraded records and 0 unresolved editorial changes**, confirming that those identity/acceptance mismatches were addressed. It correctly stopped on **40 absent older proposals**, reflecting variation in current scholarly discovery. The older PR remained unchanged.
+
+The publication job now reads the existing bot-owned PR's data and carries forward only absent, nonexcluded source identities. It preserves their original row bytes, evidence tiers and retrieval times; fresh observations are not overwritten. The report labels these as retained pending sources, separately from newly fetched candidates. Trusted base-branch code rebuilds the browser index without a token in its environment, and the full validator and test suite run again before publication. The reconciled six-file bundle is retained as a separate same-run artifact. Its manifest records the prior PR head, and any intervening branch change stops the final write.
+
+Seven regression tests cover exact row preservation, repeated reconciliation, aliases, exclusions, non-bot refusal, malformed evidence, token-free rebuilding and concurrent-head changes. The full suite passes **431 tests**. An isolated replay combining the actual older PR and the actual first verification artifact retained 40 rows and passed continuity and repository validation. No proposed row was accepted into main by that replay.
+
 ## 中文
 
 主仓库已有新合并，而官网仍停留在旧版本。本次保留既有研究与功能，修正macOS路径校验，并按用户要求维持白底黑字。趋势图改为原生可展开区，论文筛选与列表更靠前；主题、代码过滤、关键词搜索和重置已经组合实测。当前156项精选、78篇直接论文、87条书目、780项审阅扩展来源；来源总库与扩展计数分开，删除不合格来源后不人为补回计数。

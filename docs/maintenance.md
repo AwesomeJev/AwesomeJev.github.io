@@ -61,7 +61,7 @@ GitHub schedules are best-effort: runs may be delayed, and public-repository sch
 
 Fetched pages, model cards, metadata, and repository descriptions are **untrusted data**. The scanner does not execute their code, follow instructions embedded in them, or install packages they recommend. Requests are public and unauthenticated; credential-bearing URLs and private network addresses are outside the scan scope. Provider failures and retry exhaustion must remain visible without destroying prior evidence.
 
-The collection job has read-only repository permissions and no publication-token environment variable. The separate publication job receives write permissions only for proposing the bounded data update; its token is injected into the final publication step. It must not execute downloaded source code or interpret source text as a shell command. Keep credentials, private URLs, raw caches, and full copyrighted documents out of the proposed commit.
+The collection job has read-only repository permissions and no publication-token environment variable. The separate publication job receives write permissions only for proposing the bounded data update. Its token is injected into the GitHub-only pending-reconciliation step and the final publication step, and is removed from the index-builder subprocess environment. Reconciliation reads only data from the existing bot-owned PR, retains absent candidates with their original provenance, rebuilds the source index using trusted base-branch code, and updates the six-file manifest. Full validation runs again before retaining the reconciled artifact or publishing. A changed pending-branch head stops publication. It must not execute downloaded source code or interpret source text as a shell command. Keep credentials, private URLs, raw caches, and full copyrighted documents out of the proposed commit.
 
 The evidence tiers below still apply. An automatically discovered source is not an endorsed recommendation, an abstract check is not a full-paper review, and a published result is not an experiment reproduced by this project.
 
@@ -179,7 +179,7 @@ The Chinese directory uses [discovery-translations.zh-CN.json](../data/discovery
 
 两份台账共享规范论文身份，但实际抓取保留精选链接中的固定版本。已在研究台账中的论文不会因生态或学术发现路径再次出现而重复报新增；已有历史重复行不静默删除。固定版本的原始摘要保留原证据、日期和摘要核查等级，同时观察当前公开版本；新版本或摘要变化进入待审记录，不直接混入旧版本字段。即使摘要未变，新版本也可进入待审；重复观察不重写待审时间，抓取失败不清除未解决记录。为兼容现有流程，这些条目沿用 `editorial_refresh_candidates` 字段，但不代表授予编辑审阅等级。
 
-扫描 job 只读且不接收发布 token。独立发布 job 先检查允许更新的文件，再仅在最后发布步骤注入 token。扫描接受此前被生态筛查排除的来源时，会从排除台账中删除该行，同一来源不会同时被接受和排除。远程网页、README 和模型卡中的内容一律作为不可信数据处理，不执行其代码或指令，不使用其推荐安装命令；仅请求公开来源，拒绝携带凭据的 URL 与私有网络地址。
+扫描 job 只读且不接收发布 token。独立发布 job 在核验文件后，仅向GitHub待审证据协调步骤及最终发布步骤注入 token，重建索引的子进程不接收该 token。协调步骤只读取旧bot PR的数据，按原时间与证据保留本轮缺失的候选，用可信主分支代码重建索引并更新六文件清单，重新完整校验后才保存和发布；若待审分支期间发生变化，则停止写入。扫描接受此前被生态筛查排除的来源时，会从排除台账中删除该行，同一来源不会同时被接受和排除。远程网页、README 和模型卡中的内容一律作为不可信数据处理，不执行其代码或指令，不使用其推荐安装命令；仅请求公开来源，拒绝携带凭据的 URL 与私有网络地址。
 
 内容未变时保留原有证据和抓取时间，避免仅更新时间戳的 PR。抓取失败或重试耗尽时保留既有成功记录并报告失败，不能把失败伪装为新的成功核查。自动扫描不授予 `editorial_reviewed`；已有编辑审阅的来源发生变化时，应区分旧已审版本与待复核的新内容。
 

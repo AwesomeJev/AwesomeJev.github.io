@@ -2,8 +2,9 @@
 """Transfer validated data between trusted scan jobs and maintain one bot PR.
 
 Only six fixed JSON/JSONL files can cross the job boundary. No downloaded code
-is executed. The publishing token is required only by the final publish command
-and is sent exclusively to api.github.com; it is never logged or written to disk.
+is executed. The workflow token supports GitHub-only reads during reconciliation
+and the final publishing step; it is never logged, written to disk or passed to
+the local index builder.
 """
 
 from __future__ import annotations
@@ -283,6 +284,7 @@ This scan updates public source ledgers and their generated browser index.
 
 - Scan status: **{status}**.
 - Newly discovered records: **{count('added_count')}**; changed records: **{count('changed_count')}**.
+- Older pending sources retained without a fresh fetch: **{count('carried_forward_pending_count')}**.
 - Records requiring editorial inspection: **{count('editorial_review_required_count')}**.
 - [Collector, regression tests, and repository validation]({run_url}) ran before this PR was prepared. Inspect that run for partial-provider failures and exact verification scope.
 
@@ -343,6 +345,93 @@ def pending_source_key(url: str) -> str:
     if key.startswith(index_files):
         key = re.sub(r"/blob/[^/]+/", "/blob/main/", key, count=1)
     return key
+
+
+def carry_pending_records(previous, fresh, policy=None):
+    """Keep absent, still-pending rows verbatim; never replace a fresh observation."""
+    ranks = {"metadata_only": 0, "abstract_checked": 1, "content_screened": 2, "editorial_reviewed": 3}
+    def key_of(row):
+        if not isinstance(row, dict):
+            raise ScanError("Invalid pending source record.")
+        url = row.get("canonical_url", row.get("url", ""))
+        if not isinstance(url, str) or not url:
+            raise ScanError("Cannot establish pending source identity.")
+        return pending_source_key(url)
+    known, candidates = set(), {}
+    for name in LEDGERS:
+        for line in fresh[name].decode("utf-8").splitlines():
+            if line.strip():
+                row = json.loads(line)
+                known.add(key_of(row))
+        for line in previous[name].decode("utf-8").splitlines(keepends=True):
+            if not line.strip():
+                continue
+            row = json.loads(line)
+            key = key_of(row)
+            rank = ranks.get(row.get("verification_level", "metadata_only"))
+            if rank is None:
+                raise ScanError("Unknown evidence level in pending source data.")
+            if key not in candidates or rank > candidates[key][0]:
+                candidates[key] = (rank, name, line.encode("utf-8"))
+    result, carried = dict(fresh), []
+    for key, (_, name, line) in sorted(candidates.items()):
+        if key in known or policy and policy.exclusion(key):
+            continue
+        separator = b"\n" if result[name] and not result[name].endswith(b"\n") else b""
+        result[name] += separator + line + (b"" if line.endswith(b"\n") else b"\n")
+        carried.append(key)
+    if carried:
+        report = json.loads(result[REPORT])
+        report.update(changed=True, carried_forward_pending_count=len(carried), carried_forward_pending_urls=carried,
+                      pending_carry_note="Absent candidates retained from the prior unmerged bot PR with original evidence and retrieval dates; not newly fetched or accepted into main.")
+        result[REPORT] = (json.dumps(report, ensure_ascii=False, indent=2) + "\n").encode()
+    return result, carried
+
+
+def reconcile_pending(api, directory, identity, policy=None):
+    """Prepare only allowlisted data; validation must run again before publish."""
+    manifest, fresh = load_bundle(directory, identity)
+    if any((ROOT / name).read_bytes() != data for name, data in fresh.items()):
+        raise ScanError("Checkout differs from the restored artifact before reconciliation.")
+    if api.request("GET", "/git/ref/heads/main")["object"]["sha"] != identity["base_sha"]:
+        raise ScanError("Main advanced after scanning; pending data was not reconciled.")
+    branch = api.request("GET", "/git/ref/heads/" + BRANCH, optional=True)
+    query = urllib.parse.urlencode({"state": "open", "head": REPOSITORY.split("/")[0] + ":" + BRANCH, "base": BASE_BRANCH, "per_page": 10})
+    opened = api.request("GET", "/pulls?" + query)
+    if not isinstance(opened, list):
+        raise ScanError("Cannot verify the pending scan PR list.")
+    if not opened:
+        print("No open scan PR to reconcile.")
+        return
+    if (len(opened) != 1 or not isinstance(branch, dict) or not isinstance(opened[0], dict)
+            or (opened[0].get("user") or {}).get("login") != BOT
+            or MARKER not in (opened[0].get("body") or "")):
+        raise ScanError("Refusing to reconcile a non-bot or ambiguous scan PR.")
+    head = branch["object"]["sha"]
+    if not isinstance(head, str) or not SHA.fullmatch(head):
+        raise ScanError("Invalid pending branch identity.")
+    commit = api.request("GET", "/commits/" + head)
+    if (not isinstance(commit, dict) or (commit.get("committer") or {}).get("login") != BOT
+            or not ((commit.get("commit") or {}).get("message") or "").startswith(TITLE)):
+        raise ScanError("Pending branch contains non-bot changes; no reconciliation performed.")
+    previous = remote_comparison_files(api, head)
+    prepared, carried = carry_pending_records(previous, fresh, policy)
+    for name in (*LEDGERS, REPORT):
+        (ROOT / name).write_bytes(prepared[name])
+    # Use only trusted base-branch code, without a publishing token in the child.
+    if carried:
+        environment = {key: value for key, value in os.environ.items() if key not in {"GH_TOKEN", "GITHUB_TOKEN"}}
+        subprocess.run([sys.executable, "scripts/build_source_index.py"], cwd=ROOT, env=environment,
+                       check=True, capture_output=True, timeout=60)
+    files = {name: read_data(ROOT / name) for name in ALLOWED}
+    if sum(map(len, files.values())) > MAX_TOTAL_BYTES:
+        raise ScanError("Reconciled artifact exceeds the size budget.")
+    manifest["pending_pr_head"] = head
+    manifest["files"] = {name: {"sha256": digest(data), "bytes": len(data)} for name, data in files.items()}
+    for name, data in files.items():
+        (directory / name).write_bytes(data)
+    (directory / "manifest.json").write_text(json.dumps(manifest, sort_keys=True) + "\n", encoding="utf-8", newline="\n")
+    print(f"Retained {len(carried)} absent pending sources without changing their evidence. Revalidate all six data files before publication.")
 
 
 def accepted_primary_snapshot(prior: dict, current: dict, accepted: dict) -> bool:
@@ -427,12 +516,14 @@ def ensure_pending_continuity(previous: dict[str, bytes], fresh: dict[str, bytes
         raise ScanError(f"Pending PR evidence would be lost ({missing} missing, {downgraded} downgraded, {unexplained} unresolved editorial changes). Existing PR retained; review or merge it before retrying.")
 
 
-def publish(api: GitHub, identity: dict, files: dict[str, bytes], policy=None) -> str:
+def publish(api: GitHub, identity: dict, files: dict[str, bytes], policy=None, pending_head=None) -> str:
     main_ref = api.request("GET", "/git/ref/heads/main")
     if main_ref["object"]["sha"] != identity["base_sha"]:
         raise ScanError("Main advanced after scanning; rerun instead of overwriting newer source data.")
     branch_ref = api.request("GET", "/git/ref/heads/" + BRANCH, optional=True)
     previous_sha = branch_ref["object"]["sha"] if branch_ref else None
+    if pending_head is not None and (not isinstance(pending_head, str) or not SHA.fullmatch(pending_head) or previous_sha != pending_head):
+        raise ScanError("Pending PR changed after reconciliation; no branch was updated.")
     query = urllib.parse.urlencode({"state": "open", "head": REPOSITORY.split("/")[0] + ":" + BRANCH, "base": BASE_BRANCH, "per_page": 10})
     opened = api.request("GET", "/pulls?" + query)
     if len(opened) > 1 or (opened and ((opened[0].get("user") or {}).get("login") != BOT or MARKER not in (opened[0].get("body") or ""))):
@@ -486,7 +577,7 @@ def publish(api: GitHub, identity: dict, files: dict[str, bytes], policy=None) -
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("command", choices=("bundle", "restore", "publish"))
+    parser.add_argument("command", choices=("bundle", "restore", "reconcile", "publish"))
     parser.add_argument("--directory", type=Path, required=True)
     args = parser.parse_args()
     try:
@@ -496,14 +587,17 @@ def main() -> int:
         elif args.command == "restore":
             restore(args.directory, identity)
         else:
-            _, files = load_bundle(args.directory, identity)
+            manifest, files = load_bundle(args.directory, identity)
             if any((ROOT / name).read_bytes() != data for name, data in files.items()):
                 raise ScanError("Validated checkout data changed after restoration.")
             token = os.environ.get("GH_TOKEN", "")
             if not token:
-                raise ScanError("The final publishing step requires the workflow GITHUB_TOKEN.")
+                raise ScanError("Scan PR reconciliation and publication require the workflow GITHUB_TOKEN.")
             policy = load_policy(ROOT / "data/source-curation.json", source_index.canonical)
-            write_summary(publish(GitHub(token), identity, files, policy=policy))
+            if args.command == "reconcile":
+                reconcile_pending(GitHub(token), args.directory, identity, policy=policy)
+            else:
+                write_summary(publish(GitHub(token), identity, files, policy=policy, pending_head=manifest.get("pending_pr_head")))
         return 0
     except (ScanError, KeyError, TypeError, ValueError, OSError, subprocess.CalledProcessError) as exc:
         # Public-source responses, filesystem paths, and credentials stay out of logs.
