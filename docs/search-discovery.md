@@ -12,6 +12,10 @@ On 18 October 2026 UTC, Google Search Console reported `https://awesomejev.githu
 
 **中文：** 已确认论文目录被Google收录，规范网址匹配；显示的最近抓取仍为10月16日，因此不能据此认定最新87篇版本已经处理。本次更新的索引请求已受理，站点地图抓取错误仍待解决。此记录不代表排名或AI引用。
 
+The research guide at `https://awesomejev.github.io/guide/` was separately confirmed as indexed on 18 October 2026 UTC, with the inspected URL chosen as canonical and a successful smartphone crawl. Its displayed crawl date was 16 October; one update request was accepted after the new judging/calibration section went live. This does not prove that Google has processed the new section or resolved the earlier sitemap issue. [Guide inspection and publication receipt](reviews/judge-models-2026-10-18.md).
+
+**中文：** 研究指南也已确认收录，规范网址匹配，最新内容的更新请求已受理；显示的抓取仍为10月16日，不能据此认定新段落已处理或站点地图问题已恢复。
+
 ## Shareable directory views
 
 The paper, model and tool directories preserve their filters in a `#view?…` fragment. Papers retain the query, theme, code-availability filter and sort order; models retain the query and declared-license filter; tools retain the query, purpose and publisher filter. The copy-link control produces a bookmarkable link to the current view. Refreshing, returning with browser history and switching between the paired English/Chinese routes restore the state. Both languages search the same bilingual metadata so a translated description can still be found after a language switch.

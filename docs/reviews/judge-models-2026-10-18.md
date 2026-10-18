@@ -48,3 +48,11 @@ The guide and survey compare ranking agreement, probability calibration and verd
 All 457 repository tests passed. Bibliography/catalog/README consistency and filtered-export checks agree on 95 direct papers, 104 bibliography entries and 177 curated resources. The expansion audit reports 801 sources; eight research rows were appended without altering prior ledger bytes. The final wording also passes generation, publication and whitespace checks.
 
 Browser checks verified that a PRISM query returns the two distinct papers with their own titles and URLs, that FunDM's title renders its ampersand correctly with a working citation-export entry point, and that the new Chinese judge-bias section and its primary citations are present as static content. Raw PDFs, preview images, benchmark records and private attestations are outside the published repository.
+
+## Publication and search receipts
+
+Commit `9b178726734ce8ab3cc72e8f9a4f47fb09e8e52c` passed [main checks](https://github.com/reacher-z/Awesome-Jev/actions/runs/39110228462), [website checks](https://github.com/AwesomeJev/AwesomeJev.github.io/actions/runs/39110230506) and [Pages deployment](https://github.com/AwesomeJev/AwesomeJev.github.io/actions/runs/39110230676). All 40 live targets matched committed bytes, including the updated versioned bibliography. The live PRISM search returns the two distinct studies within a 95-paper directory; 50 papers have linked code.
+
+One IndexNow POST for the eight changed home, paper, discovery and guide pages (English/Chinese pairs) returned HTTP 200. Unchanged topic, tool and model pages were not resubmitted.
+
+Google Search Console confirmed that `https://awesomejev.github.io/guide/` is on Google and indexed, with the inspected URL selected as canonical. Googlebot smartphone had fetched it successfully; the displayed last crawl was **16 October 2026, 01:11:16** (timezone not inferred). After publication, one updated-indexing request completed its live check and received **Indexing requested**. This verifies indexing of the earlier guide and acceptance into a crawl queue, not processing of this newly expanded guide, rankings or AI citation. The paper-directory request was not repeated. No account details or console images are committed.
