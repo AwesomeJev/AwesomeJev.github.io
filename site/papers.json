@@ -841,6 +841,20 @@
     },
     {
       "category": "Papers",
+      "title": "Where Can a Decision Model Diagnose HVAC Faults? Reasoning Demand, Physical Representation, and Robustness Under Shift",
+      "by": "Jung · 2026-10-07 · v1",
+      "date": "2026-10-07",
+      "first_submitted": "2026-10-07",
+      "url": "https://arxiv.org/abs/2610.09937v1",
+      "theme": "applications",
+      "en": "Tests fault diagnosis across equipment, representations and operating shifts. Physical features enable selected diagnoses, while context-dependent faults remain difficult; shared-day training conditions, small fault-day counts and dataset-specific option sets limit general claims of robustness.",
+      "zh": "跨设备、表示和运行变化测试故障诊断。物理特征支持部分诊断，但依赖运行上下文的故障仍困难；共享日条件、少量故障日与各数据集不同的选项集，限制通用鲁棒性结论。",
+      "artifacts": {
+        "unverified": "code"
+      }
+    },
+    {
+      "category": "Papers",
       "title": "From Probabilities to Decisions: Search and Multi-Teacher Distillation with Jev",
       "by": "Sadoun, Sharif & Banad · 2026-10-06 · v1",
       "date": "2026-10-06",
@@ -1007,6 +1021,20 @@
     },
     {
       "category": "Papers",
+      "title": "System One Models for Wireless Decision-Making:Applications and Performance Evaluation",
+      "by": "Rahimi et al. · 2026-10-03 · v1",
+      "date": "2026-10-03",
+      "first_submitted": "2026-10-03",
+      "url": "https://arxiv.org/abs/2610.04345v1",
+      "theme": "applications",
+      "en": "Compares bounded wireless action selection with LLMs and task-specific baselines. Lower successful-request latency trades off against decision quality; a separately reported orchestration study shows that faster interpretation need not improve end-to-end completion. Local and hosted timing boundaries differ.",
+      "zh": "比较有限无线动作选择、语言模型与任务专用基线。较低的成功请求耗时需与决策质量权衡；另引的编排研究表明，更快解释不一定改善端到端完成率。本地与托管计时边界也不同。",
+      "artifacts": {
+        "unverified": "code"
+      }
+    },
+    {
+      "category": "Papers",
       "title": "Calibrated to Whom? Persona and Language Effects on Cultural Values in JEV",
       "by": "Asseri & Asseri · 2026-10-03 · v2",
       "date": "2026-10-03",
@@ -1122,6 +1150,24 @@
     },
     {
       "category": "Papers",
+      "title": "HydroJEV: A one-second, training-free screen for cyber-attack and fault attribution in water distribution networks",
+      "by": "Mu et al. · 2026-10-01 · v1",
+      "date": "2026-10-01",
+      "first_submitted": "2026-10-01",
+      "url": "https://arxiv.org/abs/2610.02048v1",
+      "theme": "applications",
+      "en": "Simulated water-network triage combines Jev, rule agreement and an LLM reviewer. Fewer reviewer calls coexist with accepted attacks, event-selection constraints and a transfer endpoint that misses multiplicity correction; reported timing and non-inferiority margins do not establish field reliability.",
+      "zh": "仿真水网分诊结合 Jev、规则一致与语言模型复核。减少复核调用的同时仍会接纳部分攻击，受事件选择条件限制，且一个迁移端点未通过多重比较校正；所报耗时和非劣效界不证明现场可靠性。",
+      "artifacts": {
+        "code": "https://github.com/mutianwei521/hydrojev"
+      },
+      "artifact_note": {
+        "en": "README and inventory checked; paper/script round numbers differ and datasets remain separate.",
+        "zh": "已查说明和目录；论文与脚本轮次编号不同，数据集另行取得。"
+      }
+    },
+    {
+      "category": "Papers",
       "title": "Prune First, Decide Fast: Scalable Semantic Query Processing with JEVDB",
       "by": "Wang, Yan, Zhao & Liu · 2026-10-01 · v1",
       "date": "2026-10-01",
@@ -1152,6 +1198,24 @@
       "theme": "architectures",
       "en": "Learns audio-conditioned candidate probabilities with aligned option-permutation training; order stability and empirical correctness calibration remain different properties.",
       "zh": "通过按候选身份对齐的选项重排训练学习音频条件概率；顺序稳定性与概率符合实际正确率仍是不同性质。"
+    },
+    {
+      "category": "Papers",
+      "title": "Jev-IDS: System One Models for Network Intrusion Detection",
+      "by": "Severo, Quincozes & Dias · 2026-10-01 · v1",
+      "date": "2026-10-01",
+      "first_submitted": "2026-10-01",
+      "url": "https://arxiv.org/abs/2610.01079v1",
+      "theme": "applications",
+      "en": "Studies typed intrusion decisions, but v1 mixes configurations: its abstract and pinned code describe a 300-flow GPT-5.6 Luna pilot, while its body describes 2,000 flows and Gemini. These cohorts and comparators must remain separate; benchmark-withheld attack types are not operational zero-day validation.",
+      "zh": "研究类型化入侵判断，但 v1 混用了配置：摘要和固定代码描述 300 条流、GPT-5.6 Luna 试验，正文却描述 2,000 条流与 Gemini。两组样本及对照必须分开；基准内留出的攻击类型不等于真实零日攻击验证。",
+      "artifacts": {
+        "code": "https://github.com/jev-sec/jev-ids/tree/286a310fea249a7b4a5a8c45377049e914f8b9c9"
+      },
+      "artifact_note": {
+        "en": "v1 abstract/body mismatch; linked code is the paper-cited pilot revision.",
+        "zh": "v1 摘要与正文配置不一致；链接指向论文引用的试验代码版本。"
+      }
     },
     {
       "category": "Papers",
@@ -1226,6 +1290,24 @@
       "theme": "applications",
       "en": "Medical candidate-conditioned decisions are compared with a matched generative baseline; calibration gains do not isolate interface effects from training differences or establish clinical readiness.",
       "zh": "将医学候选条件决策与匹配的生成式基线比较；校准收益未分离接口与训练差异的影响，也不能证明临床部署成熟度。"
+    },
+    {
+      "category": "Papers",
+      "title": "A First Glance at Jev for Network Traffic Classification: Accuracy, Processing Time, and Cost",
+      "by": "Xu & Mei · 2026-09-30 · v1",
+      "date": "2026-09-30",
+      "first_submitted": "2026-09-30",
+      "url": "https://arxiv.org/abs/2610.00376v1",
+      "theme": "applications",
+      "en": "Classifies ten application labels from early packet features over 26 later collection weeks. Labeled examples improve Jev but the tested tree ensembles remain more accurate; unequal supervision and service configurations prevent attributing the gap to architecture or intrinsic label efficiency.",
+      "zh": "利用早期数据包特征，在后续 26 个采集周识别十类应用标签。带标签示例改善 Jev，但所测树集成仍更准确；监督预算和服务配置不同，不能把差距归因于架构或固有标签效率。",
+      "artifacts": {
+        "data": "https://arxiv.org/src/2610.00376v1/anc"
+      },
+      "artifact_note": {
+        "en": "Figure/table aggregates only; not a full flow-level prediction archive.",
+        "zh": "仅图表汇总数据，并非完整逐流预测归档。"
+      }
     },
     {
       "category": "Papers",
@@ -1408,6 +1490,20 @@
       "artifact_note": {
         "en": "Metric code and ancillary records; full training/collection source is not included.",
         "zh": "指标代码与附属记录；不包含完整训练／采集源码。"
+      }
+    },
+    {
+      "category": "Papers",
+      "title": "Type-Safe Decision Frameworks for Agentic 5G Control: A Theory-Driven Testbed Characterization of Where They Can Be Applied",
+      "by": "Kourtis & Xilouris · 2026-09-27 · v1",
+      "date": "2026-09-27",
+      "first_submitted": "2026-09-27",
+      "url": "https://arxiv.org/abs/2609.33689v1",
+      "theme": "applications",
+      "en": "Maps typed frameworks to timing, label-budget and decision-schema conditions on a 5G testbed. Changed-question probes expose failures hidden by output validity and paraphrase stability; simulator labels, open RAN-loop scope and conditional risk assumptions constrain deployment conclusions.",
+      "zh": "在 5G 测试床上按时限、标签预算和决策模式评估类型化框架。改变问题的探针揭示了输出合法性与改写稳定性掩盖的失效；仿真标签、未闭合的 RAN 回路及有条件风险假设限制部署结论。",
+      "artifacts": {
+        "unverified": "code"
       }
     },
     {

@@ -306,7 +306,7 @@ html:not(.js) .corpus-disclosure {
   .model-license::before { content:attr(data-label) ' · '; color:var(--muted); font-size:12px; }
 }
 /* Paper directory: one row per paper. Findings and artifact caveats clamp until the row is
-   hovered or focused (touch screens never clamp); artifact chips are the homepage ones. */
+   hovered or focused. Views with up to three results and touch screens show full notes. */
 #paper-list > h2 { font-size:20px; line-height:1.4; letter-spacing:-0.01em; margin:22px 0 6px; }
 .paper-controls[hidden] { display:none; }
 .paper-controls .filter-button { display:inline-flex; gap:6px; }
@@ -333,7 +333,7 @@ html:not(.js) .corpus-disclosure {
 .paper-artifacts-none { color:var(--muted); }
 .artifact-note { margin-top:3px; color:var(--muted); font-size:13px; line-height:1.4; display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:2; line-clamp:2; overflow:hidden; }
 .paper-finding-text { font-size:15px; display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:2; line-clamp:2; overflow:hidden; }
-.paper-row:hover :is(.paper-finding-text,.artifact-note), .paper-row:focus-within :is(.paper-finding-text,.artifact-note) { -webkit-line-clamp:none; line-clamp:none; }
+.paper-row:hover :is(.paper-finding-text,.artifact-note), .paper-row:focus-within :is(.paper-finding-text,.artifact-note), .paper-results-expanded :is(.paper-finding-text,.artifact-note) { -webkit-line-clamp:none; line-clamp:none; }
 @media (hover: none) {
   .paper-finding-text, .artifact-note { -webkit-line-clamp:none; line-clamp:none; }
 }

@@ -241,6 +241,60 @@
         "toc_title": "Compare classifiers and LLMs"
       },
       {
+        "id": "deployment-boundaries",
+        "title": "What does a fast benchmark establish about deployment?",
+        "toc_title": "Benchmark to deployment",
+        "paragraphs": [
+          {
+            "text": "Identify whether the evidence comes from measured equipment, simulation, replay or an operating service. The HVAC study uses public equipment measurements, but few fault days and feature-dependent diagnoses limit transfer. HydroJEV uses simulated windows with the same hydraulic model generating both events and the twin. Its interval margins and multiplicity-corrected tests are distinct; one transfer endpoint does not pass the adjusted test. Neither study establishes a general field-performance guarantee.",
+            "sources": [
+              {
+                "label": "HVAC study limits, v1",
+                "url": "https://arxiv.org/html/2610.09937v1#S5.SS5"
+              },
+              {
+                "label": "HydroJEV simulation limits, v1",
+                "url": "https://arxiv.org/html/2610.02048v1#S4.SS4"
+              },
+              {
+                "label": "Transfer endpoints",
+                "url": "https://arxiv.org/html/2610.02048v1#Sx18"
+              }
+            ]
+          },
+          {
+            "text": "Keep successful-request latency separate from observation, feature construction, retry waits, queueing and downstream execution. The wireless study excludes pacing and retry waits and reuses an external orchestration study to show that faster interpretation need not improve completed service outcomes. The traffic-classification study does not time packet observation or feature extraction. Our proposed deployment comparison records every stage, deadline misses and final utility under the same workload.",
+            "sources": [
+              {
+                "label": "Wireless timing boundaries, v1",
+                "url": "https://arxiv.org/html/2610.04345v1#S4.SS1"
+              },
+              {
+                "label": "External orchestration evidence",
+                "url": "https://arxiv.org/html/2610.04345v1#S4.SS4"
+              },
+              {
+                "label": "Traffic-classification scope, v1",
+                "url": "https://arxiv.org/html/2610.00376v1#S5"
+              }
+            ]
+          },
+          {
+            "text": "Output validity and paraphrase stability are not sufficient tests of control behavior. The 5G testbed study changes only the question while retaining state and options, exposing a fine-tuned checkpoint that keeps returning its training answer. Its RAN plane is not closed, there is no real radio, and risk statements depend on the calibration protocol. Test the expected change in action as well as invariance, and evaluate the complete controller rather than inferring reliability from a typed response.",
+            "sources": [
+              {
+                "label": "Changed-question controls, v1",
+                "url": "https://arxiv.org/html/2609.33689v1#S8"
+              },
+              {
+                "label": "Testbed and certification limits",
+                "url": "https://arxiv.org/html/2609.33689v1#S9"
+              }
+            ]
+          }
+        ]
+      },
+      {
         "id": "confidence-transfer",
         "title": "Can I reuse a confidence gate across languages or domains?",
         "paragraphs": [
@@ -653,6 +707,23 @@
                 "url": "https://arxiv.org/abs/2610.06425v1"
               }
             ]
+          },
+          {
+            "text": "Check that abstract, manuscript and released code describe the same cohort and comparator. Jev-IDS v1 does not: PDF page 2 and the cited code describe a 300-flow GPT-5.6 Luna pilot, while page 7 describes 2,000 flows and Gemini. We retain the paper with this explicit caveat and link the pilot revision; no combined performance claim follows from the two configurations.",
+            "sources": [
+              {
+                "label": "Jev-IDS v1: PDF page 2",
+                "url": "https://arxiv.org/pdf/2610.01079v1#page=2"
+              },
+              {
+                "label": "PDF page 7",
+                "url": "https://arxiv.org/pdf/2610.01079v1#page=7"
+              },
+              {
+                "label": "Paper-cited pilot revision",
+                "url": "https://github.com/jev-sec/jev-ids/tree/286a310fea249a7b4a5a8c45377049e914f8b9c9"
+              }
+            ]
           }
         ],
         "toc_title": "Reproduction boundaries"
@@ -898,6 +969,60 @@
           }
         ],
         "toc_title": "分类器与语言模型对照"
+      },
+      {
+        "id": "deployment-boundaries",
+        "title": "快速基准能证明哪些部署能力？",
+        "toc_title": "从基准到部署",
+        "paragraphs": [
+          {
+            "text": "先区分证据来自实测设备、仿真、回放还是运行中的服务。HVAC 研究使用公开设备测量，但故障日较少、诊断依赖特征，限制了迁移；HydroJEV 使用仿真窗口，事件和数字孪生来自同一水力模型。非劣效区间与多重比较校正后的检验不同，一个迁移端点没有通过校正检验。两篇研究均不能确立普遍的现场表现保证。",
+            "sources": [
+              {
+                "label": "HVAC 研究局限 v1",
+                "url": "https://arxiv.org/html/2610.09937v1#S5.SS5"
+              },
+              {
+                "label": "HydroJEV 仿真局限 v1",
+                "url": "https://arxiv.org/html/2610.02048v1#S4.SS4"
+              },
+              {
+                "label": "迁移端点",
+                "url": "https://arxiv.org/html/2610.02048v1#Sx18"
+              }
+            ]
+          },
+          {
+            "text": "成功请求耗时应与观测、特征构造、重试等待、排队及后续执行分开。无线研究不计主动间隔和重试等待，并引用另一项编排研究说明：解释更快不一定改善服务完成结果。流量分类研究没有计时数据包观测或特征提取。我们建议在同一负载下记录所有阶段、超期与最终效用，再比较部署表现。",
+            "sources": [
+              {
+                "label": "无线计时边界 v1",
+                "url": "https://arxiv.org/html/2610.04345v1#S4.SS1"
+              },
+              {
+                "label": "外部编排证据",
+                "url": "https://arxiv.org/html/2610.04345v1#S4.SS4"
+              },
+              {
+                "label": "流量分类范围 v1",
+                "url": "https://arxiv.org/html/2610.00376v1#S5"
+              }
+            ]
+          },
+          {
+            "text": "输出合法性和改写稳定性不足以检验控制行为。5G 测试床研究固定状态与选项，只改变问题，发现一个微调检查点仍返回训练时的答案。其 RAN 平面未闭合、没有真实无线电，风险结论也依赖校准协议。应同时测试理应改变的动作与应保持的不变性，并评估完整控制器，不能从类型化响应推断可靠性。",
+            "sources": [
+              {
+                "label": "改变问题的对照 v1",
+                "url": "https://arxiv.org/html/2609.33689v1#S8"
+              },
+              {
+                "label": "测试床与认证局限",
+                "url": "https://arxiv.org/html/2609.33689v1#S9"
+              }
+            ]
+          }
+        ]
       },
       {
         "id": "confidence-transfer",
@@ -1310,6 +1435,23 @@
               {
                 "label": "网络控制中的语义决策引擎 v1",
                 "url": "https://arxiv.org/abs/2610.06425v1"
+              }
+            ]
+          },
+          {
+            "text": "应核对摘要、正文和公开代码是否描述相同样本及对照。Jev-IDS v1 并不一致：PDF 第2页和引用代码描述 300 条流、GPT-5.6 Luna 试验，第7页却描述 2,000 条流与 Gemini。本目录保留论文并明确标注此限制，代码链接固定到试验版本；两组配置不能合成一个性能结论。",
+            "sources": [
+              {
+                "label": "Jev-IDS v1：PDF 第2页",
+                "url": "https://arxiv.org/pdf/2610.01079v1#page=2"
+              },
+              {
+                "label": "PDF 第7页",
+                "url": "https://arxiv.org/pdf/2610.01079v1#page=7"
+              },
+              {
+                "label": "论文引用的试验代码版本",
+                "url": "https://github.com/jev-sec/jev-ids/tree/286a310fea249a7b4a5a8c45377049e914f8b9c9"
               }
             ]
           }

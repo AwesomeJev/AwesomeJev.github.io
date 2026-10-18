@@ -3,34 +3,34 @@
   "baseline_commit": "3519c15d7e00686a8dbf9b1e184c68726327ab1e",
   "baseline_source_index_sha256": "8bfdd20564f2cda54bb8264c3c802f315e3e9a11b153bd85dde4325f53c841d5",
   "target_new_sources": 301,
-  "accepted_new_sources": 818,
+  "accepted_new_sources": 824,
   "remaining_to_target": 0,
   "target_count_reached": true,
   "current_index_counts": {
     "editorial_reviewed": 4,
     "content_screened": 2397,
-    "abstract_checked": 1877,
+    "abstract_checked": 1883,
     "metadata_only": 47,
-    "raw_records": 4339,
-    "unique_records": 4325,
+    "raw_records": 4345,
+    "unique_records": 4331,
     "duplicate_records": 14,
-    "checked_sources": 4278
+    "checked_sources": 4284
   },
   "by_category": {
     "Datasets": 101,
     "Guides and evaluations": 38,
     "Models": 59,
-    "Papers": 65,
+    "Papers": 71,
     "Projects": 219,
     "Research foundations": 336
   },
   "by_relation": {
     "adjacent": 25,
     "background": 336,
-    "direct": 457
+    "direct": 463
   },
   "by_verification_level": {
-    "abstract_checked": 401,
+    "abstract_checked": 407,
     "content_screened": 417
   },
   "verification_note": "Evidence depth is labeled per source. Content screening and abstract checks do not establish full-paper review, peer review, endorsement, or experimental reproduction.",
@@ -2412,6 +2412,18 @@
       "ledger": "ecosystem-sources.jsonl"
     },
     {
+      "title": "A First Glance at Jev for Network Traffic Classification: Accuracy, Processing Time, and Cost",
+      "url": "https://arxiv.org/abs/2610.00376",
+      "category": "Papers",
+      "topic": "direct-decision-research",
+      "description": "Classifies ten application labels from early packet features over 26 later collection weeks. Labeled examples improve Jev but the tested tree ensembles remain more accurate; unequal supervision and service configurations prevent attributing the gap to architecture or intrinsic label efficiency.",
+      "relation": "direct",
+      "verification_level": "abstract_checked",
+      "content_sha256": "01e5c5455d76aa008b2676ac990c6bd0695435f094ac079788245be3f21c5219",
+      "retrieved_at": "2026-10-18T09:32:24.918859+00:00",
+      "ledger": "research-sources.jsonl"
+    },
+    {
       "title": "Batched Speech Decisions Without Decoding: Single-Token Supervision Lets a Frozen LLM Hear Beyond the Transcript",
       "url": "https://arxiv.org/abs/2610.02638",
       "category": "Papers",
@@ -2664,6 +2676,18 @@
       "ledger": "research-sources.jsonl"
     },
     {
+      "title": "HydroJEV: A one-second, training-free screen for cyber-attack and fault attribution in water distribution networks",
+      "url": "https://arxiv.org/abs/2610.02048",
+      "category": "Papers",
+      "topic": "direct-decision-research",
+      "description": "Simulated water-network triage combines Jev, rule agreement and an LLM reviewer. Fewer reviewer calls coexist with accepted attacks, event-selection constraints and a transfer endpoint that misses multiplicity correction; reported timing and non-inferiority margins do not establish field reliability.",
+      "relation": "direct",
+      "verification_level": "abstract_checked",
+      "content_sha256": "cfd06c21d054a1306def07983f83119b206a497c1bec7d77794eac694a3bf8ff",
+      "retrieved_at": "2026-10-18T09:32:22.363586+00:00",
+      "ledger": "research-sources.jsonl"
+    },
+    {
       "title": "JEV as a Judge for Agent Trace Security: An Empirical Comparison with Generative LLM Judges",
       "url": "https://arxiv.org/abs/2609.34862",
       "category": "Papers",
@@ -2709,6 +2733,18 @@
       "verification_level": "abstract_checked",
       "content_sha256": "3517bf947e256235bec70289397b8fc4a771b3fc8655ecd980fbadf4376cb8b3",
       "retrieved_at": "2026-10-18T08:41:01.168280+00:00",
+      "ledger": "research-sources.jsonl"
+    },
+    {
+      "title": "Jev-IDS: System One Models for Network Intrusion Detection",
+      "url": "https://arxiv.org/abs/2610.01079",
+      "category": "Papers",
+      "topic": "direct-decision-research",
+      "description": "Studies typed intrusion decisions, but v1 mixes configurations: its abstract and pinned code describe a 300-flow GPT-5.6 Luna pilot, while its body describes 2,000 flows and Gemini. These cohorts and comparators must remain separate; benchmark-withheld attack types are not operational zero-day validation.",
+      "relation": "direct",
+      "verification_level": "abstract_checked",
+      "content_sha256": "b2bd2ef04edf9c55bb1315dfe021f8f6966345f7cac6324fc5ef2a523fc258f5",
+      "retrieved_at": "2026-10-18T09:32:22.354918+00:00",
       "ledger": "research-sources.jsonl"
     },
     {
@@ -3108,6 +3144,18 @@
       "ledger": "research-sources.jsonl"
     },
     {
+      "title": "System One Models for Wireless Decision-Making:Applications and Performance Evaluation",
+      "url": "https://arxiv.org/abs/2610.04345",
+      "category": "Papers",
+      "topic": "direct-decision-research",
+      "description": "Compares bounded wireless action selection with LLMs and task-specific baselines. Lower successful-request latency trades off against decision quality; a separately reported orchestration study shows that faster interpretation need not improve end-to-end completion. Local and hosted timing boundaries differ.",
+      "relation": "direct",
+      "verification_level": "abstract_checked",
+      "content_sha256": "2cb289240434634fe5abe38f1c3f9cc22932025fe4106bef3ab270614146f1d8",
+      "retrieved_at": "2026-10-18T09:32:19.808749+00:00",
+      "ledger": "research-sources.jsonl"
+    },
+    {
       "title": "To Jev or Not? Evaluating the Accuracy and Efficiency of Structured Decision Models for Hate-Speech Moderation",
       "url": "https://arxiv.org/abs/2610.03324",
       "category": "Papers",
@@ -3129,6 +3177,18 @@
       "verification_level": "abstract_checked",
       "content_sha256": "2b2eba5bd11807c0cfa6b2acb758e2fb997e7f101dd8e6e81570ae51b7761084",
       "retrieved_at": "2026-10-16T10:59:20+00:00",
+      "ledger": "research-sources.jsonl"
+    },
+    {
+      "title": "Type-Safe Decision Frameworks for Agentic 5G Control: A Theory-Driven Testbed Characterization of Where They Can Be Applied",
+      "url": "https://arxiv.org/abs/2609.33689",
+      "category": "Papers",
+      "topic": "direct-decision-research",
+      "description": "Maps typed frameworks to timing, label-budget and decision-schema conditions on a 5G testbed. Changed-question probes expose failures hidden by output validity and paraphrase stability; simulator labels, open RAN-loop scope and conditional risk assumptions constrain deployment conclusions.",
+      "relation": "direct",
+      "verification_level": "abstract_checked",
+      "content_sha256": "d467da617d7fe4afe0495a87bbc05d99a12429c31c60c15690c3c01991d4613d",
+      "retrieved_at": "2026-10-18T09:32:24.972226+00:00",
       "ledger": "research-sources.jsonl"
     },
     {
@@ -3189,6 +3249,18 @@
       "verification_level": "abstract_checked",
       "content_sha256": "6fcbac0e5226cdf94cfb5764dcf06987371f7fbbfd98c4f202fe22474132a270",
       "retrieved_at": "2026-10-18T08:41:01.365995+00:00",
+      "ledger": "research-sources.jsonl"
+    },
+    {
+      "title": "Where Can a Decision Model Diagnose HVAC Faults? Reasoning Demand, Physical Representation, and Robustness Under Shift",
+      "url": "https://arxiv.org/abs/2610.09937",
+      "category": "Papers",
+      "topic": "direct-decision-research",
+      "description": "Tests fault diagnosis across equipment, representations and operating shifts. Physical features enable selected diagnoses, while context-dependent faults remain difficult; shared-day training conditions, small fault-day counts and dataset-specific option sets limit general claims of robustness.",
+      "relation": "direct",
+      "verification_level": "abstract_checked",
+      "content_sha256": "dce90f6104b820ef0b9828edd817b1f58e5be0d8b7919da63d28f347e90143a1",
+      "retrieved_at": "2026-10-18T09:32:19.801537+00:00",
       "ledger": "research-sources.jsonl"
     },
     {

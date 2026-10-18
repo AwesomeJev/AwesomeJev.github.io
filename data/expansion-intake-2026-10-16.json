@@ -1140,6 +1140,22 @@
       ],
       "accepted_at": "2026-10-18T09:23:31.703442+00:00",
       "evidence_scope": "Five whole paper identities, fixed abstracts and selected manuscript sections. One author repository README/inventory inspected; raw prediction caches and dataset text are not redistributed. Artifact links add no identities; no code, datasets, prediction records or model experiments executed."
+    },
+    {
+      "name": "infrastructure_and_deployment_boundaries",
+      "input_sha256": "7512040d683544382e07c4920430af55660148a6b8d724c6acdd849c5352c071",
+      "screened_records_proposed": 6,
+      "accepted_count": 6,
+      "accepted_urls": [
+        "https://arxiv.org/abs/2610.09937",
+        "https://arxiv.org/abs/2610.02048",
+        "https://arxiv.org/abs/2610.04345",
+        "https://arxiv.org/abs/2609.33689",
+        "https://arxiv.org/abs/2610.00376",
+        "https://arxiv.org/abs/2610.01079"
+      ],
+      "accepted_at": "2026-10-18T09:43:33.517153+00:00",
+      "evidence_scope": "Six whole paper identities, fixed abstracts and selected manuscript sections. Two repository READMEs/inventories and one ancillary README inspected. Jev-IDS PDF pages 2 and 7 were rendered and inspected to verify a configuration mismatch. Artifact links add no identities; no code, datasets, prediction records or model experiments executed."
     }
   ]
 }

@@ -4,7 +4,7 @@ Guidance checked against official documentation on **2026-10-18**. These changes
 
 The generated sitemap currently contains **24 canonical HTML pages**, with English/Chinese pairs for the collection, guide, papers, models, tools, discoveries, topic directory and five research notes. The [model directory](https://awesomejev.github.io/models/) and [topic directory](https://awesomejev.github.io/topics/) give focused entry points alongside the full collection. Submission receipts and historical route counts are recorded below.
 
-The [18 October release integration](reviews/integration-2026-10-18.md) reconciles the canonical repository's merged research and interface changes with the website mirror. The current collection contains 199 curated entries and 112 direct papers; the source-ledger, expansion and historical release counts have different scopes. The site stays white with dark text even when the operating system prefers a dark scheme. The research-activity figure remains available in a disclosure above the paper table.
+The [18 October release integration](reviews/integration-2026-10-18.md) reconciles the canonical repository's merged research and interface changes with the website mirror. The current collection contains 205 curated entries and 118 direct papers; the source-ledger, expansion and historical release counts have different scopes. The site stays white with dark text even when the operating system prefers a dark scheme. The research-activity figure remains available in a disclosure above the paper table.
 
 The [18 October crawl diagnostic](reviews/crawl-diagnostics-2026-10-18.md) confirms anonymous XML access, no manual actions and a successful Google live fetch of the current sitemap. The sitemap report still fails, and its detail screen reports a separate loading error without a specific cause. These observations do not establish sitemap processing or indexing; no sitemap format change or repeat submission was made during the diagnostic.
 
@@ -41,6 +41,10 @@ Export loads only the same-origin bibliography after the user clicks, using a co
 The page combines detailed reading notes and publication activity in a native disclosure, keeps its full static table, and avoids a second visible list heading. Narrow screens use a native theme selector synchronized with the desktop buttons and shareable view state. These interface changes do not add sources, raise evidence grades or change the reviewed paper dates.
 
 **中文：** 论文目录可按当前可见结果及其顺序导出BibTeX，保留原始引用键、作者、版本链接和格式；完整书目仍可直接打开。版本不匹配或源文件异常时不会生成缺项文件。导出只读取本站书目，查询词不进入请求或文件名，空结果禁用按钮。手机端主题下拉框与桌面筛选、分享链接保持同步；阅读说明与趋势图可展开查看，静态论文内容和证据等级不变。
+
+Paper views with one to three matching entries automatically show complete findings and artifact caveats. Larger result sets retain the compact rows with hover/focus expansion, and touch screens keep full notes. The query remains local fragment state; this presentation change makes no additional requests and creates no new indexable route.
+
+**中文：** 筛选后只剩一至三篇论文时，完整发现和材料限制自动展开；大量结果保留紧凑显示，触屏仍显示完整说明。查询仍在本地片段状态中，不增加请求或规范页面。
 
 ## Developer tool directory
 

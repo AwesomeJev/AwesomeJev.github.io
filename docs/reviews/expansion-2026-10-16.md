@@ -236,3 +236,9 @@ Six reviewed paper identities raise the expansion to **813 sources**. Fixed abst
 Five reviewed paper identities raise the expansion to **818 sources**. Fixed abstracts match the retained scan records; selected manuscript sections and the DimABSA repository documentation constrain the summaries. Code, topic pages and dataset links add zero separate identities. [Review](language-papers-2026-10-18.md).
 
 **中文：** 五篇论文使扩展达到818项；保留摘要核查等级，代码与新专题不重复计数。
+
+## Infrastructure evidence — 18 October 2026 UTC
+
+Six reviewed paper identities raise the expansion to **824 sources**. Fixed abstracts match retained scan records; selected sections, two repository READMEs, an ancillary README and Jev-IDS PDF pages constrain the summaries. Repository renames and artifact files add no identities. [Review](infrastructure-papers-2026-10-18.md).
+
+**中文：** 六篇论文使扩展达到824项；保留摘要核查等级，明确配置冲突及部署边界，不把代码或文件重复计数。

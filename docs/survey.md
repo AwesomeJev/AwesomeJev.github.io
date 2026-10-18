@@ -130,6 +130,21 @@ Moderation, stance and sentiment scores should be interpreted under their annota
 
 Our proposed comparison holds the candidate inventory and information access fixed, records label definitions and language-specific annotation checks, and reports class-specific errors alongside aggregate scores. Supervised calibration, development-set selection and all attempted calls belong in the comparison budget. The inspected artifacts do not establish production moderation reliability or a general language ranking.
 
+### From benchmark to deployed system
+
+A typed decision can be fast while the surrounding system remains inaccurate, slow or untested. Six infrastructure studies separate input preparation, inference, control and evidence scope. The [deployment guide](https://awesomejev.github.io/guide/#deployment-boundaries) summarizes the resulting comparison checks.
+
+| Study | Evidence unit | Deployment boundary |
+| --- | --- | --- |
+| [HVAC diagnosis, v1](https://arxiv.org/abs/2610.09937v1) | Windows from 128 fault days across four public equipment datasets | Physical features carry much of the signal; small day counts and shared-day supervised references qualify shift comparisons. |
+| [HydroJEV, v1](https://arxiv.org/abs/2610.02048v1) | Selected simulated alarm windows | Events and twin share a hydraulic model; a transfer endpoint misses the adjusted test, and benign agreement still accepts some attacks. |
+| [Wireless decision-making, v1](https://arxiv.org/abs/2610.04345v1) | Successful requests and separately borrowed orchestration results | Retry/pacing costs and end-to-end completion differ from request latency; reused evidence is not an independent replication. |
+| [Agentic 5G, v1](https://arxiv.org/abs/2609.33689v1) | Simulator-rule labels, testbed measurements and replay | No real radio or closed RAN loop; valid output and unchanged answers can conceal failure to follow a changed question. |
+| [Traffic classification, v1](https://arxiv.org/abs/2610.00376v1) | Early-packet records from 26 later weeks of one network | Unequal label budgets and service configurations do not isolate architectural or intrinsic label-efficiency effects. |
+| [Jev-IDS, v1](https://arxiv.org/abs/2610.01079v1) | Conflicting 300-flow pilot and 2,000-flow body descriptions | The abstract, PDF and pinned code must be scoped separately; no merged score or operational zero-day claim is warranted. |
+
+Group uncertainty by the actual independent unit—such as a fault day, event or flow—and retain repeats within that unit. Report observation and preprocessing time, successful-call time, retries and downstream outcomes separately. These are proposed evaluation controls; neither the cited formal assumptions nor the empirical results were independently reproduced here.
+
 ## 5. A proposed reproducible evaluation
 
 **This is a research protocol, not an experiment executed by this project.**

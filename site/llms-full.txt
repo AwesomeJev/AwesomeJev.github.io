@@ -60,6 +60,14 @@ HakemBench v1 states that most Turkish reference labels are AI-derived, not huma
 
 Question grouping is part of the inference protocol. Perplexity Decider v1.2 lets questions within a request attend to one another; its fast path isolates separate requests. The card reports that grouping related attributes can help while grouping competing retrieval candidates can hurt. By contrast, tasksource-decider-nano describes tree attention that isolates options while sharing the state. Record the grouping rule alongside scores; a multi-question API does not imply independent answers. [Perplexity v1.2: question grouping](https://huggingface.co/perplexity-ai/pplx-decider-v1.2/raw/225c913ddc8761a8264f04f64548e1f97e443eb3/README.md) · [tasksource: tree attention](https://huggingface.co/tasksource/tasksource-decider-nano/raw/46e88e08cc1a3122a348ce134f18865e93f8e1c8/README.md)
 
+## What does a fast benchmark establish about deployment?
+
+Identify whether the evidence comes from measured equipment, simulation, replay or an operating service. The HVAC study uses public equipment measurements, but few fault days and feature-dependent diagnoses limit transfer. HydroJEV uses simulated windows with the same hydraulic model generating both events and the twin. Its interval margins and multiplicity-corrected tests are distinct; one transfer endpoint does not pass the adjusted test. Neither study establishes a general field-performance guarantee. [HVAC study limits, v1](https://arxiv.org/html/2610.09937v1#S5.SS5) · [HydroJEV simulation limits, v1](https://arxiv.org/html/2610.02048v1#S4.SS4) · [Transfer endpoints](https://arxiv.org/html/2610.02048v1#Sx18)
+
+Keep successful-request latency separate from observation, feature construction, retry waits, queueing and downstream execution. The wireless study excludes pacing and retry waits and reuses an external orchestration study to show that faster interpretation need not improve completed service outcomes. The traffic-classification study does not time packet observation or feature extraction. Our proposed deployment comparison records every stage, deadline misses and final utility under the same workload. [Wireless timing boundaries, v1](https://arxiv.org/html/2610.04345v1#S4.SS1) · [External orchestration evidence](https://arxiv.org/html/2610.04345v1#S4.SS4) · [Traffic-classification scope, v1](https://arxiv.org/html/2610.00376v1#S5)
+
+Output validity and paraphrase stability are not sufficient tests of control behavior. The 5G testbed study changes only the question while retaining state and options, exposing a fine-tuned checkpoint that keeps returning its training answer. Its RAN plane is not closed, there is no real radio, and risk statements depend on the calibration protocol. Test the expected change in action as well as invariance, and evaluate the complete controller rather than inferring reliability from a typed response. [Changed-question controls, v1](https://arxiv.org/html/2609.33689v1#S8) · [Testbed and certification limits](https://arxiv.org/html/2609.33689v1#S9)
+
 ## Can I reuse a confidence gate across languages or domains?
 
 Before reusing a confidence gate in a new language or domain, build a target-specific test set with explicit label definitions and annotation provenance; translated or model-generated labels are not independent human validation. Compare the unchanged gate with a threshold tuned only on separate target-domain validation data. Report accepted-case error and coverage per group, including high-confidence errors under independently checked, answer-preserving context additions.
@@ -141,6 +149,8 @@ The observed ordinal-scale artifact documents metric recomputation from released
 The radiology paper’s v1 availability statement says analysis scripts and aggregate results are being prepared for release. Third-party dataset links do not supply those missing author outputs. Our checks concern documentation and selected file inventories; we have not executed these reproduction routes or independently reproduced their results. [Radiology availability statement, v1](https://arxiv.org/html/2609.27607v1#Sx1.p1)
 
 For control loops, a replay of isolated model latency does not establish deadline attainment. The network-control SoK separates request queues, execution times, action feasibility and responsibility for service checks; its examples use one bounded event model. Our proposed deployment check records arrival patterns and the complete path from request to verified outcome, alongside misses and infeasible actions. It does not substitute a synthetic replay for production evidence. [Semantic decision engines in network control, v1](https://arxiv.org/abs/2610.06425v1)
+
+Check that abstract, manuscript and released code describe the same cohort and comparator. Jev-IDS v1 does not: PDF page 2 and the cited code describe a 300-flow GPT-5.6 Luna pilot, while page 7 describes 2,000 flows and Gemini. We retain the paper with this explicit caveat and link the pilot revision; no combined performance claim follows from the two configurations. [Jev-IDS v1: PDF page 2](https://arxiv.org/pdf/2610.01079v1#page=2) · [PDF page 7](https://arxiv.org/pdf/2610.01079v1#page=7) · [Paper-cited pilot revision](https://github.com/jev-sec/jev-ids/tree/286a310fea249a7b4a5a8c45377049e914f8b9c9)
 
 # Curated resources
 
@@ -584,6 +594,14 @@ Tests conflicts between option names and definitions despite structurally valid 
 
 Primary source: https://arxiv.org/abs/2609.26758v3
 
+## Where Can a Decision Model Diagnose HVAC Faults? Reasoning Demand, Physical Representation, and Robustness Under Shift
+
+Papers · Jung · 2026-10-07 · v1
+
+Tests fault diagnosis across equipment, representations and operating shifts. Physical features enable selected diagnoses, while context-dependent faults remain difficult; shared-day training conditions, small fault-day counts and dataset-specific option sets limit general claims of robustness.
+
+Primary source: https://arxiv.org/abs/2610.09937v1
+
 ## From Probabilities to Decisions: Search and Multi-Teacher Distillation with Jev
 
 Papers · Sadoun, Sharif & Banad · 2026-10-06 · v1
@@ -680,6 +698,14 @@ Tests the official Jev API and the local NanoJev for prompt injection, data-pois
 
 Primary source: https://arxiv.org/abs/2610.04985v1
 
+## System One Models for Wireless Decision-Making:Applications and Performance Evaluation
+
+Papers · Rahimi et al. · 2026-10-03 · v1
+
+Compares bounded wireless action selection with LLMs and task-specific baselines. Lower successful-request latency trades off against decision quality; a separately reported orchestration study shows that faster interpretation need not improve end-to-end completion. Local and hosted timing boundaries differ.
+
+Primary source: https://arxiv.org/abs/2610.04345v1
+
 ## Calibrated to Whom? Persona and Language Effects on Cultural Values in JEV
 
 Papers · Asseri & Asseri · 2026-10-03 · v2
@@ -744,6 +770,14 @@ Paired Laya/Jev evaluation of 11 agent decision points includes a self-audit: pr
 
 Primary source: https://arxiv.org/abs/2610.02267v1
 
+## HydroJEV: A one-second, training-free screen for cyber-attack and fault attribution in water distribution networks
+
+Papers · Mu et al. · 2026-10-01 · v1
+
+Simulated water-network triage combines Jev, rule agreement and an LLM reviewer. Fewer reviewer calls coexist with accepted attacks, event-selection constraints and a transfer endpoint that misses multiplicity correction; reported timing and non-inferiority margins do not establish field reliability.
+
+Primary source: https://arxiv.org/abs/2610.02048v1
+
 ## Prune First, Decide Fast: Scalable Semantic Query Processing with JEVDB
 
 Papers · Wang, Yan, Zhao & Liu · 2026-10-01 · v1
@@ -759,6 +793,14 @@ Papers · Lv et al. · 2026-10-01 · v1
 Learns audio-conditioned candidate probabilities with aligned option-permutation training; order stability and empirical correctness calibration remain different properties.
 
 Primary source: https://arxiv.org/abs/2610.01293v1
+
+## Jev-IDS: System One Models for Network Intrusion Detection
+
+Papers · Severo, Quincozes & Dias · 2026-10-01 · v1
+
+Studies typed intrusion decisions, but v1 mixes configurations: its abstract and pinned code describe a 300-flow GPT-5.6 Luna pilot, while its body describes 2,000 flows and Gemini. These cohorts and comparators must remain separate; benchmark-withheld attack types are not operational zero-day validation.
+
+Primary source: https://arxiv.org/abs/2610.01079v1
 
 ## Beyond Answer Confidence: A Controlled Audit of Self-Knowledge in a Black-Box Decision Model
 
@@ -799,6 +841,14 @@ Papers · Tang & Chen · 2026-09-30 · v1
 Medical candidate-conditioned decisions are compared with a matched generative baseline; calibration gains do not isolate interface effects from training differences or establish clinical readiness.
 
 Primary source: https://arxiv.org/abs/2610.00381v1
+
+## A First Glance at Jev for Network Traffic Classification: Accuracy, Processing Time, and Cost
+
+Papers · Xu & Mei · 2026-09-30 · v1
+
+Classifies ten application labels from early packet features over 26 later collection weeks. Labeled examples improve Jev but the tested tree ensembles remain more accurate; unequal supervision and service configurations prevent attributing the gap to architecture or intrinsic label efficiency.
+
+Primary source: https://arxiv.org/abs/2610.00376v1
 
 ## When the Right Answer Is Missing: An Arithmetic-Dependent Rejection Bottleneck in Jev
 
@@ -895,6 +945,14 @@ Papers · Nandakishore · 2026-09-27 · v1
 A pinned Laya checkpoint is underconfident on synthetic teacher labels. Temperature fitting improves probability metrics, but the frozen calibrator-selection rule and escalation gate fail held-out targets; reported Jev comparisons are indirect, and the initial reproduction predates preregistration.
 
 Primary source: https://arxiv.org/abs/2609.33843v1
+
+## Type-Safe Decision Frameworks for Agentic 5G Control: A Theory-Driven Testbed Characterization of Where They Can Be Applied
+
+Papers · Kourtis & Xilouris · 2026-09-27 · v1
+
+Maps typed frameworks to timing, label-budget and decision-schema conditions on a 5G testbed. Changed-question probes expose failures hidden by output validity and paraphrase stability; simulator labels, open RAN-loop scope and conditional risk assumptions constrain deployment conclusions.
+
+Primary source: https://arxiv.org/abs/2609.33689v1
 
 ## Beyond Calibration: Do a Typed-Decision Model's Probabilities Obey the Probability Axioms?
 

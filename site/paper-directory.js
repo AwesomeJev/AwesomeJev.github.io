@@ -93,6 +93,7 @@ function update() {
   }
   count.textContent = `${visible} / ${rows.length} ${zh ? '篇论文' : 'papers'}`;
   empty.hidden = visible !== 0;
+  body.classList.toggle('paper-results-expanded', visible > 0 && visible <= 3);
   refreshExport();
 }
 // The static order is newest first; the other orders are derived from it.
