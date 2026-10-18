@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-17",
+  "updated": "2026-10-18",
   "en": {
     "title": "Jev guide: typed decisions, probabilities, and evaluation",
     "description": "A source-backed introduction to Jev, its decision primitives, confidence, evaluation methods, and independent model alternatives.",
@@ -224,6 +224,47 @@
               {
                 "label": "Indonesian regional-language transfer study, v1",
                 "url": "https://arxiv.org/abs/2610.14112v1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "fallback-options",
+        "title": "Is a fallback option the same as a confidence gate?",
+        "paragraphs": [
+          {
+            "text": "A named Other or Defer option is an answer the model must select according to its definition. A confidence gate is application code deciding whether to act on a returned answer or escalate it. TypeSafe’s routing example illustrates the latter. Define which interface you are testing before comparing reliability.",
+            "sources": [
+              {
+                "label": "Fallback definitions, v1",
+                "url": "https://arxiv.org/html/2610.19856v1#S2.SS0.SSS0.Px2"
+              },
+              {
+                "label": "TypeSafe confidence routing",
+                "url": "https://docs.typesafe.ai/patterns/confidence-routing"
+              }
+            ]
+          },
+          {
+            "text": "The Paired Fallback Robustness test changes the correct output from a regular option to fallback while holding the input and option positions fixed. It also tests equivalent fallback definitions. On the tested open models, correct recognition and even a supplied correct category do not guarantee correct reassignment. This is a controlled diagnosis on text datasets, not an established production repair.",
+            "sources": [
+              {
+                "label": "Paired reassignment and definition tests, v1",
+                "url": "https://arxiv.org/html/2610.19856v1#S3.SS1"
+              },
+              {
+                "label": "Study limitations, v1",
+                "url": "https://arxiv.org/html/2610.19856v1#Sx1"
+              }
+            ]
+          },
+          {
+            "text": "Our suggested evaluation reports regular-choice accuracy, correct fallback selection, unnecessary fallback and disagreement between equivalent definitions separately. Test the application’s confidence gate on held-out cases and include escalated calls in its cost. Order stability and stable relative odds are additional properties: Prism-1 explicitly identifies none-of-the-above rules as a poor fit for independent option scoring.",
+            "sources": [
+              {
+                "label": "Prism-1 scope and limitations, v1",
+                "url": "https://arxiv.org/html/2610.22066v1#S7"
               }
             ]
           }
@@ -693,6 +734,47 @@
               {
                 "label": "印尼地方语言迁移研究 v1",
                 "url": "https://arxiv.org/abs/2610.14112v1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "fallback-options",
+        "title": "兜底选项和置信度门控是一回事吗？",
+        "paragraphs": [
+          {
+            "text": "名为 Other 或 Defer 的兜底选项，是模型需要按定义选出的答案。置信度门控则由应用代码决定是否执行已有答案，或将任务升级处理。TypeSafe 的路由示例展示后者。比较可靠性前，应明确测试的是哪一种接口。",
+            "sources": [
+              {
+                "label": "兜底定义 v1",
+                "url": "https://arxiv.org/html/2610.19856v1#S2.SS0.SSS0.Px2"
+              },
+              {
+                "label": "TypeSafe 置信度路由",
+                "url": "https://docs.typesafe.ai/patterns/confidence-routing"
+              }
+            ]
+          },
+          {
+            "text": "成对兜底鲁棒性测试固定输入与选项位置，将正确输出从常规选项改为兜底项，并比较含义等价的兜底定义。在所测开放模型中，正确识别类别，甚至直接给出正确类别，都不保证正确完成输出重分配。这是文本数据上的受控诊断，尚未确立生产修复方法。",
+            "sources": [
+              {
+                "label": "成对重分配与定义测试 v1",
+                "url": "https://arxiv.org/html/2610.19856v1#S3.SS1"
+              },
+              {
+                "label": "研究局限 v1",
+                "url": "https://arxiv.org/html/2610.19856v1#Sx1"
+              }
+            ]
+          },
+          {
+            "text": "我们建议分别报告常规选择准确率、正确兜底选择、不必要兜底及等价定义间的分歧。应用层置信度门控应在留出样本上另行测试，成本应计入升级调用。顺序稳定与选项间概率比稳定是另外的性质：Prism-1 明确指出，“以上皆非”规则并不适合独立选项评分。",
+            "sources": [
+              {
+                "label": "Prism-1 的范围与限制 v1",
+                "url": "https://arxiv.org/html/2610.22066v1#S7"
               }
             ]
           }

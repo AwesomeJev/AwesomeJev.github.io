@@ -60,6 +60,14 @@ Implementation documentation supplies additional transfer limits. FRIDA-Decision
 
 The Indonesian regional-language study supplies a concrete separation: expected calibration error did not increase while error-ranking ability degraded. Its translation comparison uses human Indonesian translations; classifier comparisons depend on label budgets, and cascades on the chosen fallback and routing fraction. Evaluate those factors separately before transferring a threshold. The preregistration and release claims remain author-reported here; no prediction files were audited. [Indonesian regional-language transfer study, v1](https://arxiv.org/abs/2610.14112v1)
 
+## Is a fallback option the same as a confidence gate?
+
+A named Other or Defer option is an answer the model must select according to its definition. A confidence gate is application code deciding whether to act on a returned answer or escalate it. TypeSafe’s routing example illustrates the latter. Define which interface you are testing before comparing reliability. [Fallback definitions, v1](https://arxiv.org/html/2610.19856v1#S2.SS0.SSS0.Px2) · [TypeSafe confidence routing](https://docs.typesafe.ai/patterns/confidence-routing)
+
+The Paired Fallback Robustness test changes the correct output from a regular option to fallback while holding the input and option positions fixed. It also tests equivalent fallback definitions. On the tested open models, correct recognition and even a supplied correct category do not guarantee correct reassignment. This is a controlled diagnosis on text datasets, not an established production repair. [Paired reassignment and definition tests, v1](https://arxiv.org/html/2610.19856v1#S3.SS1) · [Study limitations, v1](https://arxiv.org/html/2610.19856v1#Sx1)
+
+Our suggested evaluation reports regular-choice accuracy, correct fallback selection, unnecessary fallback and disagreement between equivalent definitions separately. Test the application’s confidence gate on held-out cases and include escalated calls in its cost. Order stability and stable relative odds are additional properties: Prism-1 explicitly identifies none-of-the-above rules as a poor fit for independent option scoring. [Prism-1 scope and limitations, v1](https://arxiv.org/html/2610.22066v1#S7)
+
 ## How should I test decisions over tables and cited evidence?
 
 Separate schema validity, stability under content-preserving changes, and semantic correctness against reference labels. For tables, pair original inputs with alternative layouts or row/column reorderings only when meaning is preserved. Keep values, relationships and arithmetic fixed, then compare choices and probability distributions. A stable answer can still be wrong; low confidence alone does not identify an error. [Tabular decision preprint, v1](https://arxiv.org/abs/2610.19536v1)
@@ -111,6 +119,14 @@ The radiology paper’s v1 availability statement says analysis scripts and aggr
 For control loops, a replay of isolated model latency does not establish deadline attainment. The network-control SoK separates request queues, execution times, action feasibility and responsibility for service checks; its examples use one bounded event model. Our proposed deployment check records arrival patterns and the complete path from request to verified outcome, alongside misses and infeasible actions. It does not substitute a synthetic replay for production evidence. [Semantic decision engines in network control, v1](https://arxiv.org/abs/2610.06425v1)
 
 # Curated resources
+
+## Prism-1: Position- and Rival-Independent Scoring for System One Models
+
+Papers · Teng et al. · 2026-10-15 · v1
+
+An option-isolated readout targets order invariance and stable relative odds when candidates change; it requires fine-tuning, limits within-model comparison, and fits independently judged options better than menu-dependent fallback rules.
+
+Primary source: https://arxiv.org/abs/2610.22066v1
 
 ## Qwen-Audio-Jev: A Unified Interface for Audio Decisions
 
@@ -176,6 +192,14 @@ Encodes shared state once for multiple typed questions; invariance requires iden
 
 Primary source: https://arxiv.org/abs/2610.20778v1
 
+## Lost in the Fallback: How Reliably Do Typed Decision Models Use Fallback Options?
+
+Papers · Xie et al. · 2026-10-14 · v1
+
+Paired tests on three text datasets separate category recognition from executing fallback rules; tested open models can disagree under equivalent definitions even when supplied the correct category, and the study diagnoses failures without establishing a fix.
+
+Primary source: https://arxiv.org/abs/2610.19856v1
+
 ## Calibration and Risk-Budgeted Decisions with System One Models
 
 Papers · Messoudi & Mansar · 2026-10-14 · v1
@@ -208,6 +232,14 @@ Tests classification and verification under content-preserving table rewrites ac
 
 Primary source: https://arxiv.org/abs/2610.19536v1
 
+## SecJev: Bringing Security Expertise to System One Decision Models
+
+Papers · Chen et al. · 2026-10-14 · v2
+
+Adapts decision scorers to 14 security tasks; source-label prediction and displayed-policy execution are distinct targets, task difficulty is uneven, and benchmark accuracy does not establish end-to-end attack prevention.
+
+Primary source: https://arxiv.org/abs/2610.03073v2
+
 ## More Choices, Fewer Decisions: Ordinal-Scale Bias in JEV-like Direct-Decision Models
 
 Papers · Gao et al. · 2026-10-14 · v2
@@ -223,6 +255,14 @@ Papers · Lan et al. · 2026-10-13 · v1
 Text and vision attacks with label-validity checks and held-out evaluation models.
 
 Primary source: https://arxiv.org/abs/2610.19118v1
+
+## BLADE: Auditing Information Use for Failure Attribution in LLM Multi-Agent Systems
+
+Papers · Guo, Long & Zhang · 2026-10-13 · v1
+
+Uses Jev to audit information use at agent handoffs and localize failures; comparisons share one decision model on five benchmark subsets, and attribution depends on the completeness of retained traces.
+
+Primary source: https://arxiv.org/abs/2610.18780v1
 
 ## Jeva: System One Models from First Principles
 
@@ -279,6 +319,14 @@ Papers · Ma et al. · 2026-10-13 · v1
 Tool-argument judges including Jev reject some correct derived values without visible references; model-generated references are evaluated on three benchmarks.
 
 Primary source: https://arxiv.org/abs/2610.18497v1
+
+## Recalibrating Many Questions with Few Labels: Minimax Rates and Identification Limits
+
+Papers · Li & Yang · 2026-10-13 · v1
+
+Derives excess-Brier risk bounds for pooling recalibration across questions under shared-distribution and monotonicity assumptions; fixed-effects and empirical-Bayes results have different targets, and risk lower bounds do not directly become calibration-error lower bounds.
+
+Primary source: https://arxiv.org/abs/2610.18488v1
 
 ## Consider, Then Choose: Order-Invariant Decisions in System One Models
 
@@ -1446,6 +1494,10 @@ The fixed-weight rendering intervention in Labels Override Definitions provides 
 ### Does order stability fix label bias?
 
 Runoff scores options individually before comparing balanced finalist listings. Its order-invariance argument assumes deterministic responses and a unique canonical ranking; the paper explicitly leaves option-name bias outside its target. Verdict-MQ describes architectural order/grouping invariance when retained state tokens are identical after truncation. These are conditional claims about changing a request’s arrangement, not proof of semantic correctness, calibrated confidence or resistance to malicious option names. [Runoff limitations and assumptions, v1](https://arxiv.org/html/2610.18233v1#Sx1.p1) · [Runoff invariance assumptions, v1](https://arxiv.org/html/2610.18233v1#A5.SS0.SSS0.Px2.p1) · [Verdict original abstract, v1](https://arxiv.org/abs/2610.20778v1)
+
+### What changes when an option is added?
+
+Prism-1 isolates option readouts to preserve order invariance and relative odds among original options when the candidate set changes, with state and question held fixed. This does not keep every normalized probability unchanged: an added score changes the softmax denominator. Its paper requires fine-tuning and limits the guarantee to numerical precision; independently judged options fit better than menu-dependent rules such as none of the above. Injected text in the shared state remains outside this protection. Evaluate menu-dependent fallback behavior separately, using the paired-rule tests rather than treating stable rankings as correct abstention. [Prism-1 limitations, v1](https://arxiv.org/html/2610.22066v1#S7) · [Choice-axiom tradeoffs, v1](https://arxiv.org/html/2610.22066v1#S5.SS6) · [Paired fallback test, v1](https://arxiv.org/html/2610.19856v1#S3.SS1)
 
 ### A diagnostic to use in your own evaluation
 

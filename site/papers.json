@@ -62,6 +62,20 @@
   "papers": [
     {
       "category": "Papers",
+      "title": "Prism-1: Position- and Rival-Independent Scoring for System One Models",
+      "by": "Teng et al. · 2026-10-15 · v1",
+      "date": "2026-10-15",
+      "first_submitted": "2026-10-15",
+      "url": "https://arxiv.org/abs/2610.22066v1",
+      "theme": "robustness",
+      "en": "An option-isolated readout targets order invariance and stable relative odds when candidates change; it requires fine-tuning, limits within-model comparison, and fits independently judged options better than menu-dependent fallback rules.",
+      "zh": "通过隔离选项读出，使排列和候选变化时原有选项间的概率比保持稳定；需要微调并限制模型内选项比较，更适合可独立判断的选项，而非依赖整个候选集的兜底规则。",
+      "artifacts": {
+        "unverified": "code"
+      }
+    },
+    {
+      "category": "Papers",
       "title": "Qwen-Audio-Jev: A Unified Interface for Audio Decisions",
       "by": "Fang et al. · 2026-10-15 · v1",
       "date": "2026-10-15",
@@ -177,6 +191,20 @@
     },
     {
       "category": "Papers",
+      "title": "Lost in the Fallback: How Reliably Do Typed Decision Models Use Fallback Options?",
+      "by": "Xie et al. · 2026-10-14 · v1",
+      "date": "2026-10-14",
+      "first_submitted": "2026-10-14",
+      "url": "https://arxiv.org/abs/2610.19856v1",
+      "theme": "robustness",
+      "en": "Paired tests on three text datasets separate category recognition from executing fallback rules; tested open models can disagree under equivalent definitions even when supplied the correct category, and the study diagnoses failures without establishing a fix.",
+      "zh": "三个文本数据集的成对测试将类别识别与兜底规则执行分开；即使给出正确类别，所测开放模型在等价定义下仍可能产生分歧。研究诊断失效，未确立修复方法。",
+      "artifacts": {
+        "unverified": "code"
+      }
+    },
+    {
+      "category": "Papers",
       "title": "Calibration and Risk-Budgeted Decisions with System One Models",
       "by": "Messoudi & Mansar · 2026-10-14 · v1",
       "date": "2026-10-14",
@@ -231,6 +259,26 @@
     },
     {
       "category": "Papers",
+      "title": "SecJev: Bringing Security Expertise to System One Decision Models",
+      "by": "Chen et al. · 2026-10-14 · v2",
+      "date": "2026-10-14",
+      "first_submitted": "2026-10-02",
+      "url": "https://arxiv.org/abs/2610.03073v2",
+      "theme": "applications",
+      "en": "Adapts decision scorers to 14 security tasks; source-label prediction and displayed-policy execution are distinct targets, task difficulty is uneven, and benchmark accuracy does not establish end-to-end attack prevention.",
+      "zh": "将决策评分器适配到14项安全任务；来源标签预测与显式策略执行是不同目标，任务难度不均，基准准确率不证明端到端攻击防护能力。",
+      "artifacts": {
+        "code": "https://github.com/UESTC1010/SecJev",
+        "data": "https://github.com/UESTC1010/SecJev/releases/tag/v1.0.0",
+        "model": "https://github.com/UESTC1010/SecJev/releases/tag/v1.3.0"
+      },
+      "artifact_note": {
+        "en": "Release metadata checked; packages not loaded. Custom agreement and upstream terms apply.",
+        "zh": "已查发布元数据，未加载包；适用自定义协议及上游条款。"
+      }
+    },
+    {
+      "category": "Papers",
       "title": "More Choices, Fewer Decisions: Ordinal-Scale Bias in JEV-like Direct-Decision Models",
       "by": "Gao et al. · 2026-10-14 · v2",
       "date": "2026-10-14",
@@ -261,6 +309,20 @@
       "theme": "robustness",
       "en": "Text and vision attacks with label-validity checks and held-out evaluation models.",
       "zh": "结合标签有效性检查与留出评测模型，考察文本和视觉攻击。"
+    },
+    {
+      "category": "Papers",
+      "title": "BLADE: Auditing Information Use for Failure Attribution in LLM Multi-Agent Systems",
+      "by": "Guo, Long & Zhang · 2026-10-13 · v1",
+      "date": "2026-10-13",
+      "first_submitted": "2026-10-13",
+      "url": "https://arxiv.org/abs/2610.18780v1",
+      "theme": "judging",
+      "en": "Uses Jev to audit information use at agent handoffs and localize failures; comparisons share one decision model on five benchmark subsets, and attribution depends on the completeness of retained traces.",
+      "zh": "用 Jev 审查 agent 交接时如何使用信息并定位失效；比较在五个基准子集上共用一个决策模型，归因质量受所保留轨迹证据完整性限制。",
+      "artifacts": {
+        "unverified": "code"
+      }
     },
     {
       "category": "Papers",
@@ -371,6 +433,17 @@
       },
       "en": "Tool-argument judges including Jev reject some correct derived values without visible references; model-generated references are evaluated on three benchmarks.",
       "zh": "包括 Jev 在内的工具参数评判模型，在缺少可见参考时会拒绝部分正确推导值；模型生成的参考在三个基准上接受评测。"
+    },
+    {
+      "category": "Papers",
+      "title": "Recalibrating Many Questions with Few Labels: Minimax Rates and Identification Limits",
+      "by": "Li & Yang · 2026-10-13 · v1",
+      "date": "2026-10-13",
+      "first_submitted": "2026-10-13",
+      "url": "https://arxiv.org/abs/2610.18488v1",
+      "theme": "calibration",
+      "en": "Derives excess-Brier risk bounds for pooling recalibration across questions under shared-distribution and monotonicity assumptions; fixed-effects and empirical-Bayes results have different targets, and risk lower bounds do not directly become calibration-error lower bounds.",
+      "zh": "在共享输出分布与单调性假设下，推导跨问题合并重校准的超额 Brier 风险界；固定效应与经验贝叶斯结果的目标不同，风险下界不能直接视为校准误差下界。"
     },
     {
       "category": "Papers",

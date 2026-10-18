@@ -3,34 +3,34 @@
   "baseline_commit": "3519c15d7e00686a8dbf9b1e184c68726327ab1e",
   "baseline_source_index_sha256": "8bfdd20564f2cda54bb8264c3c802f315e3e9a11b153bd85dde4325f53c841d5",
   "target_new_sources": 301,
-  "accepted_new_sources": 788,
+  "accepted_new_sources": 793,
   "remaining_to_target": 0,
   "target_count_reached": true,
   "current_index_counts": {
     "editorial_reviewed": 4,
     "content_screened": 2396,
-    "abstract_checked": 1847,
+    "abstract_checked": 1852,
     "metadata_only": 47,
-    "raw_records": 4308,
-    "unique_records": 4294,
+    "raw_records": 4313,
+    "unique_records": 4299,
     "duplicate_records": 14,
-    "checked_sources": 4247
+    "checked_sources": 4252
   },
   "by_category": {
     "Datasets": 101,
     "Guides and evaluations": 38,
     "Models": 59,
-    "Papers": 35,
+    "Papers": 40,
     "Projects": 219,
     "Research foundations": 336
   },
   "by_relation": {
     "adjacent": 25,
     "background": 336,
-    "direct": 427
+    "direct": 432
   },
   "by_verification_level": {
-    "abstract_checked": 371,
+    "abstract_checked": 376,
     "content_screened": 417
   },
   "verification_note": "Evidence depth is labeled per source. Content screening and abstract checks do not establish full-paper review, peer review, endorsement, or experimental reproduction.",
@@ -2436,6 +2436,18 @@
       "ledger": "research-sources.jsonl"
     },
     {
+      "title": "BLADE: Auditing Information Use for Failure Attribution in LLM Multi-Agent Systems",
+      "url": "https://arxiv.org/abs/2610.18780",
+      "category": "Papers",
+      "topic": "direct-decision-research",
+      "description": "Uses Jev to audit information use at agent handoffs and localize failures; comparisons share one decision model on five benchmark subsets, and attribution depends on the completeness of retained traces.",
+      "relation": "direct",
+      "verification_level": "abstract_checked",
+      "content_sha256": "77c44fd250d2b23b96c7298da687c01bab5f478191ccfc57b8c5f7de91e7d6b0",
+      "retrieved_at": "2026-10-18T06:12:56.234712+00:00",
+      "ledger": "research-sources.jsonl"
+    },
+    {
       "title": "Bongard: Training Machine Intuition",
       "url": "https://arxiv.org/abs/2609.39111",
       "category": "Papers",
@@ -2628,6 +2640,18 @@
       "ledger": "research-sources.jsonl"
     },
     {
+      "title": "Lost in the Fallback: How Reliably Do Typed Decision Models Use Fallback Options?",
+      "url": "https://arxiv.org/abs/2610.19856",
+      "category": "Papers",
+      "topic": "direct-decision-research",
+      "description": "Paired tests on three text datasets separate category recognition from executing fallback rules; tested open models can disagree under equivalent definitions even when supplied the correct category, and the study diagnoses failures without establishing a fix.",
+      "relation": "direct",
+      "verification_level": "abstract_checked",
+      "content_sha256": "1501bea0917b26ff46d630b2eab84803c098a05a4640d0895ad0e8d1d0c75854",
+      "retrieved_at": "2026-10-18T06:12:55.206425+00:00",
+      "ledger": "research-sources.jsonl"
+    },
+    {
       "title": "Mnemon: Raw Records, Fast Judgments, Slow Thoughts",
       "url": "https://arxiv.org/abs/2609.36059",
       "category": "Papers",
@@ -2676,6 +2700,18 @@
       "ledger": "research-sources.jsonl"
     },
     {
+      "title": "Prism-1: Position- and Rival-Independent Scoring for System One Models",
+      "url": "https://arxiv.org/abs/2610.22066",
+      "category": "Papers",
+      "topic": "direct-decision-research",
+      "description": "An option-isolated readout targets order invariance and stable relative odds when candidates change; it requires fine-tuning, limits within-model comparison, and fits independently judged options better than menu-dependent fallback rules.",
+      "relation": "direct",
+      "verification_level": "abstract_checked",
+      "content_sha256": "42fb228ac2f90cf10f8d36d9a1f91910799883260f9fba72d76137ffbd46cbcb",
+      "retrieved_at": "2026-10-18T06:12:55.266806+00:00",
+      "ledger": "research-sources.jsonl"
+    },
+    {
       "title": "Prune the Summary, Not the History: Source-Judged Compaction for Long-Horizon Agents",
       "url": "https://arxiv.org/abs/2610.20927",
       "category": "Papers",
@@ -2685,6 +2721,18 @@
       "verification_level": "abstract_checked",
       "content_sha256": "9325f151ce56a69bbca9597e75cf7d2739bc3f0b874cf9a08a0d2021d057c11a",
       "retrieved_at": "2026-10-18T05:26:38.093753+00:00",
+      "ledger": "research-sources.jsonl"
+    },
+    {
+      "title": "Recalibrating Many Questions with Few Labels: Minimax Rates and Identification Limits",
+      "url": "https://arxiv.org/abs/2610.18488",
+      "category": "Papers",
+      "topic": "direct-decision-research",
+      "description": "Derives excess-Brier risk bounds for pooling recalibration across questions under shared-distribution and monotonicity assumptions; fixed-effects and empirical-Bayes results have different targets, and risk lower bounds do not directly become calibration-error lower bounds.",
+      "relation": "direct",
+      "verification_level": "abstract_checked",
+      "content_sha256": "6784e8ab881e2b02eff1a8bb0333b88590c61f47915c78ef56970686be6ccac4",
+      "retrieved_at": "2026-10-18T06:13:01.058316+00:00",
       "ledger": "research-sources.jsonl"
     },
     {
@@ -2721,6 +2769,18 @@
       "verification_level": "abstract_checked",
       "content_sha256": "a71eeed52135068e8db08487008090e5f61b830cd1632f2c8a827f8c569d2366",
       "retrieved_at": "2026-10-16T10:59:20+00:00",
+      "ledger": "research-sources.jsonl"
+    },
+    {
+      "title": "SecJev: Bringing Security Expertise to System One Decision Models",
+      "url": "https://arxiv.org/abs/2610.03073",
+      "category": "Papers",
+      "topic": "direct-decision-research",
+      "description": "Adapts decision scorers to 14 security tasks; source-label prediction and displayed-policy execution are distinct targets, task difficulty is uneven, and benchmark accuracy does not establish end-to-end attack prevention.",
+      "relation": "direct",
+      "verification_level": "abstract_checked",
+      "content_sha256": "3475324b78c1bc087406f26aa6fbb024f0e57a395d9fcfba9c244cfa73b6929c",
+      "retrieved_at": "2026-10-18T06:12:56.173973+00:00",
       "ledger": "research-sources.jsonl"
     },
     {

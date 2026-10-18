@@ -206,3 +206,9 @@ Four independently identified implementation repositories bring the reviewed exp
 Four new paper identities bring the reviewed expansion to **788 sources**. Three were found through targeted primary-source searches; Runoff was also a pending scan candidate. Fixed/current abstract comparisons match. Companion links and selected manuscript sections add no identities, and previous ledger rows are unchanged. [Review scope](control-papers-2026-10-18.md).
 
 **中文：** 四篇新论文使扩展达到788项；三篇来自定向检索，Runoff也在扫描待审队列中。固定版本与当前摘要一致，配套代码链接和定向段落不重复计数，旧台账不改写。
+
+## Stability and policy studies — 18 October 2026 UTC
+
+Five new paper identities selected from the arXiv discovery batch bring the reviewed expansion to **793 sources**. Fixed abstracts match retained scan evidence; manuscript sections and SecJev release metadata add scope without changing the abstract-checked tier. Code, model and data navigation links add no separate identities. [Review](stability-papers-2026-10-18.md).
+
+**中文：** 五篇论文使扩展达到793项；固定摘要与扫描证据一致，定向段落和发布元数据用于说明范围，不提高证据等级，不将配套链接重复计数。

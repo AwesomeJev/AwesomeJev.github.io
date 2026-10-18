@@ -62,6 +62,25 @@
             ]
           },
           {
+            "id": "candidate-set",
+            "title": "What changes when an option is added?",
+            "text": "Prism-1 isolates option readouts to preserve order invariance and relative odds among original options when the candidate set changes, with state and question held fixed. This does not keep every normalized probability unchanged: an added score changes the softmax denominator. Its paper requires fine-tuning and limits the guarantee to numerical precision; independently judged options fit better than menu-dependent rules such as none of the above. Injected text in the shared state remains outside this protection. Evaluate menu-dependent fallback behavior separately, using the paired-rule tests rather than treating stable rankings as correct abstention.",
+            "sources": [
+              {
+                "label": "Prism-1 limitations, v1",
+                "url": "https://arxiv.org/html/2610.22066v1#S7"
+              },
+              {
+                "label": "Choice-axiom tradeoffs, v1",
+                "url": "https://arxiv.org/html/2610.22066v1#S5.SS6"
+              },
+              {
+                "label": "Paired fallback test, v1",
+                "url": "https://arxiv.org/html/2610.19856v1#S3.SS1"
+              }
+            ]
+          },
+          {
             "id": "diagnostic",
             "title": "A diagnostic to use in your own evaluation",
             "text": "Our suggested comparison fixes the state, task rule, model version and scoring rule. Prepare equivalent requests with informative labels, neutral identifiers and definition-only options where the interface permits them. Add a separate conflicting-label condition, with expected answers checked before querying. Compare answer changes, errors and confidence on errors; preserve the actual rendered inputs. Use a held-out set to test any proposed repair. Test option permutations and identical-request repeats separately from label changes. Match the retained input after truncation when testing an invariance claim.",
@@ -132,6 +151,25 @@
               {
                 "label": "Verdict 原始摘要 v1",
                 "url": "https://arxiv.org/abs/2610.20778v1"
+              }
+            ]
+          },
+          {
+            "id": "candidate-set",
+            "title": "增加一个选项时，哪些量会变化？",
+            "text": "Prism-1 隔离选项读出，在固定状态和问题时，保持候选变化下的顺序不变性以及原有选项间的概率比。每个归一化概率并不因此保持不变：新增分数会改变 softmax 分母。论文说明它需要微调，保证受数值精度限制，更适合可独立判断的选项，而非“以上皆非”等依赖整个候选集的规则；共享状态中的注入文本也不在保护范围内。应单独用成对规则测试检查此类兜底行为，不把排序稳定当作正确拒答。",
+            "sources": [
+              {
+                "label": "Prism-1 局限 v1",
+                "url": "https://arxiv.org/html/2610.22066v1#S7"
+              },
+              {
+                "label": "选择公理的取舍 v1",
+                "url": "https://arxiv.org/html/2610.22066v1#S5.SS6"
+              },
+              {
+                "label": "成对兜底测试 v1",
+                "url": "https://arxiv.org/html/2610.19856v1#S3.SS1"
               }
             ]
           },
