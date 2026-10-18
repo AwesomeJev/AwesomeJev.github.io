@@ -3,35 +3,35 @@
   "baseline_commit": "3519c15d7e00686a8dbf9b1e184c68726327ab1e",
   "baseline_source_index_sha256": "8bfdd20564f2cda54bb8264c3c802f315e3e9a11b153bd85dde4325f53c841d5",
   "target_new_sources": 301,
-  "accepted_new_sources": 780,
+  "accepted_new_sources": 784,
   "remaining_to_target": 0,
   "target_count_reached": true,
   "current_index_counts": {
     "editorial_reviewed": 4,
-    "content_screened": 2392,
+    "content_screened": 2396,
     "abstract_checked": 1843,
     "metadata_only": 47,
-    "raw_records": 4300,
-    "unique_records": 4286,
+    "raw_records": 4304,
+    "unique_records": 4290,
     "duplicate_records": 14,
-    "checked_sources": 4239
+    "checked_sources": 4243
   },
   "by_category": {
     "Datasets": 101,
     "Guides and evaluations": 38,
     "Models": 59,
     "Papers": 31,
-    "Projects": 215,
+    "Projects": 219,
     "Research foundations": 336
   },
   "by_relation": {
     "adjacent": 25,
     "background": 336,
-    "direct": 419
+    "direct": 423
   },
   "by_verification_level": {
     "abstract_checked": 367,
-    "content_screened": 413
+    "content_screened": 417
   },
   "verification_note": "Evidence depth is labeled per source. Content screening and abstract checks do not establish full-paper review, peer review, endorsement, or experimental reproduction.",
   "additions": [
@@ -2832,6 +2832,18 @@
       "ledger": "ecosystem-sources.jsonl"
     },
     {
+      "title": "Abide",
+      "url": "https://github.com/coldteadotai/abide",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "Jev checks edits and turns against compiled project rules and requests repairs; missing credentials or network let edits pass unchecked, and replay findings depend on the chosen rubric.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "51d411ac3f315720a7180775f0b9bff05254848306a64d2c1d5d55d5c15faa5b",
+      "retrieved_at": "2026-10-18T04:57:50.602240+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
       "title": "acbcore-labs/s1-core",
       "url": "https://github.com/acbcore-labs/s1-core",
       "category": "Projects",
@@ -2985,6 +2997,18 @@
       "verification_level": "content_screened",
       "content_sha256": "7e54fe0de89d6ad1f2a812738d6cc8b3357299cf40dfff5c450e099c97ed8e39",
       "retrieved_at": "2026-10-16T10:05:40+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "atoma",
+      "url": "https://github.com/atoma-run/atoma",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "Multi-agent planning, execution and evidence review with Jev routing; shared agent/skill learning can expose document-derived material across organizations, and tenant isolation is not independently audited.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "6fa2a4f6abff93b62436e0294c0c8abbc74a4d2c7725ff619bdb7abba2708994",
+      "retrieved_at": "2026-10-18T04:57:50.657780+00:00",
       "ledger": "ecosystem-sources.jsonl"
     },
     {
@@ -3201,6 +3225,18 @@
       "verification_level": "content_screened",
       "content_sha256": "bcfd719a0aca665cfd7632eb8e43c690a4454dc26c161ad733138b04219d7942",
       "retrieved_at": "2026-10-16T10:05:40+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "circuit",
+      "url": "https://github.com/barneyjm/circuit",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "LoRA and pointer-head training, evaluation and serving for text, image and audio decisions; publisher tests cover selected task sets and do not establish universal calibration or option-order invariance.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "939968f324fd85f6c7409e5eeb6354e84301ca44e8d44f9ee93be2afa4563c16",
+      "retrieved_at": "2026-10-18T04:57:50.629588+00:00",
       "ledger": "ecosystem-sources.jsonl"
     },
     {
@@ -3909,6 +3945,18 @@
       "verification_level": "content_screened",
       "content_sha256": "b6941cbdf02a8922e12a58bfc853b1be2c8f2182148e28d7290c275961770f64",
       "retrieved_at": "2026-10-16T11:57:24.072123+00:00",
+      "ledger": "ecosystem-sources.jsonl"
+    },
+    {
+      "title": "jev-fabric",
+      "url": "https://github.com/fabric-runtime/jev-fabric",
+      "category": "Projects",
+      "topic": "implementation-repository",
+      "description": "Native process orchestration with bounded logs, deadlines and explicit typed decisions; commands run with caller privileges, exit status needs outcome checks, and selected policy proofs do not verify the whole runtime.",
+      "relation": "direct",
+      "verification_level": "content_screened",
+      "content_sha256": "bc6db4b22ffdcad210b49d20adf2a230e209b5e537c9df3ca50d82551a71d5ca",
+      "retrieved_at": "2026-10-18T04:57:50.629990+00:00",
       "ledger": "ecosystem-sources.jsonl"
     },
     {

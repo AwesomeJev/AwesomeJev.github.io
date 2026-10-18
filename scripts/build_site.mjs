@@ -12,7 +12,7 @@ import { renderResource, renderModelRow, renderPaperRow, renderEvidenceLegend, e
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const origin = 'https://awesomejev.github.io';
 const repo = 'https://github.com/reacher-z/Awesome-Jev';
-const contentDate = '2026-10-17'; // Update only when curated page content changes.
+const contentDate = '2026-10-18'; // Update only when curated page content changes.
 const guide = JSON.parse(await readFile(resolve(root, 'data/search-guide.json'), 'utf8'));
 if (typeof guide.updated!=='string' || !/^\d{4}-\d{2}-\d{2}$/.test(guide.updated)) throw new Error('Invalid search guide date.');
 for (const language of ['en','zh']) {

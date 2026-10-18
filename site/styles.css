@@ -2382,6 +2382,23 @@ a.artifact-chip:focus-visible {
   flex-wrap: wrap;
 }
 
+/* Bring the collection into view sooner on phones without shrinking its text. */
+@media (max-width: 760px) {
+  .hero.project-intro { padding: 18px 0 8px; }
+  html .hero.project-intro h1 { margin-bottom: 8px; }
+  .project-intro .hero-description { margin-bottom: 10px; line-height: 1.6; }
+  .project-intro .collection-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 12px; margin: 8px 0 12px; }
+  .project-intro .collection-stats > div { justify-content: flex-end; }
+  .project-intro .intro-links { gap: 6px 16px; }
+  #collection { padding-top: 12px; }
+  #collection .section-heading { margin-bottom: 8px; }
+  #collection .section-intro { margin-top: 6px; }
+  #collection .collection-controls { padding: 10px 0; gap: 8px; }
+  #collection .search-field { margin-top: 0; }
+  #collection .compact-version { padding: 8px 0; }
+  #collection .index-meta { padding-top: 10px; gap: 6px; }
+}
+
 /* Numeric alignment belongs to counts; prose uses the same reading face. */
 #result-count, #corpus-count, .verification-legend dt > span:last-child {
   font-family: var(--mono);

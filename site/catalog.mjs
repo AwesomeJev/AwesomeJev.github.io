@@ -285,6 +285,38 @@ const translations = {
 const resources = [
   {
     "category": "Tools",
+    "title": "Abide",
+    "by": "coldteadotai · rule checks · MIT",
+    "url": "https://github.com/coldteadotai/abide",
+    "en": "Jev checks edits and turns against compiled project rules and requests repairs; missing credentials or network let edits pass unchecked, and replay findings depend on the chosen rubric.",
+    "zh": "用 Jev 按编译后的项目规则检查编辑和轮次，并请求修复；缺少凭据或网络时会放行未检查编辑，回放结果也取决于规则设计。"
+  },
+  {
+    "category": "Tools",
+    "title": "jev-fabric",
+    "by": "fabric-runtime · process orchestration · MIT",
+    "url": "https://github.com/fabric-runtime/jev-fabric",
+    "en": "Native process orchestration with bounded logs, deadlines and explicit typed decisions; commands run with caller privileges, exit status needs outcome checks, and selected policy proofs do not verify the whole runtime.",
+    "zh": "原生进程编排，提供有界日志、截止时间与显式类型化决策；命令使用调用者权限，退出状态仍需结果核验，部分策略证明不等于整个运行时已验证。"
+  },
+  {
+    "category": "Tools",
+    "title": "atoma",
+    "by": "atoma-run · agent workflows · AGPL-3.0-only",
+    "url": "https://github.com/atoma-run/atoma",
+    "en": "Multi-agent planning, execution and evidence review with Jev routing; shared agent/skill learning can expose document-derived material across organizations, and tenant isolation is not independently audited.",
+    "zh": "结合 Jev 路由的多 agent 规划、执行与证据审查；共享 agent／技能学习可能使文档衍生内容跨组织可读，租户隔离尚未经过独立审计。"
+  },
+  {
+    "category": "Tools",
+    "title": "circuit",
+    "by": "Barneyjm · training code · Apache-2.0",
+    "url": "https://github.com/Barneyjm/circuit",
+    "en": "LoRA and pointer-head training, evaluation and serving for text, image and audio decisions; publisher tests cover selected task sets and do not establish universal calibration or option-order invariance.",
+    "zh": "面向文本、图像与音频决策的 LoRA、指针头训练、评测和服务工具；发布者测试只覆盖选定任务集，不能证明普遍校准或选项顺序不变性。"
+  },
+  {
+    "category": "Tools",
     "title": "cua-s1.js",
     "by": "ai-ecoverse · browser port · MIT",
     "url": "https://github.com/ai-ecoverse/cua-s1.js",

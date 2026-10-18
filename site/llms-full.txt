@@ -2,7 +2,7 @@
 
 Independent community project, not affiliated with TypeSafe AI.
 Canonical website: https://awesomejev.github.io/
-Curated snapshot: 2026-10-17. Findings are author-reported; no model experiments reproduced here.
+Curated snapshot: 2026-10-18. Findings are author-reported; no model experiments reproduced here.
 
 # Jev guide: typed decisions, probabilities, and evaluation
 
@@ -855,6 +855,38 @@ Models · Cloudflare · Apache-2.0
 A multimodal model with a joint schema head, returning probabilities over allowed answers.
 
 Primary source: https://huggingface.co/Cloudflare/clef
+
+## Abide
+
+Tools · coldteadotai · rule checks · MIT
+
+Jev checks edits and turns against compiled project rules and requests repairs; missing credentials or network let edits pass unchecked, and replay findings depend on the chosen rubric.
+
+Primary source: https://github.com/coldteadotai/abide
+
+## jev-fabric
+
+Tools · fabric-runtime · process orchestration · MIT
+
+Native process orchestration with bounded logs, deadlines and explicit typed decisions; commands run with caller privileges, exit status needs outcome checks, and selected policy proofs do not verify the whole runtime.
+
+Primary source: https://github.com/fabric-runtime/jev-fabric
+
+## atoma
+
+Tools · atoma-run · agent workflows · AGPL-3.0-only
+
+Multi-agent planning, execution and evidence review with Jev routing; shared agent/skill learning can expose document-derived material across organizations, and tenant isolation is not independently audited.
+
+Primary source: https://github.com/atoma-run/atoma
+
+## circuit
+
+Tools · Barneyjm · training code · Apache-2.0
+
+LoRA and pointer-head training, evaluation and serving for text, image and audio decisions; publisher tests cover selected task sets and do not establish universal calibration or option-order invariance.
+
+Primary source: https://github.com/Barneyjm/circuit
 
 ## cua-s1.js
 
