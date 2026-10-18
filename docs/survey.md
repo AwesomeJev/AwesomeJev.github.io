@@ -1,6 +1,6 @@
 # Jev and typed decision models
 
-**A compact research survey · Evidence snapshot: 17 October 2026 (UTC)**
+**A compact research survey · Evidence snapshot: 18 October 2026 (UTC)**
 
 [English](survey.md) · [简体中文](survey.zh-CN.md) · [Resource index](../README.md) · [BibTeX](../references.bib)
 
@@ -65,6 +65,18 @@ Three recent studies sharpen different parts of this distinction. These are inte
 | [Labels Override Definitions, v1](https://arxiv.org/abs/2610.02586v1) | Changing prompt rendering with fixed weights probes an interface mechanism; label sensitivity alone does not identify a decision-head limitation. |
 | [GraphDecisionBench, v3](https://arxiv.org/abs/2610.06354v3) | Recognizing local edges, combining graph and text evidence, and constructing a high-quality solution require separate measurements. |
 | [AudioJev, v1](https://arxiv.org/abs/2610.01293v1) | Stability under option permutations is different from agreement between probabilities and observed correctness. |
+
+### Judge alignment, calibration and bias
+
+The word calibration can name different targets. [PRISM, v1](https://arxiv.org/abs/2610.18389v1) learns a human-label-based score correction from probe responses and evaluates agreement with human rankings. The [CALM typed-judge study, v1](https://arxiv.org/abs/2610.18122v1) tests probability quality and sensitivity to answer position and rewrites. These results should not be combined into one claim of a reliable or unbiased judge.
+
+| Measurement | What it asks | Boundary |
+| --- | --- | --- |
+| Score/ranking agreement | Does the judge follow the reference ordering? | Human labels fit PRISM's correction; probe cost and transfer to other tasks remain open. |
+| Probability calibration | Do probabilities agree with reference correctness frequencies? | Label quality matters, and a calibrated judge can remain sensitive to the tested perturbations. |
+| Verdict consistency | Do repeats or controlled rewrites preserve a choice? | Stability does not establish correctness; a rewrite may alter more than the intended property. |
+
+These are interpretations of the fixed abstracts and selected limitation sections, not independent replications. Our suggested comparison retains held-out groups and verifies label preservation before drawing a causal conclusion about a perturbation.
 
 ## 4. Connections worth studying
 

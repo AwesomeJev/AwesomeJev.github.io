@@ -212,3 +212,9 @@ Four new paper identities bring the reviewed expansion to **788 sources**. Three
 Five new paper identities selected from the arXiv discovery batch bring the reviewed expansion to **793 sources**. Fixed abstracts match retained scan evidence; manuscript sections and SecJev release metadata add scope without changing the abstract-checked tier. Code, model and data navigation links add no separate identities. [Review](stability-papers-2026-10-18.md).
 
 **中文：** 五篇论文使扩展达到793项；固定摘要与扫描证据一致，定向段落和发布元数据用于说明范围，不提高证据等级，不将配套链接重复计数。
+
+## Judging and open-model studies — 18 October 2026 UTC
+
+Eight individually reviewed paper identities bring the expansion to **801 sources**. Abstract hashes match the retained arXiv scan evidence; selected manuscript sections and fixed README snapshots provide interpretation limits. Code repositories, release variants and later game demonstrations are navigation only, with zero additional identities. [Scope and fingerprints](judge-models-2026-10-18.md).
+
+**中文：** 八篇论文使扩展达到801项，固定摘要与扫描证据一致。代码仓库、版本变体和后续游戏演示只作导航，不增加来源计数；未执行模型或复现实验。

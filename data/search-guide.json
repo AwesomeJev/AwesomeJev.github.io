@@ -152,6 +152,42 @@
         ]
       },
       {
+        "id": "judge-bias",
+        "title": "Can a calibrated judge still be biased?",
+        "paragraphs": [
+          {
+            "text": "Keep probability calibration, agreement with human rankings and verdict stability separate. The CALM study finds position and rewrite sensitivity in its tested typed-decision judges despite favorable calibration or consistency. Its labels and rewrites are inherited from benchmarks; changes in clarity and other unintended factors limit a causal reading of tone effects.",
+            "sources": [
+              {
+                "label": "Typed decision models as judges, v1",
+                "url": "https://arxiv.org/html/2610.18122v1#Sx1"
+              }
+            ]
+          },
+          {
+            "text": "PRISM uses counterfactual emphasis probes and human labels to fit a correction to overall judge scores. Its reported ranking-agreement gains on SummEval and HANNA are a different target from matching probabilities to observed correctness. Rubric-free does not mean label-free, and the extra probes have a cost. This PRISM method is separate from the similarly named Prism-1 option-readout architecture.",
+            "sources": [
+              {
+                "label": "PRISM original abstract, v1",
+                "url": "https://arxiv.org/abs/2610.18389v1"
+              },
+              {
+                "label": "PRISM limits, v1",
+                "url": "https://arxiv.org/html/2610.18389v1#Sx1"
+              },
+              {
+                "label": "Prism-1, v1",
+                "url": "https://arxiv.org/abs/2610.22066v1"
+              }
+            ]
+          },
+          {
+            "text": "Our proposed evaluation reports ranking agreement, probability reliability and perturbation sensitivity in separate columns. Verify that a supposedly meaning-preserving rewrite retains the task’s label, reserve held-out groups for learned corrections, and count probe calls in the evaluation budget. Repeated identical requests estimate variability; they do not establish correctness.",
+            "sources": []
+          }
+        ]
+      },
+      {
         "id": "decision-model-baselines",
         "title": "How should I compare decision models with trained classifiers and LLMs?",
         "paragraphs": [
@@ -658,6 +694,42 @@
                 "url": "https://huggingface.co/shlv/AudioJev"
               }
             ]
+          }
+        ]
+      },
+      {
+        "id": "judge-bias",
+        "title": "校准良好的评判模型仍可能有偏差吗？",
+        "paragraphs": [
+          {
+            "text": "应区分概率校准、与人类排序的一致性及判断稳定性。CALM 研究发现，所测类型化评判模型即使校准或一致性较好，仍可能受位置和改写影响。研究沿用基准标签与改写，清晰度等非目标因素的变化限制了对语气影响的因果解释。",
+            "sources": [
+              {
+                "label": "类型化模型评判偏差研究 v1",
+                "url": "https://arxiv.org/html/2610.18122v1#Sx1"
+              }
+            ]
+          },
+          {
+            "text": "PRISM 用反事实强调探针和人类标签，学习对整体评判分数的校正。其在 SummEval 与 HANNA 上报告的排序一致性提升，与概率是否符合实际正确频率是不同目标。不要求逐项评分标准并不等于不需要标签，额外探针也有成本。这一 PRISM 方法与名称相近的 Prism-1 选项读出架构是不同工作。",
+            "sources": [
+              {
+                "label": "PRISM 原始摘要 v1",
+                "url": "https://arxiv.org/abs/2610.18389v1"
+              },
+              {
+                "label": "PRISM 局限 v1",
+                "url": "https://arxiv.org/html/2610.18389v1#Sx1"
+              },
+              {
+                "label": "Prism-1 v1",
+                "url": "https://arxiv.org/abs/2610.22066v1"
+              }
+            ]
+          },
+          {
+            "text": "我们建议分列报告排序一致性、概率可靠性和扰动敏感性；先核查所谓保留含义的改写是否仍应使用原标签，为学习到的校正保留独立测试分组，并把探针调用计入评估预算。重复相同请求可以估计变异性，但不能证明判断正确。",
+            "sources": []
           }
         ]
       },

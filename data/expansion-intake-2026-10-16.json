@@ -1075,6 +1075,24 @@
       ],
       "accepted_at": "2026-10-18T06:22:32.093170+00:00",
       "evidence_scope": "Five fixed-version primary studies selected from the arXiv scan; abstracts match retained evidence. Targeted manuscript sections and SecJev release documentation/metadata inspected. Companion links and package variants add no identities; no models, data packages or experiments run."
+    },
+    {
+      "name": "judging_adaptation_and_workflow_security",
+      "input_sha256": "99cfafeec8f71d57e6ac6910e5dff0a809a4751a4e31c20ea40b0de8acc5413c",
+      "screened_records_proposed": 8,
+      "accepted_count": 8,
+      "accepted_urls": [
+        "https://arxiv.org/abs/2610.18389",
+        "https://arxiv.org/abs/2610.18122",
+        "https://arxiv.org/abs/2610.17175",
+        "https://arxiv.org/abs/2610.15537",
+        "https://arxiv.org/abs/2609.36115",
+        "https://arxiv.org/abs/2610.14404",
+        "https://arxiv.org/abs/2609.35865",
+        "https://arxiv.org/abs/2609.36116"
+      ],
+      "accepted_at": "2026-10-18T07:54:20.605585+00:00",
+      "evidence_scope": "Eight whole paper identities, fixed abstracts and selected manuscript/README sections. FunDM PDF page 10 was rendered and inspected. Four author repositories supply navigation links; no source code, models, raw benchmark records or experiments were executed."
     }
   ]
 }

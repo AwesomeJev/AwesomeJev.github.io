@@ -42,6 +42,14 @@ For abstention or escalation, report coverage and error among accepted cases, an
 
 AudioJev uses order calibration to mean probability stability under equivalent candidate permutations. Align candidates by meaning before comparing reordered distributions, then assess accuracy and correctness calibration separately. Its released model card describes one seed, reports original-order scores and discloses audio-source overlap; those results should not be substituted for the paper’s three-seed averages. [AudioJev release scope](https://huggingface.co/shlv/AudioJev)
 
+## Can a calibrated judge still be biased?
+
+Keep probability calibration, agreement with human rankings and verdict stability separate. The CALM study finds position and rewrite sensitivity in its tested typed-decision judges despite favorable calibration or consistency. Its labels and rewrites are inherited from benchmarks; changes in clarity and other unintended factors limit a causal reading of tone effects. [Typed decision models as judges, v1](https://arxiv.org/html/2610.18122v1#Sx1)
+
+PRISM uses counterfactual emphasis probes and human labels to fit a correction to overall judge scores. Its reported ranking-agreement gains on SummEval and HANNA are a different target from matching probabilities to observed correctness. Rubric-free does not mean label-free, and the extra probes have a cost. This PRISM method is separate from the similarly named Prism-1 option-readout architecture. [PRISM original abstract, v1](https://arxiv.org/abs/2610.18389v1) · [PRISM limits, v1](https://arxiv.org/html/2610.18389v1#Sx1) · [Prism-1, v1](https://arxiv.org/abs/2610.22066v1)
+
+Our proposed evaluation reports ranking agreement, probability reliability and perturbation sensitivity in separate columns. Verify that a supposedly meaning-preserving rewrite retains the task’s label, reserve held-out groups for learned corrections, and count probe calls in the evaluation budget. Repeated identical requests estimate variability; they do not establish correctness.
+
 ## How should I compare decision models with trained classifiers and LLMs?
 
 The v2 decision-gate benchmark reports that a fine-tuned DeBERTa-v3-large had the highest observed accuracy on all but one labeled benchmark. That result concerns access to task labels. For your comparison, separate settings with and without task-specific training labels; record data exposure, development/test splits, output formats and failures before comparing accuracy, selective coverage or cost. [Decision-gate benchmark, v2](https://arxiv.org/abs/2610.00346v2)
@@ -328,6 +336,14 @@ Derives excess-Brier risk bounds for pooling recalibration across questions unde
 
 Primary source: https://arxiv.org/abs/2610.18488v1
 
+## PRISM: Calibrating Black-Box Judges with Counterfactual Probes
+
+Papers · Yamamoto & Kuroki · 2026-10-13 · v1
+
+Learns a score correction from counterfactual probes and human labels; improved ranking agreement on two text tasks is distinct from probability calibration, and probe cost and cross-task transfer remain relevant limits.
+
+Primary source: https://arxiv.org/abs/2610.18389v1
+
 ## Consider, Then Choose: Order-Invariant Decisions in System One Models
 
 Papers · Huang, Teng, Deng & An · 2026-10-13 · v1
@@ -335,6 +351,14 @@ Papers · Huang, Teng, Deng & An · 2026-10-13 · v1
 Runoff scores options individually, then balances finalist positions; order invariance assumes deterministic responses and a unique ranking, and does not resolve option-name bias or guarantee more accurate decisions.
 
 Primary source: https://arxiv.org/abs/2610.18233v1
+
+## Cheap, Consistent, Calibrated, but Biased? Typed Decision Models as Judges
+
+Papers · Lukassen, Weisser & Silbersdorff · 2026-10-13 · v1
+
+CALM pairwise challenges expose position and rewrite sensitivity despite consistency and calibration; inherited reference labels and rewrites that change more than tone limit causal interpretation and transfer to other judging tasks.
+
+Primary source: https://arxiv.org/abs/2610.18122v1
 
 ## Same Attack, Different Judge: A First Controlled Adversarial Comparison of Jev, LLM Judges, and Purpose-Built Safety Classifiers
 
@@ -368,6 +392,14 @@ Answer-letter readout and supervised LoRA baselines; evaluation includes model-g
 
 Primary source: https://arxiv.org/abs/2610.17205v1
 
+## FunDM: Cheap & Label-Free Decision Models from Frozen Language Models
+
+Papers · Panchal · 2026-10-12 · v1
+
+Distills teacher probabilities into small heads using fewer layers of a frozen Qwen3-8B; label-free means no correct-answer training labels, and efficiency measurements cover one GPU and engine workload rather than production serving.
+
+Primary source: https://arxiv.org/abs/2610.17175v1
+
 ## Does a Hosted Decision Model Respect Irrelevant Alternatives? A Pre-Registered Test of Option-Set Dependence in Jev
 
 Papers · Rajput, Chauhan & Kosaraju · 2026-10-12 · v1
@@ -400,6 +432,14 @@ Jev memory-retirement evaluation separates confirmed updates from suggestions; m
 
 Primary source: https://arxiv.org/abs/2610.15710v1
 
+## Poisoned into Action: Context Attacks on Typed Decision Workflows
+
+Papers · Wu, Chang & Yan · 2026-10-11 · v1
+
+Traces context poisoning through retrieval, typed choices and persisted execution while measuring retained clean utility; two synthetic development workflows and nonsignificant prespecified contrasts make the findings exploratory.
+
+Primary source: https://arxiv.org/abs/2610.15537v1
+
 ## SanSi: A Looped Typed Decision Model for System 1.5 Thinking
 
 Papers · Gan, Lee & Kang · 2026-10-10 · v2
@@ -416,6 +456,14 @@ Candidate-menu interventions and confidence cascades; ranking stability does not
 
 Primary source: https://arxiv.org/abs/2610.07716v2
 
+## Koa-decision: Fast and Consistent Structured Decision Making with Generative LLMs
+
+Papers · Dai et al. · 2026-10-10 · v2
+
+Uses atomic label tokens and supervised fine-tuning for single-step constrained decisions; latency follows a specified sequential serving protocol, adaptation differs across baselines, and the production intent data cannot be released.
+
+Primary source: https://arxiv.org/abs/2609.36115v2
+
 ## Jev in Medicine: A Benchmark Evaluation
 
 Papers · Madrid-García & Merino-Barbancho · 2026-10-10 · v4
@@ -431,6 +479,14 @@ Papers · Zhang et al. · 2026-10-10 · v2
 ContractNLI request variations can change which answers are wrong while aggregate accuracy stays unchanged; stable answers may preserve errors. This benchmark does not validate real legal deployment.
 
 Primary source: https://arxiv.org/abs/2609.27678v2
+
+## DICE: Tilting the Odds through Interface Attackson System One Model
+
+Papers · Dong, Lu, Guo & Wang · 2026-10-09 · v1
+
+Tests bounded substitutions at state-extraction, question-generation and output-interpretation adapters while leaving authentic Jev responses intact; three synthetic pilots locate decision-integrity failures without estimating deployed attack prevalence.
+
+Primary source: https://arxiv.org/abs/2610.14404v1
 
 ## Does System One Transfer? Calibrated Typed-Decision Models, Label Budgets, and Translation for Indonesian Regional Languages
 
@@ -664,6 +720,14 @@ A Chinese typed-decision model and proposed benchmark; domain-specific training 
 
 Primary source: https://arxiv.org/abs/2609.36965v1
 
+## Dyad: Extending Large Language Models with Native Typed Decision-Making
+
+Papers · Zhan et al. · 2026-09-28 · v1
+
+Adds an environment-conditioned action encoder to an LLM for typed actions; frozen-LLM adaptation and joint reinforcement learning are separate settings, and the Jev latency comparison uses previously published API measurements.
+
+Primary source: https://arxiv.org/abs/2609.36116v1
+
 ## Mnemon: Raw Records, Fast Judgments, Slow Thoughts
 
 Papers · Wang · 2026-09-28 · v1
@@ -695,6 +759,14 @@ Papers · Li, He & Li · 2026-09-27 · v1
 Tests coherence between logically related probabilities, separately from accuracy and calibration.
 
 Primary source: https://arxiv.org/abs/2609.33209v1
+
+## PACT: Pairwise-Anchored Calibrated Tuning for Single-Token Typed Decisions
+
+Papers · Lin · 2026-09-26 · v1
+
+Uses certified contrastive pairs, permutation consistency and contextual temperature fitting to improve decision stability and ordinal error; a 324-item synthetic holdout, one model scale and certificate dependence limit generalization.
+
+Primary source: https://arxiv.org/abs/2609.35865v1
 
 ## Typed Decision Models: An Early Evidence Audit and Evaluation Checklist
 

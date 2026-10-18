@@ -447,6 +447,20 @@
     },
     {
       "category": "Papers",
+      "title": "PRISM: Calibrating Black-Box Judges with Counterfactual Probes",
+      "by": "Yamamoto & Kuroki · 2026-10-13 · v1",
+      "date": "2026-10-13",
+      "first_submitted": "2026-10-13",
+      "url": "https://arxiv.org/abs/2610.18389v1",
+      "theme": "judging",
+      "en": "Learns a score correction from counterfactual probes and human labels; improved ranking agreement on two text tasks is distinct from probability calibration, and probe cost and cross-task transfer remain relevant limits.",
+      "zh": "利用反事实评分探针和人类标签学习校正；两个文本任务上的排序一致性提升不同于概率校准，额外探针成本与跨任务迁移仍是重要限制。",
+      "artifacts": {
+        "unverified": "code"
+      }
+    },
+    {
+      "category": "Papers",
       "title": "Consider, Then Choose: Order-Invariant Decisions in System One Models",
       "by": "Huang, Teng, Deng & An · 2026-10-13 · v1",
       "date": "2026-10-13",
@@ -457,6 +471,24 @@
       "zh": "Runoff 先逐个评分选项，再平衡入围候选的位置；顺序不变性假设响应确定且排序唯一，不能解决选项名称偏置，也不保证决策更准确。",
       "artifacts": {
         "unverified": "code"
+      }
+    },
+    {
+      "category": "Papers",
+      "title": "Cheap, Consistent, Calibrated, but Biased? Typed Decision Models as Judges",
+      "by": "Lukassen, Weisser & Silbersdorff · 2026-10-13 · v1",
+      "date": "2026-10-13",
+      "first_submitted": "2026-10-13",
+      "url": "https://arxiv.org/abs/2610.18122v1",
+      "theme": "judging",
+      "en": "CALM pairwise challenges expose position and rewrite sensitivity despite consistency and calibration; inherited reference labels and rewrites that change more than tone limit causal interpretation and transfer to other judging tasks.",
+      "zh": "CALM 成对挑战显示，一致性和校准并不能消除位置与改写敏感性；沿用的参考标签，以及不只改变语气的改写，限制了因果解释和对其他评判任务的推广。",
+      "artifacts": {
+        "code": "https://github.com/fabian-lu/TDM_as_a_Judge"
+      },
+      "artifact_note": {
+        "en": "Declared MIT code; benchmark and results CC BY-NC-SA 4.0.",
+        "zh": "声明代码为 MIT；基准与结果为 CC BY-NC-SA 4.0。"
       }
     },
     {
@@ -506,6 +538,20 @@
       "theme": "architectures",
       "en": "Answer-letter readout and supervised LoRA baselines; evaluation includes model-generated labels.",
       "zh": "答案字母概率读出与监督式 LoRA 基线；评测包含模型生成的标签。"
+    },
+    {
+      "category": "Papers",
+      "title": "FunDM: Cheap & Label-Free Decision Models from Frozen Language Models",
+      "by": "Panchal · 2026-10-12 · v1",
+      "date": "2026-10-12",
+      "first_submitted": "2026-10-12",
+      "url": "https://arxiv.org/abs/2610.17175v1",
+      "theme": "architectures",
+      "en": "Distills teacher probabilities into small heads using fewer layers of a frozen Qwen3-8B; label-free means no correct-answer training labels, and efficiency measurements cover one GPU and engine workload rather than production serving.",
+      "zh": "把教师概率蒸馏到较浅的冻结 Qwen3-8B 计算路径上的小型决策头；无标签指不使用正确答案训练标签，效率测量只覆盖一个 GPU 和引擎任务，而非生产服务。",
+      "artifacts": {
+        "code": "https://github.com/Ujjawal-K-Panchal/FunDM"
+      }
     },
     {
       "category": "Papers",
@@ -560,6 +606,24 @@
     },
     {
       "category": "Papers",
+      "title": "Poisoned into Action: Context Attacks on Typed Decision Workflows",
+      "by": "Wu, Chang & Yan · 2026-10-11 · v1",
+      "date": "2026-10-11",
+      "first_submitted": "2026-10-11",
+      "url": "https://arxiv.org/abs/2610.15537v1",
+      "theme": "robustness",
+      "en": "Traces context poisoning through retrieval, typed choices and persisted execution while measuring retained clean utility; two synthetic development workflows and nonsignificant prespecified contrasts make the findings exploratory.",
+      "zh": "追踪上下文投毒经检索、类型化选择到持久化执行的路径，并衡量保留的正常任务效用；仅覆盖两个合成开发工作流，预设比较未达显著，结论仍属探索性。",
+      "artifacts": {
+        "code": "https://github.com/WuXixiong/jev-poisoning-bench"
+      },
+      "artifact_note": {
+        "en": "Public subset; full call archives and private attestations are omitted.",
+        "zh": "公开子集；完整调用归档与私有证明材料未包含。"
+      }
+    },
+    {
+      "category": "Papers",
       "title": "SanSi: A Looped Typed Decision Model for System 1.5 Thinking",
       "by": "Gan, Lee & Kang · 2026-10-10 · v2",
       "date": "2026-10-10",
@@ -593,6 +657,20 @@
     },
     {
       "category": "Papers",
+      "title": "Koa-decision: Fast and Consistent Structured Decision Making with Generative LLMs",
+      "by": "Dai et al. · 2026-10-10 · v2",
+      "date": "2026-10-10",
+      "first_submitted": "2026-09-28",
+      "url": "https://arxiv.org/abs/2609.36115v2",
+      "theme": "architectures",
+      "en": "Uses atomic label tokens and supervised fine-tuning for single-step constrained decisions; latency follows a specified sequential serving protocol, adaptation differs across baselines, and the production intent data cannot be released.",
+      "zh": "通过原子标签 token 和监督微调实现单步受约束决策；延迟采用指定的顺序服务测量协议，不同基线的适配程度不同，生产意图数据无法公开。",
+      "artifacts": {
+        "unverified": "code"
+      }
+    },
+    {
+      "category": "Papers",
       "title": "Jev in Medicine: A Benchmark Evaluation",
       "by": "Madrid-García & Merino-Barbancho · 2026-10-10 · v4",
       "date": "2026-10-10",
@@ -618,6 +696,20 @@
       "theme": "applications",
       "en": "ContractNLI request variations can change which answers are wrong while aggregate accuracy stays unchanged; stable answers may preserve errors. This benchmark does not validate real legal deployment.",
       "zh": "ContractNLI 请求变化可能改变具体错误答案，而总体准确率保持不变；稳定答案也可能保留错误。该基准不能验证真实法律场景的部署有效性。"
+    },
+    {
+      "category": "Papers",
+      "title": "DICE: Tilting the Odds through Interface Attackson System One Model",
+      "by": "Dong, Lu, Guo & Wang · 2026-10-09 · v1",
+      "date": "2026-10-09",
+      "first_submitted": "2026-10-09",
+      "url": "https://arxiv.org/abs/2610.14404v1",
+      "theme": "robustness",
+      "en": "Tests bounded substitutions at state-extraction, question-generation and output-interpretation adapters while leaving authentic Jev responses intact; three synthetic pilots locate decision-integrity failures without estimating deployed attack prevalence.",
+      "zh": "在状态抽取、问题生成和输出解释适配层测试有界替换，保持 Jev 原始响应不变；三个合成试验定位决策完整性失效，不估计实际部署中的攻击发生率。",
+      "artifacts": {
+        "unverified": "code"
+      }
     },
     {
       "category": "Papers",
@@ -1013,6 +1105,20 @@
     },
     {
       "category": "Papers",
+      "title": "Dyad: Extending Large Language Models with Native Typed Decision-Making",
+      "by": "Zhan et al. · 2026-09-28 · v1",
+      "date": "2026-09-28",
+      "first_submitted": "2026-09-28",
+      "url": "https://arxiv.org/abs/2609.36116v1",
+      "theme": "architectures",
+      "en": "Adds an environment-conditioned action encoder to an LLM for typed actions; frozen-LLM adaptation and joint reinforcement learning are separate settings, and the Jev latency comparison uses previously published API measurements.",
+      "zh": "为 LLM 加入环境条件化行动编码器以选择类型化动作；冻结 LLM 仅适配编码器与联合强化学习是不同设置，Jev 延迟比较引用既有 API 测量。",
+      "artifacts": {
+        "unverified": "code"
+      }
+    },
+    {
+      "category": "Papers",
       "title": "Mnemon: Raw Records, Fast Judgments, Slow Thoughts",
       "by": "Wang · 2026-09-28 · v1",
       "date": "2026-09-28",
@@ -1064,6 +1170,24 @@
       "theme": "calibration",
       "en": "Tests coherence between logically related probabilities, separately from accuracy and calibration.",
       "zh": "检验逻辑相关命题的概率一致性，与准确率和校准分别考察。"
+    },
+    {
+      "category": "Papers",
+      "title": "PACT: Pairwise-Anchored Calibrated Tuning for Single-Token Typed Decisions",
+      "by": "Lin · 2026-09-26 · v1",
+      "date": "2026-09-26",
+      "first_submitted": "2026-09-26",
+      "url": "https://arxiv.org/abs/2609.35865v1",
+      "theme": "calibration",
+      "en": "Uses certified contrastive pairs, permutation consistency and contextual temperature fitting to improve decision stability and ordinal error; a 324-item synthetic holdout, one model scale and certificate dependence limit generalization.",
+      "zh": "利用带证书的对比样本对、排列一致性和上下文温度拟合改善决策稳定性与序数误差；留出集仅324条合成样本，模型尺度单一，且依赖证书正确性，推广范围有限。",
+      "artifacts": {
+        "code": "https://github.com/BennyLinntu/PACT-Pairwise-Anchored-Calibrated-Tuning-for-Single-Token-Typed-Decisions"
+      },
+      "artifact_note": {
+        "en": "Paper results are separate from the repository’s later single-run Tetris demo.",
+        "zh": "论文结果与仓库中后续的单次 Tetris 演示应分开解读。"
+      }
     },
     {
       "category": "Papers",
