@@ -41,6 +41,11 @@ The scan report records `error_code_counts` across **all** issues before limitin
 
 Rate limits are bounded so that a throttled scan ends with a partial result instead of hitting the job timeout. The fetcher retries a `429` or `5xx` response twice and honours a `Retry-After` of at most 60 seconds; a longer requested delay ends that request as `retry_after_exceeded`. A `429` or a `Retry-After` delay applies to the whole host: all workers share the host's not-before time and send it nothing earlier. The plain backoff after a `5xx` without `Retry-After` delays only that request. The scan also has an 18-minute deadline (`SCAN_TIME_BUDGET_SECONDS` in `scripts/refresh_sources.py`), counted from the start of fetching, which leaves the 25-minute job time to merge, rebuild and validate. It is split into guaranteed shares per phase (`PHASE_TIME_BUDGET_SECONDS`): 14 minutes for the ecosystem phase and 4 minutes for the research queries that follow it. Time that the ecosystem phase leaves unused passes to research, and a slow ecosystem phase cannot use up the research share. A wait that would end after the current phase's deadline is not started, and that phase sends no new request. The run is then reported as `partial` with `retry_budget_exhausted: true`, `retry_budget_exhausted_phases` naming the phase or phases, `retry_budget_seconds` and `phase_budget_seconds` in `data/scan-latest.json` and the job summary. Unscanned sources keep their earlier evidence.
 
+Direct-paper discovery also queries the [arXiv Atom API](https://info.arxiv.org/help/api/user-manual.html), independently of Hugging Face and OpenAlex. It searches titles/abstracts for Jev, typed decisions, System One models and RLCD, newest updates first, in pages of 200 until the feed ends or the research time budget expires. The API transport uses one connection and waits at least three seconds after every attempt, including retries and redirects, following the [official rate limits](https://info.arxiv.org/help/api/tou.html). It shares the existing three-worker scholarly-query pool. Avoid overlapping manual live API checks with an active scan; the limits apply across machines.
+
+New direct candidates must pass an additional fixed-version arXiv abstract-page check before receiving `abstract_checked`: the requested identity/version, citation metadata, substantive original abstract and direct relevance must agree. Known identities and explicit curation exclusions are skipped by this discovery path; their ordinary refresh path remains unchanged. A failed page check stays metadata-only and records an issue. Valid legacy identifiers do not invalidate a feed, but a directly relevant legacy-format candidate is reported as unsupported rather than being coerced into a modern ID. Malformed/error XML, changing pagination and exhausted budgets produce partial results, with earlier evidence preserved. `arxiv_discovery` in the scan report separates feed entries, direct candidates, skipped known identities, verified new records, unavailable records and whether pagination completed. Smoke mode reads only the first five feed entries and makes no publication changes.
+
+
 Use **Actions → Scan public sources → Run workflow**, selecting `main`, to trigger the same process manually. A successful scan is not proof that a PR was merged or the website was deployed; inspect the run summary and the proposed diff separately.
 
 Manual runs can select all new candidates or a cap of 100 or 300. The `smoke` option performs a small public-network dry-run: it does not rewrite the ledgers or scan report, package an update, or publish a PR. It checks connectivity and the small scan path, not the completeness of a full scheduled run.
@@ -220,3 +225,9 @@ python3 -m unittest discover -s tests
 生成的新增来源页面是审阅接收清单的快照，与可搜索的完整来源库分开。定期扫描仍只提交数据 PR，不会静默改写扩展报告或目录。发布前继续检查拟新增资源的核查范围、重复情况以及许可或实验限制。
 
 中文资源简介保存在独立翻译文件中，以完整英文简介对应。新增或修改来源简介时同步校对译文，保留数据私有性、标签来源、许可和复现限制；缺少对应中文时，构建会停止。翻译不改变来源数量、原始标题、链接或证据等级。
+
+### arXiv 一手发现
+
+论文发现新增 arXiv 官方 Atom API，与 Hugging Face、OpenAlex 独立工作。按最新更新分页，每页200条，直到结果结束或研究阶段预算用尽；每次API尝试后至少间隔三秒，只使用一个连接，重试和跳转也遵守该限制。它与其他学术查询共用至多三个工作线程。不要让本地实网检查与扫描任务重叠访问API，限速适用于同一使用方的全部机器。
+
+新候选须进一步核查固定版本摘要页的身份、版本、引用元数据、原始摘要和直接相关性，才能记为摘要已查；失败只保留元数据状态。已知来源和明确排除项不重复发现，既有刷新流程保持不变。有效旧式编号不会使整页失败，但相关旧式条目会明确报告不支持，避免错误改写编号。异常XML、分页变化和预算耗尽会记录部分完成；报告分别列出查询范围和核查结果。smoke模式仅检查首五条，不写台账或发布PR。
