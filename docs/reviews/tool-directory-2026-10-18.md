@@ -13,3 +13,9 @@ Local checks covered a Python / API integration / official compound filter; relo
 The 434-test suite passed. Extended static checks verify complete bilingual rows, distinct identities, export parity, exact ItemList order, canonical/hreflang coverage, current module hashes and bilingual search text. The final layout-only adjustment also passes the targeted site/view tests, deterministic build check, publication validator and whitespace check. Publication and search receipts are recorded after deployment.
 
 **中文：** 新增中英文工具目录，按四种用途筛选既有20个项目，支持官方／社区来源和双语关键词组合检索。一个项目可属于多个用途，但静态表格、JSON和结构化数据均只计一次；来源数量和证据等级不变。所有说明直接存在于HTML中，筛选链接支持刷新和语言切换恢复。手机端保持白底黑字和完整范围说明，没有横向溢出；本目录没有运行这些项目或增加复现声明。
+
+## Publication receipts
+
+Commit `0e8564e237da77c51cfd59fd451d2b8d226d4719` passed [main repository checks](https://github.com/reacher-z/Awesome-Jev/actions/runs/39100157106), [website repository checks](https://github.com/AwesomeJev/AwesomeJev.github.io/actions/runs/39100158953) and [Pages deployment](https://github.com/AwesomeJev/AwesomeJev.github.io/actions/runs/39100158982). All 38 live HTTP targets matched committed bytes, including both new pages, their 20-row static tables, the JSON export and the versioned filtering module. A live workflow/community filter returned four distinct projects and copying the view showed success feedback.
+
+A single IndexNow POST for the two new tool routes returned HTTP 200. The updated 20-page sitemap was submitted once through the already-verified Google Search Console property, which displayed “Sitemap submitted successfully.” After dismissal, its table still showed the earlier Unknown / Couldn't fetch / 0 discovered pages record. Submission acceptance therefore does not establish restored fetching, indexing, ranking or AI citation. No account data or Search Console screenshots were committed; Bing authentication remains outside this release.

@@ -26,6 +26,10 @@ The [English](https://awesomejev.github.io/tools/) and [Chinese](https://awesome
 
 The directory is linked from both READMEs, both homepages, the document navigation, sitemap and optional `llms.txt`. It provides a focused route for implementation searches while leaving claims about indexing and AI citation to observed external evidence.
 
+**Tool-directory release receipt, 2026-10-18 UTC:** `0e8564e` passed both repository checks and Pages deployment, with 434 tests and 38 live parity checks passing. One IndexNow POST for the new English/Chinese tool pages returned HTTP 200. Google accepted one submission of the updated 20-page sitemap, but the displayed record still showed the prior “Couldn't fetch” status and zero discovered pages. Fetch recovery and indexing remain unconfirmed. [Scope and receipts](reviews/tool-directory-2026-10-18.md).
+
+**工具目录发布回执（2026-10-18 UTC）：** 两个工具页面已上线，434项测试和38项线上文件核对通过；IndexNow对两页的一次通知返回HTTP 200。Google确认收到含20页的更新地图，但表格仍显示此前抓取失败、发现0页的记录，尚不能认定抓取恢复或新增收录。
+
 ## Authoring and building the public pages
 
 Edit the shared sources, then rebuild from the repository root:
