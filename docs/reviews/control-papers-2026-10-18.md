@@ -38,3 +38,11 @@ The bilingual option-label topic adds a comparison of order invariance and label
 The collection now has 82 direct papers, 91 bibliography entries, 164 curated resources and 788 expansion sources. The previous research-ledger bytes are unchanged, with four rows appended; the intake hash was recomputed after clarifying that Pass^3 requires success in all three independent runs.
 
 All 434 repository tests passed, including bibliography/README/catalog consistency and static bilingual page checks. The final wording also passes targeted bibliography checks, the deterministic build check, source/expansion validation and publication hygiene. Browser checks found the Runoff and SJC entries through their descriptions, retained the code-unverified and release-scope notes, and showed no horizontal overflow at 390 px. The expanded Chinese option-bias topic renders its new comparison, references and diagnostic steps.
+
+## Publication receipts and discovery follow-up
+
+Commit `aa855025ce6d2ac3804efe21ffea3fbc12ebca47` passed [main repository checks](https://github.com/reacher-z/Awesome-Jev/actions/runs/39101027257), [website repository checks](https://github.com/AwesomeJev/AwesomeJev.github.io/actions/runs/39101029909) and [Pages deployment](https://github.com/AwesomeJev/AwesomeJev.github.io/actions/runs/39101029812). All 38 live targets matched committed bytes, including 82-paper lists, 788-source discovery lists, the updated topic, exports and versioned modules. The live paper directory shows 45 papers with linked code; the two newly unverified releases do not enter that filter.
+
+One IndexNow POST for the ten substantively changed home, paper, discovery, topic-directory and option-bias pages (English/Chinese pairs) returned HTTP 200. No Google or Bing account action was taken and no unchanged tool/model page was notified. The receipt does not establish indexing or ranking.
+
+Discovery follow-up: the latest scan proposal at `656c0e8` did not contain Jev-LiteMAS, Verdict or SJC, although their primary pages were available. Inspection of `Scan.scan_research` showed discovery queries to Hugging Face and OpenAlex, while primary arXiv pages are refreshed for already seeded papers. A bounded primary arXiv discovery path is worth evaluating next; this release does not claim that change has been implemented or that automated coverage is exhaustive.
