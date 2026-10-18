@@ -1125,6 +1125,21 @@
       ],
       "accepted_at": "2026-10-18T09:07:45.349129+00:00",
       "evidence_scope": "Six whole paper identities, fixed abstracts and selected manuscript sections. Three author repository READMEs/inventories inspected, including a verified repository rename. Artifact links add no identities; no code, datasets, prediction records or model experiments executed."
+    },
+    {
+      "name": "language_moderation_and_sentiment_evidence",
+      "input_sha256": "49fa00bc92e5cf1c151f400d12e3caa26488234a334c0e3538ebd53c8e63a95e",
+      "screened_records_proposed": 5,
+      "accepted_count": 5,
+      "accepted_urls": [
+        "https://arxiv.org/abs/2610.11901",
+        "https://arxiv.org/abs/2610.07953",
+        "https://arxiv.org/abs/2610.03324",
+        "https://arxiv.org/abs/2610.08829",
+        "https://arxiv.org/abs/2609.35293"
+      ],
+      "accepted_at": "2026-10-18T09:23:31.703442+00:00",
+      "evidence_scope": "Five whole paper identities, fixed abstracts and selected manuscript sections. One author repository README/inventory inspected; raw prediction caches and dataset text are not redistributed. Artifact links add no identities; no code, datasets, prediction records or model experiments executed."
     }
   ]
 }

@@ -244,7 +244,7 @@ function topicLinks(language, currentSlug) {
 }
 function topicsPage(language) {
   const isZh=language==='zh', title=isZh?'Jev 决策模型研究专题':'Jev decision model research topics';
-  const description=isZh?'聚焦校准与拒答、选项标签偏置、音频决策与图任务评测，连接原始研究、实践诊断与证据局限。':'Focused notes on calibration, abstention, option-label bias, audio decisions and graph tasks, with primary research and evaluation limits.';
+  const description=isZh?'聚焦校准与拒答、语言任务、选项偏置、音频和图决策，连接原始研究、实践诊断与证据局限。':'Focused notes on calibration, language tasks, option bias, audio and graph decisions, with primary research and evaluation limits.';
   const body=`<p>${isZh?'每个专题提供简明回答、原始引用、建议检查与核查范围。作者报告的结果与本项目提出的评估流程分别标明。':'Each note gives a direct answer, primary references, proposed checks and review scope. Author-reported findings are distinguished from evaluation procedures proposed by this project.'}</p><div class="prose">${topics.map(topic=>`<section><h2><a href="${route(language,'topics/'+topic.slug)}">${esc(topic[language].title)}</a></h2><p>${esc(topic[language].description)}</p></section>`).join('')}</div>`;
   return shell(language,'topics',title,description,body,topics.map(topic=>({title:topic[language].title,url:origin+route(language,'topics/'+topic.slug)})));
 }

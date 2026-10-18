@@ -3,34 +3,34 @@
   "baseline_commit": "3519c15d7e00686a8dbf9b1e184c68726327ab1e",
   "baseline_source_index_sha256": "8bfdd20564f2cda54bb8264c3c802f315e3e9a11b153bd85dde4325f53c841d5",
   "target_new_sources": 301,
-  "accepted_new_sources": 813,
+  "accepted_new_sources": 818,
   "remaining_to_target": 0,
   "target_count_reached": true,
   "current_index_counts": {
     "editorial_reviewed": 4,
     "content_screened": 2397,
-    "abstract_checked": 1872,
+    "abstract_checked": 1877,
     "metadata_only": 47,
-    "raw_records": 4334,
-    "unique_records": 4320,
+    "raw_records": 4339,
+    "unique_records": 4325,
     "duplicate_records": 14,
-    "checked_sources": 4273
+    "checked_sources": 4278
   },
   "by_category": {
     "Datasets": 101,
     "Guides and evaluations": 38,
     "Models": 59,
-    "Papers": 60,
+    "Papers": 65,
     "Projects": 219,
     "Research foundations": 336
   },
   "by_relation": {
     "adjacent": 25,
     "background": 336,
-    "direct": 452
+    "direct": 457
   },
   "by_verification_level": {
-    "abstract_checked": 396,
+    "abstract_checked": 401,
     "content_screened": 417
   },
   "verification_note": "Evidence depth is labeled per source. Content screening and abstract checks do not establish full-paper review, peer review, endorsement, or experimental reproduction.",
@@ -2436,6 +2436,18 @@
       "ledger": "research-sources.jsonl"
     },
     {
+      "title": "Benchmarking System One Models in Online Moderation",
+      "url": "https://arxiv.org/abs/2610.07953",
+      "category": "Papers",
+      "topic": "direct-decision-research",
+      "description": "Separates written rules, retrieved precedents and candidate restrictions across five moderation benchmarks. Retrieval can improve discrimination or merely change flagging rates; using labeled evaluation examples as precedents and representing media through generated captions limits deployment claims.",
+      "relation": "direct",
+      "verification_level": "abstract_checked",
+      "content_sha256": "5132c8e8b5e6c306f7316f81fec40045f0f031e7078201b0a055261ca00b6945",
+      "retrieved_at": "2026-10-18T09:18:14.029356+00:00",
+      "ledger": "research-sources.jsonl"
+    },
+    {
       "title": "Beyond Answer Confidence: A Controlled Audit of Self-Knowledge in a Black-Box Decision Model",
       "url": "https://arxiv.org/abs/2610.01006",
       "category": "Papers",
@@ -2484,6 +2496,18 @@
       "ledger": "research-sources.jsonl"
     },
     {
+      "title": "Can Decision Models Understand Stance? Evaluating Jev Against General-Purpose LLMs",
+      "url": "https://arxiv.org/abs/2610.11901",
+      "category": "Papers",
+      "topic": "direct-decision-research",
+      "description": "Compares Jev on English single-text stance and Chinese conversational stance. Support/opposition errors grow in the conversational task, but language, dataset and input structure change together; differing batching and prompt formats also limit a general language-capability ranking.",
+      "relation": "direct",
+      "verification_level": "abstract_checked",
+      "content_sha256": "f76f3b1f66b0219c6340d19cda557b8a009a4099ec4bb67eba039d11f1115299",
+      "retrieved_at": "2026-10-18T09:18:14.017905+00:00",
+      "ledger": "research-sources.jsonl"
+    },
+    {
       "title": "Can Jev Judge Radiology Reports? Evaluating a System One Model for Clinical Factuality",
       "url": "https://arxiv.org/abs/2609.27607",
       "category": "Papers",
@@ -2517,6 +2541,18 @@
       "verification_level": "abstract_checked",
       "content_sha256": "ffeb41a70208c2cef04fdc84afde97556ffe7aaf2e094d5e1ea49ffadc36dddb",
       "retrieved_at": "2026-10-18T05:26:37.873284+00:00",
+      "ledger": "research-sources.jsonl"
+    },
+    {
+      "title": "Decide, Don't Generate: Competitive Dimensional ABSA with Jev's Typed Decisions",
+      "url": "https://arxiv.org/abs/2609.35293",
+      "category": "Papers",
+      "topic": "direct-decision-research",
+      "description": "Uses frozen Jev decisions plus 488 coefficients fitted to labels for multilingual sentiment regression and extraction. Supervised calibration and span selection drive the gains; reconstructed aggregate rankings, reused development data and incomplete overlap removal qualify the comparisons.",
+      "relation": "direct",
+      "verification_level": "abstract_checked",
+      "content_sha256": "09fb88f04d832aa57ec61b751d2d1ea9dd929e3cb8d9f5d827d335d42b392468",
+      "retrieved_at": "2026-10-18T09:18:17.001552+00:00",
       "ledger": "research-sources.jsonl"
     },
     {
@@ -2565,6 +2601,18 @@
       "verification_level": "abstract_checked",
       "content_sha256": "e39a0c45ea6313b105a9e900dfd215542968be27648acde6a3a8753b133e465f",
       "retrieved_at": "2026-10-18T07:40:35.732895+00:00",
+      "ledger": "research-sources.jsonl"
+    },
+    {
+      "title": "Emo-Jev: Probabilistic Reasoning for Emotion Classification with Jev",
+      "url": "https://arxiv.org/abs/2610.08829",
+      "category": "Papers",
+      "topic": "direct-decision-research",
+      "description": "Adds atomic-question decomposition or multiple judgment paths for eight text-classification benchmarks. Neither extension improves average macro-F1 over direct Jev in the reported setup; extra questions increase cost, and fixed aggregation rules do not establish calibrated uncertainty.",
+      "relation": "direct",
+      "verification_level": "abstract_checked",
+      "content_sha256": "c049e746a8c7bb2452ae233c94c1f182287be37f56ac6cbfdd1480e0d9094cd5",
+      "retrieved_at": "2026-10-18T09:18:19.168344+00:00",
       "ledger": "research-sources.jsonl"
     },
     {
@@ -3057,6 +3105,18 @@
       "verification_level": "abstract_checked",
       "content_sha256": "ee186f2c2b419284023f59137906108fb060f297c912b0e74766bb3f8e9272f7",
       "retrieved_at": "2026-10-16T11:20:08+00:00",
+      "ledger": "research-sources.jsonl"
+    },
+    {
+      "title": "To Jev or Not? Evaluating the Accuracy and Efficiency of Structured Decision Models for Hate-Speech Moderation",
+      "url": "https://arxiv.org/abs/2610.03324",
+      "category": "Papers",
+      "topic": "direct-decision-research",
+      "description": "HATEDECIDE tests definitions and decomposed judgments across four English datasets. More explicit criteria change predictions without reliably improving annotation agreement; component outputs are not verified explanations, and diagnostic-set cost comparisons do not establish production moderation quality.",
+      "relation": "direct",
+      "verification_level": "abstract_checked",
+      "content_sha256": "99f838c08a4483c01b13961e185a4126736e032b79d15a42dc403a9387347d69",
+      "retrieved_at": "2026-10-18T09:18:16.579312+00:00",
       "ledger": "research-sources.jsonl"
     },
     {

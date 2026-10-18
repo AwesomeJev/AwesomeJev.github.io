@@ -230,3 +230,9 @@ Six reviewed paper identities raise the expansion count to **807**. Fixed abstra
 Six reviewed paper identities raise the expansion to **813 sources**. Fixed abstracts match the raw scan proposal; targeted manuscript sections and three repository READMEs/inventories constrain the summaries. Renamed repositories, code and follow-up demonstrations add no separate identities. [Review](training-papers-2026-10-18.md).
 
 **中文：** 六篇论文使扩展达到813项；保留摘要核查等级，不将更名仓库、代码和后续演示重复计数。
+
+## Language-task evidence — 18 October 2026 UTC
+
+Five reviewed paper identities raise the expansion to **818 sources**. Fixed abstracts match the retained scan records; selected manuscript sections and the DimABSA repository documentation constrain the summaries. Code, topic pages and dataset links add zero separate identities. [Review](language-papers-2026-10-18.md).
+
+**中文：** 五篇论文使扩展达到818项；保留摘要核查等级，代码与新专题不重复计数。

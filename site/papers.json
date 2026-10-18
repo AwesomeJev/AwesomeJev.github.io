@@ -788,6 +788,20 @@
     },
     {
       "category": "Papers",
+      "title": "Can Decision Models Understand Stance? Evaluating Jev Against General-Purpose LLMs",
+      "by": "Li et al. · 2026-10-08 · v1",
+      "date": "2026-10-08",
+      "first_submitted": "2026-10-08",
+      "url": "https://arxiv.org/abs/2610.11901v1",
+      "theme": "applications",
+      "en": "Compares Jev on English single-text stance and Chinese conversational stance. Support/opposition errors grow in the conversational task, but language, dataset and input structure change together; differing batching and prompt formats also limit a general language-capability ranking.",
+      "zh": "比较 Jev 的英语单文本立场与中文对话立场识别；对话任务中支持／反对混淆更明显，但语言、数据集和输入结构同时变化，批处理及提示格式也不同，不能据此形成通用语言能力排名。",
+      "artifacts": {
+        "unverified": "code"
+      }
+    },
+    {
+      "category": "Papers",
       "title": "MetaEncoder: Exploring the Limit of Bi-Encoders for Multimodal System One Decision Making with Natural Language Interface",
       "by": "Cheng et al. · 2026-10-08 · v1",
       "date": "2026-10-08",
@@ -860,6 +874,20 @@
       "theme": "applications",
       "en": "Separates bounded multi-agent coordination from LLM reasoning through a controller–reader loop; reported GPT-4o-token and end-to-end latency reductions concern complete framework comparisons on seven benchmarks.",
       "zh": "通过控制器—读取器循环分离多智能体的有界协调与 LLM 推理；报告的 GPT-4o token 用量和端到端时延下降来自七个基准上的完整框架比较。"
+    },
+    {
+      "category": "Papers",
+      "title": "Benchmarking System One Models in Online Moderation",
+      "by": "Mazzoni & Failla · 2026-10-06 · v1",
+      "date": "2026-10-06",
+      "first_submitted": "2026-10-06",
+      "url": "https://arxiv.org/abs/2610.07953v1",
+      "theme": "evaluation",
+      "en": "Separates written rules, retrieved precedents and candidate restrictions across five moderation benchmarks. Retrieval can improve discrimination or merely change flagging rates; using labeled evaluation examples as precedents and representing media through generated captions limits deployment claims.",
+      "zh": "在五个审核基准中区分书面规则、检索先例和候选限制。检索可改善区分能力，也可能只是改变被标记内容的比例；使用带标签评测样本作先例、用生成描述表示媒体，会限制部署结论。",
+      "artifacts": {
+        "unverified": "code"
+      }
     },
     {
       "category": "Papers",
@@ -1001,6 +1029,20 @@
       "theme": "robustness",
       "en": "Examines reliability, group-specific confident errors, and selective automation in security decisions.",
       "zh": "研究安全决策中的可靠性、不同群体的高置信错误与选择性自动化。"
+    },
+    {
+      "category": "Papers",
+      "title": "To Jev or Not? Evaluating the Accuracy and Efficiency of Structured Decision Models for Hate-Speech Moderation",
+      "by": "Paschalides, Pallis & Dikaiakos · 2026-10-02 · v1",
+      "date": "2026-10-02",
+      "first_submitted": "2026-10-02",
+      "url": "https://arxiv.org/abs/2610.03324v1",
+      "theme": "evaluation",
+      "en": "HATEDECIDE tests definitions and decomposed judgments across four English datasets. More explicit criteria change predictions without reliably improving annotation agreement; component outputs are not verified explanations, and diagnostic-set cost comparisons do not establish production moderation quality.",
+      "zh": "HATEDECIDE 在四个英语数据集上测试定义与分解判断。更明确的标准会改变预测，却不稳定提高标注一致率；组件输出不是已核验的解释，诊断集成本比较也不能证明生产审核质量。",
+      "artifacts": {
+        "unverified": "code"
+      }
     },
     {
       "category": "Papers",
@@ -1308,6 +1350,24 @@
     },
     {
       "category": "Papers",
+      "title": "Decide, Don't Generate: Competitive Dimensional ABSA with Jev's Typed Decisions",
+      "by": "Zhang et al. · 2026-09-28 · v1",
+      "date": "2026-09-28",
+      "first_submitted": "2026-09-28",
+      "url": "https://arxiv.org/abs/2609.35293v1",
+      "theme": "applications",
+      "en": "Uses frozen Jev decisions plus 488 coefficients fitted to labels for multilingual sentiment regression and extraction. Supervised calibration and span selection drive the gains; reconstructed aggregate rankings, reused development data and incomplete overlap removal qualify the comparisons.",
+      "zh": "将冻结的 Jev 决策与 488 个由标签拟合的系数结合，用于多语言情感回归和抽取。监督校准与片段选择贡献主要收益；重建的汇总排名、重复使用的开发数据及未完全排除的重叠，限制比较结论。",
+      "artifacts": {
+        "code": "https://github.com/ZhangYiqun018/jev-dimabsa"
+      },
+      "artifact_note": {
+        "en": "Code, fitted parameters and summaries; dataset text and prediction caches are not distributed.",
+        "zh": "代码、拟合参数与汇总结果；未分发数据文本及预测缓存。"
+      }
+    },
+    {
+      "category": "Papers",
       "title": "JEV as a Judge for Agent Trace Security: An Empirical Comparison with Generative LLM Judges",
       "by": "Wang & Gao · 2026-09-28 · v1",
       "date": "2026-09-28",
@@ -1316,6 +1376,20 @@
       "theme": "judging",
       "en": "Compares Jev and generative judges on retrospective agent-trace risk classification; dataset rankings vary, and successful-call latency and valid-judgment cost must be read with coverage.",
       "zh": "比较 Jev 与生成式评判模型对历史 agent 轨迹的风险分类；排名因数据集而异，成功调用耗时和有效判断成本需结合覆盖率解读。"
+    },
+    {
+      "category": "Papers",
+      "title": "Emo-Jev: Probabilistic Reasoning for Emotion Classification with Jev",
+      "by": "Zhang & Yu · 2026-09-27 · v1",
+      "date": "2026-09-27",
+      "first_submitted": "2026-09-27",
+      "url": "https://arxiv.org/abs/2610.08829v1",
+      "theme": "applications",
+      "en": "Adds atomic-question decomposition or multiple judgment paths for eight text-classification benchmarks. Neither extension improves average macro-F1 over direct Jev in the reported setup; extra questions increase cost, and fixed aggregation rules do not establish calibrated uncertainty.",
+      "zh": "在八个文本分类基准上加入原子问题分解或多条判断路径；所报设置中，两种扩展的平均宏 F1 均未超过直接 Jev。额外问题增加成本，固定聚合规则也不能证明不确定性已校准。",
+      "artifacts": {
+        "unverified": "code"
+      }
     },
     {
       "category": "Papers",

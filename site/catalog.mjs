@@ -309,6 +309,80 @@ const toolTasks = [
 const resources = [
   {
     "category": "Papers",
+    "title": "Can Decision Models Understand Stance? Evaluating Jev Against General-Purpose LLMs",
+    "by": "Li et al. · 2026-10-08 · v1",
+    "date": "2026-10-08",
+    "first_submitted": "2026-10-08",
+    "url": "https://arxiv.org/abs/2610.11901v1",
+    "theme": "applications",
+    "en": "Compares Jev on English single-text stance and Chinese conversational stance. Support/opposition errors grow in the conversational task, but language, dataset and input structure change together; differing batching and prompt formats also limit a general language-capability ranking.",
+    "zh": "比较 Jev 的英语单文本立场与中文对话立场识别；对话任务中支持／反对混淆更明显，但语言、数据集和输入结构同时变化，批处理及提示格式也不同，不能据此形成通用语言能力排名。",
+    "artifacts": {
+      "unverified": "code"
+    }
+  },
+  {
+    "category": "Papers",
+    "title": "Benchmarking System One Models in Online Moderation",
+    "by": "Mazzoni & Failla · 2026-10-06 · v1",
+    "date": "2026-10-06",
+    "first_submitted": "2026-10-06",
+    "url": "https://arxiv.org/abs/2610.07953v1",
+    "theme": "evaluation",
+    "en": "Separates written rules, retrieved precedents and candidate restrictions across five moderation benchmarks. Retrieval can improve discrimination or merely change flagging rates; using labeled evaluation examples as precedents and representing media through generated captions limits deployment claims.",
+    "zh": "在五个审核基准中区分书面规则、检索先例和候选限制。检索可改善区分能力，也可能只是改变被标记内容的比例；使用带标签评测样本作先例、用生成描述表示媒体，会限制部署结论。",
+    "artifacts": {
+      "unverified": "code"
+    }
+  },
+  {
+    "category": "Papers",
+    "title": "To Jev or Not? Evaluating the Accuracy and Efficiency of Structured Decision Models for Hate-Speech Moderation",
+    "by": "Paschalides, Pallis & Dikaiakos · 2026-10-02 · v1",
+    "date": "2026-10-02",
+    "first_submitted": "2026-10-02",
+    "url": "https://arxiv.org/abs/2610.03324v1",
+    "theme": "evaluation",
+    "en": "HATEDECIDE tests definitions and decomposed judgments across four English datasets. More explicit criteria change predictions without reliably improving annotation agreement; component outputs are not verified explanations, and diagnostic-set cost comparisons do not establish production moderation quality.",
+    "zh": "HATEDECIDE 在四个英语数据集上测试定义与分解判断。更明确的标准会改变预测，却不稳定提高标注一致率；组件输出不是已核验的解释，诊断集成本比较也不能证明生产审核质量。",
+    "artifacts": {
+      "unverified": "code"
+    }
+  },
+  {
+    "category": "Papers",
+    "title": "Emo-Jev: Probabilistic Reasoning for Emotion Classification with Jev",
+    "by": "Zhang & Yu · 2026-09-27 · v1",
+    "date": "2026-09-27",
+    "first_submitted": "2026-09-27",
+    "url": "https://arxiv.org/abs/2610.08829v1",
+    "theme": "applications",
+    "en": "Adds atomic-question decomposition or multiple judgment paths for eight text-classification benchmarks. Neither extension improves average macro-F1 over direct Jev in the reported setup; extra questions increase cost, and fixed aggregation rules do not establish calibrated uncertainty.",
+    "zh": "在八个文本分类基准上加入原子问题分解或多条判断路径；所报设置中，两种扩展的平均宏 F1 均未超过直接 Jev。额外问题增加成本，固定聚合规则也不能证明不确定性已校准。",
+    "artifacts": {
+      "unverified": "code"
+    }
+  },
+  {
+    "category": "Papers",
+    "title": "Decide, Don't Generate: Competitive Dimensional ABSA with Jev's Typed Decisions",
+    "by": "Zhang et al. · 2026-09-28 · v1",
+    "date": "2026-09-28",
+    "first_submitted": "2026-09-28",
+    "url": "https://arxiv.org/abs/2609.35293v1",
+    "theme": "applications",
+    "en": "Uses frozen Jev decisions plus 488 coefficients fitted to labels for multilingual sentiment regression and extraction. Supervised calibration and span selection drive the gains; reconstructed aggregate rankings, reused development data and incomplete overlap removal qualify the comparisons.",
+    "zh": "将冻结的 Jev 决策与 488 个由标签拟合的系数结合，用于多语言情感回归和抽取。监督校准与片段选择贡献主要收益；重建的汇总排名、重复使用的开发数据及未完全排除的重叠，限制比较结论。",
+    "artifacts": {
+      "code": "https://github.com/ZhangYiqun018/jev-dimabsa"
+    },
+    "artifact_note": {
+      "en": "Code, fitted parameters and summaries; dataset text and prediction caches are not distributed.",
+      "zh": "代码、拟合参数与汇总结果；未分发数据文本及预测缓存。"
+    }
+  },
+  {
+    "category": "Papers",
     "title": "From Probabilities to Decisions: Search and Multi-Teacher Distillation with Jev",
     "by": "Sadoun, Sharif & Banad · 2026-10-06 · v1",
     "date": "2026-10-06",

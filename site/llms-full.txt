@@ -72,6 +72,8 @@ The Indonesian regional-language study supplies a concrete separation: expected 
 
 The candidate-coverage benchmark compares source-frozen and target-local thresholds at equal label budgets. A threshold can fail after a task change even when its source calibration constraint was met. Separate artificial omissions, natural retrieval misses and out-of-scope inputs; the latter two need their own denominators. Our calibration and abstention note connects these tests with interface coherence, random-escalation controls and total cascade cost. [Candidate coverage and policy transfer, v2](https://arxiv.org/abs/2610.03387v2) · [Calibration and abstention research note](https://awesomejev.github.io/topics/calibration-and-abstention/)
 
+Language and task changes must be separated. The stance study compares English single-text records with Chinese conversations, while moderation studies vary policies, labeled precedents and answer menus. These are useful task observations, not isolated language-transfer experiments. The language-task note also distinguishes extra-question cost from quality and frozen backbones from supervised calibration. [Stance study, v1](https://arxiv.org/abs/2610.11901v1) · [Language-task evaluation note](https://awesomejev.github.io/topics/language-task-evaluation/)
+
 ## Is a fallback option the same as a confidence gate?
 
 A named Other or Defer option is an answer the model must select according to its definition. A confidence gate is application code deciding whether to act on a returned answer or escalate it. TypeSafe’s routing example illustrates the latter. Define which interface you are testing before comparing reliability. [Fallback definitions, v1](https://arxiv.org/html/2610.19856v1#S2.SS0.SSS0.Px2) · [TypeSafe confidence routing](https://docs.typesafe.ai/patterns/confidence-routing)
@@ -550,6 +552,14 @@ Knowledge, reasoning and multilingual multiple-choice evaluation of Jev; reporte
 
 Primary source: https://arxiv.org/abs/2610.11978v1
 
+## Can Decision Models Understand Stance? Evaluating Jev Against General-Purpose LLMs
+
+Papers · Li et al. · 2026-10-08 · v1
+
+Compares Jev on English single-text stance and Chinese conversational stance. Support/opposition errors grow in the conversational task, but language, dataset and input structure change together; differing batching and prompt formats also limit a general language-capability ranking.
+
+Primary source: https://arxiv.org/abs/2610.11901v1
+
 ## MetaEncoder: Exploring the Limit of Bi-Encoders for Multimodal System One Decision Making with Natural Language Interface
 
 Papers · Cheng et al. · 2026-10-08 · v1
@@ -597,6 +607,14 @@ Papers · Zhou et al. · 2026-10-06 · v1
 Separates bounded multi-agent coordination from LLM reasoning through a controller–reader loop; reported GPT-4o-token and end-to-end latency reductions concern complete framework comparisons on seven benchmarks.
 
 Primary source: https://arxiv.org/abs/2610.08155v1
+
+## Benchmarking System One Models in Online Moderation
+
+Papers · Mazzoni & Failla · 2026-10-06 · v1
+
+Separates written rules, retrieved precedents and candidate restrictions across five moderation benchmarks. Retrieval can improve discrimination or merely change flagging rates; using labeled evaluation examples as precedents and representing media through generated captions limits deployment claims.
+
+Primary source: https://arxiv.org/abs/2610.07953v1
 
 ## JEV versus LLMs: Accuracy, Cost and Calibration on Seven Political Science Replications
 
@@ -677,6 +695,14 @@ Papers · Liu · 2026-10-03 · v3
 Examines reliability, group-specific confident errors, and selective automation in security decisions.
 
 Primary source: https://arxiv.org/abs/2609.33401v3
+
+## To Jev or Not? Evaluating the Accuracy and Efficiency of Structured Decision Models for Hate-Speech Moderation
+
+Papers · Paschalides, Pallis & Dikaiakos · 2026-10-02 · v1
+
+HATEDECIDE tests definitions and decomposed judgments across four English datasets. More explicit criteria change predictions without reliably improving annotation agreement; component outputs are not verified explanations, and diagnostic-set cost comparisons do not establish production moderation quality.
+
+Primary source: https://arxiv.org/abs/2610.03324v1
 
 ## Batched Speech Decisions Without Decoding: Single-Token Supervision Lets a Frozen LLM Hear Beyond the Transcript
 
@@ -838,6 +864,14 @@ A controlled calibration study using constructed probabilities. Interpretations 
 
 Primary source: https://arxiv.org/abs/2609.35342v1
 
+## Decide, Don't Generate: Competitive Dimensional ABSA with Jev's Typed Decisions
+
+Papers · Zhang et al. · 2026-09-28 · v1
+
+Uses frozen Jev decisions plus 488 coefficients fitted to labels for multilingual sentiment regression and extraction. Supervised calibration and span selection drive the gains; reconstructed aggregate rankings, reused development data and incomplete overlap removal qualify the comparisons.
+
+Primary source: https://arxiv.org/abs/2609.35293v1
+
 ## JEV as a Judge for Agent Trace Security: An Empirical Comparison with Generative LLM Judges
 
 Papers · Wang & Gao · 2026-09-28 · v1
@@ -845,6 +879,14 @@ Papers · Wang & Gao · 2026-09-28 · v1
 Compares Jev and generative judges on retrospective agent-trace risk classification; dataset rankings vary, and successful-call latency and valid-judgment cost must be read with coverage.
 
 Primary source: https://arxiv.org/abs/2609.34862v1
+
+## Emo-Jev: Probabilistic Reasoning for Emotion Classification with Jev
+
+Papers · Zhang & Yu · 2026-09-27 · v1
+
+Adds atomic-question decomposition or multiple judgment paths for eight text-classification benchmarks. Neither extension improves average macro-F1 over direct Jev in the reported setup; extra questions increase cost, and fixed aggregation rules do not establish calibrated uncertainty.
+
+Primary source: https://arxiv.org/abs/2610.08829v1
 
 ## Laya as a Typed Probabilistic Assessor: An Independent Reproduction and a Preregistered Study of Calibration and Selective Escalation
 
@@ -1695,6 +1737,35 @@ Efficient execution of structured language-model programs.
 Primary source: https://papers.nips.cc/paper_files/paper/2024/file/724be4472168f31ba1c9ac630f15dec8-Paper-Conference.pdf
 
 # Research topics
+
+## Jev moderation, stance and sentiment evaluation
+
+Canonical page: https://awesomejev.github.io/topics/language-task-evaluation/
+Updated: 2026-10-18
+
+A strong language-task benchmark score does not by itself establish policy adherence or transfer to another language. Compare annotation rules, input context, candidate menus, supervision and inference budgets before reusing the result.
+
+Five fixed-version abstracts, selected methods/results/limitations and one implementation README were inspected. Findings remain author-reported; no prediction records or experiments were reproduced.
+
+### Policy adherence or label agreement?
+
+HATEDECIDE finds that supplying definitions and decomposing a moderation decision do not reliably improve agreement with existing dataset labels. A prediction can follow the supplied definition yet disagree with the original annotation policy. Component answers make the aggregation rule inspectable, but they are not verified explanations without component-level reference labels. Evaluate the actual policy and both false-positive and false-negative costs; English diagnostic examples do not establish everyday or multilingual moderation performance. [HATEDECIDE: limitations, v1](https://arxiv.org/html/2610.03324v1#S5.SS1)
+
+### What information does retrieval add?
+
+The online-moderation study separates written rules, labeled precedents and restrictions on the answer menu. Its main policy contrast adds precedents while keeping the complete menu fixed. For OLID and HateXplain, however, precedents come from the cleaned evaluation population with the target excluded; this differs from using only a frozen training collection. Media inputs are generated textual captions, not a test of native Jev vision. Report these information sources and candidate restrictions alongside the score. [Information conditions, v1](https://arxiv.org/html/2610.07953v1#S3.SS2) · [Tasks and media representations](https://arxiv.org/html/2610.07953v1#S3.SS1)
+
+### What changes across languages?
+
+The stance study compares English text–target pairs with Chinese speaker-tagged conversations. Language, dataset and conversational structure therefore change together. Jev has more difficulty with support/opposition in the conversational benchmark, but this does not isolate a language effect or prove an internal mechanism. Some LLMs also receive batches while Jev receives single records. Our suggested transfer test holds task structure and information access fixed and checks target-language annotation definitions independently. [Stance evaluation setup, v1](https://arxiv.org/html/2610.11901v1#S4) · [Conversation-length analysis](https://arxiv.org/html/2610.11901v1#S5.SS4)
+
+### Do more questions improve the result?
+
+Emo-Jev compares direct classification with atomic-question composition and multiple predefined judgment paths. Both extensions have lower average macro-F1 than direct Jev in the reported eight-dataset setup, with task-specific gains and losses. Extra paths add dependent stages and cost; some retry usage is missing. HATEDECIDE likewise finds no consistent benefit from decomposition. Compare the direct baseline, the full added-question budget and held-out outcomes rather than assuming that more intermediate answers provide better reasoning or calibrated probabilities. [Emo-Jev results, v1](https://arxiv.org/html/2610.08829v1#S4.SS3) · [Efficiency accounting](https://arxiv.org/html/2610.08829v1#S4.SS5) · [HATEDECIDE decomposition](https://arxiv.org/html/2610.03324v1#S5)
+
+### What does a frozen backbone still learn?
+
+The DimABSA system uses frozen Jev with 488 coefficients fitted to task labels for regression and extraction. Its strong regression aggregate relies on supervised calibration; the competition ranks individual corpora, not the reconstructed pooled aggregate. Development scoring does not nest the full feature/threshold selection process, and some text overlap remains. The public code includes fitted parameters and metric summaries, while text-bearing prediction caches are withheld. Separate backbone tuning, supervised postprocessing, selection and artifact availability when comparing results. [DimABSA protocol, v1](https://arxiv.org/html/2609.35293v1#A2) · [Implementation and release limits](https://github.com/ZhangYiqun018/jev-dimabsa)
 
 ## Jev calibration, abstention and confidence routing
 

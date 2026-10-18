@@ -295,6 +295,19 @@
                 "url": "https://awesomejev.github.io/topics/calibration-and-abstention/"
               }
             ]
+          },
+          {
+            "text": "Language and task changes must be separated. The stance study compares English single-text records with Chinese conversations, while moderation studies vary policies, labeled precedents and answer menus. These are useful task observations, not isolated language-transfer experiments. The language-task note also distinguishes extra-question cost from quality and frozen backbones from supervised calibration.",
+            "sources": [
+              {
+                "label": "Stance study, v1",
+                "url": "https://arxiv.org/abs/2610.11901v1"
+              },
+              {
+                "label": "Language-task evaluation note",
+                "url": "https://awesomejev.github.io/topics/language-task-evaluation/"
+              }
+            ]
           }
         ],
         "toc_title": "Transfer confidence gates"
@@ -939,6 +952,19 @@
               {
                 "label": "校准与拒答研究专题",
                 "url": "https://awesomejev.github.io/zh/topics/calibration-and-abstention/"
+              }
+            ]
+          },
+          {
+            "text": "语言变化和任务变化需要分开。立场研究比较英语单文本与中文对话，审核研究则改变规则、带标签先例和答案菜单。这些是有价值的任务观察，却不是单独识别语言迁移的实验。语言任务专题还区分额外提问的成本与质量，以及冻结骨干与监督校准。",
+            "sources": [
+              {
+                "label": "立场研究 v1",
+                "url": "https://arxiv.org/abs/2610.11901v1"
+              },
+              {
+                "label": "语言任务评测专题",
+                "url": "https://awesomejev.github.io/zh/topics/language-task-evaluation/"
               }
             ]
           }

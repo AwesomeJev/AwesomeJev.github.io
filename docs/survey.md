@@ -116,6 +116,20 @@ A typed interface may sit inside a learned scorer, search algorithm or larger ap
 
 For a useful comparison, hold the candidate generator, search/control policy and validation budget fixed before attributing gains to the decision model. Record training and preparation costs separately from per-request cost, and preserve incomplete runs and failed execution. These are proposed evaluation controls, not experiments performed by this collection.
 
+### Language tasks: labels, information and supervision
+
+Moderation, stance and sentiment scores should be interpreted under their annotation rules and input conditions. The [language-task research note](https://awesomejev.github.io/topics/language-task-evaluation/) connects five fixed-version studies without turning them into one capability ranking.
+
+| Study | What changes the interpretation |
+| --- | --- |
+| [Stance detection, v1](https://arxiv.org/abs/2610.11901v1) | English single-text and Chinese conversational inputs differ in more than language; prompt and batching formats also vary. |
+| [Online moderation, v1](https://arxiv.org/abs/2610.07953v1) | Rules, labeled precedents and candidate restrictions are separate information sources; generated captions mediate the media setting. |
+| [HATEDECIDE, v1](https://arxiv.org/abs/2610.03324v1) | Following a supplied definition and agreeing with an existing annotation can conflict; intermediate answers are not verified reasons. |
+| [Emo-Jev, v1](https://arxiv.org/abs/2610.08829v1) | Additional question paths increase inference work without improving average macro-F1 in the reported setup. |
+| [DimABSA, v1](https://arxiv.org/abs/2609.35293v1) | A frozen backbone still uses task-label supervision; pooled regression and structural extraction metrics describe different outcomes. |
+
+Our proposed comparison holds the candidate inventory and information access fixed, records label definitions and language-specific annotation checks, and reports class-specific errors alongside aggregate scores. Supervised calibration, development-set selection and all attempted calls belong in the comparison budget. The inspected artifacts do not establish production moderation reliability or a general language ranking.
+
 ## 5. A proposed reproducible evaluation
 
 **This is a research protocol, not an experiment executed by this project.**
