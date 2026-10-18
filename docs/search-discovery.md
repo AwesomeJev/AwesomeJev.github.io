@@ -10,11 +10,15 @@ The [18 October release integration](reviews/integration-2026-10-18.md) reconcil
 
 The paper and model directories preserve their filters in a `#view?…` fragment. Papers retain the query, theme, code-availability filter and sort order; models retain the query and declared-license filter. **Copy view link** produces a bookmarkable link to the current view. Refreshing, returning with browser history and switching between the paired English/Chinese routes restore the state. Both languages search the same bilingual metadata so a translated description can still be found after a language switch.
 
-This is a client-side view of an existing directory, not a new indexable page. Canonical URLs, sitemap entries and the full static tables remain unchanged. The fragment is not an HTTP query; the feature adds no local-storage persistence, analytics or network requests. Copied links omit unrelated query parameters. Clipboard failure has visible feedback, unsupported filter values fall back to defaults, and resetting removes the view fragment. Ordinary section anchors are preserved in language links when no filtered view is active.
+This is a client-side view of an existing directory, not a new indexable page. Canonical URLs, sitemap entries and the full static tables remain unchanged. The fragment is not an HTTP query, and changing filters requires no server request. Page navigation still loads static pages and scripts. The feature uses no local-storage persistence or analytics. Copied links omit unrelated query parameters. Clipboard failure has visible feedback, unsupported filter values fall back to defaults, and resetting removes the view fragment. Ordinary section anchors are preserved in language links when no filtered view is active.
 
 The shared module is resolved through a content-hashed import map on the four directory pages. Tests cover Unicode and reserved-character round trips, default and unknown values, language links, browser restoration, copy failure, history preservation and identical bilingual search text. Browser checks exercised compound paper filters, Chinese keywords across languages, model-license links, reset and a 390-pixel mobile viewport. The collection's source counts and evidence grades are unchanged.
 
-**中文：** 论文和模型目录的筛选保存在网址片段中，可复制、收藏，并在刷新、历史导航和中英文切换后恢复。两种语言搜索相同的双语元数据；重置会移除筛选片段。完整静态表格、规范网址与sitemap不变，新增功能不使用本地存储、统计服务或网络请求，复制的链接不会附带无关查询参数。版本化模块、状态转换和双语一致性均有测试，手机端已检查无横向溢出；本轮不改变来源计数或核查等级。
+**中文：** 论文和模型目录的筛选保存在网址片段中，可复制、收藏，并在刷新、历史导航和中英文切换后恢复。两种语言搜索相同的双语元数据；重置会移除筛选片段。完整静态表格、规范网址与sitemap不变，新增功能不使用本地存储或统计服务；筛选操作不发服务器请求，页面切换仍正常加载静态网页与脚本。复制的链接不会附带无关查询参数。版本化模块、状态转换和双语一致性均有测试，手机端已检查无横向溢出；本轮不改变来源计数或核查等级。
+
+**View-sharing release receipt, 2026-10-18 UTC:** `8746bf6` passed both repository checks and Pages deployment. The 433-test suite passed and all 34 live page, metadata and module targets matched the commit. Browser checks verified compound paper filters, cross-language Chinese search, refresh/history restoration, model-license links, clipboard feedback and mobile layout. One IndexNow POST notified only the four substantively changed paper/model directory pages and returned **HTTP 200**. The unchanged sitemap was not resubmitted, and no Google or Bing account action was performed. This receipt adds no indexing or AI-citation claim.
+
+**筛选分享发布回执（2026-10-18 UTC）：** `8746bf6` 双仓检查与部署成功，433项测试及34项线上文件核对通过。浏览器验证了组合筛选、跨语言中文搜索、刷新／历史恢复、模型许可链接、复制反馈和手机布局。仅对中英文论文、模型目录四页发送一次IndexNow通知，返回HTTP 200；sitemap未变，未重复提交，也未操作Google或Bing账号。此回执不代表新增收录或AI引用。
 
 ## Authoring and building the public pages
 
