@@ -17,3 +17,9 @@ Tests cover pagination, malformed/error feeds, version mismatches, failed page c
 **中文：** 新增独立的 arXiv 一手论文发现，并核查固定版本摘要；已知来源不重复计数，失败条目不提升为已查证据。真实查询覆盖194条结果，最终筛出122个直接候选，跳过71个已知身份，对51个台账外候选完成固定摘要核查。这是待审提议，不是51篇新精选或实验复现。限速、重试、分页、异常XML、旧式编号和缩写歧义均有测试；公开站点及来源数量保持不变。
 
 Local validation passed all **451 tests**, including 17 new discovery/transport regressions, plus publication validation and whitespace checks. The change leaves the public site, source ledgers and their counts unchanged. The real-network candidate observations remain outside the accepted collection until reviewed through the existing workflow.
+
+## Deployed smoke check and merge protection
+
+Commit `db2c88b` passed both repository check workflows. The [GitHub smoke run](https://github.com/reacher-z/Awesome-Jev/actions/runs/39102259670) completed its scan/validation job; publication was skipped. Its arXiv counters show five feed entries, four known identities and one verified new candidate, with `smoke_limited: true`. The entire smoke report is partial because one other source was unavailable. It used 39 public requests and did not change scan PR 4, whose head remained `656c0e8be89e0ac757d3d5e53b2c24b1d935841f`.
+
+A follow-up merge regression verifies that new fixed-version primary evidence wins over a same-run generic landing-page screen in either arrival order. The prior-record grade policy stays unchanged. This preserves the new discovery evidence when another provider finds the same new paper. The final suite contains 452 tests, including 18 new regressions.

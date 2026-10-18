@@ -108,6 +108,20 @@ class ArxivDiscoveryTests(unittest.TestCase):
                 validate.check_ledger(path);validate.check_record_ids_and_authors(path)
                 self.assertEqual(errors, [])
 
+    def test_new_primary_evidence_survives_other_provider_landing_pages(self):
+        url='https://arxiv.org/abs/'+PID
+        scan=refresh.Scan(FakeFetcher({api.query_url():feed(),url+'v1':page()}))
+        primary=scan.scan_arxiv()[0]
+        landing={'url':url,'title':'Jev decision fixture','verification_level':'content_screened','status':'screened',
+                 'content_sha256':'a'*64,'retrieved_at':'2026-10-15T00:00:00Z','relation':'direct','relevance':'Landing-page fixture.'}
+        for incoming in ([landing,primary],[primary,landing]):
+            merged,changes=refresh.merge_records(refresh.Ledger([],[]),incoming)
+            self.assertEqual(merged.rows[0]['abstract_provider'],'arxiv_primary_abstract_page')
+            self.assertEqual(changes['added'],[url])
+        prior=refresh.Ledger([landing],[json.dumps(landing)+'\n'])
+        merged,_=refresh.merge_records(prior,[primary,landing])
+        self.assertEqual(merged.lines,prior.lines)
+
     def test_failed_or_mismatched_page_cannot_promote_api_metadata(self):
         url='https://arxiv.org/abs/' + PID + 'v1'
         for result in [refresh.FetchError('http_503'), page(version='v2'), page(abstract='unrelated short text')]:

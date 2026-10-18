@@ -501,7 +501,13 @@ def merge_records(old: Ledger, incoming, max_new=None, policy=None):
             continue
         if key in positions and pinned_primary_abstract(rows[positions[key]]):
             pinned_observations.setdefault(key, []).append(row)
-        if key not in candidates or LEVEL.get(row.get("verification_level"), 0) > LEVEL.get(candidates[key].get("verification_level"), 0):
+        # For a new identity, keep version-bound primary evidence ahead of a
+        # generic landing-page screen. Existing records retain their established
+        # grade/refresh policy; their evidence is never downgraded here.
+        def candidate_strength(value):
+            return (key not in positions and pinned_primary_abstract(value),
+                    LEVEL.get(value.get("verification_level"), 0))
+        if key not in candidates or candidate_strength(row) > candidate_strength(candidates[key]):
             candidates[key] = row
     for key, candidate in sorted(candidates.items()):
         new = dict(candidate)
