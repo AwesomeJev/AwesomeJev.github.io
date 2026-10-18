@@ -275,6 +275,19 @@
                 "url": "https://arxiv.org/abs/2610.14112v1"
               }
             ]
+          },
+          {
+            "text": "The candidate-coverage benchmark compares source-frozen and target-local thresholds at equal label budgets. A threshold can fail after a task change even when its source calibration constraint was met. Separate artificial omissions, natural retrieval misses and out-of-scope inputs; the latter two need their own denominators. Our calibration and abstention note connects these tests with interface coherence, random-escalation controls and total cascade cost.",
+            "sources": [
+              {
+                "label": "Candidate coverage and policy transfer, v2",
+                "url": "https://arxiv.org/abs/2610.03387v2"
+              },
+              {
+                "label": "Calibration and abstention research note",
+                "url": "https://awesomejev.github.io/topics/calibration-and-abstention/"
+              }
+            ]
           }
         ]
       },
@@ -845,6 +858,19 @@
               {
                 "label": "印尼地方语言迁移研究 v1",
                 "url": "https://arxiv.org/abs/2610.14112v1"
+              }
+            ]
+          },
+          {
+            "text": "候选覆盖基准在相同标签预算下比较冻结的源阈值与目标任务本地阈值。即使满足源任务校准约束，阈值在换任务后仍可能失效。应区分人为移除、自然检索遗漏与范围外输入，后两者各用自己的分母。校准与拒答专题将这些测试与接口一致性、随机升级对照和级联总成本联系起来。",
+            "sources": [
+              {
+                "label": "候选覆盖与策略迁移 v2",
+                "url": "https://arxiv.org/abs/2610.03387v2"
+              },
+              {
+                "label": "校准与拒答研究专题",
+                "url": "https://awesomejev.github.io/zh/topics/calibration-and-abstention/"
               }
             ]
           }

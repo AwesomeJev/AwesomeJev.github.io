@@ -70,6 +70,8 @@ Implementation documentation supplies additional transfer limits. FRIDA-Decision
 
 The Indonesian regional-language study supplies a concrete separation: expected calibration error did not increase while error-ranking ability degraded. Its translation comparison uses human Indonesian translations; classifier comparisons depend on label budgets, and cascades on the chosen fallback and routing fraction. Evaluate those factors separately before transferring a threshold. The preregistration and release claims remain author-reported here; no prediction files were audited. [Indonesian regional-language transfer study, v1](https://arxiv.org/abs/2610.14112v1)
 
+The candidate-coverage benchmark compares source-frozen and target-local thresholds at equal label budgets. A threshold can fail after a task change even when its source calibration constraint was met. Separate artificial omissions, natural retrieval misses and out-of-scope inputs; the latter two need their own denominators. Our calibration and abstention note connects these tests with interface coherence, random-escalation controls and total cascade cost. [Candidate coverage and policy transfer, v2](https://arxiv.org/abs/2610.03387v2) · [Calibration and abstention research note](https://awesomejev.github.io/topics/calibration-and-abstention/)
+
 ## Is a fallback option the same as a confidence gate?
 
 A named Other or Defer option is an answer the model must select according to its definition. A confidence gate is application code deciding whether to act on a returned answer or escalate it. TypeSafe’s routing example illustrates the latter. Define which interface you are testing before comparing reliability. [Fallback definitions, v1](https://arxiv.org/html/2610.19856v1#S2.SS0.SSS0.Px2) · [TypeSafe confidence routing](https://docs.typesafe.ai/patterns/confidence-routing)
@@ -588,6 +590,14 @@ Studies accuracy, cost, and calibration in seven political-science replication t
 
 Primary source: https://arxiv.org/abs/2610.06625v2
 
+## Benchmarking candidate coverage and rejection policy transfer in typed decision models
+
+Papers · Lu & Wu · 2026-10-06 · v2
+
+Separates artificial omissions, retrieval misses and out-of-scope queries under matched calibration budgets; a source-task threshold can reject covered target inputs or miss absent answers. Candidate membership, label ambiguity and small natural-miss samples limit transfer claims.
+
+Primary source: https://arxiv.org/abs/2610.03387v2
+
 ## Benchmarking System One decision models against trained classifiers and language models for automated decision gates
 
 Papers · Rafe & Das · 2026-10-06 · v2
@@ -611,6 +621,14 @@ Papers · Li et al. · 2026-10-05 · v1
 Surveys semantic engines in network control loops; separates valid decisions, action feasibility, service checks and deadline attainment, with bounded event-model tests rather than production validation.
 
 Primary source: https://arxiv.org/abs/2610.06425v1
+
+## Probability Contracts: Accuracy, Coherence, and Decisions Across LLM Interfaces
+
+Papers · Chen & Li · 2026-10-05 · v2
+
+Known-posterior finite worlds separate probability accuracy, interface coherence and decision loss. Averaging can improve expected Brier score without improving a policy at every deferral cost; valid-report coverage and each comparison's reference policy remain essential.
+
+Primary source: https://arxiv.org/abs/2609.37470v2
 
 ## Hidden Risks of Jev: An Empirical Study of Security, Privacy, and Dual Use
 
@@ -660,6 +678,14 @@ Turkish typed-decision evaluation reports decision quality, Brier-based probabil
 
 Primary source: https://arxiv.org/abs/2610.02293v1
 
+## Fast Models, Slow Evidence: A Paired and Self-Audited Evaluation of System-1 Decision Models for LLM Agent Harnesses
+
+Papers · Li · 2026-10-01 · v1
+
+Paired Laya/Jev evaluation of 11 agent decision points includes a self-audit: pre-screen cost, end-to-end quality, threshold leakage and unnatural channel content change deployment conclusions. Public English-dominant labels and zero-shot configurations limit generalization.
+
+Primary source: https://arxiv.org/abs/2610.02267v1
+
 ## AudioJev: Direct Audio Decisions with Order-Calibrated Probabilities
 
 Papers · Lv et al. · 2026-10-01 · v1
@@ -675,6 +701,14 @@ Papers · Shankaranarayana, Runje & Jannink · 2026-10-01 · v1
 Controls information and surface cues to distinguish Jev answer confidence from self-knowledge; black-box behavior does not establish access to an internal knowledge state.
 
 Primary source: https://arxiv.org/abs/2610.01006v1
+
+## Jev-as-a-Judge for RAG Claim Verification: Confidence-Gated Cascading Between a Non-Generative Verifier and a Frontier LLM
+
+Papers · Do Rosario & Atef · 2026-09-30 · v1
+
+Paired verification of 495 RAG claims finds different false-verification rates despite similar aggregate scores. One threshold is cross-fitted, but design choices and matched random-escalation controls remain exploratory; simulated savings do not establish equivalence or a better production gate.
+
+Primary source: https://arxiv.org/abs/2610.20634v1
 
 ## AnyJev Technical Report
 
@@ -699,6 +733,14 @@ Papers · Tang & Chen · 2026-09-30 · v1
 Medical candidate-conditioned decisions are compared with a matched generative baseline; calibration gains do not isolate interface effects from training differences or establish clinical readiness.
 
 Primary source: https://arxiv.org/abs/2610.00381v1
+
+## When the Right Answer Is Missing: An Arithmetic-Dependent Rejection Bottleneck in Jev
+
+Papers · Zhong, Li & Lai · 2026-09-30 · v1
+
+Paired numerical menus expose strong answer-present selection but weak none-of-the-above rejection. Separate development thresholds recover much of the tested rejection performance, while Boolean verification behaves differently; this diagnoses an interface-dependent failure, not hidden model mechanisms or universal threshold transfer.
+
+Primary source: https://arxiv.org/abs/2609.39496v1
 
 ## Bongard: Training Machine Intuition
 
@@ -755,6 +797,14 @@ Papers · Wang & Gao · 2026-09-28 · v1
 Compares Jev and generative judges on retrospective agent-trace risk classification; dataset rankings vary, and successful-call latency and valid-judgment cost must be read with coverage.
 
 Primary source: https://arxiv.org/abs/2609.34862v1
+
+## Laya as a Typed Probabilistic Assessor: An Independent Reproduction and a Preregistered Study of Calibration and Selective Escalation
+
+Papers · Nandakishore · 2026-09-27 · v1
+
+A pinned Laya checkpoint is underconfident on synthetic teacher labels. Temperature fitting improves probability metrics, but the frozen calibrator-selection rule and escalation gate fail held-out targets; reported Jev comparisons are indirect, and the initial reproduction predates preregistration.
+
+Primary source: https://arxiv.org/abs/2609.33843v1
 
 ## Beyond Calibration: Do a Typed-Decision Model's Probabilities Obey the Probability Axioms?
 
@@ -1589,6 +1639,39 @@ Efficient execution of structured language-model programs.
 Primary source: https://papers.nips.cc/paper_files/paper/2024/file/724be4472168f31ba1c9ac630f15dec8-Paper-Conference.pdf
 
 # Research topics
+
+## Jev calibration, abstention and confidence routing
+
+Canonical page: https://awesomejev.github.io/topics/calibration-and-abstention/
+Updated: 2026-10-18
+
+Better-calibrated probabilities do not guarantee a reliable abstention gate or a cheaper cascade. Evaluate the whole policy on held-out target data, separate missing-answer populations, and compare confidence routing with random escalation at the same budget.
+
+Six fixed-version abstracts, selected manuscript sections and release documentation were inspected. Findings remain author-reported; no model experiment, prediction replay or proof verification was performed.
+
+### Which quantity should improve?
+
+Probability accuracy, interface coherence, accepted-case error and decision cost answer different questions. Probability Contracts uses worlds with known posteriors to separate them: averaging two reports can improve expected Brier score without improving a decision at every deferral cost. Its guarantee compares averaging with random interface selection, not with each interface individually. Report validity and coverage too; an interface that produces no usable probabilities has undefined probability accuracy. [Probability Contracts, v2](https://arxiv.org/html/2609.37470v2#S7.SS2) · [Study limits](https://arxiv.org/html/2609.37470v2#S8)
+
+### Why is the correct answer missing?
+
+An artificially removed answer, a retrieval miss and an out-of-scope query are different populations. The candidate-coverage benchmark reports them separately; at ten retrieval candidates, its natural-miss result has only five supporting queries. The arithmetic rejection study adds another distinction: selecting None in a menu differs from verifying each candidate with a Boolean question. Thresholds tuned on separate development problems improve its tested rejection tradeoff, but do not establish a universal threshold. [Coverage sources and denominators, v2](https://arxiv.org/html/2610.03387v2#S3.SS2) · [Arithmetic rejection and threshold rules, v1](https://arxiv.org/html/2609.39496v1#S5)
+
+### Will a threshold survive a new task?
+
+A source-task calibration constraint is not a target-task risk guarantee. The coverage study holds calibration budgets equal and finds that transferred thresholds can over-reject covered inputs or stop detecting missing answers. The Laya reproduction separately finds that a better probability metric does not ensure the frozen gate meets its held-out error target. Its labels come from a synthetic teacher, and its initial reproduction is retrospective. Compare source-frozen and target-recalibrated policies on disjoint target data, with label budgets stated. [Fixed-budget transfer, v2](https://arxiv.org/html/2610.03387v2#S5.SS4) · [Laya study limitations, v1](https://arxiv.org/html/2609.33843v1#S11)
+
+### Does confidence improve routing?
+
+A cascade should be compared with the cheap model alone, the fallback alone, and random escalation at a matched budget. In the 495-claim RAG study, similar aggregate scores conceal different false-verification rates. One threshold is cross-fitted, while its matched-random control uses in-sample operating points; neither nonsignificance nor that control establishes equivalence. Our proposed stronger comparison freezes the entire routing procedure and random-control budget before testing on new claims. [Cross-fitted threshold, v1](https://arxiv.org/html/2610.20634v1#S9.SS2) · [Matched random escalation](https://arxiv.org/html/2610.20634v1#S9.SS5) · [Design limitations](https://arxiv.org/html/2610.20634v1#S12)
+
+### What belongs in total cost?
+
+Count the first-stage decision for every item, then all escalated calls, retries and routing overhead. Report cost per attempted input, coverage and end-to-end quality together. Fast Models, Slow Evidence corrected omitted pre-screen cost, confusion between gate accuracy and final quality, and in-sample threshold optimism. The RAG cascade is an offline replay whose price calculation excludes second-hop overhead, retries and queueing; it has no controlled latency result. These studies do not establish current prices or universal production savings. [Self-audited agent evaluation, v1](https://arxiv.org/abs/2610.02267v1) · [Replay and cost limits](https://arxiv.org/html/2610.20634v1#S12)
+
+### What do the artifacts support?
+
+The candidate-coverage repository separates recorded-output scoring from source-text reconstruction and fresh inference. sys1-eval documents raw-response reanalysis; the RAG repository requires upstream access to the gold labels. Laya’s ancillary inventory lists predictions, metric code and manifests, but also withheld collection/training source. A listed file or publisher checksum is not an independently reproduced result. We inspected the documentation and inventories, without running these procedures or auditing their prediction records. [Candidate-coverage code](https://github.com/luckykevvv/Decision_Model_Benchmark) · [Agent evaluation code](https://github.com/David-DL-Space/sys1-eval) · [RAG verification code](https://github.com/adorosario/jev-rag-claim-verification) · [Laya ancillary inventory](https://arxiv.org/src/2609.33843v1/anc/README.txt)
 
 ## Option-label bias in Jev-style decision models
 

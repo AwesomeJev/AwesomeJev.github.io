@@ -78,6 +78,21 @@ The word calibration can name different targets. [PRISM, v1](https://arxiv.org/a
 
 These are interpretations of the fixed abstracts and selected limitation sections, not independent replications. Our suggested comparison retains held-out groups and verifies label preservation before drawing a causal conclusion about a perturbation.
 
+### Calibration, abstention and cascade utility
+
+A probability metric describes a report; an abstention gate and a cascade add decisions, reference labels and costs. Six fixed-version studies make those layers distinguishable. The [calibration and abstention note](https://awesomejev.github.io/topics/calibration-and-abstention/) connects their evidence and proposed controls.
+
+| Study | Useful distinction |
+| --- | --- |
+| [Candidate coverage, v2](https://arxiv.org/abs/2610.03387v2) | Artificial omission, natural retrieval misses and out-of-scope queries need separate denominators; source calibration does not guarantee target risk. |
+| [Probability Contracts, v2](https://arxiv.org/abs/2609.37470v2) | A better expected Brier score need not lower decision loss at each deferral cost; the reference policy and valid-report coverage matter. |
+| [Fast Models, Slow Evidence, v1](https://arxiv.org/abs/2610.02267v1) | Pre-screen cost, gate accuracy and end-to-end quality are separate accounting questions. |
+| [RAG claim verification, v1](https://arxiv.org/abs/2610.20634v1) | Similar aggregate scores can hide different false-verification rates; one cross-fitted threshold does not make the full design confirmatory. |
+| [Missing-answer arithmetic, v1](https://arxiv.org/abs/2609.39496v1) | Selecting a fallback and verifying candidates are different interfaces; a task-specific threshold is not a universal repair. |
+| [Laya reproduction, v1](https://arxiv.org/abs/2609.33843v1) | Temperature improvement does not imply a successful frozen gate; synthetic teacher agreement and human correctness remain distinct. |
+
+Our suggested evaluation freezes the full routing procedure before a held-out target test, includes cheap-only and fallback-only policies, and compares confidence routing with matched-budget random escalation. Report accepted-case error, coverage, false acceptance of unsupported/missing answers and total cost together. The source studies use different configurations and evidence populations; they do not form one leaderboard, and no experiment was reproduced here.
+
 ## 4. Connections worth studying
 
 **Probabilistic prediction.** Proper scoring rules evaluate whole predictive distributions, providing a foundation for Brier score and log loss. Calibration work shows why a highly accurate network still needs probability evaluation; language-model self-evaluation adds a relevant comparator. None establishes Jev’s training objective. [Gneiting & Raftery](https://doi.org/10.1198/016214506000001437) · [Guo et al.](https://proceedings.mlr.press/v70/guo17a.html) · [Kadavath et al.](https://arxiv.org/abs/2207.05221)

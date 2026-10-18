@@ -860,6 +860,24 @@
     },
     {
       "category": "Papers",
+      "title": "Benchmarking candidate coverage and rejection policy transfer in typed decision models",
+      "by": "Lu & Wu · 2026-10-06 · v2",
+      "date": "2026-10-06",
+      "first_submitted": "2026-10-02",
+      "url": "https://arxiv.org/abs/2610.03387v2",
+      "theme": "calibration",
+      "en": "Separates artificial omissions, retrieval misses and out-of-scope queries under matched calibration budgets; a source-task threshold can reject covered target inputs or miss absent answers. Candidate membership, label ambiguity and small natural-miss samples limit transfer claims.",
+      "zh": "在相同校准预算下区分人为移除、检索遗漏与范围外查询；源任务阈值可能误拒目标任务中已有答案的输入，或漏检缺失答案。候选成员、标签歧义及自然遗漏的小样本限制迁移结论。",
+      "artifacts": {
+        "code": "https://github.com/luckykevvv/Decision_Model_Benchmark"
+      },
+      "artifact_note": {
+        "en": "Recorded-output scoring is separate from reconstructing source text and fresh inference.",
+        "zh": "已记录输出评分与源文本重建、重新推理分开。"
+      }
+    },
+    {
+      "category": "Papers",
       "title": "Benchmarking System One decision models against trained classifiers and language models for automated decision gates",
       "by": "Rafe & Das · 2026-10-06 · v2",
       "date": "2026-10-06",
@@ -898,6 +916,20 @@
       "theme": "evaluation",
       "en": "Surveys semantic engines in network control loops; separates valid decisions, action feasibility, service checks and deadline attainment, with bounded event-model tests rather than production validation.",
       "zh": "综述网络控制环中的语义引擎，区分决策格式有效、动作可行、服务核查与期限达成；验证来自有界事件模型测试，而非生产部署。"
+    },
+    {
+      "category": "Papers",
+      "title": "Probability Contracts: Accuracy, Coherence, and Decisions Across LLM Interfaces",
+      "by": "Chen & Li · 2026-10-05 · v2",
+      "date": "2026-10-05",
+      "first_submitted": "2026-09-27",
+      "url": "https://arxiv.org/abs/2609.37470v2",
+      "theme": "calibration",
+      "en": "Known-posterior finite worlds separate probability accuracy, interface coherence and decision loss. Averaging can improve expected Brier score without improving a policy at every deferral cost; valid-report coverage and each comparison's reference policy remain essential.",
+      "zh": "用已知后验的有限世界区分概率准确性、接口一致性和决策损失。取平均可改善期望 Brier 分数，却不保证每个转交成本下的策略更好；有效输出覆盖率与具体对照策略不可省略。",
+      "artifacts": {
+        "unverified": "code"
+      }
     },
     {
       "category": "Papers",
@@ -988,6 +1020,24 @@
     },
     {
       "category": "Papers",
+      "title": "Fast Models, Slow Evidence: A Paired and Self-Audited Evaluation of System-1 Decision Models for LLM Agent Harnesses",
+      "by": "Li · 2026-10-01 · v1",
+      "date": "2026-10-01",
+      "first_submitted": "2026-10-01",
+      "url": "https://arxiv.org/abs/2610.02267v1",
+      "theme": "evaluation",
+      "en": "Paired Laya/Jev evaluation of 11 agent decision points includes a self-audit: pre-screen cost, end-to-end quality, threshold leakage and unnatural channel content change deployment conclusions. Public English-dominant labels and zero-shot configurations limit generalization.",
+      "zh": "成对评测 Laya／Jev 的 11 类 agent 决策并自查流程：前置筛查成本、端到端质量、阈值泄漏及不自然的通道内容都会改变部署结论。公开、英语为主的标签和零样本配置限制泛化。",
+      "artifacts": {
+        "code": "https://github.com/David-DL-Space/sys1-eval"
+      },
+      "artifact_note": {
+        "en": "README and inventory checked; raw responses and analyses not replayed.",
+        "zh": "已查说明和目录，未回放原始响应或分析。"
+      }
+    },
+    {
+      "category": "Papers",
       "title": "AudioJev: Direct Audio Decisions with Order-Calibrated Probabilities",
       "by": "Lv et al. · 2026-10-01 · v1",
       "date": "2026-10-01",
@@ -1014,6 +1064,24 @@
       "theme": "calibration",
       "en": "Controls information and surface cues to distinguish Jev answer confidence from self-knowledge; black-box behavior does not establish access to an internal knowledge state.",
       "zh": "通过控制信息与表面线索，区分 Jev 的答案置信度与是否知道答案的自评；黑盒表现并不证明能读取内部知识状态。"
+    },
+    {
+      "category": "Papers",
+      "title": "Jev-as-a-Judge for RAG Claim Verification: Confidence-Gated Cascading Between a Non-Generative Verifier and a Frontier LLM",
+      "by": "Do Rosario & Atef · 2026-09-30 · v1",
+      "date": "2026-09-30",
+      "first_submitted": "2026-09-30",
+      "url": "https://arxiv.org/abs/2610.20634v1",
+      "theme": "judging",
+      "en": "Paired verification of 495 RAG claims finds different false-verification rates despite similar aggregate scores. One threshold is cross-fitted, but design choices and matched random-escalation controls remain exploratory; simulated savings do not establish equivalence or a better production gate.",
+      "zh": "对 495 条 RAG 声明的成对核验显示，汇总分数相近仍可有不同的误放率。一个阈值经过交叉拟合，但设计选择与同预算随机升级对照仍属探索；模拟节省不证明等效性或生产门控更优。",
+      "artifacts": {
+        "code": "https://github.com/adorosario/jev-rag-claim-verification"
+      },
+      "artifact_note": {
+        "en": "Gold labels require upstream dataset access; offline replay is not a deployed cascade.",
+        "zh": "参考标签需取得上游数据访问权限；离线回放并非已部署级联。"
+      }
     },
     {
       "category": "Papers",
@@ -1056,6 +1124,20 @@
       "theme": "applications",
       "en": "Medical candidate-conditioned decisions are compared with a matched generative baseline; calibration gains do not isolate interface effects from training differences or establish clinical readiness.",
       "zh": "将医学候选条件决策与匹配的生成式基线比较；校准收益未分离接口与训练差异的影响，也不能证明临床部署成熟度。"
+    },
+    {
+      "category": "Papers",
+      "title": "When the Right Answer Is Missing: An Arithmetic-Dependent Rejection Bottleneck in Jev",
+      "by": "Zhong, Li & Lai · 2026-09-30 · v1",
+      "date": "2026-09-30",
+      "first_submitted": "2026-09-30",
+      "url": "https://arxiv.org/abs/2609.39496v1",
+      "theme": "robustness",
+      "en": "Paired numerical menus expose strong answer-present selection but weak none-of-the-above rejection. Separate development thresholds recover much of the tested rejection performance, while Boolean verification behaves differently; this diagnoses an interface-dependent failure, not hidden model mechanisms or universal threshold transfer.",
+      "zh": "成对数值候选集揭示：答案存在时选择较强，缺失时却难以选中“以上皆非”。独立开发集阈值改善了所测拒答表现，布尔核验则呈现不同结果；这是接口相关失效诊断，不揭示内部机制或普遍阈值迁移。",
+      "artifacts": {
+        "unverified": "code"
+      }
     },
     {
       "category": "Papers",
@@ -1156,6 +1238,25 @@
       "theme": "judging",
       "en": "Compares Jev and generative judges on retrospective agent-trace risk classification; dataset rankings vary, and successful-call latency and valid-judgment cost must be read with coverage.",
       "zh": "比较 Jev 与生成式评判模型对历史 agent 轨迹的风险分类；排名因数据集而异，成功调用耗时和有效判断成本需结合覆盖率解读。"
+    },
+    {
+      "category": "Papers",
+      "title": "Laya as a Typed Probabilistic Assessor: An Independent Reproduction and a Preregistered Study of Calibration and Selective Escalation",
+      "by": "Nandakishore · 2026-09-27 · v1",
+      "date": "2026-09-27",
+      "first_submitted": "2026-09-27",
+      "url": "https://arxiv.org/abs/2609.33843v1",
+      "theme": "calibration",
+      "en": "A pinned Laya checkpoint is underconfident on synthetic teacher labels. Temperature fitting improves probability metrics, but the frozen calibrator-selection rule and escalation gate fail held-out targets; reported Jev comparisons are indirect, and the initial reproduction predates preregistration.",
+      "zh": "固定版本 Laya 检查点在合成教师标签上信心不足。温度拟合改善概率指标，但冻结的校准器选择规则与升级门控未达到留出目标；Jev 对照来自间接引用，初始复现早于预注册。",
+      "artifacts": {
+        "code": "https://arxiv.org/src/2609.33843v1/anc/metrics.py",
+        "data": "https://arxiv.org/src/2609.33843v1/anc"
+      },
+      "artifact_note": {
+        "en": "Metric code and ancillary records; full training/collection source is not included.",
+        "zh": "指标代码与附属记录；不包含完整训练／采集源码。"
+      }
     },
     {
       "category": "Papers",

@@ -18,7 +18,7 @@ import xml.etree.ElementTree as ET
 ROOT = Path(__file__).resolve().parents[1]
 BASE = "https://awesomejev.github.io"
 PAIRS = (("/", "/zh/"), ("/guide/", "/zh/guide/"), ("/papers/", "/zh/papers/"), ("/models/", "/zh/models/"), ("/tools/", "/zh/tools/"), ("/discoveries/", "/zh/discoveries/"))
-TOPIC_SLUGS = ("option-label-bias", "audiojev", "graph-decision-benchmarks")
+TOPIC_SLUGS = ("option-label-bias", "audiojev", "graph-decision-benchmarks", "calibration-and-abstention")
 PAIRS += (("/topics/", "/zh/topics/"),) + tuple((f"/topics/{slug}/", f"/zh/topics/{slug}/") for slug in TOPIC_SLUGS)
 ROUTES = tuple(route for pair in PAIRS for route in pair)
 BUILD_INPUTS = (

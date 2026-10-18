@@ -2,9 +2,9 @@
 
 Guidance checked against official documentation on **2026-10-17**. These changes make content easier to discover and inspect; they do not guarantee crawling, indexing, rankings, or citations in an AI answer. Search visibility and account-level settings must be checked separately from a successful deployment.
 
-The generated sitemap currently contains **20 canonical HTML pages**, with English/Chinese pairs for the collection, guide, papers, models, tools, discoveries, topic directory and three research notes. The [model directory](https://awesomejev.github.io/models/) and [topic directory](https://awesomejev.github.io/topics/) give focused entry points alongside the full collection. Submission receipts and historical route counts are recorded below.
+The generated sitemap currently contains **22 canonical HTML pages**, with English/Chinese pairs for the collection, guide, papers, models, tools, discoveries, topic directory and four research notes. The [model directory](https://awesomejev.github.io/models/) and [topic directory](https://awesomejev.github.io/topics/) give focused entry points alongside the full collection. Submission receipts and historical route counts are recorded below.
 
-The [18 October release integration](reviews/integration-2026-10-18.md) reconciles the canonical repository's merged research and interface changes with the website mirror. The current collection contains 177 curated entries and 95 direct papers; the source-ledger, expansion and historical release counts have different scopes. The site stays white with dark text even when the operating system prefers a dark scheme. The research-activity figure remains available in a disclosure above the paper table.
+The [18 October release integration](reviews/integration-2026-10-18.md) reconciles the canonical repository's merged research and interface changes with the website mirror. The current collection contains 188 curated entries and 101 direct papers; the source-ledger, expansion and historical release counts have different scopes. The site stays white with dark text even when the operating system prefers a dark scheme. The research-activity figure remains available in a disclosure above the paper table.
 
 ## Confirmed paper-directory indexing
 

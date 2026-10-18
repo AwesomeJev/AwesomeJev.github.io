@@ -218,3 +218,9 @@ Five new paper identities selected from the arXiv discovery batch bring the revi
 Eight individually reviewed paper identities bring the expansion to **801 sources**. Abstract hashes match the retained arXiv scan evidence; selected manuscript sections and fixed README snapshots provide interpretation limits. Code repositories, release variants and later game demonstrations are navigation only, with zero additional identities. [Scope and fingerprints](judge-models-2026-10-18.md).
 
 **中文：** 八篇论文使扩展达到801项，固定摘要与扫描证据一致。代码仓库、版本变体和后续游戏演示只作导航，不增加来源计数；未执行模型或复现实验。
+
+## Calibration and routing evidence — 18 October 2026 UTC
+
+Six reviewed paper identities raise the expansion count to **807**. Fixed abstracts match the scan proposal; selected sections and artifact documentation constrain the summaries without raising the evidence tier. Versions, code files, ancillary files and the new bilingual topic pages add no extra source identities. [Review](calibration-papers-2026-10-18.md).
+
+**中文：** 六篇经核查论文使扩展达到807项；保留摘要核查等级，配套文件与新专题页面不重复计数。
