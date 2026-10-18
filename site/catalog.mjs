@@ -309,6 +309,102 @@ const toolTasks = [
 const resources = [
   {
     "category": "Papers",
+    "title": "From Probabilities to Decisions: Search and Multi-Teacher Distillation with Jev",
+    "by": "Sadoun, Sharif & Banad · 2026-10-06 · v1",
+    "date": "2026-10-06",
+    "first_submitted": "2026-10-06",
+    "url": "https://arxiv.org/abs/2610.09188v1",
+    "theme": "applications",
+    "en": "Distills Jev and LLM judgments into compact search evaluators and rerankers; matched-label-budget gains in chess do not generalize to every tested game. The deployed bot also uses Stockfish, opening books and tablebases, and API wall time differs from GPU labeling time.",
+    "zh": "将 Jev 与语言模型判断蒸馏为紧凑搜索评估器和重排器；相同标签预算下的棋类收益并未推广到所有测试游戏。部署机器人还依赖 Stockfish、开局库与残局库，API 墙钟时间也不同于 GPU 标注耗时。",
+    "artifacts": {
+      "unverified": "code"
+    }
+  },
+  {
+    "category": "Papers",
+    "title": "SharedKV-BT: Node-Local Typed Decisions for Behavior-Tree Agents",
+    "by": "Wake & Wagle · 2026-10-05 · v1",
+    "date": "2026-10-05",
+    "first_submitted": "2026-10-05",
+    "url": "https://arxiv.org/abs/2610.07327v1",
+    "theme": "applications",
+    "en": "Combines shared-prefix candidate scoring with behavior-tree node interfaces and external execution checks. The experiments separate scoring speed, stage restrictions and postcondition authority; predefined trees, simulated tasks and order-sensitive choices limit broader closed-loop reliability claims.",
+    "zh": "把共享前缀候选评分、行为树节点接口与外部执行检查结合，区分评分速度、阶段限制和后置条件的权限。预定义树、仿真任务及对顺序敏感的选择，限制了更广泛的闭环可靠性结论。",
+    "artifacts": {
+      "unverified": "code"
+    }
+  },
+  {
+    "category": "Papers",
+    "title": "Student-Guided Teacher Distillation for Efficient LLM Task Routing: Positioning Against Jev-Style System-1 Classifiers",
+    "by": "Wu et al. · 2026-10-01 · v1",
+    "date": "2026-10-01",
+    "first_submitted": "2026-10-01",
+    "url": "https://arxiv.org/abs/2610.02516v1",
+    "theme": "architectures",
+    "en": "Preliminary distillation for a fixed 60-label task taxonomy uses a student shortlist to reduce teacher scoring. Teacher agreement is not human accuracy; complete held-out controls remain pending, and the best checkpoint differs from the version used for serving measurements. No Jev head-to-head result is established.",
+    "zh": "面向固定 60 标签任务分类的初步蒸馏研究，用学生候选表减少教师评分。与教师一致不等于人工准确率，完整留出对照仍待完成；最佳检查点与服务测量版本不同，未建立与 Jev 的直接对照结果。",
+    "artifacts": {
+      "unverified": "code"
+    }
+  },
+  {
+    "category": "Papers",
+    "title": "Prune First, Decide Fast: Scalable Semantic Query Processing with JEVDB",
+    "by": "Wang, Yan, Zhao & Liu · 2026-10-01 · v1",
+    "date": "2026-10-01",
+    "first_submitted": "2026-10-01",
+    "url": "https://arxiv.org/abs/2610.02046v1",
+    "theme": "applications",
+    "en": "Combines semantic SQL with relational pruning, semantic conditions and an optional decision-to-LLM cascade. Lossless pruning requires sound conditions and key extraction; empirically learned filters may lose recall. Imported SemBench baselines and separately amortized index preparation qualify efficiency comparisons.",
+    "zh": "将语义 SQL、关系剪枝、语义条件与可选的决策模型—语言模型级联结合。无损剪枝依赖可靠的必要条件与键提取，经验学习的过滤器可能损失召回；引用的 SemBench 基线和单独摊销的索引准备成本限制效率比较。",
+    "artifacts": {
+      "code": "https://github.com/PDAIS/JEVDB"
+    },
+    "artifact_note": {
+      "en": "Implementation README and inventory checked; package and benchmarks not executed.",
+      "zh": "已查实现说明和目录，未执行软件包或基准。"
+    }
+  },
+  {
+    "category": "Papers",
+    "title": "OpenJev-RLCD: A Working RLCD Implementation",
+    "by": "Gao & Wang · 2026-09-30 · v1",
+    "date": "2026-09-30",
+    "first_submitted": "2026-09-30",
+    "url": "https://arxiv.org/abs/2609.38850v1",
+    "theme": "calibration",
+    "en": "An independent two-stage RLCD recipe calibrates a reasoning model's answer readout, then reinforces rationales with a proper-score reward. Three-seed results on a 1.7B model show task-dependent gains; the implementation explicitly makes no claim to recover TypeSafe's internal training algorithm.",
+    "zh": "独立的两阶段 RLCD 方法先校准推理模型的答案读出，再用适当评分奖励强化推理。1.7B 模型上的三种子结果显示收益随任务变化；实现明确不声称还原 TypeSafe 内部训练算法。",
+    "artifacts": {
+      "code": "https://github.com/ZimmyGao/openjev-rlcd"
+    },
+    "artifact_note": {
+      "en": "Independent implementation; released result files were not replayed.",
+      "zh": "独立实现，未回放公开结果文件。"
+    }
+  },
+  {
+    "category": "Papers",
+    "title": "NumericJev: Jev-like LLM Numerical Decoding with Multiway Decision Trees",
+    "by": "Ye, Liu & Jiang · 2026-09-23 · v1",
+    "date": "2026-09-23",
+    "first_submitted": "2026-09-23",
+    "url": "https://arxiv.org/abs/2609.28587v1",
+    "theme": "architectures",
+    "en": "Uses repeated Choice calls to refine a known numerical interval without retraining. Resolution is not accuracy or calibrated uncertainty, and early wrong branches are irreversible. Arithmetic variants share 64 base families; historical-index recall and later controller demonstrations are separate evidence.",
+    "zh": "无需重训，通过重复 Choice 调用缩小已知数值区间。分辨率不等于准确性或已校准不确定性，早期错误分支不可逆。算术变体共享 64 个基础问题族；历史指数回忆与后续控制演示属于不同证据。",
+    "artifacts": {
+      "code": "https://github.com/Bring-AI/JevNext"
+    },
+    "artifact_note": {
+      "en": "Renamed JevNext repository; current release declares PolyForm Noncommercial 1.0.0.",
+      "zh": "仓库已更名 JevNext，当前版本声明 PolyForm Noncommercial 1.0.0。"
+    }
+  },
+  {
+    "category": "Papers",
     "title": "Benchmarking candidate coverage and rejection policy transfer in typed decision models",
     "by": "Lu & Wu · 2026-10-06 · v2",
     "date": "2026-10-06",

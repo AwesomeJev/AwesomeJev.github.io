@@ -101,6 +101,21 @@ Our suggested evaluation freezes the full routing procedure before a held-out ta
 
 **Programmable inference.** DSPy studies optimization of model pipelines; SGLang studies their efficient execution. Both motivate controlling orchestration, caching, and serving conditions before attributing end-to-end improvements to one decision model. [DSPy](https://arxiv.org/abs/2310.03714) · [SGLang](https://papers.nips.cc/paper_files/paper/2024/file/724be4472168f31ba1c9ac630f15dec8-Paper-Conference.pdf)
 
+### Training, distillation and system boundaries
+
+A typed interface may sit inside a learned scorer, search algorithm or larger application. Keep the contribution of each layer explicit; these six studies do not recover TypeSafe's internal training or establish a universal deployment ranking.
+
+| Study | Added mechanism | Boundary to preserve |
+| --- | --- | --- |
+| [OpenJev-RLCD, v1](https://arxiv.org/abs/2609.38850v1) | Proper-score readout training followed by rationale reinforcement | Independent 1.7B experiment; stage-two benefit varies by task. |
+| [Student-guided distillation, v1](https://arxiv.org/abs/2610.02516v1) | A trained student shortlists a fixed 60-category taxonomy for a teacher | Preliminary teacher agreement; complete human-reviewed and baseline comparisons remain pending. |
+| [Search and multi-teacher distillation, v1](https://arxiv.org/abs/2610.09188v1) | Offline teacher judgments become compact search evaluators | Search, books and tablebases supply other capabilities; API wall time and GPU time use different accounting. |
+| [SharedKV-BT, v1](https://arxiv.org/abs/2610.07327v1) | Shared candidate scoring plus stage-specific behavior-tree interfaces | External postconditions control progress; valid choices do not guarantee successful execution. |
+| [JEVDB, v1](https://arxiv.org/abs/2610.02046v1) | Relational/semantic pruning plus typed decisions and optional escalation | Pruning is lossless only under sound conditions and extraction; index preparation and fast/cascade modes stay separate. |
+| [NumericJev, v1](https://arxiv.org/abs/2609.28587v1) | Repeated Choice calls refine a caller-specified numerical range | Resolution is not accuracy or a confidence interval; early wrong branches cannot be recovered. |
+
+For a useful comparison, hold the candidate generator, search/control policy and validation budget fixed before attributing gains to the decision model. Record training and preparation costs separately from per-request cost, and preserve incomplete runs and failed execution. These are proposed evaluation controls, not experiments performed by this collection.
+
 ## 5. A proposed reproducible evaluation
 
 **This is a research protocol, not an experiment executed by this project.**

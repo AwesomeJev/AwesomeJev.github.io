@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 196" width="400" height="196" role="img" aria-labelledby="chart-title chart-desc" font-family="system-ui, -apple-system, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif" font-size="13">
-<title id="chart-title">每周首次提交到 arXiv 的论文数（按主题）</title><desc id="chart-desc">按 arXiv 首次提交的 ISO 周统计本目录 101 篇论文，按主题堆叠：2026-W38：1；2026-W39：26；2026-W40：27；2026-W41：17；2026-W42：30。</desc>
+<title id="chart-title">每周首次提交到 arXiv 的论文数（按主题）</title><desc id="chart-desc">按 arXiv 首次提交的 ISO 周统计本目录 107 篇论文，按主题堆叠：2026-W38：1；2026-W39：27；2026-W40：30；2026-W41：19；2026-W42：30。</desc>
 <rect x="0" y="5" width="10" height="10" rx="2" fill="#2a78d6"/><text x="15" y="15" fill="#111827">评测</text>
 <rect x="134" y="5" width="10" height="10" rx="2" fill="#eb6834"/><text x="149" y="15" fill="#111827">校准</text>
 <rect x="268" y="5" width="10" height="10" rx="2" fill="#1baf7a"/><text x="283" y="15" fill="#111827">评判</text>
@@ -17,24 +17,24 @@
 <rect x="129" y="141.67" width="24" height="11.07" fill="#eb6834"><title>2026-W39 (9/21–27) · 校准：4</title></rect>
 <rect x="129" y="128.6" width="24" height="11.07" fill="#1baf7a"><title>2026-W39 (9/21–27) · 评判：4</title></rect>
 <rect x="129" y="109" width="24" height="17.6" fill="#eda100"><title>2026-W39 (9/21–27) · 鲁棒性：6</title></rect>
-<rect x="129" y="99.2" width="24" height="7.8" fill="#e87ba4"><title>2026-W39 (9/21–27) · 架构：3</title></rect>
-<path d="M129 97.2V77.07Q129 73.07 133 73.07H149Q153 73.07 153 77.07V97.2Z" fill="#008300"><title>2026-W39 (9/21–27) · 应用：8</title></path>
-<text x="141" y="67.07" text-anchor="middle" font-weight="600" fill="#111827">26</text>
+<rect x="129" y="95.93" width="24" height="11.07" fill="#e87ba4"><title>2026-W39 (9/21–27) · 架构：4</title></rect>
+<path d="M129 93.93V73.8Q129 69.8 133 69.8H149Q153 69.8 153 73.8V93.93Z" fill="#008300"><title>2026-W39 (9/21–27) · 应用：8</title></path>
+<text x="141" y="63.8" text-anchor="middle" font-weight="600" fill="#111827">27</text>
 <text x="141" y="176" text-anchor="middle" fill="#111827">W39</text><text x="141" y="192" text-anchor="middle" font-size="12" fill="#4b5563">9/21</text>
 <rect x="203" y="138.4" width="24" height="19.6" fill="#2a78d6"><title>2026-W40 (9/28–10/4) · 评测：6</title></rect>
-<rect x="203" y="122.07" width="24" height="14.33" fill="#eb6834"><title>2026-W40 (9/28–10/4) · 校准：5</title></rect>
-<rect x="203" y="115.53" width="24" height="4.53" fill="#1baf7a"><title>2026-W40 (9/28–10/4) · 评判：2</title></rect>
-<rect x="203" y="105.73" width="24" height="7.8" fill="#eda100"><title>2026-W40 (9/28–10/4) · 鲁棒性：3</title></rect>
-<rect x="203" y="76.33" width="24" height="27.4" fill="#e87ba4"><title>2026-W40 (9/28–10/4) · 架构：9</title></rect>
-<path d="M203 74.33V73.8Q203 69.8 207 69.8H223Q227 69.8 227 73.8V74.33Z" fill="#008300"><title>2026-W40 (9/28–10/4) · 应用：2</title></path>
-<text x="215" y="63.8" text-anchor="middle" font-weight="600" fill="#111827">27</text>
+<rect x="203" y="118.8" width="24" height="17.6" fill="#eb6834"><title>2026-W40 (9/28–10/4) · 校准：6</title></rect>
+<rect x="203" y="112.27" width="24" height="4.53" fill="#1baf7a"><title>2026-W40 (9/28–10/4) · 评判：2</title></rect>
+<rect x="203" y="102.47" width="24" height="7.8" fill="#eda100"><title>2026-W40 (9/28–10/4) · 鲁棒性：3</title></rect>
+<rect x="203" y="69.8" width="24" height="30.67" fill="#e87ba4"><title>2026-W40 (9/28–10/4) · 架构：10</title></rect>
+<path d="M203 67.8V64Q203 60 207 60H223Q227 60 227 64V67.8Z" fill="#008300"><title>2026-W40 (9/28–10/4) · 应用：3</title></path>
+<text x="215" y="54" text-anchor="middle" font-weight="600" fill="#111827">30</text>
 <text x="215" y="176" text-anchor="middle" fill="#111827">W40</text><text x="215" y="192" text-anchor="middle" font-size="12" fill="#4b5563">9/28</text>
 <rect x="277" y="135.13" width="24" height="22.87" fill="#2a78d6"><title>2026-W41 (10/5–11) · 评测：7</title></rect>
 <rect x="277" y="128.6" width="24" height="4.53" fill="#1baf7a"><title>2026-W41 (10/5–11) · 评判：2</title></rect>
 <rect x="277" y="115.53" width="24" height="11.07" fill="#eda100"><title>2026-W41 (10/5–11) · 鲁棒性：4</title></rect>
 <rect x="277" y="105.73" width="24" height="7.8" fill="#e87ba4"><title>2026-W41 (10/5–11) · 架构：3</title></rect>
-<path d="M277 103.73V103.73Q277 102.47 278.27 102.47H299.73Q301 102.47 301 103.73V103.73Z" fill="#008300"><title>2026-W41 (10/5–11) · 应用：1</title></path>
-<text x="289" y="96.47" text-anchor="middle" font-weight="600" fill="#111827">17</text>
+<path d="M277 103.73V99.93Q277 95.93 281 95.93H297Q301 95.93 301 99.93V103.73Z" fill="#008300"><title>2026-W41 (10/5–11) · 应用：3</title></path>
+<text x="289" y="89.93" text-anchor="middle" font-weight="600" fill="#111827">19</text>
 <text x="289" y="176" text-anchor="middle" fill="#111827">W41</text><text x="289" y="192" text-anchor="middle" font-size="12" fill="#4b5563">10/5</text>
 <rect x="351" y="144.93" width="24" height="13.07" fill="#2a78d6"><title>2026-W42 (10/12–18) · 评测：4</title></rect>
 <rect x="351" y="131.87" width="24" height="11.07" fill="#eb6834"><title>2026-W42 (10/12–18) · 校准：4</title></rect>

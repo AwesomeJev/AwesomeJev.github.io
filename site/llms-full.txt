@@ -4,7 +4,7 @@ Independent community project, not affiliated with TypeSafe AI.
 Canonical website: https://awesomejev.github.io/
 Curated snapshot: 2026-10-18. Findings are author-reported; no model experiments reproduced here.
 
-# Jev guide: typed decisions, probabilities, and evaluation
+# Jev guide: decisions, confidence and evaluation
 
 Jev is a useful case study in models that return decisions for software. This independent guide separates documented interfaces, provider claims, and empirical evaluation. It does not reproduce model experiments.
 
@@ -111,6 +111,14 @@ Check each release’s model card and license separately. For example, Bespoke N
 API shape does not determine the inference path. Span-02 documents its own runtime and optional generated reasoning, with index settings that differ from normal serving. Lychee documents rejection rather than truncation for oversized requests. Record engine, hardware, reasoning mode, confidence definition and input limits with a comparison; these are publisher descriptions, not deployments tested by this collection. [Span-02 runtime and index settings](https://huggingface.co/respanai/span-02/raw/63cbdd774391f1b7d9bc3829179efe996d0191ce/README.md) · [Lychee model-card limits](https://huggingface.co/LycheeAI/Lychee-27B/raw/f3f95d18a3b1ef3c483c2a5d7e8e5272a2af31e2/README.md)
 
 Input support and calibration can differ by modality within one checkpoint. Liquid d1-omni-600M accepts images or audio per request, limits speech to 30 seconds, and caps text at 896 tokens for image requests. Its fitted temperatures apply to text, not images or audio. The release uses custom inference code and the LFM Open License v1.0; inspect that license separately from the base model or other d1 releases. [Liquid d1-omni-600M: limits and calibration](https://huggingface.co/LiquidAI/d1-omni-600M/raw/02b55d7076f15129e59ab3f94783f32c4b088674/README.md) · [LFM Open License v1.0](https://huggingface.co/LiquidAI/d1-omni-600M/raw/02b55d7076f15129e59ab3f94783f32c4b088674/LICENSE)
+
+## Does an open RLCD implementation reproduce Jev's training?
+
+A shared RLCD name or compatible API does not establish identical training. OpenJev-RLCD explicitly describes an independent implementation and makes no claim about TypeSafe's internal algorithm. It trains a reasoning model's probability readout after sampled rationales; that experimental design is distinct from establishing how the hosted Jev service was trained. [OpenJev-RLCD scope, v1](https://arxiv.org/html/2609.38850v1#S7)
+
+The two-stage recipe first trains the answer readout with a proper score, then reinforces rationales with that score and an anchor to the first-stage model. Its experiments use one 1.7B backbone, three seeds and short training runs; the second stage helps one main task and is neutral on the other. Keep the scored distribution, generated-rationale budget, fitting split and temperature-scaled baselines explicit. A scoring-rule argument is not by itself a deployment calibration guarantee. [Two-stage method and setup, v1](https://arxiv.org/html/2609.38850v1#S3) · [Experimental setup](https://arxiv.org/html/2609.38850v1#S4)
+
+Distillation poses a different question: what can a smaller model learn from teacher judgments? The student-guided routing paper uses a fixed 60-label taxonomy and reports preliminary teacher agreement, with human-reviewed and full-baseline tests still pending. The search-distillation study trains compact evaluators offline; search supplies lookahead and teacher value differs across tasks. Compare label budgets and downstream outcomes, and separate offline labeling cost from runtime inference. [Student-guided routing: pending evaluation, v1](https://arxiv.org/html/2610.02516v1#S7) · [Search distillation: component roles, v1](https://arxiv.org/html/2610.09188v1#S7) · [Labeling cost](https://arxiv.org/html/2610.09188v1#S8)
 
 ## Where should I look for research and benchmark evidence?
 
@@ -566,6 +574,14 @@ Tests conflicts between option names and definitions despite structurally valid 
 
 Primary source: https://arxiv.org/abs/2609.26758v3
 
+## From Probabilities to Decisions: Search and Multi-Teacher Distillation with Jev
+
+Papers · Sadoun, Sharif & Banad · 2026-10-06 · v1
+
+Distills Jev and LLM judgments into compact search evaluators and rerankers; matched-label-budget gains in chess do not generalize to every tested game. The deployed bot also uses Stockfish, opening books and tablebases, and API wall time differs from GPU labeling time.
+
+Primary source: https://arxiv.org/abs/2610.09188v1
+
 ## Same-Number Citation Swaps: Stress-Testing Jev as a Financial Evidence Judge
 
 Papers · Xu et al. · 2026-10-06 · v1
@@ -605,6 +621,14 @@ Papers · Rafe & Das · 2026-10-06 · v2
 A common-request harness compares typed decision models, generative readouts and trained classifiers; accuracy, selective coverage and out-of-scope acceptance depend on label access and task.
 
 Primary source: https://arxiv.org/abs/2610.00346v2
+
+## SharedKV-BT: Node-Local Typed Decisions for Behavior-Tree Agents
+
+Papers · Wake & Wagle · 2026-10-05 · v1
+
+Combines shared-prefix candidate scoring with behavior-tree node interfaces and external execution checks. The experiments separate scoring speed, stage restrictions and postcondition authority; predefined trees, simulated tasks and order-sensitive choices limit broader closed-loop reliability claims.
+
+Primary source: https://arxiv.org/abs/2610.07327v1
 
 ## ufakzeka-karar: An Open Turkish Typed-Decision Model with Order-Invariant Option Scoring
 
@@ -670,6 +694,14 @@ Studies option-label bias in open-weight decision models; prompt-rendering chang
 
 Primary source: https://arxiv.org/abs/2610.02586v1
 
+## Student-Guided Teacher Distillation for Efficient LLM Task Routing: Positioning Against Jev-Style System-1 Classifiers
+
+Papers · Wu et al. · 2026-10-01 · v1
+
+Preliminary distillation for a fixed 60-label task taxonomy uses a student shortlist to reduce teacher scoring. Teacher agreement is not human accuracy; complete held-out controls remain pending, and the best checkpoint differs from the version used for serving measurements. No Jev head-to-head result is established.
+
+Primary source: https://arxiv.org/abs/2610.02516v1
+
 ## HakemBench: A Turkish Benchmark of Typed Decisions
 
 Papers · Teke · 2026-10-01 · v1
@@ -685,6 +717,14 @@ Papers · Li · 2026-10-01 · v1
 Paired Laya/Jev evaluation of 11 agent decision points includes a self-audit: pre-screen cost, end-to-end quality, threshold leakage and unnatural channel content change deployment conclusions. Public English-dominant labels and zero-shot configurations limit generalization.
 
 Primary source: https://arxiv.org/abs/2610.02267v1
+
+## Prune First, Decide Fast: Scalable Semantic Query Processing with JEVDB
+
+Papers · Wang, Yan, Zhao & Liu · 2026-10-01 · v1
+
+Combines semantic SQL with relational pruning, semantic conditions and an optional decision-to-LLM cascade. Lossless pruning requires sound conditions and key extraction; empirically learned filters may lose recall. Imported SemBench baselines and separately amortized index preparation qualify efficiency comparisons.
+
+Primary source: https://arxiv.org/abs/2610.02046v1
 
 ## AudioJev: Direct Audio Decisions with Order-Calibrated Probabilities
 
@@ -749,6 +789,14 @@ Papers · Ding, Jin & Ji · 2026-09-30 · v1
 Shared evidence encoding and candidate-probability readout, trained with representation and action-outcome feedback.
 
 Primary source: https://arxiv.org/abs/2609.39111v1
+
+## OpenJev-RLCD: A Working RLCD Implementation
+
+Papers · Gao & Wang · 2026-09-30 · v1
+
+An independent two-stage RLCD recipe calibrates a reasoning model's answer readout, then reinforces rationales with a proper-score reward. Three-seed results on a 1.7B model show task-dependent gains; the implementation explicitly makes no claim to recover TypeSafe's internal training algorithm.
+
+Primary source: https://arxiv.org/abs/2609.38850v1
 
 ## Evaluating and Benchmarking the System One Model Jev
 
@@ -877,6 +925,14 @@ Papers · Wu & Lim · 2026-09-23 · v1
 Audits Jev injection on reconstructed InjecAgent cases, separating probability shifts from attacker-target selections; optimization results are checked on fresh calls, within this benchmark setting.
 
 Primary source: https://arxiv.org/abs/2609.28613v1
+
+## NumericJev: Jev-like LLM Numerical Decoding with Multiway Decision Trees
+
+Papers · Ye, Liu & Jiang · 2026-09-23 · v1
+
+Uses repeated Choice calls to refine a known numerical interval without retraining. Resolution is not accuracy or calibrated uncertainty, and early wrong branches are irreversible. Arithmetic variants share 64 base families; historical-index recall and later controller demonstrations are separate evidence.
+
+Primary source: https://arxiv.org/abs/2609.28587v1
 
 ## Can Jev Judge Radiology Reports? Evaluating a System One Model for Clinical Factuality
 

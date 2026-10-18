@@ -3,34 +3,34 @@
   "baseline_commit": "3519c15d7e00686a8dbf9b1e184c68726327ab1e",
   "baseline_source_index_sha256": "8bfdd20564f2cda54bb8264c3c802f315e3e9a11b153bd85dde4325f53c841d5",
   "target_new_sources": 301,
-  "accepted_new_sources": 807,
+  "accepted_new_sources": 813,
   "remaining_to_target": 0,
   "target_count_reached": true,
   "current_index_counts": {
     "editorial_reviewed": 4,
     "content_screened": 2397,
-    "abstract_checked": 1866,
+    "abstract_checked": 1872,
     "metadata_only": 47,
-    "raw_records": 4328,
-    "unique_records": 4314,
+    "raw_records": 4334,
+    "unique_records": 4320,
     "duplicate_records": 14,
-    "checked_sources": 4267
+    "checked_sources": 4273
   },
   "by_category": {
     "Datasets": 101,
     "Guides and evaluations": 38,
     "Models": 59,
-    "Papers": 54,
+    "Papers": 60,
     "Projects": 219,
     "Research foundations": 336
   },
   "by_relation": {
     "adjacent": 25,
     "background": 336,
-    "direct": 446
+    "direct": 452
   },
   "by_verification_level": {
-    "abstract_checked": 390,
+    "abstract_checked": 396,
     "content_screened": 417
   },
   "verification_note": "Evidence depth is labeled per source. Content screening and abstract checks do not establish full-paper review, peer review, endorsement, or experimental reproduction.",
@@ -2592,6 +2592,18 @@
       "ledger": "research-sources.jsonl"
     },
     {
+      "title": "From Probabilities to Decisions: Search and Multi-Teacher Distillation with Jev",
+      "url": "https://arxiv.org/abs/2610.09188",
+      "category": "Papers",
+      "topic": "direct-decision-research",
+      "description": "Distills Jev and LLM judgments into compact search evaluators and rerankers; matched-label-budget gains in chess do not generalize to every tested game. The deployed bot also uses Stockfish, opening books and tablebases, and API wall time differs from GPU labeling time.",
+      "relation": "direct",
+      "verification_level": "abstract_checked",
+      "content_sha256": "b0155e223e8f7cb406780a02014fea474bc46e444cdd73bc752ea5e3e300dd0c",
+      "retrieved_at": "2026-10-18T09:00:33.833251+00:00",
+      "ledger": "research-sources.jsonl"
+    },
+    {
       "title": "FunDM: Cheap & Label-Free Decision Models from Frozen Language Models",
       "url": "https://arxiv.org/abs/2610.17175",
       "category": "Papers",
@@ -2784,6 +2796,18 @@
       "ledger": "research-sources.jsonl"
     },
     {
+      "title": "NumericJev: Jev-like LLM Numerical Decoding with Multiway Decision Trees",
+      "url": "https://arxiv.org/abs/2609.28587",
+      "category": "Papers",
+      "topic": "direct-decision-research",
+      "description": "Uses repeated Choice calls to refine a known numerical interval without retraining. Resolution is not accuracy or calibrated uncertainty, and early wrong branches are irreversible. Arithmetic variants share 64 base families; historical-index recall and later controller demonstrations are separate evidence.",
+      "relation": "direct",
+      "verification_level": "abstract_checked",
+      "content_sha256": "da888a65bf75666d2d3a646623c23e695a422c671e7cb41d5061c009fbdf9ce7",
+      "retrieved_at": "2026-10-18T09:00:35.966987+00:00",
+      "ledger": "research-sources.jsonl"
+    },
+    {
       "title": "OmniMed-Jev: Calibrating LVLM Confidence for Trustworthy Medical Multimodal Decisions via System One",
       "url": "https://arxiv.org/abs/2610.00381",
       "category": "Papers",
@@ -2805,6 +2829,18 @@
       "verification_level": "abstract_checked",
       "content_sha256": "b2270f7af20a7bd8da9ca49784aa4c2145cd500c8d92f194d838ac3334755ff6",
       "retrieved_at": "2026-10-16T11:20:08+00:00",
+      "ledger": "research-sources.jsonl"
+    },
+    {
+      "title": "OpenJev-RLCD: A Working RLCD Implementation",
+      "url": "https://arxiv.org/abs/2609.38850",
+      "category": "Papers",
+      "topic": "direct-decision-research",
+      "description": "An independent two-stage RLCD recipe calibrates a reasoning model's answer readout, then reinforces rationales with a proper-score reward. Three-seed results on a 1.7B model show task-dependent gains; the implementation explicitly makes no claim to recover TypeSafe's internal training algorithm.",
+      "relation": "direct",
+      "verification_level": "abstract_checked",
+      "content_sha256": "c08303c3361d3daa1264a08644fa7fdcf79c20b28860df5b278165bac9a4fc4f",
+      "retrieved_at": "2026-10-18T09:00:35.831851+00:00",
       "ledger": "research-sources.jsonl"
     },
     {
@@ -2865,6 +2901,18 @@
       "verification_level": "abstract_checked",
       "content_sha256": "c9debf348241821239fd263d7723eba91273229317e515be92d3396a3ed21d60",
       "retrieved_at": "2026-10-18T08:40:29.736762+00:00",
+      "ledger": "research-sources.jsonl"
+    },
+    {
+      "title": "Prune First, Decide Fast: Scalable Semantic Query Processing with JEVDB",
+      "url": "https://arxiv.org/abs/2610.02046",
+      "category": "Papers",
+      "topic": "direct-decision-research",
+      "description": "Combines semantic SQL with relational pruning, semantic conditions and an optional decision-to-LLM cascade. Lossless pruning requires sound conditions and key extraction; empirically learned filters may lose recall. Imported SemBench baselines and separately amortized index preparation qualify efficiency comparisons.",
+      "relation": "direct",
+      "verification_level": "abstract_checked",
+      "content_sha256": "d6fa471f59672659eaa101f198287877e8df4fa601a7b86a4bde1ce6817c2c2f",
+      "retrieved_at": "2026-10-18T09:00:34.875548+00:00",
       "ledger": "research-sources.jsonl"
     },
     {
@@ -2952,6 +3000,18 @@
       "ledger": "research-sources.jsonl"
     },
     {
+      "title": "SharedKV-BT: Node-Local Typed Decisions for Behavior-Tree Agents",
+      "url": "https://arxiv.org/abs/2610.07327",
+      "category": "Papers",
+      "topic": "direct-decision-research",
+      "description": "Combines shared-prefix candidate scoring with behavior-tree node interfaces and external execution checks. The experiments separate scoring speed, stage restrictions and postcondition authority; predefined trees, simulated tasks and order-sensitive choices limit broader closed-loop reliability claims.",
+      "relation": "direct",
+      "verification_level": "abstract_checked",
+      "content_sha256": "3e6dd354dad796572aba184c563aa771bbc30a0d969f67267c78a24ef897f998",
+      "retrieved_at": "2026-10-18T09:00:33.841851+00:00",
+      "ledger": "research-sources.jsonl"
+    },
+    {
       "title": "SoK: Semantic Decision Engines in Network Control Loops",
       "url": "https://arxiv.org/abs/2610.06425",
       "category": "Papers",
@@ -2973,6 +3033,18 @@
       "verification_level": "abstract_checked",
       "content_sha256": "a641b55cb05c921f04724be7efdc13c4749e88b1bd50dc932eb5b499c7e96b90",
       "retrieved_at": "2026-10-16T11:20:08+00:00",
+      "ledger": "research-sources.jsonl"
+    },
+    {
+      "title": "Student-Guided Teacher Distillation for Efficient LLM Task Routing: Positioning Against Jev-Style System-1 Classifiers",
+      "url": "https://arxiv.org/abs/2610.02516",
+      "category": "Papers",
+      "topic": "direct-decision-research",
+      "description": "Preliminary distillation for a fixed 60-label task taxonomy uses a student shortlist to reduce teacher scoring. Teacher agreement is not human accuracy; complete held-out controls remain pending, and the best checkpoint differs from the version used for serving measurements. No Jev head-to-head result is established.",
+      "relation": "direct",
+      "verification_level": "abstract_checked",
+      "content_sha256": "06133fb82ea4c207a98684d2818f5cabac26d19b5e7d4662ee11eb0c5fd502c8",
+      "retrieved_at": "2026-10-18T09:00:34.868275+00:00",
       "ledger": "research-sources.jsonl"
     },
     {

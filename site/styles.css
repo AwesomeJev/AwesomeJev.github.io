@@ -242,8 +242,8 @@ html:not(.js) .corpus-disclosure {
 }
 .document-toc li + li { margin-top: 8px; }
 @media (min-width: 800px) {
-  .topic-toc ol { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 36px; row-gap: 8px; }
-  .topic-toc li + li { margin-top: 0; }
+  .topic-toc ol, .guide-toc ol { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 36px; row-gap: 8px; }
+  .topic-toc li + li, .guide-toc li + li { margin-top: 0; }
 }
 .prose section { margin: 40px 0; }
 .prose h2 { font-size: 25px; line-height: 1.4; letter-spacing: -0.02em; }

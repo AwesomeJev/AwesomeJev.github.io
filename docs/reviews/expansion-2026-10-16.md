@@ -224,3 +224,9 @@ Eight individually reviewed paper identities bring the expansion to **801 source
 Six reviewed paper identities raise the expansion count to **807**. Fixed abstracts match the scan proposal; selected sections and artifact documentation constrain the summaries without raising the evidence tier. Versions, code files, ancillary files and the new bilingual topic pages add no extra source identities. [Review](calibration-papers-2026-10-18.md).
 
 **中文：** 六篇经核查论文使扩展达到807项；保留摘要核查等级，配套文件与新专题页面不重复计数。
+
+## Training and system boundaries — 18 October 2026 UTC
+
+Six reviewed paper identities raise the expansion to **813 sources**. Fixed abstracts match the raw scan proposal; targeted manuscript sections and three repository READMEs/inventories constrain the summaries. Renamed repositories, code and follow-up demonstrations add no separate identities. [Review](training-papers-2026-10-18.md).
+
+**中文：** 六篇论文使扩展达到813项；保留摘要核查等级，不将更名仓库、代码和后续演示重复计数。

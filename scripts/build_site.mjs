@@ -22,6 +22,7 @@ for (const language of ['en','zh']) {
   if (new Set(doc.sections.map(section=>section.id)).size!==doc.sections.length) throw new Error('Duplicate search guide section.');
   for (const section of doc.sections) {
     if (typeof section.id!=='string' || !/^[a-z0-9-]+$/.test(section.id) || typeof section.title!=='string' || !section.title.trim() || !Array.isArray(section.paragraphs) || !section.paragraphs.length) throw new Error('Invalid search guide section.');
+    if (section.toc_title !== undefined && (typeof section.toc_title !== 'string' || !section.toc_title.trim())) throw new Error('Invalid guide navigation label.');
     for (const paragraph of section.paragraphs) {
       if (typeof paragraph.text!=='string' || !paragraph.text.trim() || !Array.isArray(paragraph.sources)) throw new Error('Invalid search guide paragraph.');
       for (const source of paragraph.sources) {
@@ -255,7 +256,7 @@ function topicPage(language, topic) {
 }
 function guidePage(language) {
   const doc=guide[language], isZh=language==='zh';
-  const toc=`<nav class="document-toc" aria-label="${isZh?'本页目录':'On this page'}"><ol>${doc.sections.map(s=>`<li><a href="#${esc(s.id)}">${esc(s.title)}</a></li>`).join('')}</ol></nav>`;
+  const toc=`<nav class="document-toc guide-toc" aria-label="${isZh?'本页目录':'On this page'}"><ol>${doc.sections.map(s=>`<li><a href="#${esc(s.id)}">${esc(s.toc_title || s.title)}</a></li>`).join('')}</ol></nav>`;
   const body=`<p class="document-date">${isZh?'更新':'Updated'} <time datetime="${guide.updated}">${guide.updated}</time> · <a href="${repo}/blob/main/docs/${isZh?'survey.zh-CN.md':'survey.md'}">${isZh?'完整研究综述':'Full research survey'}</a></p><p>${esc(doc.intro)}</p>${toc}<div class="prose">${doc.sections.map(s=>`<section id="${esc(s.id)}"><h2>${esc(s.title)}</h2>${s.paragraphs.map(p=>`<p>${esc(p.text)}${p.sources.length?' <span class="source-links">'+p.sources.map(source=>`<a href="${esc(source.url)}" rel="noopener noreferrer">${esc(source.label)}</a>`).join(' · ')+'</span>':''}</p>`).join('')}</section>`).join('')}</div><p><a href="${route(language,'papers')}">${isZh?'继续阅读：精选论文与版本':'Continue reading: selected papers and versions'} →</a></p>`;
   return shell(language,'guide',doc.title,doc.description,body+topicLinks(language));
 }

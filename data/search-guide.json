@@ -1,7 +1,7 @@
 {
   "updated": "2026-10-18",
   "en": {
-    "title": "Jev guide: typed decisions, probabilities, and evaluation",
+    "title": "Jev guide: decisions, confidence and evaluation",
     "description": "A source-backed introduction to Jev, its decision primitives, confidence, evaluation methods, and independent model alternatives.",
     "intro": "Jev is a useful case study in models that return decisions for software. This independent guide separates documented interfaces, provider claims, and empirical evaluation. It does not reproduce model experiments.",
     "sections": [
@@ -27,7 +27,8 @@
               }
             ]
           }
-        ]
+        ],
+        "toc_title": "What is Jev?"
       },
       {
         "id": "typed-output-and-llms",
@@ -51,7 +52,8 @@
               }
             ]
           }
-        ]
+        ],
+        "toc_title": "Typed vs. structured output"
       },
       {
         "id": "primitives",
@@ -93,7 +95,8 @@
               }
             ]
           }
-        ]
+        ],
+        "toc_title": "Choice, Score and Noul"
       },
       {
         "id": "probability-and-confidence",
@@ -108,7 +111,8 @@
               }
             ]
           }
-        ]
+        ],
+        "toc_title": "Probability vs. confidence"
       },
       {
         "id": "evaluate-calibration",
@@ -149,7 +153,8 @@
               }
             ]
           }
-        ]
+        ],
+        "toc_title": "Evaluate calibration"
       },
       {
         "id": "judge-bias",
@@ -185,7 +190,8 @@
             "text": "Our proposed evaluation reports ranking agreement, probability reliability and perturbation sensitivity in separate columns. Verify that a supposedly meaning-preserving rewrite retains the task’s label, reserve held-out groups for learned corrections, and count probe calls in the evaluation budget. Repeated identical requests estimate variability; they do not establish correctness.",
             "sources": []
           }
-        ]
+        ],
+        "toc_title": "Judge bias"
       },
       {
         "id": "decision-model-baselines",
@@ -231,7 +237,8 @@
               }
             ]
           }
-        ]
+        ],
+        "toc_title": "Compare classifiers and LLMs"
       },
       {
         "id": "confidence-transfer",
@@ -289,7 +296,8 @@
               }
             ]
           }
-        ]
+        ],
+        "toc_title": "Transfer confidence gates"
       },
       {
         "id": "fallback-options",
@@ -330,7 +338,8 @@
               }
             ]
           }
-        ]
+        ],
+        "toc_title": "Fallback options"
       },
       {
         "id": "tables-and-cited-evidence",
@@ -354,7 +363,8 @@
               }
             ]
           }
-        ]
+        ],
+        "toc_title": "Tables and cited evidence"
       },
       {
         "id": "tool-arguments-and-option-channels",
@@ -387,7 +397,8 @@
               }
             ]
           }
-        ]
+        ],
+        "toc_title": "Tool arguments and option risks"
       },
       {
         "id": "attack-success-rates",
@@ -432,7 +443,8 @@
               }
             ]
           }
-        ]
+        ],
+        "toc_title": "Attack success rates"
       },
       {
         "id": "models-and-licenses",
@@ -486,7 +498,54 @@
               }
             ]
           }
-        ]
+        ],
+        "toc_title": "Models and licenses"
+      },
+      {
+        "id": "open-rlcd",
+        "title": "Does an open RLCD implementation reproduce Jev's training?",
+        "paragraphs": [
+          {
+            "text": "A shared RLCD name or compatible API does not establish identical training. OpenJev-RLCD explicitly describes an independent implementation and makes no claim about TypeSafe's internal algorithm. It trains a reasoning model's probability readout after sampled rationales; that experimental design is distinct from establishing how the hosted Jev service was trained.",
+            "sources": [
+              {
+                "label": "OpenJev-RLCD scope, v1",
+                "url": "https://arxiv.org/html/2609.38850v1#S7"
+              }
+            ]
+          },
+          {
+            "text": "The two-stage recipe first trains the answer readout with a proper score, then reinforces rationales with that score and an anchor to the first-stage model. Its experiments use one 1.7B backbone, three seeds and short training runs; the second stage helps one main task and is neutral on the other. Keep the scored distribution, generated-rationale budget, fitting split and temperature-scaled baselines explicit. A scoring-rule argument is not by itself a deployment calibration guarantee.",
+            "sources": [
+              {
+                "label": "Two-stage method and setup, v1",
+                "url": "https://arxiv.org/html/2609.38850v1#S3"
+              },
+              {
+                "label": "Experimental setup",
+                "url": "https://arxiv.org/html/2609.38850v1#S4"
+              }
+            ]
+          },
+          {
+            "text": "Distillation poses a different question: what can a smaller model learn from teacher judgments? The student-guided routing paper uses a fixed 60-label taxonomy and reports preliminary teacher agreement, with human-reviewed and full-baseline tests still pending. The search-distillation study trains compact evaluators offline; search supplies lookahead and teacher value differs across tasks. Compare label budgets and downstream outcomes, and separate offline labeling cost from runtime inference.",
+            "sources": [
+              {
+                "label": "Student-guided routing: pending evaluation, v1",
+                "url": "https://arxiv.org/html/2610.02516v1#S7"
+              },
+              {
+                "label": "Search distillation: component roles, v1",
+                "url": "https://arxiv.org/html/2610.09188v1#S7"
+              },
+              {
+                "label": "Labeling cost",
+                "url": "https://arxiv.org/html/2610.09188v1#S8"
+              }
+            ]
+          }
+        ],
+        "toc_title": "Independent RLCD training"
       },
       {
         "id": "papers-and-benchmarks",
@@ -531,7 +590,8 @@
               }
             ]
           }
-        ]
+        ],
+        "toc_title": "Find research evidence"
       },
       {
         "id": "reproduction-boundaries",
@@ -581,7 +641,8 @@
               }
             ]
           }
-        ]
+        ],
+        "toc_title": "Reproduction boundaries"
       }
     ]
   },
@@ -612,7 +673,8 @@
               }
             ]
           }
-        ]
+        ],
+        "toc_title": "什么是 Jev"
       },
       {
         "id": "typed-output-and-llms",
@@ -636,7 +698,8 @@
               }
             ]
           }
-        ]
+        ],
+        "toc_title": "类型化与结构化输出"
       },
       {
         "id": "primitives",
@@ -678,7 +741,8 @@
               }
             ]
           }
-        ]
+        ],
+        "toc_title": "Choice、Score 与 Noul"
       },
       {
         "id": "probability-and-confidence",
@@ -693,7 +757,8 @@
               }
             ]
           }
-        ]
+        ],
+        "toc_title": "概率与置信度"
       },
       {
         "id": "evaluate-calibration",
@@ -734,7 +799,8 @@
               }
             ]
           }
-        ]
+        ],
+        "toc_title": "怎样评估校准"
       },
       {
         "id": "judge-bias",
@@ -770,7 +836,8 @@
             "text": "我们建议分列报告排序一致性、概率可靠性和扰动敏感性；先核查所谓保留含义的改写是否仍应使用原标签，为学习到的校正保留独立测试分组，并把探针调用计入评估预算。重复相同请求可以估计变异性，但不能证明判断正确。",
             "sources": []
           }
-        ]
+        ],
+        "toc_title": "评判偏差"
       },
       {
         "id": "decision-model-baselines",
@@ -816,7 +883,8 @@
               }
             ]
           }
-        ]
+        ],
+        "toc_title": "分类器与语言模型对照"
       },
       {
         "id": "confidence-transfer",
@@ -874,7 +942,8 @@
               }
             ]
           }
-        ]
+        ],
+        "toc_title": "门控阈值迁移"
       },
       {
         "id": "fallback-options",
@@ -915,7 +984,8 @@
               }
             ]
           }
-        ]
+        ],
+        "toc_title": "兜底选项"
       },
       {
         "id": "tables-and-cited-evidence",
@@ -939,7 +1009,8 @@
               }
             ]
           }
-        ]
+        ],
+        "toc_title": "表格与引用证据"
       },
       {
         "id": "tool-arguments-and-option-channels",
@@ -972,7 +1043,8 @@
               }
             ]
           }
-        ]
+        ],
+        "toc_title": "工具参数与选项风险"
       },
       {
         "id": "attack-success-rates",
@@ -1017,7 +1089,8 @@
               }
             ]
           }
-        ]
+        ],
+        "toc_title": "攻击成功率"
       },
       {
         "id": "models-and-licenses",
@@ -1071,7 +1144,54 @@
               }
             ]
           }
-        ]
+        ],
+        "toc_title": "模型与许可"
+      },
+      {
+        "id": "open-rlcd",
+        "title": "开放 RLCD 实现是否复现了 Jev 的训练？",
+        "paragraphs": [
+          {
+            "text": "名称同为 RLCD 或 API 兼容，不证明训练方法相同。OpenJev-RLCD 明确将自己描述为独立实现，不声称揭示 TypeSafe 内部算法。它训练推理模型在采样推理之后给出的概率读出；这种实验设计不等于确定托管 Jev 服务的训练过程。",
+            "sources": [
+              {
+                "label": "OpenJev-RLCD 范围 v1",
+                "url": "https://arxiv.org/html/2609.38850v1#S7"
+              }
+            ]
+          },
+          {
+            "text": "两阶段方法先用适当评分训练答案读出，再用该评分和相对第一阶段模型的锚定项强化推理。实验仅覆盖一个 1.7B 骨干、三个种子和较短训练；第二阶段对一个主要任务有帮助，在另一个上中性。比较时应明确被评分的分布、生成推理预算、拟合切分及经过温度校准的基线。评分规则论证本身不是部署校准保证。",
+            "sources": [
+              {
+                "label": "两阶段方法与配置 v1",
+                "url": "https://arxiv.org/html/2609.38850v1#S3"
+              },
+              {
+                "label": "实验配置",
+                "url": "https://arxiv.org/html/2609.38850v1#S4"
+              }
+            ]
+          },
+          {
+            "text": "蒸馏问的是另一件事：小模型能从教师判断中学到什么？学生引导路由论文使用固定 60 标签分类，报告初步教师一致率，人工评审与完整基线测试仍待完成。搜索蒸馏研究离线训练紧凑评估器，由搜索提供前瞻，教师价值随任务改变。应比较标签预算和下游结果，并将离线标注成本与运行时推理分开。",
+            "sources": [
+              {
+                "label": "学生引导路由：待完成评测 v1",
+                "url": "https://arxiv.org/html/2610.02516v1#S7"
+              },
+              {
+                "label": "搜索蒸馏：组件作用 v1",
+                "url": "https://arxiv.org/html/2610.09188v1#S7"
+              },
+              {
+                "label": "标注成本",
+                "url": "https://arxiv.org/html/2610.09188v1#S8"
+              }
+            ]
+          }
+        ],
+        "toc_title": "独立 RLCD 训练"
       },
       {
         "id": "papers-and-benchmarks",
@@ -1116,7 +1236,8 @@
               }
             ]
           }
-        ]
+        ],
+        "toc_title": "查找研究证据"
       },
       {
         "id": "reproduction-boundaries",
@@ -1166,7 +1287,8 @@
               }
             ]
           }
-        ]
+        ],
+        "toc_title": "复现边界"
       }
     ]
   }
