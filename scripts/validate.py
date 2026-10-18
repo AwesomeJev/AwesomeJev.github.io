@@ -170,15 +170,17 @@ def local_link(path: Path, value: str) -> None:
     if parsed.scheme or parsed.netloc or not value or value == "#" or value.startswith("{{"):
         return
     route = parsed.path.startswith("/")
-    target = ((base / unquote(parsed.path).lstrip("/")) if route else (path.parent / unquote(parsed.path))).resolve() if parsed.path else path
-    if not target.is_relative_to(ROOT):
+    target = (((base / unquote(parsed.path).lstrip("/")) if route else (path.parent / unquote(parsed.path))) if parsed.path else path).resolve()
+    # Compare physical paths on both sides (for example macOS /var -> /private/var).
+    # Publication's separate symlink check still rejects links inside the artifact.
+    if not target.is_relative_to(ROOT.resolve()):
         fail(str(path.relative_to(ROOT)), "local link escapes repository")
         return
     # A route is served from its base folder: /../docs/x.md is not a file of the site.
     # site/ is also the web root for relative links in its pages: ../docs/x.md
     # from site/index.html 404s once published.
     served = base if route else ROOT / "site" if path.is_relative_to(ROOT / "site") else None
-    if served and not target.is_relative_to(served):
+    if served and not target.is_relative_to(served.resolve()):
         fail(str(path.relative_to(ROOT)), "local link escapes site/")
         return
     if target.is_dir():

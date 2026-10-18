@@ -12,6 +12,17 @@ REPO = "https://github.com/reacher-z/Awesome-Jev"
 
 
 class OwnSiteLinkTests(unittest.TestCase):
+    def test_directory_alias_does_not_make_valid_links_escape(self):
+        alias = self.root.parent / "repository-alias"
+        alias.symlink_to(self.root, target_is_directory=True)
+        with patch.object(validate, "ROOT", alias), patch.object(validate, "errors", []):
+            source = alias / "README.md"
+            validate.local_link(source, "docs/source-audit.md#verification-levels")
+            validate.local_link(source, SITE + "/papers/")
+            self.assertEqual(validate.errors, [])
+            validate.local_link(alias / "site/index.html", "../LICENSE")
+            self.assertEqual(validate.errors, ["site/index.html: local link escapes site/"])
+
     def setUp(self):
         temporary = tempfile.TemporaryDirectory()
         self.addCleanup(temporary.cleanup)

@@ -9,12 +9,12 @@
   "current_index_counts": {
     "editorial_reviewed": 4,
     "content_screened": 2392,
-    "abstract_checked": 1832,
+    "abstract_checked": 1843,
     "metadata_only": 47,
-    "raw_records": 4289,
-    "unique_records": 4275,
+    "raw_records": 4300,
+    "unique_records": 4286,
     "duplicate_records": 14,
-    "checked_sources": 4228
+    "checked_sources": 4239
   },
   "by_category": {
     "Datasets": 101,
@@ -1681,7 +1681,7 @@
     },
     {
       "title": "TypeSafe Jev: 5x Faster, 25x Cheaper, 98.5% Correct | Entagl",
-      "url": "https://entagl.com/blog/typesafe-jev-benchmark-ai-decision-models",
+      "url": "https://www.entagl.com/blog/typesafe-jev-benchmark-ai-decision-models",
       "category": "Guides and evaluations",
       "topic": "decision-model-evaluation",
       "description": "Author-run Jev comparison on labeled decisions and customer-workflow replays; workload-specific reported findings, not reproduced here.",
@@ -9396,5 +9396,50 @@
       "ledger": "research-sources.jsonl"
     }
   ],
-  "excluded_from_target": []
+  "excluded_from_target": [
+    {
+      "url": "https://arxiv.org/abs/2610.04985",
+      "reason": "not_in_reviewed_intake"
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.11392",
+      "reason": "not_in_reviewed_intake"
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.13092",
+      "reason": "not_in_reviewed_intake"
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.16655",
+      "reason": "not_in_reviewed_intake"
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.18529",
+      "reason": "not_in_reviewed_intake"
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.18610",
+      "reason": "not_in_reviewed_intake"
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.18612",
+      "reason": "not_in_reviewed_intake"
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.19619",
+      "reason": "not_in_reviewed_intake"
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.19811",
+      "reason": "not_in_reviewed_intake"
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.20907",
+      "reason": "not_in_reviewed_intake"
+    },
+    {
+      "url": "https://arxiv.org/abs/2610.21614",
+      "reason": "not_in_reviewed_intake"
+    }
+  ]
 }

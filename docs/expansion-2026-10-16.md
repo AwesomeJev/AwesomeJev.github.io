@@ -166,7 +166,7 @@ Only sources in the [reviewed intake](../data/expansion-intake-2026-10-16.json) 
 | [System One](https://docs.typesafe.ai/concepts/system-one) | direct · `content_screened` | Official conceptual guide to the System One decision interface; vendor framing, not independently established cognitive equivalence. |
 | [Twitch chat filter](https://docs.typesafe.ai/cookbooks/twitch_chat_filter) | direct · `content_screened` | Official chat-filtering example; application policy and error-cost choices remain separate. |
 | [Typed Decision Leaderboard — JEV & open-Jev answer verifiers, one identical test set](https://huggingface.co/spaces/mayafree/typed-decision-leaderboard) | direct · `content_screened` | Independent typed-decision verifier leaderboard on a shared labeled set with published grading materials. |
-| [TypeSafe Jev: 5x Faster, 25x Cheaper, 98.5% Correct \| Entagl](https://entagl.com/blog/typesafe-jev-benchmark-ai-decision-models) | direct · `content_screened` | Author-run Jev comparison on labeled decisions and customer-workflow replays; workload-specific reported findings, not reproduced here. |
+| [TypeSafe Jev: 5x Faster, 25x Cheaper, 98.5% Correct \| Entagl](https://www.entagl.com/blog/typesafe-jev-benchmark-ai-decision-models) | direct · `content_screened` | Author-run Jev comparison on labeled decisions and customer-workflow replays; workload-specific reported findings, not reproduced here. |
 | [ZTC Gate Tetris](https://huggingface.co/spaces/FINAL-Bench/Tetris-JEV-LAYA-ZTC) | direct · `content_screened` | Tetris gating simulation driven by publisher-measured judge statistics; not a record of the models actually judging Tetris moves. |
 
 ## Models

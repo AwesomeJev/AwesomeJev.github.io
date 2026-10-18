@@ -53,25 +53,12 @@
   box-sizing: border-box;
 }
 html {
-  color-scheme: light dark;
+  color-scheme: light;
   scroll-behavior: smooth;
   scroll-padding-top: 30px;
 }
-/* Dark scheme: same roles, contrast >= 4.5:1 for text and >= 3:1 for hairlines and focus rings.
-   Screen only: printed pages keep the light palette (paper is white and backgrounds are dropped). */
-@media screen and (prefers-color-scheme: dark) {
-  :root {
-    --paper: #111418;
-    --wash: #191d22;
-    --tint: #1f3a50;
-    --ink: #e6e8eb;
-    --muted: #b0b8c4;
-    --link: #9cc9ea;
-    --red: #ff8a8f;
-    --line: #5d6571;
-    --badge: #4fb8c2;
-  }
-}
+/* The site stays white with dark text, independent of the system color scheme. */
+
 body {
   margin: 0;
   background: var(--paper);
@@ -2428,11 +2415,10 @@ html:lang(zh) h1, html:lang(zh) h2, html:lang(zh) h3 {
    papers page introduction on wide screens. Series steps are validated per scheme for adjacent
    stacks; the legend and the table of numbers keep identity and values off colour alone. */
 .paper-activity { max-width:400px; margin:18px 0 22px; }
+.paper-overview > .paper-activity { float:none; width:100%; max-width:600px; margin:14px 0 18px; }
 .activity-chart { display:block; width:100%; height:auto; font-family:var(--sans); font-variant-numeric:tabular-nums;
   --viz-1:#2a78d6; --viz-2:#eb6834; --viz-3:#1baf7a; --viz-4:#eda100; --viz-5:#e87ba4; --viz-6:#008300; --viz-grid:#e5e7eb; --viz-axis:#9ca3af; }
-@media screen and (prefers-color-scheme: dark) {
-  .activity-chart { --viz-1:#3987e5; --viz-2:#d95926; --viz-3:#199e70; --viz-4:#c98500; --viz-5:#d55181; --viz-grid:#30363d; --viz-axis:#6b7280; }
-}
+
 .activity-chart .viz-series1 { fill:var(--viz-1); }
 .activity-chart .viz-series2 { fill:var(--viz-2); }
 .activity-chart .viz-series3 { fill:var(--viz-3); }

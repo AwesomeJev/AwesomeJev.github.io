@@ -11,6 +11,7 @@ from __future__ import annotations
 import argparse
 import base64
 import hashlib
+import html
 import http.client
 import json
 import os
@@ -335,7 +336,46 @@ def review_candidate_accepted(item: dict, current: dict) -> bool:
     return bool(observed_hash and current.get("content_sha256", current.get("abstract_sha256")) == observed_hash)
 
 
-def ensure_pending_continuity(previous: dict[str, bytes], fresh: dict[str, bytes], policy=None) -> None:
+def pending_source_key(url: str) -> str:
+    """Compare document identity while retaining revisions in the evidence rows."""
+    key = source_index.canonical(html.unescape(url))
+    index_files = "https://huggingface.co/spaces/multimodalart/jev-decision-index/blob/"
+    if key.startswith(index_files):
+        key = re.sub(r"/blob/[^/]+/", "/blob/main/", key, count=1)
+    return key
+
+
+def accepted_primary_snapshot(prior: dict, current: dict, accepted: dict) -> bool:
+    """A reviewed primary record on trusted main can replace old page screening.
+
+    This exception never accepts a change introduced only by the fresh scan, an
+    editorial downgrade, or loss of a versioned pending primary abstract.
+    """
+    version = arxiv_version(accepted.get("reviewed_version_url"))
+    if (prior.get("verification_level") != "content_screened"
+            or prior.get("abstract_provider") == "arxiv_primary_abstract_page"
+            or prior.get("reviewed_version_url") or not version
+            or accepted.get("abstract_provider") != "arxiv_primary_abstract_page"
+            or accepted.get("verification_level") != "abstract_checked"
+            or accepted.get("canonical_page_separately_fetched") is not True
+            or accepted.get("reviewed_version") != "v" + str(version[1])):
+        return False
+    identity = "https://arxiv.org/abs/" + version[0]
+    for field in ("url", "canonical_url", "retrieved_url", "retrieval_url", "observed_version_url"):
+        observed = arxiv_version(prior.get(field))
+        if observed and (observed[0] != version[0] or observed[1] > version[1]):
+            return False
+    if any(pending_source_key(row.get("canonical_url", row.get("url", ""))) != identity
+           for row in (prior, current, accepted)):
+        return False
+    fields = ("abstract_provider", "verification_level", "canonical_page_separately_fetched",
+              "reviewed_version", "reviewed_version_url", "abstract_sha256", "abstract_page_sha256")
+    return (all(isinstance(accepted.get(key), str) and SHA256.fullmatch(accepted[key])
+                for key in ("abstract_sha256", "abstract_page_sha256"))
+            and all(current.get(key) == accepted.get(key) for key in fields))
+
+
+def ensure_pending_continuity(previous: dict[str, bytes], fresh: dict[str, bytes], policy=None, accepted=None) -> None:
     """Do not erase evidence held only in an unmerged bot PR on a bad scan."""
     ranks = {"metadata_only": 0, "abstract_checked": 1, "content_screened": 2, "editorial_reviewed": 3}
 
@@ -349,7 +389,7 @@ def ensure_pending_continuity(previous: dict[str, bytes], fresh: dict[str, bytes
                 url = row.get("canonical_url", row.get("url", ""))
                 if not isinstance(url, str) or not url:
                     raise ScanError("Cannot establish pending source identity.")
-                key = source_index.canonical(url)
+                key = pending_source_key(url)
                 level = row.get("verification_level", "metadata_only")
                 if level not in ranks:
                     raise ScanError("Cannot establish pending source verification level.")
@@ -358,6 +398,7 @@ def ensure_pending_continuity(previous: dict[str, bytes], fresh: dict[str, bytes
         return found
 
     before, after = records(previous), records(fresh)
+    on_main = records(accepted) if accepted is not None else {}
     missing = downgraded = 0
     for key, prior in before.items():
         if policy and policy.exclusion(key):
@@ -365,16 +406,17 @@ def ensure_pending_continuity(previous: dict[str, bytes], fresh: dict[str, bytes
         current = after.get(key)
         if current is None:
             missing += 1
-        elif ranks[current.get("verification_level", "metadata_only")] < ranks[prior.get("verification_level", "metadata_only")]:
+        elif (ranks[current.get("verification_level", "metadata_only")] < ranks[prior.get("verification_level", "metadata_only")]
+              and not accepted_primary_snapshot(prior, current, on_main.get(key, {}))):
             downgraded += 1
     prior_queue = json.loads(previous.get(REPORT, b"{}")).get("editorial_refresh_candidates", [])
     fresh_queue = json.loads(fresh.get(REPORT, b"{}")).get("editorial_refresh_candidates", [])
     queued_by_url = {}
     for item in fresh_queue:
-        queued_by_url.setdefault(source_index.canonical(item["url"]), []).append(item)
+        queued_by_url.setdefault(pending_source_key(item["url"]), []).append(item)
     unexplained = 0
     for item in prior_queue:
-        key = source_index.canonical(item["url"])
+        key = pending_source_key(item["url"])
         if (policy and policy.exclusion(key)
                 or any(review_candidate_replaced(item, queued) for queued in queued_by_url.get(key, []))):
             continue
@@ -403,7 +445,8 @@ def publish(api: GitHub, identity: dict, files: dict[str, bytes], policy=None) -
             raise ScanError("The dedicated automation branch has non-bot changes; maintainer inspection is required.")
         previous_files = remote_comparison_files(api, previous_sha)
         if opened:
-            ensure_pending_continuity(previous_files, files, policy)
+            accepted_files = remote_comparison_files(api, identity["base_sha"])
+            ensure_pending_continuity(previous_files, files, policy, accepted=accepted_files)
         unchanged = meaningful_fingerprint(previous_files) == meaningful_fingerprint(files)
     if unchanged and opened:
         return "The existing scan PR already contains these substantive source changes; no update made."
