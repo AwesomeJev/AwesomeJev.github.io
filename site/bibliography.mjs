@@ -1,5 +1,6 @@
 // Read this repository's brace-delimited BibTeX entries without rewriting their
-// contents. This is not a BibTeX macro evaluator; URLs must be literal values.
+// contents. Entries must be self-contained: literals, numbers or standard months, with
+// no macro definitions, concatenations or cross-entry dependencies.
 function fields(body) {
   const parts = [];
   let depth = 0, quoted = false, escaped = false, start = 0;
@@ -28,10 +29,22 @@ function fields(body) {
 }
 
 function literal(value) {
-  if (!value || !((value.startsWith('{') && value.endsWith('}')) || (value.startsWith('"') && value.endsWith('"')))) {
-    throw new Error('Bibliography URL must be a literal');
+  if (!value || !['{', '"'].includes(value[0])) throw new Error('Bibliography fields must use literals');
+  const braced = value[0] === '{';
+  let depth = braced ? 1 : 0, escaped = false;
+  for (let i = 1; i < value.length; i++) {
+    const char = value[i];
+    if (char === '{') depth++;
+    if (char === '}') depth--;
+    const closed = braced ? depth === 0 : char === '"' && depth === 0 && !escaped;
+    if (closed) {
+      if (i !== value.length - 1) throw new Error('Bibliography expressions are unsupported');
+      return value.slice(1, -1).trim();
+    }
+    if (depth < 0) break;
+    escaped = char === '\\' && !escaped;
   }
-  return value.slice(1, -1).trim();
+  throw new Error('Unbalanced bibliography literal');
 }
 
 export function parseBibliography(source) {
@@ -52,11 +65,17 @@ export function parseBibliography(source) {
     }
     if (depth || quoted) throw new Error('Unbalanced bibliography entry');
     header.lastIndex = end + 1;
-    if (/^(comment|preamble|string)$/i.test(match[1])) continue;
+    if (/^comment$/i.test(match[1])) continue;
+    if (/^(preamble|string)$/i.test(match[1])) throw new Error('Bibliography definitions are unsupported');
     const body = source.slice(bodyStart, end);
     const keyMatch = body.match(/^\s*([^\s,{}]+)\s*,/);
     if (!keyMatch || keys.has(keyMatch[1].toLowerCase())) throw new Error('Invalid or duplicate citation key');
     const value = fields(body.slice(keyMatch[0].length));
+    if (value.has('crossref') || value.has('xdata')) throw new Error('Dependent bibliography entries are unsupported');
+    for (const [name, field] of value) {
+      const standardMonth = name === 'month' && /^(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)$/i.test(field);
+      if (!/^[0-9]+$/.test(field) && !standardMonth) literal(field);
+    }
     const url = value.has('url') ? literal(value.get('url')) : null;
     if (url && (!/^https?:\/\//.test(url) || urls.has(url))) throw new Error('Invalid or duplicate citation URL');
     keys.add(keyMatch[1].toLowerCase()); if (url) urls.add(url);

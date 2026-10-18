@@ -28,7 +28,7 @@ The shared module is resolved through a content-hashed import map on the six dir
 
 ## Filtered citations and compact paper browsing
 
-The paper directory can download BibTeX for the visible rows, in their current display order. Citation keys, authors, nested title braces, Unicode text and reviewed-version URLs are copied from the maintained bibliography. The full bibliography remains available as a normal link and includes background/survey entries beyond the paper table. An unmatched exact version or malformed source stops the filtered export instead of producing a partial file.
+The paper directory can download BibTeX for the visible rows, in their current display order. Citation keys, authors, nested title braces, Unicode text and reviewed-version URLs are copied from the maintained bibliography. The full bibliography remains available as a normal link and includes background/survey entries beyond the paper table. An unmatched exact version or malformed source stops the filtered export instead of producing a partial file. Filtered entries must be self-contained; macros, concatenated values and cross-entry dependencies are rejected rather than silently omitted.
 
 Export loads only the same-origin bibliography after the user clicks, using a content hash in its URL with neither credentials nor a referrer. It makes no calls to paper providers or a citation service. Search terms are absent from the request and filename. A saved-file link remains available after preparation; empty results disable export, and failures offer retry/reload and the full bibliography. The chosen rows are captured at click time, so a later filter change does not alter an in-progress download.
 

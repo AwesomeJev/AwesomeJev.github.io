@@ -58,7 +58,7 @@ const second=`@article{beta,
  title = "A title, with a comma", author={B. Author}, year={2026},
  url="https://arxiv.org/abs/2610.12346v1"
 }`;
-const text=`% public fixture\n@comment{Ignored {nested} comment}\n@book{book,title={A book},author={A},year={2020}}\n${first}\n\n${second}\n`;
+const text=`% public fixture\n@comment{Ignored {nested} comment}\n@book{book,title={A book},author={A},year={2020},month=oct}\n${first}\n\n${second}\n`;
 const entries=parseBibliography(text);
 assert.equal(entries.length,3);
 assert.equal(entries[1].text,first);
@@ -79,6 +79,12 @@ const valid='@misc{a,title={A},author={A},year={2026},url={https://example.org/a
 for(const bad of ['',valid.slice(0,-1),valid+'\n'+valid.replace('{a,','{A,'),
  valid+'\n'+valid.replace('{a,','{b,'),
  '@misc{a,title={A},url=unresolved_macro}',
+ '@misc{a,title=unresolved_macro,url={https://example.org/a}}',
+ '@misc{a,title={A},url={https://example.org/} # {a}}',
+ '@misc{a,title={A},url="https://example.org/" # "a"}',
+ valid+'\n@string{venue={Example}}',
+ valid+'\n@preamble{"Example"}',
+ '@misc{a,title={A},crossref={parent},url={https://example.org/a}}',
  '@misc{a,title={A},url={https://example.org/a},url={https://example.org/b}}',
  '@misc{a,title="unclosed,url={https://example.org/a}}']) assert.throws(()=>parseBibliography(bad));
 ''')
