@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-10-18T04:57:50.657780+00:00",
+  "generated_at": "2026-10-18T05:26:38.093753+00:00",
   "counts": {
     "editorial_reviewed": 4,
     "content_screened": 2396,
-    "abstract_checked": 1843,
+    "abstract_checked": 1847,
     "metadata_only": 47,
-    "raw_records": 4304,
-    "unique_records": 4290,
+    "raw_records": 4308,
+    "unique_records": 4294,
     "duplicate_records": 14,
-    "checked_sources": 4243
+    "checked_sources": 4247
   }
 }

@@ -200,3 +200,9 @@ Five background papers were removed, leaving the expansion at **780 sources**. F
 Four independently identified implementation repositories bring the reviewed expansion to **784 sources** and the main catalog to **160 curated resources**. Abide, jev-fabric, atoma and circuit now have parallel English/Chinese descriptions in the README, catalog and discovery directory. All README hashes match the scan and fixed commits. Documentation review preserves unchecked-hook behavior, process privileges, shared-learning boundaries and publisher evaluation scope; no code or inference was executed. [Evidence and counting scope](workflow-runtimes-2026-10-18.md).
 
 **中文：** 四个完整项目使扩展达到784项、精选达到160项，中英文 README、网站与扩展目录同步。说明文件均与扫描及固定提交一致，保留未检查放行、进程权限、共享学习和作者评测范围，不把文档核查写成实验复现。
+
+## Control and invariance papers — 18 October 2026 UTC
+
+Four new paper identities bring the reviewed expansion to **788 sources**. Three were found through targeted primary-source searches; Runoff was also a pending scan candidate. Fixed/current abstract comparisons match. Companion links and selected manuscript sections add no identities, and previous ledger rows are unchanged. [Review scope](control-papers-2026-10-18.md).
+
+**中文：** 四篇新论文使扩展达到788项；三篇来自定向检索，Runoff也在扫描待审队列中。固定版本与当前摘要一致，配套代码链接和定向段落不重复计数，旧台账不改写。

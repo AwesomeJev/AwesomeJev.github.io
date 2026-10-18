@@ -308,6 +308,70 @@ const toolTasks = [
 
 const resources = [
   {
+    "category": "Papers",
+    "title": "Jev-LiteMAS: Separating Decisions from Generation in Multi-Agent Workflows",
+    "by": "Wang, Zhou, Lou & Li · 2026-10-15 · v1",
+    "date": "2026-10-15",
+    "first_submitted": "2026-10-15",
+    "url": "https://arxiv.org/abs/2610.21411v1",
+    "theme": "judging",
+    "en": "Routes expert handoffs and screens artifacts before generative re-review; lower generative-token use depends on the workload, with fixed expert pools and savings that shrink as more artifacts need repair.",
+    "zh": "在生成式复审前进行专家交接路由和产物筛查；生成模型的 token 节省取决于任务，专家池固定，需要修复的产物越多，节省可能越少。",
+    "artifacts": {
+      "unverified": "code"
+    }
+  },
+  {
+    "category": "Papers",
+    "title": "Verdict: Encode Once, Decide Many",
+    "by": "Chouhan & Perry · 2026-10-14 · v1",
+    "date": "2026-10-14",
+    "first_submitted": "2026-10-14",
+    "url": "https://arxiv.org/abs/2610.20778v1",
+    "theme": "architectures",
+    "en": "Encodes shared state once for multiple typed questions; invariance requires identical retained state tokens, while teacher-derived labels, adaptive testing and unstable BoolQ training constrain the reported gains.",
+    "zh": "一次编码共享状态，回答多个类型化问题；不变性要求保留的状态 token 一致，教师模型标签、适应性测试过程及 BoolQ 训练不稳定限制了所报收益的解读。",
+    "artifacts": {
+      "code": "https://github.com/LEC-AI/verdict"
+    },
+    "artifact_note": {
+      "en": "Code and saved results; trained checkpoints are not included.",
+      "zh": "提供代码与已保存结果，未发布训练后的检查点。"
+    }
+  },
+  {
+    "category": "Papers",
+    "title": "Prune the Summary, Not the History: Source-Judged Compaction for Long-Horizon Agents",
+    "by": "Min & Chen · 2026-10-14 · v1",
+    "date": "2026-10-14",
+    "first_submitted": "2026-10-14",
+    "url": "https://arxiv.org/abs/2610.20927v1",
+    "theme": "architectures",
+    "en": "Uses Jev to prune summary entries lacking source support; reported gains concern success in all three runs on two benchmarks, while useful constraints can be discarded and sourced errors retained.",
+    "zh": "用 Jev 删除缺少来源支持的摘要条目；所报收益衡量两个基准上三次独立运行均成功的比例，但有用约束可能被删去，有来源的错误也可能保留。",
+    "artifacts": {
+      "code": "https://github.com/GuanghuiMin/sjc"
+    },
+    "artifact_note": {
+      "en": "Requires separate benchmark environments and model API access; not run here.",
+      "zh": "需另行配置基准环境和模型 API，本项目未运行。"
+    }
+  },
+  {
+    "category": "Papers",
+    "title": "Consider, Then Choose: Order-Invariant Decisions in System One Models",
+    "by": "Huang, Teng, Deng & An · 2026-10-13 · v1",
+    "date": "2026-10-13",
+    "first_submitted": "2026-10-13",
+    "url": "https://arxiv.org/abs/2610.18233v1",
+    "theme": "robustness",
+    "en": "Runoff scores options individually, then balances finalist positions; order invariance assumes deterministic responses and a unique ranking, and does not resolve option-name bias or guarantee more accurate decisions.",
+    "zh": "Runoff 先逐个评分选项，再平衡入围候选的位置；顺序不变性假设响应确定且排序唯一，不能解决选项名称偏置，也不保证决策更准确。",
+    "artifacts": {
+      "unverified": "code"
+    }
+  },
+  {
     "category": "Tools",
     "title": "Abide",
     "by": "coldteadotai · rule checks · MIT",
