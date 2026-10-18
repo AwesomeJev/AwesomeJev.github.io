@@ -6,6 +6,16 @@ The generated sitemap currently contains **18 canonical HTML pages**, with Engli
 
 The [18 October release integration](reviews/integration-2026-10-18.md) reconciles the canonical repository's merged research and interface changes with the website mirror. The current collection contains 156 curated entries and 78 direct papers; the source-ledger, expansion and historical release counts have different scopes. The site stays white with dark text even when the operating system prefers a dark scheme. The research-activity figure remains available in a disclosure above the paper table.
 
+## Shareable directory views
+
+The paper and model directories preserve their filters in a `#view?…` fragment. Papers retain the query, theme, code-availability filter and sort order; models retain the query and declared-license filter. **Copy view link** produces a bookmarkable link to the current view. Refreshing, returning with browser history and switching between the paired English/Chinese routes restore the state. Both languages search the same bilingual metadata so a translated description can still be found after a language switch.
+
+This is a client-side view of an existing directory, not a new indexable page. Canonical URLs, sitemap entries and the full static tables remain unchanged. The fragment is not an HTTP query; the feature adds no local-storage persistence, analytics or network requests. Copied links omit unrelated query parameters. Clipboard failure has visible feedback, unsupported filter values fall back to defaults, and resetting removes the view fragment. Ordinary section anchors are preserved in language links when no filtered view is active.
+
+The shared module is resolved through a content-hashed import map on the four directory pages. Tests cover Unicode and reserved-character round trips, default and unknown values, language links, browser restoration, copy failure, history preservation and identical bilingual search text. Browser checks exercised compound paper filters, Chinese keywords across languages, model-license links, reset and a 390-pixel mobile viewport. The collection's source counts and evidence grades are unchanged.
+
+**中文：** 论文和模型目录的筛选保存在网址片段中，可复制、收藏，并在刷新、历史导航和中英文切换后恢复。两种语言搜索相同的双语元数据；重置会移除筛选片段。完整静态表格、规范网址与sitemap不变，新增功能不使用本地存储、统计服务或网络请求，复制的链接不会附带无关查询参数。版本化模块、状态转换和双语一致性均有测试，手机端已检查无横向溢出；本轮不改变来源计数或核查等级。
+
 ## Authoring and building the public pages
 
 Edit the shared sources, then rebuild from the repository root:

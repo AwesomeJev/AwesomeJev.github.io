@@ -24,7 +24,7 @@ ROUTES = tuple(route for pair in PAIRS for route in pair)
 BUILD_INPUTS = (
     "scripts/build_site.mjs", "templates/index.html", "data/search-guide.json", "data/research-topics.json",
     "data/expansion-progress-2026-10-16.json", "data/discovery-translations.zh-CN.json", "references.bib",
-    "site/app.js", "site/model-directory.js", "site/paper-directory.js", "site/catalog.mjs", "site/resource-view.mjs", "site/styles.css",
+    "site/app.js", "site/directory-view.mjs", "site/model-directory.js", "site/paper-directory.js", "site/catalog.mjs", "site/resource-view.mjs", "site/styles.css",
 )
 # The build also draws the papers-per-week chart and rewrites its region in both READMEs.
 BUILD_INPUTS += ("scripts/paper_activity.mjs", "README.md", "README.zh-CN.md")
@@ -199,7 +199,7 @@ class SiteDiscoveryTests(unittest.TestCase):
             self.assertEqual(parse_qs(parsed.query), {"v": [expected]})
             return path
 
-        for route in ("/", "/zh/"):
+        for route in ("/", "/zh/", "/papers/", "/zh/papers/", "/models/", "/zh/models/"):
             with self.subTest(route=route):
                 page = self.pages[route]
                 self.assertEqual(len(page.import_maps), 1)
@@ -208,7 +208,8 @@ class SiteDiscoveryTests(unittest.TestCase):
                 self.assertEqual(len(module_positions), 1)
                 self.assertLess(map_positions[0], module_positions[0], "Map must precede module resolution")
                 entry = urljoin(BASE + route, page.scripts[module_positions[0]]["src"])
-                self.assertEqual(urlsplit(entry).path, "/app.js")
+                expected_entry = "/paper-directory.js" if "/papers/" in route else "/model-directory.js" if "/models/" in route else "/app.js"
+                self.assertEqual(urlsplit(entry).path, expected_entry)
                 mappings = {urljoin(BASE + route, key): urljoin(BASE + route, value)
                             for key, value in page.import_maps[0]["imports"].items()}
                 queue, visited, mapped = [entry], set(), set()

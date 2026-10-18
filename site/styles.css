@@ -273,6 +273,8 @@ html:not(.js) .corpus-disclosure {
 .model-controls input { width:100%; }
 .model-controls input::placeholder { color:var(--muted); }
 .model-controls button { cursor:pointer; }
+.directory-share-status { display:block; margin:0 0 10px; color:var(--muted); font-size:13px; }
+.directory-share-status:empty { display:none; }
 .model-controls :is(input,select,button):focus-visible { outline:2px solid var(--link); outline-offset:3px; }
 .model-list-meta { display:flex; flex-wrap:wrap; justify-content:space-between; gap:8px 16px; font-size:12px; color:var(--muted); }
 .model-list-meta p { margin:0 0 10px; }
@@ -290,7 +292,7 @@ html:not(.js) .corpus-disclosure {
   .collection-stats { gap:8px 18px; }
   .model-controls { flex-wrap:wrap; gap:12px; }
   .model-controls .model-search { flex-basis:100%; }
-  .model-controls label:not(.model-search) { flex:1; }
+  .model-controls label:not(.model-search) { flex:1; min-width:0; }
   .model-controls select { width:100%; }
   .model-table, .model-table tbody { display:block; }
   .model-table thead { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); }
@@ -2457,6 +2459,7 @@ html:lang(zh) h1, html:lang(zh) h2, html:lang(zh) h3 {
   .corpus-disclosure,
   .model-controls,
   .paper-controls,
+  .directory-share-status,
   #copy-code,
   .back-top {
     display: none !important;
