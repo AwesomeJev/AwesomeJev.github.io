@@ -6,6 +6,12 @@ The generated sitemap currently contains **20 canonical HTML pages**, with Engli
 
 The [18 October release integration](reviews/integration-2026-10-18.md) reconciles the canonical repository's merged research and interface changes with the website mirror. The current collection contains 169 curated entries and 87 direct papers; the source-ledger, expansion and historical release counts have different scopes. The site stays white with dark text even when the operating system prefers a dark scheme. The research-activity figure remains available in a disclosure above the paper table.
 
+## Confirmed paper-directory indexing
+
+On 18 October 2026 UTC, Google Search Console reported `https://awesomejev.github.io/papers/` as **on Google / indexed**, with a successful smartphone crawl and the inspected URL selected as canonical. Its displayed last crawl was 16 October, so this does not confirm that Google has processed the latest 87-paper version. A single updated-indexing request was accepted after the new publication was verified. The sitemap screen still showed its earlier fetch failure; that separate issue remains open. [Evidence scope and publication checks](reviews/stability-papers-2026-10-18.md).
+
+**中文：** 已确认论文目录被Google收录，规范网址匹配；显示的最近抓取仍为10月16日，因此不能据此认定最新87篇版本已经处理。本次更新的索引请求已受理，站点地图抓取错误仍待解决。此记录不代表排名或AI引用。
+
 ## Shareable directory views
 
 The paper, model and tool directories preserve their filters in a `#view?…` fragment. Papers retain the query, theme, code-availability filter and sort order; models retain the query and declared-license filter; tools retain the query, purpose and publisher filter. **Copy view link** produces a bookmarkable link to the current view. Refreshing, returning with browser history and switching between the paired English/Chinese routes restore the state. Both languages search the same bilingual metadata so a translated description can still be found after a language switch.

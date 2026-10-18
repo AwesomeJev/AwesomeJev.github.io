@@ -43,3 +43,13 @@ The bilingual guide now separates a model-selected fallback option from an appli
 All 452 repository tests pass. The bibliography/README/catalog checks agree on 87 direct papers, 96 bibliography entries and 169 curated resources; the expansion audit reports 793 sources. Previous research-ledger bytes are unchanged, with five rows appended. Static build verification, publication validation (199 files and 4,313 ledger records) and whitespace checks pass.
 
 Browser checks verified the SecJev v2 date, separate first-submission date, three release links and bilingual material-scope note. The new fallback section is reachable from its ordinary table-of-contents link and is readable at 390 px without horizontal overflow. The guidance and topic comparison remain ordinary static HTML with primary citations.
+
+## Publication and search checks
+
+Commit `cdb23233bcf0c52ade0ab59dd93f404e650f2fb0` passed [main repository checks](https://github.com/reacher-z/Awesome-Jev/actions/runs/39104107725), [website repository checks](https://github.com/AwesomeJev/AwesomeJev.github.io/actions/runs/39104110078) and [Pages deployment](https://github.com/AwesomeJev/AwesomeJev.github.io/actions/runs/39104110050). All 38 live targets matched committed bytes. The live directory shows 87 papers and 46 with linked code; release metadata and unverified-code markers retain their separate meanings.
+
+One IndexNow POST for the ten substantively changed home, paper, discovery, guide and option-bias pages (English/Chinese pairs) returned HTTP 200. No unchanged model/tool page was submitted.
+
+Google Search Console's inspection of `https://awesomejev.github.io/papers/` showed **URL is on Google** and **Page is indexed**. Fetching and indexing were allowed, Googlebot smartphone had fetched it successfully, the user canonical was the inspected URL and Google's selected canonical was “Inspected URL.” Its displayed last crawl was **16 October 2026, 01:17:39**; no timezone conversion is inferred. This verifies indexing of the directory, not Google's capture of this five-paper update or any ranking. After live deployment verification, one request for updated indexing completed the live check and received **Indexing requested**, placing the URL in a crawl queue.
+
+The sitemap screen separately still showed the earlier Unknown / Couldn't fetch / zero discovered pages record. That issue remains unresolved; page indexing is not evidence that sitemap processing has recovered. No account identifiers or Search Console screenshots are committed. Bing verification is unchanged.
